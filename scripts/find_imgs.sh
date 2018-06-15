@@ -1,6 +1,7 @@
-#!/bin/bash
+#! /bin/bash
 
-cat imgs.txt | while read line
+while IFS=$'\t' read -r -a vals
 do
-grep "/$line.*" "files_Images"*.txt > img_locs/$line.txt;
-done
+loc=${vals[0]}
+grep "/$loc.*" "files_Images"*.txt > img_locs/$loc.txt
+done < image_progress_list.txt
