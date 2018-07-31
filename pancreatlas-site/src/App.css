@@ -1,0 +1,117 @@
+html, body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  text-align: center;
+  height: 100%;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Bellefair', serif;
+}
+
+.logo-img {
+  padding-bottom: 1rem;
+}
+
+.image-card {
+  max-width: 350px;
+  text-align: left;
+}
+
+.image-row {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.image-grid h1 {
+  text-align: left;
+}
+
+.card-title, .card-subtitle{
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.collection-card {
+  max-width: 350px;
+}
+
+.collection-row {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: left;
+  margin: auto;
+}
+
+.collection-row div {
+  margin: auto;
+}
+
+.subheading {
+  text-align: left;
+}
+
+.dataset-page {
+  width: 100%;
+}
+
+.dataset-page h1{
+  text-align: left;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.dataset-list{
+  width: 100%;
+}
+
+.filter-list {
+  text-align: left;
+}
+
+.pancreatlas-nav {
+  width: 100%;
+  margin-bottom: 3rem;
+  /* background-color: #1b294a; */
+}
+
+
+.footer {
+  background-color: #1b294a;
+  color: #e4e5d7;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
