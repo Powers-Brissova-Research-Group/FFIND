@@ -32,7 +32,7 @@ class App extends Component {
             <Route path='/collections' component={CollectionList} />
             <Route exact path='/dataset' component={DatasetList} />
             <Route exact path='/dataset/:did' component={ImageGrid} />
-            <Route path='/image' component={ImageDetail} />
+            <Route path='/image/:iid' component={ImageDetail} />
           </Switch>
         </Container>
         <Footer />

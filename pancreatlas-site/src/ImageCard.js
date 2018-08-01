@@ -9,6 +9,10 @@ import {
   Button
 } from 'reactstrap'
 
+import {
+  Link
+} from 'react-router-dom'
+
 export default class ImageCard extends React.Component {
   render() {
     return (
@@ -25,7 +29,8 @@ export default class ImageCard extends React.Component {
               ))}
             </ul>
           </CardText>
-          <a href={this.props.path_path} target="_blank"><Button color="link" className="mt-auto">Open Path Viewer</Button></a>
+          <Link to={'/image/' + this.props.omero_id}><Button color="link" className="mt-auto">View More Info</Button></Link>
+          {/* <a href={this.props.path_path} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></a> */}
         </CardBody>
       </Card>
     );

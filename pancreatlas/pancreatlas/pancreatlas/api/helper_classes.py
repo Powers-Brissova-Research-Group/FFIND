@@ -7,7 +7,11 @@ class Image:
         self.tags = []
         self.key_values = {}
         self.fetch_annotations()
-        self.file_name = self.img_wrapper.shortname().split('.')[0] + '.jpg'
+        self.name = self.img_wrapper.getName()
+        self.file_name = self.gen_file_name()
+        self.size_x = img_wrapper.getSizeX()
+        self.size_y = img_wrapper.getSizeY()
+        
 
     def __eq__(self, other):
         if isinstance(other, Image):
@@ -48,8 +52,15 @@ class Image:
     def save_thumbnail(self, file_loc, max_len):
         f = open(file_loc + self.file_name, 'w')
         jpg = self.img_wrapper.getThumbnail((max_len))
+        # print jpg
         f.write(jpg)
         f.close()
+
+    def gen_file_name(self):
+        fname = self.name[self.name.find('[') + 1 : self.name.find(']')]
+        if fname == '0':
+            fname = self.name[0:self.name.find('.')]
+        return fname + '.jpg'
 
 class Tag:
     def __init__(self, tag_wrapper, tid):

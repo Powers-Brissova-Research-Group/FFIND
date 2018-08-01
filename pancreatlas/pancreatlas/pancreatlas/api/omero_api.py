@@ -18,7 +18,9 @@ def get_images_from_ids(conn, iids):
     img_set = []
     imgs = conn.getObjects("Image", ids=iids)
     for img in imgs:
-        img_set.append(Image(img))
+        image = Image(img)
+        if len(image.tags):
+            img_set.append(image)
     return img_set
 
 def get_images_from_dataset(conn, dset):

@@ -69,7 +69,7 @@ class DatasetViewset(viewsets.ViewSet):
     @action(methods=['get'], detail=True, url_path='get-images', url_name='get_images')
     def get_images(self, request, pk=None):
         ds = omero_api.get_dataset_images(self.omero_conn, pk)
-        ds.imgs = omero_api.filter_imgs_by_tag(ds.imgs, "Aperio")
+        # ds.imgs = omero_api.filter_imgs_by_tag(ds.imgs, "Aperio")
 
         imgs = [Image(img.id, img.file_name, "assets/thumbnails/" + img.file_name, img.get_tag_names(), img.get_key_values()) for img in ds.imgs]
 
