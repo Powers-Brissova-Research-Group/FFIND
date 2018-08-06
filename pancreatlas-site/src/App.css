@@ -134,6 +134,25 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .card-img-top {
-  max-height: 300px;
+  height: 300px;
   overflow: hidden;
+  object-fit: cover;
+}
+
+.matrix-thumb {
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.image-matrix {
+  overflow: scroll;
+}
+
+.modal-thumb {
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  object-fit: cover;
 }

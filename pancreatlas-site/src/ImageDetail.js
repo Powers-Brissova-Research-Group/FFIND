@@ -27,6 +27,7 @@ export default class ImageDetail extends React.Component {
         (result) => {
           this.setState({
             loaded: true,
+            detailpath: result.detailpath,
             img_data: result.kvals,
             tags: result.tags,
             path_path: result.pathpath
@@ -35,7 +36,7 @@ export default class ImageDetail extends React.Component {
   }
 
   render() {
-    const { loaded, img_data, path_path } = this.state
+    const { loaded, img_data, detailpath, path_path } = this.state
     if (!loaded) {
       return (
         <Container>
@@ -49,7 +50,7 @@ export default class ImageDetail extends React.Component {
           <Container>
             <Row>
               <Col md="8">
-                <img src="http://www.placehold.it/700x1000" alt="" />
+                <img src={"http://127.0.0.1:8000/" + detailpath} alt="" />
               </Col>
               <Col md="4">
                 <h3>Image Details</h3>

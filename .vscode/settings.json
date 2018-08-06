@@ -1,0 +1,3 @@
+{
+    "python.pythonPath": "${workspaceFolder}/pancreatlas/pancreatlas/bin/python"
+}

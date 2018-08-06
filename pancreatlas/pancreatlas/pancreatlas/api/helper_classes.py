@@ -77,7 +77,7 @@ class Tag:
         return hash(self.tid)
 
     def __str__(self):
-        return str(self.tid) + ' : ' + self.get_tag_name()
+        return self.get_tag_name()
 
     def __repr__(self):
         return self.__str__()

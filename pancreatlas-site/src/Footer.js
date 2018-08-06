@@ -19,7 +19,7 @@ export default class Footer extends React.Component {
               </Col>
               <Col md="6">
                 <h3>Get in touch</h3>
-                  <p>Email us <a href="#">here</a></p>
+                  <p>Email us <a href="mailto:james.messmer@vumc.org">here</a></p>
                   <p>Call us at 123.456.7890</p>
                   <p>Vanderbilt Unviersity Medical Center<br></br>2213 Garland Avenue<br></br>8425 Medical Research Building IV<br></br>Nashville, TN<br></br>37232-0475</p>
               </Col>

@@ -3,7 +3,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
 } from 'reactstrap'
@@ -29,7 +28,7 @@ export default class PancreatlasNavbar extends React.Component {
     return (
       <div className="pancreatlas-nav">
         <Navbar color="dark" dark expand="md">
-          <Link to={'/'}><NavbarBrand href="#">Pancreatlas</NavbarBrand></Link>
+          <Link to={'/'} className='navbar-brand'>Pancreatlas</Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
