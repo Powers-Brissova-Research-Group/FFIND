@@ -82,7 +82,7 @@ class TagsetViewset(viewsets.ViewSet):
         tag_list = omero_api.get_tag_dictionary()
         tagsets = []
         for name, tags in tag_list.iteritems():
-            tagsets.append(TagSet(name, tags))
+            tagsets.append(TagSet(name, [tag.tname for tag in tags]))
 
         serializer = TagSetSerializer(tagsets, many=True)
 

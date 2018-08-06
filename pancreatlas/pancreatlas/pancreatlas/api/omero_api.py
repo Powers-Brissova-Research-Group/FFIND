@@ -164,7 +164,6 @@ def get_tag_dictionary():
             if p.getValue().upper() not in tag_dict:
                 tag_dict[p.getValue().upper()] = []
             tag_dict[p.getValue().upper()].append(Tag(tag, tag.getId()))
-
     return tag_dict
     
 def generate_image_matrix(tagset_a, tagset_b):

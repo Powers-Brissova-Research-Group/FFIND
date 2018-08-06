@@ -33,6 +33,9 @@ export default class PancreatlasNavbar extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
+                <Link to={'/matrixview'} className='nav-link'>Matrix View</Link>
+              </NavItem>
+              <NavItem>
                 <Link to={'/collections'} className='nav-link'>Collections</Link>
               </NavItem>
               <NavItem>
