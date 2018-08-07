@@ -22,7 +22,6 @@ export default class DatasetList extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result);
           this.setState({
             loaded: true,
             datasets: result
@@ -47,7 +46,7 @@ export default class DatasetList extends React.Component {
             </thead>
             <tbody>
               {datasets.map(item => (
-                <tr><td>{item.did}</td><td>{item.dsname}</td><td><Link to={'/dataset/' + item.did}><Button>Open Dataset</Button></Link></td></tr>
+                <tr key={item.did}><td>{item.did}</td><td>{item.dsname}</td><td><Link to={'/dataset/' + item.did}><Button>Open Dataset</Button></Link></td></tr>
               ))}
             </tbody>
           </Table>

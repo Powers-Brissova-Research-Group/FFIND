@@ -1,3 +1,4 @@
+import signal
 import omeropy.omero
 from omeropy.omero.gateway import BlitzGateway
 from helper_classes import Image, Tag, Dataset

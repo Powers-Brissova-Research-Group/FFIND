@@ -109,10 +109,10 @@ export default class ImageGrid extends React.Component {
       let pages = []
       for (let i = 0; i < Math.ceil(filtered.length / 12); i++) {
         if (i === page) {
-          pages.push(<PaginationItem active><PaginationLink onClick={(e) => this.choosePage(i)}>{i}</PaginationLink></PaginationItem>)
+          pages.push(<PaginationItem key={i} active><PaginationLink onClick={(e) => this.choosePage(i)}>{i}</PaginationLink></PaginationItem>)
 
         } else {
-          pages.push(<PaginationItem><PaginationLink onClick={(e) => this.choosePage(i)}>{i}</PaginationLink></PaginationItem>)
+          pages.push(<PaginationItem key={i}><PaginationLink onClick={(e) => this.choosePage(i)}>{i}</PaginationLink></PaginationItem>)
         }
       }
 
@@ -133,10 +133,10 @@ export default class ImageGrid extends React.Component {
                 <FilterList filters={this.state.tags} callback={this.filter} />
               </Col>
               <Col md="10">
-                {img_grid.map(item => (
-                  <Row className="image-row">
+                {img_grid.map((item, idx) => (
+                  <Row key={idx} className="image-row">
                     {item.map(image =>
-                      <Col md="4">
+                      <Col key={image.iid} md="4">
                         <ImageCard img_url={'http://127.0.0.1:8000/' + image.thumbpath} img_name={image.iname} omero_id={image.iid} img_tags={image.tags} path_path={image.pathpath} />
                       </Col>
                     )}

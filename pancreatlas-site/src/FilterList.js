@@ -31,10 +31,10 @@ export default class FilterList extends React.Component {
   
   render() {
     return (
-      <div classname="filter-list">
+      <div className="filter-list">
         <h3>Filters:</h3>
         {this.props.filters.map(item => 
-          <FilterItem filterName={item} callback={this.setFilters}/>
+          <FilterItem key={item} filterName={item} callback={this.setFilters}/>
         )}
         <Button color="danger" onClick={() => this.props.callback(this.state.filters)}>Filter</Button> 
       </div>

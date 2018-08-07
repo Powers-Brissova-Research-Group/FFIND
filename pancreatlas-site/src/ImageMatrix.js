@@ -39,7 +39,6 @@ export default class ImageMatrix extends React.Component {
           tag_b: result['tag_b'],
           matrix: result['matrix']
         })
-        console.log(this.state.matrix)
       });
   }
 
@@ -68,15 +67,17 @@ export default class ImageMatrix extends React.Component {
           <div className='image-matrix'>
             <Table hover>
               <thead>
-                <td></td>
-                {headings.map(item => (
-                  <td><strong>{item}</strong></td>
-                ))}
+                <tr>
+                  <td></td>
+                  {headings.map(item => (
+                    <td key={item}><strong>{item}</strong></td>
+                  ))}
+                </tr>
               </thead>
               <tbody>
                 {Object.keys(matrix).map(row => (
-                  <tr><td><strong>{row}</strong></td>{Object.keys(matrix[row]).map(col => (
-                    <td>
+                  <tr key={row}><td><strong>{row}</strong></td>{Object.keys(matrix[row]).map(col => (
+                    <td key={row + ', ' + col}>
                       {matrix[row][col][0] !== undefined && <img onClick={() => this.toggle(matrix[row][col])} className='matrix-thumb' src={'http://127.0.0.1:8000/' + matrix[row][col][0].thumbpath} alt="" />}
                       {matrix[row][col][0] === undefined && <p>No matching images</p>}
                     </td>
@@ -118,7 +119,7 @@ export default class ImageMatrix extends React.Component {
   }
 }
 
-ImageMatrix.defaultProps={
+ImageMatrix.defaultProps = {
   tag_1: 'age',
   tag_2: 'pancreas%20region'
 }

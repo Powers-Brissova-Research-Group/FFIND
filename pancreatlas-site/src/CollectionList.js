@@ -5,7 +5,7 @@ export default class CollectionList extends React.Component {
     return (
       <div className="collection-list">
         {this.props.collections.map(item => (
-          <CollectionRow title={item.name} description={item.description} />
+          <CollectionRow title={item.name} description={item.description} key={item.name}/>
         ))}
       </div>
     )

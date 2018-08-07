@@ -28,7 +28,6 @@ export default class MatrixView extends React.Component {
     fetch('http://127.0.0.1:8000/api/tagsets')
       .then(res => res.json())
       .then(result => {
-        console.log(result)
         this.setState({
           tagsets: result,
           loaded: true,
@@ -53,8 +52,6 @@ export default class MatrixView extends React.Component {
   }
 
   showMatrix() {
-    console.log('Tag 1: ' + this.state.tag1)
-    console.log('Tag 2: ' + this.state.tag2)
     this.setState({
       showMatrix: true
     })
@@ -77,7 +74,7 @@ export default class MatrixView extends React.Component {
                 <Label for="tag1">Choose the first tag</Label>
                 <Input type="select" name="tag_1" id="tag1" onChange={this.handleChange}>
                   {this.state.tagsets.map(tagset => (
-                    <option>{tagset.set_name}</option>
+                    <option key={tagset.set_name}>{tagset.set_name}</option>
                   ))}
                 </Input>
               </FormGroup>
@@ -85,7 +82,7 @@ export default class MatrixView extends React.Component {
                 <Label for="tag2">Choose the second tag</Label>
                 <Input type="select" name="tag_2" id="tag2" onChange={this.handleChange}>
                   {this.state.tagsets.map(tagset => (
-                    <option>{tagset.set_name}</option>
+                    <option key={tagset.set_name}>{tagset.set_name}</option>
                   ))}
                 </Input>
               </FormGroup>

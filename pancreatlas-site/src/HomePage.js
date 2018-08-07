@@ -37,7 +37,7 @@ export default class HomePage extends React.Component {
         </Row>
         <Row>
           {collections.map(item => (
-            <Col md="4"><CollectionCard name={item.name} desc={item.desc} /></Col>
+            <Col key={item.name} md="4"><CollectionCard name={item.name} desc={item.desc} /></Col>
           ))}
         </Row>
       </div>

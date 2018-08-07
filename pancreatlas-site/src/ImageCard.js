@@ -23,12 +23,12 @@ export default class ImageCard extends React.Component {
           <CardSubtitle>{this.props.omero_id}</CardSubtitle>
           <CardText>
             <strong>Image Tags:</strong>
-            <ul>
-              {this.props.img_tags.map(item => (
-                <li>{item}</li>
-              ))}
-            </ul>
           </CardText>
+          <ul>
+            {this.props.img_tags.map(item => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
           <Link to={'/image/' + this.props.omero_id} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></Link>
           {/* <a href={this.props.path_path} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></a> */}
         </CardBody>
