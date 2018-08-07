@@ -3,10 +3,12 @@
 ###  Development Branch Overview:
 
 The `/pancreatlas` directory contains the django files. Here's how to get that set up:
-1. `cd` into the `pancreatlas/pancreatlas` directory
-2. Run `source bin/activate` to activate the virtual environment
-3. `cd` into the `pancreatlas` directory
-4. Run `python manage.py runserver`
+1. `cd` into the `pancreatlas/pancreatlas` directory'
+2. Run `pip install requirements.txt`
+3. If necessary, also run `pip install zeroc-ice==3.6.4`
+4. Run `source bin/activate` to activate the virtual environment
+5. `cd` into the `pancreatlas` directory
+6. Run `python manage.py runserver`
 
 The `/pancreatlas-site` directory contains the react site. To get that running:
 1. `cd` into the `/pancreatlas` directory
