@@ -35,7 +35,7 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:8000/api/images/')
+    fetch('http://127.0.0.1:8000/api/datasets/' + this.props.match.params.did + '/get-images')
       .then(res => res.json())
       .then(
         (result) => {

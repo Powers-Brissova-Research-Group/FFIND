@@ -52,19 +52,20 @@ class DatasetViewset(viewsets.ViewSet):
 
     @action(methods=['get'], detail=True, url_path='get-images', url_name='get_images')
     def get_images(self, request, pk=None):
-        ds = omero_api.get_dataset_images(pk)
+        # ds = omero_api.get_dataset_images(pk)
         # ds.imgs = omero_api.filter_imgs_by_tag(ds.imgs, "Aperio")
+        f = open('api/' + str(pk) + '.txt', 'r')
+        data = f.readline()
+        # imgs = [Image(img.id, img.file_name, "assets/thumbnails/" + img.file_name, "assets/details/" +
+        #               img.file_name, img.get_tag_names(), img.get_key_values()) for img in ds.imgs]
 
-        imgs = [Image(img.id, img.file_name, "assets/thumbnails/" + img.file_name, "assets/details/" +
-                      img.file_name, img.get_tag_names(), img.get_key_values()) for img in ds.imgs]
+        # img_serializer = ImageSerializer(imgs, many=True)
 
-        img_serializer = ImageSerializer(imgs, many=True)
+        # ret_imgs = DatasetImages(
+        #     "full no copy aperio", len(imgs), img_serializer.data)
 
-        ret_imgs = DatasetImages(
-            "full no copy aperio", len(imgs), img_serializer.data)
-
-        serializer = DatasetImageSerializer(ret_imgs)
-        return Response(serializer.data)
+        # serializer = DatasetImageSerializer(ret_imgs)
+        return Response(json.loads(data))
 
     def retrieve(self, request, pk=None):
         ds = omero_api.get_dataset(pk)

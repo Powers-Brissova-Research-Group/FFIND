@@ -9,7 +9,20 @@ def save_thumbs():
     if success:
         try:
             api.fetch_tags()
-            ids = {}
+            dsets = api.get_datasets()
+            dids = [int(dset.did) for dset in dsets]
+            for did in dids:
+                print did
+                ids = {}
+                dset = api.get_dataset_images(did)
+                images = dset.imgs
+                print images
+                f = open(str(did) + '.txt', 'w')
+                for image in images:
+                    ids[int(image.id)] = [tag.tname for tag in image.get_tags()]
+                data = json.dumps(ids)
+                f.write(data)
+                f.close()
             # matrix = api.generate_image_matrix(conn, 'Age'.upper(), 'Pancreas Region'.upper())
             # pprint.pprint(matrix)
             # pprint.pprint(matrix[1])
@@ -17,21 +30,21 @@ def save_thumbs():
             # image = api.get_image_by_id(conn, 6056)
             # print 'Can write? ' + str(conn.canWrite(image.img_wrapper))
             # changeColors(conn, image.img_wrapper)
-            f = open('image_ids.txt', 'w')
-            images = api.get_images_union_from_tags(["Aperio", "Leica", "Zeiss"])
-            for image in images:
-                ids[int(image.id)] = [tag.tname for tag in image.get_tags()]
-                # print image.file_name
-                # changeColors(image.img_wrapper)
-                # thumbnail_size = get_longest(image)
-                # detail_size = get_longest_detail(image)
-                # print image.file_name + ' -> ' + str(thumbnail_size) + ', ' + str(detail_size)
-                # image.save_thumbnail("../assets/thumbnails/", thumbnail_size)
-                # image.save_thumbnail("../assets/details/", detail_size)
-            print ids
-            data = json.dumps(ids)            
-            f.write(data)
-            f.close()
+            # f = open('image_ids.txt', 'w')
+            # images = api.get_images_union_from_tags(["Aperio", "Leica", "Zeiss"])
+            # for image in images:
+            #     ids[int(image.id)] = [tag.tname for tag in image.get_tags()]
+            #     # print image.file_name
+            #     # changeColors(image.img_wrapper)
+            #     # thumbnail_size = get_longest(image)
+            #     # detail_size = get_longest_detail(image)
+            #     # print image.file_name + ' -> ' + str(thumbnail_size) + ', ' + str(detail_size)
+            #     # image.save_thumbnail("../assets/thumbnails/", thumbnail_size)
+            #     # image.save_thumbnail("../assets/details/", detail_size)
+            # print ids
+            # data = json.dumps(ids)            
+            # f.write(data)
+            # f.close()
         finally:
             conn.close()
     else:
