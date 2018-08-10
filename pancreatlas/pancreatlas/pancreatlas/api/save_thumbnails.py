@@ -1,29 +1,37 @@
 import omero_api as api
 import math
 import pprint
+import json
 
 
 def save_thumbs():
     (conn, success) = api.connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
     if success:
         try:
-            api.fetch_tags(conn)
-            matrix = api.generate_image_matrix(conn, 'Age'.upper(), 'Pancreas Region'.upper())
-            pprint.pprint(matrix)
+            api.fetch_tags()
+            ids = {}
+            # matrix = api.generate_image_matrix(conn, 'Age'.upper(), 'Pancreas Region'.upper())
+            # pprint.pprint(matrix)
             # pprint.pprint(matrix[1])
             # api.fetch_tags(conn)
-            # # image = api.get_image_by_id(conn, 6056)
-            # # print 'Can write? ' + str(conn.canWrite(image.img_wrapper))
-            # # changeColors(conn, image.img_wrapper)
-            # images = api.get_images_union_from_tags(conn, ["Aperio", "Leica", "Zeiss"])
-            # for image in images:
-            #     # print image.file_name
-            #     # changeColors(image.img_wrapper)
-            #     thumbnail_size = get_longest(image)
-            #     detail_size = get_longest_detail(image)
-            #     print image.file_name + ' -> ' + str(thumbnail_size) + ', ' + str(detail_size)
-            #     image.save_thumbnail("../assets/thumbnails/", thumbnail_size)
-            #     image.save_thumbnail("../assets/details/", detail_size)
+            # image = api.get_image_by_id(conn, 6056)
+            # print 'Can write? ' + str(conn.canWrite(image.img_wrapper))
+            # changeColors(conn, image.img_wrapper)
+            f = open('image_ids.txt', 'w')
+            images = api.get_images_union_from_tags(["Aperio", "Leica", "Zeiss"])
+            for image in images:
+                ids[int(image.id)] = [tag.tname for tag in image.get_tags()]
+                # print image.file_name
+                # changeColors(image.img_wrapper)
+                # thumbnail_size = get_longest(image)
+                # detail_size = get_longest_detail(image)
+                # print image.file_name + ' -> ' + str(thumbnail_size) + ', ' + str(detail_size)
+                # image.save_thumbnail("../assets/thumbnails/", thumbnail_size)
+                # image.save_thumbnail("../assets/details/", detail_size)
+            print ids
+            data = json.dumps(ids)            
+            f.write(data)
+            f.close()
         finally:
             conn.close()
     else:

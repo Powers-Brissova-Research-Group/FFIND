@@ -19,7 +19,9 @@ def get_image_by_id(iid):
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    return Image(conn.getObject("Image", oid=iid))
+    img = conn.getObject("Image", oid=iid)
+    print img
+    return Image(img)
 
 def get_images_from_ids(iids):
     global conn

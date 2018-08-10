@@ -6,10 +6,12 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
-from models import Image, ImageSet, Dataset, DatasetImages, TagSet, Matrix
-from serializers import ImageSerializer, ImageSetSerializer, DatasetImageSerializer, DatasetSerializer, TagSetSerializer, MatrixSerializer
+from models import Image, ImageSet, ImageId, Dataset, DatasetImages, TagSet, Matrix
+from serializers import ImageSerializer, ImageSetSerializer, ImageIdSerializer, DatasetImageSerializer, DatasetSerializer, TagSetSerializer, MatrixSerializer
 
 import requests
+
+import json
 
 from django.shortcuts import render
 
@@ -23,19 +25,12 @@ import pprint
 class ImageViewSet(viewsets.ViewSet):
 
     def list(self, request):
-        imgs = omero_api.get_images_from_dataset("Full no copy")
-        imgs = omero_api.filter_imgs_by_tag(imgs, "Aperio")
+        f = open('api/image_ids.txt', 'r')
+        data = f.readline()
+        # ids = ids[:-1]
 
-        imgs = [Image(img.id, img.file_name, "assets/thumbnails/" + img.file_name, "assets/details/" +
-                      img.file_name, img.get_tag_names(), img.get_key_values()) for img in imgs]
-
-        img_serializer = ImageSerializer(imgs, many=True)
-
-        ret_imgs = ImageSet("full no copy aperio",
-                            len(imgs), img_serializer.data)
-
-        serializer = ImageSetSerializer(ret_imgs)
-        return Response(serializer.data)
+        # serializer = ImageIdSerializer(ImageId(ids))
+        return Response(json.loads(data))
 
     def retrieve(self, request, pk=None):
         img = omero_api.get_image_by_id(pk)

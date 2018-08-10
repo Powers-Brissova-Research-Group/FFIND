@@ -15,6 +15,9 @@ class ImageSetSerializer(serializers.Serializer):
     setlength = serializers.IntegerField()
     imgs = serializers.ListField()
 
+class ImageIdSerializer(serializers.Serializer):
+    iids = serializers.ListField()
+
 class DatasetImageSerializer(serializers.Serializer):
     dsetname = serializers.CharField(max_length=50)
     dsetlength = serializers.IntegerField()

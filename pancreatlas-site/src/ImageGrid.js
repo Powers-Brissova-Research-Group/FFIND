@@ -13,12 +13,14 @@ import ImageCard from './ImageCard'
 import FilterList from './FilterList'
 
 export default class ImageGrid extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = {
       loaded: false,
-      images: [],
-      filtered: [],
+      ids: [],
+      matches: [],
+      filters: {},
       start: 0,
       end: 12
     }
@@ -27,27 +29,20 @@ export default class ImageGrid extends React.Component {
     this.prevPage = this.prevPage.bind(this)
     this.choosePage = this.choosePage.bind(this)
     this.filter = this.filter.bind(this)
+    this.callback = this.callback.bind(this)
+
+    this.image_tags = {}
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:8000/api/datasets/' + this.props.match.params.did + '/get-images/')
+    fetch('http://127.0.0.1:8000/api/images/')
       .then(res => res.json())
       .then(
         (result) => {
-          let imgs = result['imgs']
-          let tag_set = new Set()
-          for (let img of imgs) {
-            for (let tag of img.tags) {
-              tag_set.add(tag)
-            }
-          }
-          let tag_list = [...tag_set]
-          tag_list.sort()
           this.setState({
             loaded: true,
-            images: imgs,
-            filtered: imgs,
-            tags: tag_list,
+            ids: result,
+            matches: Object.keys(result),
             page: 0
           });
         });
@@ -77,27 +72,60 @@ export default class ImageGrid extends React.Component {
   }
 
   filter(tagList) {
-    if (tagList.length === 0){
+    let empty = true
+    console.log('filter pressed')
+    console.log(tagList)
+    for (let key of Object.keys(tagList)) {
+      if (tagList[key].length > 0) {
+        empty = false
+        break
+      }
+    }
+
+    if (empty) {
+      console.log('empty')
       this.setState({
-        filtered: this.state.images
+        filters: {},
+        matches: this.state.ids
       })
     } else {
-      let matches = []
-      for (let i of this.state.images){
-        let found = i.tags.some(tag => tagList.indexOf(tag) >= 0)
-        if (found){
-          matches.push(i)
+      let tmp = JSON.parse(JSON.stringify(Object.keys(this.state.ids)))
+      for (let id of Object.keys(this.state.ids)){
+        let match = true
+        for (let keyset of Object.keys(tagList)){
+          let intersection = tagList[keyset].filter(tag => -1 !== this.state.ids[id].indexOf(tag))
+          if(intersection.length <= 0){
+            match = false
+            break
+          }
+        }
+        if(!match){
+          tmp.splice(tmp.indexOf(id), 1)
         }
       }
       this.setState({
-        filtered: matches
+        filters: tagList,
+        matches: tmp
       })
     }
   }
 
+  callback(iid, tags) {
+
+    this.image_tags[iid] = tags
+
+    console.log(this.image_tags)
+    // let new_matches = this.state.matches
+    // // console.log(this.state.matches.indexOf(match))
+    // new_matches.splice(new_matches.indexOf(match), 1)
+    // this.setState({
+    //   matches: new_matches
+    // })
+    // console.log('hit: ' + filtered.length)
+  }
+
   render() {
-    const { loaded, filtered, page } = this.state
-    if (!loaded) {
+    if (!this.state.loaded) {
       return (
         <div className="loading">
           <strong>Loading {this.props.dataset_name}...</strong>
@@ -105,10 +133,12 @@ export default class ImageGrid extends React.Component {
         </div>
       )
     } else {
-
       let pages = []
-      for (let i = 0; i < Math.ceil(filtered.length / 12); i++) {
-        if (i === page) {
+      // console.log('render')
+      // console.log(this.state.filters)
+      // console.log('Number of matches: ' + this.state.matches.length)
+      for (let i = 0; i < Math.ceil(this.state.matches.length / 12); i++) {
+        if (i === this.state.page) {
           pages.push(<PaginationItem key={i} active><PaginationLink onClick={(e) => this.choosePage(i)}>{i}</PaginationLink></PaginationItem>)
 
         } else {
@@ -116,13 +146,17 @@ export default class ImageGrid extends React.Component {
         }
       }
 
+      // console.log(this.state.filters)
+
       let img_grid = []
-      let start = 12 * page
+      let start = 12 * this.state.page
       let end = start + 12
-      let slice = filtered.slice(start, end);
+      let slice = this.state.matches.slice(start, end);
       while (slice.length) {
         img_grid.push(slice.splice(0, 3));
       }
+
+      console.log(img_grid)
 
       return (
         <div className="image-grid">
@@ -135,9 +169,9 @@ export default class ImageGrid extends React.Component {
               <Col md="10">
                 {img_grid.map((item, idx) => (
                   <Row key={idx} className="image-row">
-                    {item.map(image =>
-                      <Col key={image.iid} md="4">
-                        <ImageCard img_url={'http://127.0.0.1:8000/' + image.thumbpath} img_name={image.iname} omero_id={image.iid} img_tags={image.tags} path_path={image.pathpath} />
+                    {item.map((image, idx) =>
+                      <Col key={idx} md="4">
+                        <ImageCard key={image} iid={image} />
                       </Col>
                     )}
                   </Row>

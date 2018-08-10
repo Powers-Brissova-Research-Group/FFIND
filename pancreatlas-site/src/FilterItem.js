@@ -14,7 +14,7 @@ export default class FilterItem extends React.Component {
       <div className="filter-item">
         <Row>
           <Col md="8">
-            <strong>{this.props.filterName}</strong>
+            {this.props.filterName}
           </Col>
           <Col md="4">
             <Input type="checkbox" onChange={() => this.props.callback(this.props.filterName)} />{' '}

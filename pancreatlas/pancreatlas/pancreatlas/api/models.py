@@ -21,6 +21,10 @@ class ImageSet():
         self.setlength = setlength
         self.imgs = imgs
 
+class ImageId():
+    def __init__(self, iids):
+        self.iids = iids
+
 class Dataset():
     def __init__(self, did, dsname):
         self.did = did
