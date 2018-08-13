@@ -11,6 +11,7 @@ import {
 
 import ImageCard from './ImageCard'
 import FilterList from './FilterList'
+import Error from './Error'
 
 export default class ImageGrid extends React.Component {
 
@@ -45,7 +46,14 @@ export default class ImageGrid extends React.Component {
             matches: Object.keys(result),
             page: 0
           });
-        });
+        })
+      .catch(err => {
+        this.setState({
+          loaded: false,
+          error: err
+        })
+      });
+
   }
 
   choosePage(new_page) {
@@ -90,16 +98,16 @@ export default class ImageGrid extends React.Component {
       })
     } else {
       let tmp = JSON.parse(JSON.stringify(Object.keys(this.state.ids)))
-      for (let id of Object.keys(this.state.ids)){
+      for (let id of Object.keys(this.state.ids)) {
         let match = true
-        for (let keyset of Object.keys(tagList)){
+        for (let keyset of Object.keys(tagList)) {
           let intersection = tagList[keyset].filter(tag => -1 !== this.state.ids[id].indexOf(tag))
-          if(intersection.length <= 0){
+          if (intersection.length <= 0) {
             match = false
             break
           }
         }
-        if(!match){
+        if (!match) {
           tmp.splice(tmp.indexOf(id), 1)
         }
       }
@@ -125,18 +133,8 @@ export default class ImageGrid extends React.Component {
   }
 
   render() {
-    if (!this.state.loaded) {
-      return (
-        <div className="loading">
-          <strong>Loading {this.props.dataset_name}...</strong>
-          <Progress animated color="success" value="100" />
-        </div>
-      )
-    } else {
+    if (this.state.loaded) {
       let pages = []
-      // console.log('render')
-      // console.log(this.state.filters)
-      // console.log('Number of matches: ' + this.state.matches.length)
       for (let i = 0; i < Math.ceil(this.state.matches.length / 12); i++) {
         if (i === this.state.page) {
           pages.push(<PaginationItem key={i} active><PaginationLink onClick={(e) => this.choosePage(i)}>{i}</PaginationLink></PaginationItem>)
@@ -145,8 +143,6 @@ export default class ImageGrid extends React.Component {
           pages.push(<PaginationItem key={i}><PaginationLink onClick={(e) => this.choosePage(i)}>{i}</PaginationLink></PaginationItem>)
         }
       }
-
-      // console.log(this.state.filters)
 
       let img_grid = []
       let start = 12 * this.state.page
@@ -194,6 +190,16 @@ export default class ImageGrid extends React.Component {
           </Container>
         </div>
       );
+
+    } else if (this.state.error !== undefined) {
+      return <Error error_desc={this.state.error} />
+    } else {
+      return (
+        <div className="loading">
+          <strong>Loading {this.props.dataset_name}...</strong>
+          <Progress animated color="success" value="100" />
+        </div>
+      )
     }
   }
 }

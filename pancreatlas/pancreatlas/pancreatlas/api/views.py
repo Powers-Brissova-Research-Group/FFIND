@@ -89,14 +89,11 @@ class MatrixViewset(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
         tags = pk.split(',')
         print tags
-        matrix = omero_api.generate_image_matrix(
-            tags[0].upper(), tags[1].upper())
+        matrix = omero_api.generate_image_matrix_from_ds(
+            tags[0].upper(), tags[1].upper(), tags[2])
         for (key, value) in matrix.iteritems():
             for (col, imgs) in value.iteritems():
-                img_list = [Image(img.id, img.file_name, "assets/thumbnails/" + img.file_name, "assets/details/" +
-                                  img.file_name, img.get_tag_names(), img.get_key_values()) for img in matrix[key][col]]
-                img_ser = ImageSerializer(img_list, many=True)
-                matrix[key][col] = img_ser.data
+                matrix[key][col] = imgs
 
         m = Matrix(tags[0], tags[1], matrix)
 

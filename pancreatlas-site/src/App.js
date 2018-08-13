@@ -34,7 +34,7 @@ class App extends Component {
             <Route exact path='/dataset' component={DatasetList} />
             <Route exact path='/dataset/:did' component={ImageGrid} />
             <Route path='/image/:iid' component={ImageDetail} />
-            <Route path='/matrixview' component={MatrixView} />
+            <Route path='/matrixview/:dsid' component={MatrixView} />
           </Switch>
         </Container>
         <Footer />

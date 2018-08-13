@@ -9,6 +9,8 @@ import {
 } from 'reactstrap'
 import ImageMatrix from './ImageMatrix';
 
+import Error from './Error'
+
 export default class MatrixView extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +20,8 @@ export default class MatrixView extends React.Component {
       toggled: false,
       tagsets: [],
       loaded: false,
-      showMatrix: false
+      showMatrix: false,
+      dsid: this.props.match.params.dsid
     }
     this.handleChange = this.handleChange.bind(this)
     this.showMatrix = this.showMatrix.bind(this)
@@ -33,6 +36,13 @@ export default class MatrixView extends React.Component {
           loaded: true,
           tag1: result[0].set_name,
           tag2: result[0].set_name
+        })
+      })
+      .catch(err => {
+        console.log(err)
+        this.setState({
+          loaded: false,
+          error: err
         })
       })
   }
@@ -58,14 +68,7 @@ export default class MatrixView extends React.Component {
   }
 
   render() {
-    if (!this.state.loaded) {
-      return (
-        <div className="loading">
-          <strong>Loading {this.props.dataset_name}...</strong>
-          <Progress animated color="success" value="100" />
-        </div>
-      )
-    } else {
+    if (this.state.loaded) {
       if (!this.state.showMatrix) {
         return (
           <div className='matrix-view'>
@@ -91,8 +94,17 @@ export default class MatrixView extends React.Component {
           </div>
         )
       } else {
-        return (<ImageMatrix tag_1={this.state.tag1} tag_2={this.state.tag2} /> )
+        return (<ImageMatrix tag_1={this.state.tag1} tag_2={this.state.tag2} dsid={this.state.dsid} />)
       }
+    } else if (this.state.error !== undefined) {
+      return <Error error_desc={this.state.error.message} />
+    } else {
+      return (
+        <div className="loading">
+          <strong>Loading {this.props.dataset_name}...</strong>
+          <Progress animated color="success" value="100" />
+        </div>
+      )
     }
   }
 }

@@ -2,27 +2,16 @@ import omero_api as api
 import math
 import pprint
 import json
+import os
 
 
 def save_thumbs():
     (conn, success) = api.connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
     if success:
         try:
+            print os.getcwd()
             api.fetch_tags()
-            dsets = api.get_datasets()
-            dids = [int(dset.did) for dset in dsets]
-            for did in dids:
-                print did
-                ids = {}
-                dset = api.get_dataset_images(did)
-                images = dset.imgs
-                print images
-                f = open(str(did) + '.txt', 'w')
-                for image in images:
-                    ids[int(image.id)] = [tag.tname for tag in image.get_tags()]
-                data = json.dumps(ids)
-                f.write(data)
-                f.close()
+            pprint.pprint(api.generate_image_matrix_from_ds('AGE', 'PANCREAS REGION', 203))
             # matrix = api.generate_image_matrix(conn, 'Age'.upper(), 'Pancreas Region'.upper())
             # pprint.pprint(matrix)
             # pprint.pprint(matrix[1])

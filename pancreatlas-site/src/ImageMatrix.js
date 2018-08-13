@@ -14,6 +14,8 @@ import {
   Link
 } from 'react-router-dom'
 
+import Error from './Error'
+
 export default class ImageMatrix extends React.Component {
   constructor(props) {
     super(props)
@@ -30,16 +32,49 @@ export default class ImageMatrix extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:8000/api/matrix/' + this.props.tag_1 + ',' + this.props.tag_2)
+    fetch('http://127.0.0.1:8000/api/matrix/' + this.props.tag_1 + ',' + this.props.tag_2 + ',' + this.props.dsid)
       .then(res => res.json())
       .then((result) => {
+        let m = result['matrix']
+        let new_matrix = {}
+        for (let tag_1 of Object.keys(m)) {
+          new_matrix[tag_1] = {}
+          for (let tag_2 of Object.keys(m[tag_1])) {
+            new_matrix[tag_1][tag_2] = []
+            for (let img_id of m[tag_1][tag_2]) {
+              let url = 'http://127.0.0.1:8000/api/images/' + img_id
+              console.log(url)
+              fetch(url)
+                .then(res => res.json())
+                .then(result => {
+                  new_matrix[tag_1][tag_2].push(result)
+                  this.setState({
+                    matrix: new_matrix
+                  })
+                })
+                .catch(err => {
+                  this.setState({
+                    loaded: false,
+                    error: err
+                  })
+                });
+            }
+          }
+        }
         this.setState({
           loaded: true,
           tag_a: result['tag_a'],
           tag_b: result['tag_b'],
           matrix: result['matrix']
         })
+      })
+      .catch(err => {
+        this.setState({
+          loaded: false,
+          error: err
+        })
       });
+
   }
 
   toggle(new_set = []) {
@@ -50,18 +85,8 @@ export default class ImageMatrix extends React.Component {
   }
 
   render() {
-    const { loaded, matrix } = this.state
-
-    if (!loaded) {
-      return (
-        <div className="loading">
-          <strong>Loading {this.props.dataset_name}...</strong>
-          <Progress animated color="success" value="100" />
-        </div>
-      )
-    }
-    else {
-      let headings = Object.keys(matrix[Object.keys(matrix)[0]])
+    if (this.state.loaded) {
+      let headings = Object.keys(this.state.matrix[Object.keys(this.state.matrix)[0]])
       return (
         <Container fluid>
           <div className='image-matrix'>
@@ -75,11 +100,11 @@ export default class ImageMatrix extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {Object.keys(matrix).map(row => (
-                  <tr key={row}><td><strong>{row}</strong></td>{Object.keys(matrix[row]).map(col => (
+                {Object.keys(this.state.matrix).map(row => (
+                  <tr key={row}><td><strong>{row}</strong></td>{Object.keys(this.state.matrix[row]).map(col => (
                     <td key={row + ', ' + col}>
-                      {matrix[row][col][0] !== undefined && <img onClick={() => this.toggle(matrix[row][col])} className='matrix-thumb' src={'http://127.0.0.1:8000/' + matrix[row][col][0].thumbpath} alt="" />}
-                      {matrix[row][col][0] === undefined && <p>No matching images</p>}
+                      {this.state.matrix[row][col][0] !== undefined && <img onClick={() => this.toggle(this.state.matrix[row][col])} className='matrix-thumb' src={'http://127.0.0.1:8000/' + this.state.matrix[row][col][0].thumbpath} alt="" />}
+                      {this.state.matrix[row][col][0] === undefined && <p>No matching images</p>}
                     </td>
                   ))}</tr>
                 ))}
@@ -114,6 +139,15 @@ export default class ImageMatrix extends React.Component {
           </Modal>
         </Container>
 
+      )
+    } else if (this.state.error !== undefined) {
+      return <Error error_desc={this.state.error} />
+    } else {
+      return (
+        <div className="loading">
+          <strong>Loading {this.props.dataset_name}...</strong>
+          <Progress animated color="success" value="100" />
+        </div>
       )
     }
   }

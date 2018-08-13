@@ -9,6 +9,8 @@ import {
   Button
 } from 'reactstrap'
 
+import Error from './Error'
+
 export default class ImageDetail extends React.Component {
   constructor(props) {
     super(props)
@@ -32,19 +34,19 @@ export default class ImageDetail extends React.Component {
             tags: result.tags,
             path_path: result.pathpath
           })
-        });
+        })
+      .catch(err => {
+        this.setState({
+          loaded: false,
+          error: err
+        })
+      });
+
   }
 
   render() {
     const { loaded, img_data, detailpath, path_path } = this.state
-    if (!loaded) {
-      return (
-        <Container>
-          <strong>Loading...</strong>
-          <Progress animated color="success" value="100" />
-        </Container>
-      )
-    } else {
+    if (loaded) {
       return (
         <div className='image-detail'>
           <Container>
@@ -70,6 +72,16 @@ export default class ImageDetail extends React.Component {
             </Row>
           </Container>
         </div>
+      )
+    } else if (this.state.error !== undefined) {
+      return <Error error_desc={this.state.error} />
+    } else {
+      return (
+        <Container>
+          <strong>Loading...</strong>
+          <Progress animated color="success" value="100" />
+        </Container>
+
       )
     }
   }

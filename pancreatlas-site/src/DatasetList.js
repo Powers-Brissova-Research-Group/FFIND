@@ -1,12 +1,15 @@
 import React from 'react'
 import {
   Table,
-  Button
+  Button,
+  ButtonGroup
 } from 'reactstrap'
 
 import {
   Link
 } from 'react-router-dom'
+
+import Error from './Error'
 
 export default class DatasetList extends React.Component {
   constructor(props) {
@@ -26,14 +29,16 @@ export default class DatasetList extends React.Component {
             loaded: true,
             datasets: result
           })
-        });
+        })
+      .catch(err => {
+        this.setState({
+          error: err
+        })
+      });
   }
 
   render() {
-    const { loaded, datasets } = this.state;
-    if (!loaded) {
-      return <h1>Loading</h1>
-    } else {
+    if (this.state.loaded) {
       return (
         <div className="dataset-list">
           <Table hover>
@@ -45,13 +50,17 @@ export default class DatasetList extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {datasets.map(item => (
-                <tr key={item.did}><td>{item.did}</td><td>{item.dsname}</td><td><Link to={'/dataset/' + item.did}><Button>Open Dataset</Button></Link></td></tr>
+              {this.state.datasets.map(item => (
+                <tr key={item.did}><td>{item.did}</td><td>{item.dsname}</td><td><ButtonGroup><Link to={'/matrixview/' + item.did}><Button className='ds-list-left-button'>Create Matrix</Button></Link><Link to={'/dataset/' + item.did}><Button>Open Dataset</Button></Link></ButtonGroup></td></tr>
               ))}
             </tbody>
           </Table>
         </div>
       )
+    } else if (this.state.error !== undefined) {
+      return <Error error_desk={this.state.error} />
+    } else {
+      return <h1>Loading</h1>
     }
   }
 }

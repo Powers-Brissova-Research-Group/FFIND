@@ -13,6 +13,7 @@ import {
   Link
 } from 'react-router-dom'
 
+import Error from './Error'
 
 export default class ImageCard extends React.Component {
   constructor(props) {
@@ -38,58 +39,16 @@ export default class ImageCard extends React.Component {
           omero_id: result.iid,
           img_tags: result.tags
         })
-        console.log(this.state.omero_id)
-        // console.log('test')
-        // let ts = Object.keys(this.props.tagsets)
-        // let match = true
-        // for (let tagset of ts) {
-        //   let intersection = this.state.img_tags.filter(value => -1 !== this.props.tagsets[tagset].indexOf(value))
-        //   if (intersection.length <= 0) {
-        //     match = false
-        //     break
-        //   }
-        // }
-        // if (!match) {
-        //   console.log('fail')
-        //   this.props.callback(this.props.iid)
-        //   this.setState({
-        //     match: false
-        //   })
-        // }
+      .catch(err => {
+        this.setState({
+          loaded: false,
+          error: err
+        })
+      })
+
+      console.log(this.state.omero_id)
       });
   }
-
-  // componentDidUpdate(prevProps) {
-  //   let ts = Object.keys(this.props.tagsets)
-  //   let match = true
-
-  //   console.log(this.props.tagsets)
-  //   console.log(prevProps.tagsets)
-  //   if (JSON.stringify(this.props.tagsets) !== JSON.stringify(prevProps.tagsets)) {
-  //     console.log('two')
-  //     for (let tagset of ts) {
-  //       // console.log(this.state.img_tags);
-  //       // console.log(this.props.tagsets[tagset])
-  //       if (this.state.img_tags === null) {
-  //         match = false
-  //         break
-  //       } else {
-  //         let intersection = this.state.img_tags.filter(value => -1 !== this.props.tagsets[tagset].indexOf(value))
-  //         if (intersection.length <= 0) {
-  //           match = false
-  //           break
-  //         }
-
-  //       }
-  //     }
-  //     if (!match) {
-  //       this.props.callback(this.props.iid)
-  //       this.setState({
-  //         match: false
-  //       })
-  //     }
-  //   }
-  // }
 
   render() {
     if (this.state.loaded) {
@@ -113,6 +72,8 @@ export default class ImageCard extends React.Component {
         </Card>
       );
 
+    } else if(this.state.error !== null){
+      return <Error error_desc={this.state.error} />
     } else {
       return null
     }

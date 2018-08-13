@@ -5,6 +5,7 @@ from helper_classes import Image, Tag, Dataset
 
 from os.path import expanduser
 import pprint
+import json
 
 tag_set = None
 conn = None 
@@ -200,6 +201,55 @@ def generate_image_matrix(tagset_a, tagset_b):
         matrix[a_tag][b_tag].append(img)
 
     return matrix
+
+
+def generate_image_matrix_from_ds(tagset_a, tagset_b, dsid):
+    global conn
+    if conn == None:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+
+    tagsets = get_tag_dictionary()
+    group_a = [tag.tname for tag in tagsets[tagset_a]]
+    group_b = [tag.tname for tag in tagsets[tagset_b]]
+    matrix = { }
+    for tag in group_a:
+        matrix[str(tag)] = { }
+        for t in group_b:
+            matrix[str(tag)][str(t)] = []
+
+    f = open('api/' + str(dsid) + '.txt', 'r')
+    json_str = f.readline()
+
+    imgs = json.loads(json_str)
+
+    for (img_id, img_tags) in imgs.iteritems():
+        a_tag = intersection([set(img_tags), set(group_a)])
+        b_tag = intersection([set(img_tags), set(group_b)])
+        # print a_tag + ', ' + b_tag
+        if(len(a_tag) > 0 and len(b_tag) > 0):
+            matrix[str(a_tag[0])][str(b_tag[0])].append(str(img_id))
+
+    return matrix
+
+    # # print matrix
+    # images = get_images_from_dataset_cache(group_a)
+    # images_b = get_images_union_from_tags(group_b)
+    # # # print intersect([set(images_a[0].get_tag_names()), set(group_b)])
+    # images_a = [img for img in images_a if intersect([set(img.get_tag_names()), set(group_b)])]
+    # images_b = [img for img in images_b if intersect([set(img.get_tag_names()), set(group_a)])]
+
+    # for img in images_a:
+    #     a_tag = intersection([set(img.get_tag_names()), set(group_a)])[0]
+    #     b_tag = intersection([set(img.get_tag_names()), set(group_b)])[0]
+    #     matrix[a_tag][b_tag].append(img)
+
+    # for img in images_b:
+    #     a_tag = intersection([set(img.get_tag_names()), set(group_a)])[0]
+    #     b_tag = intersection([set(img.get_tag_names()), set(group_b)])[0]
+    #     matrix[a_tag][b_tag].append(img)
+
+    # return matrix
+
 
 # def main():
 #     conn, success = connect('api.user', 'ts6t6r1537k=', '10.152.140.10')

@@ -4,6 +4,8 @@ import {
 } from 'reactstrap'
 import FilterItem from './FilterItem'
 
+import Error from './Error'
+
 export default class FilterList extends React.Component {
 
   constructor(props) {
@@ -29,6 +31,13 @@ export default class FilterList extends React.Component {
           tags: t
         })
       })
+      .catch(err => {
+        this.setState({
+          loaded: false,
+          error: err
+        })
+      })
+      
   }
 
   setFilters(tagset, newTag) {
@@ -68,6 +77,8 @@ export default class FilterList extends React.Component {
           <Button color="danger" onClick={() => this.props.callback(this.state.filters)}>Filter</Button>
         </div>
       )
+    } else if(this.state.error !== undefined){
+      return <Error error_desc={this.state.error} />
     } else {
       return null
     }
