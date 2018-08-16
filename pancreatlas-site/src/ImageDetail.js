@@ -67,14 +67,14 @@ export default class ImageDetail extends React.Component {
             </Row>
             <Row>
               <Col md="12">
-                <a href={path_path}><Button color="success">Open in Path Viewer</Button></a>
+                <a href={path_path} target="_blank"><Button color="success">Open in Path Viewer</Button></a>
               </Col>
             </Row>
           </Container>
         </div>
       )
     } else if (this.state.error !== undefined) {
-      return <Error error_desc={this.state.error} />
+      return <Error error_desc={this.state.error.message} />
     } else {
       return (
         <Container>

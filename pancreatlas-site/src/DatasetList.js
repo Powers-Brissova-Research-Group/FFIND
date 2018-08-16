@@ -58,7 +58,7 @@ export default class DatasetList extends React.Component {
         </div>
       )
     } else if (this.state.error !== undefined) {
-      return <Error error_desk={this.state.error} />
+      return <Error error_desk={this.state.error.message} />
     } else {
       return <h1>Loading</h1>
     }

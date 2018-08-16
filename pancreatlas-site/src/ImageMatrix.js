@@ -112,7 +112,7 @@ export default class ImageMatrix extends React.Component {
             </Table>
           </div>
           <Modal isOpen={this.state.modal} toggle={() => this.toggle([])} className='matrix-modal'>
-            <ModalHeader toggle={this.toggle}>Image List</ModalHeader>
+            <ModalHeader toggle={() => this.toggle([])}>Image List</ModalHeader>
             <ModalBody>
               <Table>
                 <thead>
@@ -141,7 +141,7 @@ export default class ImageMatrix extends React.Component {
 
       )
     } else if (this.state.error !== undefined) {
-      return <Error error_desc={this.state.error} />
+      return <Error error_desc={this.state.error.message} />
     } else {
       return (
         <div className="loading">

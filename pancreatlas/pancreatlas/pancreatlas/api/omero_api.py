@@ -20,6 +20,7 @@ def get_image_by_id(iid):
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+    conn.keepAlive()
     img = conn.getObject("Image", oid=iid)
     print img
     return Image(img)
@@ -27,7 +28,8 @@ def get_image_by_id(iid):
 def get_images_from_ids(iids):
     global conn
     if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')    
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+    conn.keepAlive()
     img_set = []
     imgs = conn.getObjects("Image", ids=iids)
     for img in imgs:
@@ -36,25 +38,38 @@ def get_images_from_ids(iids):
             img_set.append(image)
     return img_set
 
-def get_images_from_dataset(dset):
+def get_all_images():
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    iids = []
-    children = list(dset.wrapper.listChildren())
-    # print dset.name + " has " + str(len(children)) + " children"
-    for child in children:
-        iids.append(child.getId())
+    conn.keepAlive()
+
+    imgs = list(conn.getObjects("Image"))
+    return [Image(img) for img in imgs]
+
+def get_images_from_dataset(dsid):
+    global conn
+    if conn == None:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+    conn.keepAlive()
+    f = open('%s.txt' % (dsid, ), 'r')
+    imgs = json.loads(f.readline())
+    iids = imgs.keys()
+    # children = list(dset.wrapper.listChildren())
+    # # print dset.name + " has " + str(len(children)) + " children"
+    # for child in children:
+    #     iids.append(child.getId())
 
     imgs = get_images_from_ids(iids)
     # print dset.name + " has " + str(len(imgs)) + " images"
     return imgs
 
 
-def get_images_union_from_tags(tag_names):
+def get_images_union_from_tags(tag_names, dsid):
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+    conn.keepAlive()
     tids = map(get_tid, tag_names)
     imgs = conn.getObjectsByAnnotations("Image", tids)
     return get_images_from_ids([i.id for i in imgs])

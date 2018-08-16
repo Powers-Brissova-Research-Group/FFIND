@@ -1,86 +1,76 @@
-import omero_api as api
-import math
-import pprint
 import json
+import requests
+import urllib
 import os
+import pprint
+USERNAME = 'api.user'
+PASSWORD = 'ts6t6r1537k='
 
+def get_image_list():
+    f = open('pancreatlas/pancreatlas/pancreatlas/api/image_index.txt', 'r')
+    enc = f.readline()
+    imgs = json.loads(enc)
+    return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
 
-def save_thumbs():
-    (conn, success) = api.connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    if success:
-        try:
-            print os.getcwd()
-            api.fetch_tags()
-            pprint.pprint(api.generate_image_matrix_from_ds('AGE', 'PANCREAS REGION', 203))
-            # matrix = api.generate_image_matrix(conn, 'Age'.upper(), 'Pancreas Region'.upper())
-            # pprint.pprint(matrix)
-            # pprint.pprint(matrix[1])
-            # api.fetch_tags(conn)
-            # image = api.get_image_by_id(conn, 6056)
-            # print 'Can write? ' + str(conn.canWrite(image.img_wrapper))
-            # changeColors(conn, image.img_wrapper)
-            # f = open('image_ids.txt', 'w')
-            # images = api.get_images_union_from_tags(["Aperio", "Leica", "Zeiss"])
-            # for image in images:
-            #     ids[int(image.id)] = [tag.tname for tag in image.get_tags()]
-            #     # print image.file_name
-            #     # changeColors(image.img_wrapper)
-            #     # thumbnail_size = get_longest(image)
-            #     # detail_size = get_longest_detail(image)
-            #     # print image.file_name + ' -> ' + str(thumbnail_size) + ', ' + str(detail_size)
-            #     # image.save_thumbnail("../assets/thumbnails/", thumbnail_size)
-            #     # image.save_thumbnail("../assets/details/", detail_size)
-            # print ids
-            # data = json.dumps(ids)            
-            # f.write(data)
-            # f.close()
-        finally:
-            conn.close()
-    else:
-        print "Error connecting"
+def get_token(session):
+    url = "https://omero.app.vumc.org/api/v0/token/"
+    r = session.request("GET", url)
+    response = json.loads(r.text)
+    return response['data']
 
+def get_roi(iid, session):
+    url = 'https://omero.app.vumc.org/api/v0/m/images/' + iid + '/rois/'
+    r = session.request('GET', url)
+    rois = json.loads(r.text)
+    gallery_roi = None
+    if rois['meta']['totalCount'] > 0:
+        for roi in rois['data']:
+            if roi['Name'] == 'Gallery View':
+                print 'found'
+                gallery_roi = (int(roi['shapes'][0]['X']), int(roi['shapes'][0]['Y']), int(roi['shapes'][0]['Width']), int(roi['shapes'][0]['Height']))
+    return gallery_roi
 
-def get_longest(img):
-    if img.size_y > img.size_x:
-        longest = (350 * img.size_y) / img.size_x
-    else:
-        longest = (350 * img.size_x) / img.size_y
-    return int(math.ceil(longest))
+def save_thumbnail(iid, roi, session):
+    url = 'https://omero.app.vumc.org/webgateway/render_image_region/%s/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&region=%s,%s,%s,%s' % (
+        iid, roi[0], roi[1], roi[2], roi[3])
 
+    fpath = 'pancreatlas/pancreatlas/pancreatlas/assets/new_thumbnails/%s.jpg' % (iid, )
+    f = open(fpath, 'w')
+    r = session.get(url, stream=True)
+    if r.status_code == 200:
+        for chunk in r.iter_content(1024):
+            f.write(chunk)
+    f.close()
 
-def get_longest_detail(img):
-    if img.size_y > img.size_x:
-        longest = (700 * img.size_y) / img.size_x
-    else:
-        longest = 700
-    return int(math.ceil(longest))
+    # urllib.retrieve(url, '%s' % (iid, ))
 
+def login(token, session):
+    url = "https://omero.app.vumc.org/api/v0/login/"
 
-def changeColors(img):
-    channels = img.getChannels()
-    chs = [1, 2, 3, 4]
-    colorList = ['0000FF', 'FF0000', '00FF00', 'FFFFFF']
-    img.setActiveChannels(chs, colors=colorList)
-    img.saveDefaults()
-    # for chan in channels:
-    #     # print chan.getName() + ' -> ' + chan.getColor().getHtml()
-    #     ch = conn.getObject('Channel', oid=chan.getId())
-    #     print ch
-    #     # if chan.getName().upper() == 'DAPI':
-    #     #     setColor(chan, (0, 0, 255))
-    #     # elif chan.getName().upper() == 'CY2':
-    #     #     setColor(chan, (255, 0, 0))
-    #     # elif chan.getName().upper() == 'CY3':
-    #     #     setColor(chan, (0, 255, 0))
-    #     # else:
-    #     #     setColor(chan, (255, 255, 255))
-    #     # chan.save()
-    #     # print chan.getName() + ' -> ' + chan.getColor().getHtml()
+    payload = "server=1&username=api.user&password=ts6t6r1537k="
+    headers = {
+        'X-CSRFToken': str(token),
+        'Content-Type': "application/x-www-form-urlencoded"
+    }
 
-def setColor(chan, color):
-    chan.getColor().setRed(255)
-    chan.getColor().setGreen(0)
-    chan.getColor().setBlue(255)
-    print chan.getColor().getRGB()
+    cookies = {
+        'csrftoken': str(token)
+    }
 
-save_thumbs()
+    response = session.request("POST", url, data=payload, headers=headers, cookies=cookies)
+    return response.ok
+
+def main():
+    sesh = requests.Session()
+    token = get_token(sesh)
+    success = login(token, sesh)
+    if success == True:
+        iids = get_image_list()
+        print len(iids)
+        for iid in iids:
+            roi = get_roi(iid, sesh)
+            if roi != None:
+                save_thumbnail(iid, roi, sesh)
+
+if __name__=='__main__':
+    main()

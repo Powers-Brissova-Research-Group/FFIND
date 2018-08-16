@@ -78,7 +78,7 @@ export default class FilterList extends React.Component {
         </div>
       )
     } else if(this.state.error !== undefined){
-      return <Error error_desc={this.state.error} />
+      return <Error error_desc={this.state.error.message} />
     } else {
       return null
     }

@@ -94,7 +94,7 @@ export default class ImageGrid extends React.Component {
       console.log('empty')
       this.setState({
         filters: {},
-        matches: this.state.ids
+        matches: Object.keys(this.state.ids)
       })
     } else {
       let tmp = JSON.parse(JSON.stringify(Object.keys(this.state.ids)))
@@ -192,7 +192,7 @@ export default class ImageGrid extends React.Component {
       );
 
     } else if (this.state.error !== undefined) {
-      return <Error error_desc={this.state.error} />
+      return <Error error_desc={this.state.error.message} />
     } else {
       return (
         <div className="loading">
