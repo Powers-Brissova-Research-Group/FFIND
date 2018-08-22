@@ -1,5 +1,7 @@
 import React from 'react'
 import {
+  Row,
+  Col,
   Button
 } from 'reactstrap'
 import FilterItem from './FilterItem'
@@ -13,31 +15,23 @@ export default class FilterList extends React.Component {
     this.setFilters = this.setFilters.bind(this)
     this.state = {
       loaded: false,
-      filters: {},
-      tags: {}
+      filters: {}
     }
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:8000/api/tagsets/')
-      .then(res => res.json())
-      .then(result => {
-        let t = {}
-        for (let ts of result) {
+    if (this.props.tags !== null) {
+      let t = {}
+      for (let ts of this.props.tags) {
+        if (ts !== undefined){
           t[ts.set_name] = ts.tags
         }
-        this.setState({
-          loaded: true,
-          tags: t
-        })
+      }
+      this.setState({
+        loaded: true,
+        tags: t
       })
-      .catch(err => {
-        this.setState({
-          loaded: false,
-          error: err
-        })
-      })
-      
+    }
   }
 
   setFilters(tagset, newTag) {
@@ -46,7 +40,7 @@ export default class FilterList extends React.Component {
       let idx = tagList[tagset].indexOf(newTag)
       if (idx >= 0) {
         tagList[tagset].splice(idx, 1)
-        if (tagList[tagset].length <= 0){
+        if (tagList[tagset].length <= 0) {
           delete tagList[tagset]
         }
       } else {
@@ -58,26 +52,40 @@ export default class FilterList extends React.Component {
     } else {
       tagList[tagset] = [newTag]
     }
-    console.log(tagList)
   }
 
   render() {
-    if (this.state.loaded) {
+    if (this.props.tags !== null) {
+      let actual_tags = this.props.tags
+      for (let i of Object.keys(actual_tags)) {        
+        for(let key of Object.keys(actual_tags[i].tags)){
+          if (actual_tags[i].tags[key] === 0){
+            delete actual_tags[i].tags[key]
+          }
+        }
+        if (Object.keys(actual_tags[i].tags).length === 0){
+          delete actual_tags[i]
+        }
+      }
       return (
         <div className="filter-list">
           <h3><strong>Filters:</strong></h3>
-          {Object.keys(this.state.tags).map(key => (
+          {Object.keys(this.props.tags).map(key => (
             <div className='tagset' key={key}>
-              <h4>{key}</h4>
-              {this.state.tags[key].map(tag => (
-                <FilterItem key={tag} filterName={tag} callback={() => this.setFilters(key, tag)} />
+              <h4>{this.props.tags[key]['set_name']}</h4>
+              {Object.keys(this.props.tags[key]['tags']).map(tag => (
+                <FilterItem key={tag} filterName={tag} filterQty={this.props.tags[key]['tags'][tag]} callback={() => this.setFilters(this.props.tags[key]['set_name'], tag)} />
               ))}
             </div>
           ))}
-          <Button color="danger" onClick={() => this.props.callback(this.state.filters)}>Filter</Button>
+          <Row>
+            <Col className='text-center' md="12">
+              <Button className='filter-button text-center' color="danger" onClick={() => this.props.callback(this.state.filters)}>Filter</Button>
+            </Col>
+          </Row>
         </div>
       )
-    } else if(this.state.error !== undefined){
+    } else if (this.state.error !== undefined) {
       return <Error error_desc={this.state.error.message} />
     } else {
       return null

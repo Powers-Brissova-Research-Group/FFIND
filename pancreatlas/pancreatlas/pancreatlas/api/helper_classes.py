@@ -1,4 +1,6 @@
 from omeropy.omero.gateway import TagAnnotationWrapper, MapAnnotationWrapper, DatasetWrapper
+import re
+import collections
 
 class Image:
     def __init__(self, img_wrapper):
@@ -84,6 +86,60 @@ class Tag:
 
     def get_tag_name(self):
         return self.tag_wrapper.getValue()
+
+class TagSetI:
+    def __init__(self, set_name, tags):
+        self.name = str(set_name)
+        self.tags = [str(t) for t in tags]
+
+    def sort(self):
+        if self.name.upper() == "AGE":
+            # self.tags.sort(self.compare_ages)
+            ret = sorted(self.tags, cmp=self.compare_ages)
+            print ret
+            return ret
+        else:
+            return sorted(self.tags, key=str.lower)
+
+    def compare_ages(self, age1, age2):
+        age1_groups = list(re.search(r"(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+(d|w|mo|y))?$", age1).groups())
+        if age1_groups[2] == 'd':
+            age1_groups[2] = 0
+        elif age1_groups[2] == 'w':
+            age1_groups[2] = 1
+        elif age1_groups[2] == 'mo':
+            age1_groups[2] = 2
+        else:
+            age1_groups[2] = 3
+
+        age2_groups = list(re.search(r"(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+(d|w|mo|y))?$", age2).groups())
+        if age2_groups[2] == 'd':
+            age2_groups[2] = 0
+        elif age2_groups[2] == 'w':
+            age2_groups[2] = 1
+        elif age2_groups[2] == 'mo':
+            age2_groups[2] = 2
+        else:
+            age2_groups[2] = 3
+
+        if age1_groups[0] == None and age2_groups[0] == 'G':
+            return 1
+        elif age1_groups[2] != age2_groups[2]:
+            return -1 if age1_groups[2] < age2_groups[2] else 1
+        elif age1_groups[1] != age2_groups[1]:
+            return -1 if age1_groups[1] < age2_groups[1] else 1
+        else:
+            return 0
+
+
+    def serialize(self):
+        tag_dict = collections.OrderedDict()
+        sorted_tags = self.sort()
+        for tag in sorted_tags:
+            tag_dict[tag] = 0
+
+        obj = {'set_name': self.name, 'tags': tag_dict}
+        return obj
 
 class Dataset():
     def __init__(self, ds_wrapper):

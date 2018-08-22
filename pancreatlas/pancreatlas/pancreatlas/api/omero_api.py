@@ -20,7 +20,10 @@ def get_image_by_id(iid):
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    conn.keepAlive()
+    success = conn.keepAlive()
+    if not success:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+
     img = conn.getObject("Image", oid=iid)
     print img
     return Image(img)
@@ -29,7 +32,10 @@ def get_images_from_ids(iids):
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    conn.keepAlive()
+    success = conn.keepAlive()
+    if not success:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+
     img_set = []
     imgs = conn.getObjects("Image", ids=iids)
     for img in imgs:
@@ -42,7 +48,9 @@ def get_all_images():
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    conn.keepAlive()
+    success = conn.keepAlive()
+    if not success:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
 
     imgs = list(conn.getObjects("Image"))
     return [Image(img) for img in imgs]
@@ -51,7 +59,10 @@ def get_images_from_dataset(dsid):
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    conn.keepAlive()
+    success = conn.keepAlive()
+    if not success:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+
     f = open('%s.txt' % (dsid, ), 'r')
     imgs = json.loads(f.readline())
     iids = imgs.keys()
@@ -69,7 +80,10 @@ def get_images_union_from_tags(tag_names, dsid):
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    conn.keepAlive()
+    success = conn.keepAlive()
+    if not success:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+
     tids = map(get_tid, tag_names)
     imgs = conn.getObjectsByAnnotations("Image", tids)
     return get_images_from_ids([i.id for i in imgs])
@@ -80,6 +94,10 @@ def get_images_intersection_from_tags(tag_names):
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+    success = conn.keepAlive()
+    if not success:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+
     tids = []
     lists = []
     for name in tag_names:
@@ -108,6 +126,10 @@ def fetch_tags():
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+    success = conn.keepAlive()
+    if not success:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+
     if tag_set == None:
         tag_set = {}
         tags = conn.getObjects("TagAnnotation")
@@ -144,6 +166,9 @@ def get_datasets():
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+    success = conn.keepAlive()
+    if not success:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
 
     dsets = list(conn.getObjects("Dataset"))
     dset_list = [Dataset(dset) for dset in dsets]
@@ -152,6 +177,9 @@ def get_datasets():
 def get_dataset(did):
     global conn
     if conn == None:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+    success = conn.keepAlive()
+    if not success:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
 
     ds = conn.getObject("Dataset", oid=did)
@@ -163,6 +191,10 @@ def get_dataset_images(did):
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+    success = conn.keepAlive()
+    if not success:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+
     dset = get_dataset(did)
     dset.imgs = get_images_from_dataset(dset)
     # print dset.name + " has " + str(len(dset.imgs)) + " images."
@@ -173,10 +205,14 @@ def get_tag_dictionary():
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+    success = conn.keepAlive()
+    if not success:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
 
     if tag_set == None:
         tag_set = fetch_tags()
     tag_dict = {}
+
     tags = list(conn.getObjects("TagAnnotation"))
     for tag in tags:
         for p in tag.listParents():
@@ -188,6 +224,9 @@ def get_tag_dictionary():
 def generate_image_matrix(tagset_a, tagset_b):
     global conn
     if conn == None:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+    success = conn.keepAlive()
+    if not success:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
 
     tagsets = get_tag_dictionary()
@@ -222,7 +261,10 @@ def generate_image_matrix_from_ds(tagset_a, tagset_b, dsid):
     global conn
     if conn == None:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-
+    success = conn.keepAlive()
+    if not success:
+        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
+        
     tagsets = get_tag_dictionary()
     group_a = [tag.tname for tag in tagsets[tagset_a]]
     group_b = [tag.tname for tag in tagsets[tagset_b]]

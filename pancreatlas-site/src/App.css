@@ -101,6 +101,11 @@ h1, h2, h3, h4, h5, h6{
   text-align: left;
 }
 
+.filter-button {
+  text-align: center;
+  margin-top: 1rem;
+}
+
 .pancreatlas-nav {
   width: 100%;
   margin-bottom: 3rem;
@@ -134,7 +139,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .card-img-top {
-  height: 300px;
+  height: 200px;
   overflow: hidden;
   object-fit: cover;
 }
@@ -159,4 +164,8 @@ h1, h2, h3, h4, h5, h6{
 
 .ds-list-left-button {
   margin-right: 1rem;
+}
+
+.path-button {
+  margin-top: 1rem;
 }

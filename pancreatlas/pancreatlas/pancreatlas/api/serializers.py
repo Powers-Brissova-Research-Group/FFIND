@@ -29,7 +29,10 @@ class DatasetSerializer(serializers.Serializer):
 
 class TagSetSerializer(serializers.Serializer):
     set_name = serializers.CharField(max_length=50)
-    tags = serializers.ListField()
+    tags = serializers.DictField()
+
+class TagsSerializer(serializers.Serializer):
+    tagsets = serializers.DictField()
 
 class MatrixSerializer(serializers.Serializer):
     tag_a = serializers.CharField(max_length=50)

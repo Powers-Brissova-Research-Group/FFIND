@@ -52,7 +52,16 @@ export default class ImageDetail extends React.Component {
           <Container>
             <Row>
               <Col md="8">
-                <img src={"http://127.0.0.1:8000/" + detailpath} alt="" />
+                <Row>
+                  <Col md="12">
+                    <img src={"http://127.0.0.1:8000/" + detailpath} alt="" />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md="12">
+                    <a href={path_path} target="_blank"><Button className='path-button' color="success">Open in Path Viewer</Button></a>
+                  </Col>
+                </Row>
               </Col>
               <Col md="4">
                 <h3>Image Details</h3>
@@ -63,11 +72,6 @@ export default class ImageDetail extends React.Component {
                     ))}
                   </tbody>
                 </Table>
-              </Col>
-            </Row>
-            <Row>
-              <Col md="12">
-                <a href={path_path} target="_blank"><Button color="success">Open in Path Viewer</Button></a>
               </Col>
             </Row>
           </Container>

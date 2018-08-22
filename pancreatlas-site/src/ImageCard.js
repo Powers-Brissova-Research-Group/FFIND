@@ -39,14 +39,14 @@ export default class ImageCard extends React.Component {
           omero_id: result.iid,
           img_tags: result.tags
         })
-      .catch(err => {
-        this.setState({
-          loaded: false,
-          error: err
-        })
-      })
+          .catch(err => {
+            this.setState({
+              loaded: false,
+              error: err
+            })
+          })
 
-      console.log(this.state.omero_id)
+        console.log(this.state.omero_id)
       });
   }
 
@@ -60,19 +60,18 @@ export default class ImageCard extends React.Component {
             <CardSubtitle>{this.state.omero_id}</CardSubtitle>
             <CardText>
               <strong>Image Tags:</strong>
-            </CardText>
-            <ul>
+              &bull;
               {this.state.img_tags.map(item => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <Link to={'/image/' + this.state.omero_id} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></Link>
-            {/* <a href={this.props.path_path} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></a> */}
+                  <span key={item}>{' ' + item + ' '}&bull;</span>
+                ))}
+              <Link to={'/image/' + this.state.omero_id} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></Link>
+              {/* <a href={this.props.path_path} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></a> */}
+            </CardText>
           </CardBody>
         </Card>
       );
 
-    } else if(this.state.error !== undefined){
+    } else if (this.state.error !== undefined) {
       return <Error error_desc={this.state.error.message} />
     } else {
       return null

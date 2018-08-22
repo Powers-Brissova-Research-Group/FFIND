@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 
 from models import Image, ImageSet, ImageId, Dataset, DatasetImages, TagSet, Matrix
-from serializers import ImageSerializer, ImageSetSerializer, ImageIdSerializer, DatasetImageSerializer, DatasetSerializer, TagSetSerializer, MatrixSerializer
+from serializers import ImageSerializer, ImageSetSerializer, ImageIdSerializer, DatasetImageSerializer, DatasetSerializer, TagSetSerializer, TagsSerializer, MatrixSerializer
 
 import requests
 
@@ -17,7 +17,11 @@ from django.shortcuts import render
 
 import omero_api
 
+from helper_classes import TagSetI
+
 import pprint
+
+import collections
 
 # Create your views here.
 
@@ -76,14 +80,44 @@ class DatasetViewset(viewsets.ViewSet):
 class TagsetViewset(viewsets.ViewSet):
     def list(self, request):
         tag_list = omero_api.get_tag_dictionary()
-        tagsets = []
+        tagsets = {
+            "MARKER": {},
+            "SEX": {},
+            "PANCREAS REGION": {},
+            "AGE": {},
+            "FILE TYPE": {},
+            "LIMS ID": {},
+            "UNOS ID": {}
+        }
+
+        tagset_indices = {
+            "MARKER": 0,
+            "SEX": 1,
+            "PANCREAS REGION": 2,
+            "AGE": 3,
+            "FILE TYPE": 4,
+            "LIMS ID": 5,
+            "UNOS ID": 6
+        }
+
         for name, tags in tag_list.iteritems():
-            tagsets.append(TagSet(name, [tag.tname for tag in tags]))
+            t_dict = {}
+            tset = TagSetI(name, tags)
+            s = tset.serialize()            
+            # ordered_tags = collections.OrderedDict(sorted(t_dict.items()))
+            tagsets[name] = s
+        pprint.pprint(tagsets)
+        ts = tagsets.values()
+        sorted_ts = [0] * len(ts)
+        for i in range(len(ts)):
+            # pprint.pprint(ts[i])
+            idx = tagset_indices[ts[i]['set_name']]
+            sorted_ts[idx] = ts[i]
 
-        serializer = TagSetSerializer(tagsets, many=True)
-
-        return Response(serializer.data)
-
+        # serializer = TagSetSerializer(sorted_ts, many=True)
+        # sers = [TagSetSerializer(t) for t in sorted_ts]
+        
+        return Response(sorted_ts)
 
 class MatrixViewset(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
