@@ -29,12 +29,13 @@ export default class ImageCard extends React.Component {
   }
 
   componentDidMount() {
+    // Load information about the image
     fetch('http://pancreapi/api/images/' + this.props.iid)
       .then(res => res.json())
       .then(result => {
         this.setState({
           loaded: true,
-          img_url: 'http://127.0.0.1:8000/assets/thumbnails/' + result.iname, // https://omero.app.vumc.org/webgateway/render_image_region/' + this.props.iid + '/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&format=jpeg&region=0,0,300,300',
+          img_url: '/home/jmessmer/Projects/pancreatlas/pancreatlas/pancreatlas/pancreatlas/assets/thumbnails/' + result.iname, // https://omero.app.vumc.org/webgateway/render_image_region/' + this.props.iid + '/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&format=jpeg&region=0,0,300,300',
           img_name: result.iname,
           omero_id: result.iid,
           img_tags: result.tags

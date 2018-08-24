@@ -32,6 +32,7 @@ export default class ImageGrid extends React.Component {
     this.choosePage = this.choosePage.bind(this)
     this.filter = this.filter.bind(this)
     this.callback = this.callback.bind(this)
+    this.updateTags = this.updateTags.bind(this)
 
     this.image_tags = {}
     this.tag_dict = {}
@@ -56,17 +57,7 @@ export default class ImageGrid extends React.Component {
             .then(res => res.json())
             .then(
               (result) => {
-                let app_tags = JSON.parse(JSON.stringify(this.raw_tags))
-                Object.keys(result).map(key => {
-                  for (let tag of Object.keys(this.tag_dict)) {
-                   let intersection = result[key].filter(val => -1 !== this.tag_dict[tag].indexOf(val))
-                   if(intersection.length > 0){
-                    let tval = intersection[0]
-                    app_tags[this.tag_idx[tag]].tags[tval]++
-                   }
-                  }
-                  // console.log(result[key])
-                })
+                let app_tags = this.updateTags()
                 this.setState({
                   loaded: true,
                   ids: result,
@@ -76,6 +67,7 @@ export default class ImageGrid extends React.Component {
                 });
               })
             .catch(err => {
+              console.log(err)
               this.setState({
                 loaded: false,
                 error: err
@@ -87,23 +79,28 @@ export default class ImageGrid extends React.Component {
 
   componentDidUpdate(prevProps, prevState){
     if(JSON.stringify(prevState) !== JSON.stringify(this.state)){
-      // console.log('hi')
-      let app_tags = JSON.parse(JSON.stringify(this.raw_tags));
-      this.state.matches.map(key => {
-        for (let tag of Object.keys(this.tag_dict)) {
-         let intersection = this.state.ids[key].filter(val => -1 !== this.tag_dict[tag].indexOf(val))
-         if(intersection.length > 0){
-          let tval = intersection[0]
-          app_tags[this.tag_idx[tag]].tags[tval]++
-         }
-        }
-        // console.log(result[key])
-      })
-      // console.log(app_tags)
+      let app_tags = this.updateTags()
       this.setState({
         tags: app_tags
       });
     }
+  }
+
+  updateTags(){
+    let app_tags = JSON.parse(JSON.stringify(this.raw_tags));
+    this.state.matches.map(key => {
+      for (let tag of Object.keys(this.tag_dict)) {
+       let intersection = this.state.ids[key].filter(val => -1 !== this.tag_dict[tag].indexOf(val))
+       if(intersection.length > 0){
+        let tval = intersection[0]
+        app_tags[this.tag_idx[tag]].tags[tval]++
+       }
+      }
+      // console.log(result[key])
+    })
+    // console.log(app_tags)
+    return app_tags
+
   }
 
   choosePage(new_page) {
@@ -159,7 +156,7 @@ export default class ImageGrid extends React.Component {
           tmp.splice(tmp.indexOf(id), 1)
         }
       }
-      // console.log(JSON.stringify(tagList))
+
       this.setState({
         filters: tagList,
         matches: tmp
@@ -168,17 +165,7 @@ export default class ImageGrid extends React.Component {
   }
 
   callback(iid, tags) {
-
     this.image_tags[iid] = tags
-
-    console.log(this.image_tags)
-    // let new_matches = this.state.matches
-    // // console.log(this.state.matches.indexOf(match))
-    // new_matches.splice(new_matches.indexOf(match), 1)
-    // this.setState({
-    //   matches: new_matches
-    // })
-    // console.log('hit: ' + filtered.length)
   }
 
   render() {

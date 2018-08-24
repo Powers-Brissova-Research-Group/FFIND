@@ -57,21 +57,23 @@ export default class ImageDetail extends React.Component {
                     <img src={"http://127.0.0.1:8000/" + detailpath} alt="" />
                   </Col>
                 </Row>
+              </Col>
+              <Col md="4">
+                <h3>Image Details</h3>
                 <Row>
                   <Col md="12">
                     <a href={path_path} target="_blank"><Button className='path-button' color="success">Open in Path Viewer</Button></a>
                   </Col>
                 </Row>
-              </Col>
-              <Col md="4">
-                <h3>Image Details</h3>
-                <Table>
-                  <tbody>
-                    {Object.keys(img_data).map(key => (
-                      <tr><td>{key}</td><td>{img_data[key]}</td></tr>
-                    ))}
-                  </tbody>
-                </Table>
+                <Row>
+                  <Table>
+                    <tbody>
+                      {Object.keys(img_data).map(key => (
+                        <tr><td>{key}</td><td>{img_data[key]}</td></tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                </Row>
               </Col>
             </Row>
           </Container>

@@ -36,20 +36,27 @@ export default class FilterList extends React.Component {
 
   setFilters(tagset, newTag) {
     let tagList = this.state.filters
+
+    // First check to make sure that we have tags from the current tagset defined
     if (tagList[tagset] !== undefined) {
       let idx = tagList[tagset].indexOf(newTag)
+
+      // If the tagset is already selected, remove it from the set of selected tags
       if (idx >= 0) {
         tagList[tagset].splice(idx, 1)
+        // If the list of selected tags from the tagset is now empty, remove the key from the tagList object
         if (tagList[tagset].length <= 0) {
           delete tagList[tagset]
         }
       } else {
+        // If the tag is not in our list, add it
         tagList[tagset].push(newTag)
       }
       this.setState({
         filters: tagList
       })
     } else {
+      // If we don't have anything from the current tagset, add that key to the object and add the tag
       tagList[tagset] = [newTag]
     }
   }
@@ -57,12 +64,14 @@ export default class FilterList extends React.Component {
   render() {
     if (this.props.tags !== null) {
       let actual_tags = this.props.tags
-      for (let i of Object.keys(actual_tags)) {        
+      // Go through and remove the tags that match no images
+      for (let i of Object.keys(actual_tags)) {
         for(let key of Object.keys(actual_tags[i].tags)){
           if (actual_tags[i].tags[key] === 0){
             delete actual_tags[i].tags[key]
           }
         }
+        // If we've deleted all tags of a tagset, delete the tagset
         if (Object.keys(actual_tags[i].tags).length === 0){
           delete actual_tags[i]
         }

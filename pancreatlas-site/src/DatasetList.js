@@ -21,6 +21,7 @@ export default class DatasetList extends React.Component {
   }
 
   componentDidMount() {
+    // Get the list of all datasets from our API and store them in the current state
     fetch('http://pancreapi/api/datasets/')
       .then(res => res.json())
       .then(

@@ -22,6 +22,7 @@ from helper_classes import TagSetI
 import pprint
 
 import collections
+import os
 
 # Create your views here.
 
@@ -29,7 +30,7 @@ import collections
 class ImageViewSet(viewsets.ViewSet):
 
     def list(self, request):
-        f = open('api/image_ids.txt', 'r')
+        f = open('/home/jmessmer/Projects/pancreatlas/pancreatlas/pancreatlas/pancreatlas/api/image_ids.txt', 'r')
         data = f.readline()
         # ids = ids[:-1]
 
@@ -39,8 +40,8 @@ class ImageViewSet(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
         img = omero_api.get_image_by_id(pk)
 
-        ret_img = Image(pk, img.file_name, "assets/thumbnails/" + img.file_name,
-                        "assets/details/" + img.file_name, img.get_tag_names(), img.get_key_values())
+        ret_img = Image(pk, img.file_name, "/home/jmessmer/Projects/pancreatlas/pancreatlas/pancreatlas/pancreatlas/assets/thumbnails/" + img.file_name,
+                        "/home/jmessmer/Projects/pancreatlas/pancreatlas/pancreatlas/pancreatlas/assets/details/" + img.file_name, img.get_tag_names(), img.get_key_values())
 
         serializer = ImageSerializer(ret_img)
         return Response(serializer.data)
@@ -58,7 +59,8 @@ class DatasetViewset(viewsets.ViewSet):
     def get_images(self, request, pk=None):
         # ds = omero_api.get_dataset_images(pk)
         # ds.imgs = omero_api.filter_imgs_by_tag(ds.imgs, "Aperio")
-        f = open('api/' + str(pk) + '.txt', 'r')
+        cwd = os.getcwd()
+        f = open('/home/jmessmer/Projects/pancreatlas/pancreatlas/pancreatlas/pancreatlas/api/' + str(pk) + '.txt', 'r')
         data = f.readline()
         # imgs = [Image(img.id, img.file_name, "assets/thumbnails/" + img.file_name, "assets/details/" +
         #               img.file_name, img.get_tag_names(), img.get_key_values()) for img in ds.imgs]
@@ -99,7 +101,7 @@ class TagsetViewset(viewsets.ViewSet):
         for name, tags in tag_list.iteritems():
             t_dict = {}
             tset = TagSetI(name, tags)
-            s = tset.serialize()            
+            s = tset.serialize()
             # ordered_tags = collections.OrderedDict(sorted(t_dict.items()))
             if name in tagsets:
                 tagsets[name] = s
@@ -113,8 +115,9 @@ class TagsetViewset(viewsets.ViewSet):
 
         # serializer = TagSetSerializer(sorted_ts, many=True)
         # sers = [TagSetSerializer(t) for t in sorted_ts]
-        
+
         return Response(sorted_ts)
+
 
 class MatrixViewset(viewsets.ViewSet):
     def retrieve(self, request, pk=None):

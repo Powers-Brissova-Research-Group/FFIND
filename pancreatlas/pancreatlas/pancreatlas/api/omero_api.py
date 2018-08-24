@@ -62,7 +62,6 @@ def get_images_from_dataset(dsid):
     success = conn.keepAlive()
     if not success:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-
     f = open('%s.txt' % (dsid, ), 'r')
     imgs = json.loads(f.readline())
     iids = imgs.keys()
