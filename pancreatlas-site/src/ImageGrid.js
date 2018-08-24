@@ -40,7 +40,7 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:8000/api/tagsets/')
+    fetch('http://pancreapi/api/tagsets/')
       .then(res => res.json())
       .then(
         (tresult) => {
@@ -52,7 +52,7 @@ export default class ImageGrid extends React.Component {
               this.tag_dict[tresult[o].set_name].push(t)
             }
           }
-          fetch('http://127.0.0.1:8000/api/datasets/' + this.props.match.params.did + '/get-images')
+          fetch('http://pancreapi/api/datasets/' + this.props.match.params.did + '/get-images')
             .then(res => res.json())
             .then(
               (result) => {

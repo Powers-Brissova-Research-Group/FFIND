@@ -28,7 +28,7 @@ export default class MatrixView extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:8000/api/tagsets')
+    fetch('http://pancreapi/api/tagsets')
       .then(res => res.json())
       .then(result => {
         this.setState({

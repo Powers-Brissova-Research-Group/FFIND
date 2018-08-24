@@ -86,18 +86,14 @@ class TagsetViewset(viewsets.ViewSet):
             "PANCREAS REGION": {},
             "AGE": {},
             "FILE TYPE": {},
-            "LIMS ID": {},
-            "UNOS ID": {}
         }
 
         tagset_indices = {
             "MARKER": 0,
-            "SEX": 1,
-            "PANCREAS REGION": 2,
-            "AGE": 3,
+            "AGE": 1,
+            "SEX": 2,
+            "PANCREAS REGION": 3,
             "FILE TYPE": 4,
-            "LIMS ID": 5,
-            "UNOS ID": 6
         }
 
         for name, tags in tag_list.iteritems():
@@ -105,7 +101,8 @@ class TagsetViewset(viewsets.ViewSet):
             tset = TagSetI(name, tags)
             s = tset.serialize()            
             # ordered_tags = collections.OrderedDict(sorted(t_dict.items()))
-            tagsets[name] = s
+            if name in tagsets:
+                tagsets[name] = s
         pprint.pprint(tagsets)
         ts = tagsets.values()
         sorted_ts = [0] * len(ts)

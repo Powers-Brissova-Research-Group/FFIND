@@ -29,7 +29,7 @@ export default class ImageCard extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:8000/api/images/' + this.props.iid)
+    fetch('http://pancreapi/api/images/' + this.props.iid)
       .then(res => res.json())
       .then(result => {
         this.setState({

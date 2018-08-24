@@ -25,8 +25,9 @@ def get_roi(iid, session):
     gallery_roi = None
     if rois['meta']['totalCount'] > 0:
         for roi in rois['data']:
-            if roi['Name'] == 'Gallery View':
-                print 'found'
+            print 'checking for thumbnail in image %s' % (str(iid),)
+            if 'Name' in roi and roi['Name'] == 'thumbnail':
+                print 'found for %s' % (str(iid),)      
                 gallery_roi = (int(roi['shapes'][0]['X']), int(roi['shapes'][0]['Y']), int(roi['shapes'][0]['Width']), int(roi['shapes'][0]['Height']))
     return gallery_roi
 

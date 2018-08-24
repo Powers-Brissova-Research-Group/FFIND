@@ -25,7 +25,7 @@ SECRET_KEY = '_)s607_b+8av-d0mza4(6)mz)igi31p=sh4h^%$3jr=63djq_c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'pancreapi']
 
 
 # Application definition
@@ -54,7 +54,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:3000'
+    'localhost:3000',
+    'pancreatlas'
 )
 ROOT_URLCONF = 'pancreatlas.urls'
 

@@ -21,7 +21,7 @@ export default class DatasetList extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:8000/api/datasets')
+    fetch('http://pancreapi/api/datasets/')
       .then(res => res.json())
       .then(
         (result) => {
