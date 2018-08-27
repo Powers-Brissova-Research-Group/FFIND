@@ -59,6 +59,7 @@ export default class FilterList extends React.Component {
       // If we don't have anything from the current tagset, add that key to the object and add the tag
       tagList[tagset] = [newTag]
     }
+    this.props.callback(this.state.filters)
   }
 
   render() {
