@@ -4,7 +4,11 @@ import {
   Col,
   Button
 } from 'reactstrap'
-import FilterItem from './FilterItem'
+import FilterSet from './FilterSet'
+
+import {
+  Collapse
+} from 'react-collapse'
 
 import Error from './Error'
 
@@ -23,7 +27,7 @@ export default class FilterList extends React.Component {
     if (this.props.tags !== null) {
       let t = {}
       for (let ts of this.props.tags) {
-        if (ts !== undefined){
+        if (ts !== undefined) {
           t[ts.set_name] = ts.tags
         }
       }
@@ -67,13 +71,13 @@ export default class FilterList extends React.Component {
       let actual_tags = this.props.tags
       // Go through and remove the tags that match no images
       for (let i of Object.keys(actual_tags)) {
-        for(let key of Object.keys(actual_tags[i].tags)){
-          if (actual_tags[i].tags[key] === 0){
+        for (let key of Object.keys(actual_tags[i].tags)) {
+          if (actual_tags[i].tags[key] === 0) {
             delete actual_tags[i].tags[key]
           }
         }
         // If we've deleted all tags of a tagset, delete the tagset
-        if (Object.keys(actual_tags[i].tags).length === 0){
+        if (Object.keys(actual_tags[i].tags).length === 0) {
           delete actual_tags[i]
         }
       }
@@ -81,12 +85,15 @@ export default class FilterList extends React.Component {
         <div className="filter-list">
           <h3><strong>Filters:</strong></h3>
           {Object.keys(this.props.tags).map(key => (
-            <div className='tagset' key={key}>
-              <h4>{this.props.tags[key]['set_name']}</h4>
-              {Object.keys(this.props.tags[key]['tags']).map(tag => (
-                <FilterItem key={tag} filterName={tag} filterQty={this.props.tags[key]['tags'][tag]} callback={() => this.setFilters(this.props.tags[key]['set_name'], tag)} />
-              ))}
-            </div>
+            <FilterSet setName={this.props.tags[key]['set_name']} tags={this.props.tags[key]['tags']} callback={this.setFilters}/>
+            // <Collapse isOpened={true}>
+            //   <div className='tagset' key={key}>
+            //     <h4>{this.props.tags[key]['set_name']}</h4>
+            //     {Object.keys(this.props.tags[key]['tags']).map(tag => (
+            //       <FilterItem key={tag} filterName={tag} filterQty={this.props.tags[key]['tags'][tag]} callback={() => this.setFilters(this.props.tags[key]['set_name'], tag)} />
+            //     ))}
+            //   </div>
+            // </Collapse>
           ))}
           <Row>
             <Col className='text-center' md="12">

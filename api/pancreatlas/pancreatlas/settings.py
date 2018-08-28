@@ -61,7 +61,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'http://localhost',
     'http://pancreatlas',
-    'http://127.0.0.1',
+    'http://127.0.0.1'
 )
 ROOT_URLCONF = 'pancreatlas.urls'
 
