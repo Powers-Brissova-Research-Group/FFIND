@@ -17,6 +17,7 @@ export default class ImageGrid extends React.Component {
 
   constructor(props) {
     super(props)
+    console.log(props)
     this.state = {
       loaded: false,
       tags: null,
@@ -53,7 +54,7 @@ export default class ImageGrid extends React.Component {
               this.tag_dict[tresult[o].set_name].push(t)
             }
           }
-          fetch('http://pancreapi/api/datasets/' + this.props.match.params.did + '/get-images')
+          fetch('http://pancreapi/api/datasets/' + this.props.did + '/get-images')
             .then(res => res.json())
             .then(
               (result) => {
@@ -61,10 +62,10 @@ export default class ImageGrid extends React.Component {
                 this.setState({
                   loaded: true,
                   ids: result,
-                  matches: Object.keys(result),
                   page: 0,
                   tags: app_tags
                 });
+                this.filter(this.props.filters)
               })
             .catch(err => {
               console.log(err)

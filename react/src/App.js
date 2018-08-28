@@ -8,6 +8,7 @@ import DatasetList from './DatasetList'
 import Footer from './Footer'
 import ImageDetail from './ImageDetail'
 import MatrixView from './MatrixView'
+import AgeBrowser from './AgeBrowser'
 import {
   Container,
   Row,
@@ -32,7 +33,7 @@ class App extends Component {
             <Route exact path='/' component={HomePage} />
             <Route path='/collections' component={CollectionList} />
             <Route exact path='/dataset' component={DatasetList} />
-            <Route exact path='/dataset/:did' component={ImageGrid} />
+            <Route exact path='/dataset/:did' component={AgeBrowser} />
             <Route path='/image/:iid' component={ImageDetail} />
             <Route path='/matrixview/:dsid' component={MatrixView} />
           </Switch>

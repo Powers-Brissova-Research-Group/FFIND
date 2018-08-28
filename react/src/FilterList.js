@@ -95,11 +95,11 @@ export default class FilterList extends React.Component {
             //   </div>
             // </Collapse>
           ))}
-          {/* <Row>
+          <Row>
             <Col className='text-center' md="12">
-              <Button className='filter-button text-center' color="danger" onClick={() => this.props.callback(this.state.filters)}>Filter</Button>
+              <Button className='filter-button text-center' color="danger" onClick={() => this.props.callback({})}>Clear</Button>
             </Col>
-          </Row> */}
+          </Row>
         </div>
       )
     } else if (this.state.error !== undefined) {
