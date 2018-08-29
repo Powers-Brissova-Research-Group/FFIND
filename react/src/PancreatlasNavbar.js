@@ -32,9 +32,9 @@ export default class PancreatlasNavbar extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
+              {/* <NavItem>
                 <Link to={'/collections'} className='nav-link'>Collections</Link>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                 <Link to={'/dataset'} className='nav-link'>Datasets</Link>
               </NavItem>

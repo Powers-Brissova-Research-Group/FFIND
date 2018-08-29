@@ -30,7 +30,7 @@ class App extends Component {
         <Container>
           <Switch>
             <Route exact path='/' component={HomePage} />
-            <Route path='/collections' component={CollectionList} />
+            {/* <Route path='/collections' component={CollectionList} /> */}
             <Route exact path='/dataset' component={DatasetList} />
             <Route exact path='/dataset/:did' component={AgeBrowser} />
             <Route path='/image/:iid' component={ImageDetail} />
