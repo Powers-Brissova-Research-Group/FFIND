@@ -48,10 +48,12 @@ export default class ImageGrid extends React.Component {
         (tresult) => {
           this.raw_tags = tresult
           for (let o of Object.keys(tresult)) {
-            this.tag_idx[tresult[o].set_name] = o
-            this.tag_dict[tresult[o].set_name] = []
-            for (let t of Object.keys(tresult[o].tags)) {
-              this.tag_dict[tresult[o].set_name].push(t)
+            if ('set_name' in tresult[o]) {
+              this.tag_idx[tresult[o].set_name] = o
+              this.tag_dict[tresult[o].set_name] = []
+              for (let t of Object.keys(tresult[o].tags)) {
+                this.tag_dict[tresult[o].set_name].push(t)
+              }
             }
           }
           fetch('http://pancreapi/api/datasets/' + this.props.did + '/get-images')
@@ -78,8 +80,8 @@ export default class ImageGrid extends React.Component {
       )
   }
 
-  componentDidUpdate(prevProps, prevState){
-    if(JSON.stringify(prevState) !== JSON.stringify(this.state)){
+  componentDidUpdate(prevProps, prevState) {
+    if (JSON.stringify(prevState) !== JSON.stringify(this.state)) {
       let app_tags = this.updateTags()
       this.setState({
         tags: app_tags
@@ -87,15 +89,15 @@ export default class ImageGrid extends React.Component {
     }
   }
 
-  updateTags(){
+  updateTags() {
     let app_tags = JSON.parse(JSON.stringify(this.raw_tags));
-    for (let key of this.state.matches){
+    for (let key of this.state.matches) {
       for (let tag of Object.keys(this.tag_dict)) {
-       let intersection = this.state.ids[key].filter(val => -1 !== this.tag_dict[tag].indexOf(val))
-       if(intersection.length > 0){
-        let tval = intersection[0]
-        app_tags[this.tag_idx[tag]].tags[tval]++
-       }
+        let intersection = this.state.ids[key].filter(val => -1 !== this.tag_dict[tag].indexOf(val))
+        if (intersection.length > 0) {
+          let tval = intersection[0]
+          app_tags[this.tag_idx[tag]].tags[tval]++
+        }
       }
       // console.log(result[key])
     }
@@ -204,7 +206,7 @@ export default class ImageGrid extends React.Component {
                   <Row key={idx} className="image-row">
                     {item.map((image, idx) =>
                       <Col key={idx} md="3">
-                        <ImageCard key={image} iid={image} tpath={'./assets/thumbs/'+image+'.jpg'} />
+                        <ImageCard key={image} iid={image} tpath={'./assets/thumbs/' + image + '.jpg'} />
                       </Col>
                     )}
                   </Row>

@@ -83,6 +83,7 @@ class TagsetViewset(viewsets.ViewSet):
     def list(self, request):
         tag_list = omero_api.get_tag_dictionary()
         tagsets = {
+            "DISEASE": {},
             "MARKER": {},
             "SEX": {},
             "PANCREAS REGION": {},
@@ -91,11 +92,12 @@ class TagsetViewset(viewsets.ViewSet):
         }
 
         tagset_indices = {
-            "MARKER": 0,
+            "DISEASE": 0,
             "AGE": 1,
             "SEX": 2,
-            "PANCREAS REGION": 3,
-            "FILE TYPE": 4,
+            "MARKER": 3,
+            "PANCREAS REGION": 4,
+            "FILE TYPE": 5,
         }
 
         for name, tags in tag_list.iteritems():
@@ -108,14 +110,15 @@ class TagsetViewset(viewsets.ViewSet):
         ts = tagsets.values()
         sorted_ts = [0] * len(ts)
         for i in range(len(ts)):
-            # pprint.pprint(ts[i])
-            idx = tagset_indices[ts[i]['set_name']]
-            sorted_ts[idx] = ts[i]
+            pprint.pprint(ts[i])
+            if 'set_name' in ts[i]:
+                idx = tagset_indices[ts[i]['set_name']]
+                sorted_ts[idx] = ts[i]
 
         # serializer = TagSetSerializer(sorted_ts, many=True)
         # sers = [TagSetSerializer(t) for t in sorted_ts]
 
-        return Response(sorted_ts)
+        return Response([ts for ts in sorted_ts if ts != 0])
 
 
 class MatrixViewset(viewsets.ViewSet):
