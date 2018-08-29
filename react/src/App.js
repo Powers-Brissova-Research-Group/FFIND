@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import ImageGrid from './ImageGrid'
 import HomePage from './HomePage'
 import PancreatlasNavbar from './PancreatlasNavbar'
 import CollectionList from './CollectionList'

@@ -89,7 +89,7 @@ export default class ImageGrid extends React.Component {
 
   updateTags(){
     let app_tags = JSON.parse(JSON.stringify(this.raw_tags));
-    this.state.matches.map(key => {
+    for (let key of this.state.matches){
       for (let tag of Object.keys(this.tag_dict)) {
        let intersection = this.state.ids[key].filter(val => -1 !== this.tag_dict[tag].indexOf(val))
        if(intersection.length > 0){
@@ -98,7 +98,7 @@ export default class ImageGrid extends React.Component {
        }
       }
       // console.log(result[key])
-    })
+    }
     // console.log(app_tags)
     return app_tags
 
@@ -204,7 +204,7 @@ export default class ImageGrid extends React.Component {
                   <Row key={idx} className="image-row">
                     {item.map((image, idx) =>
                       <Col key={idx} md="3">
-                        <ImageCard key={image} iid={image} />
+                        <ImageCard key={image} iid={image} tpath={'./assets/thumbs/'+image+'.jpg'} />
                       </Col>
                     )}
                   </Row>

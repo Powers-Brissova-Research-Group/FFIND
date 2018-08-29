@@ -30,7 +30,7 @@ import os
 class ImageViewSet(viewsets.ViewSet):
 
     def list(self, request):
-        f = open('/home/jmessmer/Projects/pancreatlas/api/pancreatlas/api/image_ids.txt', 'r')
+        f = open('file:///var/www/assets/pancreatlas/datasets/image_ids.txt', 'r')
         data = f.readline()
         # ids = ids[:-1]
 
@@ -40,7 +40,7 @@ class ImageViewSet(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
         img = omero_api.get_image_by_id(pk)
 
-        ret_img = Image(pk, img.file_name, "/home/jmessmer/Projects/pancreatlas/api/pancreatlas/assets/thumbnails/" + img.file_name,
+        ret_img = Image(pk, img.file_name, "/var/www/assets/pancreatlas/thumb/" + img.file_name,
                         "/home/jmessmer/Projects/pancreatlas/api/pancreatlas/assets/details/" + img.file_name, img.get_tag_names(), img.get_key_values())
 
         serializer = ImageSerializer(ret_img)
@@ -60,7 +60,7 @@ class DatasetViewset(viewsets.ViewSet):
         # ds = omero_api.get_dataset_images(pk)
         # ds.imgs = omero_api.filter_imgs_by_tag(ds.imgs, "Aperio")
         cwd = os.getcwd()
-        f = open('/home/jmessmer/Projects/pancreatlas/api/pancreatlas/api/' + str(pk) + '.txt', 'r')
+        f = open('/var/www/assets/pancreatlas/datasets/' + str(pk) + '.txt', 'r')
         data = f.readline()
         # imgs = [Image(img.id, img.file_name, "assets/thumbnails/" + img.file_name, "assets/details/" +
         #               img.file_name, img.get_tag_names(), img.get_key_values()) for img in ds.imgs]
@@ -105,7 +105,6 @@ class TagsetViewset(viewsets.ViewSet):
             # ordered_tags = collections.OrderedDict(sorted(t_dict.items()))
             if name in tagsets:
                 tagsets[name] = s
-        pprint.pprint(tagsets)
         ts = tagsets.values()
         sorted_ts = [0] * len(ts)
         for i in range(len(ts)):
@@ -122,7 +121,6 @@ class TagsetViewset(viewsets.ViewSet):
 class MatrixViewset(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
         tags = pk.split(',')
-        print tags
         matrix = omero_api.generate_image_matrix_from_ds(
             tags[0].upper(), tags[1].upper(), tags[2])
         for (key, value) in matrix.iteritems():

@@ -96,7 +96,6 @@ class TagSetI:
         if self.name.upper() == "AGE":
             # self.tags.sort(self.compare_ages)
             ret = sorted(self.tags, cmp=self.compare_ages)
-            print ret
             return ret
         else:
             return sorted(self.tags, key=str.lower)

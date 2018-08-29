@@ -7,7 +7,7 @@ USERNAME = 'api.user'
 PASSWORD = 'ts6t6r1537k='
 
 def get_image_list():
-    f = open('pancreatlas/pancreatlas/pancreatlas/api/image_index.txt', 'r')
+    f = open('api/pancreatlas/api/image_index.txt', 'r')
     enc = f.readline()
     imgs = json.loads(enc)
     return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
@@ -25,24 +25,30 @@ def get_roi(iid, session):
     gallery_roi = None
     if rois['meta']['totalCount'] > 0:
         for roi in rois['data']:
-            print 'checking for thumbnail in image %s' % (str(iid),)
+            # print 'checking for thumbnail in image %s' % (str(iid),)
             if 'Name' in roi and roi['Name'] == 'thumbnail':
-                print 'found for %s' % (str(iid),)      
+                # print 'found for %s' % (str(iid),)
                 gallery_roi = (int(roi['shapes'][0]['X']), int(roi['shapes'][0]['Y']), int(roi['shapes'][0]['Width']), int(roi['shapes'][0]['Height']))
     return gallery_roi
+
+def get_size(iid, session):
+    url = 'https://omero.app.vumc.org/api/v0/m/images/' + iid
+    r = session.request('GET', url)
+    idata = json.loads(r.text)
+    return (int(int(idata['data']['Pixels']['SizeX']) / 2), int(int(idata['data']['Pixels']['SizeY']) / 2), 500, 500)
 
 def save_thumbnail(iid, roi, session):
     url = 'https://omero.app.vumc.org/webgateway/render_image_region/%s/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&region=%s,%s,%s,%s' % (
         iid, roi[0], roi[1], roi[2], roi[3])
 
-    fpath = 'pancreatlas/pancreatlas/pancreatlas/assets/new_thumbnails/%s.jpg' % (iid, )
+    fpath = 'api/pancreatlas/assets/new_thumbnails/%s.jpg' % (iid, )
     f = open(fpath, 'w')
     r = session.get(url, stream=True)
     if r.status_code == 200:
         for chunk in r.iter_content(1024):
             f.write(chunk)
     f.close()
-
+    print 'Saved %s' %(fpath, )
     # urllib.retrieve(url, '%s' % (iid, ))
 
 def login(token, session):
@@ -69,9 +75,13 @@ def main():
         iids = get_image_list()
         print len(iids)
         for iid in iids:
-            roi = get_roi(iid, sesh)
-            if roi != None:
-                save_thumbnail(iid, roi, sesh)
+            region = get_roi(iid, sesh)
+            if region != None:
+                save_thumbnail(iid, region, sesh)
+            else:
+                size = get_size(iid, sesh)
+                print 'Other: %s' % (size, )
+                save_thumbnail(iid, size, sesh)
 
 if __name__=='__main__':
     main()

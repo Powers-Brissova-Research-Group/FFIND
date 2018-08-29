@@ -6,9 +6,6 @@ import {
 } from 'reactstrap'
 import FilterSet from './FilterSet'
 
-import {
-  Collapse
-} from 'react-collapse'
 
 import Error from './Error'
 

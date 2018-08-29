@@ -35,7 +35,7 @@ export default class ImageCard extends React.Component {
       .then(result => {
         this.setState({
           loaded: true,
-          img_url: '/home/jmessmer/Projects/pancreatlas/pancreatlas/pancreatlas/pancreatlas/assets/thumbnails/' + result.iname, // https://omero.app.vumc.org/webgateway/render_image_region/' + this.props.iid + '/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&format=jpeg&region=0,0,300,300',
+          img_url: '/' + result.iname, // https://omero.app.vumc.org/webgateway/render_image_region/' + this.props.iid + '/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&format=jpeg&region=0,0,300,300',
           img_name: result.iname,
           omero_id: result.iid,
           img_tags: result.tags
@@ -55,7 +55,7 @@ export default class ImageCard extends React.Component {
     if (this.state.loaded) {
       return (
         <Card className="image-card h-100">
-          <CardImg top width="100%" src={this.state.img_url} alt={this.state.img_name} />
+          <CardImg top width="100%" src={require(`${this.props.tpath}`)} alt={this.state.img_name} />
           <CardBody className="d-flex flex-column">
             <CardTitle>{this.state.img_name}</CardTitle>
             <CardSubtitle>{this.state.omero_id}</CardSubtitle>
