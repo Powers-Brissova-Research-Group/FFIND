@@ -33,11 +33,6 @@ export default class HomePage extends React.Component {
             <HomeTitle description="Funded by the Leona M. and Harry B. Helmsley Charitable Trust, HANDEL-P aims to improve understanding of early events and processes in human pancreatic development through an interactive image atlas. By examining the islet structure and gene expression in pancreata from donors spanning the neonatal and juvenile stages of life, we hope to gain insight into coinciding processes of &beta; cell-directed autoimmunity in type 1 diabetes." />
           </Col>
         </Row>
-        <Row className="subheading">
-          <Col md="12">
-            <h2>Featured Collections:</h2>
-          </Col>
-        </Row>
         <Row>
           <Col className="d-flex align-items-stretch" key="team" md="4" sm="12">
             <Card>
