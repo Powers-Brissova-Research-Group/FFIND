@@ -1,33 +1,36 @@
 import React from 'react'
-import CollectionCard from './CollectionCard'
 import HomeTitle from './HomeTitle'
 import {
   Row,
-  Col
+  Col,
+  Card,
+  CardTitle,
+  CardSubtitle,
+  CardBody,
+  Button
 } from 'reactstrap'
+
+import {
+  FontAwesomeIcon
+} from '@fortawesome/react-fontawesome'
+
+import {
+  faFlask,
+  faVials,
+  faUsers
+} from '@fortawesome/free-solid-svg-icons'
+
+import {
+  Link
+} from 'react-router-dom'
 
 export default class HomePage extends React.Component {
   render() {
-    let collections = [
-      {
-        name: 'Collection 1',
-        desc: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat tincidunt ante, et faucibus nisi rutrum eget. Vestibulum bibendum justo mi, vel aliquet orci rhoncus vitae.'
-      },
-      {
-        name: 'Collection 2',
-        desc: 'Donec et luctus augue. Suspendisse ut felis in tortor iaculis sodales id in elit. Aliquam lorem urna, elementum eget justo sit amet, placerat semper nunc. Integer eget tortor consectetur, vulputate turpis consequat, convallis felis.'
-      },
-      {
-        name: 'Collection 3',
-        desc: 'Phasellus suscipit egestas eleifend. Mauris venenatis, augue id volutpat porta, odio ante finibus diam, non vestibulum mauris mauris condimentum felis.'
-      }
-    ]
-
     return (
       <div className="home-page align-self-center">
         <Row>
           <Col md="12">
-            <HomeTitle />
+            <HomeTitle description="Funded by the Leona M. and Harry B. Helmsley Charitable Trust, HANDEL-P aims to improve understanding of early events and processes in human pancreatic development through an interactive image atlas. By examining the islet structure and gene expression in pancreata from donors spanning the neonatal and juvenile stages of life, we hope to gain insight into coinciding processes of &beta; cell-directed autoimmunity in type 1 diabetes." />
           </Col>
         </Row>
         <Row className="subheading">
@@ -36,9 +39,38 @@ export default class HomePage extends React.Component {
           </Col>
         </Row>
         <Row>
-          {collections.map(item => (
-            <Col key={item.name} md="4"><CollectionCard name={item.name} desc={item.desc} /></Col>
-          ))}
+          <Col className="d-flex align-items-stretch" key="team" md="4" sm="12">
+            <Card>
+              <CardTitle className='home-card-title'><FontAwesomeIcon icon={faUsers} size="5x" /></CardTitle>
+              <CardSubtitle>TEAM</CardSubtitle>
+              <CardBody>
+                Researchers at the University of Florida and Vanderbilt University, in collaboration with organizations around the country.
+              </CardBody>
+            </Card>
+          </Col>
+          <Col className="d-flex align-items-stretch" key="approach" md="4" sm="12">
+            <Card>
+              <CardTitle className='home-card-title'><FontAwesomeIcon icon={faVials} size="5x" /></CardTitle>
+              <CardSubtitle>APPROACH</CardSubtitle>
+              <CardBody>
+                Perform immunohistochemical analysis of donor pancreata to obtain cross-sectional data of islet cell composition, mass, proliferation, innervation, and function
+              </CardBody>
+            </Card>
+          </Col>
+          <Col className="d-flex align-items-stretch" key="mission" md="4" sm="12">
+            <Card>
+              <CardTitle className='home-card-title'><FontAwesomeIcon icon={faFlask} size="5x" /></CardTitle>
+              <CardSubtitle>MISSION</CardSubtitle>
+              <CardBody>
+                Enhance our knowledge of juvenile pancreatic development in an effort to understand the onset and progression of type 1 diabetes
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col md="12" sm="12">
+            <Link to="/dataset/261/"><Button size="lg" className="explore-button" color="success">Explore Our Collections</Button></Link>
+          </Col>
         </Row>
       </div>
     )

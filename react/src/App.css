@@ -43,6 +43,7 @@ h1, h2, h3, h4, h5, h6{
 
 .logo-img {
   padding-bottom: 1rem;
+  width: 600px;
 }
 
 .image-card {
@@ -183,4 +184,20 @@ h1, h2, h3, h4, h5, h6{
   transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
+}
+
+.navbar-logo {
+  height: 35px;
+}
+
+.home-card-title{
+  margin-top: 1rem;
+}
+
+.footer-img {
+  height: 175px;
+}
+
+.explore-button {
+  margin-top: 1rem;
 }

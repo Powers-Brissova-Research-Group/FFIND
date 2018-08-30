@@ -9,6 +9,8 @@ import {
 
 import { Link } from 'react-router-dom'
 
+import Logo from './assets/logos/handel-p-white-small.png'
+
 export default class PancreatlasNavbar extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,7 @@ export default class PancreatlasNavbar extends React.Component {
     return (
       <div className="pancreatlas-nav">
         <Navbar color="dark" dark expand="md">
-          <Link to={'/'} className='navbar-brand'>Pancreatlas</Link>
+          <Link to={'/'} className='navbar-brand'><img className='navbar-logo' src={Logo} alt="Pancreatlas" /></Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

@@ -3,6 +3,7 @@ import {
   Row,
   Col
 } from 'reactstrap'
+import Logo from './assets/logos/handel-p-black-full.png'
 
 export default class HomeTitle extends React.Component {
   render() {
@@ -10,7 +11,7 @@ export default class HomeTitle extends React.Component {
       <div className="home-title">
         <Row>
           <Col md="12">
-            <img className="logo-img" src={this.props.logo} alt="Logo" />
+            <img className="logo-img" src={Logo} alt="Logo" />
           </Col>
         </Row>
         <Row>

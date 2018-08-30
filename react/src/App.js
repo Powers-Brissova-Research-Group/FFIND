@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import HomePage from './HomePage'
 import PancreatlasNavbar from './PancreatlasNavbar'
-import CollectionList from './CollectionList'
 import DatasetList from './DatasetList'
 import Footer from './Footer'
 import ImageDetail from './ImageDetail'

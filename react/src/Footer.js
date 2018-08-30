@@ -4,6 +4,7 @@ import {
   Row,
   Col
 } from 'reactstrap'
+import HelmsleyLogo from './assets/logos/helmsley-logo.jpg'
 
 export default class Footer extends React.Component {
   render() {
@@ -13,8 +14,8 @@ export default class Footer extends React.Component {
           <Container>
             <Row>
               <Col md="6">
-                <h3>About Us</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat tincidunt ante, et faucibus nisi rutrum eget. Vestibulum bibendum justo mi, vel aliquet orci rhoncus vitae.</p>
+                <p>This enterprise is made possible through the generous support of the Leona M. and Harry B. Helmsley Charitable Trust</p>
+                <img className="footer-img" src={HelmsleyLogo} alt="Helmsley Logo" />
                 <p>Made with &hearts; in the Vanderbilt University Medical Center</p>
               </Col>
               <Col md="6">
