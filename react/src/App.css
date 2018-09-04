@@ -190,8 +190,18 @@ h1, h2, h3, h4, h5, h6{
   height: 35px;
 }
 
-.home-card-title{
+.home-card-icon{
   margin-top: 1rem;
+}
+
+.home-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.home-card{
+  border: 2px solid rgba(0, 0, 0, 0.125)
 }
 
 .footer-img {
@@ -199,5 +209,11 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .explore-button {
+  margin-top: 3rem;
+}
+
+.home-description {
+  font-size: 1.5rem;
   margin-top: 1rem;
+  margin-bottom: 2rem;
 }

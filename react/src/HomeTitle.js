@@ -16,7 +16,7 @@ export default class HomeTitle extends React.Component {
         </Row>
         <Row>
           <Col md="12">
-            <p>{this.props.description}</p>
+            <p className='home-description'>{this.props.description}</p>
           </Col>
         </Row>
       </div>

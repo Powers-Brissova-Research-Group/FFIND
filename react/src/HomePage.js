@@ -35,27 +35,27 @@ export default class HomePage extends React.Component {
         </Row>
         <Row>
           <Col className="d-flex align-items-stretch" key="team" md="4" sm="12">
-            <Card>
-              <CardTitle className='home-card-title'><FontAwesomeIcon icon={faUsers} size="5x" /></CardTitle>
-              <CardSubtitle>TEAM</CardSubtitle>
+            <Card className='home-card'>
+              <CardTitle className='home-card-icon'><FontAwesomeIcon icon={faUsers} size="3x" /></CardTitle>
+              <CardSubtitle className='home-card-title'>TEAM</CardSubtitle>
               <CardBody>
                 Researchers at the University of Florida and Vanderbilt University, in collaboration with organizations around the country.
               </CardBody>
             </Card>
           </Col>
           <Col className="d-flex align-items-stretch" key="approach" md="4" sm="12">
-            <Card>
-              <CardTitle className='home-card-title'><FontAwesomeIcon icon={faVials} size="5x" /></CardTitle>
-              <CardSubtitle>APPROACH</CardSubtitle>
+            <Card className='home-card'>
+              <CardTitle className='home-card-icon'><FontAwesomeIcon icon={faVials} size="3x" /></CardTitle>
+              <CardSubtitle className='home-card-title'>APPROACH</CardSubtitle>
               <CardBody>
                 Perform immunohistochemical analysis of donor pancreata to obtain cross-sectional data of islet cell composition, mass, proliferation, innervation, and function
               </CardBody>
             </Card>
           </Col>
           <Col className="d-flex align-items-stretch" key="mission" md="4" sm="12">
-            <Card>
-              <CardTitle className='home-card-title'><FontAwesomeIcon icon={faFlask} size="5x" /></CardTitle>
-              <CardSubtitle>MISSION</CardSubtitle>
+            <Card className='home-card'>
+              <CardTitle className='home-card-icon'><FontAwesomeIcon icon={faFlask} size="3x" /></CardTitle>
+              <CardSubtitle className='home-card-title'>MISSION</CardSubtitle>
               <CardBody>
                 Enhance our knowledge of juvenile pancreatic development in an effort to understand the onset and progression of type 1 diabetes
               </CardBody>
