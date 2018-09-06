@@ -30,7 +30,7 @@ export default class ImageCard extends React.Component {
 
   componentDidMount() {
     // Load information about the image
-    fetch('http://dev-7-api-pancreatlas.app.vumc.org:8447/api/images/' + this.props.iid)
+    fetch('http://dev7-api-pancreatlas.app.vumc.org:8447/api/images/' + this.props.iid)
       .then(res => res.json())
       .then(result => {
         this.setState({

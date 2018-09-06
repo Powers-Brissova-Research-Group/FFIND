@@ -32,7 +32,7 @@ export default class ImageMatrix extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://dev-7-api-pancreatlas.app.vumc.org:8447/api/matrix/' + this.props.tag_1 + ',' + this.props.tag_2 + ',' + this.props.dsid)
+    fetch('http://dev7-api-pancreatlas.app.vumc.org:8447/api/matrix/' + this.props.tag_1 + ',' + this.props.tag_2 + ',' + this.props.dsid)
       .then(res => res.json())
       .then((result) => {
         let m = result['matrix']
@@ -42,7 +42,7 @@ export default class ImageMatrix extends React.Component {
           for (let tag_2 of Object.keys(m[tag_1])) {
             new_matrix[tag_1][tag_2] = []
             for (let img_id of m[tag_1][tag_2]) {
-              let url = 'http://dev-7-api-pancreatlas.app.vumc.org:8447/api/images/' + img_id
+              let url = 'http://dev7-api-pancreatlas.app.vumc.org:8447/api/images/' + img_id
               console.log(url)
               fetch(url)
                 .then(res => res.json())

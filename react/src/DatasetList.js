@@ -22,7 +22,7 @@ export default class DatasetList extends React.Component {
 
   componentDidMount() {
     // Get the list of all datasets from our API and store them in the current state
-    fetch('http://dev-7-api-pancreatlas.app.vumc.org:8447/api/datasets/')
+    fetch('http://dev7-api-pancreatlas.app.vumc.org:8447/api/datasets/')
       .then(res => res.json())
       .then(
         (result) => {
