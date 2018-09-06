@@ -42,7 +42,7 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://dev7-api-pancreatlas.app.vumc.org:8447//api/tagsets/')
+    fetch('http://dev7-api-pancreatlas.app.vumc.org:8447/api/tagsets/')
       .then(res => res.json())
       .then(
         (tresult) => {
