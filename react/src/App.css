@@ -201,19 +201,21 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .home-card{
-  border: 2px solid rgba(0, 0, 0, 0.125)
+  border: 2px solid rgba(0, 0, 0, 0.125);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .footer-img {
-  height: 175px;
+  max-width: 400px;
 }
 
 .explore-button {
-  margin-top: 3rem;
+  margin-top: 2.5rem;
 }
 
 .home-description {
   font-size: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }

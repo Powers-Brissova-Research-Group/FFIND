@@ -11,7 +11,7 @@ export default class HomeTitle extends React.Component {
       <div className="home-title">
         <Row>
           <Col md="12">
-            <img className="logo-img" src={Logo} alt="Logo" />
+            <img className="img-fluid" src={Logo} alt="Logo" />
           </Col>
         </Row>
         <Row>
