@@ -42,7 +42,7 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://pancreapi/api/tagsets/')
+    fetch('http://dev-7-api-pancreatlas.app.vumc.org:8447/api/tagsets/')
       .then(res => res.json())
       .then(
         (tresult) => {
@@ -56,7 +56,7 @@ export default class ImageGrid extends React.Component {
               }
             }
           }
-          fetch('http://pancreapi/api/datasets/' + this.props.did + '/get-images')
+          fetch('http://dev-7-api-pancreatlas.app.vumc.org:8447/api/datasets/' + this.props.did + '/get-images')
             .then(res => res.json())
             .then(
               (result) => {

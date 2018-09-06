@@ -23,7 +23,7 @@ export default class ImageDetail extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://pancreapi/api/images/' + this.props.match.params.iid)
+    fetch('http://dev-7-api-pancreatlas.app.vumc.org:8447/api/images/' + this.props.match.params.iid)
       .then(res => res.json())
       .then(
         (result) => {
