@@ -1,5 +1,10 @@
 # pancreasatlas
 
+## Installation
+1. Clone the repository and switch to the development branch
+2. `cd` into the `pancreatlas` directory
+3. Follow below steps for getting api and front end set up
+
 ##  Development Branch Overview:
 
 The `/api` directory contains the django files. Here's how to get that set up:
@@ -14,6 +19,8 @@ The `/react` directory contains the react site. To get that running:
 1. `cd` into the `/react` directory
 2. Run `npm install`
 3. Run `npm run build`
+
+Hopefully you can now navigate to this site via the browser
 
 ## Potential Problems:
 
