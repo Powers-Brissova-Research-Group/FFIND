@@ -5,7 +5,7 @@ import {
   Button
 } from 'reactstrap'
 import FilterSet from './FilterSet'
-
+import AgeFilterSet from './AgeFilterSet'
 
 import Error from './Error'
 
@@ -69,7 +69,7 @@ export default class FilterList extends React.Component {
       // Go through and remove the tags that match no images
       for (let i of Object.keys(actual_tags)) {
         for (let key of Object.keys(actual_tags[i].tags)) {
-          if (actual_tags[i].tags[key] === 0) {
+          if (actual_tags[i].tags[key] === 0 && actual_tags[i].set_name !== 'AGE') {
             delete actual_tags[i].tags[key]
           }
         }
@@ -90,8 +90,9 @@ export default class FilterList extends React.Component {
             //       <FilterItem key={tag} filterName={tag} filterQty={this.props.tags[key]['tags'][tag]} callback={() => this.setFilters(this.props.tags[key]['set_name'], tag)} />
             //     ))}
             //   </div>
-            // </Collapse>
+            // </Collapse>            
           ))}
+          <AgeFilterSet />
           <Row>
             <Col className='text-center' md="12">
               <Button className='filter-button text-center' color="danger" onClick={() => this.props.callback({})}>Clear</Button>
