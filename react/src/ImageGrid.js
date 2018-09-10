@@ -206,7 +206,7 @@ export default class ImageGrid extends React.Component {
                   <Row key={idx} className="image-row">
                     {item.map((image, idx) =>
                       <Col key={idx} md="3">
-                        <ImageCard key={image} iid={image} tpath={'./../data/154/did/261/thumbs/' + image + '.jpg'} />
+                        <ImageCard key={image} iid={image} tpath={'./assets/thumbs/' + image + '.jpg'} />
                       </Col>
                     )}
                   </Row>
