@@ -10,7 +10,6 @@ def save_datasets():
         ids = {}
         dset = api.get_dataset_images(did)
         images = dset.imgs
-        print images
         f = open(fname, 'w')
         for image in images:
             ids[int(image.id)] = [tag.tname for tag in image.get_tags()]
@@ -29,7 +28,7 @@ def save_index():
     f.close
     
 def main():
-    save_index()
+    save_datasets()
 
 if __name__=='__main__':
     main()
