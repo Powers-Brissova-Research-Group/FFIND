@@ -13,7 +13,13 @@ export default class AgeFilterSet extends React.Component {
   constructor(props) {
     super(props)
     this.findAgeGroup = this.findAgeGroup.bind(this);
-    this.createFilters = this.createFilters.bind(this)
+    // this.createFilters = this.createFilters.bind(this)
+    this.updateFilters = this.updateFilters.bind(this)
+    this.toggleGroup = this.toggleGroup.bind(this)
+    this.state = {
+      ageFilters: ['G8w', 'G12w', 'G12.3w', 'G15w', 'G15.5w', 'G17w', 'G17.3w', 'G18w', 'G32w', 'G33w', 'G33.4w+4d', 'G37w', 'G39.9w', 'G41w', '1d', '5d', '2mo', '3mo', '10mo', '20mo', '4y', '5y', '10y']
+    }
+    this.allFilters = ['G8w', 'G12w', 'G12.3w', 'G15w', 'G15.5w', 'G17w', 'G17.3w', 'G18w', 'G32w', 'G33w', 'G33.4w+4d', 'G37w', 'G39.9w', 'G41w', '1d', '5d', '2mo', '3mo', '10mo', '20mo', '4y', '5y', '10y']
     this.AgeGroups = {
       GESTATIONAL: 0,
       NEONATAL: 1,
@@ -120,19 +126,34 @@ export default class AgeFilterSet extends React.Component {
     }
   }
 
-  createFilters(e){
-    console.log(e)
+  toggleGroup(evt, ages){
+    let checked = evt.target.checked
+    let newAges = null
+    if (checked){
+      let nonAdded = ages.filter(age => this.state.ageFilters.indexOf(age) === -1)
+      newAges = this.state.ageFilters.concat(nonAdded)
+    } else {
+      newAges = this.state.ageFilters.filter(age => ages.indexOf(age) === -1)
+    }
+    // let newAges = this.state.ages.filter(age => group.indexOf(age) === -1)
+    this.updateFilters(newAges)
+  }
+
+  updateFilters(ages) {
+    this.setState({ ageFilters: ages })
+    this.props.callback('AGE', ages)
   }
 
   render() {
-    let ages = ['G7w', 'G32w', 'G18.3w', 'G33w', 'G33.1w+4d', '8d', '5w', '18w', '30d', '1mo', '4mo', '22.3mo', '1y', '3y', '5y', '10y', '12y']
+    // let ages = ['G8w', 'G12w', 'G12.3w', 'G15w', 'G15.5w', 'G17w', 'G17.3w', 'G18w', 'G32w', 'G33w', 'G33.4w+4d', 'G37w', 'G39.9w', 'G41w', '1d', '5d', '2mo', '3mo', '10mo', '20mo', '4y', '5y', '10y']
+
     let ageGroups = {
       gestational: [],
       neonatal: [],
       infancy: [],
       childhood: []
     }
-    for (let age of ages) {
+    for (let age of this.allFilters) {
       let grp = this.findAgeGroup(age)
       switch (grp) {
         case 0:
@@ -154,20 +175,19 @@ export default class AgeFilterSet extends React.Component {
     for (let key of Object.keys(ageGroups)) {
       ageGroups[key].sort(this.compareAges)
     }
-    console.log(Object.keys(ageGroups))
     return (
       <div className='age-filter'>
         {Object.keys(ageGroups).map(key => (
-          <div className='group-filter'>
+          <div className='group-filter' key={key}>
             <Row>
               <Col md="9">
-                <h3>{key}</h3>
+                <h5>{key.charAt(0).toUpperCase() + key.slice(1)}</h5>
               </Col>
               <Col md="3">
-                <Input type="checkbox" />
+                <Input type="checkbox" defaultChecked={true} onChange={evt => this.toggleGroup(evt, ageGroups[key])} />
               </Col>
             </Row>
-            <AgeFilterItem ages={ageGroups[key]} />
+            <AgeFilterItem ages={ageGroups[key]} group={key} callback={this.updateFilters} allFilters={this.allFilters} currentFilters={this.state.ageFilters} />
           </div>
         ))}
       </div>

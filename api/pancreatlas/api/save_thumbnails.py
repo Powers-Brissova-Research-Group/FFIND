@@ -35,13 +35,16 @@ def get_size(iid, session):
     url = 'https://omero.app.vumc.org/api/v0/m/images/' + iid
     r = session.request('GET', url)
     idata = json.loads(r.text)
-    return (int(int(idata['data']['Pixels']['SizeX']) / 2), int(int(idata['data']['Pixels']['SizeY']) / 2), 500, 500)
+    if 'data' in idata:
+        return (int(int(idata['data']['Pixels']['SizeX']) / 2), int(int(idata['data']['Pixels']['SizeY']) / 2), 500, 500)
+    else:
+        return (0, 0, 500, 500)
 
 def save_thumbnail(iid, roi, session):
     url = 'https://omero.app.vumc.org/webgateway/render_image_region/%s/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&region=%s,%s,%s,%s' % (
         iid, roi[0], roi[1], roi[2], roi[3])
 
-    fpath = 'api/pancreatlas/assets/new_thumbnails/%s.jpg' % (iid, )
+    fpath = 'react/src/assets/thumbs/%s.jpg' % (iid, )
     f = open(fpath, 'w')
     r = session.get(url, stream=True)
     if r.status_code == 200:

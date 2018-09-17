@@ -40,18 +40,22 @@ export default class FilterList extends React.Component {
 
     // First check to make sure that we have tags from the current tagset defined
     if (tagList[tagset] !== undefined) {
-      let idx = tagList[tagset].indexOf(newTag)
-
-      // If the tagset is already selected, remove it from the set of selected tags
-      if (idx >= 0) {
-        tagList[tagset].splice(idx, 1)
-        // If the list of selected tags from the tagset is now empty, remove the key from the tagList object
-        if (tagList[tagset].length <= 0) {
-          delete tagList[tagset]
-        }
+      if(tagset === 'AGE'){
+        tagList[tagset] = newTag
       } else {
-        // If the tag is not in our list, add it
-        tagList[tagset].push(newTag)
+        let idx = tagList[tagset].indexOf(newTag)
+
+        // If the tagset is already selected, remove it from the set of selected tags
+        if (idx >= 0) {
+          tagList[tagset].splice(idx, 1)
+          // If the list of selected tags from the tagset is now empty, remove the key from the tagList object
+          if (tagList[tagset].length <= 0) {
+            delete tagList[tagset]
+          }
+        } else {
+          // If the tag is not in our list, add it
+          tagList[tagset].push(newTag)
+        }  
       }
       this.setState({
         filters: tagList
@@ -60,6 +64,7 @@ export default class FilterList extends React.Component {
       // If we don't have anything from the current tagset, add that key to the object and add the tag
       tagList[tagset] = [newTag]
     }
+    console.log(this.state.filters)
     this.props.callback(this.state.filters)
   }
 
@@ -81,8 +86,9 @@ export default class FilterList extends React.Component {
       return (
         <div className="filter-list">
           <h3><strong>Filters:</strong></h3>
+          <AgeFilterSet callback={this.setFilters} />
           {Object.keys(this.props.tags).map(key => (
-            <FilterSet setName={this.props.tags[key]['set_name']} tags={this.props.tags[key]['tags']} callback={this.setFilters}/>
+            <FilterSet setName={this.props.tags[key]['set_name']} tags={this.props.tags[key]['tags']} callback={this.setFilters} key={key}/>
             // <Collapse isOpened={true}>
             //   <div className='tagset' key={key}>
             //     <h4>{this.props.tags[key]['set_name']}</h4>
@@ -92,7 +98,6 @@ export default class FilterList extends React.Component {
             //   </div>
             // </Collapse>            
           ))}
-          <AgeFilterSet />
           <Row>
             <Col className='text-center' md="12">
               <Button className='filter-button text-center' color="danger" onClick={() => this.props.callback({})}>Clear</Button>
