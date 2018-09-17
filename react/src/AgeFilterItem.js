@@ -16,7 +16,12 @@ export default class AgeFilterItem extends React.Component {
   constructor(props){
     super(props)
     this.onSliderChange = this.onSliderChange.bind(this)
+    this.updateMarks = this.updateMarks.bind(this)
     this.leftMark = 0;
+    this.state = {
+      min: 0,
+      max: this.props.ages.length - 1
+    }
   }
 
   onSliderChange(args){
@@ -33,6 +38,13 @@ export default class AgeFilterItem extends React.Component {
     }
   }
 
+  updateMarks(args){
+    this.setState({
+      min: args[0],
+      max: args[1]
+    })
+  }
+
   render(){
     // const Handle = Slider.Handle;
     // const handle = (props) => {
@@ -46,7 +58,7 @@ export default class AgeFilterItem extends React.Component {
     return(
       <Row className="age-slider">
         <Col md="12">
-          <Range min={0} max={this.props.ages.length - 1} defaultValue={[0, this.props.ages.length - 1]} dots={true} onAfterChange={this.onSliderChange} />
+          <Range min={0} max={this.props.ages.length - 1} defaultValue={[0, this.props.ages.length - 1]} marks={{[this.state.min]: this.props.ages[this.state.min], [this.state.max]: this.props.ages[this.state.max]}} dots={true} onChange={this.updateMarks} onAfterChange={this.onSliderChange} />
         </Col>
       </Row>
     )
