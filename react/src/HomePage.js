@@ -34,6 +34,11 @@ export default class HomePage extends React.Component {
           </Col>
         </Row>
         <Row>
+          <Col md="12" sm="12">
+            <Link to="/dataset/261/"><Button size="lg" className="explore-button" color="success">Explore Our Collections</Button></Link>
+          </Col>
+        </Row>
+        <Row>
           <Col className="d-flex align-items-stretch" key="team" md="4" sm="12">
             <Card className='home-card'>
               <CardTitle className='home-card-icon'><FontAwesomeIcon icon={faUsers} size="3x" /></CardTitle>
@@ -60,11 +65,6 @@ export default class HomePage extends React.Component {
                 Enhance our knowledge of juvenile pancreatic development in an effort to understand the onset and progression of type 1 diabetes
               </CardBody>
             </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col md="12" sm="12">
-            <Link to="/dataset/261/"><Button size="lg" className="explore-button" color="success">Explore Our Collections</Button></Link>
           </Col>
         </Row>
       </div>

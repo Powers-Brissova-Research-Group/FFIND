@@ -16,8 +16,6 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
 import FilterItem from './FilterItem'
 
-import AgeFilterSet from './AgeFilterSet'
-
 export default class FilterSet extends React.Component {
   constructor(props) {
     super(props)

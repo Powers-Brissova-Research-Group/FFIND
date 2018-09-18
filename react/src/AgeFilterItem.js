@@ -9,8 +9,6 @@ import {
 
 import { Range } from 'rc-slider'
 
-import Tooltip from 'rc-tooltip'
-
 export default class AgeFilterItem extends React.Component {
 
   constructor(props){
