@@ -34,7 +34,7 @@ export default class FilterSet extends React.Component {
             <Col md="8">
               <h4>{this.props.setName}</h4>
             </Col>
-            <Col md="4">
+            <Col md="4" className='text-right'>
               <FontAwesomeIcon icon={faAngleRight} className={this.state.open ? 'collapse-button collapse-button-open' : 'collapse-button collapse-button-closed'} onClick={() => this.setState({ open: !this.state.open })} />
             </Col>
           </Row>

@@ -204,7 +204,7 @@ export default class AgeFilterSet extends React.Component {
           <Col md="8">
             <h4>AGE</h4>
           </Col>
-          <Col md="4">
+          <Col className='text-right' md="4">
             <FontAwesomeIcon icon={faAngleRight} className={this.state.open ? 'collapse-button collapse-button-open' : 'collapse-button collapse-button-closed'} onClick={() => this.setState({ open: !this.state.open })} />
           </Col>
         </Row>
@@ -215,7 +215,7 @@ export default class AgeFilterSet extends React.Component {
                 <Col md="9">
                   <h5>{key.charAt(0).toUpperCase() + key.slice(1)}</h5>
                 </Col>
-                <Col md="3">
+                <Col className='text-right' md="3">
                   <Input type="checkbox" defaultChecked={true} onChange={evt => this.toggleGroup(evt, ageGroups[key], key)} />
                 </Col>
               </Row>
