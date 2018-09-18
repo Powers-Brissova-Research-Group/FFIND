@@ -15,7 +15,7 @@ export default class Footer extends React.Component {
             <Row>
               <Col md="6">
                 <p>This project is made possible through the generous support of the Leona M. and Harry B. Helmsley Charitable Trust</p>
-                <img className="img-fluid" src={HelmsleyLogo} alt="Helmsley Logo" />
+                <img className="img-fluid footer-img" src={HelmsleyLogo} alt="Helmsley Logo" />
                 <p>Made with &hearts; in the Vanderbilt University Medical Center</p>
               </Col>
               <Col md="6">
