@@ -5,7 +5,19 @@ import {
   Input
 } from 'reactstrap'
 
+import {
+  Collapse
+} from 'react-collapse'
+
+
 import AgeFilterItem from './AgeFilterItem'
+
+import {
+  FontAwesomeIcon
+} from '@fortawesome/react-fontawesome'
+
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+
 
 
 export default class AgeFilterSet extends React.Component {
@@ -17,9 +29,14 @@ export default class AgeFilterSet extends React.Component {
     this.updateFilters = this.updateFilters.bind(this)
     this.toggleGroup = this.toggleGroup.bind(this)
     this.state = {
-      ageFilters: ['G8w', 'G12w', 'G12.3w', 'G15w', 'G15.5w', 'G17w', 'G17.3w', 'G18w', 'G32w', 'G33w', 'G33.4w+4d', 'G37w', 'G39.9w', 'G41w', '1d', '5d', '2mo', '3mo', '10mo', '20mo', '4y', '5y', '10y']
+      open: true,
+      ageFilters: this.props.ages,
+      gestational: false,
+      neonatal: false,
+      infancy: false,
+      childhood: false
     }
-    this.allFilters = ['G8w', 'G12w', 'G12.3w', 'G15w', 'G15.5w', 'G17w', 'G17.3w', 'G18w', 'G32w', 'G33w', 'G33.4w+4d', 'G37w', 'G39.9w', 'G41w', '1d', '5d', '2mo', '3mo', '10mo', '20mo', '4y', '5y', '10y']
+    this.allFilters = this.props.ages
     this.AgeGroups = {
       GESTATIONAL: 0,
       NEONATAL: 1,
@@ -126,14 +143,20 @@ export default class AgeFilterSet extends React.Component {
     }
   }
 
-  toggleGroup(evt, ages) {
+  toggleGroup(evt, ages, key) {
     let checked = evt.target.checked
     let newAges = null
     if (checked) {
       let nonAdded = ages.filter(age => this.state.ageFilters.indexOf(age) === -1)
       newAges = this.state.ageFilters.concat(nonAdded)
+      this.setState({
+        [key]: false
+      })
     } else {
       newAges = this.state.ageFilters.filter(age => ages.indexOf(age) === -1)
+      this.setState({
+        [key]: true
+      })
     }
     // let newAges = this.state.ages.filter(age => group.indexOf(age) === -1)
     this.updateFilters(newAges)
@@ -178,23 +201,29 @@ export default class AgeFilterSet extends React.Component {
     return (
       <div className='age-filter'>
         <Row>
-          <Col md="12">
+          <Col md="8">
             <h4>AGE</h4>
           </Col>
+          <Col md="4">
+            <FontAwesomeIcon icon={faAngleRight} className={this.state.open ? 'collapse-button collapse-button-open' : 'collapse-button collapse-button-closed'} onClick={() => this.setState({ open: !this.state.open })} />
+          </Col>
         </Row>
-        {Object.keys(ageGroups).map(key => (
-          <div className='group-filter' key={key}>
-            <Row>
-              <Col md="9">
-                <h5>{key.charAt(0).toUpperCase() + key.slice(1)}</h5>
-              </Col>
-              <Col md="3">
-                <Input type="checkbox" defaultChecked={true} onChange={evt => this.toggleGroup(evt, ageGroups[key])} />
-              </Col>
-            </Row>
-            <AgeFilterItem ages={ageGroups[key]} group={key} callback={this.updateFilters} allFilters={this.allFilters} currentFilters={this.state.ageFilters} />
-          </div>
-        ))}
+        <Collapse isOpened={this.state.open}>
+          {Object.keys(ageGroups).map(key => (
+            <div className='group-filter' key={key}>
+              <Row>
+                <Col md="9">
+                  <h5>{key.charAt(0).toUpperCase() + key.slice(1)}</h5>
+                </Col>
+                <Col md="3">
+                  <Input type="checkbox" defaultChecked={true} onChange={evt => this.toggleGroup(evt, ageGroups[key], key)} />
+                </Col>
+              </Row>
+              <AgeFilterItem ages={ageGroups[key]} group={key} callback={this.updateFilters} allFilters={this.allFilters} currentFilters={this.state.ageFilters} hidden={this.state[key]} />
+            </div>
+          ))}
+        </Collapse>
+
       </div>
     )
   }

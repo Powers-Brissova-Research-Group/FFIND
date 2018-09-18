@@ -69,7 +69,6 @@ export default class FilterList extends React.Component {
       } else {
         tagList[tagset] = [newTag]
       }
-
     }
     console.log(this.state.filters)
     this.props.callback(this.state.filters)
@@ -93,9 +92,12 @@ export default class FilterList extends React.Component {
       return (
         <div className="filter-list">
           <h3><strong>Filters:</strong></h3>
-          <AgeFilterSet callback={this.setFilters} />
-          {Object.keys(this.props.tags).map(key => (
-            <FilterSet setName={this.props.tags[key]['set_name']} tags={this.props.tags[key]['tags']} callback={this.setFilters} key={key} />
+          {Object.keys(this.props.tags).map(key => {
+            if(this.props.tags[key]['set_name'] === 'AGE'){
+              return (<AgeFilterSet callback={this.setFilters} key={key} ages={Object.keys(this.props.tags[key]['tags'])} /> )
+            } else {
+              return (<FilterSet setName={this.props.tags[key]['set_name']} tags={this.props.tags[key]['tags']} callback={this.setFilters} key={key} />)
+            }
             // <Collapse isOpened={true}>
             //   <div className='tagset' key={key}>
             //     <h4>{this.props.tags[key]['set_name']}</h4>
@@ -104,7 +106,7 @@ export default class FilterList extends React.Component {
             //     ))}
             //   </div>
             // </Collapse>            
-          ))}
+          })}
           <Row>
             <Col className='text-center' md="12">
               <Button className='filter-button text-center' color="danger" onClick={() => this.props.callback({})}>Clear</Button>

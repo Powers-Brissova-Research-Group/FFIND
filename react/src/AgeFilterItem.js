@@ -55,12 +55,16 @@ export default class AgeFilterItem extends React.Component {
     //     </Tooltip>        
     //   )
     // }
-    return(
-      <Row className="age-slider">
-        <Col md="12">
-          <Range min={0} max={this.props.ages.length - 1} defaultValue={[0, this.props.ages.length - 1]} marks={{[this.state.min]: this.props.ages[this.state.min], [this.state.max]: this.props.ages[this.state.max]}} dots={true} onChange={this.updateMarks} onAfterChange={this.onSliderChange} />
-        </Col>
-      </Row>
-    )
+    if(this.props.hidden){
+      return null
+    } else {
+      return(
+        <Row className="age-slider">
+          <Col md="12">
+            <Range min={0} max={this.props.ages.length - 1} defaultValue={[0, this.props.ages.length - 1]} marks={{[this.state.min]: this.props.ages[this.state.min], [this.state.max]: this.props.ages[this.state.max]}} dots={true} onChange={this.updateMarks} onAfterChange={this.onSliderChange} />
+          </Col>
+        </Row>
+      )
+    }
   }
 }
