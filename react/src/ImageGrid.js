@@ -146,10 +146,11 @@ export default class ImageGrid extends React.Component {
       })
     } else {
       let tmp = JSON.parse(JSON.stringify(Object.keys(this.state.ids)))
-      for (let id of Object.keys(this.state.ids)) {
+      let allIds = JSON.parse(JSON.stringify(this.state.ids))
+      for (let id of Object.keys(allIds)) {
         let match = true
         for (let keyset of Object.keys(tagList)) {
-          let intersection = tagList[keyset].filter(tag => -1 !== this.state.ids[id].indexOf(tag))
+          let intersection = tagList[keyset].filter(tag => -1 !== allIds[id].indexOf(tag))
           if (intersection.length <= 0) {
             match = false
             break

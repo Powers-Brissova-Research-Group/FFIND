@@ -40,7 +40,7 @@ export default class FilterList extends React.Component {
 
     // First check to make sure that we have tags from the current tagset defined
     if (tagList[tagset] !== undefined) {
-      if(tagset === 'AGE'){
+      if (tagset === 'AGE') {
         tagList[tagset] = newTag
       } else {
         let idx = tagList[tagset].indexOf(newTag)
@@ -55,14 +55,21 @@ export default class FilterList extends React.Component {
         } else {
           // If the tag is not in our list, add it
           tagList[tagset].push(newTag)
-        }  
+        }
       }
       this.setState({
         filters: tagList
       })
     } else {
       // If we don't have anything from the current tagset, add that key to the object and add the tag
-      tagList[tagset] = [newTag]
+
+      // Special case for age -- the tags already come in as an array, so no need to create a new one
+      if (tagset === 'AGE') {
+        tagList[tagset] = newTag
+      } else {
+        tagList[tagset] = [newTag]
+      }
+
     }
     console.log(this.state.filters)
     this.props.callback(this.state.filters)
@@ -88,7 +95,7 @@ export default class FilterList extends React.Component {
           <h3><strong>Filters:</strong></h3>
           <AgeFilterSet callback={this.setFilters} />
           {Object.keys(this.props.tags).map(key => (
-            <FilterSet setName={this.props.tags[key]['set_name']} tags={this.props.tags[key]['tags']} callback={this.setFilters} key={key}/>
+            <FilterSet setName={this.props.tags[key]['set_name']} tags={this.props.tags[key]['tags']} callback={this.setFilters} key={key} />
             // <Collapse isOpened={true}>
             //   <div className='tagset' key={key}>
             //     <h4>{this.props.tags[key]['set_name']}</h4>

@@ -126,10 +126,10 @@ export default class AgeFilterSet extends React.Component {
     }
   }
 
-  toggleGroup(evt, ages){
+  toggleGroup(evt, ages) {
     let checked = evt.target.checked
     let newAges = null
-    if (checked){
+    if (checked) {
       let nonAdded = ages.filter(age => this.state.ageFilters.indexOf(age) === -1)
       newAges = this.state.ageFilters.concat(nonAdded)
     } else {
@@ -177,6 +177,11 @@ export default class AgeFilterSet extends React.Component {
     }
     return (
       <div className='age-filter'>
+        <Row>
+          <Col md="12">
+            <h4>AGE</h4>
+          </Col>
+        </Row>
         {Object.keys(ageGroups).map(key => (
           <div className='group-filter' key={key}>
             <Row>
