@@ -3,6 +3,7 @@ import omeropy.omero
 from omeropy.omero.gateway import BlitzGateway
 from helper_classes import Image, Tag, Dataset
 
+import os
 from os.path import expanduser
 import pprint
 import json
@@ -61,7 +62,7 @@ def get_images_from_dataset(dsid):
     success = conn.keepAlive()
     if not success:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    f = open('%s.txt' % (dsid, ), 'r')
+    f = open('/var/www/pancreatlas/dev/dev7/pancreatlas/api/pancreatlas/api/%s.txt' % (dsid, ), 'r')
     imgs = json.loads(f.readline())
     iids = imgs.keys()
     # children = list(dset.wrapper.listChildren())
@@ -272,7 +273,8 @@ def generate_image_matrix_from_ds(tagset_a, tagset_b, dsid):
         for t in group_b:
             matrix[str(tag)][str(t)] = []
 
-    f = open('api/' + str(dsid) + '.txt', 'r')
+	dir = os.getcwd()
+	f = open('/var/www/pancreatlas/dev/dev7/pancreatlas/api/pancreatlas/api/' + str(dsid) + '.txt', 'r')
     json_str = f.readline()
 
     imgs = json.loads(json_str)
