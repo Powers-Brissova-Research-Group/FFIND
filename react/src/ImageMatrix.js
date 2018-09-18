@@ -43,13 +43,13 @@ export default class ImageMatrix extends React.Component {
             new_matrix[tag_1][tag_2] = []
             for (let img_id of m[tag_1][tag_2]) {
               let url = 'http://dev7-api-pancreatlas.app.vumc.org:8447/api/images/' + img_id
-              console.log(url)
               fetch(url)
                 .then(res => res.json())
                 .then(result => {
                   new_matrix[tag_1][tag_2].push(result)
                   this.setState({
-                    matrix: new_matrix
+                    matrix: new_matrix,
+                    loaded: true                    
                   })
                 })
                 .catch(err => {
@@ -62,10 +62,10 @@ export default class ImageMatrix extends React.Component {
           }
         }
         this.setState({
-          loaded: true,
+          // loaded: true,
           tag_a: result['tag_a'],
           tag_b: result['tag_b'],
-          matrix: result['matrix']
+          // matrix: result['matrix']
         })
       })
       .catch(err => {
@@ -103,7 +103,7 @@ export default class ImageMatrix extends React.Component {
                 {Object.keys(this.state.matrix).map(row => (
                   <tr key={row}><td><strong>{row}</strong></td>{Object.keys(this.state.matrix[row]).map(col => (
                     <td key={row + ', ' + col}>
-                      {this.state.matrix[row][col][0] !== undefined && <img onClick={() => this.toggle(this.state.matrix[row][col])} className='matrix-thumb' src={'http://127.0.0.1:8000/' + this.state.matrix[row][col][0].thumbpath} alt="" />}
+                      {this.state.matrix[row][col][0] !== undefined && <img onClick={() => this.toggle(this.state.matrix[row][col])} className='matrix-thumb' src={require(`./assets/thumbs/${this.state.matrix[row][col][0].iid}.jpg`)} alt="" />}
                       {this.state.matrix[row][col][0] === undefined && <p>No matching images</p>}
                     </td>
                   ))}</tr>
@@ -125,7 +125,7 @@ export default class ImageMatrix extends React.Component {
                 <tbody>
                   {this.state.selected_set.map(img => (
                     <tr>
-                      <td><img className='modal-thumb' src={'http://127.0.0.1:8000/' + img.thumbpath} alt="" /></td>
+                      <td><img className='modal-thumb' src={require(`./assets/thumbs/${img.iid}.jpg`)} alt="" /></td>
                       <td><p>{img.iname}</p></td>
                       <td><Link to={'/image/' + img.iid} target='_blank'><Button color="primary">View</Button></Link></td>
                     </tr>
