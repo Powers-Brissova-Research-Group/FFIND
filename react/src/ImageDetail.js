@@ -54,7 +54,7 @@ export default class ImageDetail extends React.Component {
               <Col md="8">
                 <Row>
                   <Col md="12">
-                    <img src={"http://127.0.0.1:8000/" + detailpath} alt="" />
+                    <img src={require(`./assets/large_thumbs/${this.props.match.params.iid}.jpg`)} alt="Image Detail View" />
                   </Col>
                 </Row>
               </Col>
