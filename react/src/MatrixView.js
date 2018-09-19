@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   Button,
+  Container,
   Form,
   FormGroup,
   Label,
@@ -81,25 +82,29 @@ export default class MatrixView extends React.Component {
       if (!this.state.showMatrix) {
         return (
           <div className='matrix-view'> 
+            <h1>Matrix View</h1>
+            <p>Select two dimensions to generate a matrix of images based on these filters.</p>
             <div className='grid-select'>
-              <Table>
-                <thead>
-                  <tr>
-                    <td></td>
-                  {this.state.tagsets.map(ts => (
-                    <td><strong>{ts.set_name}</strong></td>
-                  ))}
-                  </tr>
-                </thead>
-                {this.state.tagsets.map(tagset1 => (
-                  <tr>
-                    <td><strong>{tagset1.set_name}</strong></td>
-                    {this.state.tagsets.map(tagset2 => (
-                      <td><Button color="link" onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>
+              <Container fluid>
+                <Table className='matrix-table'>
+                  <thead>
+                    <tr className='row'>
+                      <td className='col-md-2'></td>
+                    {this.state.tagsets.map(ts => (
+                      <td className='col-md-2'><strong>{ts.set_name}</strong></td>
                     ))}
-                  </tr>
-                ))}
-              </Table>
+                    </tr>
+                  </thead>
+                  {this.state.tagsets.map(tagset1 => (
+                    <tr className='row'>
+                      <td className='col-md-2'><strong>{tagset1.set_name}</strong></td>
+                      {this.state.tagsets.map(tagset2 => (
+                        <td className='col-md-2'><Button className='matrix-select-button' color="link" onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>
+                      ))}
+                    </tr>
+                  ))}
+                </Table>
+              </Container>
             </div>
             {/* <Form>
               <FormGroup>
