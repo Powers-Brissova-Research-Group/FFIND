@@ -52,7 +52,21 @@ export default class DatasetList extends React.Component {
             </thead>
             <tbody>
               {this.state.datasets.map(item => (
-                <tr key={item.did}><td>{item.did}</td><td>{item.dsname}</td><td><ButtonGroup><Link to={'/matrixview/' + item.did}><Button className='ds-list-left-button' outline color="success">Create Matrix</Button></Link><Link to={'/dataset/' + item.did}><Button>Open Dataset</Button></Link></ButtonGroup></td></tr>
+                <tr key={item.did}>
+                  <td>{item.did}</td>
+                  <td>{item.dsname}</td>
+                  <td>
+                    <Link to={{pathname: '/dataset/' + item.did, state: { browse: true }}}>
+                      <Button className='ds-list-left-button' color="primary">Browse By Age</Button>
+                    </Link>
+                    <Link to={'/matrixview/' + item.did}>
+                      <Button outline color="success">Create Matrix</Button>
+                    </Link>
+                    <Link to={{pathname: '/dataset/' + item.did, state: {browse: false }}}>
+                      <Button  className='ds-list-right-button'>Open Dataset</Button>
+                    </Link>
+                  </td>
+                </tr>
               ))}
             </tbody>
           </Table>

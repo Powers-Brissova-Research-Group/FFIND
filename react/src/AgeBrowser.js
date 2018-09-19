@@ -13,7 +13,9 @@ export default class AgeBrowser extends React.Component {
     super(props)
     this.state = {
       open: false,
-      tags: undefined
+      tags: undefined,
+      groupName: null,
+      group: 4
     }
     this.show = this.show.bind(this)
   }
@@ -50,30 +52,34 @@ export default class AgeBrowser extends React.Component {
   }
 
   render() {
-    if (!this.state.open) {
+    if (!this.state.open && this.props.location.state.browse) {
       return (
         <div className='age-browser'>
-          <Container>
+          <Container className="age-group-list">
             <Row>
               <Col md="12">
                 <h1>Browse By Age</h1>
               </Col>
             </Row>
             <Row>
-              <Col md="2">
+              <Col md="6">
                 <Button color="primary" size="lg" block onClick={() => this.show(0)}>Gestational</Button>
               </Col>
-              <Col md="2">
+              <Col md="6">
                 <Button color="primary" size="lg" block onClick={() => this.show(1)}>Neonatal</Button>
               </Col>
-              <Col md="2">
+            </Row>
+            <Row>
+              <Col md="6">
                 <Button color="primary" size="lg" block onClick={() => this.show(2)}>Infant</Button>
               </Col>
-              <Col md="2">
+              <Col md="6">
                 <Button color="primary" size="lg" block onClick={() => this.show(3)}>Childhood</Button>
               </Col>
-              <Col md="2">
-                <Button color="primary" size="lg" block onClick={() => this.show(4)}>All</Button>
+            </Row>
+            <Row>
+              <Col md="12">
+                <Button color="secondary" size="lg" block onClick={() => this.show(4)}>All</Button>
               </Col>
             </Row>
           </Container>
