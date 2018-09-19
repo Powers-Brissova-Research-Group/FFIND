@@ -5,7 +5,8 @@ import {
   FormGroup,
   Label,
   Input,
-  Progress
+  Progress,
+  Table
 } from 'reactstrap'
 import ImageMatrix from './ImageMatrix';
 
@@ -67,12 +68,40 @@ export default class MatrixView extends React.Component {
     })
   }
 
+  setMatrix(t1, t2){
+    this.setState({
+      tag1: t1,
+      tag2: t2,
+      showMatrix: true
+    })
+  }
+
   render() {
     if (this.state.loaded) {
       if (!this.state.showMatrix) {
         return (
-          <div className='matrix-view'>
-            <Form>
+          <div className='matrix-view'> 
+            <div className='grid-select'>
+              <Table>
+                <thead>
+                  <tr>
+                    <td></td>
+                  {this.state.tagsets.map(ts => (
+                    <td><strong>{ts.set_name}</strong></td>
+                  ))}
+                  </tr>
+                </thead>
+                {this.state.tagsets.map(tagset1 => (
+                  <tr>
+                    <td><strong>{tagset1.set_name}</strong></td>
+                    {this.state.tagsets.map(tagset2 => (
+                      <td><Button color="link" onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>
+                    ))}
+                  </tr>
+                ))}
+              </Table>
+            </div>
+            {/* <Form>
               <FormGroup>
                 <Label for="tag1">Choose the first tag</Label>
                 <Input type="select" name="tag_1" id="tag1" onChange={this.handleChange}>
@@ -90,7 +119,7 @@ export default class MatrixView extends React.Component {
                 </Input>
               </FormGroup>
               <Button onClick={this.showMatrix}>Generate Matrix</Button>
-            </Form>
+            </Form> */}
           </div>
         )
       } else {
