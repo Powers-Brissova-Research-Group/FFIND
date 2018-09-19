@@ -1,8 +1,7 @@
 import React from 'react'
 import {
   Table,
-  Button,
-  ButtonGroup
+  Button
 } from 'reactstrap'
 
 import {
