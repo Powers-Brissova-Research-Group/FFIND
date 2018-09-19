@@ -35,7 +35,7 @@ export default class HomePage extends React.Component {
         </Row>
         <Row>
           <Col md="12" sm="12">
-            <Link to="/dataset/261/"><Button size="lg" className="explore-button" color="success">Explore Our Collections</Button></Link>
+            <Link to="/dataset/"><Button size="lg" className="explore-button" color="success">Explore Our Collections</Button></Link>
           </Col>
         </Row>
         <Row>
