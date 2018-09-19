@@ -20,27 +20,32 @@ export default class AgeBrowser extends React.Component {
 
   show(ages) {
     let filters = {AGE: null}
+    let gname = null
     switch(ages){
       case 0:
-        console.log('Gestational')
+        gname = 'GESTATIONAL'
         filters['AGE'] = ["G12w", "G12.3w", "G15w", "G15.5w", "G17w", "G17.3w", "G18w", "G33w", "G34.4w+4d", "G37w", "G39.9w", "G41w"]
         break
       case 1:
+        gname = 'NEONATAL'
         filters['AGE'] = ["1d", "5d", "10mo", "2mo", "3mo"]
-        console.log('Neonatal')
         break
       case 2:
+        gname = 'INFANCY'
         filters['AGE'] = ["20mo", "10y", "4y", "5y"]
-        console.log('Infant')
         break
       case 3:
+        gname = 'CHILDHOOD'
+        break
       default:
-        filters = {}
-        console.log('All')
+        gname = null
+        break
     }
     this.setState({
       open: true,
-      tags: filters
+      group: ages,
+      groupName: gname,
+      tags: {}
     })
   }
 
@@ -55,17 +60,20 @@ export default class AgeBrowser extends React.Component {
               </Col>
             </Row>
             <Row>
-              <Col md="3">
+              <Col md="2">
                 <Button color="primary" size="lg" block onClick={() => this.show(0)}>Gestational</Button>
               </Col>
-              <Col md="3">
+              <Col md="2">
                 <Button color="primary" size="lg" block onClick={() => this.show(1)}>Neonatal</Button>
               </Col>
-              <Col md="3">
+              <Col md="2">
                 <Button color="primary" size="lg" block onClick={() => this.show(2)}>Infant</Button>
               </Col>
-              <Col md="3">
-                <Button color="primary" size="lg" block onClick={() => this.show(3)}>All</Button>
+              <Col md="2">
+                <Button color="primary" size="lg" block onClick={() => this.show(3)}>Childhood</Button>
+              </Col>
+              <Col md="2">
+                <Button color="primary" size="lg" block onClick={() => this.show(4)}>All</Button>
               </Col>
             </Row>
           </Container>
@@ -73,7 +81,7 @@ export default class AgeBrowser extends React.Component {
       )
     } else {
       return(
-        <ImageGrid filters={this.state.tags} did={this.props.match.params.did} />
+        <ImageGrid filters={{}} group={this.state.group } groupName={this.state.groupName} did={this.props.match.params.did} />
       )
     }
   }

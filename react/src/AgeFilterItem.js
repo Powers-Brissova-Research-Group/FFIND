@@ -22,6 +22,8 @@ export default class AgeFilterItem extends React.Component {
     }
   }
 
+
+
   onSliderChange(args){
     // console.log(this.props.ages.slice(args[0], args[1] + 1))
     if(this.props.currentFilters !== undefined){

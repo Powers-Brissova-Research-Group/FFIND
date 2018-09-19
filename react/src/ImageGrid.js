@@ -67,7 +67,7 @@ export default class ImageGrid extends React.Component {
                   page: 0,
                   tags: app_tags
                 });
-                this.filter(this.props.filters)
+                // this.filter(this.props.filters)
               })
             .catch(err => {
               console.log(err)
@@ -200,7 +200,7 @@ export default class ImageGrid extends React.Component {
           <Container>
             <Row>
               <Col md="2">
-                <FilterList tags={this.state.tags} filters={this.state.tags} callback={this.filter} />
+                <FilterList ageGroup={this.props.groupName} tags={this.state.tags} filters={this.state.tags} callback={this.filter} />
               </Col>
               <Col md="10">
                 {img_grid.map((item, idx) => (

@@ -31,10 +31,10 @@ export default class AgeFilterSet extends React.Component {
     this.state = {
       open: true,
       ageFilters: this.props.ages,
-      gestational: false,
-      neonatal: false,
-      infancy: false,
-      childhood: false
+      gestational: this.props.ageGroup !== null && this.props.ageGroup.toUpperCase() !== 'GESTATIONAL',
+      neonatal: this.props.ageGroup !== null && this.props.ageGroup.toUpperCase() !== 'NEONATAL',
+      infancy: this.props.ageGroup !== null && this.props.ageGroup.toUpperCase() !== 'INFANCY',
+      childhood: this.props.ageGroup !== null && this.props.ageGroup.toUpperCase() !== 'CHILDHOOD'
     }
     this.allFilters = this.props.ages
     this.AgeGroups = {
@@ -44,6 +44,7 @@ export default class AgeFilterSet extends React.Component {
       CHILDHOOD: 3,
       ADULT: 4
     };
+    this.initialized = false
   }
 
 
@@ -143,8 +144,8 @@ export default class AgeFilterSet extends React.Component {
     }
   }
 
-  toggleGroup(evt, ages, key) {
-    let checked = evt.target.checked
+  toggleGroup(checked, ages, key) {
+    // let checked = evt.target.checked
     let newAges = null
     if (checked) {
       let nonAdded = ages.filter(age => this.state.ageFilters.indexOf(age) === -1)
@@ -195,8 +196,17 @@ export default class AgeFilterSet extends React.Component {
           break
       }
     }
+    let activeFilters = []
     for (let key of Object.keys(ageGroups)) {
       ageGroups[key].sort(this.compareAges)
+      if (!this.state[key]){
+        activeFilters = activeFilters.concat(ageGroups[key])
+      }
+    }
+    if(!this.initialized){
+      this.updateFilters(activeFilters)
+      this.initialized = true
+      console.log('Initialized')
     }
     return (
       <div className='age-filter'>
@@ -216,7 +226,7 @@ export default class AgeFilterSet extends React.Component {
                   <h5>{key.charAt(0).toUpperCase() + key.slice(1)}</h5>
                 </Col>
                 <Col className='text-right' md="3">
-                  <Input type="checkbox" defaultChecked={true} onChange={evt => this.toggleGroup(evt, ageGroups[key], key)} />
+                  <Input type="checkbox" defaultChecked={this.props.ageGroup === null || this.props.ageGroup.toUpperCase() === key.toUpperCase()} onChange={evt => this.toggleGroup(evt.target.checked, ageGroups[key], key)} />
                 </Col>
               </Row>
               <AgeFilterItem ages={ageGroups[key]} group={key} callback={this.updateFilters} allFilters={this.allFilters} currentFilters={this.state.ageFilters} hidden={this.state[key]} />
