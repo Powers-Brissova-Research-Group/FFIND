@@ -249,3 +249,23 @@ h1, h2, h3, h4, h5, h6{
 .age-group-list > div {
   margin-top: 2.5rem;
 }
+
+.cy5 {
+  background-color: yellow;
+  color: black
+}
+
+.cy3 {
+  background-color: red;
+  color: black;
+}
+
+.cy2 {
+  background-color: green;
+  color: white
+}
+
+.DAPI {
+  background-color: blue;
+  color: white;
+}

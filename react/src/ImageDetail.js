@@ -68,9 +68,13 @@ export default class ImageDetail extends React.Component {
                 <Row>
                   <Table>
                     <tbody>
-                      {Object.keys(img_data).map(key => (
-                        <tr><td>{key}</td><td>{img_data[key]}</td></tr>
-                      ))}
+                      {Object.keys(img_data).sort().map(key => {
+                        if (img_data[key] !== null && img_data[key] !== undefined && img_data[key] !== ''){
+                          return (<tr><td>{key}</td><td className={key.split('-').map(val => val.trim()).join(' ')}>{img_data[key]}</td></tr>)
+                        } else {
+                          return null
+                        }
+                      })}
                     </tbody>
                   </Table>
                 </Row>
