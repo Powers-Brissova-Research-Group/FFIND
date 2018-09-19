@@ -77,18 +77,18 @@ export default class FilterList extends React.Component {
   render() {
     if (this.props.tags !== null) {
       let actual_tags = this.props.tags
-      // Go through and remove the tags that match no images
-      for (let i of Object.keys(actual_tags)) {
-        for (let key of Object.keys(actual_tags[i].tags)) {
-          if (actual_tags[i].tags[key] === 0 && actual_tags[i].set_name !== 'AGE') {
-            delete actual_tags[i].tags[key]
-          }
-        }
-        // If we've deleted all tags of a tagset, delete the tagset
-        if (Object.keys(actual_tags[i].tags).length === 0) {
-          delete actual_tags[i]
-        }
-      }
+      // // Go through and remove the tags that match no images
+      // for (let i of Object.keys(actual_tags)) {
+      //   for (let key of Object.keys(actual_tags[i].tags)) {
+      //     if (actual_tags[i].tags[key] === 0 && actual_tags[i].set_name !== 'AGE') {
+      //       delete actual_tags[i].tags[key]
+      //     }
+      //   }
+      //   // If we've deleted all tags of a tagset, delete the tagset
+      //   if (Object.keys(actual_tags[i].tags).length === 0) {
+      //     delete actual_tags[i]
+      //   }
+      // }
       return (
         <div className="filter-list">
           <h3><strong>Filters:</strong></h3>
