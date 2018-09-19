@@ -269,3 +269,8 @@ h1, h2, h3, h4, h5, h6{
   background-color: blue;
   color: white;
 }
+
+.matrix-select-button{
+  white-space: normal !important;
+  word-break: initial;
+}
