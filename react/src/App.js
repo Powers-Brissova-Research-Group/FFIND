@@ -7,6 +7,8 @@ import Footer from './Footer'
 import ImageDetail from './ImageDetail'
 import MatrixView from './MatrixView'
 import AgeBrowser from './AgeBrowser'
+import Nomenclature from './Nomenclature'
+
 import {
   Container,
   Row,
@@ -34,6 +36,7 @@ class App extends Component {
             <Route exact path='/dataset/:did' component={AgeBrowser} />
             <Route path='/image/:iid' component={ImageDetail} />
             <Route path='/matrixview/:dsid' component={MatrixView} />
+            <Route path='/nomenclature' component={Nomenclature} />
           </Switch>
         </Container>
         <Footer />

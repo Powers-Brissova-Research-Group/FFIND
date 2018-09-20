@@ -4,6 +4,9 @@ import {
   Row,
   Col
 } from 'reactstrap'
+
+import { Link } from 'react-router-dom'
+
 import HelmsleyLogo from './assets/logos/helmsley-logo.jpg'
 
 export default class Footer extends React.Component {
@@ -14,6 +17,7 @@ export default class Footer extends React.Component {
           <Container>
             <Row>
               <Col md="6">
+                <p>For more information on our data, please visit our <Link to={'/nomenclature'}>nomenclature page</Link></p>
                 <p>This project is made possible through the generous support of the Leona M. and Harry B. Helmsley Charitable Trust</p>
                 <img className="img-fluid footer-img" src={HelmsleyLogo} alt="Helmsley Logo" />
                 <p>Made with &hearts; in the Vanderbilt University Medical Center</p>
