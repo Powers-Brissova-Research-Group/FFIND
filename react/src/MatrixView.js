@@ -2,10 +2,6 @@ import React from 'react'
 import {
   Button,
   Container,
-  Form,
-  FormGroup,
-  Label,
-  Input,
   Progress,
   Table
 } from 'reactstrap'

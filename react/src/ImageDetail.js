@@ -30,7 +30,7 @@ export default class ImageDetail extends React.Component {
       .then(
         (result) => {
           let path = result.kvals['File path']
-          let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^\/]+\.[a-z]+)$/
+          let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
           let matches = re.exec(path)
           result.kvals['File path'] = matches[0]
           this.setState({
@@ -51,7 +51,7 @@ export default class ImageDetail extends React.Component {
   }
 
   render() {
-    const { loaded, img_data, detailpath, path_path } = this.state
+    const { loaded, img_data, path_path } = this.state
     if (loaded) {
       return (
         <div className='image-detail'>
@@ -60,7 +60,7 @@ export default class ImageDetail extends React.Component {
               <Col md="8">
                 <Row>
                   <Col md="12">
-                  <a href={path_path} target="_blank"><img src={require(`./assets/large_thumbs/${this.props.match.params.iid}.jpg`)} alt="Image Detail View" /></a>
+                  <a href={path_path} target="_blank"><img src={require(`./assets/large_thumbs/${this.props.match.params.iid}.jpg`)} alt="Detail View" /></a>
                   </Col>
                 </Row>
               </Col>
