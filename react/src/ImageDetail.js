@@ -11,6 +11,8 @@ import {
 
 import Error from './Error'
 
+import { Link } from 'react-router-dom'
+
 export default class ImageDetail extends React.Component {
   constructor(props) {
     super(props)
@@ -81,6 +83,9 @@ export default class ImageDetail extends React.Component {
                       })}
                     </tbody>
                   </Table>
+                </Row>
+                <Row>
+                  <p>Want more information about the image details? Visit our <Link to={'/nomenclature'}>nomenclature page</Link></p>
                 </Row>
               </Col>
             </Row>
