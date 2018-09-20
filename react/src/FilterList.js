@@ -21,10 +21,16 @@ export default class FilterList extends React.Component {
   }
 
   componentDidMount() {
+    let extras = ['depth 1', 'depth 2', 'depth 3']
     if (this.props.tags !== null) {
       let t = {}
       for (let ts of this.props.tags) {
         if (ts !== undefined) {
+          for (let tag of Object.keys(ts.tags)){
+            if (extras.indexOf(tag) !== -1){
+              delete ts.tags[tag]
+            }
+          }
           t[ts.set_name] = ts.tags
         }
       }
@@ -79,6 +85,11 @@ export default class FilterList extends React.Component {
       return (
         <div className="filter-list">
           <h3><strong>Filters:</strong></h3>
+          <Row>
+            <Col className='text-center' md="12">
+              <Button outline className='filter-button text-center' color="danger" size="sm" onClick={() => this.props.callback({})}>Clear</Button>
+            </Col>
+          </Row>
           {Object.keys(this.props.tags).map(key => {
             if(this.props.tags[key]['set_name'] === 'AGE'){
               return (<AgeFilterSet ageGroup={this.props.ageGroup} className='filter-set' callback={this.setFilters} key={key} ages={Object.keys(this.props.tags[key]['tags'])} /> )
@@ -94,11 +105,6 @@ export default class FilterList extends React.Component {
             //   </div>
             // </Collapse>            
           })}
-          <Row>
-            <Col className='text-center' md="12">
-              <Button className='filter-button text-center' color="danger" onClick={() => this.props.callback({})}>Clear</Button>
-            </Col>
-          </Row>
         </div>
       )
     } else if (this.state.error !== undefined) {
