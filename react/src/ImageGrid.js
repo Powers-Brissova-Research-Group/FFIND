@@ -51,8 +51,13 @@ export default class ImageGrid extends React.Component {
             if ('set_name' in tresult[o]) {
               this.tag_idx[tresult[o].set_name] = o
               this.tag_dict[tresult[o].set_name] = []
+              let extras = ['depth 1', 'depth 2', 'depth 3']
               for (let t of Object.keys(tresult[o].tags)) {
-                this.tag_dict[tresult[o].set_name].push(t)
+                if (extras.indexOf(t) === -1){
+                  this.tag_dict[tresult[o].set_name].push(t)
+                } else {
+                  delete this.raw_tags[o].tags[t]
+                }
               }
             }
           }
