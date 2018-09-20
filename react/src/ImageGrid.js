@@ -39,6 +39,7 @@ export default class ImageGrid extends React.Component {
     this.tag_dict = {}
     this.tag_idx = {}
     this.raw_tags = {}
+    this.initialized = false
   }
 
   componentDidMount() {
@@ -65,13 +66,13 @@ export default class ImageGrid extends React.Component {
             .then(res => res.json())
             .then(
               (result) => {
-                let app_tags = this.updateTags()
                 this.setState({
                   loaded: true,
                   ids: result,
-                  page: 0,
-                  tags: app_tags
+                  matches: Object.keys(result),
+                  page: 0
                 });
+                this.updateTags(true)
                 // this.filter(this.props.filters)
               })
             .catch(err => {
@@ -86,29 +87,38 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (JSON.stringify(prevState) !== JSON.stringify(this.state)) {
-      let app_tags = this.updateTags()
-      this.setState({
-        tags: app_tags
-      });
+    if (JSON.stringify(prevState.filters) !== JSON.stringify(this.state.filters)) {
+      this.updateTags(false)
     }
   }
 
-  updateTags() {
+  updateTags(shouldDelete) {
     let app_tags = JSON.parse(JSON.stringify(this.raw_tags));
     for (let key of this.state.matches) {
       for (let tag of Object.keys(this.tag_dict)) {
         let intersection = this.state.ids[key].filter(val => -1 !== this.tag_dict[tag].indexOf(val))
         if (intersection.length > 0) {
-          let tval = intersection[0]
-          app_tags[this.tag_idx[tag]].tags[tval]++
+          for (let tval of intersection){
+            app_tags[this.tag_idx[tag]].tags[tval]++
+          }
         }
       }
       // console.log(result[key])
     }
+    if(shouldDelete){
+      for (let tagset of Object.keys(app_tags)){
+        for (let tag of Object.keys(app_tags[tagset].tags)){
+          if (app_tags[tagset].tags[tag] === 0){
+            delete app_tags[tagset].tags[tag]
+            delete this.raw_tags[tagset].tags[tag]
+          }
+        }
+      }
+    }
     // console.log(app_tags)
-    return app_tags
-
+    this.setState({
+      tags: app_tags
+    })
   }
 
   choosePage(new_page) {
