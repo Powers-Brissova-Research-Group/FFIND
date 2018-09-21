@@ -7,7 +7,7 @@ USERNAME = 'api.user'
 PASSWORD = 'ts6t6r1537k='
 
 def get_image_list():
-    f = open('api/pancreatlas/api/image_index.txt', 'r')
+    f = open('image_index.txt', 'r')
     enc = f.readline()
     imgs = json.loads(enc)
     return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
@@ -41,17 +41,17 @@ def get_size(iid, session):
         return (0, 0, 500, 500)
 
 def save_thumbnail(iid, roi, session):
-    url = 'https://omero.app.vumc.org/webgateway/render_image_region/%s/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&region=%s,%s,%s,%s' % (
-        iid, roi[0], roi[1], roi[2], roi[3])
-
-    fpath = 'react/src/assets/thumbs/%s.jpg' % (iid, )
-    f = open(fpath, 'w')
-    r = session.get(url, stream=True)
-    if r.status_code == 200:
-        for chunk in r.iter_content(1024):
-            f.write(chunk)
-    f.close()
-    print 'Saved %s' %(fpath, )
+    # url = 'https://omero.app.vumc.org/webgateway/render_image_region/%s/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&region=%s,%s,%s,%s' % (
+    #    iid, roi[0], roi[1], roi[2], roi[3])
+	url = 'https://omero.app.vumc.org/webgateway/render_thumbnail/%s/750/1000' % (iid, )
+	fpath = '/var/www/pancreatlas/dev/dev7/pancreatlas/react/src/assets/large_thumbs/%s.jpg' % (iid, )
+	f = open(fpath, 'w')
+	r = session.get(url, stream=True)
+	if r.status_code == 200:
+		for chunk in r.iter_content(1024):
+			f.write(chunk)
+	f.close()
+	print 'Saved %s' %(fpath, )
     # urllib.retrieve(url, '%s' % (iid, ))
 
 def login(token, session):
@@ -78,13 +78,15 @@ def main():
         iids = get_image_list()
         print len(iids)
         for iid in iids:
-            region = get_roi(iid, sesh)
-            if region != None:
-                save_thumbnail(iid, region, sesh)
-            else:
-                size = get_size(iid, sesh)
-                print 'Other: %s' % (size, )
-                save_thumbnail(iid, size, sesh)
+            save_thumbnail(iid, None, sesh)
+			# print 'Saved %s' % (iid, )
+			# region = get_roi(iid, sesh)
+            # if region != None:
+            #    save_thumbnail(iid, region, sesh)
+            # else:
+            #    size = get_size(iid, sesh)
+            #    print 'Other: %s' % (size, )
+            #    save_thumbnail(iid, size, sesh)
 
 if __name__=='__main__':
     main()

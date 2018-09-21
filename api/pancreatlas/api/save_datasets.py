@@ -19,7 +19,7 @@ def save_datasets():
 
 def save_index():
     print 'Retrieving images'
-    imgs = api.get_all_images()
+    imgs = api.get_images_from_dataset(384)
     print 'Images retrieved'
     img_dict = {}
     POSSIBLE_TAGS = ['INS', 'COL4A1', 'SST', 'PECAM1', 'PTF1A', 'CPA1', 'FOXA2', 'AMY1A', 'GP2', 'NKX6-1', 'PAX6', 'SYP', 'GCG', 'PPY', 'MK167', 'SYN1', 'SYN2', 'Ki67', 'SOX9', 'AMY1A', 'ONECUT1', 'HNF1B', 'PAX6', 'GP2', 'NKX6-1', 'PTF1A', 'NEUROG3', 'GHRL', 'CDH1']
