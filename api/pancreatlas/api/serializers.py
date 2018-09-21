@@ -8,7 +8,7 @@ class ImageSerializer(serializers.Serializer):
     detailpath = serializers.CharField(max_length=128)
     pathpath = serializers.CharField(max_length=128)
     tags = serializers.ListField()
-    kvals = serializers.DictField(child=serializers.CharField())
+    kvals = serializers.DictField(child=serializers.DictField())
 
 class ImageSetSerializer(serializers.Serializer):
     setname = serializers.CharField(max_length=50)

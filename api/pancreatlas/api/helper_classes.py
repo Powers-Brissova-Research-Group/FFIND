@@ -37,7 +37,7 @@ class Image:
                 self.tags.append(tmp)
             elif isinstance(ann, MapAnnotationWrapper):
                 for pair in ann.getValue():
-                    self.key_values[pair[0]] = {'val': pair[1], 'desc': 'Default Description'}
+                    self.key_values[pair[0]] = {'val': pair[1], 'desc': 'default val'}
 
     def get_tags(self):
         return self.tags
