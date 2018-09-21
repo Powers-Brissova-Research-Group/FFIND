@@ -33,10 +33,10 @@ export default class ImageDetail extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
-          let path = result.kvals['File path']
+          let path = result.kvals['File path'].val
           let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
           let matches = re.exec(path)
-          result.kvals['File path'] = matches[0]
+          result.kvals['File path'].val = matches[0]
           this.setState({
             loaded: true,
             detailpath: result.detailpath,
@@ -79,7 +79,7 @@ export default class ImageDetail extends React.Component {
                   <Table>
                     <tbody>
                       {Object.keys(img_data).sort().filter(key => ['Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - Pancreas Region'].indexOf(key) === -1).map(key => {
-                         return <DetailRow data={img_data[key]} heading={key} />
+                         return <DetailRow data={img_data[key].val} desc={img_data[key].desc} heading={key} />
                         // if (img_data[key] !== null && img_data[key] !== undefined && img_data[key] !== ''){
                         //   return (<tr><td><p id={key + '-tooltip'}>{key}</p></td><td className={key.split('-').map(val => val.trim()).join(' ')}>{img_data[key]}</td></tr>)
                         // } else {

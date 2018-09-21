@@ -30,5 +30,5 @@ export default class DetailRow extends React.Component {
 }
 
 DetailRow.defaultProps = {
-  desc: "Default description"
+  desc: "DEFAULT DESCRIPTION"
 }
