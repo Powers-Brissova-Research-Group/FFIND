@@ -1,0 +1,295 @@
+html, body {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#root {
+  height: 100%;
+}
+
+.pancreatlas {
+  text-align: center;
+  height: 100%;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Bellefair', serif;
+}
+
+.pancreatlas-row {
+  text-align: center;
+}
+
+.logo-img {
+  padding-bottom: 1rem;
+  width: 600px;
+}
+
+.image-card {
+  max-width: 350px;
+  text-align: left;
+}
+
+.image-row {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.image-grid h1 {
+  text-align: left;
+}
+
+.card-title, .card-subtitle{
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.collection-card {
+  max-width: 350px;
+}
+
+.collection-row {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: left;
+  margin: auto;
+}
+
+.collection-row div {
+  margin: auto;
+}
+
+.subheading {
+  text-align: left;
+}
+
+.dataset-page {
+  width: 100%;
+}
+
+.dataset-page h1{
+  text-align: left;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.dataset-list{
+  width: 100%;
+}
+
+.filter-list {
+  text-align: left;
+}
+
+.filter-button {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.pancreatlas-nav {
+  width: 100%;
+  margin-bottom: 3rem;
+   background-color: #1b294a;
+}
+
+
+.footer {
+  background-color: #1b294a;
+  color: #e4e5d7;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.footer p{
+  font-size: 14px;
+}
+
+.bg-dark {
+  background-color: #1b294a !important;
+}
+
+.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand {
+  color: #e4e5d7 important;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+  color: #e4e5d7 !important;
+}
+
+.card-img-top {
+  height: 200px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.matrix-thumb {
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.image-matrix {
+  overflow: scroll;
+}
+
+.modal-thumb {
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.ds-list-left-button {
+  margin-right: 1rem;
+}
+
+.ds-list-right-button {
+  margin-left: 1rem;
+}
+
+.path-button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.collapse-button {
+  transition: transform 0.33s;
+}
+
+.collapse-button:hover{
+  cursor: pointer;
+}
+
+.collapse-button-open{
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+}
+
+.navbar-logo {
+  height: 35px;
+}
+
+.home-card-icon{
+  margin-top: 1rem;
+}
+
+.home-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.home-card{
+  border: 2px solid rgba(0, 0, 0, 0.125);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-img {
+  max-width: 400px;
+}
+
+.explore-button {
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+  width: 50%;
+  height: 7rem;
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+
+.home-description {
+  font-size: 1.5rem;
+  margin-top: 4rem;
+}
+
+.age-slider {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-set {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-img {
+  margin-bottom: 1rem;
+}
+
+.age-group-list > div:first-child {
+  margin-top: 0
+}
+
+.age-group-list > div {
+  margin-top: 2.5rem;
+}
+
+.cy5 {
+  background-color: yellow;
+  color: black
+}
+
+.cy3 {
+  background-color: red;
+  color: black;
+}
+
+.cy2 {
+  background-color: green;
+  color: white
+}
+
+.DAPI {
+  background-color: blue;
+  color: white;
+}
+
+.matrix-select-button{
+  white-space: normal !important;
+  word-break: initial;
+}
+
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content{
+  flex: 1 0 auto;
+}
+
+.spacer-footer {
+  height: 366px;
+}

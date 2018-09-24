@@ -1,37 +1,56 @@
-import React from 'react'
+import React from 'react';
 import {
   Container,
   Row,
   Col
-} from 'reactstrap'
-
-import { Link } from 'react-router-dom'
-
-import HelmsleyLogo from './assets/logos/helmsley-logo.jpg'
+} from 'reactstrap';
 
 export default class Footer extends React.Component {
   render() {
     return (
-      <div className="footer">
-        <Container fluid>
+      <div className='footer'>
+        <Container fluid className='footer-container'>
           <Container>
-            <Row>
+            <Row className='v-padded'>
               <Col md="6">
-                <p>For more information on our data, please visit our <Link to={'/nomenclature'}>nomenclature page</Link></p>
-                <p>This project is made possible through the generous support of the Leona M. and Harry B. Helmsley Charitable Trust</p>
-                <img className="img-fluid footer-img" src={HelmsleyLogo} alt="Helmsley Logo" />
-                <p>Made with &hearts; in the Vanderbilt University Medical Center</p>
+                <h3>About Us</h3>
+                <p>Our investigators are studying how the human pancreas and islets change in the first decade of life. This website, an atlas of our results, seeks to make this new information available to scientists to accelerate research throughout the world with the goal of understanding of the events in the pancreas and islet that trigger type 1 diabetes.</p>
+                <p>Supported by the <b><a href='http://www.helmsleytrust.org'>Helmsley Charitable Trust</a></b>, <a href='http://www.hirnetwork.org'>HIRN</a>, <a href='http://www.iiam.org'>IIAM</a>, <a href='https://iidp.coh.org'>IIDP</a>, <a href='http://www.jdrf.org'>JDRF</a>, <a href='http://www.ndri.org'>NDRI</a>, <a href='https://www.nih.gov'>NIH</a>, <a href='https://www.jdrfnpod.org'>nPOD</a>, <a href='http://www.research.va.gov'>VA research service</a>, and both institutional funds and space from <a href='https://www.mc.vanderbilt.edu'>VUMC</a></p>
               </Col>
-              <Col md="6">
-                <h3>Get in touch</h3>
-                <p>Email us <a href="mailto:powers.research@vanderbilt.edu">here</a></p>
-                <p>Call us at 615.936.7678</p>
-                <p>Vanderbilt University Medical Center<br></br>2213 Garland Avenue<br></br>8425 Medical Research Building IV<br></br>Nashville, TN<br></br>37232-0475</p>
+              <Col md="3">
+                <Row>
+                  <Col md="12">
+                    <h2>Useful Links</h2>
+                  </Col>
+                  <Col md="6">
+                    <p><a href='http://pathology.ufl.edu/faculty/experimental-pathology/mark-a-atkinson/'> Atkinson Lab</a></p>
+                    <p><a href='https://labnodes.vanderbilt.edu/member/profile/id/10427'>Brissova Lab</a></p>
+                    <p><a href='http://seungkimlab.stanford.edu/'>Kim Lab</a></p>
+                    <p><a href='https://medschool.vanderbilt.edu/wright-lab/'>Wright Lab</a></p>
+                  </Col>
+                  <Col md="6">
+                    <p><a href="https://www.ahn.org/research/our-research-institutes/cellular-therapeutics/our-team"> Bottino Lab</a></p>
+                    <p><a href='https://faculty.mc.vanderbilt.edu/Faculty/Details/34956'>Dai Lab</a></p>
+                    <p><a href='https://www.powersresearch.org/'>Powers Lab</a></p>
+                  </Col>
+                </Row>
+              </Col>
+              <Col md="3">
+                <h2>Contact</h2>
+                <p>Office: Division of Diabetes, Endocrinology, and Metabolism<br />
+                  Vanderbilt University School of Medicine<br />
+                  8435F Medical Research Bldg IV<br />
+                  2215 Garland Avenue<br />
+                  Nashville, TN 37232-0475<br />
+                  Phone: (615) 936-7678<br />
+                  Fax: (615) 936-0063<br />
+                  E-Mail: contact-chips@vanderbilt.edu<br />
+                  Web: www.TBD.org</p>
               </Col>
             </Row>
           </Container>
         </Container>
       </div>
-    )
+    );
   }
 }
