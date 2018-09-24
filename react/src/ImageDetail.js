@@ -6,8 +6,7 @@ import {
   Col,
   Table,
   Progress,
-  Button,
-  Tooltip
+  Button
 } from 'reactstrap'
 
 import DetailRow from './DetailRow'
