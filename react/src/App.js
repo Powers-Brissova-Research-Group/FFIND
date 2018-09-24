@@ -28,18 +28,22 @@ class App extends Component {
             <PancreatlasNavbar />
           </Row>
         </Container>
-        <Container>
-          <Switch>
-            <Route exact path='/' component={HomePage} />
-            {/* <Route path='/collections' component={CollectionList} /> */}
-            <Route exact path='/dataset' component={DatasetList} />
-            <Route exact path='/dataset/:did' component={AgeBrowser} />
-            <Route path='/image/:iid' component={ImageDetail} />
-            <Route path='/matrixview/:dsid' component={MatrixView} />
-            <Route path='/nomenclature' component={Nomenclature} />
-          </Switch>
-        </Container>
-        <Footer />
+        <div className='wrapper'>
+          <div className='content'>
+            <Container>
+              <Switch>
+                <Route exact path='/' component={HomePage} />
+                {/* <Route path='/collections' component={CollectionList} /> */}
+                <Route exact path='/dataset' component={DatasetList} />
+                <Route exact path='/dataset/:did' component={AgeBrowser} />
+                <Route path='/image/:iid' component={ImageDetail} />
+                <Route path='/matrixview/:dsid' component={MatrixView} />
+                <Route path='/nomenclature' component={Nomenclature} />
+              </Switch>
+            </Container>
+          </div>
+          <Footer />
+        </div>
       </div>
     );
   }

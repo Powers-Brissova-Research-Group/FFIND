@@ -121,6 +121,7 @@ h1, h2, h3, h4, h5, h6{
   padding-top: 1rem;
   padding-bottom: 1rem;
   text-align: left;
+  flex-shrink: 0;
 }
 
 .footer p{
@@ -273,4 +274,18 @@ h1, h2, h3, h4, h5, h6{
 .matrix-select-button{
   white-space: normal !important;
   word-break: initial;
+}
+
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content{
+  flex: 1 0 auto;
+}
+
+.spacer-footer {
+  height: 366px;
 }

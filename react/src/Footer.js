@@ -24,9 +24,9 @@ export default class Footer extends React.Component {
               </Col>
               <Col md="6">
                 <h3>Get in touch</h3>
-                  <p>Email us <a href="mailto:powers.research@vanderbilt.edu">here</a></p>
-                  <p>Call us at 615.936.7678</p>
-                  <p>Vanderbilt Unviersity Medical Center<br></br>2213 Garland Avenue<br></br>8425 Medical Research Building IV<br></br>Nashville, TN<br></br>37232-0475</p>
+                <p>Email us <a href="mailto:powers.research@vanderbilt.edu">here</a></p>
+                <p>Call us at 615.936.7678</p>
+                <p>Vanderbilt University Medical Center<br></br>2213 Garland Avenue<br></br>8425 Medical Research Building IV<br></br>Nashville, TN<br></br>37232-0475</p>
               </Col>
             </Row>
           </Container>
