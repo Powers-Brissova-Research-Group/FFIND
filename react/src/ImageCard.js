@@ -67,7 +67,7 @@ export default class ImageCard extends React.Component {
     if (this.state.loaded) {
       return (
         <Card className="image-card h-100">
-          <CardImg top width="100%" src={require(`${this.props.tpath}`)} alt={this.state.img_name} />
+          <Link to={'/image/' + this.state.omero_id} target="_blank"><CardImg top width="100%" src={require(`${this.props.tpath}`)} alt={this.state.img_name} /></Link>
           <CardBody className="d-flex flex-column">
             <CardTitle>{this.state.img_name}</CardTitle>
             <CardSubtitle>{this.state.omero_id}</CardSubtitle>
