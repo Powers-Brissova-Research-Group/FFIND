@@ -209,6 +209,8 @@ export default class ImageGrid extends React.Component {
 
       // console.log(img_grid)
 
+      // C:\Users\messmej\Documents\Projects\pancreatlas\react\src\assets\pancreatlas\thumbs\55.jpg
+
       return (
         <div className="image-grid">
           <h1>{this.props.dataset_name}</h1>
@@ -222,7 +224,7 @@ export default class ImageGrid extends React.Component {
                   <Row key={idx} className="image-row pancreatlas-row">
                     {item.map((image, idx) =>
                       <Col key={idx} md="3">
-                        <ImageCard key={image} iid={image} tpath={'../assets/pancreatlas/thumbs/' + image + '.jpg'} />
+                        <ImageCard key={image} iid={image} />
                       </Col>
                     )}
                   </Row>

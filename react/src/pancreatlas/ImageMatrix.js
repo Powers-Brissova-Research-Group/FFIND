@@ -103,7 +103,7 @@ export default class ImageMatrix extends React.Component {
                 {Object.keys(this.state.matrix).map(row => (
                   <tr key={row}><td><strong>{row}</strong></td>{Object.keys(this.state.matrix[row]).map(col => (
                     <td key={row + ', ' + col}>
-                      {this.state.matrix[row][col][0] !== undefined && <img onClick={() => this.toggle(this.state.matrix[row][col])} className='matrix-thumb' src={require(`../assets/pancreatlas/thumbs/${this.state.matrix[row][col][0].iid}.jpg`)} alt="" />}
+                      {this.state.matrix[row][col][0] !== undefined && <img onClick={() => this.toggle(this.state.matrix[row][col])} className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${this.state.matrix[row][col][0].iid}.jpg`)} alt="" />}
                       {this.state.matrix[row][col][0] === undefined && <p>No matching images</p>}
                     </td>
                   ))}</tr>
@@ -125,7 +125,7 @@ export default class ImageMatrix extends React.Component {
                 <tbody>
                   {this.state.selected_set.map(img => (
                     <tr>
-                      <td><img className='modal-thumb' src={require(`../assets/pancreatlas/thumbs/${img.iid}.jpg`)} alt="" /></td>
+                      <td><img className='modal-thumb' src={require(`./../assets/pancreatlas/thumbs/${img.iid}.jpg`)} alt="" /></td>
                       <td><p>{img.iname}</p></td>
                       <td><Link to={'/pancreatlas/image/' + img.iid} target='_blank'><Button color="primary">View</Button></Link></td>
                     </tr>
