@@ -274,6 +274,7 @@ h1, h2, h3, h4, h5, h6{
 .matrix-select-button{
   white-space: normal !important;
   word-break: initial;
+  margin-top: 18%;
 }
 
 .wrapper{
@@ -329,4 +330,11 @@ p.matrix-cell-count > div {
 
 .view-counter {
   color: #7a7a7a
+}
+
+td.matrix-selector-cell > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

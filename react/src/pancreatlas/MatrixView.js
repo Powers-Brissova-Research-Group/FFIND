@@ -94,9 +94,13 @@ export default class MatrixView extends React.Component {
                   {this.state.tagsets.map(tagset1 => (
                     <tr className='row'>
                       <td className='col-md-2'><strong>{tagset1.set_name}</strong></td>
-                      {this.state.tagsets.map(tagset2 => (
-                        <td className='col-md-2'><Button className='matrix-select-button' color="link" onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>
-                      ))}
+                      {this.state.tagsets.map(tagset2 => 
+                        {if (tagset1.set_name === tagset2.set_name){
+                          return <td className='col-md-2 matrix-selector-cell'><span>&mdash;</span></td>
+                        } else {
+                          return (<td className='col-md-2 matrix-selector-cell'><Button className='matrix-select-button' color="link" onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>)
+                        }}                        
+                      )}
                     </tr>
                   ))}
                 </Table>
