@@ -49,7 +49,7 @@ export default class ImageMatrix extends React.Component {
                   new_matrix[tag_1][tag_2].push(result)
                   this.setState({
                     matrix: new_matrix,
-                    loaded: true                    
+                    loaded: true
                   })
                 })
                 .catch(err => {
@@ -95,16 +95,16 @@ export default class ImageMatrix extends React.Component {
                 <tr>
                   <td></td>
                   {headings.map(item => (
-                    <td key={item}><strong>{item}</strong></td>
+                    <td key={item} className='matrix-cell matrix-head'><strong>{item}</strong></td>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {Object.keys(this.state.matrix).map(row => (
-                  <tr key={row}><td><strong>{row}</strong></td>{Object.keys(this.state.matrix[row]).map(col => (
-                    <td key={row + ', ' + col}>
-                      {this.state.matrix[row][col][0] !== undefined && <img onClick={() => this.toggle(this.state.matrix[row][col])} className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${this.state.matrix[row][col][0].iid}.jpg`)} alt="" />}
-                      {this.state.matrix[row][col][0] === undefined && <p>No matching images</p>}
+                  <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(this.state.matrix[row]).map(col => (
+                    <td key={row + ', ' + col} className='matrix-cell'>
+                      {this.state.matrix[row][col][0] !== undefined && <div onClick={() => this.toggle(this.state.matrix[row][col])} className='matrix-cell-img'><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${this.state.matrix[row][col][0].iid}.jpg`)} alt="" /><p className='matrix-cell-count'><div>{`${this.state.matrix[row][col].length} images`}</div></p></div>}
+                      {this.state.matrix[row][col][0] === undefined && <p>&mdash;</p>}
                     </td>
                   ))}</tr>
                 ))}

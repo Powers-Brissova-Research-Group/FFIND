@@ -34,10 +34,6 @@ td.image-detail-row {
   vertical-align: middle;
 }
 
-h1, h2, h3, h4, h5, h6{
-  font-family: 'Bellefair', serif;
-}
-
 .pancreatlas-row {
   text-align: center;
 }
@@ -293,4 +289,37 @@ h1, h2, h3, h4, h5, h6{
 .large-thumbnail {
   max-width: 700px;
   overflow: hidden;
+}
+
+td.matrix-cell {
+  width: 150px;
+  height: 150px;
+  vertical-align: middle;
+}
+
+td.matrix-head {
+  background-color: #a1a1a1;
+}
+
+.matrix-cell-img {
+  position: relative;
+  width: 100%;
+}
+
+p.matrix-cell-count {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 43%;
+  color: white;
+}
+
+p.matrix-cell-count > div {
+  color: white;
+  letter-spacing: -1px;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+  padding-top: 43%;
 }
