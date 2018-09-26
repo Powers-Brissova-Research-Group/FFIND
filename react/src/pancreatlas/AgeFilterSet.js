@@ -33,10 +33,10 @@ export default class AgeFilterSet extends React.Component {
     this.state = {
       open: true,
       ageFilters: this.props.ages,
-      gestational: this.props.ageGroup !== null && this.props.ageGroup.toUpperCase() !== 'GESTATIONAL',
-      neonatal: this.props.ageGroup !== null && this.props.ageGroup.toUpperCase() !== 'NEONATAL',
-      infancy: this.props.ageGroup !== null && this.props.ageGroup.toUpperCase() !== 'INFANCY',
-      childhood: this.props.ageGroup !== null && this.props.ageGroup.toUpperCase() !== 'CHILDHOOD'
+      gestational: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'GESTATIONAL',
+      neonatal: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'NEONATAL',
+      infancy: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'INFANCY',
+      childhood: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'CHILDHOOD'
     }
     this.allFilters = this.props.ages
     this.AgeGroups = {
@@ -227,7 +227,7 @@ export default class AgeFilterSet extends React.Component {
                 <Col md="12" className='text-left'>
                   <FormGroup check>
                     <Label check>
-                      <Input type="checkbox" defaultChecked={this.props.ageGroup === null || this.props.ageGroup.toUpperCase() === key.toUpperCase()} onChange={evt => this.toggleGroup(evt.target.checked, ageGroups[key], key)} />{key.charAt(0).toUpperCase() + key.slice(1)}
+                      <Input type="checkbox" defaultChecked={this.props.ageGroup !== null && this.props.ageGroup.toUpperCase() === key.toUpperCase()} onChange={evt => this.toggleGroup(evt.target.checked, ageGroups[key], key)} />{key.charAt(0).toUpperCase() + key.slice(1)}
                     </Label>
                   </FormGroup>
                 </Col>
