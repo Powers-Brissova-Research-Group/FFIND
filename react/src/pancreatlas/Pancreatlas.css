@@ -289,3 +289,8 @@ h1, h2, h3, h4, h5, h6{
 .spacer-footer {
   height: 366px;
 }
+
+.large-thumbnail {
+  max-width: 700px;
+  overflow: hidden;
+}

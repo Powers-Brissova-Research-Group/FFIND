@@ -62,9 +62,7 @@ export default class ImageDetail extends React.Component {
             <Row className="pancreatlas-row">
               <Col md="8">
                 <Row className="pancreatlas-row">
-                  <Col md="12">
-                    <a href={path_path} target="_blank"><img src={require(`../assets/pancreatlas/large_thumbs/${this.props.match.params.iid}.jpg`)} alt="Detail View" /></a>
-                  </Col>
+                    <a className='large-thumbnail' href={path_path} target="_blank"><img className='large-thumbnail' src={require(`../assets/pancreatlas/large_thumbs/${this.props.match.params.iid}.jpg`)} alt="Detail View" /></a>
                 </Row>
               </Col>
               <Col md="4">
