@@ -34,6 +34,10 @@ td.image-detail-row {
   vertical-align: middle;
 }
 
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Libre Baskerville', serif;
+}
+
 .pancreatlas-row {
   text-align: center;
 }
@@ -321,5 +325,8 @@ p.matrix-cell-count > div {
   letter-spacing: -1px;
   background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.5);
-  padding-top: 43%;
+}
+
+.view-counter {
+  color: #7a7a7a
 }

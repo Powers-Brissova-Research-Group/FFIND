@@ -213,7 +213,7 @@ export default class ImageGrid extends React.Component {
 
       return (
         <div className="image-grid">
-          <h1>{this.props.dataset_name}</h1>
+          <h5 className='view-counter'>You are currently viewing {this.state.matches.length} out of a possible {Object.keys(this.state.ids).length} images</h5>
           <Container>
             <Row className="pancreatlas-row">
               <Col md="2">
