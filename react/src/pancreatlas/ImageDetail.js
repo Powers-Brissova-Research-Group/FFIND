@@ -89,7 +89,7 @@ export default class ImageDetail extends React.Component {
                   </Table>
                 </Row>
                 <Row className="pancreatlas-row">
-                  <p>Want more information about the image details? Visit our <Link to={'/pancreatlas/nomenclature'}>nomenclature page</Link></p>
+                  <p className='text-left'>Want more information about the image details? Visit our <Link to={'/pancreatlas/nomenclature'}>nomenclature page</Link></p>
                 </Row>
               </Col>
             </Row>

@@ -12,17 +12,6 @@ html, body {
   height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
 
 .App-title {
   font-size: 1.5em;
@@ -35,6 +24,14 @@ html, body {
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+td.image-detail-row > p {
+  margin: 0 0 0 0;
+}
+
+td.image-detail-row {
+  vertical-align: middle;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -116,7 +113,6 @@ h1, h2, h3, h4, h5, h6{
   margin-bottom: 3rem;
    background-color: #1b294a;
 }
-
 
 .footer {
   background-color: #1b294a;

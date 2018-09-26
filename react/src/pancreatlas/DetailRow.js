@@ -21,7 +21,7 @@ export default class DetailRow extends React.Component {
 
   render(){
     if (this.props.data !== null && this.props.data !== undefined && this.props.data !== ''){
-      return (<tr><td><p id={this.props.heading.split(' ').join('_') + '-tt'}><Tooltip placement="left" isOpen={this.state.ttOpen} target={this.props.heading.split(' ').join('_') + '-tt'} toggle={this.toggle}>{this.props.desc}</Tooltip>{this.props.heading}</p></td><td className={this.props.heading.split('-').map(val => val.trim()).join(' ')}>{this.props.data}</td></tr>)
+      return (<tr><td className='image-detail-row'><p className='text-left' id={this.props.heading.split(' ').join('_') + '-tt'}><Tooltip placement="left" isOpen={this.state.ttOpen} target={this.props.heading.split(' ').join('_') + '-tt'} toggle={this.toggle}>{this.props.desc}</Tooltip>{this.props.heading}</p></td><td className={this.props.heading.split('-').map(val => val.trim()).join(' ') + ' text-left image-detail-row'}><p>{this.props.data}</p></td></tr>)
     } else {
       console.log('null')
       return null
