@@ -2,7 +2,9 @@ import React from 'react'
 import {
   Row,
   Col,
-  Input
+  Input,
+  FormGroup,
+  Label
 } from 'reactstrap'
 
 import {
@@ -199,11 +201,11 @@ export default class AgeFilterSet extends React.Component {
     let activeFilters = []
     for (let key of Object.keys(ageGroups)) {
       ageGroups[key].sort(this.compareAges)
-      if (!this.state[key]){
+      if (!this.state[key]) {
         activeFilters = activeFilters.concat(ageGroups[key])
       }
     }
-    if(!this.initialized){
+    if (!this.initialized) {
       this.updateFilters(activeFilters)
       this.initialized = true
       console.log('Initialized')
@@ -211,7 +213,7 @@ export default class AgeFilterSet extends React.Component {
     return (
       <div className='age-filter'>
         <Row className="pancreatlas-row">
-          <Col md="8">
+          <Col md="8" className="text-left">
             <h4>AGE</h4>
           </Col>
           <Col className='text-right' md="4">
@@ -222,11 +224,12 @@ export default class AgeFilterSet extends React.Component {
           {Object.keys(ageGroups).map(key => (
             <div className='group-filter' key={key}>
               <Row className="pancreatlas-row">
-                <Col md="9">
-                  <h5>{key.charAt(0).toUpperCase() + key.slice(1)}</h5>
-                </Col>
-                <Col className='text-right' md="3">
-                  <Input type="checkbox" defaultChecked={this.props.ageGroup === null || this.props.ageGroup.toUpperCase() === key.toUpperCase()} onChange={evt => this.toggleGroup(evt.target.checked, ageGroups[key], key)} />
+                <Col md="12" className='text-left'>
+                  <FormGroup check>
+                    <Label check>
+                      <Input type="checkbox" defaultChecked={this.props.ageGroup === null || this.props.ageGroup.toUpperCase() === key.toUpperCase()} onChange={evt => this.toggleGroup(evt.target.checked, ageGroups[key], key)} />{key.charAt(0).toUpperCase() + key.slice(1)}
+                    </Label>
+                  </FormGroup>
                 </Col>
               </Row>
               <AgeFilterItem ages={ageGroups[key]} group={key} callback={this.updateFilters} allFilters={this.allFilters} currentFilters={this.state.ageFilters} hidden={this.state[key]} />

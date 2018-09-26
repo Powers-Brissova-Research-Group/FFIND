@@ -29,7 +29,7 @@ export default class FilterSet extends React.Component {
       return (
         <div className="filter-set">
           <Row className="pancreatlas-row">
-            <Col md="8">
+            <Col md="8" className='text-left'>
               <h4>{this.props.setName}</h4>
             </Col>
             <Col md="4" className='text-right'>

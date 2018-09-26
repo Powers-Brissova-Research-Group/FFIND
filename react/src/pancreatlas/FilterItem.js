@@ -2,7 +2,9 @@ import React from 'react'
 import {
   Row,
   Col,
-  Input
+  Input,
+  FormGroup,
+  Label
 } from 'reactstrap'
 
 export default class FilterItem extends React.Component {
@@ -10,11 +12,12 @@ export default class FilterItem extends React.Component {
     return (
       <div className="filter-item">
         <Row className="pancreatlas-row">
-          <Col md="9">
-            {this.props.filterName.charAt(0).toUpperCase() + this.props.filterName.slice(1)}
-          </Col>
-          <Col className='text-right' md="3">
-            <Input type="checkbox" onChange={() => this.props.callback(this.props.filterName)} />{' '}
+          <Col md="12" className='text-left'>
+            <FormGroup check>
+              <Label check>
+                <Input id={this.props.filterName} type="checkbox" onChange={() => this.props.callback(this.props.filterName)} />{this.props.filterName}
+              </Label>
+            </FormGroup>
           </Col>
         </Row>
       </div>
