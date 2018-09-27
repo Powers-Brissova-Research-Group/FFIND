@@ -338,3 +338,16 @@ td.matrix-selector-cell > span {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.modal-data{
+  text-align: center;
+}
+
+.modal-data img {
+  width: 75%;
+  margin-bottom: 1rem;
+}
+
+.image-card-thumb {
+  cursor: pointer;
+}

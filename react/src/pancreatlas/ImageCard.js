@@ -7,10 +7,6 @@ import {
   Button
 } from 'reactstrap'
 
-import {
-  Link
-} from 'react-router-dom'
-
 import Error from './Error'
 
 export default class ImageCard extends React.Component {
@@ -66,7 +62,7 @@ export default class ImageCard extends React.Component {
       let last_marker = Object.keys(this.state.markers)[Object.keys(this.state.markers).length - 1]
       return (
         <Card className="image-card h-100">
-          <Link to={'/pancreatlas/image/' + this.state.omero_id} target="_blank"><CardImg top width="100%" src={require(`../assets/pancreatlas/thumbs/${this.props.iid}.jpg`)} alt={this.state.img_name} /></Link>
+          <CardImg className='image-card-thumb' top width="100%" src={require(`../assets/pancreatlas/thumbs/${this.props.iid}.jpg`)} alt={this.state.img_name} onClick={() => this.props.callback(this.props.iid)} />
           <CardBody className="d-flex flex-column">
             {/* <CardTitle>{this.state.img_name}</CardTitle>
             <CardSubtitle>{this.state.omero_id}</CardSubtitle> */}
@@ -81,7 +77,7 @@ export default class ImageCard extends React.Component {
                   <span className='tag' key={item}><span>{' ' + item}</span><span> &bull;</span></span>
                 ))}
               <span className='tag' key={this.state.img_tags[this.state.img_tags.length - 1]}> {this.state.img_tags[this.state.img_tags.length - 1]}</span>
-              <Link to={'/pancreatlas/image/' + this.state.omero_id} target="_blank"><Button color="link" className="mt-auto">Preview</Button></Link>
+              <Button color="link" className="mt-auto" onClick={() => this.props.callback(this.props.iid)}>Preview</Button>
               {/* <a href={this.props.path_path} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></a> */}
             </CardText>
           </CardBody>

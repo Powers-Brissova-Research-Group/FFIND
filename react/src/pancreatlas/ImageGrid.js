@@ -6,12 +6,19 @@ import {
   Pagination,
   PaginationItem,
   PaginationLink,
-  Progress
+  Progress,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  Table
 } from 'reactstrap';
 
 import ImageCard from './ImageCard'
 import FilterList from './FilterList'
 import Error from './Error'
+import DetailRow from './DetailRow'
 
 export default class ImageGrid extends React.Component {
 
@@ -25,7 +32,8 @@ export default class ImageGrid extends React.Component {
       matches: [],
       filters: {},
       start: 0,
-      end: 12
+      end: 12,
+      modalOpen: false,
     }
 
     this.nextPage = this.nextPage.bind(this)
@@ -34,6 +42,8 @@ export default class ImageGrid extends React.Component {
     this.filter = this.filter.bind(this)
     this.callback = this.callback.bind(this)
     this.updateTags = this.updateTags.bind(this)
+    this.toggle = this.toggle.bind(this)
+    this.setModal = this.setModal.bind(this)
 
     this.image_tags = {}
     this.tag_dict = {}
@@ -54,7 +64,7 @@ export default class ImageGrid extends React.Component {
               this.tag_dict[tresult[o].set_name] = []
               let extras = ['depth 1', 'depth 2', 'depth 3']
               for (let t of Object.keys(tresult[o].tags)) {
-                if (extras.indexOf(t) === -1){
+                if (extras.indexOf(t) === -1) {
                   this.tag_dict[tresult[o].set_name].push(t)
                 } else {
                   delete this.raw_tags[o].tags[t]
@@ -98,17 +108,17 @@ export default class ImageGrid extends React.Component {
       for (let tag of Object.keys(this.tag_dict)) {
         let intersection = this.state.ids[key].filter(val => -1 !== this.tag_dict[tag].indexOf(val))
         if (intersection.length > 0) {
-          for (let tval of intersection){
+          for (let tval of intersection) {
             app_tags[this.tag_idx[tag]].tags[tval]++
           }
         }
       }
       // console.log(result[key])
     }
-    if(shouldDelete){
-      for (let tagset of Object.keys(app_tags)){
-        for (let tag of Object.keys(app_tags[tagset].tags)){
-          if (app_tags[tagset].tags[tag] === 0){
+    if (shouldDelete) {
+      for (let tagset of Object.keys(app_tags)) {
+        for (let tag of Object.keys(app_tags[tagset].tags)) {
+          if (app_tags[tagset].tags[tag] === 0) {
             delete app_tags[tagset].tags[tag]
             delete this.raw_tags[tagset].tags[tag]
           }
@@ -187,6 +197,38 @@ export default class ImageGrid extends React.Component {
     this.image_tags[iid] = tags
   }
 
+  toggle() {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    })
+  }
+
+  setModal(imgInfo) {
+    fetch('http://dev7-api-pancreatlas.app.vumc.org:8447/api/images/' + imgInfo)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          let path = result.kvals['File path'].val
+          let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
+          let matches = re.exec(path)
+          result.kvals['File path'].val = matches[0]
+          this.setState({
+            modalData: {
+              img_id: imgInfo,
+              img_data: result.kvals,
+              path_path: result.pathpath
+            }
+          })
+          this.toggle()
+        })
+      .catch(err => {
+        this.setState({
+          loaded: false,
+          error: err
+        })
+      });
+  }
+
   render() {
     if (this.state.loaded) {
       let pages = []
@@ -224,7 +266,7 @@ export default class ImageGrid extends React.Component {
                   <Row key={idx} className="image-row pancreatlas-row">
                     {item.map((image, idx) =>
                       <Col key={idx} md="3">
-                        <ImageCard key={image} iid={image} />
+                        <ImageCard key={image} iid={image} callback={this.setModal} />
                       </Col>
                     )}
                   </Row>
@@ -244,6 +286,34 @@ export default class ImageGrid extends React.Component {
                 </Row>
               </Col>
             </Row>
+            <Modal isOpen={this.state.modalOpen} toggle={this.toggle} className='image-detail-modal'>
+              <ModalHeader toggle={this.toggle}>Image Details</ModalHeader>
+              <ModalBody>
+                {this.state.modalData !== undefined &&
+                  <div className='modal-data'>
+                    <a href={this.state.modalData.path_path}><img src={require(`../assets/pancreatlas/thumbs/${this.state.modalData.img_id}.jpg`)} alt={this.state.modalData.img_id} className='modal-image' /></a>
+                    <Table>
+                      <tbody>
+                        {Object.keys(this.state.modalData.img_data).sort().filter(key => ['Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - Pancreas Region'].indexOf(key) === -1).map(key => {
+                          return <DetailRow data={this.state.modalData.img_data[key].val} desc={this.state.modalData.img_data[key].desc} heading={key} />
+                          // if (img_data[key] !== null && img_data[key] !== undefined && img_data[key] !== ''){
+                          //   return (<tr><td><p id={key + '-tooltip'}>{key}</p></td><td className={key.split('-').map(val => val.trim()).join(' ')}>{img_data[key]}</td></tr>)
+                          // } else {
+                          //   return null
+                          // }
+                        })}
+                      </tbody>
+                    </Table>
+                  </div>
+                }
+              </ModalBody>
+              {this.state.modalData !== undefined &&
+                <ModalFooter>
+                  <a href={this.state.modalData.path_path}><Button color="success">Open Viewer</Button></a>
+                </ModalFooter>
+              }
+            </Modal>
+
           </Container>
         </div>
       );
