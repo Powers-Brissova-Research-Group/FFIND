@@ -10,7 +10,6 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   Button,
   Table
 } from 'reactstrap';
@@ -292,6 +291,8 @@ export default class ImageGrid extends React.Component {
                 {this.state.modalData !== undefined &&
                   <div className='modal-data'>
                     <a href={this.state.modalData.path_path}><img src={require(`../assets/pancreatlas/thumbs/${this.state.modalData.img_id}.jpg`)} alt={this.state.modalData.img_id} className='modal-image' /></a>
+                    <a href={this.state.modalData.path_path}><Button color="success">Open Viewer</Button></a>
+                    <h5>Image Details</h5>
                     <Table>
                       <tbody>
                         {Object.keys(this.state.modalData.img_data).sort().filter(key => ['Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - Pancreas Region'].indexOf(key) === -1).map(key => {
@@ -307,11 +308,6 @@ export default class ImageGrid extends React.Component {
                   </div>
                 }
               </ModalBody>
-              {this.state.modalData !== undefined &&
-                <ModalFooter>
-                  <a href={this.state.modalData.path_path}><Button color="success">Open Viewer</Button></a>
-                </ModalFooter>
-              }
             </Modal>
 
           </Container>

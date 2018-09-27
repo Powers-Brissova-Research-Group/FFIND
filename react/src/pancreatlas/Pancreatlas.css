@@ -348,6 +348,10 @@ td.matrix-selector-cell > span {
   margin-bottom: 1rem;
 }
 
+.modal-data button {
+  margin-bottom: 1rem;
+}
+
 .image-card-thumb {
   cursor: pointer;
 }
