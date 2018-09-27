@@ -26,6 +26,8 @@ import {
 
 export default class HomePage extends React.Component {
   render() {
+    let defs = require('../assets/pancreatlas/definitions.json')
+    console.log(defs)  
     return (
       <div className="home-page align-self-center">
         <Row className="pancreatlas-row">

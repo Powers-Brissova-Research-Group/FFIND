@@ -28,6 +28,7 @@ export default class ImageDetail extends React.Component {
   }
 
   componentDidMount() {
+    this.defs = require('../assets/pancreatlas/definitions.json')
     fetch('http://dev7-api-pancreatlas.app.vumc.org:8447/api/images/' + this.props.match.params.iid)
       .then(res => res.json())
       .then(
@@ -76,7 +77,7 @@ export default class ImageDetail extends React.Component {
                   <Table>
                     <tbody>
                       {Object.keys(img_data).sort().filter(key => ['Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - Pancreas Region'].indexOf(key) === -1).map(key => {
-                         return <DetailRow data={img_data[key].val} desc={img_data[key].desc} heading={key} />
+                         return <DetailRow data={img_data[key].val} desc={this.defs[key].short_desc} heading={key} />
                         // if (img_data[key] !== null && img_data[key] !== undefined && img_data[key] !== ''){
                         //   return (<tr><td><p id={key + '-tooltip'}>{key}</p></td><td className={key.split('-').map(val => val.trim()).join(' ')}>{img_data[key]}</td></tr>)
                         // } else {

@@ -49,6 +49,7 @@ export default class ImageGrid extends React.Component {
     this.tag_idx = {}
     this.raw_tags = {}
     this.initialized = false
+    this.defs = require('../assets/pancreatlas/definitions.json')
   }
 
   componentDidMount() {
@@ -296,7 +297,7 @@ export default class ImageGrid extends React.Component {
                     <Table>
                       <tbody>
                         {Object.keys(this.state.modalData.img_data).sort().filter(key => ['Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - Pancreas Region'].indexOf(key) === -1).map(key => {
-                          return <DetailRow data={this.state.modalData.img_data[key].val} desc={this.state.modalData.img_data[key].desc} heading={key} />
+                          return <DetailRow data={this.state.modalData.img_data[key].val} desc={this.defs[key].short_desc} heading={key} />
                           // if (img_data[key] !== null && img_data[key] !== undefined && img_data[key] !== ''){
                           //   return (<tr><td><p id={key + '-tooltip'}>{key}</p></td><td className={key.split('-').map(val => val.trim()).join(' ')}>{img_data[key]}</td></tr>)
                           // } else {
