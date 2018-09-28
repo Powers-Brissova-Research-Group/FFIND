@@ -103,7 +103,7 @@ export default class ImageMatrix extends React.Component {
                 {Object.keys(this.state.matrix).map(row => (
                   <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(this.state.matrix[row]).map(col => (
                     <td key={row + ', ' + col} className='matrix-cell'>
-                      {this.state.matrix[row][col][0] !== undefined && <div onClick={() => this.toggle(this.state.matrix[row][col])} className='matrix-cell-img'><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${this.state.matrix[row][col][0].iid}.jpg`)} alt="" /><p className='matrix-cell-count'><div>{`${this.state.matrix[row][col].length} images`}</div></p></div>}
+                      {this.state.matrix[row][col][0] !== undefined && <div onClick={() => this.toggle(this.state.matrix[row][col])} className='matrix-cell-img'><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${this.state.matrix[row][col][0].iid}.jpg`)} alt="" /><div className='matrix-cell-count'><p>{`${this.state.matrix[row][col].length} images`}</p></div></div>}
                       {this.state.matrix[row][col][0] === undefined && <p>&mdash;</p>}
                     </td>
                   ))}</tr>

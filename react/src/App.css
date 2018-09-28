@@ -180,3 +180,19 @@ a:hover{
   font-size: 30px;
   font-weight: 400;  
 }
+
+.test-feedback {
+  background-color: #aa0000;
+  color: white;
+  text-align: middle;
+}
+
+.test-feedback p {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.test-feedback a{
+  color: #1B294A;
+}
+

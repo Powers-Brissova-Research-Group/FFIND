@@ -9,8 +9,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  Row
+  NavLink
 } from 'reactstrap';
 
 import {
@@ -49,35 +48,31 @@ export default class HandelApp extends React.Component {
   render() {
     return (
       <div className="App">
-        <Container fluid>
-          <Row>
-            <Navbar color="dark" dark expand="md" fixed="top">
-              <Container>
-                <NavbarBrand><Link to="/"><img src={logo} alt={'HANDEL-P Logo'} /></Link></NavbarBrand>
-                <NavbarToggler onClick={this.toggle} />
-                <Collapse isOpen={this.state.isOpen} navbar>
-                  <Nav className="ml-auto" navbar>
-                    <NavItem>
-                      <Link to="/handelp/diabetes"><NavLink>Diabetes</NavLink></Link>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink href="/pancreatlas">Image Atlas</NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <Link to="/handelp/collaborators"><NavLink>Collaborators</NavLink></Link>
-                    </NavItem>
-                    <NavItem>
-                      <Link to="/handelp/about"><NavLink>About</NavLink></Link>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink href='https://webapp.mis.vanderbilt.edu/vumc-giving/landing?appealCode=J1001'><Button color="danger">Join Our Efforts</Button></NavLink>
-                    </NavItem>
-                  </Nav>
-                </Collapse>
-              </Container>
-            </Navbar>
-          </Row>
-        </Container>
+        <Navbar color="dark" dark expand="md">
+          <Container fluid>
+            <NavbarBrand><Link to="/"><img src={logo} alt={'HANDEL-P Logo'} /></Link></NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <Link to="/handelp/diabetes"><NavLink>Diabetes</NavLink></Link>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/pancreatlas">Image Atlas</NavLink>
+                </NavItem>
+                <NavItem>
+                  <Link to="/handelp/collaborators"><NavLink>Collaborators</NavLink></Link>
+                </NavItem>
+                <NavItem>
+                  <Link to="/handelp/about"><NavLink>About</NavLink></Link>
+                </NavItem>
+                <NavItem>
+                  <NavLink href='https://webapp.mis.vanderbilt.edu/vumc-giving/landing?appealCode=J1001'><Button color="danger">Join Our Efforts</Button></NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Container>
+        </Navbar>
         <Switch>
           <Route exact={true} path="/" component={Home} />
           <Route exact={true} path="/handelp" component={Home} />
