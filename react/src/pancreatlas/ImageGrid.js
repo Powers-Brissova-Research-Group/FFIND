@@ -7,17 +7,12 @@ import {
   PaginationItem,
   PaginationLink,
   Progress,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Button,
-  Table
 } from 'reactstrap';
 
 import ImageCard from './ImageCard'
 import FilterList from './FilterList'
 import Error from './Error'
-import DetailRow from './DetailRow'
+import ImageModal from './ImageModal'
 
 export default class ImageGrid extends React.Component {
 
@@ -286,31 +281,7 @@ export default class ImageGrid extends React.Component {
                 </Row>
               </Col>
             </Row>
-            <Modal isOpen={this.state.modalOpen} toggle={this.toggle} className='image-detail-modal'>
-              <ModalHeader toggle={this.toggle}>Image Details</ModalHeader>
-              <ModalBody>
-                {this.state.modalData !== undefined &&
-                  <div className='modal-data'>
-                    <a href={this.state.modalData.path_path}><img src={require(`../assets/pancreatlas/thumbs/${this.state.modalData.img_id}.jpg`)} alt={this.state.modalData.img_id} className='modal-image' /></a>
-                    <a href={this.state.modalData.path_path}><Button color="success">Open Viewer</Button></a>
-                    <h5>Image Details</h5>
-                    <Table>
-                      <tbody>
-                        {Object.keys(this.state.modalData.img_data).sort().filter(key => ['Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - Pancreas Region'].indexOf(key) === -1).map(key => {
-                          return <DetailRow data={this.state.modalData.img_data[key].val} desc={this.defs[key].short_desc} heading={key} />
-                          // if (img_data[key] !== null && img_data[key] !== undefined && img_data[key] !== ''){
-                          //   return (<tr><td><p id={key + '-tooltip'}>{key}</p></td><td className={key.split('-').map(val => val.trim()).join(' ')}>{img_data[key]}</td></tr>)
-                          // } else {
-                          //   return null
-                          // }
-                        })}
-                      </tbody>
-                    </Table>
-                  </div>
-                }
-              </ModalBody>
-            </Modal>
-
+            <ImageModal toggle={this.toggle} isOpen={this.state.modalOpen} modalData={this.state.modalData} />
           </Container>
         </div>
       );
