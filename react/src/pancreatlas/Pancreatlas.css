@@ -323,6 +323,7 @@ div.matrix-cell-count {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: pointer;
 }
 
 div.matrix-cell-count > p {

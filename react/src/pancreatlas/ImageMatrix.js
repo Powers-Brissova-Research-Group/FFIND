@@ -14,6 +14,8 @@ import {
   Link
 } from 'react-router-dom'
 
+import ImageModal from './ImageModal'
+
 import Error from './Error'
 
 export default class ImageMatrix extends React.Component {
@@ -25,11 +27,80 @@ export default class ImageMatrix extends React.Component {
       tag_b: null,
       matrix: null,
       modal: false,
+      modalOpen: false,
       selected_set: []
     }
 
     this.toggle = this.toggle.bind(this);
+    this.toggleDetail = this.toggleDetail.bind(this)
     this.flip = this.flip.bind(this);
+    this.compareAges = this.compareAges.bind(this)
+    this.setModal = this.setModal.bind(this)
+  }
+
+  compareAges(age1, age2) {
+    let ageRe = /^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$/;
+    let a = ageRe.exec(age1)
+    let b = ageRe.exec(age2)
+    switch (a[3]) {
+      case 'd':
+        a[3] = 0;
+        break;
+      case 'w':
+        a[3] = 1;
+        break;
+      case 'mo':
+        a[3] = 2;
+        break;
+      case 'y':
+        a[3] = 3
+        break;
+      default:
+        a[3] = -1
+    }
+
+    switch (b[3]) {
+      case 'd':
+        b[3] = 0;
+        break;
+      case 'w':
+        b[3] = 1;
+        break;
+      case 'mo':
+        b[3] = 2;
+        break;
+      case 'y':
+        b[3] = 3
+        break;
+      default:
+        b[3] = -1
+    }
+
+    if (a[1] === 'G' && b[1] !== 'G') {
+      return -1
+    } else if (a[1] !== 'G' && b[1] === 'G') {
+      return 1
+    } else {
+      if (a[3] < b[3]) {
+        return -1
+      } else if (a[3] > b[3]) {
+        return 1
+      } else {
+        if (Number(a[2]) < Number(b[2])) {
+          return -1
+        } else if (Number(a[2]) > Number(b[2])) {
+          return 1
+        } else {
+          if (a[4] === undefined && b[4] !== undefined) {
+            return -1
+          } else if (a[4] !== undefined && b[4] === undefined) {
+            return 1
+          } else {
+            return 0
+          }
+        }
+      }
+    }
   }
 
   componentDidMount() {
@@ -39,9 +110,23 @@ export default class ImageMatrix extends React.Component {
         let m = result['matrix']
         let new_matrix = {}
         let new_matrix_t = {}
-        for (let tag_1 of Object.keys(m)) {
+        let tags_1 = Object.keys(m)
+        let tags_2 = Object.keys(m[tags_1[0]])
+        if(this.props.tag_1 === 'AGE'){
+          tags_1.sort(this.compareAges)  
+        } else {
+          tags_1.sort()
+        }
+
+        if(this.props.tag_2 === 'AGE') {
+          tags_2.sort(this.compareAges)
+        } else {
+          tags_2.sort()
+        }
+
+        for (let tag_1 of tags_1) {
           new_matrix[tag_1] = {}
-          for (let tag_2 of Object.keys(m[tag_1])) {
+          for (let tag_2 of tags_2) {
             if (new_matrix_t[tag_2] === undefined) {
               new_matrix_t[tag_2] = {}
             }
@@ -93,11 +178,44 @@ export default class ImageMatrix extends React.Component {
     })
   }
 
+  toggleDetail(){
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    })
+  }
+
   flip() {
     this.setState({
       view_transpose: !this.state.view_transpose
     });
   }
+
+  setModal(imgInfo) {
+    fetch('http://dev7-api-pancreatlas.app.vumc.org:8447/api/images/' + imgInfo)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          let path = result.kvals['File path'].val
+          let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
+          let matches = re.exec(path)
+          result.kvals['File path'].val = matches[0]
+          this.setState({
+            modalData: {
+              img_id: imgInfo,
+              img_data: result.kvals,
+              path_path: result.pathpath
+            }
+          })
+          this.toggleDetail()
+        })
+      .catch(err => {
+        this.setState({
+          loaded: false,
+          error: err
+        })
+      });
+  }
+
 
   render() {
     if (this.state.loaded) {
@@ -151,7 +269,7 @@ export default class ImageMatrix extends React.Component {
                     <tr>
                       <td><img className='modal-thumb' src={require(`./../assets/pancreatlas/thumbs/${img.iid}.jpg`)} alt="" /></td>
                       <td><p>{img.iname}</p></td>
-                      <td><Link to={'/pancreatlas/image/' + img.iid} target='_blank'><Button color="primary">View</Button></Link></td>
+                      <td><Button color="primary" onClick={() => this.setModal(img.iid)}>View</Button></td>
                     </tr>
                   ))}
                 </tbody>
@@ -161,6 +279,7 @@ export default class ImageMatrix extends React.Component {
               <Button color="danger" onClick={() => this.toggle([])}>Dismiss</Button>
             </ModalFooter>
           </Modal>
+          <ImageModal toggle={this.toggleDetail} isOpen={this.state.modalOpen} modalData={this.state.modalData} />
         </Container>
 
       )
