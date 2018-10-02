@@ -196,3 +196,33 @@ a:hover{
   color: #1B294A;
 }
 
+div.home-modal{
+  max-width: 1215px;
+}
+
+img.modal-image {
+  width: 100%;
+}
+
+div.controls{
+  padding: 1rem;
+  background-color: #efefef;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+span.control-element {
+  cursor: pointer;
+  /* background-color: antiquewhite; */
+  padding: 0.25rem;
+  width: 30%;
+  text-align: center;
+}
+
+span.control-element.selected {
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
