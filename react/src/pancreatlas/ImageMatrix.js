@@ -29,6 +29,7 @@ export default class ImageMatrix extends React.Component {
     }
 
     this.toggle = this.toggle.bind(this);
+    this.flip = this.flip.bind(this);
   }
 
   componentDidMount() {
@@ -37,9 +38,14 @@ export default class ImageMatrix extends React.Component {
       .then((result) => {
         let m = result['matrix']
         let new_matrix = {}
+        let new_matrix_t = {}
         for (let tag_1 of Object.keys(m)) {
           new_matrix[tag_1] = {}
           for (let tag_2 of Object.keys(m[tag_1])) {
+            if (new_matrix_t[tag_2] === undefined) {
+              new_matrix_t[tag_2] = {}
+            }
+            new_matrix_t[tag_2][tag_1] = []
             new_matrix[tag_1][tag_2] = []
             for (let img_id of m[tag_1][tag_2]) {
               let url = 'http://dev7-api-pancreatlas.app.vumc.org:8447/api/images/' + img_id
@@ -47,8 +53,11 @@ export default class ImageMatrix extends React.Component {
                 .then(res => res.json())
                 .then(result => {
                   new_matrix[tag_1][tag_2].push(result)
+                  new_matrix_t[tag_2][tag_1].push(result)
                   this.setState({
                     matrix: new_matrix,
+                    matrix_t: new_matrix_t,
+                    view_transpose: ((Object.keys(new_matrix).length <= Object.keys(new_matrix_t).length) ? true : false),
                     loaded: true
                   })
                 })
@@ -84,27 +93,42 @@ export default class ImageMatrix extends React.Component {
     })
   }
 
+  flip() {
+    this.setState({
+      view_transpose: !this.state.view_transpose
+    });
+  }
+
   render() {
     if (this.state.loaded) {
-      let headings = Object.keys(this.state.matrix[Object.keys(this.state.matrix)[0]])
+      let headings = null;
+      let chosen_matrix = null;
+      if(!this.state.view_transpose){
+        headings = Object.keys(this.state.matrix[Object.keys(this.state.matrix)[0]])
+        chosen_matrix = this.state.matrix
+      } else {
+        headings = Object.keys(this.state.matrix_t[Object.keys(this.state.matrix_t)[0]])
+        chosen_matrix = this.state.matrix_t
+      }
+
       return (
         <Container fluid>
           <div className='image-matrix'>
-            <Table hover>
+            <Table hover className='image-matrix'>
               <thead>
                 <tr>
-                  <td></td>
+                  <td className='matrix-cell'><Button color="primary" onClick={this.flip}>Flip Matrix</Button></td>
                   {headings.map(item => (
                     <td key={item} className='matrix-cell matrix-head'><strong>{item}</strong></td>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {Object.keys(this.state.matrix).map(row => (
-                  <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(this.state.matrix[row]).map(col => (
+                {Object.keys(chosen_matrix).map(row => (
+                  <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(chosen_matrix[row]).map(col => (
                     <td key={row + ', ' + col} className='matrix-cell'>
-                      {this.state.matrix[row][col][0] !== undefined && <div onClick={() => this.toggle(this.state.matrix[row][col])} className='matrix-cell-img'><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${this.state.matrix[row][col][0].iid}.jpg`)} alt="" /><div className='matrix-cell-count'><p>{`${this.state.matrix[row][col].length} images`}</p></div></div>}
-                      {this.state.matrix[row][col][0] === undefined && <p>&mdash;</p>}
+                      {chosen_matrix[row][col][0] !== undefined && <div onClick={() => this.toggle(chosen_matrix[row][col])} className='matrix-cell-img'><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosen_matrix[row][col][0].iid}.jpg`)} alt="" /><div className='matrix-cell-count'><p>{`${chosen_matrix[row][col].length} images`}</p></div></div>}
+                      {chosen_matrix[row][col][0] === undefined && <p>&mdash;</p>}
                     </td>
                   ))}</tr>
                 ))}
