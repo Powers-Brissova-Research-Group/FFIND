@@ -15,7 +15,7 @@ export default class FilterItem extends React.Component {
           <Col md="12" className='text-left'>
             <FormGroup check>
               <Label check>
-                <Input id={this.props.filterName} type="checkbox" onChange={() => this.props.callback(this.props.filterName)} />{this.props.filterName}
+                <Input defaultChecked={!this.props.clear} id={this.props.filterName} type="checkbox" onChange={() => this.props.callback(this.props.filterName)} />{this.props.filterName}
               </Label>
             </FormGroup>
           </Col>

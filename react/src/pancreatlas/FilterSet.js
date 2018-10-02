@@ -38,7 +38,7 @@ export default class FilterSet extends React.Component {
           </Row>
           <Collapse isOpened={this.state.open}>
             {Object.keys(this.props.tags).map(tag => (
-              <FilterItem key={tag} filterName={tag} filterQty={this.props.tags[tag]} callback={() => this.props.callback(this.props.setName, tag)} />
+              <FilterItem clear={this.props.clear} key={tag} filterName={tag} filterQty={this.props.tags[tag]} callback={() => this.props.callback(this.props.setName, tag)} />
             ))}
           </Collapse>
         </div>

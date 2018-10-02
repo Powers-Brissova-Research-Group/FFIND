@@ -161,18 +161,18 @@ export default class ImageGrid extends React.Component {
     if (empty) {
       console.log('empty')
       this.setState({
-        filters: {},
+        filters: {AGE: []},
         matches: Object.keys(this.state.ids)
       })
     } else {
       let tmp = JSON.parse(JSON.stringify(Object.keys(this.state.ids)))
       let allIds = JSON.parse(JSON.stringify(this.state.ids))
       for (let id of Object.keys(allIds)) {
-        let match = true
+        let match = false
         for (let keyset of Object.keys(tagList)) {
           let intersection = tagList[keyset].filter(tag => -1 !== allIds[id].indexOf(tag))
-          if (intersection.length <= 0) {
-            match = false
+          if (intersection.length > 0) {
+            match = true
             break
           }
         }
@@ -229,10 +229,10 @@ export default class ImageGrid extends React.Component {
       let pages = []
       for (let i = 0; i < Math.ceil(this.state.matches.length / 16); i++) {
         if (i === this.state.page) {
-          pages.push(<PaginationItem key={i} active><PaginationLink onClick={(e) => this.choosePage(i)}>{i}</PaginationLink></PaginationItem>)
+          pages.push(<PaginationItem key={i} active><PaginationLink onClick={(e) => this.choosePage(i)}>{i + 1}</PaginationLink></PaginationItem>)
 
         } else {
-          pages.push(<PaginationItem key={i}><PaginationLink onClick={(e) => this.choosePage(i)}>{i}</PaginationLink></PaginationItem>)
+          pages.push(<PaginationItem key={i}><PaginationLink onClick={(e) => this.choosePage(i)}>{i + 1}</PaginationLink></PaginationItem>)
         }
       }
 
@@ -254,7 +254,7 @@ export default class ImageGrid extends React.Component {
           <Container>
             <Row className="pancreatlas-row">
               <Col md="2">
-                <FilterList ageGroup={this.props.groupName} tags={this.state.tags} filters={this.state.tags} callback={this.filter} />
+                <FilterList ageGroup={this.props.groupName} tags={this.state.tags} filters={this.state.filters} callback={this.filter} />
               </Col>
               <Col md="10">
                 {img_grid.map((item, idx) => (

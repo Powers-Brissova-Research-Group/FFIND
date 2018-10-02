@@ -14,9 +14,11 @@ export default class FilterList extends React.Component {
   constructor(props) {
     super(props)
     this.setFilters = this.setFilters.bind(this)
+    this.clear = this.clear.bind(this)
     this.state = {
       loaded: false,
-      filters: {}
+      filters: {},
+      clear: true
     }
   }
 
@@ -80,6 +82,13 @@ export default class FilterList extends React.Component {
     this.props.callback(this.state.filters)
   }
 
+  clear(){
+    this.setState({
+      clear: true
+    })
+    this.props.callback({})
+  }
+
   render() {
     if (this.props.tags !== null) {
       return (
@@ -87,14 +96,14 @@ export default class FilterList extends React.Component {
           <h3><strong>Filters:</strong></h3>
           <Row className="pancreatlas-row">
             <Col className='text-center' md="12">
-              <Button outline className='filter-button text-center' color="danger" size="sm" onClick={() => this.props.callback({})}>Clear</Button>
+              <Button outline className='filter-button text-center' color="danger" size="sm" onClick={this.clear}>Clear</Button>
             </Col>
           </Row>
           {Object.keys(this.props.tags).map(key => {
             if(this.props.tags[key]['set_name'] === 'AGE'){
-              return (<AgeFilterSet ageGroup={this.props.ageGroup} className='filter-set' callback={this.setFilters} key={key} ages={Object.keys(this.props.tags[key]['tags'])} /> )
+              return (<AgeFilterSet clear={this.state.clear} ageGroup={this.props.ageGroup} className='filter-set' callback={this.setFilters} key={key} ages={Object.keys(this.props.tags[key]['tags'])} /> )
             } else {
-              return (<FilterSet classname='filter-set' setName={this.props.tags[key]['set_name']} tags={this.props.tags[key]['tags']} callback={this.setFilters} key={key} />)
+              return (<FilterSet clear={this.state.clear} classname='filter-set' setName={this.props.tags[key]['set_name']} tags={this.props.tags[key]['tags']} callback={this.setFilters} key={key} filters={this.props.filters[key]} />)
             }
             // <Collapse isOpened={true}>
             //   <div className='tagset' key={key}>
