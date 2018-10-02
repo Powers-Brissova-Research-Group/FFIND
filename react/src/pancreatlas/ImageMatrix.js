@@ -172,6 +172,16 @@ export default class ImageMatrix extends React.Component {
   }
 
   toggle(new_set = []) {
+    for (let img of new_set){
+      let kvals = img.kvals;
+      let re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
+      let matchingKeys = Object.keys(kvals).filter(key => re.test(key))
+      let markers = {}
+      for (let key of matchingKeys){
+        kvals[key].val.split(',').map(val => markers[val.trim()] = re.exec(key)[3])
+      }
+      img.markers = markers
+    }
     this.setState({
       modal: !this.state.modal,
       selected_set: new_set
@@ -260,7 +270,7 @@ export default class ImageMatrix extends React.Component {
                 <thead>
                   <tr>
                     <td>Thumbnail</td>
-                    <td>Image Name</td>
+                    <td>Image Tags</td>
                     <td>Action</td>
                   </tr>
                 </thead>
@@ -268,7 +278,7 @@ export default class ImageMatrix extends React.Component {
                   {this.state.selected_set.map(img => (
                     <tr>
                       <td><img className='modal-thumb' src={require(`./../assets/pancreatlas/thumbs/${img.iid}.jpg`)} alt="" /></td>
-                      <td><p>{img.iname}</p></td>
+                      <td><div><strong>Markers: </strong>{Object.keys(img.markers).join(', ')}</div><div><strong>Tags: </strong>{img.tags.filter(tag => Object.keys(img.markers).indexOf(tag) === -1).join(', ')}</div></td>
                       <td><Button color="primary" onClick={() => this.setModal(img.iid)}>View</Button></td>
                     </tr>
                   ))}
