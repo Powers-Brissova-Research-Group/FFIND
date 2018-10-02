@@ -85,21 +85,22 @@ export default class MatrixView extends React.Component {
                 <Table className='matrix-table'>
                   <thead>
                     <tr className='row'>
-                      <td className='col-md-2'></td>
+                      <td className='col-md-2 matrix-sel'></td>
                     {this.state.tagsets.map(ts => (
-                      <td className='col-md-2'><strong>{ts.set_name}</strong></td>
+                      <td className='col-md-2 matrix-sel'><strong>{ts.set_name}</strong></td>
                     ))}
                     </tr>
                   </thead>
                   {this.state.tagsets.map(tagset1 => (
                     <tr className='row'>
-                      <td className='col-md-2'><strong>{tagset1.set_name}</strong></td>
-                      {this.state.tagsets.map(tagset2 => 
+                      <td className='matrix-sel col-md-2'><strong>{tagset1.set_name}</strong></td>
+                      {Array(this.state.tagsets.indexOf(tagset1) + 1).fill(0).map(key => (<td class='col-md-2 matrix-sel'>&mdash;</td>))}
+                      {this.state.tagsets.slice(this.state.tagsets.indexOf(tagset1) + 1).map(tagset2 => 
                         {if (tagset1.set_name === tagset2.set_name){
-                          return <td className='col-md-2 matrix-selector-cell'><span>&mdash;</span></td>
+                          return <td className='col-md-2 matrix-sel'><span>&mdash;</span></td>
                         } else {
-                          return (<td className='col-md-2 matrix-selector-cell'><Button className='matrix-select-button' color="link" onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>)
-                        }}                        
+                          return (<td className='col-md-2 matrix-sel'><Button className='matrix-select-button' color="link" onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>)
+                        }}
                       )}
                     </tr>
                   ))}

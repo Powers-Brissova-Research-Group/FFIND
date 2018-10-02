@@ -274,7 +274,6 @@ h1, h2, h3, h4, h5, h6{
 .matrix-select-button{
   white-space: normal !important;
   word-break: initial;
-  margin-top: 18%;
 }
 
 .wrapper{
@@ -391,4 +390,12 @@ td.matrix-selector-cell > span {
 
 .marker-cell > p {
   margin: 0.5rem 0 0.5rem 0;
+}
+
+td.matrix-sel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
