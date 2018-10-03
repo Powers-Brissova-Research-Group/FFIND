@@ -108,13 +108,13 @@ export default class ImageMatrix extends React.Component {
         let new_matrix_t = {}
         let tags_1 = Object.keys(m)
         let tags_2 = Object.keys(m[tags_1[0]])
-        if(this.props.tag_1 === 'AGE'){
-          tags_1.sort(this.compareAges)  
+        if (this.props.tag_1 === 'AGE') {
+          tags_1.sort(this.compareAges)
         } else {
           tags_1.sort()
         }
 
-        if(this.props.tag_2 === 'AGE') {
+        if (this.props.tag_2 === 'AGE') {
           tags_2.sort(this.compareAges)
         } else {
           tags_2.sort()
@@ -168,15 +168,39 @@ export default class ImageMatrix extends React.Component {
   }
 
   toggle(new_set = []) {
-    for (let img of new_set){
+    for (let img of new_set) {
       let kvals = img.kvals;
-      let re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
-      let matchingKeys = Object.keys(kvals).filter(key => re.test(key))
+      let marker_re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
+      let donor_re = /(^Donor info)(\s+-\s+)(.+$)/i
+      let region_re = /(^Image info)(\s+-\s+)(Section Plane$|Pancreas Region$)/
+      let marker_keys = Object.keys(kvals).filter(key => marker_re.test(key))
+      let donor_keys = Object.keys(kvals).filter(key => donor_re.test(key))
+      let region_keys = Object.keys(kvals).filter(key => region_re.test(key))
+
+      donor_keys.sort()
+      region_keys.sort()
       let markers = {}
-      for (let key of matchingKeys){
-        kvals[key].val.split(',').map(val => markers[val.trim()] = re.exec(key)[3])
+      let donor = {}
+      let region = {
+        [region_keys[1]]: kvals[region_keys[1]].val,
+        [region_keys[0]]: kvals[region_keys[0]].val
+
+      }
+      for (let key of marker_keys) {
+        kvals[key].val.split(',').map(val => markers[val.trim()] = marker_re.exec(key)[3])
+      }
+      for (let key of donor_keys) {
+        let val_key = donor_re.exec(key)[3]
+        if (val_key !== 'UNOS ID' && val_key !== 'LIMS ID' && kvals[key] !== '') {
+          donor[donor_re.exec(key)[3]] = kvals[key].val
+        }
+      }
+      for (let key of region_keys) {
+
       }
       img.markers = markers
+      img.donor = donor
+      img.region = region
     }
     this.setState({
       modal: !this.state.modal,
@@ -184,7 +208,7 @@ export default class ImageMatrix extends React.Component {
     })
   }
 
-  toggleDetail(){
+  toggleDetail() {
     this.setState({
       modalOpen: !this.state.modalOpen
     })
@@ -227,7 +251,7 @@ export default class ImageMatrix extends React.Component {
     if (this.state.loaded) {
       let headings = null;
       let chosen_matrix = null;
-      if(!this.state.view_transpose){
+      if (!this.state.view_transpose) {
         headings = Object.keys(this.state.matrix[Object.keys(this.state.matrix)[0]])
         chosen_matrix = this.state.matrix
       } else {
@@ -274,7 +298,16 @@ export default class ImageMatrix extends React.Component {
                   {this.state.selected_set.map(img => (
                     <tr>
                       <td><img className='modal-thumb' src={require(`./../assets/pancreatlas/thumbs/${img.iid}.jpg`)} alt="" /></td>
-                      <td><div><strong>Markers: </strong>{Object.keys(img.markers).join(', ')}</div><div><strong>Tags: </strong>{img.tags.filter(tag => Object.keys(img.markers).indexOf(tag) === -1).join(', ')}</div></td>
+                      <td>
+                        {Object.keys(img.donor).map(key =>
+                          (<div>
+                            <strong>{key}: </strong>{img.donor[key]}
+                          </div>))}
+                        <div><strong>Markers: </strong>{Object.keys(img.markers).join(', ')}</div>
+                        <div><strong>Region: </strong>{Object.values(img.region).join(', ')}</div>
+                        <div><strong>Other Tags: </strong>{img.tags.filter(tag => Object.keys(img.markers).indexOf(tag) === -1 && Object.keys(img.donor).indexOf(tag) === -1 && Object.keys(img.region).indexOf(tag) === -1).join(', ')}
+                        </div>
+                      </td>
                       <td><Button color="primary" onClick={() => this.setModal(img.iid)}>View</Button></td>
                     </tr>
                   ))}
