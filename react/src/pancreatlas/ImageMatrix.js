@@ -10,10 +10,6 @@ import {
   Button
 } from 'reactstrap'
 
-import {
-  Link
-} from 'react-router-dom'
-
 import ImageModal from './ImageModal'
 
 import Error from './Error'

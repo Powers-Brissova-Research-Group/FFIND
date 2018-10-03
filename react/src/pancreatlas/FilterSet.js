@@ -26,6 +26,11 @@ export default class FilterSet extends React.Component {
 
   render() {
     if (this.props.setName !== 'AGE') {
+      // Object.keys(this.props.tags).map(tag => {
+      //   if(this.props.filters !== undefined && this.props.filter.indexOf(tag) !== -1){
+      //     console.log(tag)
+      //   }
+      // })
       return (
         <div className="filter-set">
           <Row className="pancreatlas-row">
@@ -38,7 +43,7 @@ export default class FilterSet extends React.Component {
           </Row>
           <Collapse isOpened={this.state.open}>
             {Object.keys(this.props.tags).map(tag => (
-              <FilterItem clear={this.props.clear} key={tag} filterName={tag} filterQty={this.props.tags[tag]} callback={() => this.props.callback(this.props.setName, tag)} />
+              <FilterItem defaultChecked={this.props.filters !== undefined && this.props.filters.indexOf(tag) !== -1} clear={this.props.clear} key={tag} filterName={tag} filterQty={this.props.tags[tag]} callback={() => this.props.callback(this.props.setName, tag)} />
             ))}
           </Collapse>
         </div>

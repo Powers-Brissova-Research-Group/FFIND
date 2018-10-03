@@ -49,7 +49,18 @@ export default class AgeFilterSet extends React.Component {
     this.initialized = false
   }
 
-
+  componentDidUpdate(prevProps){
+    if((prevProps.filters !== undefined && prevProps.filters.length) !== 0 && this.props.filters.length === 0){
+      this.setState({
+        open: true,
+        ageFilters: this.props.ages,
+        gestational: true,
+        neonatal: true,
+        infancy: true,
+        childhood: true
+      })
+    }
+  }
 
   findAgeGroup(age) {
     let ageRe = /^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$/;
@@ -227,7 +238,7 @@ export default class AgeFilterSet extends React.Component {
                 <Col md="12" className='text-left'>
                   <FormGroup check>
                     <Label check>
-                      <Input type="checkbox" defaultChecked={this.props.ageGroup !== null && this.props.ageGroup.toUpperCase() === key.toUpperCase()} onChange={evt => this.toggleGroup(evt.target.checked, ageGroups[key], key)} />{key.charAt(0).toUpperCase() + key.slice(1)}
+                      <Input type="checkbox" checked={!this.state[key]} onChange={evt => this.toggleGroup(evt.target.checked, ageGroups[key], key)} />{key.charAt(0).toUpperCase() + key.slice(1)}
                     </Label>
                   </FormGroup>
                 </Col>
