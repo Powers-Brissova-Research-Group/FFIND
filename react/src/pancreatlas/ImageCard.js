@@ -31,8 +31,10 @@ export default class ImageCard extends React.Component {
         let re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
         let matchingKeys = Object.keys(kvals).filter(key => re.test(key))
         let markers = {}
-        for (let key of matchingKeys){
-          kvals[key].val.split(',').map(val => markers[val.trim()] = re.exec(key)[3])
+        for (let key of matchingKeys) {
+          if(kvals[key].val !== ''){
+            kvals[key].val.split(',').map(val => markers[val.trim()] = re.exec(key)[3])
+          }
         }
         this.setState({
           loaded: true,
@@ -65,14 +67,16 @@ export default class ImageCard extends React.Component {
             <CardSubtitle>{this.state.omero_id}</CardSubtitle> */}
             <CardText>
               <div><strong>Markers:</strong></div>
-              {Object.keys(this.state.markers).slice(0, Object.keys(this.state.markers).length - 1).map(marker => (
-                <span className='tag' key={marker}> <span className={this.state.markers[marker]}>{' ' + marker}</span><span> &bull;</span></span>
-              ))}
-              <span className={'tag ' + this.state.markers[last_marker]} key={last_marker}> {last_marker}</span>
+              <div className='marker-list'>
+                {Object.keys(this.state.markers).slice(0, Object.keys(this.state.markers).length - 1).map(marker => (
+                  <span className='tag' key={marker}> <span className={`${this.state.markers[marker]} marker`}>{' ' + marker}</span><span> &bull;</span></span>
+                ))}
+                <span className={'tag'} key={last_marker}> <span className={`${this.state.markers[last_marker]} marker`}> {last_marker}</span></span>
+              </div>
               <div><strong>Tags:</strong></div>
               {this.state.img_tags.slice(0, this.state.img_tags.length - 1).map(item => (
-                  <span className='tag' key={item}><span>{' ' + item}</span><span> &bull;</span></span>
-                ))}
+                <span className='tag' key={item}><span>{' ' + item}</span><span> &bull;</span></span>
+              ))}
               <span className='tag' key={this.state.img_tags[this.state.img_tags.length - 1]}> {this.state.img_tags[this.state.img_tags.length - 1]}</span>
               <Button color="link" className="mt-auto" onClick={() => this.props.callback(this.props.iid)}>Preview</Button>
               {/* <a href={this.props.path_path} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></a> */}
