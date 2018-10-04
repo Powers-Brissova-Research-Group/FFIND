@@ -24,15 +24,17 @@ export default class ImageModal extends React.Component {
 
 
   render() {
+    let label_re = /^([a-zA-Z]+\s+info)?(\s+-\s+)?(.+)$/
     if (this.props.modalData !== undefined) {
-      let re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
-      let matchingKeys = Object.keys(this.props.modalData.img_data).filter(key => re.test(key))
+      let marker_re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
+      let matchingKeys = Object.keys(this.props.modalData.img_data).filter(key => marker_re.test(key))
       for (let key of matchingKeys) {
-        this.markers[re.exec(key)[3]] = this.props.modalData.img_data[key].val
+        this.markers[marker_re.exec(key)[3]] = this.props.modalData.img_data[key].val
       }
       this.relevantKeys = Object.keys(this.props.modalData.img_data).sort().filter(
         key => ['Stain info - DAPI', 'Stain info - cy2', 'Stain info - cy3', 'Stain info - cy5', 'Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - Pancreas Region'].indexOf(key) === -1
       );
+      
     }
 
     return (
@@ -57,7 +59,7 @@ export default class ImageModal extends React.Component {
                     </Col>
                   </Row>
                   <Row>
-                    {Object.keys(this.markers).map(key => (
+                    {Object.keys(this.markers).filter(key => this.markers[key] !== '').map(key => (
                       <Col md="6" sm="12">
                         <div className={`marker-cell ${key}`}>
                           <p><span className='marker-name'>{key}: </span>{this.markers[key]}</p>
@@ -70,7 +72,7 @@ export default class ImageModal extends React.Component {
                   <Table>
                     <tbody>
                       {this.relevantKeys.map(key => {
-                        return <DetailRow data={this.props.modalData.img_data[key].val} desc={this.defs[key].short_desc} heading={key} />
+                        return <DetailRow data={this.props.modalData.img_data[key].val} desc={this.defs[key].short_desc} heading={label_re.exec(key)[3]} />
                       })}
                     </tbody>
                   </Table>

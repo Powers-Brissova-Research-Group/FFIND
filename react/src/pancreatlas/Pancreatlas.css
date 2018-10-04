@@ -258,9 +258,6 @@ div.marker-list {
 .cy5 {
   background-color: white;
   color: black;
-  border: 1px solid rgba(0,0,0,.125); 
-  padding: 0.25rem;
-  border-radius: 5px;
 }
 
 span.marker {
@@ -402,6 +399,9 @@ td.matrix-selector-cell > span {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 5px;
+  margin: 0.125rem;
 }
 
 .marker-cell > p {
