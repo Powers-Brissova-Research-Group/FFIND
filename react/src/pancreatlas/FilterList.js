@@ -65,9 +65,6 @@ export default class FilterList extends React.Component {
           tagList[tagset].push(newTag)
         }
       }
-      this.setState({
-        filters: tagList
-      })
     } else {
       // If we don't have anything from the current tagset, add that key to the object and add the tag
 
@@ -78,6 +75,9 @@ export default class FilterList extends React.Component {
         tagList[tagset] = [newTag]
       }
     }
+    this.setState({
+      filters: tagList
+    })
     this.props.callback(this.state.filters)
   }
 

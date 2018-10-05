@@ -32,7 +32,7 @@ export default class AgeFilterSet extends React.Component {
     this.toggleGroup = this.toggleGroup.bind(this)
     this.state = {
       open: true,
-      ageFilters: this.props.ages,
+      ageFilters: [],
       gestational: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'GESTATIONAL',
       neonatal: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'NEONATAL',
       infancy: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'INFANCY',
@@ -53,7 +53,7 @@ export default class AgeFilterSet extends React.Component {
     if((prevProps.filters !== undefined && prevProps.filters.length) !== 0 && this.props.filters.length === 0){
       this.setState({
         open: true,
-        ageFilters: this.props.ages,
+        ageFilters: [],
         gestational: true,
         neonatal: true,
         infancy: true,

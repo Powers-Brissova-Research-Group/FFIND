@@ -175,7 +175,6 @@ export default class ImageGrid extends React.Component {
           tmp.splice(tmp.indexOf(id), 1)
         }
       }
-
       this.setState({
         filters: tagList,
         matches: tmp
