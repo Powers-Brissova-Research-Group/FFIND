@@ -199,8 +199,10 @@ export default class ImageGrid extends React.Component {
         (result) => {
           let path = result.kvals['File path'].val
           let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
+          let age_re = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
           let matches = re.exec(path)
           result.kvals['File path'].val = matches[0]
+          result.kvals['Donor info - Age'].val = result.tags.filter(val => age_re.test(val))[0]
           this.setState({
             modalData: {
               img_id: imgInfo,
