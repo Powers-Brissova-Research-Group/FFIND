@@ -23,7 +23,7 @@ class App extends Component {
         <Container fluid className='test-feedback'>
           <Row>
             <Col sm="12">
-              <p><strong>N.B. This is a test version of the Pancreatlas. Please report feedback <a href="#">here</a></strong></p>
+              <p><strong>N.B. This is a test version of the Pancreatlas.</strong></p>
             </Col>
           </Row>
         </Container>

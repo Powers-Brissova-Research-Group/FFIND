@@ -190,14 +190,19 @@ export default class ImageMatrix extends React.Component {
         kvals[key].val.split(',').map(val => markers[val.trim()] = marker_re.exec(key)[3])
       }
       for (let key of donor_keys) {
-        let val_key = donor_re.exec(key)[3]
-        if (val_key !== 'UNOS ID' && val_key !== 'LIMS ID' && kvals[key] !== '') {
-          donor[donor_re.exec(key)[3]] = kvals[key].val
+        if (kvals[key].val !== '' && kvals[key].val !== undefined){
+          let val_key = donor_re.exec(key)[3]
+          if (val_key !== 'UNOS ID' && val_key !== 'LIMS ID' && kvals[key] !== '') {
+            if (val_key === 'Age'){
+              let age_re = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
+              donor[donor_re.exec(key)[3]] = img.tags.filter(tag => age_re.test(tag))[0]
+            } else {
+              donor[donor_re.exec(key)[3]] = kvals[key].val
+            }
+          }
         }
       }
-      for (let key of region_keys) {
 
-      }
       img.markers = markers
       img.donor = donor
       img.region = region
@@ -305,7 +310,7 @@ export default class ImageMatrix extends React.Component {
                           </div>))}
                         <div><strong>Markers: </strong>{Object.keys(img.markers).join(', ')}</div>
                         <div><strong>Region: </strong>{Object.values(img.region).join(', ')}</div>
-                        <div><strong>Other Tags: </strong>{img.tags.filter(tag => Object.keys(img.markers).indexOf(tag) === -1 && Object.keys(img.donor).indexOf(tag) === -1 && Object.keys(img.region).indexOf(tag) === -1).join(', ')}
+                        <div><strong>Other Tags: </strong>{img.tags.filter(tag => Object.keys(img.markers).indexOf(tag) === -1 && Object.values(img.donor).indexOf(tag) === -1 && Object.values(img.region).indexOf(tag) === -1).join(', ')}
                         </div>
                       </td>
                       <td><Button color="primary" onClick={() => this.setModal(img.iid)}>View</Button></td>
