@@ -37,6 +37,7 @@ export default class ImageGrid extends React.Component {
     this.updateTags = this.updateTags.bind(this)
     this.toggle = this.toggle.bind(this)
     this.setModal = this.setModal.bind(this)
+    this.markerFilter = this.markerFilter.bind(this)
 
     this.image_tags = {}
     this.tag_dict = {}
@@ -163,12 +164,14 @@ export default class ImageGrid extends React.Component {
       let tmp = JSON.parse(JSON.stringify(Object.keys(this.state.ids)))
       let allIds = JSON.parse(JSON.stringify(this.state.ids))
       for (let id of Object.keys(allIds)) {
-        let match = false
+        let match = true
         for (let keyset of Object.keys(tagList)) {
-          let intersection = tagList[keyset].filter(tag => -1 !== allIds[id].indexOf(tag))
-          if (intersection.length > 0) {
-            match = true
-            break
+          if(keyset !== 'AGE' || (keyset === 'AGE' && tagList[keyset].length > 0)){
+            let intersection = tagList[keyset].filter(tag => -1 !== allIds[id].indexOf(tag))
+            if (intersection.length <= 0) {
+              match = false
+              break
+            }  
           }
         }
         if (!match) {
@@ -180,6 +183,17 @@ export default class ImageGrid extends React.Component {
         matches: tmp
       })
     }
+  }
+
+  markerFilter(marker){
+    let currentFilters = this.state.filters
+    if(Object.keys(currentFilters).indexOf('MARKER') === -1){
+      currentFilters['MARKER'] = []
+    }
+    if(currentFilters['MARKER'].indexOf(marker) === -1){
+      currentFilters['MARKER'].push(marker)
+    }
+    this.filter(currentFilters)
   }
 
   callback(iid, tags) {
@@ -256,7 +270,7 @@ export default class ImageGrid extends React.Component {
                   <Row key={idx} className="image-row pancreatlas-row">
                     {item.map((image, idx) =>
                       <Col key={idx} md="3">
-                        <ImageCard key={image} iid={image} callback={this.setModal} />
+                        <ImageCard key={image} iid={image} callback={this.setModal} filterCallback={this.markerFilter} />
                       </Col>
                     )}
                   </Row>

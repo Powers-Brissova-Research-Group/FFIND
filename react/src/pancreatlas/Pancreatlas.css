@@ -266,6 +266,7 @@ span.marker {
   padding: 0 0.25rem 0 0.25rem;
   border-radius: 5px;
   line-height: 2rem;
+  cursor: pointer;
 }
 
 .cy3 {
