@@ -416,3 +416,30 @@ td.matrix-sel {
   align-items: center;
   text-align: center;
 }
+
+span.age-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+span.age-group:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+  -webkit-transition: background-color 250ms linear;
+  -ms-transition: background-color 250ms linear;
+  transition: background-color 250ms linear;
+}
+
+span.age-group-text {
+  position: absolute;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+img.age-group-img {
+  z-index: -1;
+}
