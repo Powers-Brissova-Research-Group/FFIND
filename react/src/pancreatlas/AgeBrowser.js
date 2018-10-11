@@ -12,6 +12,11 @@ import neonatal_timeline from '../assets/pancreatlas/ages/timeline-neonatal.png'
 import infant_timeline from '../assets/pancreatlas/ages/timeline-infancy.png'
 import childhood_timeline from '../assets/pancreatlas/ages/timeline-childhood.png'
 
+import gestational_islet from '../assets/pancreatlas/ages/fetal-islet.png'
+import neonatal_islet from '../assets/pancreatlas/ages/neonatal-islet.png'
+import infant_islet from '../assets/pancreatlas/ages/infant-islet.png'
+import childhood_islet from '../assets/pancreatlas/ages/childhood-islet.png'
+
 export default class AgeBrowser extends React.Component {
   constructor(props) {
     super(props)

@@ -48,7 +48,7 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://dev7-api-pancreatlas.app.vumc.org:8447/api/tagsets/')
+    fetch(`${process.env.REACT_APP_API_URL}/tagsets/`)
       .then(res => res.json())
       .then(
         (tresult) => {
@@ -67,7 +67,7 @@ export default class ImageGrid extends React.Component {
               }
             }
           }
-          fetch('http://dev7-api-pancreatlas.app.vumc.org:8447/api/datasets/' + this.props.did + '/get-images')
+          fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`)
             .then(res => res.json())
             .then(
               (result) => {
@@ -207,7 +207,7 @@ export default class ImageGrid extends React.Component {
   }
 
   setModal(imgInfo) {
-    fetch('http://dev7-api-pancreatlas.app.vumc.org:8447/api/images/' + imgInfo)
+    fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`)
       .then(res => res.json())
       .then(
         (result) => {

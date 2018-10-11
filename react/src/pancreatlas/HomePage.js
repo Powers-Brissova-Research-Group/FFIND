@@ -25,6 +25,12 @@ import {
 } from 'react-router-dom'
 
 export default class HomePage extends React.Component {
+
+  constructor(props){
+    super(props)
+    console.log(process.env.REACT_APP_API_URL);
+  }
+
   render() {
     let defs = require('../assets/pancreatlas/definitions.json')
     console.log(defs)  
