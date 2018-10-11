@@ -17,7 +17,7 @@ export default class FilterList extends React.Component {
     this.clear = this.clear.bind(this)
     this.state = {
       loaded: false,
-      filters: {},
+      filters: this.props.filters,
       clear: true
     }
   }
@@ -39,6 +39,15 @@ export default class FilterList extends React.Component {
       this.setState({
         loaded: true,
         tags: t
+      })
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    console.log(prevProps)
+    if(JSON.stringify(prevState.filters) !== JSON.stringify(this.props.filters)){
+      this.setState({
+        filters: this.props.filters
       })
     }
   }

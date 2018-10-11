@@ -8,6 +8,15 @@ import {
 
 import ImageGrid from './ImageGrid'
 
+import neonatal_timeline from '../assets/pancreatlas/ages/timeline-neonatal.png'
+import infant_timeline from '../assets/pancreatlas/ages/timeline-infancy.png'
+import childhood_timeline from '../assets/pancreatlas/ages/timeline-childhood.png'
+
+import gestational_islet from '../assets/pancreatlas/ages/fetal-islet.png'
+import neonatal_islet from '../assets/pancreatlas/ages/neonatal-islet.png'
+import infant_islet from '../assets/pancreatlas/ages/infant-islet.png'
+import childhood_islet from '../assets/pancreatlas/ages/childhood-islet.png'
+
 export default class AgeBrowser extends React.Component {
   constructor(props) {
     super(props)
@@ -21,9 +30,9 @@ export default class AgeBrowser extends React.Component {
   }
 
   show(ages) {
-    let filters = {AGE: null}
+    let filters = { AGE: null }
     let gname = null
-    switch(ages){
+    switch (ages) {
       case 0:
         gname = 'GESTATIONAL'
         filters['AGE'] = ["G12w", "G12.3w", "G15w", "G15.5w", "G17w", "G17.3w", "G18w", "G33w", "G34.4w+4d", "G37w", "G39.9w", "G41w"]
@@ -62,22 +71,24 @@ export default class AgeBrowser extends React.Component {
               </Col>
             </Row>
             <Row className="pancreatlas-row">
-              <Col md="6">
-                <Button color="primary" size="lg" block onClick={() => this.show(0)}>Gestational</Button>
+              <Col md="3">
+                <span className='age-group' onClick={() => this.show(0)}><span className='age-group-text'>Gestational</span><img className='age-group-img' src={neonatal_timeline} alt='gestational' /></span>
+                {/* <Button color="primary" size="lg" block onClick={() => this.show(0)}>Gestational</Button> */}
               </Col>
-              <Col md="6">
-                <Button color="primary" size="lg" block onClick={() => this.show(1)}>Neonatal</Button>
+              <Col md="3">
+                <span className='age-group' onClick={() => this.show(1)}><span className='age-group-text'>Neonatal</span><img className='age-group-img' src={neonatal_timeline} alt='neonatal' /></span>
+                {/* <Button color="primary" size="lg" block onClick={() => this.show(1)}>Neonatal</Button> */}
+              </Col>
+              <Col md="3">
+                <span className='age-group' onClick={() => this.show(2)}><span className='age-group-text'>Infant</span><img className='age-group-img' src={infant_timeline} alt='infant' /></span>
+                {/* <Button color="primary" size="lg" block onClick={() => this.show(2)}>Infant</Button> */}
+              </Col>
+              <Col md="3">
+                <span className='age-group' onClick={() => this.show(3)}><span className='age-group-text'>Childhood</span><img className='age-group-img' src={childhood_timeline} alt='childhood' /></span>
+                {/* <Button color="primary" size="lg" block onClick={() => this.show(3)}>Childhood</Button> */}
               </Col>
             </Row>
-            <Row className="pancreatlas-row">
-              <Col md="6">
-                <Button color="primary" size="lg" block onClick={() => this.show(2)}>Infant</Button>
-              </Col>
-              <Col md="6">
-                <Button color="primary" size="lg" block onClick={() => this.show(3)}>Childhood</Button>
-              </Col>
-            </Row>
-            <Row className="pancreatlas-row"w>
+            <Row className="pancreatlas-row" w>
               <Col md="12">
                 <Button color="secondary" size="lg" block onClick={() => this.show(4)}>All</Button>
               </Col>
@@ -86,8 +97,8 @@ export default class AgeBrowser extends React.Component {
         </div>
       )
     } else {
-      return(
-        <ImageGrid filters={{}} group={this.state.group } groupName={this.state.groupName} did={this.props.match.params.did} />
+      return (
+        <ImageGrid filters={{}} group={this.state.group} groupName={this.state.groupName} did={this.props.match.params.did} />
       )
     }
   }

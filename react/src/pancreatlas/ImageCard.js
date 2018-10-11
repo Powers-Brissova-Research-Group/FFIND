@@ -2,7 +2,6 @@ import React from 'react'
 import {
   Card,
   CardImg,
-  CardText,
   CardBody,
   Button
 } from 'reactstrap'
@@ -24,7 +23,7 @@ export default class ImageCard extends React.Component {
 
   componentDidMount() {
     // Load information about the image
-    fetch('http://dev7-api-pancreatlas.app.vumc.org:8447/api/images/' + this.props.iid)
+    fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`)
       .then(res => res.json())
       .then(result => {
         let kvals = result.kvals;
@@ -45,7 +44,7 @@ export default class ImageCard extends React.Component {
 
         }
         for (let key of marker_keys) {
-          kvals[key].val.split(',').filter(val => val != '').map(val => markers[val.trim()] = marker_re.exec(key)[3])
+          kvals[key].val.split(',').filter(val => val !== '').map(val => markers[val.trim()] = marker_re.exec(key)[3])
         }
         for (let key of donor_keys) {
           if (kvals[key].val !== '' && kvals[key].val !== undefined){
@@ -93,14 +92,14 @@ export default class ImageCard extends React.Component {
             {/* <CardTitle>{this.state.img_name}</CardTitle>
             <CardSubtitle>{this.state.omero_id}</CardSubtitle> */}
             {Object.keys(this.state.donor).map(key => (
-              <div><strong>{key}: </strong>{this.state.donor[key]}</div>
+              <div key={this.props.iid + key}><strong>{key}: </strong>{this.state.donor[key]}</div>
             ))}
             <div><strong>Markers:</strong></div>
             <div className='marker-list'>
               {Object.keys(this.state.markers).slice(0, Object.keys(this.state.markers).length - 1).map(marker => (
-                <span className='tag' key={this.props.iid + marker}> <span className={`${this.state.markers[marker]} marker`}>{' ' + marker}</span><span> &bull;</span></span>
+                <span className='tag' key={this.props.iid + marker}> <span onClick={() => this.props.filterCallback(marker)} className={`${this.state.markers[marker]} marker`}>{' ' + marker}</span><span> &bull;</span></span>
               ))}
-              <span className={'tag'} key={this.props.iid + last_marker}> <span className={`${this.state.markers[last_marker]} marker`}> {last_marker}</span></span>
+              <span className={'tag'} key={this.props.iid + last_marker}> <span onClick={() => this.props.filterCallback(last_marker)} className={`${this.state.markers[last_marker]} marker`}> {last_marker}</span></span>
             </div>
             <div className='region-info'>
               <strong>Region: </strong>{Object.values(this.state.region).join(', ')}
