@@ -20,13 +20,13 @@ class App extends Component {
   render() {
     return (
       <div className='app'>
-        <Container fluid className='test-feedback'>
+        {/* <Container fluid className='test-feedback'>
           <Row>
             <Col sm="12">
               <p><strong>N.B. This is a test version of the Pancreatlas.</strong></p>
             </Col>
           </Row>
-        </Container>
+        </Container> */}
         <Router>
           <div className="App">
             <Switch>

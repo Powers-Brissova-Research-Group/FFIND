@@ -12,7 +12,7 @@ import HelmsleyLogo from '../assets/pancreatlas/logos/helmsley-logo.jpg'
 export default class Footer extends React.Component {
   render() {
     return (
-      <div className="footer">
+      <footer className="footer">
         <Container fluid>
           <Container>
             <Row>
@@ -31,7 +31,7 @@ export default class Footer extends React.Component {
             </Row>
           </Container>
         </Container>
-      </div>
+      </footer>
     )
   }
 }

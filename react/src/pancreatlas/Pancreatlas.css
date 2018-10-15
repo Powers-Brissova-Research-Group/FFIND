@@ -114,6 +114,7 @@ h1, h2, h3, h4, h5, h6{
    background-color: #1b294a;
 }
 
+
 .footer {
   background-color: #1b294a;
   color: #e4e5d7;
@@ -212,7 +213,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .footer-img {
-  max-width: 400px;
+  max-width: 60%;
 }
 
 .explore-button {
@@ -295,8 +296,9 @@ span.marker {
   height: 100%;
 }
 
-.content{
-  flex: 1 0 auto;
+div.content{
+  min-height:100vh;
+  margin-bottom: -320px;
 }
 
 .spacer-footer {
