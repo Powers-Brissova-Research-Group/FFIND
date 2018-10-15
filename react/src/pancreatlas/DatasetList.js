@@ -41,6 +41,8 @@ export default class DatasetList extends React.Component {
     if (this.state.loaded) {
       return (
         <div className="dataset-list">
+          <h1>Datasets</h1>
+          <p>Please choose a dataset to explore</p>
           <Table hover>
             <thead>
               <tr>
