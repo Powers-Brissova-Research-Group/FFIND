@@ -11,12 +11,12 @@ export default class HomeTitle extends React.Component {
       <div className="home-title">
         <Row className="pancreatlas-row">
           <Col md="12">
-            <img className="img-fluid" src={Logo} alt="Logo" />
+            <img className="img-fluid home-logo" src={Logo} alt="Logo" />
           </Col>
         </Row>
         <Row className="pancreatlas-row">
           <Col md="12">
-            <p className='home-description'>{this.props.description}</p>
+            <p className='home-description'>Funded by The Leona M. and Harry B. Helmsley Charitable Trust, <strong>HANDEL-P aims to improve understanding of early events and processes in human pancreatic development through an interactive image atlas.</strong> By examining the islet structure and gene expression in pancreata from donors spanning the neonatal and juvenile stages of life, we hope to gain insight into type 1 diabetes.</p>
           </Col>
         </Row>
       </div>

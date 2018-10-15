@@ -72,19 +72,43 @@ export default class AgeBrowser extends React.Component {
             </Row>
             <Row className="pancreatlas-row">
               <Col md="3">
-                <span className='age-group' onClick={() => this.show(0)}><span className='age-group-text'>Gestational</span><img className='age-group-img' src={neonatal_timeline} alt='gestational' /></span>
+                <span className='age-group' onClick={() => this.show(0)}>
+                  <span className='age-group-text'>Gestational</span>
+                  <span className='age-group-imgs'>
+                    <img className='age-group-img islet' src={gestational_islet} alt='gestational islet' />
+                    <img className='age-group-img' src={neonatal_timeline} alt='gestational' />
+                  </span>
+                </span>
                 {/* <Button color="primary" size="lg" block onClick={() => this.show(0)}>Gestational</Button> */}
               </Col>
               <Col md="3">
-                <span className='age-group' onClick={() => this.show(1)}><span className='age-group-text'>Neonatal</span><img className='age-group-img' src={neonatal_timeline} alt='neonatal' /></span>
+                <span className='age-group' onClick={() => this.show(1)}>
+                  <span className='age-group-text'>Neonatal</span>
+                  <span className='age-group-imgs'>
+                    <img className='age-group-img islet' src={neonatal_islet} alt='neonatal islet' />
+                    <img className='age-group-img' src={neonatal_timeline} alt='neonatal' />
+                  </span>
+                </span>
                 {/* <Button color="primary" size="lg" block onClick={() => this.show(1)}>Neonatal</Button> */}
               </Col>
               <Col md="3">
-                <span className='age-group' onClick={() => this.show(2)}><span className='age-group-text'>Infant</span><img className='age-group-img' src={infant_timeline} alt='infant' /></span>
+                <span className='age-group' onClick={() => this.show(2)}>
+                  <span className='age-group-text'>Infant</span>
+                  <span className='age-group-imgs'>
+                    <img className='age-group-img islet' src={infant_islet} alt='infant islet' />
+                    <img className='age-group-img' src={infant_timeline} alt='infant' />
+                  </span>
+                </span>
                 {/* <Button color="primary" size="lg" block onClick={() => this.show(2)}>Infant</Button> */}
               </Col>
               <Col md="3">
-                <span className='age-group' onClick={() => this.show(3)}><span className='age-group-text'>Childhood</span><img className='age-group-img' src={childhood_timeline} alt='childhood' /></span>
+                <span className='age-group' onClick={() => this.show(3)}>
+                  <span className='age-group-text'>Childhood</span>
+                  <span className='age-group-imgs'>
+                    <img className='age-group-img islet' src={childhood_islet} alt='childhood islet' />
+                    <img className='age-group-img' src={childhood_timeline} alt='childhood' />
+                  </span>
+                </span>
                 {/* <Button color="primary" size="lg" block onClick={() => this.show(3)}>Childhood</Button> */}
               </Col>
             </Row>

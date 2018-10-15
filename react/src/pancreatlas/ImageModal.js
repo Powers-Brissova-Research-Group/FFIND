@@ -45,12 +45,7 @@ export default class ImageModal extends React.Component {
             <div className='modal-data'>
               <Row>
                 <Col md="6" sm="12">
-                  <Row>
-                    <Col sm="12">
-                      <a href={this.props.modalData.path_path}><img src={require(`../assets/pancreatlas/thumbs/${this.props.modalData.img_id}.jpg`)} alt={this.props.modalData.img_id} className='modal-image' /></a>
-                    </Col>
-                  </Row>
-                  <Row>
+                <Row>
                     <Col sm="12">
                       <div className='pathviewer-buttons'>
                         <a href={this.props.modalData.path_path} className='pathviewer-button'><Button color="success">Open</Button></a>
@@ -59,10 +54,15 @@ export default class ImageModal extends React.Component {
                     </Col>
                   </Row>
                   <Row>
+                    <Col sm="12">
+                      <a href={this.props.modalData.path_path}><img src={require(`../assets/pancreatlas/thumbs/${this.props.modalData.img_id}.jpg`)} alt={this.props.modalData.img_id} className='modal-image' /></a>
+                    </Col>
+                  </Row>
+                  <Row>
                     {Object.keys(this.markers).filter(key => this.markers[key] !== '').map(key => (
                       <Col md="6" sm="12">
                         <div className={`marker-cell ${key}`}>
-                          <p><span className='marker-name'>{key}: </span>{this.markers[key]}</p>
+                          <p>{this.markers[key]}</p>
                         </div>
                       </Col>
                     ))}

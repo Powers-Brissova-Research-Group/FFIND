@@ -38,12 +38,12 @@ export default class HomePage extends React.Component {
       <div className="home-page align-self-center">
         <Row className="pancreatlas-row">
           <Col md="12">
-            <HomeTitle description="Funded by the Leona M. and Harry B. Helmsley Charitable Trust, HANDEL-P aims to improve understanding of early events and processes in human pancreatic development through an interactive image atlas. By examining the islet structure and gene expression in pancreata from donors spanning the neonatal and juvenile stages of life, we hope to gain insight into coinciding processes of &beta; cell-directed autoimmunity in type 1 diabetes." />
+            <HomeTitle />
           </Col>
         </Row>
         <Row className="pancreatlas-row">
           <Col md="12" sm="12">
-            <Link to="/pancreatlas/dataset/"><Button size="lg" className="explore-button" color="success">Explore Our Collections</Button></Link>
+            <Link to="/pancreatlas/dataset/"><Button size="lg" className="explore-button" color="success">Explore Our Atlas</Button></Link>
           </Col>
         </Row>
         <Row className="pancreatlas-row">
@@ -52,7 +52,7 @@ export default class HomePage extends React.Component {
               <CardTitle className='home-card-icon'><FontAwesomeIcon icon={faUsers} size="3x" /></CardTitle>
               <CardSubtitle className='home-card-title'>TEAM</CardSubtitle>
               <CardBody>
-                Researchers at the University of Florida and Vanderbilt University, in collaboration with organizations around the country.
+                Researchers at the University of Florida and Vanderbilt University, in collaboration with organizations around the country
               </CardBody>
             </Card>
           </Col>
@@ -61,7 +61,7 @@ export default class HomePage extends React.Component {
               <CardTitle className='home-card-icon'><FontAwesomeIcon icon={faVials} size="3x" /></CardTitle>
               <CardSubtitle className='home-card-title'>APPROACH</CardSubtitle>
               <CardBody>
-                Perform immunohistochemical analysis of donor pancreata to obtain cross-sectional data of islet cell composition, mass, proliferation, innervation, and function
+                Cross-sectional immunohistochemical analysis of islet cell composition, mass, proliferation, innervation, and function
               </CardBody>
             </Card>
           </Col>
