@@ -211,19 +211,29 @@ export default class ImageGrid extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
-          let path = result.kvals['File path'].val
-          let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
-          let age_re = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
-          let matches = re.exec(path)
-          result.kvals['File path'].val = matches[0]
-          result.kvals['Donor info - Age'].val = result.tags.filter(val => age_re.test(val))[0]
-          this.setState({
-            modalData: {
-              img_id: imgInfo,
-              img_data: result.kvals,
-              path_path: result.pathpath
-            }
-          })
+          if (Object.keys(result.kvals).length > 0){
+            let path = result.kvals['File path'].val
+            let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
+            let age_re = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
+            let matches = re.exec(path)
+            result.kvals['File path'].val = matches[0]
+            result.kvals['Donor info - Age'].val = result.tags.filter(val => age_re.test(val))[0]
+            this.setState({
+              modalData: {
+                img_id: imgInfo,
+                img_data: result.kvals,
+                path_path: result.pathpath
+              }
+            })
+          } else {
+            this.setState({
+              modalData: {
+                img_id: imgInfo,
+                img_data: {"Warning": "No information for this image"},
+                path_path: result.pathpath  
+              }
+            })
+          }
           this.toggle()
         })
       .catch(err => {

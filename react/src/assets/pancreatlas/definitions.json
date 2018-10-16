@@ -82,5 +82,9 @@
     "(DS notes)": {
         "short_desc": "Test description",
         "long_desc": "A longer description about this key"
+    },
+    "Warning": {
+        "short_desc": "Uh oh! Something went wrong",
+        "long_desc": "Ideally you should not see this"
     }
 }

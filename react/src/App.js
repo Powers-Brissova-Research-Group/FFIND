@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 
 import {
-  Container,
-  Row,
-  Col
-} from 'reactstrap'
-
-import {
   BrowserRouter as Router,
   Route,
   Switch

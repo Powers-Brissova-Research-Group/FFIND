@@ -8,6 +8,7 @@ import ImageDetail from './ImageDetail'
 import MatrixView from './MatrixView'
 import AgeBrowser from './AgeBrowser'
 import Nomenclature from './Nomenclature'
+import PageNotFound from './PageNotFound'
 
 import {
   Container,
@@ -39,6 +40,7 @@ class PancreatlasApp extends Component {
                 <Route path='/pancreatlas/image/:iid' component={ImageDetail} />
                 <Route path='/pancreatlas/matrixview/:dsid' component={MatrixView} />
                 <Route path='/pancreatlas/nomenclature' component={Nomenclature} />
+                <Route component={PageNotFound} />
               </Switch>
             </Container>
           </div>
