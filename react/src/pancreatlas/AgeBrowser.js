@@ -61,6 +61,7 @@ export default class AgeBrowser extends React.Component {
   }
 
   render() {
+    console.log(`Location.search: ${this.props.location.search}`)
     let params = new URLSearchParams(this.props.location.search)
     console.log(`All params: ${params}`)
     let browse = (params.get("browse") === null || params.get("browse").toLowerCase() !== 'true') ? false : true
@@ -71,13 +72,13 @@ export default class AgeBrowser extends React.Component {
           <Container className="age-group-list">
             <Row className="pancreatlas-row">
               <Col md="12">
-                <h1>Browse By Age</h1>
+                <h1>Browse Images by Donor Age</h1>
               </Col>
             </Row>
             <Row className="pancreatlas-row">
               <Col md="3">
                 <span className='age-group' onClick={() => this.show(0)}>
-                  <span className='age-group-text'>Gestational</span>
+                  <span className='age-group-text'>Gestational<br></br><small>Weeks 7 &ndash; 8</small></span>
                   <span className='age-group-imgs'>
                     <img className='age-group-img islet' src={gestational_islet} alt='gestational islet' />
                     <img className='age-group-img' src={neonatal_timeline} alt='gestational' />
@@ -87,7 +88,7 @@ export default class AgeBrowser extends React.Component {
               </Col>
               <Col md="3">
                 <span className='age-group' onClick={() => this.show(1)}>
-                  <span className='age-group-text'>Neonatal</span>
+                  <span className='age-group-text'>Neonatal<br></br><small>Birth &ndash; 2 months</small></span>
                   <span className='age-group-imgs'>
                     <img className='age-group-img islet' src={neonatal_islet} alt='neonatal islet' />
                     <img className='age-group-img' src={neonatal_timeline} alt='neonatal' />
@@ -97,7 +98,7 @@ export default class AgeBrowser extends React.Component {
               </Col>
               <Col md="3">
                 <span className='age-group' onClick={() => this.show(2)}>
-                  <span className='age-group-text'>Infant</span>
+                  <span className='age-group-text'>Infant<br></br><small>2 months &ndash; 24 months</small></span>
                   <span className='age-group-imgs'>
                     <img className='age-group-img islet' src={infant_islet} alt='infant islet' />
                     <img className='age-group-img' src={infant_timeline} alt='infant' />
@@ -107,7 +108,7 @@ export default class AgeBrowser extends React.Component {
               </Col>
               <Col md="3">
                 <span className='age-group' onClick={() => this.show(3)}>
-                  <span className='age-group-text'>Childhood</span>
+                  <span className='age-group-text'>Childhood<br></br><small>2 years &ndash; 10 years</small></span>
                   <span className='age-group-imgs'>
                     <img className='age-group-img islet' src={childhood_islet} alt='childhood islet' />
                     <img className='age-group-img' src={childhood_timeline} alt='childhood' />
@@ -116,9 +117,9 @@ export default class AgeBrowser extends React.Component {
                 {/* <Button color="primary" size="lg" block onClick={() => this.show(3)}>Childhood</Button> */}
               </Col>
             </Row>
-            <Row className="pancreatlas-row">
-              <Col md="12">
-                <Button color="secondary" size="lg" block onClick={() => this.show(4)}>All</Button>
+            <Row className="pancreatlas-row view-all-ages">
+              <Col md={{size: 8, offset: 2}}>
+                <Button className='view-all' color="secondary" size="lg" block onClick={() => this.show(4)}>View All Ages</Button>
               </Col>
             </Row>
           </Container>
