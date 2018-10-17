@@ -28,7 +28,6 @@ export default class ImageCard extends React.Component {
       .then(result => {
         let kvals = result.kvals;
         if (Object.keys(kvals).length > 0) {
-          console.log(`Data found: ${JSON.stringify(kvals)}`)
           let marker_re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
           let donor_re = /(^Donor info)(\s+-\s+)(.+$)/i
           let region_re = /(^Image info)(\s+-\s+)(Section Plane$|Pancreas Region$)/
@@ -85,7 +84,6 @@ export default class ImageCard extends React.Component {
             region: {"Region": "DEFAULT VAL"}
           })
         }
-        console.log(this.state.omero_id)
       }).catch(err => {
         this.setState({
           loaded: false,

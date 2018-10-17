@@ -61,7 +61,11 @@ export default class AgeBrowser extends React.Component {
   }
 
   render() {
-    if (!this.state.open && this.props.location.state.browse) {
+    let params = new URLSearchParams(this.props.location.search)
+    console.log(`All params: ${params}`)
+    let browse = (params.get("browse") === null || params.get("browse").toLowerCase() !== 'true') ? false : true
+    console.log(`Param: ${params.get("browse")}, Browse: ${browse}`)
+    if (!this.state.open && browse === true) {
       return (
         <div className='age-browser'>
           <Container className="age-group-list">
@@ -112,7 +116,7 @@ export default class AgeBrowser extends React.Component {
                 {/* <Button color="primary" size="lg" block onClick={() => this.show(3)}>Childhood</Button> */}
               </Col>
             </Row>
-            <Row className="pancreatlas-row" w>
+            <Row className="pancreatlas-row">
               <Col md="12">
                 <Button color="secondary" size="lg" block onClick={() => this.show(4)}>All</Button>
               </Col>
@@ -122,8 +126,21 @@ export default class AgeBrowser extends React.Component {
       )
     } else {
       return (
-        <ImageGrid filters={{}} group={this.state.group} groupName={this.state.groupName} did={this.props.match.params.did} />
+        <ImageGrid filters={{}} group={this.state.group} groupName={this.state.groupName} did={this.props.match.params.did.split('?')[0]} />
       )
+    }
+  }
+}
+
+AgeBrowser.defaultProps = {
+  location: {
+    state: {
+      browse: false
+    }
+  },
+  a: {
+    b: {
+      c: 'd'
     }
   }
 }

@@ -44,7 +44,6 @@ export default class FilterList extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    console.log(prevProps)
     if(JSON.stringify(prevState.filters) !== JSON.stringify(this.props.filters)){
       this.setState({
         filters: this.props.filters
