@@ -470,3 +470,9 @@ img.age-group-img.islet {
 img.home-logo {
   width: 45%;
 }
+
+button.view-all {
+  height: 5rem;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}

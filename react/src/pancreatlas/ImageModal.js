@@ -16,7 +16,6 @@ export default class ImageModal extends React.Component {
   constructor(props) {
     super(props)
     this.defs = require('../assets/pancreatlas/definitions.json')
-
     this.markers = {}
     this.relevantKeys = {}
 
@@ -24,6 +23,7 @@ export default class ImageModal extends React.Component {
 
 
   render() {
+    var tinycolor = require('tinycolor2')
     let label_re = /^([a-zA-Z]+\s+info)?(\s+-\s+)?(.+)$/
     if (this.props.modalData !== undefined) {
       let marker_re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
@@ -61,7 +61,7 @@ export default class ImageModal extends React.Component {
                   <Row>
                     {Object.keys(this.markers).filter(key => this.markers[key] !== '').map(key => (
                       <Col md="6" sm="12">
-                        <div className={`marker-cell ${key}`}>
+                        <div className={'marker-cell'} style={{color: (tinycolor(this.props.modalData.markerColors[key.toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.props.modalData.markerColors[key.toUpperCase()]}`}}>
                           <p>{this.markers[key]}</p>
                         </div>
                       </Col>

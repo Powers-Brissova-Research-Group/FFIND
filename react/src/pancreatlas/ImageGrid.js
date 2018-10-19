@@ -222,7 +222,8 @@ export default class ImageGrid extends React.Component {
               modalData: {
                 img_id: imgInfo,
                 img_data: result.kvals,
-                path_path: result.pathpath
+                path_path: result.pathpath,
+                markerColors: result.channel_info
               }
             })
           } else {
