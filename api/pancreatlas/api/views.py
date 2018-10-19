@@ -41,7 +41,7 @@ class ImageViewSet(viewsets.ViewSet):
         img = omero_api.get_image_by_id(pk)
 
         ret_img = Image(pk, img.file_name, "/var/www/assets/pancreatlas/thumb/" + img.file_name,
-                        "/home/jmessmer/Projects/pancreatlas/api/pancreatlas/assets/details/" + img.file_name, img.get_tag_names(), img.get_key_values())
+                        "/home/jmessmer/Projects/pancreatlas/api/pancreatlas/assets/details/" + img.file_name, img.get_tag_names(), img.get_key_values(), img.get_channel_info())
 
         serializer = ImageSerializer(ret_img)
         return Response(serializer.data)

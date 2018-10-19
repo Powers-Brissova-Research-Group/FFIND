@@ -6,7 +6,7 @@ from django.db import models
 # Create your models here.
 
 class Image():
-    def __init__(self, iid, iname, thumbpath, detailpath, tags, kvals):
+    def __init__(self, iid, iname, thumbpath, detailpath, tags, kvals, channel_info):
         self.iid = iid
         self.iname = iname
         self.thumbpath = thumbpath
@@ -14,6 +14,7 @@ class Image():
         self.pathpath = "https://omero.app.vumc.org/pathviewer/viewer/" + str(iid)
         self.tags = tags
         self.kvals = kvals
+        self.channel_info = channel_info
 
 class ImageSet():
     def __init__(self, setname, setlength, imgs):
