@@ -2,7 +2,6 @@ import signal
 import omeropy.omero
 from omeropy.omero.gateway import BlitzGateway
 from helper_classes import Image, Tag, Dataset
-
 import os
 from os.path import expanduser
 import pprint
@@ -62,18 +61,17 @@ def get_images_from_dataset(dsid):
     success = conn.keepAlive()
     if not success:
         connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    f = open('/var/www/pancreatlas/dev/dev7/pancreatlas/api/pancreatlas/api/%s.txt' % (dsid, ), 'r')
-    imgs = json.loads(f.readline())
-    iids = imgs.keys()
-    # children = list(dset.wrapper.listChildren())
-    # # print dset.name + " has " + str(len(children)) + " children"
-    # for child in children:
-    #     iids.append(child.getId())
-
+    # f = open('/var/www/pancreatlas/dev/dev7/pancreatlas/api/pancreatlas/api/%s.txt' % (dsid, ), 'r')
+    # imgs = json.loads(f.readline())
+    # iids = imgs.keys()
+    iids = []
+    dset = get_dataset(dsid)
+    children = list(dset.wrapper.listChildren())
+    for child in children:
+        iids.append(child.getId())
     imgs = get_images_from_ids(iids)
-    # print dset.name + " has " + str(len(imgs)) + " images"
+    print dset.name + " has " + str(len(imgs)) + " images"
     return imgs
-
 
 def get_images_union_from_tags(tag_names, dsid):
     global conn

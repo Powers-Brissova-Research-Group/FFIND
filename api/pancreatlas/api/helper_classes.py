@@ -1,6 +1,8 @@
 from omeropy.omero.gateway import TagAnnotationWrapper, MapAnnotationWrapper, DatasetWrapper
 import re
 import collections
+import logging
+import sys
 
 class Image:
     def __init__(self, img_wrapper):
@@ -8,12 +10,13 @@ class Image:
         self.id = img_wrapper.getId()
         self.tags = []
         self.key_values = {}
+        self.channel_info = {}
         self.fetch_annotations()
+        self.get_channel_info()
         self.name = self.img_wrapper.getName()
         self.file_name = self.gen_file_name()
         self.size_x = img_wrapper.getSizeX()
         self.size_y = img_wrapper.getSizeY()
-        
 
     def __eq__(self, other):
         if isinstance(other, Image):
@@ -29,6 +32,14 @@ class Image:
     def __repr__(self):
         return self.__str__()
 
+#    def get_channel_info(self):
+#        print >> sys.stderror, 'NEW IMAGE'
+#        channel_wrappers = self.img_wrapper.getChannels()
+#        self.channel_info.append("WAH")
+#        for channel in channel_wrappers:
+#            print "Getting channel %s: %s" % (channel.getLabel(), channel.getColor.getHtml())
+#            self.channel_info.append(channel.getLabel())
+
     def fetch_annotations(self):
         anns = list(self.img_wrapper.listAnnotations())
         for ann in anns:
@@ -38,7 +49,9 @@ class Image:
             elif isinstance(ann, MapAnnotationWrapper):
                 for pair in ann.getValue():
                     self.key_values[pair[0]] = {'val': pair[1], 'desc': 'default val'}
-
+        channels = list(self.img_wrapper.getChannels())
+        for channel in channels:
+            self.channel_info[channel.getLabel()] =  channel.getColor().getHtml()
     def get_tags(self):
         return self.tags
 
@@ -50,6 +63,9 @@ class Image:
 
     def get_key_values(self):
         return self.key_values
+
+    def get_channel_info(self):
+        return self.channel_info
 
     def save_thumbnail(self, file_loc, max_len):
         f = open(file_loc + self.file_name, 'w')
