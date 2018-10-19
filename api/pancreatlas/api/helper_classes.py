@@ -51,7 +51,7 @@ class Image:
                     self.key_values[pair[0]] = {'val': pair[1], 'desc': 'default val'}
         channels = list(self.img_wrapper.getChannels())
         for channel in channels:
-            self.channel_info[channel.getLabel()] =  channel.getColor().getHtml()
+            self.channel_info[channel.getLabel().upper()] =  channel.getColor().getHtml()
     def get_tags(self):
         return self.tags
 
