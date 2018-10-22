@@ -31,7 +31,7 @@ export default class ImageCard extends React.Component {
           let marker_re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
           let donor_re = /(^Donor info)(\s+-\s+)(.+$)/i
           let region_re = /(^Image info)(\s+-\s+)(Section Plane$|Pancreas Region$)/
-          let markerColors = result.channel_info
+          let markerColors = (result.channel_info !== undefined ) ? result.channel_info : {}
           let marker_keys = Object.keys(kvals).filter(key => marker_re.test(key))
           let donor_keys = Object.keys(kvals).filter(key => donor_re.test(key))
           let region_keys = Object.keys(kvals).filter(key => region_re.test(key))
@@ -71,7 +71,7 @@ export default class ImageCard extends React.Component {
             markers: markers,
             donor: donor,
             region: region,
-            markerColors: markerColors 
+            markerColors: (markerColors !== undefined) ? markerColors : {}
           })
         } else {
           this.setState({
@@ -111,7 +111,7 @@ export default class ImageCard extends React.Component {
               {Object.keys(this.state.markers).slice(0, Object.keys(this.state.markers).length - 1).map(marker => (
                 <span className='tag' key={this.props.iid + marker}> <span onClick={() => this.props.filterCallback(marker)} className='marker' style={{color: (tinycolor(this.state.markerColors[this.state.markers[marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[marker].toUpperCase()]}`}}>{marker}</span></span>
               ))}
-              <span className={'tag'} key={this.props.iid + last_marker}> <span onClick={() => this.props.filterCallback(last_marker)} className={'marker'} style={{color: (tinycolor(this.state.markerColors[this.state.markers[last_marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[last_marker].toUpperCase()]}`}}> {last_marker}</span></span>
+              {(Object.keys(this.state.markers).length > 0 && Object.keys(this.state.markers)[0] !== "DEFAULT VAL") ? (<span className={'tag'} key={this.props.iid + last_marker}> <span onClick={() => this.props.filterCallback(last_marker)} className={'marker'} style={{color: (tinycolor(this.state.markerColors[this.state.markers[last_marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[last_marker].toUpperCase()]}`}}> {last_marker}</span></span>) : null}
             </div>
             <div className='region-info'>
               <strong>Region: </strong>{Object.values(this.state.region).join(', ')}
