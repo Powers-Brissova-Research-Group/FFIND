@@ -57,14 +57,14 @@ export default class DatasetList extends React.Component {
                   <td>{item.did}</td>
                   <td>{item.dsname}</td>
                   <td>
-                    <Link to={{pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=true'}}>
-                      <Button className='ds-list-left-button' color="primary">Browse By Age</Button>
+                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false' }}>
+                      <Button className='ds-list-left-button' >Browse Dataset</Button>
                     </Link>
-                    <Link to={{pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false'}}>
-                      <Button>Open Full Dataset</Button>
+                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=true' }}>
+                      <Button color="primary">Browse by Age</Button>
                     </Link>
                     <Link to={'/pancreatlas/matrixview/' + item.did}>
-                      <Button className='ds-list-right-button' outline color="success">Create Matrix</Button>
+                      <Button className='ds-list-right-button' outline color="success">Pick &amp; Compare Attribute Pairs</Button>
                     </Link>
                   </td>
                 </tr>
