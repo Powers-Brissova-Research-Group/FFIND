@@ -86,8 +86,8 @@ def main():
     success = login(token, sesh)
     print "Logged in? %s" % (success, )
     if success == True:
-        iids = get_image_list()
-#        iids = ['16810']
+#        iids = get_image_list()
+        iids = ['17721', '17651']
         print len(iids)
         for iid in iids:
             # save_thumbnail(iid, None, sesh)
