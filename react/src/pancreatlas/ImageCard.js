@@ -31,7 +31,16 @@ export default class ImageCard extends React.Component {
           let marker_re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
           let donor_re = /(^Donor info)(\s+-\s+)(.+$)/i
           let region_re = /(^Image info)(\s+-\s+)(Section Plane$|Pancreas Region$)/
-          let markerColors = (result.channel_info !== undefined ) ? result.channel_info : {}
+          let markerColors =  result.channel_info
+          
+          let markerColor_re = /^.+\((.+)\)$/
+          Object.keys(markerColors).forEach(function(key){
+            var newKey = markerColor_re.test(key) ? markerColor_re.exec(key)[1] : key
+            if (newKey !== key){
+              markerColors[newKey] = markerColors[key]
+              delete markerColors[key]
+            }
+          })
           let marker_keys = Object.keys(kvals).filter(key => marker_re.test(key))
           let donor_keys = Object.keys(kvals).filter(key => donor_re.test(key))
           let region_keys = Object.keys(kvals).filter(key => region_re.test(key))

@@ -476,3 +476,20 @@ button.view-all {
   font-size: 1.5rem;
   font-weight: bolder;
 }
+
+.table td {
+  text-align: left;
+  vertical-align: middle;
+}
+
+td.action-column {
+  width: 57%;
+}
+
+td.name-column {
+  font-weight: bold;
+}
+
+.table thead td {
+  text-align: center;
+}
