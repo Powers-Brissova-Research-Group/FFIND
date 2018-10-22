@@ -27,10 +27,10 @@ class ImageId():
         self.iids = iids
 
 class Dataset():
-    def __init__(self, did, dsname):
+    def __init__(self, did, dsname, desc):
         self.did = did
         self.dsname = dsname
-
+        self.desc = desc
 class DatasetImages():
     def __init__(self, dsetname, dsetlength, imgs):
         self.dsetname = dsetname

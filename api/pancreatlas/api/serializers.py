@@ -27,6 +27,7 @@ class DatasetImageSerializer(serializers.Serializer):
 class DatasetSerializer(serializers.Serializer):
     did = serializers.IntegerField()
     dsname = serializers.CharField(max_length=50)
+    desc = serializers.CharField(max_length=256)
 
 class TagSetSerializer(serializers.Serializer):
     set_name = serializers.CharField(max_length=50)

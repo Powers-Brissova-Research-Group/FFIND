@@ -161,4 +161,5 @@ class Dataset():
         self.wrapper = ds_wrapper
         self.did = ds_wrapper.getId()
         self.name = ds_wrapper.getName()
+        self.desc = ds_wrapper.getDescription()
         self.imgs = []
