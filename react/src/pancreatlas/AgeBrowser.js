@@ -78,7 +78,7 @@ export default class AgeBrowser extends React.Component {
             <Row className="pancreatlas-row">
               <Col md="3">
                 <span className='age-group' onClick={() => this.show(0)}>
-                  <span className='age-group-text'>Gestational<br></br><small>Weeks 7 &ndash; 8</small></span>
+                  <span className='age-group-text'>Gestational<br></br><small>Weeks 7 &ndash; 18</small></span>
                   <span className='age-group-imgs'>
                     <img className='age-group-img islet' src={gestational_islet} alt='gestational islet' />
                     <img className='age-group-img' src={neonatal_timeline} alt='gestational' />
