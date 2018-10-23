@@ -233,6 +233,18 @@ export default class ImageMatrix extends React.Component {
           let path = result.kvals['File path'].val
           let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
           let age_re = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
+
+          let markerColors = result.channel_info
+          let markerColor_re = /^.+\((.+)\)$/
+          Object.keys(markerColors).forEach(function(key){
+            var newKey = markerColor_re.test(key) ? markerColor_re.exec(key)[1] : key
+            if (newKey !== key){
+              markerColors[newKey] = markerColors[key]
+              delete markerColors[key]
+            }
+          })
+
+
           let matches = re.exec(path)
           result.kvals['File path'].val = matches[0]
           result.kvals['Donor info - Age'].val = result.tags.filter(val => age_re.test(val))[0]
@@ -240,7 +252,8 @@ export default class ImageMatrix extends React.Component {
             modalData: {
               img_id: imgInfo,
               img_data: result.kvals,
-              path_path: result.pathpath
+              path_path: result.pathpath,
+              markerColors: markerColors
             }
           })
           this.toggleDetail()
