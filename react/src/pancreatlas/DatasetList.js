@@ -1,7 +1,8 @@
 import React from 'react'
 import {
   Table,
-  Button
+  Button,
+  Container
 } from 'reactstrap'
 
 import {
@@ -40,43 +41,45 @@ export default class DatasetList extends React.Component {
   render() {
     if (this.state.loaded) {
       return (
-        <div className="dataset-list">
-          <h1>Datasets</h1>
-          <p>Please choose a dataset to explore</p>
-          <Table hover>
-            <thead>
-              <tr>
-                <th>Dataset ID</th>
-                <th>Dataset Description</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.datasets.map(item => (
-                <tr key={item.did}>
-                  <td>{item.did}</td>
-                  <td><strong>{item.dsname}</strong><br></br>{item.desc}</td>
-                  <td className='action-column'>
-                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false' }}>
-                      <Button className='ds-list-left-button' >Browse Dataset</Button>
-                    </Link>
-                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=true' }}>
-                      <Button color="primary">Browse by Age</Button>
-                    </Link>
-                    <Link to={'/pancreatlas/matrixview/' + item.did}>
-                      <Button className='ds-list-right-button' outline color="success">Pick &amp; Compare Attribute Pairs</Button>
-                    </Link>
-                  </td>
+        <Container>
+          <div className="dataset-list">
+            <h1>Datasets</h1>
+            <p>Please choose a dataset to explore</p>
+            <Table hover>
+              <thead>
+                <tr>
+                  <th>Dataset ID</th>
+                  <th>Dataset Description</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
+              </thead>
+              <tbody>
+                {this.state.datasets.map(item => (
+                  <tr key={item.did}>
+                    <td>{item.did}</td>
+                    <td><strong>{item.dsname}</strong><br></br>{item.desc}</td>
+                    <td className='action-column'>
+                      <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false' }}>
+                        <Button className='ds-list-left-button' >Browse Dataset</Button>
+                      </Link>
+                      <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=true' }}>
+                        <Button color="primary">Browse by Age</Button>
+                      </Link>
+                      <Link to={'/pancreatlas/matrixview/' + item.did}>
+                        <Button className='ds-list-right-button' outline color="success">Pick &amp; Compare Attribute Pairs</Button>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        </Container>
       )
     } else if (this.state.error !== undefined) {
-      return <Error error_desk={this.state.error.message} />
+      return <Container><Error error_desk={this.state.error.message} /></Container>
     } else {
-      return <h1>Loading</h1>
+      return <Container><h1>Loading</h1></Container>
     }
   }
 }

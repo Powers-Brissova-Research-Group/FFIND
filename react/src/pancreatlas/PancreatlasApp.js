@@ -9,10 +9,6 @@ import Nomenclature from './Nomenclature'
 import PageNotFound from './PageNotFound'
 
 import {
-  Container,
-} from 'reactstrap'
-
-import {
   Switch,
   Route
 } from 'react-router'
@@ -28,7 +24,6 @@ class PancreatlasApp extends Component {
         </Container> */}
         <div className='wrapper'>
           <div className='content'>
-            <Container>
               <Switch>
                 <Route exact path='/pancreatlas' component={HomePage} />
                 {/* <Route path='/collections' component={CollectionList} /> */}
@@ -39,7 +34,6 @@ class PancreatlasApp extends Component {
                 <Route path='/pancreatlas/nomenclature' component={Nomenclature} />
                 <Route component={PageNotFound} />
               </Switch>
-            </Container>
           </div>
           {/* <PancreatlasFooter /> */}
         </div>

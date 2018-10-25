@@ -149,14 +149,10 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .matrix-thumb {
-  height: 150px;
-  width: 150px;
+  height: 106px;
+  width: 106px;
   overflow: hidden;
   object-fit: cover;
-}
-
-.image-matrix {
-  overflow: scroll;
 }
 
 .modal-thumb {
@@ -504,4 +500,26 @@ td.name-column {
 
 table.matrix-table td {
   text-align: center;
+}
+
+table.image-matrix td {
+  text-align: center;
+  max-width: 132px;
+}
+
+table.image-matrix{
+  margin: 0 auto;
+}
+
+table.image-matrix {
+  width: auto;
+}
+
+div.image-matrix-content {
+  overflow-x: scroll;
+}
+
+.image-matrix.container-fluid {
+  padding-left: 0;
+  width: 98.9vw;
 }

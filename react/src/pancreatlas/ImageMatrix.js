@@ -298,8 +298,8 @@ export default class ImageMatrix extends React.Component {
                 {Object.keys(chosen_matrix).map(row => (
                   <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(chosen_matrix[row]).map(col => (
                     <td key={row + ', ' + col} className='matrix-cell'>
-                      {chosen_matrix[row][col][0] !== undefined && <div onClick={() => this.toggle(chosen_matrix[row][col])} className='matrix-cell-img'><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosen_matrix[row][col][0].iid}.jpg`)} alt="" /><div className='matrix-cell-count'><p>{`${chosen_matrix[row][col].length} images`}</p></div></div>}
-                      {chosen_matrix[row][col][0] === undefined && <p>&mdash;</p>}
+                      {chosen_matrix[row][col][0] !== undefined && <div onClick={() => this.toggle(chosen_matrix[row][col])} className='matrix-cell-img'><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosen_matrix[row][col][0].iid}.jpg`)} alt="" /><div className='matrix-cell-count'><p>{`${chosen_matrix[row][col].length}`}</p></div></div>}
+                      {chosen_matrix[row][col][0] === undefined && <p>Data not collected</p>}
                     </td>
                   ))}</tr>
                 ))}
@@ -346,13 +346,15 @@ export default class ImageMatrix extends React.Component {
 
       )
     } else if (this.state.error !== undefined) {
-      return <Error error_desc={this.state.error.message} />
+      return <Container><Error error_desc={this.state.error.message} /></Container>
     } else {
       return (
-        <div className="loading">
-          <strong>Loading {this.props.dataset_name}...</strong>
-          <Progress animated color="success" value="100" />
-        </div>
+        <Container>
+          <div className="loading">
+            <strong>Loading {this.props.dataset_name}...</strong>
+            <Progress animated color="success" value="100" />
+          </div>
+        </Container>
       )
     }
   }
