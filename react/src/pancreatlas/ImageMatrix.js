@@ -136,10 +136,10 @@ export default class ImageMatrix extends React.Component {
                   new_matrix[tag_1][tag_2].push(result)
                   new_matrix_t[tag_2][tag_1].push(result)
                   this.setState({
+                    loaded: true,
                     matrix: new_matrix,
                     matrix_t: new_matrix_t,
                     view_transpose: ((Object.keys(new_matrix).length <= Object.keys(new_matrix_t).length) ? true : false),
-                    loaded: true
                   })
                 })
                 .catch(err => {
@@ -152,7 +152,6 @@ export default class ImageMatrix extends React.Component {
           }
         }
         this.setState({
-          // loaded: true,
           tag_a: result['tag_a'],
           tag_b: result['tag_b'],
           // matrix: result['matrix']
@@ -165,6 +164,10 @@ export default class ImageMatrix extends React.Component {
         })
       });
 
+  }
+
+  fetchMatrixInfo() {
+    
   }
 
   toggle(new_set = []) {
