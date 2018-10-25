@@ -278,11 +278,12 @@ def generate_image_matrix_from_ds(tagset_a, tagset_b, dsid):
     imgs = json.loads(json_str)
 
     for (img_id, img_tags) in imgs.iteritems():
-        a_tag = intersection([set(img_tags), set(group_a)])
-        b_tag = intersection([set(img_tags), set(group_b)])
-        # print a_tag + ', ' + b_tag
-        if(len(a_tag) > 0 and len(b_tag) > 0):
-            matrix[str(a_tag[0])][str(b_tag[0])].append(str(img_id))
+        a_tags = intersection([set(img_tags), set(group_a)])
+        b_tags = intersection([set(img_tags), set(group_b)])
+        if(len(a_tags) > 0 and len(b_tags) > 0):
+            for a_tag in a_tags:
+                for b_tag in b_tags:
+                    matrix[a_tag][b_tag].append(str(img_id))
 
     return matrix
 
