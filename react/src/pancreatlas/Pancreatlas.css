@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6{
 .footer {
   background-color: #1b294a;
   color: #e4e5d7;
-  margin-top: 3rem;
+  /* margin-top: 3rem; */
   padding-top: 1rem;
   padding-bottom: 1rem;
   text-align: left;
@@ -498,5 +498,9 @@ td.name-column {
 }
 
 .table thead td {
+  text-align: center;
+}
+
+table.matrix-table td {
   text-align: center;
 }

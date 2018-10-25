@@ -9,6 +9,10 @@ import {
 
 import HandelApp from './HandelApp';
 import PancreatlasApp from './pancreatlas/PancreatlasApp'
+import TopNav from './TopNav'
+import Footer from './Footer'
+import PancreatlasFooter from './pancreatlas/PancreatlasFooter'
+
 
 class App extends Component {
   render() {
@@ -23,11 +27,14 @@ class App extends Component {
         </Container> */}
         <Router>
           <div className="App">
+            <TopNav />
             <Switch>
               <Route exact={true} path="/" component={HandelApp} />
               <Route path="/handelp" component={HandelApp} />
               <Route path='/pancreatlas' component={PancreatlasApp} />
             </Switch>
+            <Footer />
+            <PancreatlasFooter />
           </div>
         </Router>
       </div>

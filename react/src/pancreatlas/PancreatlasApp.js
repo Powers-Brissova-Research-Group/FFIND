@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './Pancreatlas.css';
 import HomePage from './HomePage'
-import PancreatlasNavbar from './PancreatlasNavbar'
 import DatasetList from './DatasetList'
-import Footer from './Footer'
 import ImageDetail from './ImageDetail'
 import MatrixView from './MatrixView'
 import AgeBrowser from './AgeBrowser'
@@ -12,7 +10,6 @@ import PageNotFound from './PageNotFound'
 
 import {
   Container,
-  Row,
 } from 'reactstrap'
 
 import {
@@ -24,11 +21,11 @@ class PancreatlasApp extends Component {
   render() {
     return (
       <div className="pancreatlas">
-        <Container fluid>
+        {/* <Container fluid>
           <Row className="pancreatlas-row">
             <PancreatlasNavbar />
           </Row>
-        </Container>
+        </Container> */}
         <div className='wrapper'>
           <div className='content'>
             <Container>
@@ -44,7 +41,7 @@ class PancreatlasApp extends Component {
               </Switch>
             </Container>
           </div>
-          <Footer />
+          {/* <PancreatlasFooter /> */}
         </div>
       </div>
     );

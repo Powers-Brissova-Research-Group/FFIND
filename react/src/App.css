@@ -146,7 +146,7 @@ a:hover{
   text-align: center;
 }
 
-.footer {
+.handel-footer {
   color: white;
 }
 
@@ -157,7 +157,6 @@ a:hover{
 
 .header-container{
   background-color: #95B7B6;
-  margin-top: 115px;
 }
 
 .header-row{
@@ -229,4 +228,18 @@ span.control-element.selected {
 
 div.overlay {
   background: rgba(44, 111, 110, 0.7) none repeat scroll 0 0;
+}
+
+.nav-item a {
+  color: #FFFFFF;
+  margin-left:0.5rem;
+  margin-right: 0.5rem;
+}
+
+.nav-item a:last-child{
+  margin-right: 1rem;
+}
+
+.nav-item a.active {
+  color: #a7b9e5
 }
