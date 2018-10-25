@@ -190,10 +190,10 @@ export default class ImageMatrix extends React.Component {
         kvals[key].val.split(',').map(val => markers[val.trim()] = marker_re.exec(key)[3])
       }
       for (let key of donor_keys) {
-        if (kvals[key].val !== '' && kvals[key].val !== undefined){
+        if (kvals[key].val !== '' && kvals[key].val !== undefined) {
           let val_key = donor_re.exec(key)[3]
           if (val_key !== 'UNOS ID' && val_key !== 'LIMS ID' && kvals[key] !== '') {
-            if (val_key === 'Age'){
+            if (val_key === 'Age') {
               let age_re = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
               donor[donor_re.exec(key)[3]] = img.tags.filter(tag => age_re.test(tag))[0]
             } else {
@@ -236,9 +236,9 @@ export default class ImageMatrix extends React.Component {
 
           let markerColors = result.channel_info
           let markerColor_re = /^.+\((.+)\)$/
-          Object.keys(markerColors).forEach(function(key){
+          Object.keys(markerColors).forEach(function (key) {
             var newKey = markerColor_re.test(key) ? markerColor_re.exec(key)[1] : key
-            if (newKey !== key){
+            if (newKey !== key) {
               markerColors[newKey] = markerColors[key]
               delete markerColors[key]
             }
@@ -280,8 +280,11 @@ export default class ImageMatrix extends React.Component {
       }
 
       return (
-        <Container fluid>
-          <div className='image-matrix'>
+        <Container fluid className='image-matrix'>
+          <h1>Matrix View</h1>
+          <h3>{`Viewing ${this.props.tag_1} vs ${this.props.tag_2}`}</h3>
+
+          <div className='image-matrix-content'>
             <Table hover className='image-matrix'>
               <thead>
                 <tr>
