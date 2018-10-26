@@ -523,3 +523,7 @@ div.image-matrix-content {
   padding-left: 0;
   width: 98.9vw;
 }
+
+div.ReactCollapse--collapse {
+  overflow: visible !important;
+}
