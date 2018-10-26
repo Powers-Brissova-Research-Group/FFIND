@@ -108,7 +108,7 @@ export default class MatrixView extends React.Component {
                 </Table>
               </div>
 
-            {/* <Form>
+              {/* <Form>
               <FormGroup>
                 <Label for="tag1">Choose the first tag</Label>
                 <Input type="select" name="tag_1" id="tag1" onChange={this.handleChange}>
@@ -127,7 +127,7 @@ export default class MatrixView extends React.Component {
               </FormGroup>
               <Button onClick={this.showMatrix}>Generate Matrix</Button>
             </Form> */}
-          </div>
+            </div>
           </Container>
 
         )
@@ -138,10 +138,12 @@ export default class MatrixView extends React.Component {
       return <Error error_desc={this.state.error.message} />
     } else {
       return (
-        <div className="loading">
-          <strong>Loading {this.props.dataset_name}...</strong>
-          <Progress animated color="success" value="100" />
-        </div>
+        <Container>
+          <div className="loading">
+            <strong>Loading {this.props.dataset_name}...</strong>
+            <Progress animated color="success" value="100" />
+          </div>
+        </Container>
       )
     }
   }
