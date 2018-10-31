@@ -19,7 +19,6 @@ import { faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus 
 library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus)
 
 class App extends Component {
-
   constructor(props){
     super(props)
     this.state = {

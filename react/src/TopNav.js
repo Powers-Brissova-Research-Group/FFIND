@@ -64,11 +64,23 @@ export default class TopNav extends React.Component {
               <NavItem>
                 <NavLink to="/diabetes">Diabetes</NavLink>
               </NavItem>
-              <NavItem active={(window.location.pathname === '/collaborators') ? true : false}>
-                <NavLink to="/collaborators">Collaborators</NavLink>
-              </NavItem>
-              <NavItem active={(window.location.pathname === '/about') ? true : false}>
-                <NavLink to="/about">About</NavLink>
+              {this.props.favorites.length > 0 &&
+                <NavItem>
+                  <UncontrolledDropdown>
+                    <DropdownToggle nav caret>Image Atlas <Badge color="primary">{this.props.favorites.length}</Badge></DropdownToggle>
+                    <DropdownMenu right>
+                        <Link className='dropdown-item' to="/pancreatlas">Image Atlas</Link>
+                        <Link className='dropdown-item' to="/pancreatlas/favorites">Favorites <Badge color="primary">{this.props.favorites.length}</Badge></Link>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                </NavItem>}
+              {this.props.favorites.length <= 0 &&
+                <NavItem active={(window.location.pathname === '/pancreatlas') ? true : false}>
+                  <NavLink to="/pancreatlas">Image Atlas</NavLink>
+                </NavItem>
+              }
+              <NavItem active={(window.location.pathname === '/handelp/collaborators') ? true : false}>
+                <NavLink to="/handelp/collaborators">Collaborators</NavLink>
               </NavItem>
               <NavItem className="btn btn-info">
                 <NavLink to="https://webapp.mis.vanderbilt.edu/vumc-giving/landing?appealCode=J1001">Join Our Efforts</NavLink>
