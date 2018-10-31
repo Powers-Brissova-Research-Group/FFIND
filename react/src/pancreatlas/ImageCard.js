@@ -115,12 +115,13 @@ export default class ImageCard extends React.Component {
             {Object.keys(this.state.donor).map(key => (
               <div key={this.props.iid + key}><strong>{key}: </strong>{this.state.donor[key]}</div>
             ))}
+            {/* onClick={() => this.props.filterCallback(marker)} */}
             <div><strong>Markers:</strong></div>
             <div className='marker-list'>
               {Object.keys(this.state.markers).slice(0, Object.keys(this.state.markers).length - 1).map(marker => (
-                <span className='tag' key={this.props.iid + marker}> <span onClick={() => this.props.filterCallback(marker)} className='marker' style={{color: (tinycolor(this.state.markerColors[this.state.markers[marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[marker].toUpperCase()]}`}}>{marker}</span></span>
+                <span className='tag' key={this.props.iid + marker}> <span className='marker' style={{color: (tinycolor(this.state.markerColors[this.state.markers[marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[marker].toUpperCase()]}`}}>{marker}</span></span>
               ))}
-              {(Object.keys(this.state.markers).length > 0 && Object.keys(this.state.markers)[0] !== "DEFAULT VAL") ? (<span className={'tag'} key={this.props.iid + last_marker}> <span onClick={() => this.props.filterCallback(last_marker)} className={'marker'} style={{color: (tinycolor(this.state.markerColors[this.state.markers[last_marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[last_marker].toUpperCase()]}`}}> {last_marker}</span></span>) : null}
+              {(Object.keys(this.state.markers).length > 0 && Object.keys(this.state.markers)[0] !== "DEFAULT VAL") ? (<span className={'tag'} key={this.props.iid + last_marker}> <span className={'marker'} style={{color: (tinycolor(this.state.markerColors[this.state.markers[last_marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[last_marker].toUpperCase()]}`}}> {last_marker}</span></span>) : null}
             </div>
             <div className='region-info'>
               <strong>Region: </strong>{Object.values(this.state.region).join(', ')}
@@ -133,6 +134,8 @@ export default class ImageCard extends React.Component {
               <span className='tag' key={this.props.iid + this.state.img_tags[this.state.img_tags.length - 1]}> {this.state.img_tags[this.state.img_tags.length - 1]}</span>
             </p>
             <Button color="link" className="mt-auto" onClick={() => this.props.callback(this.props.iid)}>Preview</Button>
+            {this.props.isFavorite && <Button color="success" className="favorite" onClick={() => this.props.favoriteCallback(this.props.iid)}>Favorite</Button>}
+            {!this.props.isFavorite && <Button color="danger" className="favorite" onClick={() => this.props.favoriteCallback(this.props.iid)}>Unfavorite</Button>}
             {/* <a href={this.props.path_path} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></a> */}
           </CardBody>
         </Card>

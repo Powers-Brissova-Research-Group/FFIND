@@ -258,3 +258,16 @@ div.browser-not-supported-banner {
   align-items: center;
 }
 
+
+.dropdown-item, .dropdown-item.active {
+  width: auto
+}
+
+.dropdown-item {
+  color: #1B294A !important;
+}
+
+.dropdown-item.active {
+  background-color: #1B294A !important;
+  color: #FFFFFF !important;
+}

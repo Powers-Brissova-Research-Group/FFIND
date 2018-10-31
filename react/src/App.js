@@ -20,6 +20,11 @@ class App extends Component {
   constructor(props){
     super(props)
     this.checkCompatability = this.checkCompatability.bind(this)
+    this.addFavorite = this.addFavorite.bind(this)
+
+    this.state = {
+      favorites: []
+    }
   }
 
   checkCompatability(){
@@ -49,7 +54,21 @@ class App extends Component {
     }
 
     return {isSupported: supported, browserInfo: browser}
+  }
 
+  addFavorite(iid){
+    if (this.state.favorites.indexOf(iid) !== -1){
+      let tmp = this.state.favorites
+      tmp.splice(tmp.indexOf(iid), 1)
+      this.setState({
+        favorites: tmp
+      })
+      console.log(`Removed ${iid}: ${this.state.favorites}`)
+    } else {
+      this.setState({
+        favorites: this.state.favorites.concat(iid)
+      })
+    }
   }
 
   render() {
@@ -72,11 +91,11 @@ class App extends Component {
         </Container> */}
         <Router>
           <div className="App">
-            <TopNav />
+            <TopNav favorites={this.state.favorites} />
             <Switch>
               <Route exact={true} path="/" component={HandelApp} />
               <Route path="/handelp" component={HandelApp} />
-              <Route path='/pancreatlas' component={PancreatlasApp} />
+              <Route path='/pancreatlas' render={(props) => <PancreatlasApp {...props} favoriteCallback={this.addFavorite} favorites={this.state.favorites} />} />
             </Switch>
             <Footer />
             <PancreatlasFooter />
