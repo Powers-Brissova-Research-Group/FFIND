@@ -61,11 +61,8 @@ export default class AgeBrowser extends React.Component {
   }
 
   render() {
-    console.log(`Location.search: ${this.props.location.search}`)
     let params = new URLSearchParams(this.props.location.search)
-    console.log(`All params: ${params}`)
     let browse = (params.get("browse") === null || params.get("browse").toLowerCase() !== 'true') ? false : true
-    console.log(`Param: ${params.get("browse")}, Browse: ${browse}`)
     if (!this.state.open && browse === true) {
       return (
         <div className='age-browser'>
@@ -127,7 +124,7 @@ export default class AgeBrowser extends React.Component {
       )
     } else {
       return (
-        <ImageGrid filters={{}} group={this.state.group} groupName={this.state.groupName} did={this.props.match.params.did.split('?')[0]} />
+        <ImageGrid favorites={this.props.favorites} favoriteCallback={this.props.favoriteCallback} filters={{}} group={this.state.group} groupName={this.state.groupName} did={this.props.match.params.did.split('?')[0]} />
       )
     }
   }

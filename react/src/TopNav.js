@@ -8,6 +8,10 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  Badge
 } from 'reactstrap';
 
 import {
@@ -44,9 +48,21 @@ export default class TopNav extends React.Component {
               <NavItem>
                 <NavLink to="/handelp/diabetes">Diabetes</NavLink>
               </NavItem>
-              <NavItem active={(window.location.pathname === '/pancreatlas') ? true : false}>
-                <NavLink to="/pancreatlas">Image Atlas</NavLink>
-              </NavItem>
+              {this.props.favorites.length > 0 &&
+                <NavItem>
+                  <UncontrolledDropdown>
+                    <DropdownToggle nav caret>Image Atlas <Badge color="primary">{this.props.favorites.length}</Badge></DropdownToggle>
+                    <DropdownMenu right>
+                        <Link className='dropdown-item' to="/pancreatlas">Image Atlas</Link>
+                        <Link className='dropdown-item' to="/pancreatlas/favorites">Favorites <Badge color="primary">{this.props.favorites.length}</Badge></Link>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                </NavItem>}
+              {this.props.favorites.length <= 0 &&
+                <NavItem active={(window.location.pathname === '/pancreatlas') ? true : false}>
+                  <NavLink to="/pancreatlas">Image Atlas</NavLink>
+                </NavItem>
+              }
               <NavItem active={(window.location.pathname === '/handelp/collaborators') ? true : false}>
                 <NavLink to="/handelp/collaborators">Collaborators</NavLink>
               </NavItem>
