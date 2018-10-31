@@ -40,19 +40,19 @@ export default class TopNav extends React.Component {
     return (
       <Navbar color="dark" dark expand="md">
         <Container fluid>
-          <NavbarBrand tag={Link}  to="/">
+          <NavbarBrand tag={Link} to="/">
             <img src={logo} alt={'Pancreatlas -- Home'} />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-            {this.props.favorites.length > 0 &&
+              {this.props.favorites.length > 0 &&
                 <NavItem>
                   <UncontrolledDropdown>
                     <DropdownToggle nav caret>Image Atlas <Badge color="primary">{this.props.favorites.length}</Badge></DropdownToggle>
                     <DropdownMenu right>
-                        <Link className='dropdown-item' to="/pancreatlas">Image Atlas</Link>
-                        <Link className='dropdown-item' to="/pancreatlas/favorites">Favorites <Badge color="primary">{this.props.favorites.length}</Badge></Link>
+                      <Link className='dropdown-item' to="/pancreatlas">Image Atlas</Link>
+                      <Link className='dropdown-item' to="/pancreatlas/favorites">Favorites <Badge color="primary">{this.props.favorites.length}</Badge></Link>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 </NavItem>}
@@ -69,8 +69,8 @@ export default class TopNav extends React.Component {
                   <UncontrolledDropdown>
                     <DropdownToggle nav caret>Image Atlas <Badge color="primary">{this.props.favorites.length}</Badge></DropdownToggle>
                     <DropdownMenu right>
-                        <Link className='dropdown-item' to="/pancreatlas">Image Atlas</Link>
-                        <Link className='dropdown-item' to="/pancreatlas/favorites">Favorites <Badge color="primary">{this.props.favorites.length}</Badge></Link>
+                      <Link className='dropdown-item' to="/pancreatlas">Image Atlas</Link>
+                      <Link className='dropdown-item' to="/pancreatlas/favorites">Favorites <Badge color="primary">{this.props.favorites.length}</Badge></Link>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 </NavItem>}

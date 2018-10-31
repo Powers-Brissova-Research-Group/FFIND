@@ -27,6 +27,11 @@ class App extends Component {
 
     this.addFavorite = this.addFavorite.bind(this)
     this.checkCompatability = this.checkCompatability.bind(this)
+    this.addFavorite = this.addFavorite.bind(this)
+
+    this.state = {
+      favorites: []
+    }
   }
 
   checkCompatability(){
