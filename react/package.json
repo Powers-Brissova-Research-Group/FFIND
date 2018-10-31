@@ -12,6 +12,7 @@
     "react-collapse": "^4.0.3",
     "react-dom": "^16.4.1",
     "react-fontawesome": "^1.6.1",
+    "react-meta-tags": "^0.7.1",
     "react-motion": "^0.5.2",
     "react-particles-js": "^2.3.0",
     "react-router": "^4.3.1",

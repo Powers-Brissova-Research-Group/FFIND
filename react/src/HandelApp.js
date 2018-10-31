@@ -9,6 +9,7 @@ import Home from './Home';
 import Diabetes from './Diabetes';
 import Collaborators from './Collaborators';
 import About from './About';
+import MetaTags from 'react-meta-tags'
 
 export default class HandelApp extends React.Component {
   constructor(props) {
@@ -28,6 +29,10 @@ export default class HandelApp extends React.Component {
   render() {
     return (
       <div className="App">
+        <MetaTags>
+          <title>HANDEL-P</title>
+          <meta name="description" content="test description"/>
+        </MetaTags>
         <Switch>
           <Route exact={true} path="/" component={Home} />
           <Route exact={true} path="/handelp" component={Home} />
