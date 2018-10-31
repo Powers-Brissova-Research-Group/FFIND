@@ -7,6 +7,10 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  Badge
 } from 'reactstrap';
 
 import {
@@ -42,16 +46,28 @@ export default class TopNav extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem active={(window.location.pathname === '/pancreatlas') ? true : false}>
-                <NavLink to="/pancreatlas/dataset">Image Atlas</NavLink>
-              </NavItem>
+            {this.props.favorites.length > 0 &&
                 <NavItem>
-                <NavLink to="/diabetes">About Diabetes</NavLink>
+                  <UncontrolledDropdown>
+                    <DropdownToggle nav caret>Image Atlas <Badge color="primary">{this.props.favorites.length}</Badge></DropdownToggle>
+                    <DropdownMenu right>
+                        <Link className='dropdown-item' to="/pancreatlas">Image Atlas</Link>
+                        <Link className='dropdown-item' to="/pancreatlas/favorites">Favorites <Badge color="primary">{this.props.favorites.length}</Badge></Link>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                </NavItem>}
+              {this.props.favorites.length <= 0 &&
+                <NavItem active={(window.location.pathname === '/pancreatlas') ? true : false}>
+                  <NavLink to="/pancreatlas">Image Atlas</NavLink>
+                </NavItem>
+              }
+              <NavItem>
+                <NavLink to="/diabetes">Diabetes</NavLink>
               </NavItem>
               <NavItem active={(window.location.pathname === '/collaborators') ? true : false}>
                 <NavLink to="/collaborators">Collaborators</NavLink>
               </NavItem>
-              <NavItem active={(window.location.pathname === '/handelp/about') ? true : false}>
+              <NavItem active={(window.location.pathname === '/about') ? true : false}>
                 <NavLink to="/about">About</NavLink>
               </NavItem>
               <NavItem className="btn btn-info">

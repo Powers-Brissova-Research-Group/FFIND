@@ -132,6 +132,7 @@ export default class ImageCard extends React.Component {
             {Object.keys(this.state.donor).map(key => (
               <div key={this.props.iid + key}><strong>{key}: </strong>{this.state.donor[key]}</div>
             ))}
+            {/* onClick={() => this.props.filterCallback(marker)} */}
             <div><strong>Markers:</strong></div>
             <div className='marker-list'>
               {Object.keys(this.state.markers).slice(0, Object.keys(this.state.markers).length - 1).map(marker => (
@@ -154,6 +155,8 @@ export default class ImageCard extends React.Component {
               <span className='tag' key={this.props.iid + this.state.img_tags[this.state.img_tags.length - 1]}> {this.state.img_tags[this.state.img_tags.length - 1]}</span>
             </div>
             <Button color="link" className="mt-auto" onClick={() => this.props.callback(this.props.iid)}>Preview</Button>
+            {this.props.isFavorite && <Button color="success" className="favorite" onClick={() => this.props.favoriteCallback(this.props.iid)}>Favorite</Button>}
+            {!this.props.isFavorite && <Button color="danger" className="favorite" onClick={() => this.props.favoriteCallback(this.props.iid)}>Unfavorite</Button>}
             {/* <a href={this.props.path_path} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></a> */}
           </CardBody>
         </Card>

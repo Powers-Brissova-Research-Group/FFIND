@@ -421,8 +421,8 @@ export default class ImageGrid extends React.Component {
                 {img_grid.map((item, idx) => (
                   <Row key={idx} className="image-row pancreatlas-row">
                     {item.map((image, idx) =>
-                      <Col key={idx} md={this.state.imgs_col_split}>
-                        <ImageCard key={image} iid={image} callback={this.setModal} filterCallback={this.markerFilter} />
+                      <Col key={idx} md="3">
+                        <ImageCard isFavorite={this.props.favorites.indexOf(image) === -1} favoriteCallback={this.props.favoriteCallback} key={image} iid={image} callback={this.setModal} filterCallback={this.markerFilter} />
                       </Col>
                     )}
                   </Row>
