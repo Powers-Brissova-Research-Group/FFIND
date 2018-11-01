@@ -9,6 +9,8 @@ import {
   Link
 } from 'react-router-dom'
 
+import MetaTags from 'react-meta-tags'
+
 import Error from './Error'
 
 export default class DatasetList extends React.Component {
@@ -43,6 +45,9 @@ export default class DatasetList extends React.Component {
       return (
         <Container>
           <div className="dataset-list">
+            <MetaTags>
+              <title>HDL-P | Pancreatlas > Dataset List</title>
+            </MetaTags>
             <h1>Datasets</h1>
             <p>Please choose a dataset to explore</p>
             <Table hover>

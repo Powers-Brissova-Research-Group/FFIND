@@ -63,11 +63,8 @@ export default class AgeBrowser extends React.Component {
   }
 
   render() {
-    console.log(`Location.search: ${this.props.location.search}`)
     let params = new URLSearchParams(this.props.location.search)
-    console.log(`All params: ${params}`)
     let browse = (params.get("browse") === null || params.get("browse").toLowerCase() !== 'true') ? false : true
-    console.log(`Param: ${params.get("browse")}, Browse: ${browse}`)
     if (!this.state.open && browse === true) {
       return (
         <div className='age-browser'>

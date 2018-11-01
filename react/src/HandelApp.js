@@ -30,7 +30,7 @@ export default class HandelApp extends React.Component {
     return (
       <div className="App">
         <MetaTags>
-          <title>HANDEL-P</title>
+          <title>HDL-P</title>
           <meta name="description" content="test description"/>
         </MetaTags>
         <Switch>

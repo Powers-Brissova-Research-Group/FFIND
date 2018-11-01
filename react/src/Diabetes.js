@@ -5,12 +5,18 @@ import {
   Col,
   Table
 } from 'reactstrap'
+
+import MetaTags from 'react-meta-tags'
+
 import Header from './Header'
 
 export default class Diabetes extends React.Component {
   render() {
     return (
       <div className="diabetes">
+        <MetaTags>
+          <title>HDL-P | About Diabetes</title>
+        </MetaTags>
         <Header heading="Diabetes" />
         <Container className='v-padded'>
           <Row>

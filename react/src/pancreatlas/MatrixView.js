@@ -5,6 +5,9 @@ import {
   Progress,
   Table
 } from 'reactstrap'
+
+import MetaTags from 'react-meta-tags'
+
 import ImageMatrix from './ImageMatrix';
 
 import Error from './Error'
@@ -79,6 +82,9 @@ export default class MatrixView extends React.Component {
         return (
           <Container>
             <div className='matrix-view'>
+              <MetaTags>
+                <title>HDL-P | Pancreatlas > Matrix</title>
+              </MetaTags>
               <h1>Matrix View</h1>
               <p>Select two dimensions to generate a matrix of images based on these filters.</p>
               <div className='grid-select'>
