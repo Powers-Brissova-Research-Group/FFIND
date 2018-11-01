@@ -286,6 +286,7 @@ export default class ImageGrid extends React.Component {
         <div className="image-grid">
         <MetaTags>
           <title>HDL-P | Pancreatlas > Dataset</title>
+          <meta name="description" content="View an entire dataset in the pancreatlas"/>
         </MetaTags>
           <h5 className='view-counter'>You are currently viewing {this.state.matches.length} out of a possible {Object.keys(this.state.ids).length} images</h5>
           <Container>

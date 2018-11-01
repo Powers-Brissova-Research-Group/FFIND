@@ -31,7 +31,8 @@ export default class HandelApp extends React.Component {
       <div className="App">
         <MetaTags>
           <title>HDL-P</title>
-          <meta name="description" content="test description"/>
+          <meta name="description" content="HANDEL-P Project within the Vanderbilt University Medical Center"/>
+          <meta name="keywords" content="VUMC, pancreas, microscopy, handel-p, diabetes" />
         </MetaTags>
         <Switch>
           <Route exact={true} path="/" component={Home} />

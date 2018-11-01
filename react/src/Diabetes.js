@@ -16,6 +16,7 @@ export default class Diabetes extends React.Component {
       <div className="diabetes">
         <MetaTags>
           <title>HDL-P | About Diabetes</title>
+          <meta name="description" content="Learn all about diabetes on this page in the HANDEL-P site."/>
         </MetaTags>
         <Header heading="Diabetes" />
         <Container className='v-padded'>

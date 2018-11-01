@@ -47,6 +47,7 @@ export default class DatasetList extends React.Component {
           <div className="dataset-list">
             <MetaTags>
               <title>HDL-P | Pancreatlas > Dataset List</title>
+              <meta name="description" content="List of datasets available to view in the pancreatlas"/>
             </MetaTags>
             <h1>Datasets</h1>
             <p>Please choose a dataset to explore</p>

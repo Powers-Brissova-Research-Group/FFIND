@@ -20,7 +20,8 @@ class PancreatlasApp extends Component {
     return (
       <div className="pancreatlas">
         <MetaTags>
-          <title>HDL-P | Pancreatlas</title>          
+          <title>HDL-P | Pancreatlas</title>
+          <meta name="description" content="An online atlas dedicated to the human pancreas, curated by the Vanderbilt University Medical Center"/>
         </MetaTags>
         {/* <Container fluid>
           <Row className="pancreatlas-row">

@@ -18,6 +18,7 @@ export default class Collaborators extends React.Component {
       <div className="collaborators">
         <MetaTags>
           <title>HDL-P | Collaborators</title>
+          <meta name="description" content="Who is working together to create the HANDEL-P project?"/>
         </MetaTags>
         <Header heading="Collaborators" subheading="Creating multi-disciplinary expert groups" />
         <Container fluid className='shaded'>
