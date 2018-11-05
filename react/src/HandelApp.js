@@ -30,9 +30,9 @@ export default class HandelApp extends React.Component {
     return (
       <div className="App">
         <MetaTags>
-          <title>HDL-P</title>
-          <meta name="description" content="HANDEL-P Project within the Vanderbilt University Medical Center"/>
-          <meta name="keywords" content="VUMC, pancreas, microscopy, handel-p, diabetes" />
+          <title>pancreatlas - the study of the human pancreas and islet during the first decade of life</title>
+          <meta name="description" content="Pancreatlas is a resource to catalogue new research data and discoveries pertaining to the human pancreas and islets change in the first decade of life, in order to to accelerate research throughout the world with the goal of understanding of the events in the pancreas and islet that trigger type 1 diabetes."/>
+          <meta name="keywords" content="human pancreas, development, pancreatic, disease, diabetes, diabetic, pancreata, donor, neonatal, juvenile, image, imaging, microscopy, science, research, basic, clinical, helmsley, vanderbilt, university" />
         </MetaTags>
         <Switch>
           <Route exact={true} path="/" component={Home} />
