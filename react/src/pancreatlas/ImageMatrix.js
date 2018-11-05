@@ -1,0 +1,321 @@
+import React from 'react'
+import {
+  Container,
+  Table,
+  Progress,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button
+} from 'reactstrap'
+
+import ImageModal from './ImageModal'
+import MatrixModalListComponent from './MatrixModalListComponent'
+
+import Error from './Error'
+
+export default class ImageMatrix extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loaded: false,
+      tag_a: null,
+      tag_b: null,
+      matrix: null,
+      modal: false,
+      modalOpen: false,
+      selected_set: []
+    }
+
+    this.toggle = this.toggle.bind(this);
+    this.toggleDetail = this.toggleDetail.bind(this)
+    this.flip = this.flip.bind(this);
+    this.compareAges = this.compareAges.bind(this)
+    this.setModal = this.setModal.bind(this)
+  }
+
+  compareAges(age1, age2) {
+    let ageRe = /^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$/;
+    let a = ageRe.exec(age1)
+    let b = ageRe.exec(age2)
+    switch (a[3]) {
+      case 'd':
+        a[3] = 0;
+        break;
+      case 'w':
+        a[3] = 1;
+        break;
+      case 'mo':
+        a[3] = 2;
+        break;
+      case 'y':
+        a[3] = 3
+        break;
+      default:
+        a[3] = -1
+    }
+
+    switch (b[3]) {
+      case 'd':
+        b[3] = 0;
+        break;
+      case 'w':
+        b[3] = 1;
+        break;
+      case 'mo':
+        b[3] = 2;
+        break;
+      case 'y':
+        b[3] = 3
+        break;
+      default:
+        b[3] = -1
+    }
+
+    if (a[1] === 'G' && b[1] !== 'G') {
+      return -1
+    } else if (a[1] !== 'G' && b[1] === 'G') {
+      return 1
+    } else {
+      if (a[3] < b[3]) {
+        return -1
+      } else if (a[3] > b[3]) {
+        return 1
+      } else {
+        if (Number(a[2]) < Number(b[2])) {
+          return -1
+        } else if (Number(a[2]) > Number(b[2])) {
+          return 1
+        } else {
+          if (a[4] === undefined && b[4] !== undefined) {
+            return -1
+          } else if (a[4] !== undefined && b[4] === undefined) {
+            return 1
+          } else {
+            return 0
+          }
+        }
+      }
+    }
+  }
+
+  componentDidMount() {
+    fetch(`${process.env.REACT_APP_API_URL}/matrix/${this.props.tag_1},${this.props.tag_2},${this.props.dsid}`)
+      .then(res => res.json())
+      .then((result) => {
+        let m = result['matrix']
+        let new_matrix = {}
+        let new_matrix_t = {}
+        let tags_1 = Object.keys(m)
+        let tags_2 = Object.keys(m[tags_1[0]])
+        if (this.props.tag_1 === 'AGE') {
+          tags_1.sort(this.compareAges)
+        } else {
+          tags_1.sort()
+        }
+
+        if (this.props.tag_2 === 'AGE') {
+          tags_2.sort(this.compareAges)
+        } else {
+          tags_2.sort()
+        }
+
+        for (let tag_1 of tags_1) {
+          new_matrix[tag_1] = {}
+          for (let tag_2 of tags_2) {
+            if (new_matrix_t[tag_2] === undefined) {
+              new_matrix_t[tag_2] = {}
+            }
+            new_matrix_t[tag_2][tag_1] = []
+            new_matrix[tag_1][tag_2] = []
+            for (let img_id of m[tag_1][tag_2]) {
+              new_matrix[tag_1][tag_2].push(img_id)
+              new_matrix_t[tag_2][tag_1].push(img_id)
+              // let url = `${process.env.REACT_APP_API_URL}/images/${img_id}`
+              // fetch(url)
+              //   .then(res => res.json())
+              //   .then(result => {
+              //     new_matrix[tag_1][tag_2].push(result)
+              //     new_matrix_t[tag_2][tag_1].push(result)
+              //     this.setState({
+              //       loaded: true,
+              //       matrix: new_matrix,
+              //       matrix_t: new_matrix_t,
+              //       view_transpose: ((Object.keys(new_matrix).length <= Object.keys(new_matrix_t).length) ? true : false),
+              //     })
+              //   })
+              //   .catch(err => {
+              //     this.setState({
+              //       loaded: false,
+              //       error: err
+              //     })
+              //   });
+            }
+          }
+        }
+        this.setState({
+          loaded: true,
+          matrix: new_matrix,
+          matrix_t: new_matrix_t,
+          view_transpose: ((Object.keys(new_matrix).length <= Object.keys(new_matrix_t).length) ? true : false),
+          tag_a: result['tag_a'],
+          tag_b: result['tag_b'],
+          // matrix: result['matrix']
+        })
+      })
+      .catch(err => {
+        this.setState({
+          loaded: false,
+          error: err
+        })
+      });
+
+  }
+
+  toggle(new_set = []) {
+    this.setState({
+      modal: !this.state.modal,
+      selected_set: new_set
+    })
+  }
+
+  toggleDetail() {
+    this.setState({
+      modalOpen: !this.state.modalOpen
+    })
+  }
+
+  flip() {
+    this.setState({
+      view_transpose: !this.state.view_transpose
+    });
+  }
+
+  setModal(imgInfo) {
+    fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          let path = result.kvals['File path'].val
+          let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
+          let age_re = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
+
+          let markerColors = result.channel_info
+          let markerColor_re = /^.+\((.+)\)$/
+          Object.keys(markerColors).forEach(function (key) {
+            var newKey = markerColor_re.test(key) ? markerColor_re.exec(key)[1] : key
+            if (newKey !== key) {
+              markerColors[newKey] = markerColors[key]
+              delete markerColors[key]
+            }
+          })
+
+
+          let matches = re.exec(path)
+          result.kvals['File path'].val = matches[0]
+          result.kvals['Donor info - Age'].val = result.tags.filter(val => age_re.test(val))[0]
+          this.setState({
+            modalData: {
+              img_id: imgInfo,
+              img_data: result.kvals,
+              path_path: result.pathpath,
+              markerColors: markerColors
+            }
+          })
+          this.toggleDetail()
+        })
+      .catch(err => {
+        this.setState({
+          loaded: false,
+          error: err
+        })
+      });
+  }
+
+
+  render() {
+    if (this.state.loaded) {
+      let headings = null;
+      let chosen_matrix = null;
+      if (!this.state.view_transpose) {
+        headings = Object.keys(this.state.matrix[Object.keys(this.state.matrix)[0]])
+        chosen_matrix = this.state.matrix
+      } else {
+        headings = Object.keys(this.state.matrix_t[Object.keys(this.state.matrix_t)[0]])
+        chosen_matrix = this.state.matrix_t
+      }
+
+      return (
+        <Container fluid className='image-matrix'>
+          <h1>Matrix View</h1>
+          <h3>{`Viewing ${this.props.tag_1} vs ${this.props.tag_2}`}</h3>
+
+          <div className='image-matrix-content'>
+            <Table hover className='image-matrix'>
+              <thead>
+                <tr>
+                  <td className='matrix-cell'><Button color="primary" onClick={this.flip}>Flip Matrix</Button></td>
+                  {headings.map(item => (
+                    <td key={item} className='matrix-cell matrix-head'><strong>{item}</strong></td>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {Object.keys(chosen_matrix).map(row => (
+                  <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(chosen_matrix[row]).map(col => (
+                    <td key={row + ', ' + col} className='matrix-cell'>
+                      {chosen_matrix[row][col][0] !== undefined && <div className='matrix-cell-img' onClick={() => this.toggle(chosen_matrix[row][col])}><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosen_matrix[row][col][0]}.jpg`)} alt="" /><div className='matrix-cell-count'><p>{`${chosen_matrix[row][col].length}`}</p></div></div>}
+                      {chosen_matrix[row][col][0] === undefined && <p>Data not collected</p>}
+                    </td>
+                  ))}</tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+          <Modal isOpen={this.state.modal} toggle={() => this.toggle([])} className='matrix-modal'>
+            <ModalHeader toggle={() => this.toggle([])}>Image List</ModalHeader>
+            <ModalBody>
+              <Table>
+                <thead>
+                  <tr>
+                    <td>Thumbnail</td>
+                    <td>Image Tags</td>
+                    <td>Action</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.selected_set.map(img => (
+                    <MatrixModalListComponent iid={img} modalCallback={this.setModal} />
+                  ))}
+                </tbody>
+              </Table>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="danger" onClick={() => this.toggle([])}>Dismiss</Button>
+            </ModalFooter>
+          </Modal>
+          <ImageModal toggle={this.toggleDetail} isOpen={this.state.modalOpen} modalData={this.state.modalData} />
+        </Container>
+
+      )
+    } else if (this.state.error !== undefined) {
+      return <Container><Error error_desc={this.state.error.message} /></Container>
+    } else {
+      return (
+        <Container>
+          <div className="loading">
+            <strong>Loading {this.props.dataset_name}...</strong>
+            <Progress animated color="success" value="100" />
+          </div>
+        </Container>
+      )
+    }
+  }
+}
+
+ImageMatrix.defaultProps = {
+  tag_1: 'age',
+  tag_2: 'pancreas%20region'
+}
+

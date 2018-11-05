@@ -1,0 +1,246 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+h1, h2, h3 {
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+body {
+  font-family: 'Questrial', sans-serif;
+  text-align: left;
+}
+
+a {
+  color: #23527c;
+}
+
+a:hover{
+  text-decoration: none;
+  color: #23527c;
+}
+
+.footer a{
+  color: #999;
+}
+
+.footer a:hover{
+  color: #2c6f6e;
+}
+
+.v-padded{
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.section-heading{
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 42px;
+  padding-bottom: 30px;
+}
+
+.section-desc{
+  line-height: 1.5;
+  margin: 0 0 15px;
+  font-weight: 400;
+  color: #333;
+  letter-spacing: 1px;
+  font-size: 24px;
+}
+
+.shaded{
+  background-color: #F4F5F9;
+}
+
+.img-fill{
+  max-width: 100%;
+}
+
+.p-img{
+  margin-right: 10px;
+}
+
+.row {
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+.banner-container{
+  height: 800px;
+  margin-top: -750px;
+}
+
+.banner-row{
+  height: 100%;
+}
+
+.banner-header{
+  text-align: left;
+  color: white;
+  text-shadow: 1px 1px 5px #333;
+  font-size: 368%;
+  font-weight: 700;
+}
+
+.banner-subheader {
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 5px #333;
+  font-weight: 700;
+}
+
+.banner-button {
+  white-space: normal;
+}
+
+.feature-header-row {
+  text-align: left;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 0 20px;
+  padding: 0;
+  color: #2c6f6e;  
+}
+
+.feature-body-row {
+  text-align: left;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #666;
+}
+
+.feature-icon {
+  color: #2c6f6e;
+}
+
+.center-row{
+  text-align: center;
+}
+
+.handel-footer {
+  color: white;
+}
+
+.footer-container {
+  background-color: #2E2E2E;
+  padding-bottom: 60px;
+}
+
+.header-container{
+  background-color: #95B7B6;
+}
+
+.header-row{
+  padding-top: 180px;
+  padding-bottom: 180px;
+}
+
+.header-heading{
+  font-size: 100px;
+  text-shadow: 1px 1px 10px #333;
+  color: white;
+  font-weight: 400;
+  letter-spacing: 4px;
+}
+
+.header-subheading{
+  color: #fff;
+  letter-spacing: 3px;
+  margin: 10px 0 0 ;
+  font-size: 30px;
+  font-weight: 400;  
+}
+
+.test-feedback {
+  background-color: #aa0000;
+  color: white;
+  text-align: middle;
+}
+
+.test-feedback p {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.test-feedback a{
+  color: #1B294A;
+}
+
+div.home-modal{
+  max-width: 1215px;
+}
+
+img.modal-image {
+  width: 100%;
+}
+
+div.controls{
+  padding: 1rem;
+  background-color: #efefef;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+span.control-element {
+  cursor: pointer;
+  /* background-color: antiquewhite; */
+  padding: 0.25rem;
+  width: 30%;
+  text-align: center;
+}
+
+span.control-element.selected {
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+div.overlay {
+  background: rgba(44, 111, 110, 0.7) none repeat scroll 0 0;
+}
+
+.nav-item a {
+  color: #FFFFFF;
+  margin-left:0.5rem;
+  margin-right: 0.5rem;
+}
+
+.nav-item a:last-child{
+  margin-right: 1rem;
+}
+
+.nav-item a.active {
+  color: #a7b9e5
+}
+

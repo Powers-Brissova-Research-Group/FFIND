@@ -1,0 +1,3 @@
+[console_scripts]
+slice2py = slice2py:main
+

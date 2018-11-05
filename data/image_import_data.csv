@@ -1,0 +1,235 @@
+Image ID (Aperio) or File Name,Image Location,Donor info - UNOS ID,Donor info - LIMS ID,Donor info - Disease Status,Donor info - Disease Duration,Donor info - Age,Donor info - Sex,Stain info - cy2,Stain info - cy2-Ab,Stain info - cy3,Stain info - cy3-Ab,Stain info - cy5,Stain info - cy5-Ab,Stain info - DAPI,Image info - Section Plane,Image info - Pancreas Region,Image info - File Type,Image info - Annotations,Image info - Analysis,(DS notes)
+92646,\\drtc-aperio2\Images\2013-09-25\92646.afi,FHP-2953,,ND,,G17w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,no,no,slide 5
+91510,\\drtc-aperio2\Images\2013-09-13\91510.afi\,FHP-2953,,ND,,G17w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,no,no,slide 20
+92651,\\drtc-aperio2\Images\2013-09-25\92651.afi,FHP-2953,,ND,,G17w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 44
+92714,\\drtc-aperio2\Images\2013-09-25\92714.afi,FHP-2953,,ND,,G17w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,no,no,slide 5
+91538,\\drtc-aperio2\Images\2013-09-13\91538.afi,FHP-2953,,ND,,G17w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,no,no,slide 20
+92719,\\drtc-aperio2\Images\2013-09-25\92719.afi,FHP-2953,,ND,,G17w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,no,no,slide 44
+92672,\\drtc-aperio2\Images\2013-09-25\92672.afi  ,FHP-2953,,ND,,G17w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 5
+91559,\\drtc-aperio2\Images\2013-09-13\91559.afi,FHP-2953,,ND,,G17w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 20
+92677,\\drtc-aperio2\Images\2013-09-25\92677.afi,FHP-2953,,ND,,G17w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 44
+93131,\\drtc-aperio2\Images\2013-09-30\93131.afi,FHP-2953,,ND,,G17w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 6
+92992,\\drtc-aperio2\Images\2013-09-30\92992.afi,FHP-2953,,ND,,G17w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 24
+93136,\\drtc-aperio2\Images\2013-09-30\93136.afi,FHP-2953,,ND,,G17w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 45
+107861,\\drtc-aperio2\Images\2014-02-20\107861.afi,FHP-2944,,ND,,G15.5w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 25
+111008,\\drtc-aperio2\Images2\2014-03-06\111008.afi,FHP-2944,,ND,,G15.5w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 59
+107878,\\drtc-aperio2\Images\2014-02-20\107878.afi,FHP-2944,,ND,,G15.5w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 25
+111026,\\drtc-aperio2\Images2\2014-03-06\111026.afi,FHP-2944,,ND,,G15.5w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 59
+108166,\\drtc-aperio2\Images\2014-02-20\108166.afi,FHP-2944,,ND,,G15.5w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 25
+111043,\\drtc-aperio2\Images2\2014-03-06\111043.afi  ,FHP-2944,,ND,,G15.5w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 59
+111261,\\drtc-aperio2\Images2\2014-03-07\111261.afi,FHP-2944,,ND,,G15.5w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 26
+111271,\\drtc-aperio2\Images2\2014-03-07\111271.afi  ,FHP-2944,,ND,,G15.5w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 57
+92631,\\drtc-aperio2\Images\2013-09-25\92631.afi,FHP-2646,,ND,,G15w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 6
+92636,\\drtc-aperio2\Images\2013-09-25\92636.afi,FHP-2646,,ND,,G15w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 25
+89167,\\drtc-aperio2\Images\2013-08-23\89167.afi,FHP-2646,,ND,,G15w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,no,no,slide 41
+92702,\\drtc-aperio2\Images\2013-09-25\92702.afi  ,FHP-2646,,ND,,G15w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 6
+92707,\\drtc-aperio2\Images\2013-09-25\92707.afi  ,FHP-2646,,ND,,G15w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 25
+89205,\\drtc-aperio2\Images\2013-08-23\89205.afi,FHP-2646,,ND,,G15w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 41
+92657,\\drtc-aperio2\Images\2013-09-25\92657.afi,FHP-2646,,ND,,G15w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 6
+92662,\\drtc-aperio2\Images\2013-09-25\92662.afi,FHP-2646,,ND,,G15w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 25
+92667,\\drtc-aperio2\Images\2013-09-25\92667.afi,FHP-2646,,ND,,G15w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 45
+93141,\\drtc-aperio2\Images\2013-09-30\93141.afi,FHP-2646,,ND,,G15w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 5
+93146,\\drtc-aperio2\Images\2013-09-30\93146.afi,FHP-2646,,ND,,G15w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 24
+93151,\\drtc-aperio2\Images\2013-09-30\93151.afi,FHP-2646,,ND,,G15w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 44
+89341,\\drtc-aperio2\Images\2013-08-23\89341.afi,FHP-2796,,ND,,G17.3w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 2
+89346,\\drtc-aperio2\Images\2013-08-23\89346.afi,FHP-2796,,ND,,G17.3w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 21
+89351,\\drtc-aperio2\Images\2013-08-23\89351.afi,FHP-2796,,ND,,G17.3w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 41
+89311,\\drtc-aperio2\Images\2013-08-23\89311.afi,FHP-2796,,ND,,G17.3w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 2
+89316,\\drtc-aperio2\Images\2013-08-23\89316.afi,FHP-2796,,ND,,G17.3w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 21
+89321,\\drtc-aperio2\Images\2013-08-23\89321.afi  ,FHP-2796,,ND,,G17.3w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 41
+89272,\\drtc-aperio2\Images\2013-08-23\89272.afi,FHP-2796,,ND,,G17.3w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 2
+89290,\\drtc-aperio2\Images\2013-08-23\89290.afi,FHP-2796,,ND,,G17.3w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 21
+89295,\\drtc-aperio2\Images\2013-08-23\89295.afi,FHP-2796,,ND,,G17.3w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 41
+92972,\\drtc-aperio2\Images\2013-09-30\92972.afi  ,FHP-2796,,ND,,G17.3w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 1
+92977,\\drtc-aperio2\Images\2013-09-30\92977.afi,FHP-2796,,ND,,G17.3w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 20
+92982,\\drtc-aperio2\Images\2013-09-30\92982.afi,FHP-2796,,ND,,G17.3w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 40
+145890,\\drtc-aperio2\Images2\2014-07-02\145890.afi,FHP-3299,,ND,,G12w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 21
+148364,\\drtc-aperio2\Images2\2014-07-18\148364.afi,FHP-3299,,ND,,G12w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 44
+145926,\\drtc-aperio2\Images2\2014-07-02\145926.afi,FHP-3299,,ND,,G12w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 21
+148374,\\drtc-aperio2\Images2\2014-07-18\148374.afi  ,FHP-3299,,ND,,G12w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 44
+145952,\\drtc-aperio2\Images2\2014-07-02\145952.afi,FHP-3299,,ND,,G12w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 21
+148468,\\drtc-aperio2\Images2\2014-07-18\148468.afi  ,FHP-3299,,ND,,G12w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 44
+152428,\\drtc-aperio2\Images2\2014-08-05\152428.afi,FHP-3299,,ND,,G12w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 20
+152433,\\drtc-aperio2\Images2\2014-08-05\152433.afi,FHP-3299,,ND,,G12w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 40
+111019,\\drtc-aperio2\Images2\2014-03-06\111013.afi,FHP-3716,,ND,,G15w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 24
+93530,\\drtc-aperio2\Images\2013-10-04\93530.afi,FHP-3716,,ND,,G15w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 41
+93535,\\drtc-aperio2\Images\2013-10-04\93535.afi,FHP-3716,,ND,,G15w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 61
+111032,\\drtc-aperio2\Images2\2014-03-06\111032.afi,FHP-3716,,ND,,G15w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 24
+93540,\\drtc-aperio2\Images\2013-10-04\93540.afi  ,FHP-3716,,ND,,G15w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 41
+93545,\\drtc-aperio2\Images\2013-10-04\93545.afi,FHP-3716,,ND,,G15w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 61
+111048,\\drtc-aperio2\Images2\2014-03-06\111048.afi,FHP-3716,,ND,,G15w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 24
+93550,\\drtc-aperio2\Images\2013-10-04\93550.afi,FHP-3716,,ND,,G15w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 41
+93555,\\drtc-aperio2\Images\2013-10-04\93555.afi,FHP-3716,,ND,,G15w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 61
+111128,\\drtc-aperio2\Images2\2014-03-06\111128.afi,FHP-3716,,ND,,G15w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 26
+111133,\\drtc-aperio2\Images2\2014-03-06\111133.afi  \,FHP-3716,,ND,,G15w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 45
+111139,\\drtc-aperio2\Images2\2014-03-06\111139.afi\,FHP-3716,,ND,,G15w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 64
+145903,\\drtc-aperio2\Images2\2014-07-02\145903.afi  ,FHP-3300,,ND,,G12w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 21
+146163,\\drtc-aperio2\Images2\2014-07-03\146163.afi  ,FHP-3300,,ND,,G12w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 41
+145936,\\drtc-aperio2\Images2\2014-07-02\145936.afi,FHP-3300,,ND,,G12w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 21
+146173,\\drtc-aperio2\Images2\2014-07-03\146173.afi  ,FHP-3300,,ND,,G12w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 41
+145962,\\drtc-aperio2\Images2\2014-07-02\145962.afi  ,FHP-3300,,ND,,G12w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 21
+146183,\\drtc-aperio2\Images2\2014-07-03\146183.afi  ,FHP-3300,,ND,,G12w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 41
+152287,\\drtc-aperio2\Images2\2014-08-04\152287.afi,FHP-3300,,ND,,G12w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 20
+143456,\\drtc-aperio2\Images2\2014-06-26\143456.afi,FHP-2930,,ND,,G12.3w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 21
+143461,\\drtc-aperio2\Images2\2014-06-26\143461.afi,FHP-2930,,ND,,G12.3w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 41
+143466,\\drtc-aperio2\Images2\2014-06-26\143466.afi  ,FHP-2930,,ND,,G12.3w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 61
+143476,\\drtc-aperio2\Images2\2014-06-26\143476.afi,FHP-2930,,ND,,G12.3w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 21
+143481,\\drtc-aperio2\Images2\2014-06-26\143481.afi,FHP-2930,,ND,,G12.3w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 41
+143486,\\drtc-aperio2\Images2\2014-06-26\143486.afi,FHP-2930,,ND,,G12.3w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 61
+143497,\\drtc-aperio2\Images2\2014-06-26\143497.afi  ,FHP-2930,,ND,,G12.3w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 21
+143502,\\drtc-aperio2\Images2\2014-06-26\143502.afi,FHP-2930,,ND,,G12.3w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 41
+143507,\\drtc-aperio2\Images2\2014-06-26\143507.afi  ,FHP-2930,,ND,,G12.3w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 61
+151643,\\drtc-aperio2\Images2\2014-07-30\151643.afi,FHP-2930,,ND,,G12.3w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 20
+151648,\\drtc-aperio2\Images2\2014-07-30\151648.afi,FHP-2930,,ND,,G12.3w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 40
+151664,\\drtc-aperio2\Images2\2014-07-30\151664.afi,FHP-2930,,ND,,G12.3w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 60
+59903,\\drtc-aperio2\Images\2013-02-08\59903.afi,FHP-2792,,ND,,G18w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 45
+52276,\\drtc-aperio2\Images\2012-12-12\52276.afi,FHP-2792,,ND,,G18w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 81
+52399,\\drtc-aperio2\Images\2012-12-12\52399.afi,FHP-2792,,ND,,G18w,Unknown,INS,,GCG,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 121
+59932,\\drtc-aperio2\Images\2013-02-08\59932.afi,FHP-2792,,ND,,G18w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 45
+52412,\\drtc-aperio2\Images\2012-12-12\52412.afi,FHP-2792,,ND,,G18w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 81
+52423,\\drtc-aperio2\Images\2012-12-12\52423.afi,FHP-2792,,ND,,G18w,Unknown,INS,,PPY,,GHRL,,DAPI,Transverse,,Aperio,yes,yes,slide 121
+92388,\\drtc-aperio2\Images\2013-09-23\92388.afi,FHP-2792,,ND,,G18w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,no,no,slide 49
+92398,\\drtc-aperio2\Images\2013-09-23\92398.afi,FHP-2792,,ND,,G18w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,no,no,slide 89
+92043,\\drtc-aperio2\Images\2013-09-18\92043.afi,FHP-2792,,ND,,G18w,Unknown,INS,,MKI67,,GCG,,DAPI,Transverse,,Aperio,yes,yes,slide 126
+92403,\\drtc-aperio2\Images\2013-09-23\92403.afi,FHP-2792,,ND,,G18w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,no,no,slide 28
+92033,\\drtc-aperio2\Images\2013-09-18\92033.afi,FHP-2792,,ND,,G18w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 89
+92060,\\drtc-aperio2\Images\2013-09-18\92060.afi,FHP-2792,,ND,,G18w,Unknown,INS,,MKI67,,SST,,DAPI,Transverse,,Aperio,yes,yes,slide 126
+95818,\\drtc-aperio2\Images\2013-10-26\95818.afi,FHP-2792,,ND,,G18w,Unknown,COL4A1,,"SYN1, SYN2",,"INS, GCG, SST",,DAPI,Transverse,,Aperio,no,no,slide 39
+138390,\\drtc-aperio2\Images2\2014-06-18\138390.afi,ABAJ206,DON22,ND,,G34w+4d,M,INS,,GCG,,SST,,DAPI,Sagittal,Head,Aperio,yes,yes,neonatal (1)
+139358,\\drtc-aperio2\Images2\2014-06-20\139358.afi,ABAJ206,DON22,ND,,G34w+4d,M,INS,,GCG,,SST,,DAPI,Sagittal,Body,Aperio,yes,yes,
+136994,\\drtc-aperio2\Images2\2014-06-11\136994.afi,ABAJ206,DON22,ND,,G34w+4d,M,INS,,GCG,,SST,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+139564,\\drtc-aperio2\Images2\2014-06-20\139564.afi,ABAJ206,DON22,ND,,G34w+4d,M,INS,,MKI67,,GCG,,DAPI,Sagittal,Body,Aperio,yes,yes,
+139321,\\drtc-aperio2\Images2\2014-06-20\139321.afi  ,ABAJ206,DON22,ND,,G34w+4d,M,INS,,MKI67,,GCG,,DAPI,Sagittal,Head,Aperio,yes,yes,
+137020,\\drtc-aperio2\Images2\2014-06-11\137020.afi,ABAJ206,DON22,ND,,G34w+4d,M,INS,,MKI67,,GCG,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+143401,\\drtc-aperio2\Images2\2014-06-25\143401.afi,ABAJ206,DON22,ND,,G34w+4d,M,SST,,MKI67,,,,DAPI,Sagittal,Body,Aperio,yes,yes,
+143396,\\drtc-aperio2\Images2\2014-06-25\143396.afi  ,ABAJ206,DON22,ND,,G34w+4d,M,SST,,MKI67,,,,DAPI,Sagittal,Head,Aperio,yes,yes,
+143408,\\drtc-aperio2\Images2\2014-06-25\143408.afi  ,ABAJ206,DON22,ND,,G34w+4d,M,SST,,MKI67,,,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+222579,\\drtc-aperio2\Images2\2015-12-17\222579.afi  ,IIAM15115,DON66,ND,,G41w,F,INS,,GCG,,SST,,DAPI,Sagittal,Head,Aperio,yes,yes,neonatal (8)
+222584,\\drtc-aperio2\Images2\2015-12-17\222584.afi  ,IIAM15115,DON66,ND,,G41w,F,INS,,GCG,,SST,,DAPI,Sagittal,Body,Aperio,yes,yes,
+222660,\\drtc-aperio2\Images2\2015-12-17\222660.afi  ,IIAM15115,DON66,ND,,G41w,F,INS,,GCG,,SST,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+222645,\\drtc-aperio2\Images2\2015-12-17\222645.afi  ,IIAM15115,DON66,ND,,G41w,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Head,Aperio,yes,yes,
+222610,\\drtc-aperio2\Images2\2015-12-17\222610.afi  ,IIAM15115,DON66,ND,,G41w,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Body,Aperio,yes,yes,
+222650,\\drtc-aperio2\Images2\2015-12-17\222650.afi,IIAM15115,DON66,ND,,G41w,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+235695,\\drtc-aperio2\Images2\2016-05-07\235695.afi,IIAM15115,DON66,ND,,G41w,F,SST,,MKI67,,,,DAPI,Sagittal,Head,Aperio,yes,yes,
+235699,\\drtc-aperio2\Images2\2016-05-07\235699.afi  ,IIAM15115,DON66,ND,,G41w,F,SST,,MKI67,,,,DAPI,Sagittal,Body,Aperio,yes,yes,
+235704,\\drtc-aperio2\Images2\2016-05-07\235704.afi,IIAM15115,DON66,ND,,G41w,F,SST,,MKI67,,,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+85661,\\drtc-aperio2\Images\2013-07-22\85661.afi  ,AAFZ420,DON9,ND,,1d,F,INS,,GCG,,SST,,DAPI,Sagittal,Head,Aperio,yes,yes,neonatal (10)
+85666,\\drtc-aperio2\Images\2013-07-22\85666.afi,AAFZ420,DON9,ND,,1d,F,INS,,GCG,,SST,,DAPI,Sagittal,Body,Aperio,yes,yes,
+165327,\\drtc-aperio2\Images2\2014-10-19\165327.afi,AAFZ420,DON9,ND,,1d,F,INS,,GCG,,SST,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+85686,\\drtc-aperio2\Images\2013-07-22\85686.afi,AAFZ420,DON9,ND,,1d,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Head,Aperio,yes,yes,
+85691,\\drtc-aperio2\Images\2013-07-22\85691.afi,AAFZ420,DON9,ND,,1d,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Body,Aperio,yes,yes,
+85696,\\drtc-aperio2\Images\2013-07-22\85696.afi,AAFZ420,DON9,ND,,1d,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+113456,\\drtc-aperio2\Images2\2014-03-18\113456.afi  ,AAFZ420,DON9,ND,,1d,F,SST,,MKI67,,,,DAPI,Sagittal,Head,Aperio,yes,yes,
+113461,\\drtc-aperio2\Images2\2014-03-18\113461.afi  ,AAFZ420,DON9,ND,,1d,F,SST,,MKI67,,,,DAPI,Sagittal,Body,Aperio,yes,yes,
+113452,\\drtc-aperio2\Images2\2014-03-18\113452.afi,AAFZ420,DON9,ND,,1d,F,SST,,MKI67,,,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+122951,\\drtc-aperio2\Images2\2014-04-30\122951.afi,AAFZ420,DON9,ND,,1d,F,PECAM1,,"SYN1, SYN2",,"INS, GCG, SST",,DAPI,Sagittal,Body,Aperio,yes,yes,
+88467,\\drtc-aperio2\Images\2013-08-16\88467.afi,AAFZ420,DON9,ND,,1d,F,COL4A1,,"SYN1, SYN2",,INS,,DAPI,Sagittal,Body,Aperio,no,no,
+88472,\\drtc-aperio2\Images\2013-08-16\88472.afi,IIAM4123,DON8,ND,,5d,F,COL4A1,,"SYN1, SYN2",,INS,,DAPI,Sagittal,Body,Aperio,no,no,neonatal
+122936,\\drtc-aperio2\Images2\2014-04-30\122936.afi,IIAM4123,DON8,ND,,5d,F,PECAM1,,"SYN1, SYN2",,"INS, GCG, SST",,DAPI,Sagittal,Body,Aperio,yes,yes,neonatal
+88462,\\drtc-aperio2\Images\2013-08-16\88462.afi,ND01112,DON6,ND,,2mo,F,COL4A1,,"SYN1, SYN2",,INS,,DAPI,Sagittal,Body,Aperio,no,no,neonatal
+123193,\\drtc-aperio2\Images2\2014-05-01\123193.afi  ,ND01112,DON6,ND,,2mo,F,PECAM1,,"SYN1, SYN2",,"INS, GCG, SST",,DAPI,Sagittal,Body,Aperio,yes,yes,neonatal
+40645,\\drtc-aperio2\Images\2012-08-16\40645.afi,OD40736,DON2,ND,,3mo,M,INS,,GCG,,SST,,DAPI,Sagittal,Head,Aperio,yes,yes,infant (14)
+40650,\\drtc-aperio2\Images\2012-08-16\40650.afi,OD40736,DON2,ND,,3mo,M,INS,,GCG,,SST,,DAPI,Sagittal,Body,Aperio,yes,yes,
+40690,\\drtc-aperio2\Images\2012-08-16\40690.afi,OD40736,DON2,ND,,3mo,M,INS,,GCG,,SST,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+40625,\\drtc-aperio2\Images\2012-08-16\40625.afi,OD40736,DON2,ND,,3mo,M,INS,,MKI67,,GCG,,DAPI,Sagittal,Head,Aperio,yes,yes,
+165294,\\drtc-aperio2\Images2\2014-10-18\165294.afi  ,OD40736,DON2,ND,,3mo,M,INS,,MKI67,,GCG,,DAPI,Sagittal,Body,Aperio,yes,yes,
+40635,\\drtc-aperio2\Images\2012-08-16\40635.afi,OD40736,DON2,ND,,3mo,M,INS,,MKI67,,GCG,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+113477,\\drtc-aperio2\Images2\2014-03-18\113477.afi,OD40736,DON2,ND,,3mo,M,SST,,MKI67,,,,DAPI,Sagittal,Head,Aperio,yes,yes,
+115104,\\drtc-aperio2\Images2\2014-03-27\115104.afi  ,OD40736,DON2,ND,,3mo,M,SST,,MKI67,,,,DAPI,Sagittal,Body,Aperio,yes,yes,
+113723,\\drtc-aperio2\Images2\2014-03-19\113723.afi,OD40736,DON2,ND,,3mo,M,SST,,MKI67,,,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+234400,\\drtc-aperio2\Images2\2016-04-25\234400.afi,OD40736,DON2,ND,,3mo,M,PECAM1,,"SYN1, SYN2",,"INS, SST",,DAPI,Sagittal,Tail,Aperio,yes,no,
+98624,\\drtc-aperio2\Images\2013-11-29\98624.afi,ND01482,DON10,ND,,10mo,F,INS,,GCG,,SST,,DAPI,Sagittal,Head,Aperio,yes,yes,infant (17)
+98629,\\drtc-aperio2\Images\2013-11-29\98629.afi,ND01482,DON10,ND,,10mo,F,INS,,GCG,,SST,,DAPI,Sagittal,Body,Aperio,yes,yes,
+98648,\\drtc-aperio2\Images\2013-11-29\98648.afi,ND01482,DON10,ND,,10mo,F,INS,,GCG,,SST,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+98676,\\drtc-aperio2\Images\2013-11-29\98676.afi,ND01482,DON10,ND,,10mo,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Head,Aperio,yes,yes,
+98656,\\drtc-aperio2\Images\2013-11-29\98656.afi,ND01482,DON10,ND,,10mo,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Body,Aperio,yes,yes,
+98671,\\drtc-aperio2\Images\2013-11-29\98671.afi,ND01482,DON10,ND,,10mo,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+106563,\\drtc-aperio2\Images\2014-02-18\106563.afi,ND01482,DON10,ND,,10mo,F,SST,,MKI67,,,,DAPI,Sagittal,Head,Aperio,yes,yes,
+114271,\\drtc-aperio2\Images2\2014-03-21\114271.afi,ND01482,DON10,ND,,10mo,F,SST,,MKI67,,,,DAPI,Sagittal,Body,Aperio,yes,yes,
+114267,\\drtc-aperio2\Images2\2014-03-21\114267.afi,ND01482,DON10,ND,,10mo,F,SST,,MKI67,,,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+123188,\\drtc-aperio2\Images2\2014-05-01\123188.afi,ND01482,DON10,ND,,10mo,F,PECAM1,,"SYN1, SYN2",,"INS, GCG, SST",,DAPI,Sagittal,Body,Aperio,yes,yes,
+98619,\\drtc-aperio2\Images\2013-11-29\98619.afi,AAHK353,DON12,ND,,20mo,F,INS,,GCG,,SST,,DAPI,Sagittal,Head,Aperio,yes,yes,infant (22)
+98614,\\drtc-aperio2\Images\2013-11-29\98614.afi,AAHK353,DON12,ND,,20mo,F,INS,,GCG,,SST,,DAPI,Sagittal,Body,Aperio,yes,yes,
+98681,\\drtc-aperio2\Images\2013-11-29\98681.afi  ,AAHK353,DON12,ND,,20mo,F,INS,,GCG,,SST,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+98666,\\drtc-aperio2\Images\2013-11-29\98666.afi,AAHK353,DON12,ND,,20mo,F,INS,,Ki67,,GCG,,DAPI,Sagittal,Head,Aperio,yes,yes,
+98661,\\drtc-aperio2\Images\2013-11-29\98661.afi,AAHK353,DON12,ND,,20mo,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Body,Aperio,yes,yes,
+98687,\\drtc-aperio2\Images\2013-11-29\98687.afi  ,AAHK353,DON12,ND,,20mo,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+115390,\\drtc-aperio2\Images2\2014-03-28\115390.afi,AAHK353,DON12,ND,,20mo,F,Sst,,MKI67,,,,DAPI,Sagittal,Head,Aperio,yes,yes,
+115139,\\drtc-aperio2\Images2\2014-03-27\115139.afi,AAHK353,DON12,ND,,20mo,F,Sst,,MKI67,,,,DAPI,Sagittal,Body,Aperio,yes,yes,
+115120,\\drtc-aperio2\Images2\2014-03-27\115120.afi  ,AAHK353,DON12,ND,,20mo,F,Sst,,MKI67,,,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+100857,\\drtc-aperio2\Images\2014-01-02\100857.afi,AAHK353,DON12,ND,,20mo,F,PECAM1,,"SYN1, SYN2",,INS,,DAPI,Sagittal,Body,Aperio,yes,yes,
+102967,\\drtc-aperio2\Images\2014-01-10\102967.afi,AAIC353,DON13,ND,,4y,F,INS,,GCG,,SST,,DAPI,Sagittal,Head,Aperio,yes,yes,child (25)
+102972,\\drtc-aperio2\Images\2014-01-10\102972.afi,AAIC353,DON13,ND,,4y,F,INS,,GCG,,SST,,DAPI,Sagittal,Body,Aperio,yes,yes,
+103215,\\drtc-aperio2\Images\2014-01-13\103215.afi  ,AAIC353,DON13,ND,,4y,F,INS,,GCG,,SST,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+102992,\\drtc-aperio2\Images\2014-01-10\102992.afi,AAIC353,DON13,ND,,4y,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Head,Aperio,yes,yes,
+102997,\\drtc-aperio2\Images\2014-01-10\102997.afi,AAIC353,DON13,ND,,4y,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Body,Aperio,yes,yes,
+103221,\\drtc-aperio2\Images\2014-01-13\103221.afi,AAIC353,DON13,ND,,4y,F,INS,,MKI67,,GCG,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+115126,\\drtc-aperio2\Images2\2014-03-27\115126.afi,AAIC353,DON13,ND,,4y,F,SST,,MKI67,,,,DAPI,Sagittal,Head,Aperio,yes,yes,
+115130,\\drtc-aperio2\Images2\2014-03-27\115130.afi,AAIC353,DON13,ND,,4y,F,SST,,MKI67,,,,DAPI,Sagittal,Body,Aperio,yes,yes,
+115134,\\drtc-aperio2\Images2\2014-03-27\115134.afi,AAIC353,DON13,ND,,4y,F,SST,,MKI67,,,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+123183,\\drtc-aperio2\Images2\2014-05-01\123183.afi  ,AAIC353,DON13,ND,,4y,F,PECAM1,,"SYN1, SYN2",,"INS, GCG, SST",,DAPI,Sagittal,Body,Aperio,yes,yes,
+85512,\\drtc-aperio2\Images\2013-07-18\85512.afi,AAFQ177,DON7,ND,,5y,M,INS,,GCG,,SST,,DAPI,Sagittal,Head,Aperio,yes,yes,child (26)
+85052,\\drtc-aperio2\Images\2013-07-15\85052.afi,AAFQ177,DON7,ND,,5y,M,INS,,GCG,,SST,,DAPI,Sagittal,Body,Aperio,yes,yes,
+111176,\\drtc-aperio2\Images2\2014-03-06\111176.afi,AAFQ177,DON7,ND,,5y,M,INS,,GCG,,SST,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+85533,\\drtc-aperio2\Images\2013-07-18\85533.afi,AAFQ177,DON7,ND,,5y,M,INS,,MKI67,,GCG,,DAPI,Sagittal,Head,Aperio,yes,yes,
+85538,\\drtc-aperio2\Images\2013-07-18\85538.afi,AAFQ177,DON7,ND,,5y,M,INS,,MKI67,,GCG,,DAPI,Sagittal,Body,Aperio,yes,yes,
+85548,\\drtc-aperio2\Images\2013-07-18\85548.afi,AAFQ177,DON7,ND,,5y,M,INS,,MKI67,,GCG,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+106540,\\drtc-aperio2\Images\2014-02-18\106540.afi,AAFQ177,DON7,ND,,5y,M,SST,,MKI67,,,,DAPI,Sagittal,Head,Aperio,yes,yes,
+115947,\\drtc-aperio2\Images2\2014-03-31\115947.afi  ,AAFQ177,DON7,ND,,5y,M,SST,,MKI67,,,,DAPI,Sagittal,Body,Aperio,yes,yes,
+116039,\\drtc-aperio2\Images2\2014-04-01\116039.afi,AAFQ177,DON7,ND,,5y,M,SST,,MKI67,,,,DAPI,Sagittal,Tail,Aperio,yes,yes,
+,,,,,,,Unknown,,,,,,,,,,,,,
+88483,\\drtc-aperio2\Images\2013-08-16\88483.afi  ,AAFQ177,DON7,ND,,5y,M,COL4A1,,"SYN1, SYN2",,INS,,DAPI,Sagittal,Body,Aperio,no,no,
+85072,\\drtc-aperio2\Images\2013-07-15\85072.afi  ,AACS476,DON4,ND,,10y,M,INS,,GCG,,SST,,DAPI,Sagittal,Head,Aperio,yes,yes,child (31)
+85436,\\drtc-aperio2\Images\2013-07-17\85436.afi,AACS476,DON4,ND,,10y,M,INS,,GCG,,SST,,DAPI,Sagittal,Body,Aperio,yes,yes,
+85400,\\drtc-aperio2\Images\2013-07-17\85400.afi,AACS476,DON4,ND,,10y,M,INS,,MKI67,,GCG,,DAPI,Sagittal,Head,Aperio,yes,yes,
+85405,\\drtc-aperio2\Images\2013-07-17\85405.afi  ,AACS476,DON4,ND,,10y,M,INS,,MKI67,,GCG,,DAPI,Sagittal,Body,Aperio,yes,yes,
+116570,\\drtc-aperio2\Images2\2014-04-03\116570.afi  ,AACS476,DON4,ND,,10y,M,SST,,MKI67,,,,DAPI,Sagittal,Head,Aperio,yes,yes,
+116553,\\drtc-aperio2\Images2\2014-04-03\116553.afi  ,AACS476,DON4,ND,,10y,M,SST,,MKI67,,,,DAPI,Sagittal,Body,Aperio,yes,yes,
+88457,\\drtc-aperio2\Images\2013-08-16\88457.afi  ,AACS476,DON4,ND,,10y,M,COL4A1,,"SYN1, SYN2",,INS,,DAPI,Sagittal,Body,Aperio,no,no,
+100842,\\drtc-aperio2\Images\2014-01-02\100842.afi,AACS476,DON4,ND,,10y,M,INS,,"SYN1, SYN2",,GCG,,DAPI,Sagittal,Body,Aperio,yes,yes,
+FHP3715-G8w-Sox9-Ptf1a-InsulinSec2h,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP3715-G8w-Sox9-Ptf1a-InsulinSec2h,FHP-3715,,ND,,G8w,Unknown,PTF1A,,SOX9,,INS,,,Transverse,Periphery,Zeiss,no,no,
+FHP3715-G8w-Sox91-Ptf1a-InsulinSec2g,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP3715-G8w-Sox91-Ptf1a-InsulinSec2g,FHP-3715,,ND,,G8w,Unknown,PTF1A,,SOX9,,INS,,,Transverse,Core,Zeiss,no,no,
+FHP-3300-G12w-Amylase-Ptf1a-Sox9Sec2e,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-3300-G12w-Amylase-Ptf1a-Sox9Sec2e,FHP-3300,,ND,,G12w,Unknown,PTF1A,,AMY1A,,SOX9,,,Transverse,Periphery,Zeiss,no,no,
+FHP-3300-G12w-Amylase-Ptf1a-Sox9Sec2f,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-3300-G12w-Amylase-Ptf1a-Sox9Sec2f,FHP-3300,,ND,,G12w,Unknown,PTF1A,,AMY1A,,SOX9,,,Transverse,Core,Zeiss,no,no,
+FHP3716-G15w-Amylase-Ptf1a-Sox9Sec4p,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP3716-G15w-Amylase-Ptf1a-Sox9Sec4p,FHP-3716,,ND,,G15w,Unknown,PTF1A,,AMY1A,,SOX9,,,Transverse,Periphery,Zeiss,no,no,
+FHP3716-G15w-Amylase-Ptf1a-Sox9Sec5d,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP3716-G15w-Amylase-Ptf1a-Sox9Sec5d,FHP-3716,,ND,,G15w,Unknown,PTF1A,,AMY1A,,SOX9,,,Transverse,Core,Zeiss,no,no,
+FHP2792-G18w-Amylase-Ptf1a-Sox9Sec2g,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP2792-G18w-Amylase-Ptf1a-Sox9Sec2g,FHP-2792,,ND,,G18w,Unknown,PTF1A,,AMY1A,,SOX9,,,Transverse,Periphery,Zeiss,no,no,
+FHP2792-G18w-Amylase-Ptf1a-Sox9Sec2b,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP2792-G18w-Amylase-Ptf1a-Sox9Sec2b,FHP-2792,,ND,,G18w,Unknown,PTF1A,,AMY1A,,SOX9,,,Transverse,Core,Zeiss,no,no,
+FHPG12wHNF6-cy3ecad-cy5CpaIFoxa2-cy2iperiph,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHPG12wHNF6-cy3ecad-cy5CpaIFoxa2-cy2iperiph,n/a,,ND,,G12w,Unknown,"CPA1, FOXA2",,ONECUT1,,CDH1,,,Transverse,Periphery,Zeiss,no,no,
+humanG12WHnf1b-cy3amylase-cy2e-cad-cy5b,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/humanG12WHnf1b-cy3amylase-cy2e-cad-cy5b,n/a,,ND,,G12w,Unknown,AMY1A,,HNF1B,,CDH1,,,Transverse,n/a,Zeiss,no,no,
+FHP3300-G12w-Pax6-Ptf1a-Sox9Sec2m,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP3300-G12w-Pax6-Ptf1a-Sox9Sec2m,FHP-3300,,ND,,G12w,Unknown,PTF1A,,PAX6,,SOX9,,,Transverse,Periphery,Zeiss,no,no,
+FHP3300-G12w-Pax6-Ptf1a-Sox9Sec2p,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP3300-G12w-Pax6-Ptf1a-Sox9Sec2p,FHP-3300,,ND,,G12w,Unknown,PTF1A,,PAX6,,SOX9,,,Transverse,Core,Zeiss,no,no,
+FHP3716-G15w-Pax6-Ptf1a-Sox9Sec1c,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP3716-G15w-Pax6-Ptf1a-Sox9Sec1c,FHP-3716,,ND,,G15w,Unknown,PTF1A,,PAX6,,SOX9,,,Transverse,Periphery,Zeiss,no,no,
+FHP3716-G15w-Pax6-Ptf1a-Sox9Sec2m,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP3716-G15w-Pax6-Ptf1a-Sox9Sec2m,FHP-3716,,ND,,G15w,Unknown,PTF1A,,PAX6,,SOX9,,,Transverse,Core,Zeiss,no,no,
+FHP2792-G18w-Pax6-Ptf1a-Sox9Sec2c,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP2792-G18w-Pax6-Ptf1a-Sox9Sec2c,FHP-2792,,ND,,G18w,Unknown,PTF1A,,PAX6,,SOX9,,,Transverse,Periphery,Zeiss,no,no,
+FHP2792-G18w-Pax6-Ptf1a-Sox9Sec2j,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP2792-G18w-Pax6-Ptf1a-Sox9Sec2j,FHP-2792,,ND,,G18w,Unknown,PTF1A,,PAX6,,SOX9,,,Transverse,Core,Zeiss,no,no,
+FHP-2770-18wk-nkx61-ins-hpx1-01,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-2770-18wk-nkx61-ins-hpx1-01,FHP-2770,,ND,,G18w,Unknown,INS,,GP2,HPX1,NKX6-1,,,Transverse,,Zeiss,no,no,
+FHP-2770-18wk-nkx61-ins-hpx1-02,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-2770-18wk-nkx61-ins-hpx1-02,FHP-2770,,ND,,G18w,Unknown,INS,,GP2,HPX1,NKX6-1,,,Transverse,,Zeiss,no,no,
+G37w-Head-Nkx61-Gp2-Ins-01,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/G37w-Head-Nkx61-Gp2-Ins-01,ACFU411,DON69,ND,,G37w,M,GP2,,NKX6-1,,INS,,,Sagittal,Head,Zeiss,no,no,
+G37w-Head-Nkx61-Gp2-Ins-03,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/G37w-Head-Nkx61-Gp2-Ins-03,ACFU411,DON69,ND,,G37w,M,GP2,,NKX6-1,,INS,,,Sagittal,Head,Zeiss,no,no,
+10moF-Body-Nkx61-Hpx1-ins-02,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/10moF-Body-Nkx61-Hpx1-ins-02,AAGO138,DON10,ND,,10mo,F,GP2,HPX1,NKX6-1,,INS,,,Sagittal,Body,Zeiss,no,no,
+10moF-Body-Nkx61-Hpx1-ins-03,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/10moF-Body-Nkx61-Hpx1-ins-03,AAGO138,DON10,ND,,10mo,F,GP2,HPX1,NKX6-1,,INS,,,Sagittal,Body,Zeiss,no,no,
+FHP-2718-17wk-ptf1a-hpx1-nkx61-06,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-2718-17wk-ptf1a-hpx1-nkx61-06,FHP-2718,,ND,,G17w,Unknown,PTF1A,,GP2,HPX1,NKX6-1,,,Transverse,,Zeiss,no,no,
+FHP-2718-17wk-ptf1a-hpx1-nkx61-08,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-2718-17wk-ptf1a-hpx1-nkx61-08,FHP-2718,,ND,,G17w,Unknown,PTF1A,,GP2,HPX1,NKX6-1,,,Transverse,,Zeiss,no,no,
+G37w-Head-Ptf1a-Gp2-Nkx61-04,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/G37w-Head-Ptf1a-Gp2-Nkx61-04,ACFU411,DON69,ND,,G37w,M,NKX6-1,,PTF1A,,GP2,,,Sagittal,Head,Zeiss,no,no,
+G37w-Head-Ptf1a-Gp2-Nkx61-05,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/G37w-Head-Ptf1a-Gp2-Nkx61-05,ACFU411,DON69,ND,,G37w,M,NKX6-1,,PTF1A,,GP2,,,Sagittal,Head,Zeiss,no,no,
+10moF-Body-Ptf1a-Nkx61-Hpx1-09,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/10moF-Body-Ptf1a-Nkx61-Hpx1-09,AAGO138,DON10,ND,,10mo,F,NKX6-1,,PTF1A,,GP2,HPX1,,Sagittal,Body,Zeiss,no,no,
+10moF-Body-Ptf1a-Nkx61-Hpx1-10,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/10moF-Body-Ptf1a-Nkx61-Hpx1-10,AAGO138,DON10,ND,,10mo,F,NKX6-1,,PTF1A,,GP2,HPX1,,Sagittal,Body,Zeiss,no,no,
+FHP-99112wksNgn3-cy3Pax6-synapto-cy2ecad-cy5a,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-99112wksNgn3-cy3Pax6-synapto-cy2ecad-cy5a,n/a,,ND,,G12w,Unknown,"PAX6, SYP",,NEUROG3,,CDH1,,,Sagittal,,Zeiss,no,no,
+FHP-99112wksNgn3-cy3Pax6-synapto-cy2ecad-cy5b,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-99112wksNgn3-cy3Pax6-synapto-cy2ecad-cy5b,n/a,,ND,,G12w,Unknown,"PAX6, SYP",,NEUROG3,,CDH1,,,Sagittal,,Zeiss,no,no,
+FHP-99112wksNgn3-cy3Pax6-synapto-cy2ecad-cy5c,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-99112wksNgn3-cy3Pax6-synapto-cy2ecad-cy5c,n/a,,ND,,G12w,Unknown,"PAX6, SYP",,NEUROG3,,CDH1,,,Sagittal,,Zeiss,no,no,
+FHP-2115wksNgn3-cy3Pax6-synapto-cy2ecad-cy5f,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-2115wksNgn3-cy3Pax6-synapto-cy2ecad-cy5f,n/a,,ND,,G15w,Unknown,"PAX6, SYP",,NEUROG3,,CDH1,,,Sagittal,,Zeiss,no,no,
+FHP-2115wksNgn3-cy3Pax6-synapto-cy2ecad-cy5r,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-2115wksNgn3-cy3Pax6-synapto-cy2ecad-cy5r,n/a,,ND,,G15w,Unknown,"PAX6, SYP",,NEUROG3,,CDH1,,,Sagittal,,Zeiss,no,no,
+FHP-2115wksNgn3-cy3Pax6-synapto-cy2ecad-cy5x,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-2115wksNgn3-cy3Pax6-synapto-cy2ecad-cy5x,n/a,,ND,,G15w,Unknown,"PAX6, SYP",,NEUROG3,,CDH1,,,Sagittal,,Zeiss,no,no,
+FHP-279218wksNgn3-cy3Pax6-synap-cy2ecad-cy5a,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-279218wksNgn3-cy3Pax6-synap-cy2ecad-cy5a,FHP-2792,,ND,,G18w,Unknown,"PAX6, SYP",,NEUROG3,,CDH1,,,Sagittal,,Zeiss,no,no,
+FHP-279218wksNgn3-cy3Pax6-synap-cy2ecad-cy52,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-279218wksNgn3-cy3Pax6-synap-cy2ecad-cy52,FHP-2792,,ND,,G18w,Unknown,"PAX6, SYP",,NEUROG3,,CDH1,,,Sagittal,,Zeiss,no,no,
+FHP-279218wksNgn3-cy3Pax6-synap-cy2ecad-cy59,/i10filecifs.vumc.org/powers-imaging/images/HANDEL-P.mdb/FHP-279218wksNgn3-cy3Pax6-synap-cy2ecad-cy59,FHP-2792,,ND,,G18w,Unknown,"PAX6, SYP",,NEUROG3,,CDH1,,,Sagittal,,Zeiss,no,no,
+G33w-B2-Pax6-endo-06,/i10filecifs.vumc.org/powers-imaging/images/20170830-NNHP-Pax6.lif,AAL0367,DON18,ND,,G33w,F,,,PAX6,,"INS, GCG, SST",,DAPI,Sagittal,Body,Leica,no,no,
+G37w-B1-Pax6-endo-05,/i10filecifs.vumc.org/powers-imaging/images/20170830-NNHP-Pax6.lif,ACFU411,DON69,ND,,G37w,M,,,PAX6,,"INS, GCG, SST",,DAPI,Sagittal,Body,Leica,no,no,
+3moM-B4-Pax6-endo-02,/i10filecifs.vumc.org/powers-imaging/images/20170830-NNHP-Pax6.lif,OD40736,DON2,ND,,3mo,M,,,PAX6,,"INS, GCG, SST",,DAPI,Sagittal,Body,Leica,no,no,
+10moF-B3-Pax6-endo-01,/i10filecifs.vumc.org/powers-imaging/images/20170830-NNHP-Pax6.lif,AAGO138,DON10,ND,,10mo,F,,,PAX6,,"INS, GCG, SST",,DAPI,Sagittal,Body,Leica,no,no,
+20moF-B3-Pax6-endo-02,/i10filecifs.vumc.org/powers-imaging/images/20170830-NNHP-Pax6.lif,AAHK353,DON12,ND,,20mo,F,,,PAX6,,"INS, GCG, SST",,DAPI,Sagittal,Body,Leica,no,no,
+20moF-B3-Pax6-endo-03,/i10filecifs.vumc.org/powers-imaging/images/20170830-NNHP-Pax6.lif,AAHK353,DON12,ND,,20mo,F,,,PAX6,,"INS, GCG, SST",,DAPI,Sagittal,Body,Leica,no,no,
+TileScan_G33w-TB,/i10filecifs.vumc.org/powers-imaging/images/20160205-NeoPanc-Nkx61-Hpx1-Ins-Dapi.lif,AAL0367,DON18,ND,,G33w,F,GP2,,PTF1A,,INS,,DAPI,Sagittal,Tail,Leica (tiled),no,no,
+TileScan_G37w-T1-01,/i10filecifs.vumc.org/powers-imaging/images/20160205-NeoPanc-Nkx61-Hpx1-Ins-Dapi.lif,ACFU411,DON69,ND,,G37w,M,GP2,,PTF1A,,INS,,DAPI,Sagittal,Tail,Leica (tiled),no,no,
+TileScan_G39.9w-B3-01,/i10filecifs.vumc.org/powers-imaging/images/20160205-NeoPanc-Nkx61-Hpx1-Ins-Dapi.lif,ACC3063,DON51,ND,,G39.9w,M,GP2,,PTF1A,,INS,,DAPI,Sagittal,Body,Leica (tiled),no,no,

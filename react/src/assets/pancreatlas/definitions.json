@@ -1,0 +1,90 @@
+{
+    "External id": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "File path": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Donor info - UNOS ID": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Donor info - LIMS ID": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Donor info - Disease Status": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Donor info - Disease Duration": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Donor info - Age": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Donor info - Sex": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Stain info - cy2": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Stain info - cy2-Ab": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Stain info - cy3": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Stain info - cy3-Ab": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Stain info - cy5": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Stain info - cy5-Ab": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Stain info - DAPI": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Image info - Section Plane": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Image info - Pancreas Region": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Image info - File Type": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Image info - Annotations": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Image info - Analysis": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "(DS notes)": {
+        "short_desc": "Test description",
+        "long_desc": "A longer description about this key"
+    },
+    "Warning": {
+        "short_desc": "Uh oh! Something went wrong",
+        "long_desc": "Ideally you should not see this"
+    }
+}
