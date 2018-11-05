@@ -5,6 +5,8 @@ import {
   Col
 } from 'reactstrap'
 
+import MetaTags from 'react-meta-tags'
+
 import Header from './Header';
 import TeamMember from './TeamMember';
 import MapPicture from './assets/map-collaborations6.png';
@@ -14,6 +16,10 @@ export default class Collaborators extends React.Component {
   render() {
     return (
       <div className="collaborators">
+        <MetaTags>
+          <title>HDL-P | Collaborators</title>
+          <meta name="description" content="Who is working together to create the HANDEL-P project?"/>
+        </MetaTags>
         <Header heading="Collaborators" subheading="Creating multi-disciplinary expert groups" />
         <Container fluid className='shaded'>
           <Container>

@@ -2,12 +2,15 @@ import React from 'react'
 import {
   Table,
   Button,
+  Badge,
   Container
 } from 'reactstrap'
 
 import {
   Link
 } from 'react-router-dom'
+
+import MetaTags from 'react-meta-tags'
 
 import Error from './Error'
 
@@ -43,33 +46,41 @@ export default class DatasetList extends React.Component {
       return (
         <Container>
           <div className="dataset-list">
+            <MetaTags>
+              <title>HDL-P | Pancreatlas > Dataset List</title>
+              <meta name="description" content="List of datasets available to view in the pancreatlas"/>
+            </MetaTags>
             <h1>Datasets</h1>
             <p>Please choose a dataset to explore</p>
             <Table hover>
               <thead>
                 <tr>
-                  <th>Dataset ID</th>
-                  <th>Dataset Description</th>
-                  <th>Action</th>
-                </tr>
+                <th>Description</th>
+                <th>Images</th>
+                <th>Action</th>
+                <th>ID</th>
+              </tr>
               </thead>
               <tbody>
                 {this.state.datasets.map(item => (
                   <tr key={item.did}>
-                    <td>{item.did}</td>
-                    <td><strong>{item.dsname}</strong><br></br>{item.desc}</td>
-                    <td className='action-column'>
-                      <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false' }}>
-                        <Button className='ds-list-left-button' >Browse Dataset</Button>
-                      </Link>
-                      <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=true' }}>
-                        <Button color="primary">Browse by Age</Button>
-                      </Link>
-                      <Link to={'/pancreatlas/matrixview/' + item.did}>
-                        <Button className='ds-list-right-button' outline color="success">Pick &amp; Compare Attribute Pairs</Button>
-                      </Link>
-                    </td>
-                  </tr>
+                  <td><strong>{item.dsname}</strong> <Badge color="light" pill><a href="">? Learn more</a></Badge> <br/>
+                      {item.desc || ''}
+                  </td>
+                  <td>#</td>
+                  <td className='action-column'>
+                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false' }}>
+                      <Button className='ds-list-left-button' >Browse All Images</Button>
+                    </Link>
+                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=true' }}>
+                      <Button color="primary">Browse by Age</Button>
+                    </Link>
+                    <Link to={'/pancreatlas/matrixview/' + item.did}>
+                      <Button className='ds-list-right-button' outline color="success">Compare Attributes</Button>
+                    </Link>
+                  </td>
+                  <td>{item.did}</td>
+                </tr>
                 ))}
               </tbody>
             </Table>

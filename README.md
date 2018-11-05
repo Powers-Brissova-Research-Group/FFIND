@@ -1,4 +1,4 @@
-# pancreasatlas
+# pancreatlas
 
 ## Installation
 1. Clone the repository and switch to the development branch

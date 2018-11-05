@@ -1,3 +1,4 @@
 api/pancreatlas/assets/
 .vscode/
 package-lock.json
+.idea/

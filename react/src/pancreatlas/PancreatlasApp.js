@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import MetaTags from 'react-meta-tags';
+
 import './Pancreatlas.css';
 import HomePage from './HomePage'
 import DatasetList from './DatasetList'
@@ -18,6 +20,10 @@ class PancreatlasApp extends Component {
   render() {
     return (
       <div className="pancreatlas">
+        <MetaTags>
+          <title>HDL-P | Pancreatlas</title>
+          <meta name="description" content="An online atlas dedicated to the human pancreas, curated by the Vanderbilt University Medical Center"/>
+        </MetaTags>
         {/* <Container fluid>
           <Row className="pancreatlas-row">
             <PancreatlasNavbar />
