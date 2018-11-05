@@ -6,6 +6,8 @@ import {
   Button
 } from 'reactstrap'
 
+import MetaTags from 'react-meta-tags'
+
 import ImageGrid from './ImageGrid'
 
 import neonatal_timeline from '../assets/pancreatlas/ages/timeline-neonatal.png'
@@ -61,14 +63,15 @@ export default class AgeBrowser extends React.Component {
   }
 
   render() {
-    console.log(`Location.search: ${this.props.location.search}`)
     let params = new URLSearchParams(this.props.location.search)
-    console.log(`All params: ${params}`)
     let browse = (params.get("browse") === null || params.get("browse").toLowerCase() !== 'true') ? false : true
-    console.log(`Param: ${params.get("browse")}, Browse: ${browse}`)
     if (!this.state.open && browse === true) {
       return (
         <div className='age-browser'>
+          <MetaTags>
+            <title>HDL-P | Pancreatlas > Age Browser</title>
+            <meta name="description" content="Browse a given dataset by age in the pancreatlas"/>
+          </MetaTags>
           <Container className="age-group-list">
             <Row className="pancreatlas-row">
               <Col md="12">

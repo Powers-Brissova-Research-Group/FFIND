@@ -8,7 +8,7 @@ import {
 export default class Footer extends React.Component {
   render() {
     return (
-      <div className='footer'>
+      <div className='handel-footer'>
         <Container fluid className='footer-container'>
           <Container>
             <Row className='v-padded'>

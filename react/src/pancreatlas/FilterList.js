@@ -2,8 +2,17 @@ import React from 'react'
 import {
   Row,
   Col,
-  Button
+  Button,
+  Tooltip
 } from 'reactstrap'
+
+import {
+  FontAwesomeIcon
+} from '@fortawesome/react-fontawesome'
+
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
+
+
 import FilterSet from './FilterSet'
 import AgeFilterSet from './AgeFilterSet'
 
@@ -15,10 +24,12 @@ export default class FilterList extends React.Component {
     super(props)
     this.setFilters = this.setFilters.bind(this)
     this.clear = this.clear.bind(this)
+    this.toggle = this.toggle.bind(this)
     this.state = {
       loaded: false,
       filters: this.props.filters,
-      clear: true
+      clear: true,
+      ttOpen: false
     }
   }
 
@@ -98,13 +109,19 @@ export default class FilterList extends React.Component {
     this.props.callback({})
   }
 
+  toggle(){
+    this.setState({
+      ttOpen: !this.state.ttOpen
+    })
+  }
+
   render() {
     if (this.props.tags !== null) {
       return (
         <div className="filter-list">
           <Row className="pancreatlas-row">
             <Col className='text-left' md="8">
-              <h3><strong>Filters:</strong></h3>
+          <h3><strong>Filters:</strong> <FontAwesomeIcon icon={faQuestionCircle} id="QuestionCircle" /> <Tooltip placement="right" isOpen={this.state.ttOpen} target="QuestionCircle" toggle={this.toggle}>The filters work as an AND function between groups and an OR within them. Example: (Childhood) AND (F OR M)</Tooltip></h3>
             </Col>
             <Col className='text-right' md="4">
               <Button outline className='filter-button text-center' color="danger" size="sm" onClick={this.clear}><i

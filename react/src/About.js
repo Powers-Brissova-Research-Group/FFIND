@@ -5,12 +5,18 @@ import {
   Col
 } from 'reactstrap'
 
+import MetaTags from 'react-meta-tags'
+
 import Header from './Header'
 
 export default class About extends React.Component {
   render() {
     return (
       <div className="about">
+        <MetaTags>
+          <title>HDL-P | About</title>
+          <meta name="description" content="What is the HANDEL-P project?"/>
+        </MetaTags>
         <Header heading="About" />
         <Container className='v-padded'>
           <Row>

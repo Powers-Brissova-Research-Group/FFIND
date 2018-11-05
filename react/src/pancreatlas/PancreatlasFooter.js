@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 import HelmsleyLogo from '../assets/pancreatlas/logos/helmsley-logo.jpg'
 
-export default class Footer extends React.Component {
+export default class PancreatlasFooter extends React.Component {
   render() {
     return (
       <footer className="footer">

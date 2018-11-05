@@ -11,6 +11,7 @@ import {
 } from 'reactstrap'
 
 import ImageModal from './ImageModal'
+import MatrixModalListComponent from './MatrixModalListComponent'
 
 import Error from './Error'
 
@@ -129,30 +130,35 @@ export default class ImageMatrix extends React.Component {
             new_matrix_t[tag_2][tag_1] = []
             new_matrix[tag_1][tag_2] = []
             for (let img_id of m[tag_1][tag_2]) {
-              let url = `${process.env.REACT_APP_API_URL}/images/${img_id}`
-              fetch(url)
-                .then(res => res.json())
-                .then(result => {
-                  new_matrix[tag_1][tag_2].push(result)
-                  new_matrix_t[tag_2][tag_1].push(result)
-                  this.setState({
-                    matrix: new_matrix,
-                    matrix_t: new_matrix_t,
-                    view_transpose: ((Object.keys(new_matrix).length <= Object.keys(new_matrix_t).length) ? true : false),
-                    loaded: true
-                  })
-                })
-                .catch(err => {
-                  this.setState({
-                    loaded: false,
-                    error: err
-                  })
-                });
+              new_matrix[tag_1][tag_2].push(img_id)
+              new_matrix_t[tag_2][tag_1].push(img_id)
+              // let url = `${process.env.REACT_APP_API_URL}/images/${img_id}`
+              // fetch(url)
+              //   .then(res => res.json())
+              //   .then(result => {
+              //     new_matrix[tag_1][tag_2].push(result)
+              //     new_matrix_t[tag_2][tag_1].push(result)
+              //     this.setState({
+              //       loaded: true,
+              //       matrix: new_matrix,
+              //       matrix_t: new_matrix_t,
+              //       view_transpose: ((Object.keys(new_matrix).length <= Object.keys(new_matrix_t).length) ? true : false),
+              //     })
+              //   })
+              //   .catch(err => {
+              //     this.setState({
+              //       loaded: false,
+              //       error: err
+              //     })
+              //   });
             }
           }
         }
         this.setState({
-          // loaded: true,
+          loaded: true,
+          matrix: new_matrix,
+          matrix_t: new_matrix_t,
+          view_transpose: ((Object.keys(new_matrix).length <= Object.keys(new_matrix_t).length) ? true : false),
           tag_a: result['tag_a'],
           tag_b: result['tag_b'],
           // matrix: result['matrix']
@@ -168,45 +174,6 @@ export default class ImageMatrix extends React.Component {
   }
 
   toggle(new_set = []) {
-    for (let img of new_set) {
-      let kvals = img.kvals;
-      let marker_re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
-      let donor_re = /(^Donor info)(\s+-\s+)(.+$)/i
-      let region_re = /(^Image info)(\s+-\s+)(Section Plane$|Pancreas Region$)/
-      let marker_keys = Object.keys(kvals).filter(key => marker_re.test(key))
-      let donor_keys = Object.keys(kvals).filter(key => donor_re.test(key))
-      let region_keys = Object.keys(kvals).filter(key => region_re.test(key))
-
-      donor_keys.sort()
-      region_keys.sort()
-      let markers = {}
-      let donor = {}
-      let region = {
-        [region_keys[1]]: kvals[region_keys[1]].val,
-        [region_keys[0]]: kvals[region_keys[0]].val
-
-      }
-      for (let key of marker_keys) {
-        kvals[key].val.split(',').map(val => markers[val.trim()] = marker_re.exec(key)[3])
-      }
-      for (let key of donor_keys) {
-        if (kvals[key].val !== '' && kvals[key].val !== undefined){
-          let val_key = donor_re.exec(key)[3]
-          if (val_key !== 'UNOS ID' && val_key !== 'LIMS ID' && kvals[key] !== '') {
-            if (val_key === 'Age'){
-              let age_re = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
-              donor[donor_re.exec(key)[3]] = img.tags.filter(tag => age_re.test(tag))[0]
-            } else {
-              donor[donor_re.exec(key)[3]] = kvals[key].val
-            }
-          }
-        }
-      }
-
-      img.markers = markers
-      img.donor = donor
-      img.region = region
-    }
     this.setState({
       modal: !this.state.modal,
       selected_set: new_set
@@ -236,9 +203,9 @@ export default class ImageMatrix extends React.Component {
 
           let markerColors = result.channel_info
           let markerColor_re = /^.+\((.+)\)$/
-          Object.keys(markerColors).forEach(function(key){
+          Object.keys(markerColors).forEach(function (key) {
             var newKey = markerColor_re.test(key) ? markerColor_re.exec(key)[1] : key
-            if (newKey !== key){
+            if (newKey !== key) {
               markerColors[newKey] = markerColors[key]
               delete markerColors[key]
             }
@@ -280,8 +247,11 @@ export default class ImageMatrix extends React.Component {
       }
 
       return (
-        <Container fluid>
-          <div className='image-matrix'>
+        <Container fluid className='image-matrix'>
+          <h1>Matrix View</h1>
+          <h3>{`Viewing ${this.props.tag_1} vs ${this.props.tag_2}`}</h3>
+
+          <div className='image-matrix-content'>
             <Table hover className='image-matrix'>
               <thead>
                 <tr>
@@ -295,8 +265,8 @@ export default class ImageMatrix extends React.Component {
                 {Object.keys(chosen_matrix).map(row => (
                   <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(chosen_matrix[row]).map(col => (
                     <td key={row + ', ' + col} className='matrix-cell'>
-                      {chosen_matrix[row][col][0] !== undefined && <div onClick={() => this.toggle(chosen_matrix[row][col])} className='matrix-cell-img'><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosen_matrix[row][col][0].iid}.jpg`)} alt="" /><div className='matrix-cell-count'><p>{`${chosen_matrix[row][col].length} images`}</p></div></div>}
-                      {chosen_matrix[row][col][0] === undefined && <p>&mdash;</p>}
+                      {chosen_matrix[row][col][0] !== undefined && <div className='matrix-cell-img' onClick={() => this.toggle(chosen_matrix[row][col])}><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosen_matrix[row][col][0]}.jpg`)} alt="" /><div className='matrix-cell-count'><p>{`${chosen_matrix[row][col].length}`}</p></div></div>}
+                      {chosen_matrix[row][col][0] === undefined && <p>Data not collected</p>}
                     </td>
                   ))}</tr>
                 ))}
@@ -316,20 +286,7 @@ export default class ImageMatrix extends React.Component {
                 </thead>
                 <tbody>
                   {this.state.selected_set.map(img => (
-                    <tr>
-                      <td><img className='modal-thumb' src={require(`./../assets/pancreatlas/thumbs/${img.iid}.jpg`)} alt="" /></td>
-                      <td>
-                        {Object.keys(img.donor).map(key =>
-                          (<div>
-                            <strong>{key}: </strong>{img.donor[key]}
-                          </div>))}
-                        <div><strong>Markers: </strong>{Object.keys(img.markers).join(', ')}</div>
-                        <div><strong>Region: </strong>{Object.values(img.region).join(', ')}</div>
-                        <div><strong>Other Tags: </strong>{img.tags.filter(tag => Object.keys(img.markers).indexOf(tag) === -1 && Object.values(img.donor).indexOf(tag) === -1 && Object.values(img.region).indexOf(tag) === -1).join(', ')}
-                        </div>
-                      </td>
-                      <td><Button color="primary" onClick={() => this.setModal(img.iid)}>View</Button></td>
-                    </tr>
+                    <MatrixModalListComponent iid={img} modalCallback={this.setModal} />
                   ))}
                 </tbody>
               </Table>
@@ -343,13 +300,15 @@ export default class ImageMatrix extends React.Component {
 
       )
     } else if (this.state.error !== undefined) {
-      return <Error error_desc={this.state.error.message} />
+      return <Container><Error error_desc={this.state.error.message} /></Container>
     } else {
       return (
-        <div className="loading">
-          <strong>Loading {this.props.dataset_name}...</strong>
-          <Progress animated color="success" value="100" />
-        </div>
+        <Container>
+          <div className="loading">
+            <strong>Loading {this.props.dataset_name}...</strong>
+            <Progress animated color="success" value="100" />
+          </div>
+        </Container>
       )
     }
   }

@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
+import MetaTags from 'react-meta-tags';
+
 import './Pancreatlas.css';
 import HomePage from './HomePage'
-import PancreatlasNavbar from './PancreatlasNavbar'
 import DatasetList from './DatasetList'
-import Footer from './Footer'
 import ImageDetail from './ImageDetail'
 import MatrixView from './MatrixView'
 import AgeBrowser from './AgeBrowser'
 import Nomenclature from './Nomenclature'
 import PageNotFound from './PageNotFound'
-
-import {
-  Container,
-  Row,
-} from 'reactstrap'
 
 import {
   Switch,
@@ -24,14 +19,17 @@ class PancreatlasApp extends Component {
   render() {
     return (
       <div className="pancreatlas">
-        <Container fluid>
+        <MetaTags>
+          <title>HDL-P | Pancreatlas</title>
+          <meta name="description" content="An online atlas dedicated to the human pancreas, curated by the Vanderbilt University Medical Center"/>
+        </MetaTags>
+        {/* <Container fluid>
           <Row className="pancreatlas-row">
             <PancreatlasNavbar />
           </Row>
-        </Container>
+        </Container> */}
         <div className='wrapper'>
           <div className='content'>
-            <Container>
               <Switch>
                 <Route exact path='/pancreatlas' component={HomePage} />
                 {/* <Route path='/collections' component={CollectionList} /> */}
@@ -42,9 +40,8 @@ class PancreatlasApp extends Component {
                 <Route path='/pancreatlas/nomenclature' component={Nomenclature} />
                 <Route component={PageNotFound} />
               </Switch>
-            </Container>
           </div>
-          <Footer />
+          {/* <PancreatlasFooter /> */}
         </div>
       </div>
     );

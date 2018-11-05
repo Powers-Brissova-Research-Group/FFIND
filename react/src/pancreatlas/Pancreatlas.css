@@ -102,9 +102,6 @@ h1, h2, h3, h4, h5, h6{
 
 .filter-list {
   text-align: left;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  padding: 15px;
 }
 
 .filter-button {
@@ -260,33 +257,32 @@ div.marker-list {
   line-height: 2.5;
 }
 
+.cy5 {
+  background-color: white;
+  color: black;
+}
+
 span.marker {
   border: 1px solid rgba(0, 0, 0, .125);
   display: inline-block;
   padding: 0 0.25rem 0 0.25rem;
-  border-radius: 2px;
+  border-radius: 5px;
   line-height: 2rem;
   cursor: pointer;
-  font-size:80%;
-}
-
-.cy5 {
-  background-color: #fcfcfc;
-  color: black;
 }
 
 .cy3 {
-  background-color: #e4002b;
-  color: white;
+  background-color: red;
+  color: black;
 }
 
 .cy2 {
-  background-color: #26b21c;
+  background-color: green;
   color: white;
 }
 
 .DAPI {
-  background-color: #0e8df8;
+  background-color: blue;
   color: white;
 }
 
@@ -502,6 +498,6 @@ td.name-column {
   font-weight: bold;
 }
 
-.table thead th {
-  text-align: left;
+.table thead td {
+  text-align: center;
 }

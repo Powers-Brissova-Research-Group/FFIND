@@ -5,6 +5,9 @@ import {
   Progress,
   Table
 } from 'reactstrap'
+
+import MetaTags from 'react-meta-tags'
+
 import ImageMatrix from './ImageMatrix';
 
 import Error from './Error'
@@ -65,7 +68,7 @@ export default class MatrixView extends React.Component {
     })
   }
 
-  setMatrix(t1, t2){
+  setMatrix(t1, t2) {
     this.setState({
       tag1: t1,
       tag2: t2,
@@ -77,37 +80,42 @@ export default class MatrixView extends React.Component {
     if (this.state.loaded) {
       if (!this.state.showMatrix) {
         return (
-          <div className='matrix-view'> 
-            <h1>Matrix View</h1>
-            <p>Select two dimensions to generate a matrix of images based on these filters.</p>
-            <div className='grid-select'>
-              <Container fluid>
+          <Container>
+            <div className='matrix-view'>
+              <MetaTags>
+                <title>HDL-P | Pancreatlas > Matrix</title>
+                <meta name="description" content="Pick two attribute sets and compare matching images in the pancreatlas"/>
+              </MetaTags>
+              <h1>Matrix View</h1>
+              <p>Select two dimensions to generate a matrix of images based on these filters.</p>
+              <div className='grid-select'>
                 <Table className='matrix-table'>
                   <thead>
                     <tr className='row'>
                       <td className='col-md-2 matrix-sel'></td>
-                    {this.state.tagsets.map(ts => (
-                      <td className='col-md-2 matrix-sel'><strong>{ts.set_name}</strong></td>
-                    ))}
+                      {this.state.tagsets.map(ts => (
+                        <td className='col-md-2 matrix-sel'><strong>{ts.set_name}</strong></td>
+                      ))}
                     </tr>
                   </thead>
                   {this.state.tagsets.map(tagset1 => (
                     <tr className='row'>
                       <td className='matrix-sel col-md-2'><strong>{tagset1.set_name}</strong></td>
                       {Array(this.state.tagsets.indexOf(tagset1) + 1).fill(0).map(key => (<td class='col-md-2 matrix-sel'>&mdash;</td>))}
-                      {this.state.tagsets.slice(this.state.tagsets.indexOf(tagset1) + 1).map(tagset2 => 
-                        {if (tagset1.set_name === tagset2.set_name){
+                      {this.state.tagsets.slice(this.state.tagsets.indexOf(tagset1) + 1).map(tagset2 => {
+                        if (tagset1.set_name === tagset2.set_name) {
                           return <td className='col-md-2 matrix-sel'><span>&mdash;</span></td>
                         } else {
                           return (<td className='col-md-2 matrix-sel'><Button className='matrix-select-button' color="link" onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>)
-                        }}
+                        }
+                      }
                       )}
                     </tr>
                   ))}
                 </Table>
-              </Container>
-            </div>
-            {/* <Form>
+              </div>
+
+              {/* <Form>
               <FormGroup>
                 <Label for="tag1">Choose the first tag</Label>
                 <Input type="select" name="tag_1" id="tag1" onChange={this.handleChange}>
@@ -126,7 +134,9 @@ export default class MatrixView extends React.Component {
               </FormGroup>
               <Button onClick={this.showMatrix}>Generate Matrix</Button>
             </Form> */}
-          </div>
+            </div>
+          </Container>
+
         )
       } else {
         return (<ImageMatrix tag_1={this.state.tag1} tag_2={this.state.tag2} dsid={this.state.dsid} />)
@@ -135,10 +145,12 @@ export default class MatrixView extends React.Component {
       return <Error error_desc={this.state.error.message} />
     } else {
       return (
-        <div className="loading">
-          <strong>Loading {this.props.dataset_name}...</strong>
-          <Progress animated color="success" value="100" />
-        </div>
+        <Container>
+          <div className="loading">
+            <strong>Loading {this.props.dataset_name}...</strong>
+            <Progress animated color="success" value="100" />
+          </div>
+        </Container>
       )
     }
   }

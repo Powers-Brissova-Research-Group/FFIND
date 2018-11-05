@@ -5,6 +5,8 @@ import {
   Col
 } from 'reactstrap'
 
+import MetaTags from 'react-meta-tags'
+
 export default class Nomenclature extends React.Component {
   constructor(props) {
     super(props)
@@ -13,6 +15,10 @@ export default class Nomenclature extends React.Component {
   render() {
     return (
       <div className='nomenclature'>
+        <MetaTags>
+          <title>HDL-P | Pancreatlas > Nomenclature</title>
+          <meta name="description" content="How pancreatlas organizes its images"/>
+        </MetaTags>
         <Container>
           <h1>Nomenclature</h1>
           <p>Below are descriptions regarding the various annotations we have added to our images</p>

@@ -2,12 +2,14 @@ import React from 'react'
 import {
   Table,
   Button,
-  Badge
+  Badge,
 } from 'reactstrap'
 
 import {
   Link
 } from 'react-router-dom'
+
+import MetaTags from 'react-meta-tags'
 
 import Error from './Error'
 
@@ -41,21 +43,26 @@ export default class DatasetList extends React.Component {
   render() {
     if (this.state.loaded) {
       return (
-        <div className="dataset-list">
-          <h1>Datasets</h1>
-          <p>Please choose a dataset to explore</p>
-          <Table hover>
-            <thead>
-              <tr>
+        <Container>
+          <div className="dataset-list">
+            <MetaTags>
+              <title>HDL-P | Pancreatlas > Dataset List</title>
+              <meta name="description" content="List of datasets available to view in the pancreatlas"/>
+            </MetaTags>
+            <h1>Datasets</h1>
+            <p>Please choose a dataset to explore</p>
+            <Table hover>
+              <thead>
+                <tr>
                 <th>Description</th>
                 <th>Images</th>
                 <th>Action</th>
                 <th>ID</th>
               </tr>
-            </thead>
-            <tbody>
-              {this.state.datasets.map(item => (
-                <tr key={item.did}>
+              </thead>
+              <tbody>
+                {this.state.datasets.map(item => (
+                  <tr key={item.did}>
                   <td><strong>{item.dsname}</strong> <Badge color="light" pill><a href="">? Learn more</a></Badge> <br/>
                       {item.desc || ''}
                   </td>
@@ -73,15 +80,16 @@ export default class DatasetList extends React.Component {
                   </td>
                   <td>{item.did}</td>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        </Container>
       )
     } else if (this.state.error !== undefined) {
-      return <Error error_desk={this.state.error.message} />
+      return <Container><Error error_desk={this.state.error.message} /></Container>
     } else {
-      return <h1>Loading</h1>
+      return <Container><h1>Loading</h1></Container>
     }
   }
 }
