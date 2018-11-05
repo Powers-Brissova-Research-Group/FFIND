@@ -1,7 +1,8 @@
 import React from 'react'
 import {
   Table,
-  Button
+  Button,
+  Badge
 } from 'reactstrap'
 
 import {
@@ -46,27 +47,31 @@ export default class DatasetList extends React.Component {
           <Table hover>
             <thead>
               <tr>
-                <th>Dataset ID</th>
-                <th>Dataset Description</th>
+                <th>Description</th>
+                <th>Images</th>
                 <th>Action</th>
+                <th>ID</th>
               </tr>
             </thead>
             <tbody>
               {this.state.datasets.map(item => (
                 <tr key={item.did}>
-                  <td>{item.did}</td>
-                  <td><strong>{item.dsname}</strong><br></br>{item.desc}</td>
+                  <td><strong>{item.dsname}</strong> <Badge color="light" pill><a href="">? Learn more</a></Badge> <br/>
+                      {item.desc || ''}
+                  </td>
+                  <td>#</td>
                   <td className='action-column'>
                     <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false' }}>
-                      <Button className='ds-list-left-button' >Browse Dataset</Button>
+                      <Button className='ds-list-left-button' >Browse All Images</Button>
                     </Link>
                     <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=true' }}>
                       <Button color="primary">Browse by Age</Button>
                     </Link>
                     <Link to={'/pancreatlas/matrixview/' + item.did}>
-                      <Button className='ds-list-right-button' outline color="success">Pick &amp; Compare Attribute Pairs</Button>
+                      <Button className='ds-list-right-button' outline color="success">Compare Attributes</Button>
                     </Link>
                   </td>
+                  <td>{item.did}</td>
                 </tr>
               ))}
             </tbody>
