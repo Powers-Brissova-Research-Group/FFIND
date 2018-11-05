@@ -1,6 +1,7 @@
 html, body {
   height: 100%;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-size:0.95em;
 }
 
 #root {
@@ -101,6 +102,9 @@ h1, h2, h3, h4, h5, h6{
 
 .filter-list {
   text-align: left;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 15px;
 }
 
 .filter-button {
@@ -256,32 +260,33 @@ div.marker-list {
   line-height: 2.5;
 }
 
-.cy5 {
-  background-color: white;
-  color: black;
-}
-
 span.marker {
   border: 1px solid rgba(0, 0, 0, .125);
   display: inline-block;
   padding: 0 0.25rem 0 0.25rem;
-  border-radius: 5px;
+  border-radius: 2px;
   line-height: 2rem;
   cursor: pointer;
+  font-size:80%;
 }
 
-.cy3 {
-  background-color: red;
+.cy5 {
+  background-color: #fcfcfc;
   color: black;
 }
 
+.cy3 {
+  background-color: #e4002b;
+  color: white;
+}
+
 .cy2 {
-  background-color: green;
+  background-color: #26b21c;
   color: white;
 }
 
 .DAPI {
-  background-color: blue;
+  background-color: #0e8df8;
   color: white;
 }
 
@@ -497,6 +502,6 @@ td.name-column {
   font-weight: bold;
 }
 
-.table thead td {
-  text-align: center;
+.table thead th {
+  text-align: left;
 }

@@ -102,10 +102,13 @@ export default class FilterList extends React.Component {
     if (this.props.tags !== null) {
       return (
         <div className="filter-list">
-          <h3><strong>Filters:</strong></h3>
           <Row className="pancreatlas-row">
-            <Col className='text-center' md="12">
-              <Button outline className='filter-button text-center' color="danger" size="sm" onClick={this.clear}>Clear</Button>
+            <Col className='text-left' md="8">
+              <h3><strong>Filters:</strong></h3>
+            </Col>
+            <Col className='text-right' md="4">
+              <Button outline className='filter-button text-center' color="danger" size="sm" onClick={this.clear}><i
+                  className="fa fa-home fa-fw"> </i>Clear</Button>
             </Col>
           </Row>
           {Object.keys(this.props.tags).map(key => {
