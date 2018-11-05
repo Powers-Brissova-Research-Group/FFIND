@@ -285,10 +285,10 @@ export default class ImageGrid extends React.Component {
           <h5 className='view-counter'>You are currently viewing {this.state.matches.length} out of a possible {Object.keys(this.state.ids).length} images</h5>
           <Container>
             <Row className="pancreatlas-row">
-              <Col md="2">
+              <Col md="3">
                 <FilterList ageGroup={this.props.groupName} tags={this.state.tags} filters={this.state.filters} callback={this.filter} />
               </Col>
-              <Col md="10">
+              <Col md="9">
                 {img_grid.map((item, idx) => (
                   <Row key={idx} className="image-row pancreatlas-row">
                     {item.map((image, idx) =>
