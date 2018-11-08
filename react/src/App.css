@@ -244,6 +244,10 @@ div.overlay {
   color: #a7b9e5
 }
 
+.navbar-nav {
+  align-items: center;
+}
+
 div.browser-not-supported-banner {
   background-color: #ff0000;
   text-align: center;
