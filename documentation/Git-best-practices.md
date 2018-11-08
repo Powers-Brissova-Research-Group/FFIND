@@ -12,3 +12,5 @@ On stash pop there may be conflicts. In the case you describe there would in fac
 
 ## Conflicts
 If conflicts exist (on git stash pop), they need to be manually fixed, or via PyCharm, right-click file > Git > Resolve conflicts, select the file and double-click it for side-by-side comparison, or select left or right acceptance.
+
+# Helpful Aliases (test)
