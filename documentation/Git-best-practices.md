@@ -14,3 +14,4 @@ On stash pop there may be conflicts. In the case you describe there would in fac
 If conflicts exist (on git stash pop), they need to be manually fixed, or via PyCharm, right-click file > Git > Resolve conflicts, select the file and double-click it for side-by-side comparison, or select left or right acceptance.
 
 # Helpful Aliases (test)
+Trying to add an alias so we don't have to type out 'HANDELP-XX' for each commit message
