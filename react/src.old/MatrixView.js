@@ -130,10 +130,10 @@ export default class MatrixView extends React.Component {
       return <Error error_desc={this.state.error.message} />
     } else {
       return (
-        <div className="loading">
+        <Container className="loading">
           <strong>Loading {this.props.dataset_name}...</strong>
           <Progress animated color="success" value="100" />
-        </div>
+        </Container>
       )
     }
   }
