@@ -15,4 +15,4 @@ If conflicts exist (on git stash pop), they need to be manually fixed, or via Py
 
 # Helpful Aliases (test)
 Trying to add an alias so we don't have to type out 'HANDELP-XX' for each commit message
-Added alias `pcomm`
+Added alias `pcomm <ticket number> <message>`
