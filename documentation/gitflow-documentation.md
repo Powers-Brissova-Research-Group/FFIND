@@ -10,7 +10,9 @@ Instructions on how to develop a new feature using the Gitflow workflow for Git
 ...This creates a new branch named `feature-name` and switches to it from `development`
 3. Make you changes and commit
 ...Here is where you do all the development and make your commits
-4. Merge back with development:
+...`git add <files>`
+...`git push origin feature-name`
+4. Once you are done coding, merge back with development:
 ...Go back and checkout `development`: `git checkout development`
 ...Merge in changes from `feature-name`: `git merge feature-name`
 5. Push changes to GitHub:
