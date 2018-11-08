@@ -22,7 +22,9 @@ Instructions on how to develop a new feature using the Gitflow workflow for Git
 
    Go back and checkout `development`: `git checkout development`
    
-   Merge in changes from `feature-name`: `git merge feature-name`
+   Merge in changes from `feature-name`: `git merge --no-ff feature-name`
+   
+   The `--no-ff` flag essentially tells Git to preserve the history of the `feature-name` branch
 5. Push changes to GitHub:
    
    Run `git push origin development`
