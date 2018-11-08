@@ -13,7 +13,18 @@ On stash pop there may be conflicts. In the case you describe there would in fac
 ## Conflicts
 If conflicts exist (on git stash pop), they need to be manually fixed, or via PyCharm, right-click file > Git > Resolve conflicts, select the file and double-click it for side-by-side comparison, or select left or right acceptance.
 
-# Helpful Aliases (test)
-Trying to add an alias so we don't have to type out 'HANDELP-XX' for each commit message
-Added alias `pcomm <ticket number> <message>`
-Testing
+# Helpful Aliases
+I added this alias to my `.gitconfig` to make it so that we do not have to type out `HANDELP-XX` for each commit.
+Add the following lines to the `.gitconfig` to use it:
+```
+[alias]
+	pcomm = "!f() { \
+		git commit -m \"HANDELP-${1}\n${2}\"; \
+	}; f"
+```
+Then, to commit changes, use the following command: `git pcomm <ticket number> <commit message>`
+The above alias will translate that to:
+```
+git commit -m "HANDELP-<ticket number>
+<commit message>
+```
