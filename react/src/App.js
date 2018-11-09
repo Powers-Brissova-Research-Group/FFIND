@@ -29,32 +29,20 @@ class App extends Component {
 
     switch(browser.name.toLowerCase()){
       case 'firefox':
-        if (parseInt(browser.version.split('.')[0], 10) < 39){
+        if (parseInt(browser.version.split('.')[0], 10) < 50){
           supported = false;
         }
         break
       case 'chrome':
-        if (parseInt(browser.version.split('.')[0], 10) < 42){
+        if (parseInt(browser.version.split('.')[0], 10) < 55){
           supported = false;
         }
         break
       case 'ie':
-        supported = false;
-        break
       case 'safari':
-        if (parseInt(browser.version.split('.')[0], 10) < 10){
-          supported = false;
-        }
-        break
       case 'opera':
-        if (parseInt(browser.version.split('.')[0], 10) < 29){
-          supported = false;
-        }
-        break
       case 'edge':
-        if (parseInt(browser.version.split('.')[0], 10) < 14){
-          supported = false;
-        }
+        supported = false;
         break
       default:
         supported = false;
