@@ -44,3 +44,6 @@ Otherwise, it might require some searching to find the necessary packages to get
 It is possible that you forgot to activate the virtual environment (see step 2 above)
 
 **NB:** For all of this to work, you must be connected to the VUMC VPN.
+
+
+# Adding this line as a test to see if commit history saved when branch is deleted
