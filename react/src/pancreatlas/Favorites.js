@@ -12,12 +12,19 @@ import ImageModal from './ImageModal'
 export default class Favorites extends React.Component {
   constructor(props) {
     super(props)
-    console.log(this.props)
     this.setModal = this.setModal.bind(this)
     this.toggle = this.toggle.bind(this)
+    
+    let urlVars = new URLSearchParams(window.location.search)
+
+    let favs = []
+    if(urlVars.has('iids')){
+      favs = window.atob(urlVars.get('iids')).split(',')
+    }
 
     this.state = {
       modalOpen: false,
+      iids: favs
     }
   }
 
@@ -84,7 +91,7 @@ export default class Favorites extends React.Component {
         <h1>Favorite Images</h1>
         <h3>Here are some images that you saved from earlier</h3>
         <Row>
-          {this.props.favorites.map(iid => 
+          {this.state.iids.map(iid => 
             <Col md="3">
               <ImageCard favoriteCallback={this.props.favoriteCallback} key={iid} iid={iid} callback={this.setModal} />
             </Col>

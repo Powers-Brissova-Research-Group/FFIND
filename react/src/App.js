@@ -68,12 +68,15 @@ class App extends Component {
       let tmp = this.state.favorites
       tmp.splice(tmp.indexOf(iid), 1)
       this.setState({
-        favorites: tmp
+        favorites: tmp,
+        encodedFavorites: window.btoa(tmp)
       })
       console.log(`Removed ${iid}: ${this.state.favorites}`)
     } else {
+      let tmp = this.state.favorites.concat(iid)
       this.setState({
-        favorites: this.state.favorites.concat(iid)
+        favorites: tmp,
+        encodedFavorites: window.btoa(tmp)
       })
     }
   }
@@ -98,7 +101,7 @@ class App extends Component {
         </Container> */}
         <Router>
           <div className="App">
-            <TopNav favorites={this.state.favorites} />
+            <TopNav favorites={this.state.encodedFavorites} />
             <Switch>
               <Route exact={true} path="/" component={HandelApp} />
               <Route path='/pancreatlas' render={(props) => <PancreatlasApp {...props} favoriteCallback={this.addFavorite} favorites={this.state.favorites} />} />
