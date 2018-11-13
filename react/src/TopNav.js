@@ -29,6 +29,17 @@ export default class TopNav extends React.Component {
     this.state = {
       isOpen: false
     }
+    this.state ={
+      iids: JSON.parse(window.atob(this.props.favorites))
+    }
+  }
+  
+  componentDidUpdate(prevProps){
+    if(prevProps.favorites !== this.props.favorites){
+      this.setState({
+        iids: JSON.parse(window.atob(this.props.favorites))
+      })
+    }
   }
 
   toggle() {
@@ -48,19 +59,19 @@ export default class TopNav extends React.Component {
               <NavItem>
                 <NavLink to="/handelp/diabetes">Diabetes</NavLink>
               </NavItem>
-              {(this.props.favorites !== undefined && window.atob(this.props.favorites).length > 0) &&
+              {(this.state.iids !== undefined && this.state.iids.length > 0) &&
                 <NavItem>
                   <UncontrolledDropdown>
-                    <DropdownToggle nav caret>Image Atlas <Badge color="primary">{window.atob(this.props.favorites).length}</Badge></DropdownToggle>
+                    <DropdownToggle nav caret>Image Atlas <Badge color="primary">{this.state.iids.length}</Badge></DropdownToggle>
                     <DropdownMenu right>
-                        <Link className='dropdown-item' to="/pancreatlas">Image Atlas</Link>
-                        <Link className='dropdown-item' to={`/pancreatlas/favorites?iids=${this.props.favorites}`}>Favorites <Badge color="primary">{window.atob(this.props.favorites).length}</Badge></Link>
+                        <Link className='dropdown-item' to={`/pancreatlas?iids=${this.props.favorites}`}>Image Atlas</Link>
+                        <Link className='dropdown-item' to={`/pancreatlas/favorites?iids=${this.props.favorites}`}>Favorites <Badge color="primary">{this.state.iids.length}</Badge></Link>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 </NavItem>}
-              {(this.props.favorites === undefined || this.props.favorites.length <= 0) &&
+              {(this.props.favorites === undefined || this.state.iids.length <= 0) &&
                 <NavItem active={(window.location.pathname === '/pancreatlas') ? true : false}>
-                  <NavLink to="/pancreatlas">Image Atlas</NavLink>
+                  <NavLink to={`/pancreatlas?iids=${this.props.favorites}`}>Image Atlas</NavLink>
                 </NavItem>
               }
               <NavItem active={(window.location.pathname === '/handelp/collaborators') ? true : false}>

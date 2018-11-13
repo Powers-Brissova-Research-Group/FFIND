@@ -17,7 +17,6 @@ export default class ImageGrid extends React.Component {
 
   constructor(props) {
     super(props)
-    console.log(props)
     this.state = {
       loaded: false,
       tags: null,
@@ -103,7 +102,6 @@ export default class ImageGrid extends React.Component {
           }
         }
       }
-      // console.log(result[key])
     }
     if(shouldDelete){
       for (let tagset of Object.keys(app_tags)){
@@ -115,14 +113,12 @@ export default class ImageGrid extends React.Component {
         }
       }
     }
-    // console.log(app_tags)
     this.setState({
       tags: app_tags
     })
   }
 
   choosePage(new_page) {
-    console.log(new_page)
     this.setState({
       page: new_page
     })
@@ -207,7 +203,6 @@ export default class ImageGrid extends React.Component {
         img_grid.push(slice.splice(0, 4));
       }
 
-      // console.log(img_grid)
 
       return (
         <div className="image-grid">

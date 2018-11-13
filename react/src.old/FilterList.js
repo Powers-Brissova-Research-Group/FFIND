@@ -76,7 +76,6 @@ export default class FilterList extends React.Component {
         tagList[tagset] = [newTag]
       }
     }
-    console.log(this.state.filters)
     this.props.callback(this.state.filters)
   }
 

@@ -37,9 +37,6 @@ export default class ImageCard extends React.Component {
         let re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
         let matchingKeys = Object.keys(kvals).filter(key => re.test(key))
         let markers = {}
-        if (result.iid === 16783){
-          console.log('match')
-        }
         for (let key of matchingKeys){
           kvals[key].val.split(',').map(val => markers[val.trim()] = re.exec(key)[3])
         }
@@ -59,7 +56,6 @@ export default class ImageCard extends React.Component {
             })
           })
 
-        console.log(this.state.omero_id)
       });
   }
 

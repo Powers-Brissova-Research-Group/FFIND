@@ -32,14 +32,14 @@ class PancreatlasApp extends Component {
         <div className='wrapper'>
           <div className='content'>
               <Switch>
-                <Route exact path='/pancreatlas' component={HomePage} />
+                <Route exact path={`/pancreatlas`} component={HomePage} />
                 {/* <Route path='/collections' component={CollectionList} /> */}
-                <Route exact path='/pancreatlas/dataset' component={DatasetList} />
-                <Route exact path='/pancreatlas/dataset/:did' render={(props) => <AgeBrowser {...props} favoriteCallback={this.props.favoriteCallback} favorites={this.props.favorites} />} />
+                <Route exact path={`/pancreatlas/dataset`} component={DatasetList} />
+                <Route exact path={`/pancreatlas/dataset/:did`} render={(props) => <AgeBrowser {...props} favoriteCallback={this.props.favoriteCallback} favorites={JSON.parse(window.atob(this.props.favorites))} />} />
                 <Route path='/pancreatlas/image/:iid' component={ImageDetail} />
                 <Route path='/pancreatlas/matrixview/:dsid' component={MatrixView} />
                 <Route path='/pancreatlas/nomenclature' component={Nomenclature} />
-                <Route path='/pancreatlas/favorites' render={(props) => <Favorites {...props} favoriteCallback={this.props.favoriteCallback} favorites={this.props.favorites} />} />
+                <Route path={`/pancreatlas/favorites`} render={(props) => <Favorites {...props} favoriteCallback={this.props.favoriteCallback} favorites={JSON.parse(window.atob(this.props.favorites))} />} />
                 <Route component={PageNotFound} />
               </Switch>
           </div>
