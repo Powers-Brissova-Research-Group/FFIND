@@ -23,6 +23,8 @@ export default class DatasetList extends React.Component {
       loaded: false,
       datasets: []
     }
+    let params = new URLSearchParams(window.location.search)
+    this.iids = (params.has('iids') ? params.get('iids') : window.btoa(JSON.stringify([])))
   }
 
   componentDidMount() {
@@ -91,10 +93,10 @@ export default class DatasetList extends React.Component {
                   </td>
                   <td>#</td>
                   <td className='action-column'>
-                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false' }}>
+                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: `?browse=false&iids=${this.iids}` }}>
                       <Button className='ds-list-left-button' >Browse All Images</Button>
                     </Link>
-                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=true' }}>
+                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: `?browse=true&iids=${this.iids}` }}>
                       <Button color="primary">Browse by Age</Button>
                     </Link>
                     <Link to={'/pancreatlas/matrixview/' + item.did}>

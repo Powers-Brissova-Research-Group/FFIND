@@ -19,7 +19,7 @@ export default class Favorites extends React.Component {
 
     let favs = []
     if(urlVars.has('iids')){
-      favs = window.atob(urlVars.get('iids')).split(',')
+      favs = JSON.parse(window.atob(urlVars.get('iids')))
     }
 
     this.state = {

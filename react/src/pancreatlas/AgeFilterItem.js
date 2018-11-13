@@ -33,17 +33,13 @@ export default class AgeFilterItem extends React.Component {
   }
 
   onSliderChange(args) {
-    // console.log(this.props.ages.slice(args[0], args[1] + 1))
     if (this.props.currentFilters !== undefined) {
       // We should be able to just get all the current filters outside of the current age group + the selected ages
       let matches = this.props.ages.slice(args[0], args[1] + 1)
       let others = this.props.currentFilters.filter(el => this.props.ages.indexOf(el) === -1)
       let allMatches = matches.concat(others)
-      console.log(allMatches)
       this.props.callback(allMatches)
-    } else {
-      console.log('onSliderChange being called when it shouldn\'t be')
-    }
+    } 
   }
 
   updateMarks(args) {

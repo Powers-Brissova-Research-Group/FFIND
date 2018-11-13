@@ -23,7 +23,6 @@ export default class DetailRow extends React.Component {
     if (this.props.data !== null && this.props.data !== undefined && this.props.data !== ''){
       return (<tr><td><p id={this.props.heading.split(' ').join('_') + '-tt'}><Tooltip placement="left" isOpen={this.state.ttOpen} target={this.props.heading.split(' ').join('_') + '-tt'} toggle={this.toggle}>{this.props.desc}</Tooltip>{this.props.heading}</p></td><td className={this.props.heading.split('-').map(val => val.trim()).join(' ')}>{this.props.data}</td></tr>)
     } else {
-      console.log('null')
       return null
     }
   }

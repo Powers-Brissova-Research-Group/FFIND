@@ -29,8 +29,17 @@ class App extends Component {
     this.checkCompatability = this.checkCompatability.bind(this)
     this.addFavorite = this.addFavorite.bind(this)
 
+    let urlVars = new URLSearchParams(window.location.search)
+
+    let favs = []
+    let encFavs = window.btoa(JSON.stringify(favs))
+    if(urlVars.has('iids')){
+      favs = JSON.parse(window.atob(urlVars.get('iids')))
+      encFavs = urlVars.get('iids')
+    }
     this.state = {
-      favorites: []
+      favorites: favs,
+      encodedFavorites: encFavs
     }
   }
 
@@ -69,14 +78,13 @@ class App extends Component {
       tmp.splice(tmp.indexOf(iid), 1)
       this.setState({
         favorites: tmp,
-        encodedFavorites: window.btoa(tmp)
+        encodedFavorites: window.btoa(JSON.stringify(tmp))
       })
-      console.log(`Removed ${iid}: ${this.state.favorites}`)
     } else {
       let tmp = this.state.favorites.concat(iid)
       this.setState({
         favorites: tmp,
-        encodedFavorites: window.btoa(tmp)
+        encodedFavorites: window.btoa(JSON.stringify(tmp))
       })
     }
   }
@@ -85,7 +93,6 @@ class App extends Component {
     var supportInfo = this.checkCompatability();
     var supported = supportInfo.isSupported
     var browser = supportInfo.browserInfo
-    console.log(`Browser: ${JSON.stringify(supportInfo)}`)
     // if (browser.name.toLowerCase() !== 'firefox' && browser.name.toLowerCase() !== 'chrome'){
     //   supported = false
     // }
