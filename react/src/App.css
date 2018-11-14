@@ -92,8 +92,8 @@ a:hover{
 }
 
 .banner-container{
-  height: 800px;
-  margin-top: -750px;
+  height: 600px;
+  margin-top: -600px;
 }
 
 .banner-row{
@@ -183,7 +183,7 @@ a:hover{
 .test-feedback {
   background-color: #aa0000;
   color: white;
-  text-align: middle;
+  text-align: center;
 }
 
 .test-feedback p {

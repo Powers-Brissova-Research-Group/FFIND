@@ -16,6 +16,8 @@ import Particles from 'react-particles-js';
 
 import bannerImg from './assets/banner-bg3-fade.png';
 
+import illustration from './assets/pancreas-islet-cells.png'
+
 export default class Banner extends React.Component {
   constructor(props) {
     super(props)
@@ -154,7 +156,7 @@ export default class Banner extends React.Component {
               background: `url(${bannerImg}) no-repeat center center fixed`,
               backgroundSize: 'cover'
             }}
-            height={800}
+            height={600}
           />
         </div>
 
@@ -165,9 +167,15 @@ export default class Banner extends React.Component {
             </Col>
             <Col md="1"></Col>
             <Col md="5" className='align-self-center'>
-              <Row className="mt-3"><h3 className='banner-subheader'>The rationale for our efforts</h3></Row>
-              <Row className="mt-3"><Button size="lg" color="info" className='banner-button' onClick={this.toggle}>Markers of beta cell-directed autoimmunity appear in some individuals in the first 2-3 years of life</Button></Row>
-              <Row className="mt-3"><Link to='/handelp/collaborators'><Button size="lg" color="info" className='banner-button'>The number of beta cells and islets in the human pancreas is determined in the first decade of life</Button></Link></Row>
+              <Row className="mt-3">
+                  <div>
+                    <h3 className="banner-subheader">Our goal is to assemble a world-class resource for collecting and sharing data from human pancreas samples. </h3>
+                    <img src={illustration}/>
+                    </div>
+              </Row>
+
+              {/*<Row className="mt-3"><Button size="lg" color="info" className='banner-button' onClick={this.toggle}>Markers of beta cell-directed autoimmunity appear in some individuals in the first 2-3 years of life</Button></Row>
+              <Row className="mt-3"><Link to='/handelp/collaborators'><Button size="lg" color="info" className='banner-button'>The number of beta cells and islets in the human pancreas is determined in the first decade of life</Button></Link></Row>*/}
             </Col>
           </Row>
           <HomeModal isOpen={this.state.modalOpen} toggle={this.toggle} />
