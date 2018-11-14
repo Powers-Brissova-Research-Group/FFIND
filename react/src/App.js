@@ -82,7 +82,6 @@ class App extends Component {
               <Route path="/handelp" component={HandelApp} />
               <Route path='/pancreatlas' component={PancreatlasApp} />
             </Switch>
-            <Footer />
             <PancreatlasFooter />
           </div>
         </Router>
