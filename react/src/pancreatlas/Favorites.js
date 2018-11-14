@@ -22,6 +22,8 @@ export default class Favorites extends React.Component {
     this.setModal = this.setModal.bind(this)
     this.toggle = this.toggle.bind(this)
     this.copy = this.copy.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.email = this.email.bind(this)
 
     let urlVars = new URLSearchParams(window.location.search)
 
@@ -118,6 +120,16 @@ export default class Favorites extends React.Component {
     }, 3000);
   }
 
+  email() {
+    window.location.href = `mailto:${this.props.email}`
+  }
+
+  handleChange(event) {
+    this.setState({
+      email: event.target.value
+    })
+  }
+
   render() {
     return (
       <Container>
@@ -138,11 +150,16 @@ export default class Favorites extends React.Component {
               <Col md="10">
                 <input id='favorites-url' className='form-control' ref={url => this.urlRef = url} type='text' value={this.state.urlText} />
               </Col>
-              <Col md="1">
+              <Col md="2 ">
                 <FontAwesomeIcon icon='copy' size='2x' className='favorites copy' onClick={this.copy}></FontAwesomeIcon>
               </Col>
-              <Col md="1">
-                <FontAwesomeIcon icon='paper-plane' size='2x' className='favorites send'></FontAwesomeIcon>
+            </Row>
+            <Row>
+              <Col md='10'>
+                <Input type='email' placeholder='Enter email to send favorites link' onChange={this.handleChange} />
+              </Col>
+              <Col md='2'>
+                <FontAwesomeIcon icon='paper-plane' size='2x' className='favorites send' onClick={this.email}></FontAwesomeIcon>
               </Col>
             </Row>
           </ModalBody>
