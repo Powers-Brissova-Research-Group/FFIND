@@ -5,7 +5,7 @@ import {
     Row
 } from 'reactstrap'
 
-import FontAwesome from 'react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class Feature extends React.Component{
     render(){
@@ -14,7 +14,7 @@ export default class Feature extends React.Component{
                 <Container>
                     <Row>
                         <Col sm="2">
-                            <FontAwesome size='2x' name={this.props.icon} className='feature-icon'/>
+                            <FontAwesomeIcon size='2x' icon={this.props.icon} className='feature-icon'/>
                         </Col>
                         <Col sm="10">
                             <Row className='feature-header-row'><h6>{this.props.heading}</h6></Row>
