@@ -501,3 +501,12 @@ td.name-column {
 .table thead td {
   text-align: center;
 }
+
+.favorites {
+  color: #6f6f6f;
+  cursor: pointer;
+}
+
+div.favorites-row {
+  align-items: center;
+}

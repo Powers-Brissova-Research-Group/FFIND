@@ -14,6 +14,12 @@ import Footer from './Footer'
 import PancreatlasFooter from './pancreatlas/PancreatlasFooter'
 import BrowserNotSupportedBanner from './BrowserNotSupportedBanner'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faGem, faMedkit, faUsers, faFlask, faVial, faCopy, faPaperPlane} from '@fortawesome/free-solid-svg-icons'
+
+library.add(faGem, faMedkit, faUsers, faFlask, faVial, faCopy, faPaperPlane)
+
+
 
 class App extends Component {
 
@@ -104,8 +110,8 @@ class App extends Component {
             <TopNav favorites={this.state.encodedFavorites} />
             <Switch>
               <Route exact={true} path="/" component={HandelApp} />
-              <Route path="/handelp" component={HandelApp} />
               <Route path={`/pancreatlas`} render={(props) => <PancreatlasApp {...props} favoriteCallback={this.addFavorite} favorites={this.state.encodedFavorites} />} />
+              <Route path="/" component={HandelApp} />
             </Switch>
             <Footer />
             <PancreatlasFooter />
