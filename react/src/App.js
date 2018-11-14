@@ -10,7 +10,6 @@ import {
 import HandelApp from './HandelApp';
 import PancreatlasApp from './pancreatlas/PancreatlasApp'
 import TopNav from './TopNav'
-import Footer from './Footer'
 import PancreatlasFooter from './pancreatlas/PancreatlasFooter'
 import BrowserNotSupportedBanner from './BrowserNotSupportedBanner'
 
@@ -79,8 +78,8 @@ class App extends Component {
             <TopNav />
             <Switch>
               <Route exact={true} path="/" component={HandelApp} />
-              <Route path="/handelp" component={HandelApp} />
               <Route path='/pancreatlas' component={PancreatlasApp} />
+              <Route path="/" component={HandelApp} />
             </Switch>
             <PancreatlasFooter />
           </div>

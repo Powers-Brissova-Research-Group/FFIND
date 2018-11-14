@@ -36,10 +36,9 @@ export default class HandelApp extends React.Component {
         </MetaTags>
         <Switch>
           <Route exact={true} path="/" component={Home} />
-          <Route exact={true} path="/handelp" component={Home} />
-          <Route path="/handelp/diabetes" component={Diabetes} />
-          <Route path="/handelp/collaborators" component={Collaborators} />
-          <Route path="/handelp/about" component={About} />
+          <Route path="/diabetes" component={Diabetes} />
+          <Route path="/collaborators" component={Collaborators} />
+          <Route path="/about" component={About} />
         </Switch>
       </div>
     )

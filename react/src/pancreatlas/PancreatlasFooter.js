@@ -7,8 +7,6 @@ import {
 
 import { Link } from 'react-router-dom'
 
-import HelmsleyLogo from '../assets/pancreatlas/logos/helmsley-logo.jpg'
-
 export default class PancreatlasFooter extends React.Component {
   render() {
     return (
@@ -30,7 +28,7 @@ export default class PancreatlasFooter extends React.Component {
                   <Col md="3">
                     <Row>
                       <Col md="12">
-                        <h2>Labs & Info</h2>
+                        <h2>Labs &amp; Info</h2>
                         <p>For more information on our data, please visit our <Link to={'/pancreatlas/nomenclature'}>nomenclature page</Link>.</p>
                       </Col>
                       <Col md="6">

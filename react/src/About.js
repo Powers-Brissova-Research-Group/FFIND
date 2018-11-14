@@ -7,8 +7,6 @@ import {
 
 import MetaTags from 'react-meta-tags'
 
-import Header from './Header'
-
 export default class About extends React.Component {
   render() {
     return (

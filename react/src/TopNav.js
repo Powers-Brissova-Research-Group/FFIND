@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   Collapse,
   Container,
   Navbar,
@@ -45,13 +44,13 @@ export default class TopNav extends React.Component {
                 <NavLink to="/pancreatlas/dataset">Image Atlas</NavLink>
               </NavItem>
                 <NavItem>
-                <NavLink to="/handelp/diabetes">About Diabetes</NavLink>
+                <NavLink to="/diabetes">About Diabetes</NavLink>
               </NavItem>
-              <NavItem active={(window.location.pathname === '/handelp/collaborators') ? true : false}>
-                <NavLink to="/handelp/collaborators">Collaborators</NavLink>
+              <NavItem active={(window.location.pathname === '/collaborators') ? true : false}>
+                <NavLink to="/collaborators">Collaborators</NavLink>
               </NavItem>
               <NavItem active={(window.location.pathname === '/handelp/about') ? true : false}>
-                <NavLink to="/handelp/about">About</NavLink>
+                <NavLink to="/about">About</NavLink>
               </NavItem>
               <NavItem>
                 <a class="btn btn-info" href='https://webapp.mis.vanderbilt.edu/vumc-giving/landing?appealCode=J1001'>Join Our Efforts</a>

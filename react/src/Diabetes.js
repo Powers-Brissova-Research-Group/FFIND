@@ -8,8 +8,6 @@ import {
 
 import MetaTags from 'react-meta-tags'
 
-import Header from './Header'
-
 export default class Diabetes extends React.Component {
   render() {
     return (
