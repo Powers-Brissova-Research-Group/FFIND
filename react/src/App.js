@@ -14,6 +14,10 @@ import Footer from './Footer'
 import PancreatlasFooter from './pancreatlas/PancreatlasFooter'
 import BrowserNotSupportedBanner from './BrowserNotSupportedBanner'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faGem, faMedkit, faUsers } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faGem, faMedkit, faUsers)
 
 class App extends Component {
 

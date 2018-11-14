@@ -39,7 +39,7 @@ render() {
             </div>
             <Row>
               <Col md="4">
-                <Feature icon="diamond" heading="Cutting-Edge Techonologies" description="Our team of investigators are applying their cutting-edge technologies to the study of human pancreas and isolated islets." />
+                <Feature icon="gem" heading="Cutting-Edge Techonologies" description="Our team of investigators are applying their cutting-edge technologies to the study of human pancreas and isolated islets." />
               </Col>
               <Col md="4">
                 <Feature icon="medkit" heading="Organ Procurement" description="We have established an infrastructure to collect normal and diseased pancreata in such a way that multiple analytical technologies can be utilized to study the same pancreas" />
