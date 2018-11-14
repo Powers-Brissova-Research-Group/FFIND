@@ -16,7 +16,7 @@ export default class Nomenclature extends React.Component {
     return (
       <div className='nomenclature'>
         <MetaTags>
-          <title>HDL-P | Pancreatlas > Nomenclature</title>
+          <title>Nomenclature -- Pancreatlas / HANDEL-P</title>
           <meta name="description" content="How pancreatlas organizes its images"/>
         </MetaTags>
         <Container>

@@ -7,6 +7,8 @@ import {
   PaginationItem,
   PaginationLink,
   Progress,
+  Alert,
+  Badge
 } from 'reactstrap';
 
 import MetaTags from 'react-meta-tags'
@@ -285,10 +287,25 @@ export default class ImageGrid extends React.Component {
       return (
         <div className="image-grid">
         <MetaTags>
-          <title>HDL-P | Pancreatlas > Dataset</title>
+          <title>Browse & Filter Dataset -- Pancreatlas / HANDEL-P</title>
           <meta name="description" content="View an entire dataset in the pancreatlas"/>
         </MetaTags>
-          <h5 className='view-counter'>You are currently viewing {this.state.matches.length} out of a possible {Object.keys(this.state.ids).length} images</h5>
+
+
+            <Container>
+                <Alert color="info">
+                    <Row>
+                        <Col m="6">
+                            You are currently viewing <Badge color="info">{this.state.matches.length}</Badge> out of a possible <Badge color="secondary">{Object.keys(this.state.ids).length}</Badge> images
+                        </Col>
+                        <Col m="6">
+                            <span className="float-right">Dataset: <strong>OMERO-DATASET-NAME</strong> (ID: OMERO-DATASET-ID)</span>
+                        </Col>
+                    </Row>
+                </Alert>
+            </Container>
+
+
           <Container>
             <Row className="pancreatlas-row">
               <Col md="3">

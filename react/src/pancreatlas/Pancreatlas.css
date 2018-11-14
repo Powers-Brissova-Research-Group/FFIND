@@ -103,6 +103,10 @@ h1, h2, h3, h4, h5, h6{
 
 .filter-list {
   text-align: left;
+  background-color: #f6f6f6;
+  border: 1px solid #e3e3e3;
+  padding:15px;
+  font-family: Roboto, Sans-Serif !important;
 }
 
 .filter-button {
@@ -118,10 +122,10 @@ h1, h2, h3, h4, h5, h6{
 
 
 .footer {
-  background-color: #1b294a;
+  background-color: #2e2e2e;;
   color: #e4e5d7;
   padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0;
   text-align: left;
   flex-shrink: 0;
 }
@@ -130,17 +134,38 @@ h1, h2, h3, h4, h5, h6{
   font-size: 14px;
 }
 
+.footer-lower {
+  background-color: #262626;
+}
+
 .bg-dark {
-  background-color: #1b294a !important;
+  background-color: #204356 !important;
 }
 
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand {
-  color: #e4e5d7 important;
+  color: #e4e5d7 !important;
 }
 
 .navbar-dark .navbar-nav .nav-link{
   color: #e4e5d7 !important;
 }
+/*
+.navbar-nav > li {
+  float: left;
+  position: relative;
+}
+.navbar-dark .navbar-nav .active a::after {
+  border-bottom: 5px solid #5bc0eb;
+  bottom: -10px;
+  content: " ";
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+*/
+
+
+
 
 .card-img-top {
   height: 200px;
@@ -350,12 +375,12 @@ div.matrix-cell-count > p {
   letter-spacing: -1px;
   background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.5);
-} */
+}
 
 .view-counter {
   color: #7a7a7a
 }
-
+*/
 td.matrix-selector-cell > span {
   position: absolute;
   top: 50%;

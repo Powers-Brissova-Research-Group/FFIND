@@ -83,7 +83,7 @@ export default class MatrixView extends React.Component {
           <Container>
             <div className='matrix-view'>
               <MetaTags>
-                <title>HDL-P | Pancreatlas > Matrix</title>
+                <title>Compare Attributes -- Pancreatlas / HANDEL-P</title>
                 <meta name="description" content="Pick two attribute sets and compare matching images in the pancreatlas"/>
               </MetaTags>
               <h1>Matrix View</h1>

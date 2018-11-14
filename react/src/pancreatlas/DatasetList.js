@@ -3,7 +3,9 @@ import {
   Table,
   Button,
   Badge,
-  Container
+  Container,
+  Row,
+  Col
 } from 'reactstrap'
 
 import {
@@ -13,6 +15,8 @@ import {
 import MetaTags from 'react-meta-tags'
 
 import Error from './Error'
+
+import MapPicture from "../assets/map-collaborations6.png";
 
 export default class DatasetList extends React.Component {
   constructor(props) {
@@ -44,14 +48,33 @@ export default class DatasetList extends React.Component {
   render() {
     if (this.state.loaded) {
       return (
-        <Container>
           <div className="dataset-list">
             <MetaTags>
-              <title>HDL-P | Pancreatlas > Dataset List</title>
+              <title>Available Datasets -- Pancreatlas / HANDEL-P</title>
               <meta name="description" content="List of datasets available to view in the pancreatlas"/>
             </MetaTags>
-            <h1>Datasets</h1>
-            <p>Please choose a dataset to explore</p>
+            <Container fluid>
+              <Container>
+                <Row className="v-padded">
+                  <Col md="6">
+                    <h3>Explore the pancreatlas</h3>
+                    <h1>Datasets</h1>
+                    <p>Maecenas lorem orci, imperdiet quis gravida vel, aliquam eu quam. Ut vulputate finibus aliquam. Nullam at molestie risus. Pellentesque dignissim nibh eget leo pharetra, vitae congue lectus posuere. Aenean venenatis nibh at odio molestie, nec consequat erat ultricies. Donec dictum velit eget viverra egestas.</p>
+                    <p>Quisque cursus facilisis diam, in ornare velit tincidunt facilisis. Proin ut dapibus ligula, quis porta mi. Curabitur posuere bibendum nisl, non fermentum lacus vulputate ac. Sed ut odio mattis, fringilla quam tempus, varius lectus. </p>
+                  </Col>
+
+                  <Col md="6">
+                    <h3>&nbsp;</h3>
+                    <h1>&nbsp;</h1>
+                    <p>Generously funded by The Leona M. and Harry B. Helmsley Charitable Trust, <strong>HANDEL-P aims to improve understanding of early events and processes in human pancreatic development through an interactive image atlas.</strong> By examining the islet structure and gene expression in pancreata from donors spanning the neonatal and juvenile stages of life, we hope to gain insight into type 1 diabetes.</p>
+ </Col>
+                </Row>
+              </Container>
+            </Container>
+
+        <Container fluid className='shaded'>
+
+          <Container className='v-padded'>
             <Table hover>
               <thead>
                 <tr>
@@ -59,6 +82,7 @@ export default class DatasetList extends React.Component {
                 <th>Images</th>
                 <th>Action</th>
                 <th>ID</th>
+                <th>Date</th>
               </tr>
               </thead>
               <tbody>
@@ -80,12 +104,16 @@ export default class DatasetList extends React.Component {
                     </Link>
                   </td>
                   <td>{item.did}</td>
+                  <td>date-released</td>
                 </tr>
                 ))}
               </tbody>
             </Table>
-          </div>
+          </Container>
         </Container>
+
+
+          </div>
       )
     } else if (this.state.error !== undefined) {
       return <Container><Error error_desk={this.state.error.message} /></Container>

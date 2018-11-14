@@ -41,11 +41,11 @@ export default class TopNav extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink to="/handelp/diabetes">Diabetes</NavLink>
-              </NavItem>
               <NavItem active={(window.location.pathname === '/pancreatlas') ? true : false}>
-                <NavLink to="/pancreatlas">Image Atlas</NavLink>
+                <NavLink to="/pancreatlas/dataset">Image Atlas</NavLink>
+              </NavItem>
+                <NavItem>
+                <NavLink to="/handelp/diabetes">About Diabetes</NavLink>
               </NavItem>
               <NavItem active={(window.location.pathname === '/handelp/collaborators') ? true : false}>
                 <NavLink to="/handelp/collaborators">Collaborators</NavLink>
@@ -54,7 +54,7 @@ export default class TopNav extends React.Component {
                 <NavLink to="/handelp/about">About</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='https://webapp.mis.vanderbilt.edu/vumc-giving/landing?appealCode=J1001'><Button color="danger">Join Our Efforts</Button></NavLink>
+                <a class="btn btn-info" href='https://webapp.mis.vanderbilt.edu/vumc-giving/landing?appealCode=J1001'>Join Our Efforts</a>
               </NavItem>
             </Nav>
           </Collapse>

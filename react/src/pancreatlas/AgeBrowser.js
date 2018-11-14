@@ -69,7 +69,7 @@ export default class AgeBrowser extends React.Component {
       return (
         <div className='age-browser'>
           <MetaTags>
-            <title>HDL-P | Pancreatlas > Age Browser</title>
+            <title>Browse Data by Age  -- Pancreatlas / HANDEL-P</title>
             <meta name="description" content="Browse a given dataset by age in the pancreatlas"/>
           </MetaTags>
           <Container className="age-group-list">

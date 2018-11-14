@@ -17,7 +17,6 @@ import IIDP from './assets/IIDP.png';
 import VUMC from './assets/VUMC.png';
 import NIDDK from './assets/NIDDK.png';
 
-
 export default class Home extends React.Component {
 render() {
     return (
@@ -37,15 +36,16 @@ render() {
                 </Col>
               </Row>
             </div>
+
             <Row>
               <Col md="4">
-                <Feature icon="gem" heading="Cutting-Edge Techonologies" description="Our team of investigators are applying their cutting-edge technologies to the study of human pancreas and isolated islets." />
+                <Feature icon="users" heading="Team Approach" description="Researchers at the University of Florida and Vanderbilt University, in collaboration with organizations around the country" />
               </Col>
               <Col md="4">
-                <Feature icon="medkit" heading="Organ Procurement" description="We have established an infrastructure to collect normal and diseased pancreata in such a way that multiple analytical technologies can be utilized to study the same pancreas" />
+                <Feature icon="vial" heading="Organ Procurement" description="Cross-sectional immunohistochemical analysis of islet cell composition, mass, proliferation, innervation, and function" />
               </Col>
               <Col md="4">
-                <Feature icon="users" heading="New Insight" description="By sharing information with other scientists, we hope to stimulate new collaborations and interactions." />
+                <Feature icon="flask" heading="Discoveries" description="Enhance our knowledge of juvenile pancreatic development in an effort to understand the onset and progression of type 1 diabetes" />
               </Col>
             </Row>
           </Row>

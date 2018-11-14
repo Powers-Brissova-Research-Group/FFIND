@@ -14,10 +14,10 @@ export default class About extends React.Component {
     return (
       <div className="about">
         <MetaTags>
-          <title>HDL-P | About</title>
+          <title>About the Project -- Pancreatlas / HANDEL-P</title>
           <meta name="description" content="What is the HANDEL-P project?"/>
         </MetaTags>
-        <Header heading="About" />
+        {/*<Header heading="About" />*/}
         <Container className='v-padded'>
           <Row>
             <Col md="6">
