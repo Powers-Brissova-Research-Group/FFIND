@@ -15,7 +15,7 @@ export default class Footer extends React.Component {
               <Col md="6">
                 <h3>About Us</h3>
                 <p>Our investigators are studying how the human pancreas and islets change in the first decade of life. This website, an atlas of our results, seeks to make this new information available to scientists to accelerate research throughout the world with the goal of understanding of the events in the pancreas and islet that trigger type 1 diabetes.</p>
-                <p>Supported by the <b><a href='http://www.helmsleytrust.org'>Helmsley Charitable Trust</a></b>, <a href='http://www.hirnetwork.org'>HIRN</a>, <a href='http://www.iiam.org'>IIAM</a>, <a href='https://iidp.coh.org'>IIDP</a>, <a href='http://www.jdrf.org'>JDRF</a>, <a href='http://www.ndri.org'>NDRI</a>, <a href='https://www.nih.gov'>NIH</a>, <a href='https://www.jdrfnpod.org'>nPOD</a>, <a href='http://www.research.va.gov'>VA research service</a>, and both institutional funds and space from <a href='https://www.mc.vanderbilt.edu'>VUMC</a></p>
+
               </Col>
               <Col md="3">
                 <Row>
