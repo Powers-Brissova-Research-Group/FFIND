@@ -3,7 +3,12 @@ import React from 'react'
 import {
   Container,
   Row,
-  Col
+  Col,
+  Modal,
+  ModalBody,
+  ModalHeader,
+  Input,
+  Button
 } from 'reactstrap'
 
 import ImageCard from './ImageCard'
@@ -23,6 +28,7 @@ export default class Favorites extends React.Component {
     }
 
     this.state = {
+      saveModalOpen: false,
       modalOpen: false,
       iids: favs
     }
@@ -69,7 +75,7 @@ export default class Favorites extends React.Component {
               }
             })
           }
-          this.toggle()
+          this.toggle('image')
         })
       .catch(err => {
         this.setState({
@@ -79,10 +85,17 @@ export default class Favorites extends React.Component {
       });
   }
 
-  toggle() {
-    this.setState({
-      modalOpen: !this.state.modalOpen
-    })
+  toggle(modalType) {
+    switch(modalType){
+      case 'image':
+        this.setState({modalOpen: !this.state.modalOpen})
+        break
+      case 'save':
+        this.setState({saveModalOpen: !this.state.saveModalOpen})
+        break
+      default:
+        this.setState({modalOpen: !this.state.modalOpen})
+    }
   }
 
   render() {
@@ -90,6 +103,7 @@ export default class Favorites extends React.Component {
       <Container>
         <h1>Favorite Images</h1>
         <h3>Here are some images that you saved from earlier</h3>
+        <Button onClick={() => this.toggle('save')}>Save for Later</Button>
         <Row>
           {this.state.iids.map(iid => 
             <Col md="3">
@@ -97,7 +111,13 @@ export default class Favorites extends React.Component {
             </Col>
           )}
         </Row>
-        <ImageModal toggle={this.toggle} isOpen={this.state.modalOpen} modalData={this.state.modalData} />
+        <Modal isOpen={this.state.saveModalOpen} toggle={() => this.toggle('save')}>
+            <ModalHeader toggle={() => this.toggle('save')}>Save for Later</ModalHeader>
+            <ModalBody>
+              <Input type='text' disabled>{window.location}</Input>
+            </ModalBody>
+        </Modal>
+        <ImageModal toggle={() => this.toggle('image')} isOpen={this.state.modalOpen} modalData={this.state.modalData} />
       </Container>
     )
   }
