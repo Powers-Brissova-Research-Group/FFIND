@@ -111,7 +111,7 @@ class App extends Component {
             <TopNav favorites={this.state.encodedFavorites} />
             <Switch>
               <Route exact={true} path="/" component={HandelApp} />
-              <Route path='/pancreatlas' render={(props) => <PancreatlasApp {...props} favoriteCallback={this.addFavorite} favorites={this.state.favorites} />} />
+              <Route path={`/pancreatlas`} render={(props) => <PancreatlasApp {...props} favoriteCallback={this.addFavorite} favorites={this.state.encodedFavorites} />} />
               <Route path="/" component={HandelApp} />
             </Switch>
             <PancreatlasFooter />
