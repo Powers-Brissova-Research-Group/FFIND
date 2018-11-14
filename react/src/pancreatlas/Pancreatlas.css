@@ -510,3 +510,7 @@ td.name-column {
 div.favorites-row {
   align-items: center;
 }
+
+button.save-favorites {
+  margin-bottom: 1rem;
+}
