@@ -16,7 +16,7 @@ import {
 } from 'react-router-dom'
 
 
-import logo from './assets/HANDEL-Logo-Small-2.png'
+import logo from './assets/logo-pancreatlas-300w_light.png'
 
 export default class TopNav extends React.Component {
   constructor(props) {
