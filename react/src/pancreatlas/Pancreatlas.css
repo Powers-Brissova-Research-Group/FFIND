@@ -539,7 +539,6 @@ td.name-column {
   text-align: center;
 }
 
-<<<<<<< HEAD
 div.card-img-wrapper {
   display: flex;
   flex-direction: column;
@@ -564,7 +563,7 @@ div.card-img-wrapper:hover .card-search-plus {
 span.undo {
   cursor: pointer;
   font-weight: bold;
-=======
+}
 .favorites {
   color: #6f6f6f;
   cursor: pointer;
@@ -572,5 +571,8 @@ span.undo {
 
 div.favorites-row {
   align-items: center;
->>>>>>> HANDELP-86
+}
+
+button.save-favorites {
+  margin-bottom: 1rem;
 }

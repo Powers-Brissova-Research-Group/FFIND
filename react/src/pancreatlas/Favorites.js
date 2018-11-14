@@ -135,7 +135,7 @@ export default class Favorites extends React.Component {
       <Container>
         <h1>Favorite Images</h1>
         <h3>Here are some images that you saved from earlier</h3>
-        <Button onClick={() => this.toggle('save')}>Save for Later</Button>
+        <Button className='save-favorites' onClick={() => this.toggle('save')}>Save for Later</Button>
         <Row>
           {this.state.iids.map(iid =>
             <Col md="3">
