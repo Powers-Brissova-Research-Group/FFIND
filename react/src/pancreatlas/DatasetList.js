@@ -16,8 +16,6 @@ import MetaTags from 'react-meta-tags'
 
 import Error from './Error'
 
-import MapPicture from "../assets/map-collaborations6.png";
-
 export default class DatasetList extends React.Component {
   constructor(props) {
     super(props);

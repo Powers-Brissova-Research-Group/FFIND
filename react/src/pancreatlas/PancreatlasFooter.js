@@ -7,7 +7,6 @@ import {
 
 import { Link } from 'react-router-dom'
 
-import HelmsleyLogo from '../assets/pancreatlas/logos/helmsley-logo.jpg'
 import Feature from "../Feature";
 
 export default class PancreatlasFooter extends React.Component {
@@ -24,25 +23,25 @@ export default class PancreatlasFooter extends React.Component {
                 <p>Supported by the <b><a href='http://www.helmsleytrust.org'>Helmsley Charitable Trust</a></b>, <a href='http://www.hirnetwork.org'>HIRN</a>, <a href='http://www.iiam.org'>IIAM</a>, <a href='https://iidp.coh.org'>IIDP</a>, <a href='http://www.jdrf.org'>JDRF</a>, <a href='http://www.ndri.org'>NDRI</a>, <a href='https://www.nih.gov'>NIH</a>, <a href='https://www.jdrfnpod.org'>nPOD</a>, <a href='http://www.research.va.gov'>VA research service</a>, and both institutional funds and space from <a href='https://www.mc.vanderbilt.edu'>VUMC</a></p>
               </Col>
 
-              <Col md="3">
-                <Row>
-                  <Col md="12">
-                    <h2>Labs & Info</h2>
-                    <p>For more information on our data, please visit our <Link to={'/pancreatlas/nomenclature'}>nomenclature page</Link>.</p>
+                  <Col md="3">
+                    <Row>
+                      <Col md="12">
+                        <h2>Labs &amp; Info</h2>
+                        <p>For more information on our data, please visit our <Link to={'/pancreatlas/nomenclature'}>nomenclature page</Link>.</p>
+                      </Col>
+                      <Col md="6">
+                        <p><a href='http://pathology.ufl.edu/faculty/experimental-pathology/mark-a-atkinson/'> Atkinson Lab</a></p>
+                        <p><a href='https://labnodes.vanderbilt.edu/member/profile/id/10427'>Brissova Lab</a></p>
+                        <p><a href='http://seungkimlab.stanford.edu/'>Kim Lab</a></p>
+                        <p><a href='https://medschool.vanderbilt.edu/wright-lab/'>Wright Lab</a></p>
+                      </Col>
+                      <Col md="6">
+                        <p><a href="https://www.ahn.org/research/our-research-institutes/cellular-therapeutics/our-team"> Bottino Lab</a></p>
+                        <p><a href='https://faculty.mc.vanderbilt.edu/Faculty/Details/34956'>Dai Lab</a></p>
+                        <p><a href='https://www.powersresearch.org/'>Powers Lab</a></p>
+                      </Col>
+                    </Row>
                   </Col>
-                  <Col md="6">
-                    <p><a href='http://pathology.ufl.edu/faculty/experimental-pathology/mark-a-atkinson/'> Atkinson Lab</a></p>
-                    <p><a href='https://labnodes.vanderbilt.edu/member/profile/id/10427'>Brissova Lab</a></p>
-                    <p><a href='http://seungkimlab.stanford.edu/'>Kim Lab</a></p>
-                    <p><a href='https://medschool.vanderbilt.edu/wright-lab/'>Wright Lab</a></p>
-                  </Col>
-                  <Col md="6">
-                    <p><a href="https://www.ahn.org/research/our-research-institutes/cellular-therapeutics/our-team"> Bottino Lab</a></p>
-                    <p><a href='https://faculty.mc.vanderbilt.edu/Faculty/Details/34956'>Dai Lab</a></p>
-                    <p><a href='https://www.powersresearch.org/'>Powers Lab</a></p>
-                  </Col>
-                </Row>
-              </Col>
 
               <Col md="3">
                 <h3 className='get-in-touch'>Get in touch</h3>

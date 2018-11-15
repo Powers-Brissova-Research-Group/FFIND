@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Container,
-  Button,
   Row,
   Col
 } from 'reactstrap';
@@ -171,7 +170,7 @@ export default class Banner extends React.Component {
             <Col md="5" className='align-self-center'>
               <Row className="mt-3">
                   <div>
-                      <Link to={'/pancreatlas/dataset/'}><img src={illustration} responsive /></Link>
+                      <Link to={'/pancreatlas/dataset/'}><img src={illustration} responsive alt='View our datasets' /></Link>
                     </div>
               </Row>
 

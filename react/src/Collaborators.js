@@ -7,7 +7,6 @@ import {
 
 import MetaTags from 'react-meta-tags'
 
-import Header from './Header';
 import TeamMember from './TeamMember';
 import MapPicture from './assets/map-collaborations6.png';
 
