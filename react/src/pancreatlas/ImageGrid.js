@@ -8,7 +8,11 @@ import {
   PaginationLink,
   Progress,
   Alert,
-  Badge
+  Badge,
+  Input,
+  Form,
+  FormGroup,
+  Label
 } from 'reactstrap';
 
 import MetaTags from 'react-meta-tags'
@@ -32,7 +36,10 @@ export default class ImageGrid extends React.Component {
       start: 0,
       end: 12,
       modalOpen: false,
-      datasetName: ''
+      datasetName: '',
+      imgs_per_row: 3,
+      imgs_col_split: 4,
+      rows_per_page: 5
     }
 
     this.nextPage = this.nextPage.bind(this)
@@ -44,6 +51,7 @@ export default class ImageGrid extends React.Component {
     this.toggle = this.toggle.bind(this)
     this.setModal = this.setModal.bind(this)
     this.markerFilter = this.markerFilter.bind(this)
+    this.setDensity = this.setDensity.bind(this)
 
     this.image_tags = {}
     this.tag_dict = {}
@@ -273,6 +281,37 @@ export default class ImageGrid extends React.Component {
       });
   }
 
+  setDensity(event) {
+    switch (event.target.value.toLowerCase()) {
+      case 'sparse':
+        this.setState({
+          imgs_per_row: 2,
+          imgs_col_split: 6,
+          rows_per_page: 6
+        })
+        break
+      case 'dense':
+        this.setState({
+          imgs_per_row: 4,
+          imgs_col_split: 3,
+          rows_per_page: 4
+        })
+        break
+      default:
+      case 'normal':
+        this.setState({
+          imgs_per_row: 3,
+          imgs_col_split: 4,
+          rows_per_page: 5
+        })
+        break
+
+
+
+    }
+    console.log(event.target.value)
+  }
+
   render() {
     if (this.state.loaded) {
       if (this.state.matches.length === 0) {
@@ -315,10 +354,10 @@ export default class ImageGrid extends React.Component {
         )
       }
       // images_per_row * images_col_split must equal 12
-      var images_per_row = 3
-      var images_col_split = 4
-      var rows_per_page = 5 // 15 or 16
-      var images_per_page = images_per_row * rows_per_page
+      // var images_per_row = 3
+      // var images_col_split = 4
+      // var rows_per_page = 5 // 15 or 16
+      var images_per_page = this.state.imgs_per_row * this.state.rows_per_page
 
       let pages = []
       for (let i = 0; i < Math.ceil(this.state.matches.length / images_per_page); i++) {
@@ -335,7 +374,7 @@ export default class ImageGrid extends React.Component {
       let end = start + images_per_page
       let slice = this.state.matches.slice(start, end);
       while (slice.length) {
-        img_grid.push(slice.splice(0, images_per_row));
+        img_grid.push(slice.splice(0, this.state.imgs_per_row));
       }
 
 
@@ -359,6 +398,20 @@ export default class ImageGrid extends React.Component {
                   <span className="float-right">Dataset: <strong>{this.state.datasetName}</strong> (ID: {this.props.did})</span>
                 </Col>
               </Row>
+              <Row>
+                <Col md='12'>
+                  <Form inline>
+                    <FormGroup>
+                      <Label for='densitySelect'>Select density of grid: </Label>
+                      <Input type='select' name='density' id='densitySelect' onChange={(event) => this.setDensity(event)}>
+                        <option>Normal</option>
+                        <option>Sparse</option>
+                        <option>Dense</option>
+                      </Input>
+                    </FormGroup>
+                  </Form>
+                </Col>
+              </Row>
             </Alert>
           </Container>
 
@@ -372,7 +425,7 @@ export default class ImageGrid extends React.Component {
                 {img_grid.map((item, idx) => (
                   <Row key={idx} className="image-row pancreatlas-row">
                     {item.map((image, idx) =>
-                      <Col key={idx} md={images_col_split}>
+                      <Col key={idx} md={this.state.imgs_col_split}>
                         <ImageCard key={image} iid={image} callback={this.setModal} filterCallback={this.markerFilter} />
                       </Col>
                     )}
