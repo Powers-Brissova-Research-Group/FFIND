@@ -345,10 +345,16 @@ export default class ImageGrid extends React.Component {
       return <Error error_desc={this.state.error.message} />
     } else {
       return (
-        <Container className="loading">
-          <strong>Loading {this.props.dataset_name}...</strong>
-          <Progress animated color="success" value="100" />
+
+          <Container className='loading v-padded'>
+          <Row>
+            <Col md="12">
+              <h1 className='section-heading'>Loading dataset {this.props.did} ...</h1>
+                        <Progress animated color="success" value="100" />
+            </Col>
+        </Row>
         </Container>
+
       )
     }
   }

@@ -67,7 +67,7 @@ export default class ImageDetail extends React.Component {
                 </Row>
               </Col>
               <Col md="4">
-                <h3>Image Details</h3>
+                <h3>Image Preview</h3>
                 <Row className="pancreatlas-row">
                   <Col md="12">
                     <a href={path_path} target="_blank"><Button className='path-button' color="success">Open in PathViewer</Button></a>

@@ -52,11 +52,11 @@ h1, h2, h3, h4, h5, h6{
 .image-card {
   max-width: 350px;
   text-align: left;
+  font-family: Roboto, Sans-Serif;
 }
 
 .image-row {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 
 .image-grid h1 {
@@ -66,7 +66,10 @@ h1, h2, h3, h4, h5, h6{
 .card-title, .card-subtitle{
   text-align: center;
   font-family: 'Montserrat', sans-serif;
+  font-size:90%;
 }
+
+.card-body strong { color: #777; font-weight:normal;}
 
 .collection-card {
   max-width: 350px;
@@ -107,6 +110,7 @@ h1, h2, h3, h4, h5, h6{
   border: 1px solid #e3e3e3;
   padding:15px;
   font-family: Roboto, Sans-Serif !important;
+  border-radius: 2px;
 }
 
 .filter-button {
@@ -262,8 +266,10 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .filter-set {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-top: 1px solid #e3e3e3;
+  padding-top:15px;
 }
 
 .footer-img {
@@ -406,7 +412,7 @@ td.matrix-selector-cell > span {
 }
 
 .modal-dialog {
-  max-width: 750px;
+  max-width: 800px;
 }
 
 .pathviewer-buttons {
@@ -516,6 +522,7 @@ button.view-all {
 }
 
 td.action-column {
+  text-align: center;
   width: 57%;
 }
 
@@ -525,4 +532,8 @@ td.name-column {
 
 .table thead td {
   text-align: center;
+}
+
+table#nomenclature {
+
 }
