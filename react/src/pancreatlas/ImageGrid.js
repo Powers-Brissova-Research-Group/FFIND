@@ -31,6 +31,7 @@ export default class ImageGrid extends React.Component {
       start: 0,
       end: 12,
       modalOpen: false,
+      datasetName: ''
     }
 
     this.nextPage = this.nextPage.bind(this)
@@ -52,6 +53,13 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidMount() {
+    fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`)
+      .then(res => res.json())
+      .then((result => {
+        this.setState({
+          datasetName: result.dsname
+        })
+      }))
     fetch(`${process.env.REACT_APP_API_URL}/tagsets/`)
       .then(res => res.json())
       .then(
@@ -287,7 +295,7 @@ export default class ImageGrid extends React.Component {
       return (
         <div className="image-grid">
         <MetaTags>
-          <title>Browse & Filter Dataset -- Pancreatlas / HANDEL-P</title>
+          <title>Browse &amp; Filter Dataset -- Pancreatlas / HANDEL-P</title>
           <meta name="description" content="View an entire dataset in the pancreatlas"/>
         </MetaTags>
 
@@ -299,7 +307,7 @@ export default class ImageGrid extends React.Component {
                             You are currently viewing <Badge color="info">{this.state.matches.length}</Badge> out of a possible <Badge color="secondary">{Object.keys(this.state.ids).length}</Badge> images
                         </Col>
                         <Col m="6">
-                            <span className="float-right">Dataset: <strong>OMERO-DATASET-NAME</strong> (ID: OMERO-DATASET-ID)</span>
+                            <span className="float-right">Dataset: <strong>{this.state.datasetName}</strong> (ID: {this.props.did})</span>
                         </Col>
                     </Row>
                 </Alert>

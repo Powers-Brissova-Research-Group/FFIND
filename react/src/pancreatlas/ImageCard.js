@@ -6,14 +6,10 @@ import {
   CardBody,
   Button
 } from 'reactstrap'
-import zoom from '../assets/zoom-in-solid.png';
 
 import {
   FontAwesomeIcon
 } from '@fortawesome/react-fontawesome'
-
-import {faSearchPlus} from '@fortawesome/free-solid-svg-icons'
-
 
 import Error from './Error'
 

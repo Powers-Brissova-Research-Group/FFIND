@@ -130,7 +130,7 @@ export default class AgeBrowser extends React.Component {
       )
     } else {
       return (
-        <ImageGrid filters={{}} group={this.state.group} groupName={this.state.groupName} did={this.props.match.params.did.split('?')[0]} />
+        <ImageGrid filters={{}} group={this.state.group} groupName={this.state.groupName} did={this.props.match.params.did.split('?')[0]}/>
       )
     }
   }
