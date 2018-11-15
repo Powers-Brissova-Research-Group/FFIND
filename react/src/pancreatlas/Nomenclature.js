@@ -1,8 +1,7 @@
 import React from 'react'
 import {
   Container,
-  Row,
-  Col
+    Table
 } from 'reactstrap'
 
 import MetaTags from 'react-meta-tags'
@@ -22,12 +21,24 @@ export default class Nomenclature extends React.Component {
         <Container>
           <h1>Nomenclature</h1>
           <p>Below are descriptions regarding the various annotations we have added to our images</p>
-          {Object.keys(this.defs).map(key => (
-            <Row className="pancreatlas-row">
-              <Col md="3"><h3>{key}</h3></Col>
-              <Col md="9"><p>{this.defs[key].long_desc}</p></Col>
-            </Row>
-          ))}
+            <Table hover>
+                <thead>
+                <tr>
+                    <th>Term</th>
+                    <th>Short Description</th>
+                    <th>Long Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {Object.keys(this.defs).map(key => (
+                    <tr>
+                      <td><strong>{key}</strong></td>
+                      <td>{this.defs[key].short_desc}</td>
+                      <td>{this.defs[key].long_desc}</td>
+                    </tr>
+                  ))}
+                </tbody>
+          </Table>
         </Container>
       </div>
     )

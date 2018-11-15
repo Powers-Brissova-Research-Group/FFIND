@@ -1,87 +1,87 @@
 {
     "External id": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Unique identifier",
+        "long_desc": "Unique identifier of image as provided by image capture platform"
     },
     "File path": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Filename and path/directory",
+        "long_desc": "The relevant path (directory) of the image file, including its filename"
     },
     "Donor info - UNOS ID": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Donor UNOS ID",
+        "long_desc": "Unique donor identifier provided by donor agency."
     },
     "Donor info - LIMS ID": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "DONOR LIMS ID",
+        "long_desc": "Unique donor identifier provided via Powers Laboratory LIMS"
     },
     "Donor info - Disease Status": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Disease associated with donor",
+        "long_desc": "One of several diseases associated with donor - ND (No Disease), T1D (Type 1 Diabetes), T2D (Type 2 Diabetes)"
     },
     "Donor info - Disease Duration": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Duration of disease",
+        "long_desc": "Time that disease was known/diagnosed in donor"
     },
     "Donor info - Age": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Age of donor",
+        "long_desc": "Age of donor at the time sample was collected"
     },
     "Donor info - Sex": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Sex of donor",
+        "long_desc": "Biological sex of donor"
     },
     "Stain info - cy2": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Cy2 channel",
+        "long_desc": "Cy2 channel"
     },
     "Stain info - cy2-Ab": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Cy2-Ab channel",
+        "long_desc": "Cy2-Ab channel"
     },
     "Stain info - cy3": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Cy3 channel",
+        "long_desc": "Cy3 channel"
     },
     "Stain info - cy3-Ab": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Cy3-Ab channel",
+        "long_desc": "Cy3-Ab channel"
     },
     "Stain info - cy5": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Cy5 channel",
+        "long_desc": "Cy5 channel"
     },
     "Stain info - cy5-Ab": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Cy5-Ab channel",
+        "long_desc": "Cy5-Ab channel"
     },
     "Stain info - DAPI": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "DAPI channel",
+        "long_desc": "DAPI channel"
     },
     "Image info - Section Plane": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Section plane of pancreas",
+        "long_desc": "Section plane collected of sample - saggital, coronal, transverse"
     },
     "Image info - Pancreas Region": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Region sample collected from",
+        "long_desc": "General region the sample was collected from - head, body, tail"
     },
     "Image info - File Type": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Imaging type",
+        "long_desc": "Imaging platform used to collect data"
     },
     "Image info - Annotations": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Image annotations",
+        "long_desc": "Expert-provided annotations for image"
     },
     "Image info - Analysis": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Associated analysis",
+        "long_desc": "Whether or not associated/downstream analysis has been performed"
     },
     "(DS notes)": {
-        "short_desc": "Test description",
-        "long_desc": "A longer description about this key"
+        "short_desc": "Annotation notes",
+        "long_desc": "Notes left by annotator / safe to ignore"
     },
     "Warning": {
         "short_desc": "Uh oh! Something went wrong",
