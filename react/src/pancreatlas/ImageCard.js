@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Container, Row, Col,
   Card,
   CardImg,
   CardBody,
@@ -113,9 +112,10 @@ export default class ImageCard extends React.Component {
       let last_marker = Object.keys(this.state.markers)[Object.keys(this.state.markers).length - 1]
       return (
         <Card className="image-card h-100">
-
-          <CardImg className='image-card-thumb' top width="100%" src={require(`../assets/pancreatlas/thumbs/${this.props.iid}.jpg`)} alt={this.state.img_name} onClick={() => this.props.callback(this.props.iid)} />
-
+          <div className='card-img-wrapper' onClick={() => this.props.callback(this.props.iid)}>
+            <CardImg className='image-card-thumb' top width="100%" src={require(`../assets/pancreatlas/thumbs/${this.props.iid}.jpg`)} alt={this.state.img_name} />
+            <FontAwesomeIcon icon='search-plus' size='2x' className='card-search-plus' />
+          </div>
             <CardBody className="d-flex flex-column">
             {/* <CardTitle>{this.state.img_name}</CardTitle>
             <CardSubtitle>{this.state.omero_id}</CardSubtitle> */}

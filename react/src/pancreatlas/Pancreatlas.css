@@ -407,8 +407,9 @@ td.matrix-selector-cell > span {
   margin-bottom: 1rem;
 }
 
-.image-card-thumb {
-  cursor: pointer;
+img.image-card-thumb {
+  position: absolute;
+  z-index: 1
 }
 
 .modal-dialog {
@@ -534,6 +535,24 @@ td.name-column {
   text-align: center;
 }
 
-table#nomenclature {
-
+div.card-img-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  z-index: 50;
+  cursor: pointer;
+  height: 200px;
 }
+
+div.card-img-wrapper .card-search-plus {
+  color: white;
+  opacity: 0.5;
+  z-index: 3;
+  margin: 0 auto;
+}
+
+div.card-img-wrapper:hover .card-search-plus {
+  opacity: 0.9
+}
+
