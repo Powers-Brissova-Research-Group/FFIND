@@ -400,7 +400,7 @@ export default class ImageGrid extends React.Component {
               </Row>
               <Row>
                 <Col md='12'>
-                  <Form inline>
+                  <Form inline className='float-right'>
                     <FormGroup>
                       <Label for='densitySelect'>Select density of grid: </Label>
                       <Input type='select' name='density' id='densitySelect' onChange={(event) => this.setDensity(event)}>
