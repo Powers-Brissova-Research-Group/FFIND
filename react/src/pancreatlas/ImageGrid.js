@@ -28,9 +28,11 @@ export default class ImageGrid extends React.Component {
       ids: [],
       matches: [],
       filters: {},
+      prevFilters: {},
       start: 0,
       end: 12,
       modalOpen: false,
+      datasetName: ''
     }
 
     this.nextPage = this.nextPage.bind(this)
@@ -52,6 +54,13 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidMount() {
+    fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`)
+      .then(res => res.json())
+      .then((result => {
+        this.setState({
+          datasetName: result.dsname
+        })
+      }))
     fetch(`${process.env.REACT_APP_API_URL}/tagsets/`)
       .then(res => res.json())
       .then(
@@ -150,7 +159,8 @@ export default class ImageGrid extends React.Component {
     })
   }
 
-  filter(tagList) {
+  filter(tagList, prevFilters) {
+    console.log(prevFilters)
     let empty = true
     for (let key of Object.keys(tagList)) {
       if (tagList[key].length > 0) {
@@ -161,7 +171,8 @@ export default class ImageGrid extends React.Component {
 
     if (empty) {
       this.setState({
-        filters: {AGE: []},
+        filters: { AGE: [] },
+        prevFilters: { AGE: [] },
         matches: Object.keys(this.state.ids)
       })
     } else {
@@ -170,12 +181,12 @@ export default class ImageGrid extends React.Component {
       for (let id of Object.keys(allIds)) {
         let match = true
         for (let keyset of Object.keys(tagList)) {
-          if(keyset !== 'AGE' || (keyset === 'AGE' && tagList[keyset].length > 0)){
+          if (keyset !== 'AGE' || (keyset === 'AGE' && tagList[keyset].length > 0)) {
             let intersection = tagList[keyset].filter(tag => -1 !== allIds[id].indexOf(tag))
             if (intersection.length <= 0) {
               match = false
               break
-            }  
+            }
           }
         }
         if (!match) {
@@ -183,21 +194,22 @@ export default class ImageGrid extends React.Component {
         }
       }
       this.setState({
+        prevFilters: prevFilters,
         filters: tagList,
         matches: tmp
       })
     }
   }
 
-  markerFilter(marker){
+  markerFilter(marker) {
     let currentFilters = this.state.filters
-    if(Object.keys(currentFilters).indexOf('MARKER') === -1){
+    if (Object.keys(currentFilters).indexOf('MARKER') === -1) {
       currentFilters['MARKER'] = []
     }
-    if(currentFilters['MARKER'].indexOf(marker) === -1){
+    if (currentFilters['MARKER'].indexOf(marker) === -1) {
       currentFilters['MARKER'].push(marker)
     }
-    this.filter(currentFilters)
+    this.filter(currentFilters, this.state.prevFilters)
   }
 
   callback(iid, tags) {
@@ -215,25 +227,25 @@ export default class ImageGrid extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
-          if (Object.keys(result.kvals).length > 0){
+          if (Object.keys(result.kvals).length > 0) {
             let path = result.kvals['File path'].val
             let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
             let age_re = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
 
             let markerColors = result.channel_info
             let markerColor_re = /^.+\((.+)\)$/
-            Object.keys(markerColors).forEach(function(key){
+            Object.keys(markerColors).forEach(function (key) {
               var newKey = markerColor_re.test(key) ? markerColor_re.exec(key)[1] : key
-              if (newKey !== key){
+              if (newKey !== key) {
                 markerColors[newKey] = markerColors[key]
                 delete markerColors[key]
               }
             })
-  
+
 
             let matches = re.exec(path)
             result.kvals['File path'].val = matches[0]
-            result.kvals['Donor info - Age'].val = result.tags.filter(val => age_re.test(val))[0]      
+            result.kvals['Donor info - Age'].val = result.tags.filter(val => age_re.test(val))[0]
             this.setState({
               modalData: {
                 img_id: imgInfo,
@@ -246,8 +258,8 @@ export default class ImageGrid extends React.Component {
             this.setState({
               modalData: {
                 img_id: imgInfo,
-                img_data: {"Warning": "No information for this image"},
-                path_path: result.pathpath  
+                img_data: { "Warning": "No information for this image" },
+                path_path: result.pathpath
               }
             })
           }
@@ -263,6 +275,45 @@ export default class ImageGrid extends React.Component {
 
   render() {
     if (this.state.loaded) {
+      if (this.state.matches.length === 0) {
+        return (
+          <div className='no-results'>
+            <MetaTags>
+              <title>Browse &amp; Filter Dataset -- Pancreatlas / HANDEL-P</title>
+              <meta name="description" content="View an entire dataset in the pancreatlas" />
+            </MetaTags>
+            <Container>
+              <Alert color="info">
+                <Row>
+                  <Col m="6">
+                    You are currently viewing <Badge color="info">{this.state.matches.length}</Badge> out of a possible <Badge color="secondary">{Object.keys(this.state.ids).length}</Badge> images
+                        </Col>
+                  <Col m="6">
+                    <span className="float-right">Dataset: <strong>{this.state.datasetName}</strong> (ID: {this.props.did})</span>
+                  </Col>
+                </Row>
+              </Alert>
+            </Container>
+
+            <Container>
+              <Row className="pancreatlas-row">
+                <Col md="3">
+                  <FilterList ageGroup={this.props.groupName} tags={this.state.tags} filters={this.state.filters} callback={this.filter} />
+                </Col>
+                <Col md="9">
+                  <Alert color='danger'>
+                    <Row>
+                      <Col md='12'>
+                        The combination of filters you have used returns 0 images. <span className='undo' onClick={() => this.filter(this.state.prevFilters, this.state.filters)}>Undo your most recent change?</span>
+                      </Col>
+                    </Row>
+                  </Alert>
+                </Col>
+              </Row>
+            </Container>
+          </div>
+        )
+      }
       // images_per_row * images_col_split must equal 12
       var images_per_row = 3
       var images_col_split = 4
@@ -292,24 +343,24 @@ export default class ImageGrid extends React.Component {
 
       return (
         <div className="image-grid">
-        <MetaTags>
-          <title>Browse & Filter Dataset -- Pancreatlas / HANDEL-P</title>
-          <meta name="description" content="View an entire dataset in the pancreatlas"/>
-        </MetaTags>
+          <MetaTags>
+            <title>Browse &amp; Filter Dataset -- Pancreatlas / HANDEL-P</title>
+            <meta name="description" content="View an entire dataset in the pancreatlas" />
+          </MetaTags>
 
 
-            <Container>
-                <Alert color="info">
-                    <Row>
-                        <Col m="6">
-                            You are currently viewing <Badge color="info">{this.state.matches.length}</Badge> out of a possible <Badge color="secondary">{Object.keys(this.state.ids).length}</Badge> images
+          <Container>
+            <Alert color="info">
+              <Row>
+                <Col m="6">
+                  You are currently viewing <Badge color="info">{this.state.matches.length}</Badge> out of a possible <Badge color="secondary">{Object.keys(this.state.ids).length}</Badge> images
                         </Col>
-                        <Col m="6">
-                            <span className="float-right">Dataset: <strong>OMERO-DATASET-NAME</strong> (ID: OMERO-DATASET-ID)</span>
-                        </Col>
-                    </Row>
-                </Alert>
-            </Container>
+                <Col m="6">
+                  <span className="float-right">Dataset: <strong>{this.state.datasetName}</strong> (ID: {this.props.did})</span>
+                </Col>
+              </Row>
+            </Alert>
+          </Container>
 
 
           <Container>
@@ -352,13 +403,13 @@ export default class ImageGrid extends React.Component {
     } else {
       return (
 
-          <Container className='loading v-padded'>
+        <Container className='loading v-padded'>
           <Row>
             <Col md="12">
               <h1 className='section-heading'>Loading dataset {this.props.did} ...</h1>
-                        <Progress animated color="success" value="100" />
+              <Progress animated color="success" value="100" />
             </Col>
-        </Row>
+          </Row>
         </Container>
 
       )

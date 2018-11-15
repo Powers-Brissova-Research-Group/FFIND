@@ -4,7 +4,11 @@ import {
   CardImg,
   CardBody,
   Button
-} from 'reactstrap';
+} from 'reactstrap'
+
+import {
+  FontAwesomeIcon
+} from '@fortawesome/react-fontawesome'
 
 import Error from './Error'
 
@@ -108,9 +112,10 @@ export default class ImageCard extends React.Component {
       let last_marker = Object.keys(this.state.markers)[Object.keys(this.state.markers).length - 1]
       return (
         <Card className="image-card h-100">
-
-          <CardImg className='image-card-thumb' top width="100%" src={require(`../assets/pancreatlas/thumbs/${this.props.iid}.jpg`)} alt={this.state.img_name} onClick={() => this.props.callback(this.props.iid)} />
-
+          <div className='card-img-wrapper' onClick={() => this.props.callback(this.props.iid)}>
+            <CardImg className='image-card-thumb' top width="100%" src={require(`../assets/pancreatlas/thumbs/${this.props.iid}.jpg`)} alt={this.state.img_name} />
+            <FontAwesomeIcon icon='search-plus' size='2x' className='card-search-plus' />
+          </div>
             <CardBody className="d-flex flex-column">
             {/* <CardTitle>{this.state.img_name}</CardTitle>
             <CardSubtitle>{this.state.omero_id}</CardSubtitle> */}
@@ -120,9 +125,9 @@ export default class ImageCard extends React.Component {
             <div><strong>Markers:</strong></div>
             <div className='marker-list'>
               {Object.keys(this.state.markers).slice(0, Object.keys(this.state.markers).length - 1).map(marker => (
-                <span className='tag' key={this.props.iid + marker}> <span onClick={() => this.props.filterCallback(marker)} className='marker' style={{color: (tinycolor(this.state.markerColors[this.state.markers[marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[marker].toUpperCase()]}`}}>{marker}</span></span>
+                <span className='tag' key={this.props.iid + marker}> <span onClick={() => this.props.filterCallback(marker)} title="Filter result by this marker" className='marker' style={{color: (tinycolor(this.state.markerColors[this.state.markers[marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[marker].toUpperCase()]}`}}>{marker}</span></span>
               ))}
-              {(Object.keys(this.state.markers).length > 0 && Object.keys(this.state.markers)[0] !== "DEFAULT VAL") ? (<span className={'tag'} key={this.props.iid + last_marker}> <span onClick={() => this.props.filterCallback(last_marker)} className={'marker'} style={{color: (tinycolor(this.state.markerColors[this.state.markers[last_marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[last_marker].toUpperCase()]}`}}> {last_marker}</span></span>) : null}
+              {(Object.keys(this.state.markers).length > 0 && Object.keys(this.state.markers)[0] !== "DEFAULT VAL") ? (<span className={'tag'} key={this.props.iid + last_marker}> <span onClick={() => this.props.filterCallback(last_marker)} title="Filter result by this marker" className={'marker'} style={{color: (tinycolor(this.state.markerColors[this.state.markers[last_marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[last_marker].toUpperCase()]}`}}> {last_marker}</span></span>) : null}
             </div>
             <div className='region-info'>
               <strong>Region: </strong>{Object.values(this.state.region).join(', ')}
