@@ -125,9 +125,9 @@ export default class ImageCard extends React.Component {
             <div><strong>Markers:</strong></div>
             <div className='marker-list'>
               {Object.keys(this.state.markers).slice(0, Object.keys(this.state.markers).length - 1).map(marker => (
-                <span className='tag' key={this.props.iid + marker}> <span onClick={() => this.props.filterCallback(marker)} className='marker' style={{color: (tinycolor(this.state.markerColors[this.state.markers[marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[marker].toUpperCase()]}`}}>{marker}</span></span>
+                <span className='tag' key={this.props.iid + marker}> <span onClick={() => this.props.filterCallback(marker)} title="Filter result by this marker" className='marker' style={{color: (tinycolor(this.state.markerColors[this.state.markers[marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[marker].toUpperCase()]}`}}>{marker}</span></span>
               ))}
-              {(Object.keys(this.state.markers).length > 0 && Object.keys(this.state.markers)[0] !== "DEFAULT VAL") ? (<span className={'tag'} key={this.props.iid + last_marker}> <span onClick={() => this.props.filterCallback(last_marker)} className={'marker'} style={{color: (tinycolor(this.state.markerColors[this.state.markers[last_marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[last_marker].toUpperCase()]}`}}> {last_marker}</span></span>) : null}
+              {(Object.keys(this.state.markers).length > 0 && Object.keys(this.state.markers)[0] !== "DEFAULT VAL") ? (<span className={'tag'} key={this.props.iid + last_marker}> <span onClick={() => this.props.filterCallback(last_marker)} title="Filter result by this marker" className={'marker'} style={{color: (tinycolor(this.state.markerColors[this.state.markers[last_marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[last_marker].toUpperCase()]}`}}> {last_marker}</span></span>) : null}
             </div>
             <div className='region-info'>
               <strong>Region: </strong>{Object.values(this.state.region).join(', ')}
