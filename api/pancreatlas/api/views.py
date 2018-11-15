@@ -89,6 +89,7 @@ class TagsetViewset(viewsets.ViewSet):
             "PANCREAS REGION": {},
             "AGE": {},
             "FILE TYPE": {},
+            "SECTION PLANE": {}
         }
 
         tagset_indices = {
@@ -97,7 +98,8 @@ class TagsetViewset(viewsets.ViewSet):
             "SEX": 2,
             "MARKER": 3,
             "PANCREAS REGION": 4,
-            "FILE TYPE": 5,
+            "SECTION PLANE": 5,
+            "FILE TYPE": 6,
         }
 
         for name, tags in tag_list.iteritems():
