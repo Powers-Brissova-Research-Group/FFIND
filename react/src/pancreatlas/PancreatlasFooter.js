@@ -7,7 +7,6 @@ import {
 
 import { Link } from 'react-router-dom'
 
-import Feature from "../Feature";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default class PancreatlasFooter extends React.Component {

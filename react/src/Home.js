@@ -3,8 +3,7 @@ import Banner from './Banner';
 import {
   Row,
   Col,
-  Container,
-  Button
+  Container
 } from 'reactstrap';
 import Feature from './Feature';
 
@@ -58,7 +57,7 @@ render() {
                 <h1>Connections</h1>
                 <p>We are cross-pollinating numerous activities and programs to develop new ideas and endeavors on diabetes research, education and clinical care.</p>
                 <p>A major strategy of this effort is to branch out to those with novel ideas and approaches in order to and share knowledge, technologies and developments that can more rapidly help us understand the underpinnings of diabetes in people.</p>
-                <Button color="secondary">Learn about our collaborators and their work</Button>
+                <a className="btn btn-dark" href="/collaborators">Learn about our collaborators and their work</a>
               </Col>
               <Col md="6">
                 <img src={MapPicture} alt="Collaborators map" className="img-fill" />

@@ -263,8 +263,14 @@ export default class ImageGrid extends React.Component {
 
   render() {
     if (this.state.loaded) {
+      // images_per_row * images_col_split must equal 12
+      var images_per_row = 3
+      var images_col_split = 4
+      var rows_per_page = 5 // 15 or 16
+      var images_per_page = images_per_row * rows_per_page
+
       let pages = []
-      for (let i = 0; i < Math.ceil(this.state.matches.length / 16); i++) {
+      for (let i = 0; i < Math.ceil(this.state.matches.length / images_per_page); i++) {
         if (i === this.state.page) {
           pages.push(<PaginationItem key={i} active><PaginationLink onClick={(e) => this.choosePage(i)}>{i + 1}</PaginationLink></PaginationItem>)
 
@@ -274,11 +280,11 @@ export default class ImageGrid extends React.Component {
       }
 
       let img_grid = []
-      let start = 16 * this.state.page
-      let end = start + 16
+      let start = images_per_page * this.state.page
+      let end = start + images_per_page
       let slice = this.state.matches.slice(start, end);
       while (slice.length) {
-        img_grid.push(slice.splice(0, 4));
+        img_grid.push(slice.splice(0, images_per_row));
       }
 
 
@@ -315,7 +321,7 @@ export default class ImageGrid extends React.Component {
                 {img_grid.map((item, idx) => (
                   <Row key={idx} className="image-row pancreatlas-row">
                     {item.map((image, idx) =>
-                      <Col key={idx} md="3">
+                      <Col key={idx} md={images_col_split}>
                         <ImageCard key={image} iid={image} callback={this.setModal} filterCallback={this.markerFilter} />
                       </Col>
                     )}
