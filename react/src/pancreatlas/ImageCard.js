@@ -5,8 +5,7 @@ import {
   CardImg,
   CardBody,
   Button
-} from 'reactstrap'
-import zoom from '../assets/zoom-in-solid.png';
+} from 'reactstrap';
 
 import {
   FontAwesomeIcon
