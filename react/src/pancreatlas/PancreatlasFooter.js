@@ -8,6 +8,7 @@ import {
 import { Link } from 'react-router-dom'
 
 import Feature from "../Feature";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default class PancreatlasFooter extends React.Component {
   render() {
@@ -69,8 +70,7 @@ export default class PancreatlasFooter extends React.Component {
                 </Col>
 
                 <Col md="6">
-                  <a id="scroll-top-div" href="#" className="float-right"><Feature icon="hand-pointer" /></a>
-
+                  <a id="scroll-top-div" href="#" className="float-right"><FontAwesomeIcon icon="hand-pointer" size="2x" id="x"/></a>
                 </Col>
 
               </Row>

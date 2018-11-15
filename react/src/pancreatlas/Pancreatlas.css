@@ -142,6 +142,10 @@ h1, h2, h3, h4, h5, h6{
   background-color: #262626;
 }
 
+.footer a:hover {
+  color: #fff;
+}
+
 .bg-dark {
   background-color: #204356 !important;
 }
