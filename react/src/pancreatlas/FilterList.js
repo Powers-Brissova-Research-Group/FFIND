@@ -28,6 +28,7 @@ export default class FilterList extends React.Component {
     this.state = {
       loaded: false,
       filters: this.props.filters,
+      prevFilters: this.props.filters,
       clear: true,
       ttOpen: false
     }
@@ -64,6 +65,7 @@ export default class FilterList extends React.Component {
 
   setFilters(tagset, newTag) {
     let tagList = this.state.filters
+    let prevFilters = JSON.parse(JSON.stringify(tagList))
 
     // First check to make sure that we have tags from the current tagset defined
     if (tagList[tagset] !== undefined) {
@@ -95,9 +97,10 @@ export default class FilterList extends React.Component {
       }
     }
     this.setState({
-      filters: tagList
+      filters: tagList,
+      prevFilters: prevFilters
     })
-    this.props.callback(this.state.filters)
+    this.props.callback(this.state.filters, prevFilters)
   }
 
   clear(){

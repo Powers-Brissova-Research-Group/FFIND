@@ -28,6 +28,7 @@ export default class ImageGrid extends React.Component {
       ids: [],
       matches: [],
       filters: {},
+      prevFilters: {},
       start: 0,
       end: 12,
       modalOpen: false,
@@ -158,7 +159,8 @@ export default class ImageGrid extends React.Component {
     })
   }
 
-  filter(tagList) {
+  filter(tagList, prevFilters) {
+    console.log(prevFilters)
     let empty = true
     for (let key of Object.keys(tagList)) {
       if (tagList[key].length > 0) {
@@ -170,6 +172,7 @@ export default class ImageGrid extends React.Component {
     if (empty) {
       this.setState({
         filters: { AGE: [] },
+        prevFilters: { AGE: [] },
         matches: Object.keys(this.state.ids)
       })
     } else {
@@ -191,6 +194,7 @@ export default class ImageGrid extends React.Component {
         }
       }
       this.setState({
+        prevFilters: prevFilters,
         filters: tagList,
         matches: tmp
       })
@@ -205,7 +209,7 @@ export default class ImageGrid extends React.Component {
     if (currentFilters['MARKER'].indexOf(marker) === -1) {
       currentFilters['MARKER'].push(marker)
     }
-    this.filter(currentFilters)
+    this.filter(currentFilters, this.state.prevFilters)
   }
 
   callback(iid, tags) {
@@ -279,34 +283,34 @@ export default class ImageGrid extends React.Component {
               <meta name="description" content="View an entire dataset in the pancreatlas" />
             </MetaTags>
             <Container>
-            <Alert color="info">
-              <Row>
-                <Col m="6">
-                  You are currently viewing <Badge color="info">{this.state.matches.length}</Badge> out of a possible <Badge color="secondary">{Object.keys(this.state.ids).length}</Badge> images
+              <Alert color="info">
+                <Row>
+                  <Col m="6">
+                    You are currently viewing <Badge color="info">{this.state.matches.length}</Badge> out of a possible <Badge color="secondary">{Object.keys(this.state.ids).length}</Badge> images
                         </Col>
-                <Col m="6">
-                  <span className="float-right">Dataset: <strong>{this.state.datasetName}</strong> (ID: {this.props.did})</span>
+                  <Col m="6">
+                    <span className="float-right">Dataset: <strong>{this.state.datasetName}</strong> (ID: {this.props.did})</span>
+                  </Col>
+                </Row>
+              </Alert>
+            </Container>
+
+            <Container>
+              <Row className="pancreatlas-row">
+                <Col md="3">
+                  <FilterList ageGroup={this.props.groupName} tags={this.state.tags} filters={this.state.filters} callback={this.filter} />
+                </Col>
+                <Col md="9">
+                  <Alert color='danger'>
+                    <Row>
+                      <Col md='12'>
+                        The combination of filters you have used returns 0 images. <span className='undo' onClick={() => this.filter(this.state.prevFilters, this.state.filters)}>Undo your most recent change?</span>
+                      </Col>
+                    </Row>
+                  </Alert>
                 </Col>
               </Row>
-            </Alert>
-          </Container>
-
-          <Container>
-            <Row className="pancreatlas-row">
-              <Col md="3">
-                <FilterList ageGroup={this.props.groupName} tags={this.state.tags} filters={this.state.filters} callback={this.filter} />
-              </Col>
-              <Col md="9">
-                <Alert color='danger'>
-                  <Row>
-                    <Col md='12'>
-                      The combination of filters you have used returns 0 images.
-                    </Col>
-                  </Row>
-                </Alert>
-              </Col>
-            </Row>
-          </Container>
+            </Container>
           </div>
         )
       }

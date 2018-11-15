@@ -556,3 +556,7 @@ div.card-img-wrapper:hover .card-search-plus {
   opacity: 0.9
 }
 
+span.undo {
+  cursor: pointer;
+  font-weight: bold;
+}
