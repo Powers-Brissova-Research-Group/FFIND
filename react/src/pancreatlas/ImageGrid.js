@@ -12,7 +12,7 @@ import {
   Input,
   Form,
   FormGroup,
-  Label
+  Label,
 } from 'reactstrap';
 
 import MetaTags from 'react-meta-tags'
@@ -39,7 +39,8 @@ export default class ImageGrid extends React.Component {
       datasetName: '',
       imgs_per_row: 3,
       imgs_col_split: 4,
-      rows_per_page: 5
+      rows_per_page: 5,
+      ttOpen: false
     }
 
     this.nextPage = this.nextPage.bind(this)
@@ -305,9 +306,6 @@ export default class ImageGrid extends React.Component {
           rows_per_page: 5
         })
         break
-
-
-
     }
     console.log(event.target.value)
   }

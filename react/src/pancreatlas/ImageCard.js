@@ -3,7 +3,8 @@ import {
   Card,
   CardImg,
   CardBody,
-  Button
+  Button,
+  Tooltip
 } from 'reactstrap'
 
 import {
@@ -11,17 +12,22 @@ import {
 } from '@fortawesome/react-fontawesome'
 
 import Error from './Error'
+import MarkerTag from './MarkerTag'
 
 export default class ImageCard extends React.Component {
   constructor(props) {
     super(props);
+
+    this.toggleTooltip = this.toggleTooltip.bind(this)
+
     this.state = {
       loaded: false,
       img_url: null,
       img_name: null,
       omero_id: null,
       img_tags: null,
-      match: true
+      match: true,
+      ttOpen: false
     }
   }
 
@@ -106,6 +112,13 @@ export default class ImageCard extends React.Component {
       });
   }
 
+  toggleTooltip(){
+    this.setState({
+      ttOpen: !this.state.ttOpen
+    })
+  }
+
+
   render() {
     var tinycolor = require('tinycolor2')
     if (this.state.loaded) {
@@ -125,9 +138,13 @@ export default class ImageCard extends React.Component {
             <div><strong>Markers:</strong></div>
             <div className='marker-list'>
               {Object.keys(this.state.markers).slice(0, Object.keys(this.state.markers).length - 1).map(marker => (
-                <span className='tag' key={this.props.iid + marker}> <span onClick={() => this.props.filterCallback(marker)} title="Filter result by this marker" className='marker' style={{color: (tinycolor(this.state.markerColors[this.state.markers[marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[marker].toUpperCase()]}`}}>{marker}</span></span>
+                <MarkerTag filterCallback={this.props.filterCallback} marker={marker} iid={this.props.iid} color={this.state.markerColors[this.state.markers[marker].toUpperCase()]} />
+                // <span className='tag' key={this.props.iid + marker}> <span id={`${marker}-${this.props.iid}`} onClick={() => this.props.filterCallback(marker)} className='tag marker' style={{color: (tinycolor(this.state.markerColors[this.state.markers[marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[marker].toUpperCase()]}`}}>{marker}</span><Tooltip placement="right" isOpen={this.state.ttOpen} target={`${marker}-${this.props.iid}`} toggle={this.toggle}>The filters work as an AND function between groups and an OR within them. Example: (Childhood) AND (F OR M)</Tooltip></span>
               ))}
-              {(Object.keys(this.state.markers).length > 0 && Object.keys(this.state.markers)[0] !== "DEFAULT VAL") ? (<span className={'tag'} key={this.props.iid + last_marker}> <span onClick={() => this.props.filterCallback(last_marker)} title="Filter result by this marker" className={'marker'} style={{color: (tinycolor(this.state.markerColors[this.state.markers[last_marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[last_marker].toUpperCase()]}`}}> {last_marker}</span></span>) : null}
+              {(Object.keys(this.state.markers).length > 0 && Object.keys(this.state.markers)[0] !== "DEFAULT VAL") ? (
+                <MarkerTag filterCallback={this.props.filterCallback} marker={last_marker} iid={this.props.iid} color={this.state.markerColors[this.state.markers[last_marker].toUpperCase()]} />
+                ) : null}
+              {/* // <span className={'tag'} key={this.props.iid + last_marker}> <span onClick={() => this.props.filterCallback(last_marker)} title="Filter result by this marker" className={'marker'} style={{color: (tinycolor(this.state.markerColors[this.state.markers[last_marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[last_marker].toUpperCase()]}`}}> {last_marker}</span></span>) : null} */}
             </div>
             <div className='region-info'>
               <strong>Region: </strong>{Object.values(this.state.region).join(', ')}
