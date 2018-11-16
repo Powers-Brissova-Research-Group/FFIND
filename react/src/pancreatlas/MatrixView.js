@@ -29,7 +29,7 @@ export default class MatrixView extends React.Component {
   }
 
   componentDidMount () {
-    fetch(`${process.env.REACT_APP_API_URL}/tagsets`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/tagsets`)
       .then(res => res.json())
       .then(result => {
         this.setState({

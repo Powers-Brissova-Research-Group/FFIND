@@ -34,9 +34,9 @@ export default class ImageGrid extends React.Component {
       end: 12,
       modalOpen: false,
       datasetName: '',
-      imgs_per_row: 3,
-      imgs_col_split: 4,
-      rows_per_page: 5,
+      imgsPerRow: 3,
+      imgsColSplit: 4,
+      rowsPerPage: 5,
       density: 'normal'
     }
 
@@ -60,14 +60,14 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidMount () {
-    fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`)
       .then(res => res.json())
       .then(result => {
         this.setState({
           datasetName: result.dsname
         })
       })
-    fetch(`${process.env.REACT_APP_API_URL}/tagsets/`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/tagsets/`)
       .then(res => res.json())
       .then(
         (tresult) => {
@@ -86,7 +86,7 @@ export default class ImageGrid extends React.Component {
               }
             }
           }
-          fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`)
+          window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`)
             .then(res => res.json())
             .then(
               (result) => {
@@ -117,51 +117,51 @@ export default class ImageGrid extends React.Component {
   }
 
   updateTags (shouldDelete) {
-    let app_tags = JSON.parse(JSON.stringify(this.raw_tags))
+    let appTags = JSON.parse(JSON.stringify(this.raw_tags))
     for (let key of this.state.matches) {
       for (let tag of Object.keys(this.tag_dict)) {
         let intersection = this.state.ids[key].filter(val => this.tag_dict[tag].indexOf(val) !== -1)
         if (intersection.length > 0) {
           for (let tval of intersection) {
-            app_tags[this.tag_idx[tag]].tags[tval]++
+            appTags[this.tag_idx[tag]].tags[tval]++
           }
         }
       }
     }
     if (shouldDelete) {
-      for (let tagset of Object.keys(app_tags)) {
-        for (let tag of Object.keys(app_tags[tagset].tags)) {
-          if (app_tags[tagset].tags[tag] === 0) {
-            delete app_tags[tagset].tags[tag]
+      for (let tagset of Object.keys(appTags)) {
+        for (let tag of Object.keys(appTags[tagset].tags)) {
+          if (appTags[tagset].tags[tag] === 0) {
+            delete appTags[tagset].tags[tag]
             delete this.raw_tags[tagset].tags[tag]
           }
         }
       }
     }
     this.setState({
-      tags: app_tags
+      tags: appTags
     })
   }
 
-  choosePage (new_page) {
+  choosePage (newPage) {
     this.setState({
-      page: new_page
+      page: newPage
     })
   }
 
   nextPage () {
     if (this.state.page >= Math.ceil(this.state.images.length / 12)) { return false }
-    let new_page = this.state.page + 1
+    let newPage = this.state.page + 1
     this.setState({
-      page: new_page
+      page: newPage
     })
   }
 
   prevPage () {
     if (this.state.page <= 0) { return false }
-    let new_page = this.state.page - 1
+    let newPage = this.state.page - 1
     this.setState({
-      page: new_page
+      page: newPage
     })
   }
 
@@ -229,19 +229,19 @@ export default class ImageGrid extends React.Component {
   }
 
   setModal (imgInfo) {
-    fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`)
       .then(res => res.json())
       .then(
         (result) => {
           if (Object.keys(result.kvals).length > 0) {
             let path = result.kvals['File path'].val
             let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
-            let age_re = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
+            let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
 
             let markerColors = result.channel_info
-            let markerColor_re = /^.+\((.+)\)$/
+            let markerColorRe = /^.+\((.+)\)$/
             Object.keys(markerColors).forEach(function (key) {
-              var newKey = markerColor_re.test(key) ? markerColor_re.exec(key)[1] : key
+              var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
               if (newKey !== key) {
                 markerColors[newKey] = markerColors[key]
                 delete markerColors[key]
@@ -250,7 +250,7 @@ export default class ImageGrid extends React.Component {
 
             let matches = re.exec(path)
             result.kvals['File path'].val = matches[0]
-            result.kvals['Donor info - Age'].val = result.tags.filter(val => age_re.test(val))[0]
+            result.kvals['Donor info - Age'].val = result.tags.filter(val => ageRe.test(val))[0]
             this.setState({
               modalData: {
                 img_id: imgInfo,
@@ -282,26 +282,26 @@ export default class ImageGrid extends React.Component {
     switch (density.toLowerCase()) {
       case 'sparse':
         this.setState({
-          imgs_per_row: 2,
-          imgs_col_split: 6,
-          rows_per_page: 6,
+          imgsPerRow: 2,
+          imgsColSplit: 6,
+          rowsPerPage: 6,
           density: 'sparse'
         })
         break
       case 'dense':
         this.setState({
-          imgs_per_row: 4,
-          imgs_col_split: 3,
-          rows_per_page: 4,
+          imgsPerRow: 4,
+          imgsColSplit: 3,
+          rowsPerPage: 4,
           density: 'dense'
         })
         break
       default:
       case 'normal':
         this.setState({
-          imgs_per_row: 3,
-          imgs_col_split: 4,
-          rows_per_page: 5,
+          imgsPerRow: 3,
+          imgsColSplit: 4,
+          rowsPerPage: 5,
           density: 'normal'
         })
         break
@@ -352,11 +352,11 @@ export default class ImageGrid extends React.Component {
       // images_per_row * images_col_split must equal 12
       // var images_per_row = 3
       // var images_col_split = 4
-      // var rows_per_page = 5 // 15 or 16
-      var images_per_page = this.state.imgs_per_row * this.state.rows_per_page
+      // var rowsPerPage = 5 // 15 or 16
+      var imagesPerPage = this.state.imgsPerRow * this.state.rowsPerPage
 
       let pages = []
-      for (let i = 0; i < Math.ceil(this.state.matches.length / images_per_page); i++) {
+      for (let i = 0; i < Math.ceil(this.state.matches.length / imagesPerPage); i++) {
         if (i === this.state.page) {
           pages.push(<PaginationItem key={i} active><PaginationLink onClick={(e) => this.choosePage(i)}>{i + 1}</PaginationLink></PaginationItem>)
         } else {
@@ -364,12 +364,12 @@ export default class ImageGrid extends React.Component {
         }
       }
 
-      let img_grid = []
-      let start = images_per_page * this.state.page
-      let end = start + images_per_page
+      let imgGrid = []
+      let start = imagesPerPage * this.state.page
+      let end = start + imagesPerPage
       let slice = this.state.matches.slice(start, end)
       while (slice.length) {
-        img_grid.push(slice.splice(0, this.state.imgs_per_row))
+        imgGrid.push(slice.splice(0, this.state.imgsPerRow))
       }
 
       // C:\Users\messmej\Documents\Projects\pancreatlas\react\src\assets\pancreatlas\thumbs\55.jpg
@@ -412,10 +412,10 @@ export default class ImageGrid extends React.Component {
                 <FilterList ageGroup={this.props.groupName} tags={this.state.tags} filters={this.state.filters} callback={this.filter} />
               </Col>
               <Col md='9'>
-                {img_grid.map((item, idx) => (
+                {imgGrid.map((item, idx) => (
                   <Row key={idx} className='image-row pancreatlas-row'>
                     {item.map((image, idx) =>
-                      <Col key={idx} md={this.state.imgs_col_split}>
+                      <Col key={idx} md={this.state.imgsColSplit}>
                         <ImageCard key={image} iid={image} callback={this.setModal} filterCallback={this.markerFilter} />
                       </Col>
                     )}

@@ -10,14 +10,14 @@ import MetaTags from 'react-meta-tags'
 
 import ImageGrid from './ImageGrid'
 
-import neonatal_timeline from '../assets/pancreatlas/ages/timeline-neonatal.png'
-import infant_timeline from '../assets/pancreatlas/ages/timeline-infancy.png'
-import childhood_timeline from '../assets/pancreatlas/ages/timeline-childhood.png'
+import neonatalTimeline from '../assets/pancreatlas/ages/timeline-neonatal.png'
+import infantTimeline from '../assets/pancreatlas/ages/timeline-infancy.png'
+import childhoodTimeline from '../assets/pancreatlas/ages/timeline-childhood.png'
 
-import gestational_islet from '../assets/pancreatlas/ages/fetal-islet.png'
-import neonatal_islet from '../assets/pancreatlas/ages/neonatal-islet.png'
-import infant_islet from '../assets/pancreatlas/ages/infant-islet.png'
-import childhood_islet from '../assets/pancreatlas/ages/childhood-islet.png'
+import gestationalIslet from '../assets/pancreatlas/ages/fetal-islet.png'
+import neonatalIslet from '../assets/pancreatlas/ages/neonatal-islet.png'
+import infantIslet from '../assets/pancreatlas/ages/infant-islet.png'
+import childhoodIslet from '../assets/pancreatlas/ages/childhood-islet.png'
 
 export default class AgeBrowser extends React.Component {
   constructor (props) {
@@ -83,8 +83,8 @@ export default class AgeBrowser extends React.Component {
                 <span className='age-group' onClick={() => this.show(0)}>
                   <span className='age-group-text'>Gestational<br /><small>Weeks 7 &ndash; 18</small></span>
                   <span className='age-group-imgs'>
-                    <img className='age-group-img islet' src={gestational_islet} alt='gestational islet' />
-                    <img className='age-group-img' src={neonatal_timeline} alt='gestational' />
+                    <img className='age-group-img islet' src={gestationalIslet} alt='gestational islet' />
+                    <img className='age-group-img' src={neonatalTimeline} alt='gestational' />
                   </span>
                 </span>
                 {/* <Button color="primary" size="lg" block onClick={() => this.show(0)}>Gestational</Button> */}
@@ -93,8 +93,8 @@ export default class AgeBrowser extends React.Component {
                 <span className='age-group' onClick={() => this.show(1)}>
                   <span className='age-group-text'>Neonatal<br /><small>Birth &ndash; 2 months</small></span>
                   <span className='age-group-imgs'>
-                    <img className='age-group-img islet' src={neonatal_islet} alt='neonatal islet' />
-                    <img className='age-group-img' src={neonatal_timeline} alt='neonatal' />
+                    <img className='age-group-img islet' src={neonatalIslet} alt='neonatal islet' />
+                    <img className='age-group-img' src={neonatalTimeline} alt='neonatal' />
                   </span>
                 </span>
                 {/* <Button color="primary" size="lg" block onClick={() => this.show(1)}>Neonatal</Button> */}
@@ -103,8 +103,8 @@ export default class AgeBrowser extends React.Component {
                 <span className='age-group' onClick={() => this.show(2)}>
                   <span className='age-group-text'>Infant<br /><small>2 months &ndash; 24 months</small></span>
                   <span className='age-group-imgs'>
-                    <img className='age-group-img islet' src={infant_islet} alt='infant islet' />
-                    <img className='age-group-img' src={infant_timeline} alt='infant' />
+                    <img className='age-group-img islet' src={infantIslet} alt='infant islet' />
+                    <img className='age-group-img' src={infantTimeline} alt='infant' />
                   </span>
                 </span>
                 {/* <Button color="primary" size="lg" block onClick={() => this.show(2)}>Infant</Button> */}
@@ -113,8 +113,8 @@ export default class AgeBrowser extends React.Component {
                 <span className='age-group' onClick={() => this.show(3)}>
                   <span className='age-group-text'>Childhood<br /><small>2 years &ndash; 10 years</small></span>
                   <span className='age-group-imgs'>
-                    <img className='age-group-img islet' src={childhood_islet} alt='childhood islet' />
-                    <img className='age-group-img' src={childhood_timeline} alt='childhood' />
+                    <img className='age-group-img islet' src={childhoodIslet} alt='childhood islet' />
+                    <img className='age-group-img' src={childhoodTimeline} alt='childhood' />
                   </span>
                 </span>
                 {/* <Button color="primary" size="lg" block onClick={() => this.show(3)}>Childhood</Button> */}

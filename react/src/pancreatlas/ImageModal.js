@@ -21,12 +21,12 @@ export default class ImageModal extends React.Component {
 
   render () {
     var tinycolor = require('tinycolor2')
-    let label_re = /^([a-zA-Z]+\s+info)?(\s+-\s+)?(.+)$/
+    let labelRe = /^([a-zA-Z]+\s+info)?(\s+-\s+)?(.+)$/
     if (this.props.modalData !== undefined) {
-      let marker_re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
-      let matchingKeys = Object.keys(this.props.modalData.img_data).filter(key => marker_re.test(key))
+      let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
+      let matchingKeys = Object.keys(this.props.modalData.img_data).filter(key => markerRe.test(key))
       for (let key of matchingKeys) {
-        this.markers[marker_re.exec(key)[3]] = this.props.modalData.img_data[key].val
+        this.markers[markerRe.exec(key)[3]] = this.props.modalData.img_data[key].val
       }
       this.relevantKeys = Object.keys(this.props.modalData.img_data).sort().filter(
         key => ['Stain info - DAPI', 'Stain info - cy2', 'Stain info - cy3', 'Stain info - cy5', 'Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - Pancreas Region'].indexOf(key) === -1
@@ -70,7 +70,7 @@ export default class ImageModal extends React.Component {
                   <Table>
                     <tbody>
                       {this.relevantKeys.map(key => {
-                        return <DetailRow data={this.props.modalData.img_data[key].val} desc={this.defs[key].short_desc} heading={label_re.exec(key)[3]} />
+                        return <DetailRow data={this.props.modalData.img_data[key].val} desc={this.defs[key].short_desc} heading={labelRe.exec(key)[3]} />
                       })}
                     </tbody>
                   </Table>
