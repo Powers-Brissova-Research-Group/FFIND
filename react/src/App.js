@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 
 import {
   BrowserRouter as Router,
   Route,
   Switch
-} from 'react-router-dom';
+} from 'react-router-dom'
 
-import HandelApp from './HandelApp';
+import HandelApp from './HandelApp'
 import PancreatlasApp from './pancreatlas/PancreatlasApp'
 import TopNav from './TopNav'
 import PancreatlasFooter from './pancreatlas/PancreatlasFooter'
@@ -19,53 +19,52 @@ import { faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus 
 library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus)
 
 class App extends Component {
-
-  constructor(props){
+  constructor (props) {
     super(props)
     this.checkCompatability = this.checkCompatability.bind(this)
   }
 
-  checkCompatability(){
+  checkCompatability () {
     const { detect } = require('detect-browser')
     const browser = detect()
     var supported = true
 
-    switch(browser.name.toLowerCase()){
+    switch (browser.name.toLowerCase()) {
       case 'firefox':
-        if (parseInt(browser.version.split('.')[0], 10) < 50){
-          supported = false;
+        if (parseInt(browser.version.split('.')[0], 10) < 50) {
+          supported = false
         }
         break
       case 'chrome':
-        if (parseInt(browser.version.split('.')[0], 10) < 55){
-          supported = false;
+        if (parseInt(browser.version.split('.')[0], 10) < 55) {
+          supported = false
         }
         break
       case 'ie':
       case 'safari':
       case 'opera':
       case 'edge':
-        supported = false;
+        supported = false
         break
       default:
-        supported = false;
+        supported = false
     }
 
-    return {isSupported: supported, browserInfo: browser}
-
+    return { isSupported: supported, browserInfo: browser }
   }
 
-  render() {
-    var supportInfo = this.checkCompatability();
+  render () {
+    var supportInfo = this.checkCompatability()
     var supported = supportInfo.isSupported
     var browser = supportInfo.browserInfo
-    console.log(`Browser: ${JSON.stringify(supportInfo)}`)
+    /* console.log(`Browser: ${JSON.stringify(supportInfo)}`) */
+    var version = supportInfo.browserInfo.version
     // if (browser.name.toLowerCase() !== 'firefox' && browser.name.toLowerCase() !== 'chrome'){
     //   supported = false
     // }
     return (
       <div className='app'>
-        {supported === false && <BrowserNotSupportedBanner browser={browser.name === 'ie' ? 'Internet Explorer' : browser.name} />}
+        {supported === false && <BrowserNotSupportedBanner version={version} browser={browser.name === 'ie' ? 'Internet Explorer' : browser.name} />}
         {/* <Container fluid className='test-feedback'>
           <Row>
             <Col sm="12">
@@ -74,19 +73,19 @@ class App extends Component {
           </Row>
         </Container> */}
         <Router>
-          <div className="App">
+          <div className='App'>
             <TopNav />
             <Switch>
-              <Route exact={true} path="/" component={HandelApp} />
+              <Route exact path='/' component={HandelApp} />
               <Route path='/pancreatlas' component={PancreatlasApp} />
-              <Route path="/" component={HandelApp} />
+              <Route path='/' component={HandelApp} />
             </Switch>
             <PancreatlasFooter />
           </div>
         </Router>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

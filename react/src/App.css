@@ -265,7 +265,8 @@ div.overlay {
 }
 
 div.browser-not-supported-banner {
-  background-color: #ff0000;
+  background-color: #b4161a;
+  color: #fff;
   text-align: center;
   padding-top: 0.5rem;
   display: flex;
@@ -274,3 +275,6 @@ div.browser-not-supported-banner {
   align-items: center;
 }
 
+div.browser-not-supported-banner a, a:visited, a:hover {
+  color: #fff;
+}
