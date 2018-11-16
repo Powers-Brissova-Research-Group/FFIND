@@ -8,13 +8,13 @@ import {
 
 import MetaTags from 'react-meta-tags'
 
-import ImageMatrix from './ImageMatrix';
+import ImageMatrix from './ImageMatrix'
 
 import Error from './Error'
 
 export default class MatrixView extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       tag1: null,
       tag2: null,
@@ -28,7 +28,7 @@ export default class MatrixView extends React.Component {
     this.showMatrix = this.showMatrix.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     fetch(`${process.env.REACT_APP_API_URL}/tagsets`)
       .then(res => res.json())
       .then(result => {
@@ -48,7 +48,7 @@ export default class MatrixView extends React.Component {
       })
   }
 
-  handleChange(event) {
+  handleChange (event) {
     let key = event.target.id
     if (key === 'tag1') {
       this.setState({
@@ -59,16 +59,15 @@ export default class MatrixView extends React.Component {
         tag2: event.target.value
       })
     }
-
   }
 
-  showMatrix() {
+  showMatrix () {
     this.setState({
       showMatrix: true
     })
   }
 
-  setMatrix(t1, t2) {
+  setMatrix (t1, t2) {
     this.setState({
       tag1: t1,
       tag2: t2,
@@ -76,7 +75,7 @@ export default class MatrixView extends React.Component {
     })
   }
 
-  render() {
+  render () {
     if (this.state.loaded) {
       if (!this.state.showMatrix) {
         return (
@@ -84,7 +83,7 @@ export default class MatrixView extends React.Component {
             <div className='matrix-view'>
               <MetaTags>
                 <title>Compare Attributes -- Pancreatlas / HANDEL-P</title>
-                <meta name="description" content="Pick two attribute sets and compare matching images in the pancreatlas"/>
+                <meta name='description' content='Pick two attribute sets and compare matching images in the pancreatlas' />
               </MetaTags>
               <h1>Matrix View</h1>
               <p>Select two dimensions to generate a matrix of images based on these filters.</p>
@@ -92,7 +91,7 @@ export default class MatrixView extends React.Component {
                 <Table className='matrix-table'>
                   <thead>
                     <tr className='row'>
-                      <td className='col-md-2 matrix-sel'></td>
+                      <td className='col-md-2 matrix-sel' />
                       {this.state.tagsets.map(ts => (
                         <td className='col-md-2 matrix-sel'><strong>{ts.set_name}</strong></td>
                       ))}
@@ -106,7 +105,7 @@ export default class MatrixView extends React.Component {
                         if (tagset1.set_name === tagset2.set_name) {
                           return <td className='col-md-2 matrix-sel'><span>&mdash;</span></td>
                         } else {
-                          return (<td className='col-md-2 matrix-sel'><Button className='matrix-select-button' color="link" onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>)
+                          return (<td className='col-md-2 matrix-sel'><Button className='matrix-select-button' color='link' onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>)
                         }
                       }
                       )}
@@ -146,9 +145,9 @@ export default class MatrixView extends React.Component {
     } else {
       return (
         <Container>
-          <div className="loading">
+          <div className='loading'>
             <strong>Loading {this.props.dataset_name}...</strong>
-            <Progress animated color="success" value="100" />
+            <Progress animated color='success' value='100' />
           </div>
         </Container>
       )

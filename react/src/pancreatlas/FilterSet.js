@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   Row,
   Col
@@ -17,14 +17,14 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import FilterItem from './FilterItem'
 
 export default class FilterSet extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       open: true
     }
   }
 
-  render() {
+  render () {
     if (this.props.setName !== 'AGE') {
       // Object.keys(this.props.tags).map(tag => {
       //   if(this.props.filters !== undefined && this.props.filter.indexOf(tag) !== -1){
@@ -32,12 +32,12 @@ export default class FilterSet extends React.Component {
       //   }
       // })
       return (
-        <div className="filter-set">
-          <Row className="pancreatlas-row">
-            <Col md="8" className='text-left'>
+        <div className='filter-set'>
+          <Row className='pancreatlas-row'>
+            <Col md='8' className='text-left'>
               <h4>{this.props.setName}</h4>
             </Col>
-            <Col md="4" className='text-right'>
+            <Col md='4' className='text-right'>
               <FontAwesomeIcon icon={faAngleRight} className={this.state.open ? 'collapse-button collapse-button-open' : 'collapse-button collapse-button-closed'} onClick={() => this.setState({ open: !this.state.open })} />
             </Col>
           </Row>
@@ -49,7 +49,7 @@ export default class FilterSet extends React.Component {
         </div>
       )
     } else {
-      return null;
+      return null
     }
   }
 }

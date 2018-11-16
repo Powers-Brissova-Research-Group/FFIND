@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 import CollectionRow from './CollectionRow'
 export default class CollectionList extends React.Component {
-  render() {
+  render () {
     return (
-      <div className="collection-list">
+      <div className='collection-list'>
         {this.props.collections.map(item => (
-          <CollectionRow title={item.name} description={item.description} key={item.name}/>
+          <CollectionRow title={item.name} description={item.description} key={item.name} />
         ))}
       </div>
     )

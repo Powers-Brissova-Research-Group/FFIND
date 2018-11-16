@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default class Error extends React.Component {
-  render() {
+  render () {
     return (
       <div className='error'>
         <h1>{this.props.error_title}</h1>

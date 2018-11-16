@@ -16,7 +16,7 @@ import MatrixModalListComponent from './MatrixModalListComponent'
 import Error from './Error'
 
 export default class ImageMatrix extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       loaded: false,
@@ -28,47 +28,47 @@ export default class ImageMatrix extends React.Component {
       selected_set: []
     }
 
-    this.toggle = this.toggle.bind(this);
+    this.toggle = this.toggle.bind(this)
     this.toggleDetail = this.toggleDetail.bind(this)
-    this.flip = this.flip.bind(this);
+    this.flip = this.flip.bind(this)
     this.compareAges = this.compareAges.bind(this)
     this.setModal = this.setModal.bind(this)
   }
 
-  compareAges(age1, age2) {
-    let ageRe = /^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$/;
+  compareAges (age1, age2) {
+    let ageRe = /^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$/
     let a = ageRe.exec(age1)
     let b = ageRe.exec(age2)
     switch (a[3]) {
       case 'd':
-        a[3] = 0;
-        break;
+        a[3] = 0
+        break
       case 'w':
-        a[3] = 1;
-        break;
+        a[3] = 1
+        break
       case 'mo':
-        a[3] = 2;
-        break;
+        a[3] = 2
+        break
       case 'y':
         a[3] = 3
-        break;
+        break
       default:
         a[3] = -1
     }
 
     switch (b[3]) {
       case 'd':
-        b[3] = 0;
-        break;
+        b[3] = 0
+        break
       case 'w':
-        b[3] = 1;
-        break;
+        b[3] = 1
+        break
       case 'mo':
-        b[3] = 2;
-        break;
+        b[3] = 2
+        break
       case 'y':
         b[3] = 3
-        break;
+        break
       default:
         b[3] = -1
     }
@@ -100,7 +100,7 @@ export default class ImageMatrix extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     fetch(`${process.env.REACT_APP_API_URL}/matrix/${this.props.tag_1},${this.props.tag_2},${this.props.dsid}`)
       .then(res => res.json())
       .then((result) => {
@@ -158,9 +158,9 @@ export default class ImageMatrix extends React.Component {
           loaded: true,
           matrix: new_matrix,
           matrix_t: new_matrix_t,
-          view_transpose: ((Object.keys(new_matrix).length <= Object.keys(new_matrix_t).length) ? true : false),
+          view_transpose: ((Object.keys(new_matrix).length <= Object.keys(new_matrix_t).length)),
           tag_a: result['tag_a'],
-          tag_b: result['tag_b'],
+          tag_b: result['tag_b']
           // matrix: result['matrix']
         })
       })
@@ -169,30 +169,29 @@ export default class ImageMatrix extends React.Component {
           loaded: false,
           error: err
         })
-      });
-
+      })
   }
 
-  toggle(new_set = []) {
+  toggle (new_set = []) {
     this.setState({
       modal: !this.state.modal,
       selected_set: new_set
     })
   }
 
-  toggleDetail() {
+  toggleDetail () {
     this.setState({
       modalOpen: !this.state.modalOpen
     })
   }
 
-  flip() {
+  flip () {
     this.setState({
       view_transpose: !this.state.view_transpose
-    });
+    })
   }
 
-  setModal(imgInfo) {
+  setModal (imgInfo) {
     fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`)
       .then(res => res.json())
       .then(
@@ -210,7 +209,6 @@ export default class ImageMatrix extends React.Component {
               delete markerColors[key]
             }
           })
-
 
           let matches = re.exec(path)
           result.kvals['File path'].val = matches[0]
@@ -230,14 +228,13 @@ export default class ImageMatrix extends React.Component {
           loaded: false,
           error: err
         })
-      });
+      })
   }
 
-
-  render() {
+  render () {
     if (this.state.loaded) {
-      let headings = null;
-      let chosen_matrix = null;
+      let headings = null
+      let chosen_matrix = null
       if (!this.state.view_transpose) {
         headings = Object.keys(this.state.matrix[Object.keys(this.state.matrix)[0]])
         chosen_matrix = this.state.matrix
@@ -255,7 +252,7 @@ export default class ImageMatrix extends React.Component {
             <Table hover className='image-matrix'>
               <thead>
                 <tr>
-                  <td className='matrix-cell'><Button color="primary" onClick={this.flip}>Flip Matrix</Button></td>
+                  <td className='matrix-cell'><Button color='primary' onClick={this.flip}>Flip Matrix</Button></td>
                   {headings.map(item => (
                     <td key={item} className='matrix-cell matrix-head'><strong>{item}</strong></td>
                   ))}
@@ -265,7 +262,7 @@ export default class ImageMatrix extends React.Component {
                 {Object.keys(chosen_matrix).map(row => (
                   <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(chosen_matrix[row]).map(col => (
                     <td key={row + ', ' + col} className='matrix-cell'>
-                      {chosen_matrix[row][col][0] !== undefined && <div className='matrix-cell-img' onClick={() => this.toggle(chosen_matrix[row][col])}><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosen_matrix[row][col][0]}.jpg`)} alt="" /><div className='matrix-cell-count'><p>{`${chosen_matrix[row][col].length}`}</p></div></div>}
+                      {chosen_matrix[row][col][0] !== undefined && <div className='matrix-cell-img' onClick={() => this.toggle(chosen_matrix[row][col])}><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosen_matrix[row][col][0]}.jpg`)} alt='' /><div className='matrix-cell-count'><p>{`${chosen_matrix[row][col].length}`}</p></div></div>}
                       {chosen_matrix[row][col][0] === undefined && <p>Data not collected</p>}
                     </td>
                   ))}</tr>
@@ -292,7 +289,7 @@ export default class ImageMatrix extends React.Component {
               </Table>
             </ModalBody>
             <ModalFooter>
-              <Button color="danger" onClick={() => this.toggle([])}>Dismiss</Button>
+              <Button color='danger' onClick={() => this.toggle([])}>Dismiss</Button>
             </ModalFooter>
           </Modal>
           <ImageModal toggle={this.toggleDetail} isOpen={this.state.modalOpen} modalData={this.state.modalData} />
@@ -304,9 +301,9 @@ export default class ImageMatrix extends React.Component {
     } else {
       return (
         <Container>
-          <div className="loading">
+          <div className='loading'>
             <strong>Loading {this.props.dataset_name}...</strong>
-            <Progress animated color="success" value="100" />
+            <Progress animated color='success' value='100' />
           </div>
         </Container>
       )
@@ -318,4 +315,3 @@ ImageMatrix.defaultProps = {
   tag_1: 'age',
   tag_2: 'pancreas%20region'
 }
-

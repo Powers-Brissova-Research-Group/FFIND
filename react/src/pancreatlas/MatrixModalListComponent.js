@@ -3,20 +3,19 @@ import {
   Button
 } from 'reactstrap'
 
-
 export default class MatrixModalListComponent extends React.Component {
-  constructor(props){
+  constructor (props) {
     super(props)
     this.state = {
       loaded: false,
       img: undefined
     }
   }
-  componentDidMount() {
+  componentDidMount () {
     fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`)
       .then(res => res.json())
       .then(result => {
-        let kvals = result.kvals;
+        let kvals = result.kvals
         let marker_re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
         let donor_re = /(^Donor info)(\s+-\s+)(.+$)/i
         let region_re = /(^Image info)(\s+-\s+)(Section Plane$|Pancreas Region$)/
@@ -63,11 +62,11 @@ export default class MatrixModalListComponent extends React.Component {
       })
   }
 
-  render() {
-    if(this.state.loaded === true){
+  render () {
+    if (this.state.loaded === true) {
       return (
         <tr>
-          <td><img className='modal-thumb' src={require(`./../assets/pancreatlas/thumbs/${this.state.img.iid}.jpg`)} alt="" /></td>
+          <td><img className='modal-thumb' src={require(`./../assets/pancreatlas/thumbs/${this.state.img.iid}.jpg`)} alt='' /></td>
           <td>
             {Object.keys(this.state.img.donor).map(key =>
               (<div>
@@ -79,12 +78,12 @@ export default class MatrixModalListComponent extends React.Component {
             </div>
           </td>
           { /* onClick={() => this.setModal(this.state.img.iid)} */}
-          <td><Button color="primary" onClick={() => this.props.modalCallback(this.state.img.iid)}>View</Button></td>
+          <td><Button color='primary' onClick={() => this.props.modalCallback(this.state.img.iid)}>View</Button></td>
         </tr>
-  
-      )  
-    }  else {
-      return null;
+
+      )
+    } else {
+      return null
     }
   }
 }

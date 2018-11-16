@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 import {
   Container,
   Row
 } from 'reactstrap'
 
 export default class Header extends React.Component {
-  render() {
+  render () {
     if (this.props.subheading === undefined) {
       return (
         <Container fluid className='header-container'>
@@ -15,7 +15,7 @@ export default class Header extends React.Component {
             </Row>
           </Container>
         </Container>
-      );
+      )
     } else {
       return (
         <Container fluid className='header-container'>
@@ -26,7 +26,7 @@ export default class Header extends React.Component {
             </Row>
           </Container>
         </Container>
-      );
+      )
     }
   }
 }

@@ -11,7 +11,6 @@ import {
   Collapse
 } from 'react-collapse'
 
-
 import AgeFilterItem from './AgeFilterItem'
 
 import {
@@ -20,13 +19,10 @@ import {
 
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
-
-
 export default class AgeFilterSet extends React.Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props)
-    this.findAgeGroup = this.findAgeGroup.bind(this);
+    this.findAgeGroup = this.findAgeGroup.bind(this)
     // this.createFilters = this.createFilters.bind(this)
     this.updateFilters = this.updateFilters.bind(this)
     this.toggleGroup = this.toggleGroup.bind(this)
@@ -45,12 +41,12 @@ export default class AgeFilterSet extends React.Component {
       INFANCY: 2,
       CHILDHOOD: 3,
       ADULT: 4
-    };
+    }
     this.initialized = false
   }
 
-  componentDidUpdate(prevProps){
-    if((prevProps.filters !== undefined && prevProps.filters.length) !== 0 && this.props.filters.length === 0){
+  componentDidUpdate (prevProps) {
+    if ((prevProps.filters !== undefined && prevProps.filters.length) !== 0 && this.props.filters.length === 0) {
       this.setState({
         open: true,
         ageFilters: [],
@@ -62,8 +58,8 @@ export default class AgeFilterSet extends React.Component {
     }
   }
 
-  findAgeGroup(age) {
-    let ageRe = /^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$/;
+  findAgeGroup (age) {
+    let ageRe = /^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$/
     let tmp = ageRe.exec(age)
     if (tmp[1] !== undefined) {
       if (Number(tmp[2]) < 33 && tmp[3] === 'w') {
@@ -92,40 +88,40 @@ export default class AgeFilterSet extends React.Component {
     }
   }
 
-  compareAges(age1, age2) {
-    let ageRe = /^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$/;
+  compareAges (age1, age2) {
+    let ageRe = /^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$/
     let a = ageRe.exec(age1)
     let b = ageRe.exec(age2)
     switch (a[3]) {
       case 'd':
-        a[3] = 0;
-        break;
+        a[3] = 0
+        break
       case 'w':
-        a[3] = 1;
-        break;
+        a[3] = 1
+        break
       case 'mo':
-        a[3] = 2;
-        break;
+        a[3] = 2
+        break
       case 'y':
         a[3] = 3
-        break;
+        break
       default:
         a[3] = -1
     }
 
     switch (b[3]) {
       case 'd':
-        b[3] = 0;
-        break;
+        b[3] = 0
+        break
       case 'w':
-        b[3] = 1;
-        break;
+        b[3] = 1
+        break
       case 'mo':
-        b[3] = 2;
-        break;
+        b[3] = 2
+        break
       case 'y':
         b[3] = 3
-        break;
+        break
       default:
         b[3] = -1
     }
@@ -157,7 +153,7 @@ export default class AgeFilterSet extends React.Component {
     }
   }
 
-  toggleGroup(checked, ages, key) {
+  toggleGroup (checked, ages, key) {
     // let checked = evt.target.checked
     let newAges = null
     if (checked) {
@@ -176,12 +172,12 @@ export default class AgeFilterSet extends React.Component {
     this.updateFilters(newAges)
   }
 
-  updateFilters(ages) {
+  updateFilters (ages) {
     this.setState({ ageFilters: ages })
     this.props.callback('AGE', ages)
   }
 
-  render() {
+  render () {
     // let ages = ['G8w', 'G12w', 'G12.3w', 'G15w', 'G15.5w', 'G17w', 'G17.3w', 'G18w', 'G32w', 'G33w', 'G33.4w+4d', 'G37w', 'G39.9w', 'G41w', '1d', '5d', '2mo', '3mo', '10mo', '20mo', '4y', '5y', '10y']
 
     let ageGroups = {
@@ -195,16 +191,16 @@ export default class AgeFilterSet extends React.Component {
       switch (grp) {
         case 0:
           ageGroups.gestational.push(age)
-          break;
+          break
         case 1:
           ageGroups.neonatal.push(age)
           break
         case 2:
           ageGroups.infancy.push(age)
-          break;
+          break
         case 3:
           ageGroups.childhood.push(age)
-          break;
+          break
         default:
           break
       }
@@ -223,22 +219,22 @@ export default class AgeFilterSet extends React.Component {
     }
     return (
       <div className='age-filter'>
-        <Row className="pancreatlas-row">
-          <Col md="8" className="text-left">
+        <Row className='pancreatlas-row'>
+          <Col md='8' className='text-left'>
             <h4>AGE</h4>
           </Col>
-          <Col className='text-right' md="4">
+          <Col className='text-right' md='4'>
             <FontAwesomeIcon icon={faAngleRight} className={this.state.open ? 'collapse-button collapse-button-open' : 'collapse-button collapse-button-closed'} onClick={() => this.setState({ open: !this.state.open })} />
           </Col>
         </Row>
         <Collapse isOpened={this.state.open}>
           {Object.keys(ageGroups).map(key => (
             <div className='group-filter' key={key}>
-              <Row className="pancreatlas-row">
-                <Col md="12" className='text-left'>
+              <Row className='pancreatlas-row'>
+                <Col md='12' className='text-left'>
                   <FormGroup check>
                     <Label check>
-                      <Input type="checkbox" checked={!this.state[key]} onChange={evt => this.toggleGroup(evt.target.checked, ageGroups[key], key)} />{key.charAt(0).toUpperCase() + key.slice(1)}
+                      <Input type='checkbox' checked={!this.state[key]} onChange={evt => this.toggleGroup(evt.target.checked, ageGroups[key], key)} />{key.charAt(0).toUpperCase() + key.slice(1)}
                     </Label>
                   </FormGroup>
                 </Col>
