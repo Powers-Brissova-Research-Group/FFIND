@@ -57,13 +57,14 @@ class App extends Component {
     var supportInfo = this.checkCompatability()
     var supported = supportInfo.isSupported
     var browser = supportInfo.browserInfo
-    console.log(`Browser: ${JSON.stringify(supportInfo)}`)
+    /* console.log(`Browser: ${JSON.stringify(supportInfo)}`) */
+    var version = supportInfo.browserInfo.version
     // if (browser.name.toLowerCase() !== 'firefox' && browser.name.toLowerCase() !== 'chrome'){
     //   supported = false
     // }
     return (
       <div className='app'>
-        {supported === false && <BrowserNotSupportedBanner browser={browser.name === 'ie' ? 'Internet Explorer' : browser.name} />}
+        {supported === false && <BrowserNotSupportedBanner version={version} browser={browser.name === 'ie' ? 'Internet Explorer' : browser.name} />}
         {/* <Container fluid className='test-feedback'>
           <Row>
             <Col sm="12">
