@@ -14,16 +14,13 @@ import PancreatlasFooter from './pancreatlas/PancreatlasFooter'
 import BrowserNotSupportedBanner from './BrowserNotSupportedBanner'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus } from '@fortawesome/free-solid-svg-icons'
+import { faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus)
+library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane)
 
 class App extends Component {
   constructor(props){
     super(props)
-    this.state = {
-      favorites: []
-    }
 
     this.addFavorite = this.addFavorite.bind(this)
     this.checkCompatability = this.checkCompatability.bind(this)

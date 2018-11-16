@@ -57,19 +57,19 @@ export default class TopNav extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              {this.props.favorites.length > 0 &&
+              {JSON.parse(window.atob(this.props.favorites)).length > 0 &&
                 <NavItem>
                   <UncontrolledDropdown>
-                    <DropdownToggle nav caret>Image Atlas <Badge color="primary">{this.props.favorites.length}</Badge></DropdownToggle>
+                    <DropdownToggle nav caret>Image Atlas <Badge color="primary">{JSON.parse(window.atob(this.props.favorites)).length}</Badge></DropdownToggle>
                     <DropdownMenu right>
-                      <Link className='dropdown-item' to="/pancreatlas">Image Atlas</Link>
-                      <Link className='dropdown-item' to="/pancreatlas/favorites">Favorites <Badge color="primary">{this.props.favorites.length}</Badge></Link>
+                      <Link className='dropdown-item' to="/pancreatlas/dataset">Image Atlas</Link>
+                      <Link className='dropdown-item' to={`/pancreatlas/favorites?iids=${this.props.favorites}`}>Favorites <Badge color="primary">{JSON.parse(window.atob(this.props.favorites)).length}</Badge></Link>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 </NavItem>}
-              {this.props.favorites.length <= 0 &&
-                <NavItem active={(window.location.pathname === '/pancreatlas') ? true : false}>
-                  <NavLink to="/pancreatlas">Image Atlas</NavLink>
+              {JSON.parse(window.atob(this.props.favorites)).length <= 0 &&
+                <NavItem active={(window.location.pathname === '/pancreatlas/dataset') ? true : false}>
+                  <NavLink to="/pancreatlas/dataset">Image Atlas</NavLink>
                 </NavItem>
               }
               <NavItem>
