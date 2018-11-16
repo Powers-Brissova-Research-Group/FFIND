@@ -9,10 +9,8 @@ import {
   Progress,
   Alert,
   Badge,
-  Input,
-  Form,
-  FormGroup,
-  Label,
+  Button,
+  ButtonGroup
 } from 'reactstrap';
 
 import MetaTags from 'react-meta-tags'
@@ -40,7 +38,7 @@ export default class ImageGrid extends React.Component {
       imgs_per_row: 3,
       imgs_col_split: 4,
       rows_per_page: 5,
-      ttOpen: false
+      density: 'normal'
     }
 
     this.nextPage = this.nextPage.bind(this)
@@ -282,20 +280,22 @@ export default class ImageGrid extends React.Component {
       });
   }
 
-  setDensity(event) {
-    switch (event.target.value.toLowerCase()) {
+  setDensity(density) {
+    switch (density.toLowerCase()) {
       case 'sparse':
         this.setState({
           imgs_per_row: 2,
           imgs_col_split: 6,
-          rows_per_page: 6
+          rows_per_page: 6,
+          density: 'sparse'
         })
         break
       case 'dense':
         this.setState({
           imgs_per_row: 4,
           imgs_col_split: 3,
-          rows_per_page: 4
+          rows_per_page: 4,
+          density: 'dense'
         })
         break
       default:
@@ -303,11 +303,11 @@ export default class ImageGrid extends React.Component {
         this.setState({
           imgs_per_row: 3,
           imgs_col_split: 4,
-          rows_per_page: 5
+          rows_per_page: 5,
+          density: 'normal'
         })
         break
     }
-    console.log(event.target.value)
   }
 
   render() {
@@ -398,16 +398,14 @@ export default class ImageGrid extends React.Component {
               </Row>
               <Row>
                 <Col md='12'>
-                  <Form inline className='float-right'>
-                    <FormGroup>
-                      <Label for='densitySelect'>Select density of grid: </Label>
-                      <Input type='select' name='density' id='densitySelect' onChange={(event) => this.setDensity(event)}>
-                        <option>Normal</option>
-                        <option>Sparse</option>
-                        <option>Dense</option>
-                      </Input>
-                    </FormGroup>
-                  </Form>
+                  <div className='density-select float-right'>
+                    <strong>Grid Density: </strong>
+                    <ButtonGroup>
+                      <Button color='info' onClick={() => this.setDensity('sparse')} active={this.state.density === 'sparse'}>Sparse</Button>
+                      <Button color='info' onClick={() => this.setDensity('normal')} active={this.state.density === 'normal'}>Normal</Button>
+                      <Button color='info' onClick={() => this.setDensity('dense')} active={this.state.density === 'dense'}>Dense</Button>
+                    </ButtonGroup>
+                  </div>
                 </Col>
               </Row>
             </Alert>

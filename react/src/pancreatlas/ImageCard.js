@@ -3,8 +3,7 @@ import {
   Card,
   CardImg,
   CardBody,
-  Button,
-  Tooltip
+  Button
 } from 'reactstrap'
 
 import {
@@ -27,7 +26,6 @@ export default class ImageCard extends React.Component {
       omero_id: null,
       img_tags: null,
       match: true,
-      ttOpen: false
     }
   }
 
@@ -120,7 +118,6 @@ export default class ImageCard extends React.Component {
 
 
   render() {
-    var tinycolor = require('tinycolor2')
     if (this.state.loaded) {
       let last_marker = Object.keys(this.state.markers)[Object.keys(this.state.markers).length - 1]
       return (
