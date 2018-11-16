@@ -36,7 +36,9 @@ export default class TopNav extends React.Component {
     return (
       <Navbar color="dark" dark expand="md">
         <Container fluid>
-          <NavbarBrand><Link to="/"><img src={logo} alt={'HANDEL-P Logo'} /></Link></NavbarBrand>
+          <NavbarBrand tag={Link}  to="/">
+            <img src={logo} alt={'Pancreatlas -- Home'} />
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -52,14 +54,13 @@ export default class TopNav extends React.Component {
               <NavItem active={(window.location.pathname === '/handelp/about') ? true : false}>
                 <NavLink to="/about">About</NavLink>
               </NavItem>
-              <NavItem>
-                <a className="btn btn-info" href='https://webapp.mis.vanderbilt.edu/vumc-giving/landing?appealCode=J1001'>Join Our Efforts</a>
+              <NavItem className="btn btn-info">
+                <NavLink to="https://webapp.mis.vanderbilt.edu/vumc-giving/landing?appealCode=J1001">Join Our Efforts</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
         </Container>
       </Navbar>
-
     )
   }
 }
