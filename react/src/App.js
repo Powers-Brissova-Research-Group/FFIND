@@ -14,7 +14,15 @@ import PancreatlasFooter from './pancreatlas/PancreatlasFooter'
 import BrowserNotSupportedBanner from './BrowserNotSupportedBanner'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
+<<<<<<< HEAD
 import { faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+=======
+import { faGem, faMedkit, faUsers, faFlask, faVial, faCopy, faPaperPlane} from '@fortawesome/free-solid-svg-icons'
+
+library.add(faGem, faMedkit, faUsers, faFlask, faVial, faCopy, faPaperPlane)
+
+
+>>>>>>> 7f81692ad2baba895eaf30833fa1e3f1fb604697
 
 library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane)
 
