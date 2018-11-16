@@ -12,6 +12,8 @@ import {
   Alert
 } from 'reactstrap'
 
+import { Link } from 'react-router-dom'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import ImageCard from './ImageCard'
@@ -39,6 +41,17 @@ export default class Favorites extends React.Component {
       iids: favs,
       urlText: window.location.href,
       copied: false
+    }
+  }
+
+  componentDidUpdate (prevProps) {
+    if (JSON.stringify(prevProps) !== JSON.stringify(this.props)) {
+      let newUrl = `${window.location.protocol}//${window.location.host}/pancreatlas/favorites/?iids=${window.btoa(JSON.stringify(this.props.favorites))}`
+      this.setState({
+        iids: this.props.favorites,
+        urlText: newUrl
+      })
+      window.history.pushState({ 'pageTitle': 'Pancreatlas / HANDEL-P' }, '', newUrl)
     }
   }
 
@@ -131,6 +144,19 @@ export default class Favorites extends React.Component {
   }
 
   render () {
+    if (this.state.iids.length <= 0) {
+      return (
+        <Container>
+          <Row>
+            <Col md='12'>
+              <Alert color='danger'>
+                <span>You do not have any images saved. <strong><Link to='/pancreatlas/dataset'>Click here to view our datasets</Link></strong></span>
+              </Alert>
+            </Col>
+          </Row>
+        </Container>
+      )
+    }
     return (
       <Container>
         <Row>

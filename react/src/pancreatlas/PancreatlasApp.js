@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import MetaTags from 'react-meta-tags';
+import React, { Component } from 'react'
+import MetaTags from 'react-meta-tags'
 
-import './Pancreatlas.css';
+import './Pancreatlas.css'
 import HomePage from './HomePage'
 import DatasetList from './DatasetList'
 import ImageDetail from './ImageDetail'
@@ -17,12 +17,12 @@ import {
 } from 'react-router'
 
 class PancreatlasApp extends Component {
-  render() {
+  render () {
     return (
-      <div className="pancreatlas">
+      <div className='pancreatlas'>
         <MetaTags>
           <title>Pancreatlas / HANDEL-P</title>
-          <meta name="description" content="An online atlas dedicated to the human pancreas, curated by the Vanderbilt University Medical Center"/>
+          <meta name='description' content='An online atlas dedicated to the human pancreas, curated by the Vanderbilt University Medical Center' />
         </MetaTags>
         {/* <Container fluid>
           <Row className="pancreatlas-row">
@@ -31,23 +31,23 @@ class PancreatlasApp extends Component {
         </Container> */}
         <div className='wrapper'>
           <div className='content'>
-              <Switch>
-                <Route exact path={`/pancreatlas`} component={HomePage} />
-                {/* <Route path='/collections' component={CollectionList} /> */}
-                <Route exact path={`/pancreatlas/dataset`} component={DatasetList} />
-                <Route exact path={`/pancreatlas/dataset/:did`} render={(props) => <AgeBrowser {...props} favoriteCallback={this.props.favoriteCallback} favorites={JSON.parse(window.atob(this.props.favorites))} />} />
-                <Route path='/pancreatlas/image/:iid' component={ImageDetail} />
-                <Route path='/pancreatlas/matrixview/:dsid' component={MatrixView} />
-                <Route path='/pancreatlas/nomenclature' component={Nomenclature} />
-                <Route path={`/pancreatlas/favorites`} render={(props) => <Favorites {...props} favoriteCallback={this.props.favoriteCallback} favorites={JSON.parse(window.atob(this.props.favorites))} />} />
-                <Route component={PageNotFound} />
-              </Switch>
+            <Switch>
+              <Route exact path={`/pancreatlas`} component={HomePage} />
+              {/* <Route path='/collections' component={CollectionList} /> */}
+              <Route exact path={`/pancreatlas/dataset`} component={DatasetList} />
+              <Route exact path={`/pancreatlas/dataset/:did`} render={(props) => <AgeBrowser {...props} favoriteCallback={this.props.favoriteCallback} favorites={JSON.parse(window.atob(this.props.favorites))} />} />
+              <Route path='/pancreatlas/image/:iid' component={ImageDetail} />
+              <Route path='/pancreatlas/matrixview/:dsid' component={MatrixView} />
+              <Route path='/pancreatlas/nomenclature' component={Nomenclature} />
+              <Route path={`/pancreatlas/favorites`} render={(props) => <Favorites {...props} favoriteCallback={this.props.favoriteCallback} favorites={JSON.parse(window.atob(this.props.favorites))} />} />
+              <Route component={PageNotFound} />
+            </Switch>
           </div>
           {/* <PancreatlasFooter /> */}
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default PancreatlasApp;
+export default PancreatlasApp
