@@ -8,7 +8,8 @@ import {
   ModalBody,
   ModalHeader,
   Input,
-  Button
+  Button,
+  Alert
 } from 'reactstrap'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,7 +18,7 @@ import ImageCard from './ImageCard'
 import ImageModal from './ImageModal'
 
 export default class Favorites extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.setModal = this.setModal.bind(this)
     this.toggle = this.toggle.bind(this)
@@ -41,7 +42,7 @@ export default class Favorites extends React.Component {
     }
   }
 
-  setModal(imgInfo) {
+  setModal (imgInfo) {
     fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`)
       .then(res => res.json())
       .then(
@@ -61,7 +62,6 @@ export default class Favorites extends React.Component {
               }
             })
 
-
             let matches = re.exec(path)
             result.kvals['File path'].val = matches[0]
             result.kvals['Donor info - Age'].val = result.tags.filter(val => age_re.test(val))[0]
@@ -77,7 +77,7 @@ export default class Favorites extends React.Component {
             this.setState({
               modalData: {
                 img_id: imgInfo,
-                img_data: { "Warning": "No information for this image" },
+                img_data: { 'Warning': 'No information for this image' },
                 path_path: result.pathpath
               }
             })
@@ -89,10 +89,10 @@ export default class Favorites extends React.Component {
           loaded: false,
           error: err
         })
-      });
+      })
   }
 
-  toggle(modalType) {
+  toggle (modalType) {
     switch (modalType) {
       case 'image':
         this.setState({ modalOpen: !this.state.modalOpen })
@@ -105,7 +105,7 @@ export default class Favorites extends React.Component {
     }
   }
 
-  copy() {
+  copy () {
     this.urlRef.disabled = false
     this.urlRef.select()
     document.execCommand('copy')
@@ -117,28 +117,41 @@ export default class Favorites extends React.Component {
       this.setState({
         urlText: window.location.href
       })
-    }, 3000);
+    }, 3000)
   }
 
-  email() {
+  email () {
     window.location.href = `mailto:${this.props.email}`
   }
 
-  handleChange(event) {
+  handleChange (event) {
     this.setState({
       email: event.target.value
     })
   }
 
-  render() {
+  render () {
     return (
       <Container>
-        <h1>Favorite Images</h1>
-        <h3>Here are some images that you saved from earlier</h3>
-        <Button className='save-favorites' onClick={() => this.toggle('save')}>Save for Later</Button>
+        <Row>
+          <Col md='12'>
+            <Alert color='info'>
+              <Row>
+                <Col md='6'>
+                  <span>
+                    Here are some images you saved from earlier
+                  </span>
+                </Col>
+                <Col md='6'>
+                  <span className='float-right'><Button color='info' onClick={() => this.toggle('save')}>Save favorites for later</Button></span>
+                </Col>
+              </Row>
+            </Alert>
+          </Col>
+        </Row>
         <Row>
           {this.state.iids.map(iid =>
-            <Col md="3">
+            <Col md='3'>
               <ImageCard favoriteCallback={this.props.favoriteCallback} key={iid} iid={iid} callback={this.setModal} />
             </Col>
           )}
@@ -147,11 +160,11 @@ export default class Favorites extends React.Component {
           <ModalHeader toggle={() => this.toggle('save')}>Save for Later</ModalHeader>
           <ModalBody>
             <Row className='flex favorites-row'>
-              <Col md="10">
+              <Col md='10'>
                 <input id='favorites-url' className='form-control' ref={url => this.urlRef = url} type='text' value={this.state.urlText} />
               </Col>
-              <Col md="2 ">
-                <FontAwesomeIcon icon='copy' size='2x' className='favorites copy' onClick={this.copy}></FontAwesomeIcon>
+              <Col md='2 '>
+                <FontAwesomeIcon icon='copy' size='2x' className='favorites copy' onClick={this.copy} />
               </Col>
             </Row>
             <Row>
@@ -159,7 +172,7 @@ export default class Favorites extends React.Component {
                 <Input type='email' placeholder='Enter email to send favorites link' onChange={this.handleChange} />
               </Col>
               <Col md='2'>
-                <FontAwesomeIcon icon='paper-plane' size='2x' className='favorites send' onClick={this.email}></FontAwesomeIcon>
+                <FontAwesomeIcon icon='paper-plane' size='2x' className='favorites send' onClick={this.email} />
               </Col>
             </Row>
           </ModalBody>
@@ -168,5 +181,4 @@ export default class Favorites extends React.Component {
       </Container>
     )
   }
-
 }
