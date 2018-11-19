@@ -19,6 +19,7 @@ import ImageCard from './ImageCard'
 import FilterList from './FilterList'
 import Error from './Error'
 import ImageModal from './ImageModal'
+import LoadingBar from './LoadingBar'
 
 export default class ImageGrid extends React.Component {
   constructor (props) {
@@ -444,16 +445,7 @@ export default class ImageGrid extends React.Component {
       return <Error error_desc={this.state.error.message} />
     } else {
       return (
-
-        <Container className='loading v-padded'>
-          <Row>
-            <Col md='12'>
-              <h4>Loading dataset {this.state.datasetName} (ID: {this.props.did}) ...</h4>
-              <Progress animated color='success' value='100' />
-            </Col>
-          </Row>
-        </Container>
-
+        <LoadingBar loadingInfo={`dataset ${this.state.datasetName} (ID: ${this.props.did}) ...`} />
       )
     }
   }
