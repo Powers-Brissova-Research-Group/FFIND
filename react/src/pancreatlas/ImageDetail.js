@@ -20,16 +20,16 @@ export default class ImageDetail extends React.Component {
     super(props)
     this.state = {
       loaded: false,
-      img_data: {},
+      imgData: {},
       tags: [],
-      path_path: null,
+      pathPath: null,
       ttOpen: false
     }
   }
 
   componentDidMount () {
     this.defs = require('../assets/pancreatlas/definitions.json')
-    fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.match.params.iid}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.match.params.iid}`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -54,7 +54,7 @@ export default class ImageDetail extends React.Component {
   }
 
   render () {
-    const { loaded, img_data, path_path } = this.state
+    const { loaded, imgData, pathPath } = this.state
     if (loaded) {
       return (
         <div className='image-detail'>
@@ -62,21 +62,21 @@ export default class ImageDetail extends React.Component {
             <Row className='pancreatlas-row'>
               <Col md='8'>
                 <Row className='pancreatlas-row'>
-                  <a className='large-thumbnail' href={path_path} target='_blank'><img className='large-thumbnail' src={require(`../assets/pancreatlas/large_thumbs/${this.props.match.params.iid}.jpg`)} alt='Detail View' /></a>
+                  <a className='large-thumbnail' href={pathPath} target='_blank'><img className='large-thumbnail' src={require(`../assets/pancreatlas/large_thumbs/${this.props.match.params.iid}.jpg`)} alt='Detail View' /></a>
                 </Row>
               </Col>
               <Col md='4'>
                 <h3>Image Preview</h3>
                 <Row className='pancreatlas-row'>
                   <Col md='12'>
-                    <a href={path_path} target='_blank'><Button className='path-button' color='success'>Open in PathViewer</Button></a>
+                    <a href={pathPath} target='_blank'><Button className='path-button' color='success'>Open in PathViewer</Button></a>
                   </Col>
                 </Row>
                 <Row className='pancreatlas-row'>
                   <Table>
                     <tbody>
-                      {Object.keys(img_data).sort().filter(key => ['Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - Pancreas Region'].indexOf(key) === -1).map(key => {
-                        return <DetailRow data={img_data[key].val} desc={this.defs[key].short_desc} heading={key} />
+                      {Object.keys(imgData).sort().filter(key => ['Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - Pancreas Region'].indexOf(key) === -1).map(key => {
+                        return <DetailRow data={imgData[key].val} desc={this.defs[key].short_desc} heading={key} />
                         // if (img_data[key] !== null && img_data[key] !== undefined && img_data[key] !== ''){
                         //   return (<tr><td><p id={key + '-tooltip'}>{key}</p></td><td className={key.split('-').map(val => val.trim()).join(' ')}>{img_data[key]}</td></tr>)
                         // } else {

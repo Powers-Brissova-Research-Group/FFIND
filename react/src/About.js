@@ -36,7 +36,6 @@ export default class About extends React.Component {
               </ul>
               <p>We do not support Internet Explorer. Please let it rest in peace.</p>
 
-
             </Col>
             <Col md='6'>
               <img alt='Human Islets' className='img-responsive' src='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/projects/human-islets-healthy.jpg' />

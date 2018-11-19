@@ -12,38 +12,38 @@ export default class MatrixModalListComponent extends React.Component {
     }
   }
   componentDidMount () {
-    fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`)
       .then(res => res.json())
       .then(result => {
         let kvals = result.kvals
-        let marker_re = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
-        let donor_re = /(^Donor info)(\s+-\s+)(.+$)/i
-        let region_re = /(^Image info)(\s+-\s+)(Section Plane$|Pancreas Region$)/
-        let marker_keys = Object.keys(kvals).filter(key => marker_re.test(key))
-        let donor_keys = Object.keys(kvals).filter(key => donor_re.test(key))
-        let region_keys = Object.keys(kvals).filter(key => region_re.test(key))
+        let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
+        let donorRe = /(^Donor info)(\s+-\s+)(.+$)/i
+        let regionRe = /(^Image info)(\s+-\s+)(Section Plane$|Pancreas Region$)/
+        let markerKeys = Object.keys(kvals).filter(key => markerRe.test(key))
+        let donorKeys = Object.keys(kvals).filter(key => donorRe.test(key))
+        let regionKeys = Object.keys(kvals).filter(key => regionRe.test(key))
 
-        donor_keys.sort()
-        region_keys.sort()
+        donorKeys.sort()
+        regionKeys.sort()
         let markers = {}
         let donor = {}
         let region = {
-          [region_keys[1]]: kvals[region_keys[1]].val,
-          [region_keys[0]]: kvals[region_keys[0]].val
+          [regionKeys[1]]: kvals[regionKeys[1]].val,
+          [regionKeys[0]]: kvals[regionKeys[0]].val
 
         }
-        for (let key of marker_keys) {
-          kvals[key].val.split(',').map(val => markers[val.trim()] = marker_re.exec(key)[3])
+        for (let key of markerKeys) {
+          kvals[key].val.split(',').map(val => (markers[val.trim()] = markerRe.exec(key)[3]))
         }
-        for (let key of donor_keys) {
+        for (let key of donorKeys) {
           if (kvals[key].val !== '' && kvals[key].val !== undefined) {
-            let val_key = donor_re.exec(key)[3]
-            if (val_key !== 'UNOS ID' && val_key !== 'LIMS ID' && kvals[key] !== '') {
-              if (val_key === 'Age') {
-                let age_re = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
-                donor[donor_re.exec(key)[3]] = result.tags.filter(tag => age_re.test(tag))[0]
+            let valKey = donorRe.exec(key)[3]
+            if (valKey !== 'UNOS ID' && valKey !== 'LIMS ID' && kvals[key] !== '') {
+              if (valKey === 'Age') {
+                let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
+                donor[donorRe.exec(key)[3]] = result.tags.filter(tag => ageRe.test(tag))[0]
               } else {
-                donor[donor_re.exec(key)[3]] = kvals[key].val
+                donor[donorRe.exec(key)[3]] = kvals[key].val
               }
             }
           }

@@ -20,12 +20,12 @@ export default class ImageMatrix extends React.Component {
     super(props)
     this.state = {
       loaded: false,
-      tag_a: null,
-      tag_b: null,
+      tagA: null,
+      tagB: null,
       matrix: null,
       modal: false,
       modalOpen: false,
-      selected_set: []
+      selectedSet: []
     }
 
     this.toggle = this.toggle.bind(this)
@@ -101,37 +101,37 @@ export default class ImageMatrix extends React.Component {
   }
 
   componentDidMount () {
-    fetch(`${process.env.REACT_APP_API_URL}/matrix/${this.props.tag_1},${this.props.tag_2},${this.props.dsid}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/matrix/${this.props.tag_1},${this.props.tag_2},${this.props.dsid}`)
       .then(res => res.json())
       .then((result) => {
         let m = result['matrix']
-        let new_matrix = {}
-        let new_matrix_t = {}
-        let tags_1 = Object.keys(m)
-        let tags_2 = Object.keys(m[tags_1[0]])
+        let newMatrix = {}
+        let newMatrixT = {}
+        let tags1 = Object.keys(m)
+        let tags2 = Object.keys(m[tags1[0]])
         if (this.props.tag_1 === 'AGE') {
-          tags_1.sort(this.compareAges)
+          tags1.sort(this.compareAges)
         } else {
-          tags_1.sort()
+          tags1.sort()
         }
 
         if (this.props.tag_2 === 'AGE') {
-          tags_2.sort(this.compareAges)
+          tags2.sort(this.compareAges)
         } else {
-          tags_2.sort()
+          tags2.sort()
         }
 
-        for (let tag_1 of tags_1) {
-          new_matrix[tag_1] = {}
-          for (let tag_2 of tags_2) {
-            if (new_matrix_t[tag_2] === undefined) {
-              new_matrix_t[tag_2] = {}
+        for (let tag1 of tags1) {
+          newMatrix[tag1] = {}
+          for (let tag2 of tags2) {
+            if (newMatrixT[tag2] === undefined) {
+              newMatrixT[tag2] = {}
             }
-            new_matrix_t[tag_2][tag_1] = []
-            new_matrix[tag_1][tag_2] = []
-            for (let img_id of m[tag_1][tag_2]) {
-              new_matrix[tag_1][tag_2].push(img_id)
-              new_matrix_t[tag_2][tag_1].push(img_id)
+            newMatrixT[tag2][tag1] = []
+            newMatrix[tag1][tag2] = []
+            for (let imgId of m[tag1][tag2]) {
+              newMatrix[tag1][tag2].push(imgId)
+              newMatrixT[tag2][tag1].push(imgId)
               // let url = `${process.env.REACT_APP_API_URL}/images/${img_id}`
               // fetch(url)
               //   .then(res => res.json())
@@ -156,11 +156,11 @@ export default class ImageMatrix extends React.Component {
         }
         this.setState({
           loaded: true,
-          matrix: new_matrix,
-          matrix_t: new_matrix_t,
-          view_transpose: ((Object.keys(new_matrix).length <= Object.keys(new_matrix_t).length)),
-          tag_a: result['tag_a'],
-          tag_b: result['tag_b']
+          matrix: newMatrix,
+          matrix_t: newMatrixT,
+          view_transpose: ((Object.keys(newMatrix).length <= Object.keys(newMatrixT).length)),
+          tagA: result['tag_a'],
+          tagB: result['tag_b']
           // matrix: result['matrix']
         })
       })
@@ -175,7 +175,7 @@ export default class ImageMatrix extends React.Component {
   toggle (new_set = []) {
     this.setState({
       modal: !this.state.modal,
-      selected_set: new_set
+      selectedSet: new_set
     })
   }
 
@@ -192,18 +192,18 @@ export default class ImageMatrix extends React.Component {
   }
 
   setModal (imgInfo) {
-    fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`)
       .then(res => res.json())
       .then(
         (result) => {
           let path = result.kvals['File path'].val
           let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
-          let age_re = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
+          let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
 
           let markerColors = result.channel_info
-          let markerColor_re = /^.+\((.+)\)$/
+          let markerColorRe = /^.+\((.+)\)$/
           Object.keys(markerColors).forEach(function (key) {
-            var newKey = markerColor_re.test(key) ? markerColor_re.exec(key)[1] : key
+            var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
             if (newKey !== key) {
               markerColors[newKey] = markerColors[key]
               delete markerColors[key]
@@ -212,7 +212,7 @@ export default class ImageMatrix extends React.Component {
 
           let matches = re.exec(path)
           result.kvals['File path'].val = matches[0]
-          result.kvals['Donor info - Age'].val = result.tags.filter(val => age_re.test(val))[0]
+          result.kvals['Donor info - Age'].val = result.tags.filter(val => ageRe.test(val))[0]
           this.setState({
             modalData: {
               img_id: imgInfo,
@@ -234,13 +234,13 @@ export default class ImageMatrix extends React.Component {
   render () {
     if (this.state.loaded) {
       let headings = null
-      let chosen_matrix = null
+      let chosenMatrix = null
       if (!this.state.view_transpose) {
         headings = Object.keys(this.state.matrix[Object.keys(this.state.matrix)[0]])
-        chosen_matrix = this.state.matrix
+        chosenMatrix = this.state.matrix
       } else {
         headings = Object.keys(this.state.matrix_t[Object.keys(this.state.matrix_t)[0]])
-        chosen_matrix = this.state.matrix_t
+        chosenMatrix = this.state.matrix_t
       }
 
       return (
@@ -259,11 +259,11 @@ export default class ImageMatrix extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {Object.keys(chosen_matrix).map(row => (
-                  <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(chosen_matrix[row]).map(col => (
+                {Object.keys(chosenMatrix).map(row => (
+                  <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(chosenMatrix[row]).map(col => (
                     <td key={row + ', ' + col} className='matrix-cell'>
-                      {chosen_matrix[row][col][0] !== undefined && <div className='matrix-cell-img' onClick={() => this.toggle(chosen_matrix[row][col])}><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosen_matrix[row][col][0]}.jpg`)} alt='' /><div className='matrix-cell-count'><p>{`${chosen_matrix[row][col].length}`}</p></div></div>}
-                      {chosen_matrix[row][col][0] === undefined && <p>Data not collected</p>}
+                      {chosenMatrix[row][col][0] !== undefined && <div className='matrix-cell-img' onClick={() => this.toggle(chosenMatrix[row][col])}><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosenMatrix[row][col][0]}.jpg`)} alt='' /><div className='matrix-cell-count'><p>{`${chosenMatrix[row][col].length}`}</p></div></div>}
+                      {chosenMatrix[row][col][0] === undefined && <p>Data not collected</p>}
                     </td>
                   ))}</tr>
                 ))}
@@ -282,7 +282,7 @@ export default class ImageMatrix extends React.Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.selected_set.map(img => (
+                  {this.state.selectedSet.map(img => (
                     <MatrixModalListComponent iid={img} modalCallback={this.setModal} />
                   ))}
                 </tbody>
