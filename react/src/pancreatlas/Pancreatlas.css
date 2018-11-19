@@ -453,6 +453,9 @@ td.matrix-sel {
   justify-content: center;
   align-items: center;
   text-align: center;
+  min-width: 14%;
+  max-width: 14%;
+  width: 14%;
 }
 
 span.age-group {

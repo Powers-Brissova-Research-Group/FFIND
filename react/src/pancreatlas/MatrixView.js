@@ -2,6 +2,8 @@ import React from 'react'
 import {
   Button,
   Container,
+  Row,
+  Col,
   Progress,
   Table
 } from 'reactstrap'
@@ -85,34 +87,44 @@ export default class MatrixView extends React.Component {
                 <title>Compare Attributes -- Pancreatlas / HANDEL-P</title>
                 <meta name='description' content='Pick two attribute sets and compare matching images in the pancreatlas' />
               </MetaTags>
-              <h1>Matrix View</h1>
-              <p>Select two dimensions to generate a matrix of images based on these filters.</p>
-              <div className='grid-select'>
-                <Table className='matrix-table'>
-                  <thead>
-                    <tr className='row'>
-                      <td className='col-md-2 matrix-sel' />
-                      {this.state.tagsets.map(ts => (
-                        <td className='col-md-2 matrix-sel'><strong>{ts.set_name}</strong></td>
-                      ))}
-                    </tr>
-                  </thead>
-                  {this.state.tagsets.map(tagset1 => (
-                    <tr className='row'>
-                      <td className='matrix-sel col-md-2'><strong>{tagset1.set_name}</strong></td>
-                      {Array(this.state.tagsets.indexOf(tagset1) + 1).fill(0).map(key => (<td class='col-md-2 matrix-sel'>&mdash;</td>))}
-                      {this.state.tagsets.slice(this.state.tagsets.indexOf(tagset1) + 1).map(tagset2 => {
-                        if (tagset1.set_name === tagset2.set_name) {
-                          return <td className='col-md-2 matrix-sel'><span>&mdash;</span></td>
-                        } else {
-                          return (<td className='col-md-2 matrix-sel'><Button className='matrix-select-button' color='link' onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>)
+              <Row>
+                <Col md='12'>
+                  <h1>Matrix View</h1>
+                </Col>
+              </Row>
+              <Row>
+                <Col md='12'>
+                  <p>Select two dimensions to generate a matrix of images based on these filters.</p>
+                </Col>
+              </Row>
+              <Row className='grid-select'>
+                <Col md='12'>
+                  <Table className='matrix-table'>
+                    <thead>
+                      <tr className='row'>
+                        <td className='matrix-sel' />
+                        {this.state.tagsets.map(ts => (
+                          <td className='matrix-sel'><strong>{ts.set_name}</strong></td>
+                        ))}
+                      </tr>
+                    </thead>
+                    {this.state.tagsets.map(tagset1 => (
+                      <tr className='row'>
+                        <td className='matrix-sel'><strong>{tagset1.set_name}</strong></td>
+                        {Array(this.state.tagsets.indexOf(tagset1) + 1).fill(0).map(key => (<td class='matrix-sel' style={{ width: `${Math.floor(100 / (this.state.tagsets.length))}%` }}>&mdash;</td>))}
+                        {this.state.tagsets.slice(this.state.tagsets.indexOf(tagset1) + 1).map(tagset2 => {
+                          if (tagset1.set_name === tagset2.set_name) {
+                            return <td className='matrix-sel'><span>&mdash;</span></td>
+                          } else {
+                            return (<td className='matrix-sel'><Button className='matrix-select-button' color='link' onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>)
+                          }
                         }
-                      }
-                      )}
-                    </tr>
-                  ))}
-                </Table>
-              </div>
+                        )}
+                      </tr>
+                    ))}
+                  </Table>
+                </Col>
+              </Row>
 
               {/* <Form>
               <FormGroup>
