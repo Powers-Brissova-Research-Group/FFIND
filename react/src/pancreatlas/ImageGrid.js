@@ -448,7 +448,7 @@ export default class ImageGrid extends React.Component {
         <Container className='loading v-padded'>
           <Row>
             <Col md='12'>
-              <h1 className='section-heading'>Loading dataset {this.props.did} ...</h1>
+              <h4>Loading dataset {this.state.datasetName} (ID: {this.props.did}) ...</h4>
               <Progress animated color='success' value='100' />
             </Col>
           </Row>
