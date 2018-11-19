@@ -6,7 +6,6 @@ import {
   Pagination,
   PaginationItem,
   PaginationLink,
-  Progress,
   Alert,
   Badge,
   Button,

@@ -2,7 +2,6 @@ import React from 'react'
 import {
   Container,
   Table,
-  Progress,
   Modal,
   ModalHeader,
   ModalBody,
