@@ -4,13 +4,13 @@ import {
   Container,
   Row,
   Col,
-  Progress,
   Table
 } from 'reactstrap'
 
 import MetaTags from 'react-meta-tags'
 
 import ImageMatrix from './ImageMatrix'
+import LoadingBar from './LoadingBar'
 
 import Error from './Error'
 
@@ -156,12 +156,7 @@ export default class MatrixView extends React.Component {
       return <Error error_desc={this.state.error.message} />
     } else {
       return (
-        <Container>
-          <div className='loading'>
-            <strong>Loading {this.props.dataset_name}...</strong>
-            <Progress animated color='success' value='100' />
-          </div>
-        </Container>
+        <LoadingBar />
       )
     }
   }

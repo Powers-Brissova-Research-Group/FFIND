@@ -15,6 +15,7 @@ import {
 import MetaTags from 'react-meta-tags'
 
 import Error from './Error'
+import LoadingBar from './LoadingBar'
 
 export default class DatasetList extends React.Component {
   constructor (props) {
@@ -115,7 +116,7 @@ export default class DatasetList extends React.Component {
     } else if (this.state.error !== undefined) {
       return <Container><Error error_desk={this.state.error.message} /></Container>
     } else {
-      return <Container><h1>Loading</h1></Container>
+      return <LoadingBar loadingInfo='list of datasets' />
     }
   }
 }

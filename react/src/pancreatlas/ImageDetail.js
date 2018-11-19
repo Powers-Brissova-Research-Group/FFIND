@@ -5,11 +5,11 @@ import {
   Row,
   Col,
   Table,
-  Progress,
   Button
 } from 'reactstrap'
 
 import DetailRow from './DetailRow'
+import LoadingBar from './LoadingBar'
 
 import Error from './Error'
 
@@ -98,11 +98,7 @@ export default class ImageDetail extends React.Component {
       return <Error error_desc={this.state.error.message} />
     } else {
       return (
-        <Container>
-          <strong>Loading...</strong>
-          <Progress animated color='success' value='100' />
-        </Container>
-
+        <LoadingBar />
       )
     }
   }

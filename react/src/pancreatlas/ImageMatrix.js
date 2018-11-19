@@ -2,7 +2,6 @@ import React from 'react'
 import {
   Container,
   Table,
-  Progress,
   Modal,
   ModalHeader,
   ModalBody,
@@ -12,6 +11,7 @@ import {
 
 import ImageModal from './ImageModal'
 import MatrixModalListComponent from './MatrixModalListComponent'
+import LoadingBar from './LoadingBar'
 
 import Error from './Error'
 
@@ -300,12 +300,7 @@ export default class ImageMatrix extends React.Component {
       return <Container><Error error_desc={this.state.error.message} /></Container>
     } else {
       return (
-        <Container>
-          <div className='loading'>
-            <strong>Loading {this.props.dataset_name}...</strong>
-            <Progress animated color='success' value='100' />
-          </div>
-        </Container>
+        <LoadingBar loadingInfo={`${this.props.tag_1} vs ${this.props.tag_2}`} />
       )
     }
   }
