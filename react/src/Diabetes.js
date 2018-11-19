@@ -28,7 +28,9 @@ export default class Diabetes extends React.Component {
               <p><img className='pull-left img-responsive img-thumbnail p-img' alt='placeholder' src='//placehold.it/200x150' />Proin suscipit pulvinar lorem nec venenatis. In blandit nibh nisl, in cursus dui tempor vitae. Aenean interdum lacinia tortor, in feugiat neque placerat non. Donec lobortis, mauris in molestie faucibus, mi orci vestibulum dolor, eu imperdiet mauris tellus at elit. Nunc ullamcorper et nibh ut faucibus. Phasellus congue, mauris sit amet commodo ullamcorper, quam tortor ultrices arcu, ac tristique quam velit ac nibh. Nullam malesuada sodales neque id blandit. Donec mollis aliquet sem non maximus. Donec non egestas mauris. Fusce pretium in justo nec viverra. Donec egestas sagittis enim, nec luctus dui mollis id. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam molestie urna lectus, convallis vulputate augue porta quis. Maecenas pellentesque mollis sapien, feugiat consequat nulla sagittis sed. Donec condimentum nibh eget dui porttitor, eu sodales odio ultricies. Praesent mollis felis quis dictum tincidunt.</p>
             </Col>
             <Col md='6'>
-              <iframe title='Diabetes Video' width='560' height='315' src='https://www.youtube-nocookie.com/embed/wmOW091P2ew?rel=0' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen />
+              <div className='embed-responsive embed-responsive-16by9'>
+                <iframe className='embed-responsive-item' title='Diabetes Video' width='560' height='315' src='https://www.youtube-nocookie.com/embed/wmOW091P2ew?rel=0' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen />
+              </div>
               <small className='pull-right'>Courtesy of <a href='https://www.cdc.gov/'>Centers for Disease Control and Prevention (CDC)</a></small>
               <h4>Links</h4>
               <ul>

@@ -36,7 +36,7 @@ export default class TopNav extends React.Component {
       <Navbar color='dark' dark expand='md'>
         <Container fluid>
           <NavbarBrand tag={Link} to='/'>
-            <img src={logo} alt={'Pancreatlas -- Home'} />
+            <img className='img-fluid' src={logo} alt={'Pancreatlas -- Home'} />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>

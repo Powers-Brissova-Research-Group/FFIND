@@ -60,7 +60,7 @@ export default class Home extends React.Component {
                 <a className='btn btn-dark' href='/collaborators'>Learn about our collaborators and their work</a>
               </Col>
               <Col md='6'>
-                <img src={MapPicture} alt='Collaborators map' className='img-fill' />
+                <img src={MapPicture} alt='Collaborators map' className='img-fluid' />
               </Col>
             </Row>
           </Container>
@@ -75,7 +75,7 @@ export default class Home extends React.Component {
             </Row>
             <Row className='center-row'>
               <Col sm='12'>
-                <img src={Helmsley} alt='The Leona M. and Harry B. Helmsley Charitable Trust' />
+                <img className='img-fluid' src={Helmsley} alt='The Leona M. and Harry B. Helmsley Charitable Trust' />
               </Col>
             </Row>
             <Row className='center-row'>
@@ -85,22 +85,22 @@ export default class Home extends React.Component {
             </Row>
             <Row>
               <Col sm='2'>
-                <img src={VA} alt='VA' className='img-fill' />
+                <img src={VA} alt='VA' className='img-fluid' />
               </Col>
               <Col sm='2'>
-                <img src={HIRN} alt='HIRN' className='img-fill' />
+                <img src={HIRN} alt='HIRN' className='img-fluid' />
               </Col>
               <Col sm='2'>
-                <img src={IIAM} alt='IIAM' className='img-fill' />
+                <img src={IIAM} alt='IIAM' className='img-fluid' />
               </Col>
               <Col sm='2'>
-                <img src={IIDP} alt='IIDP' className='img-fill' />
+                <img src={IIDP} alt='IIDP' className='img-fluid' />
               </Col>
               <Col sm='2'>
-                <img src={VUMC} alt='VUMC' className='img-fill' />
+                <img src={VUMC} alt='VUMC' className='img-fluid' />
               </Col>
               <Col sm='2'>
-                <img src={NIDDK} alt='NIDDK' className='img-fill' />
+                <img src={NIDDK} alt='NIDDK' className='img-fluid' />
               </Col>
             </Row>
           </div>
