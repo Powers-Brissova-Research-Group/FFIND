@@ -97,34 +97,32 @@ export default class MatrixView extends React.Component {
                   <p>Select two dimensions to generate a matrix of images based on these filters.</p>
                 </Col>
               </Row>
-              <Row className='grid-select'>
-                <Col md='12'>
-                  <Table className='matrix-table'>
-                    <thead>
-                      <tr className='row'>
-                        <td className='matrix-sel' />
-                        {this.state.tagsets.map(ts => (
-                          <td className='matrix-sel'><strong>{ts.set_name}</strong></td>
-                        ))}
-                      </tr>
-                    </thead>
-                    {this.state.tagsets.map(tagset1 => (
-                      <tr className='row'>
-                        <td className='matrix-sel'><strong>{tagset1.set_name}</strong></td>
-                        {Array(this.state.tagsets.indexOf(tagset1) + 1).fill(0).map(key => (<td class='matrix-sel' style={{ width: `${Math.floor(100 / (this.state.tagsets.length))}%` }}>&mdash;</td>))}
-                        {this.state.tagsets.slice(this.state.tagsets.indexOf(tagset1) + 1).map(tagset2 => {
-                          if (tagset1.set_name === tagset2.set_name) {
-                            return <td className='matrix-sel'><span>&mdash;</span></td>
-                          } else {
-                            return (<td className='matrix-sel'><Button className='matrix-select-button' color='link' onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>)
-                          }
+              <div className='table table-responsive'>
+                <Table className='matrix-table'>
+                  <thead>
+                    <tr>
+                      <td className='matrix-sel' />
+                      {this.state.tagsets.map(ts => (
+                        <td className='matrix-sel'><strong>{ts.set_name}</strong></td>
+                      ))}
+                    </tr>
+                  </thead>
+                  {this.state.tagsets.map(tagset1 => (
+                    <tr>
+                      <td className='matrix-sel'><strong>{tagset1.set_name}</strong></td>
+                      {Array(this.state.tagsets.indexOf(tagset1) + 1).fill(0).map(key => (<td class='matrix-sel' style={{ width: `${Math.floor(100 / (this.state.tagsets.length))}%` }}>&mdash;</td>))}
+                      {this.state.tagsets.slice(this.state.tagsets.indexOf(tagset1) + 1).map(tagset2 => {
+                        if (tagset1.set_name === tagset2.set_name) {
+                          return <td className='matrix-sel'><span>&mdash;</span></td>
+                        } else {
+                          return (<td className='matrix-sel'><Button className='matrix-select-button' color='link' onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>)
                         }
-                        )}
-                      </tr>
-                    ))}
-                  </Table>
-                </Col>
-              </Row>
+                      }
+                      )}
+                    </tr>
+                  ))}
+                </Table>
+              </div>
 
               {/* <Form>
               <FormGroup>

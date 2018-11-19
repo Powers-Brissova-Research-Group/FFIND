@@ -248,7 +248,7 @@ export default class ImageMatrix extends React.Component {
           <h1>Matrix View</h1>
           <h3>{`Viewing ${this.props.tag_1} vs ${this.props.tag_2}`}</h3>
 
-          <div className='image-matrix-content'>
+          <div className='image-matrix-content table table-responsive'>
             <Table hover className='image-matrix'>
               <thead>
                 <tr>
