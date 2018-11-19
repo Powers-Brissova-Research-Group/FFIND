@@ -278,3 +278,7 @@ div.browser-not-supported-banner {
 div.browser-not-supported-banner a, a:visited, a:hover {
   color: #fff;
 }
+
+.secondary {
+  color: #808080;
+}

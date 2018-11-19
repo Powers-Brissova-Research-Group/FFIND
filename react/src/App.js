@@ -15,6 +15,7 @@ import BrowserNotSupportedBanner from './BrowserNotSupportedBanner'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus } from '@fortawesome/free-solid-svg-icons'
+import Releases from './Releases'
 
 library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus)
 
@@ -78,6 +79,7 @@ class App extends Component {
             <Switch>
               <Route exact path='/' component={HandelApp} />
               <Route path='/pancreatlas' component={PancreatlasApp} />
+              <Route path='/releases' component={Releases} />
               <Route path='/' component={HandelApp} />
             </Switch>
             <PancreatlasFooter />
