@@ -123,7 +123,7 @@ export default class ImageCard extends React.Component {
         <Card className='image-card h-100'>
           <div className='card-img-wrapper' onClick={() => this.props.callback(this.props.iid)}>
             <CardImg className='image-card-thumb' top width='100%' src={require(`../assets/pancreatlas/thumbs/${this.props.iid}.jpg`)} alt={this.state.imgName} />
-            <FontAwesomeIcon icon='search-plus' size='2x' className='card-search-plus' />
+            <FontAwesomeIcon icon='search-plus' size='3x' className='card-search-plus' />
           </div>
           <CardBody className='d-flex flex-column'>
             {/* <CardTitle>{this.state.imgName}</CardTitle>
