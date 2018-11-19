@@ -564,3 +564,7 @@ span.undo {
   cursor: pointer;
   font-weight: bold;
 }
+
+p.version-info {
+  color: #404040;
+}
