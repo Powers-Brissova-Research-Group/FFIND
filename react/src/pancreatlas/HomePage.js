@@ -34,6 +34,8 @@ export default class HomePage extends React.Component {
   render () {
     let defs = require('../assets/pancreatlas/definitions.json')
     console.log(defs)
+    let params = new URLSearchParams(window.location.search)
+    this.favs = (params.has('iids') ? params.get('iids') : window.btoa(JSON.stringify([])))
     return (
       <Container>
         <div className='home-page align-self-center'>
@@ -44,7 +46,7 @@ export default class HomePage extends React.Component {
           </Row>
           <Row className='pancreatlas-row'>
             <Col md='12' sm='12'>
-              <Link to='/pancreatlas/dataset/'><Button size='lg' className='explore-button' color='success'>Explore Our Atlas</Button></Link>
+              <Link to={`pancreatlas/dataset?iids=${this.favs}`}><Button size='lg' className='explore-button' color='success'>Explore Our Atlas</Button></Link>
             </Col>
           </Row>
           <Row className='pancreatlas-row'>

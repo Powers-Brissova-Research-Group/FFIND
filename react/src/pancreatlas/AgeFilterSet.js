@@ -215,7 +215,6 @@ export default class AgeFilterSet extends React.Component {
     if (!this.initialized) {
       this.updateFilters(activeFilters)
       this.initialized = true
-      console.log('Initialized')
     }
     return (
       <div className='age-filter'>

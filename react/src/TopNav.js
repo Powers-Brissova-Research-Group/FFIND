@@ -6,7 +6,11 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem
+  NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  Badge
 } from 'reactstrap'
 
 import {
@@ -22,6 +26,17 @@ export default class TopNav extends React.Component {
     this.toggle = this.toggle.bind(this)
     this.state = {
       isOpen: false
+    }
+    this.state = {
+      iids: JSON.parse(window.atob(this.props.favorites))
+    }
+  }
+
+  componentDidUpdate (prevProps) {
+    if (prevProps.favorites !== this.props.favorites) {
+      this.setState({
+        iids: JSON.parse(window.atob(this.props.favorites))
+      })
     }
   }
 
@@ -41,17 +56,26 @@ export default class TopNav extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className='ml-auto' navbar>
-              <NavItem active={(window.location.pathname === '/pancreatlas')}>
-                <NavLink to='/pancreatlas/dataset'>Image Atlas</NavLink>
-              </NavItem>
+              {JSON.parse(window.atob(this.props.favorites)).length > 0 &&
+                <NavItem>
+                  <UncontrolledDropdown>
+                    <DropdownToggle nav caret>Image Atlas <Badge color='primary'>{JSON.parse(window.atob(this.props.favorites)).length}</Badge></DropdownToggle>
+                    <DropdownMenu right>
+                      <Link className='dropdown-item' to='/pancreatlas/dataset'>Image Atlas</Link>
+                      <Link className='dropdown-item' to={`/pancreatlas/favorites?iids=${this.props.favorites}`}>Favorites <Badge color='primary'>{JSON.parse(window.atob(this.props.favorites)).length}</Badge></Link>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                </NavItem>}
+              {JSON.parse(window.atob(this.props.favorites)).length <= 0 &&
+                <NavItem active={(window.location.pathname === '/pancreatlas/dataset')}>
+                  <NavLink to='/pancreatlas/dataset'>Image Atlas</NavLink>
+                </NavItem>
+              }
               <NavItem>
-                <NavLink to='/diabetes'>About Diabetes</NavLink>
+                <NavLink to='/diabetes'>Diabetes</NavLink>
               </NavItem>
-              <NavItem active={(window.location.pathname === '/collaborators')}>
-                <NavLink to='/collaborators'>Collaborators</NavLink>
-              </NavItem>
-              <NavItem active={(window.location.pathname === '/handelp/about')}>
-                <NavLink to='/about'>About</NavLink>
+              <NavItem active={(window.location.pathname === '/handelp/collaborators')}>
+                <NavLink to='/handelp/collaborators'>Collaborators</NavLink>
               </NavItem>
               <NavItem className='btn btn-info'>
                 <NavLink to='https://webapp.mis.vanderbilt.edu/vumc-giving/landing?appealCode=J1001'>Join Our Efforts</NavLink>

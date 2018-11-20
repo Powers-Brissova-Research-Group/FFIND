@@ -24,6 +24,8 @@ export default class DatasetList extends React.Component {
       loaded: false,
       datasets: []
     }
+    let params = new URLSearchParams(window.location.search)
+    this.iids = (params.has('iids') ? params.get('iids') : window.btoa(JSON.stringify([])))
   }
 
   componentDidMount () {
