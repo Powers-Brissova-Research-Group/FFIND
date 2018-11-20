@@ -391,6 +391,11 @@ div.matrix-cell-count > p {
   color: #7a7a7a
 }
 */
+
+td.matrix-sel {
+  text-align: center !important;
+}
+
 td.matrix-selector-cell > span {
   position: absolute;
   top: 50%;
