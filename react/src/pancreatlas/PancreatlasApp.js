@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import MetaTags from 'react-meta-tags'
 
-import './Pancreatlas.css'
 import HomePage from './HomePage'
 import DatasetList from './DatasetList'
 import ImageDetail from './ImageDetail'
@@ -41,7 +40,6 @@ class PancreatlasApp extends Component {
               <Route component={PageNotFound} />
             </Switch>
           </div>
-          {/* <PancreatlasFooter /> */}
         </div>
       </div>
     )

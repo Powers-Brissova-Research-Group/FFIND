@@ -28,7 +28,7 @@ export default class HandelApp extends React.Component {
 
   render () {
     return (
-      <div className='App'>
+      <div>
         <MetaTags>
           <title>pancreatlas - the study of the human pancreas and islet during the first decade of life</title>
           <meta name='description' content='Pancreatlas is a resource to catalogue new research data and discoveries pertaining to the human pancreas and islets change in the first decade of life, in order to to accelerate research throughout the world with the goal of understanding of the events in the pancreas and islet that trigger type 1 diabetes.' />

@@ -63,7 +63,7 @@ class App extends Component {
     //   supported = false
     // }
     return (
-      <div className='app'>
+      <div>
         {supported === false && <BrowserNotSupportedBanner version={version} browser={browser.name === 'ie' ? 'Internet Explorer' : browser.name} />}
         {/* <Container fluid className='test-feedback'>
           <Row>
@@ -73,7 +73,7 @@ class App extends Component {
           </Row>
         </Container> */}
         <Router>
-          <div className='App'>
+          <div>
             <TopNav />
             <Switch>
               <Route exact path='/' component={HandelApp} />
