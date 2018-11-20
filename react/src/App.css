@@ -810,3 +810,16 @@ div.browser-not-supported-banner a, a:visited, a:hover {
   background-color: #1B294A !important;
   color: #FFFFFF !important;
 }
+
+.favorites {
+  color: #6f6f6f;
+  cursor: pointer;
+}
+
+div.favorites-row {
+  align-items: center;
+}
+
+button.save-favorites {
+  margin-bottom: 1rem;
+}
