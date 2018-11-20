@@ -134,7 +134,7 @@ export default class Favorites extends React.Component {
   }
 
   email () {
-    window.location.href = `mailto:${this.props.email}`
+    window.location.href = `mailto:${this.state.email}?subject=Your%20pancreatlas%20Favorites&body=${this.state.urlText}`
   }
 
   handleChange (event) {
