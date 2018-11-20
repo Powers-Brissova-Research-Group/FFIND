@@ -1,6 +1,8 @@
 import React from 'react'
 import {
   Container,
+  Row,
+  Col,
   Table,
   Modal,
   ModalHeader,
@@ -245,31 +247,42 @@ export default class ImageMatrix extends React.Component {
 
       return (
         <Container fluid className='image-matrix'>
-          <h1>Matrix View</h1>
-          <h3>{`Viewing ${this.props.tag_1} vs ${this.props.tag_2}`}</h3>
-
-          <div className='image-matrix-content table table-responsive'>
-            <Table hover className='image-matrix'>
-              <thead>
-                <tr>
-                  <td className='matrix-cell'><Button color='primary' onClick={this.flip}>Flip Matrix</Button></td>
-                  {headings.map(item => (
-                    <td key={item} className='matrix-cell matrix-head'><strong>{item}</strong></td>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {Object.keys(chosenMatrix).map(row => (
-                  <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(chosenMatrix[row]).map(col => (
-                    <td key={row + ', ' + col} className='matrix-cell'>
-                      {chosenMatrix[row][col][0] !== undefined && <div className='matrix-cell-img' onClick={() => this.toggle(chosenMatrix[row][col])}><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosenMatrix[row][col][0]}.jpg`)} alt='' /><div className='matrix-cell-count'><p>{`${chosenMatrix[row][col].length}`}</p></div></div>}
-                      {chosenMatrix[row][col][0] === undefined && <p>Data not collected</p>}
-                    </td>
-                  ))}</tr>
-                ))}
-              </tbody>
-            </Table>
-          </div>
+          <Row>
+            <Col md='12'>
+              <h1>Matrix View</h1>
+            </Col>
+          </Row>
+          <Row>
+            <Col md='12'>
+              <h3>{`Viewing ${this.props.tag_1} vs ${this.props.tag_2}`}</h3>
+            </Col>
+          </Row>
+          <Row>
+            <Col md='12'>
+              <div className='image-matrix-content table table-responsive'>
+                <Table hover className='image-matrix mx-auto'>
+                  <thead>
+                    <tr>
+                      <td className='matrix-cell'><Button color='primary' onClick={this.flip}>Flip Matrix</Button></td>
+                      {headings.map(item => (
+                        <td key={item} className='matrix-cell matrix-head'><strong>{item}</strong></td>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.keys(chosenMatrix).map(row => (
+                      <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(chosenMatrix[row]).map(col => (
+                        <td key={row + ', ' + col} className='matrix-cell'>
+                          {chosenMatrix[row][col][0] !== undefined && <div className='matrix-cell-img' onClick={() => this.toggle(chosenMatrix[row][col])}><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosenMatrix[row][col][0]}.jpg`)} alt='' /><div className='matrix-cell-count'><p>{`${chosenMatrix[row][col].length}`}</p></div></div>}
+                          {chosenMatrix[row][col][0] === undefined && <p>Data not collected</p>}
+                        </td>
+                      ))}</tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </div>
+            </Col>
+          </Row>
           <Modal isOpen={this.state.modal} toggle={() => this.toggle([])} className='matrix-modal'>
             <ModalHeader toggle={() => this.toggle([])}>Image List</ModalHeader>
             <ModalBody>

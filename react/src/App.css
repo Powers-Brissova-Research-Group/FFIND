@@ -189,6 +189,10 @@ App-specific
   object-fit: cover;
 }
 
+table.image-matrix {
+  width: auto !important;
+}
+
 .image-matrix {
   overflow: scroll;
 }
@@ -365,6 +369,7 @@ td.matrix-cell {
   width: 150px;
   height: 150px;
   vertical-align: middle;
+  text-align: center;
 }
 
 td.matrix-head {
