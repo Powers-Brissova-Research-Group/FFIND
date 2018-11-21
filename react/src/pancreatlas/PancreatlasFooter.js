@@ -10,6 +10,16 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class PancreatlasFooter extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.scrollToTop = this.scrollToTop.bind(this)
+  }
+
+  scrollToTop () {
+    window.scrollTo(0, 0)
+  }
+
   render () {
     return (
       <footer className='footer'>
@@ -69,7 +79,7 @@ export default class PancreatlasFooter extends React.Component {
                 </Col>
 
                 <Col md='6'>
-                  <a id='scroll-top-div' href='#' className='float-right'><FontAwesomeIcon icon='hand-pointer' size='2x' id='x' /></a>
+                  <span className='float-right scroll-button'><FontAwesomeIcon icon='hand-pointer' size='2x' id='x' onClick={this.scrollToTop} /></span>
                 </Col>
 
               </Row>

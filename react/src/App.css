@@ -2,6 +2,10 @@
 Top level tags, headings, etc...
  */
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   height: 100%;
   font-family: 'Raleway', sans-serif;
@@ -827,4 +831,17 @@ div.favorites-row {
 
 button.save-favorites {
   margin-bottom: 1rem;
+}
+
+td.matrix-sel {
+  text-align: center;
+}
+
+span.scroll-button {
+  color: #999;
+  cursor: pointer;
+}
+
+span.scroll-button:hover {
+  color: #fff;
 }

@@ -93,7 +93,7 @@ export default class DatasetList extends React.Component {
                         <td><strong>{item.dsname}</strong> <Badge color='light' pill><a href=''>? Learn more</a></Badge> <br />
                           {item.desc || ''}
                         </td>
-                        <td>#</td>
+                        <td>{item.kvals.image_count}</td>
                         <td className='action-column'>
                           <Row>
                             <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false' }}>
@@ -108,7 +108,7 @@ export default class DatasetList extends React.Component {
                           </Row>
                         </td>
                         <td>{item.did}</td>
-                        <td>date-released</td>
+                        <td>{item.kvals.release_date}</td>
                       </tr>
                     ))}
                   </tbody>
