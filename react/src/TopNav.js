@@ -74,8 +74,8 @@ export default class TopNav extends React.Component {
               <NavItem>
                 <NavLink to='/diabetes'>Diabetes</NavLink>
               </NavItem>
-              <NavItem active={(window.location.pathname === '/handelp/collaborators')}>
-                <NavLink to='/handelp/collaborators'>Collaborators</NavLink>
+              <NavItem active={(window.location.pathname === '/collaborators')}>
+                <NavLink to='/collaborators'>Collaborators</NavLink>
               </NavItem>
               <NavItem className='btn btn-info'>
                 <NavLink to='https://webapp.mis.vanderbilt.edu/vumc-giving/landing?appealCode=J1001'>Join Our Efforts</NavLink>
