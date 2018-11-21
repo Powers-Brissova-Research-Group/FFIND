@@ -246,68 +246,71 @@ export default class ImageMatrix extends React.Component {
       }
 
       return (
-        <Container fluid className='image-matrix'>
-          <Row>
-            <Col md='12'>
-              <h1>Matrix View</h1>
-            </Col>
-          </Row>
-          <Row>
-            <Col md='12'>
-              <h3>{`Viewing ${this.props.tag_1} vs ${this.props.tag_2}`}</h3>
-            </Col>
-          </Row>
-          <Row>
-            <Col md='12'>
-              <div className='image-matrix-content table table-responsive'>
-                <Table hover className='image-matrix mx-auto'>
+        <div className='image-matrix'>
+          <Container>
+            <Row>
+              <Col md='12'>
+                <h1>Matrix View</h1>
+              </Col>
+            </Row>
+            <Row>
+              <Col md='12'>
+                <h3>{`Viewing ${this.props.tag_1} vs ${this.props.tag_2}`}</h3>
+              </Col>
+            </Row>
+          </Container>
+          <Container fluid className='image-matrix'>
+            <Row>
+              <Col md='12'>
+                <div className='image-matrix-content table table-responsive'>
+                  <Table hover className='image-matrix mx-auto'>
+                    <thead>
+                      <tr>
+                        <td className='matrix-cell'><Button color='primary' onClick={this.flip}>Flip Matrix</Button></td>
+                        {headings.map(item => (
+                          <td key={item} className='matrix-cell matrix-head'><strong>{item}</strong></td>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Object.keys(chosenMatrix).map(row => (
+                        <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(chosenMatrix[row]).map(col => (
+                          <td key={row + ', ' + col} className='matrix-cell'>
+                            {chosenMatrix[row][col][0] !== undefined && <div className='matrix-cell-img' onClick={() => this.toggle(chosenMatrix[row][col])}><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosenMatrix[row][col][0]}.jpg`)} alt='' /><div className='matrix-cell-count'><p>{`${chosenMatrix[row][col].length}`}</p></div></div>}
+                            {chosenMatrix[row][col][0] === undefined && <p>Data not collected</p>}
+                          </td>
+                        ))}</tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                </div>
+              </Col>
+            </Row>
+            <Modal isOpen={this.state.modal} toggle={() => this.toggle([])} className='matrix-modal'>
+              <ModalHeader toggle={() => this.toggle([])}>Image List</ModalHeader>
+              <ModalBody>
+                <Table>
                   <thead>
                     <tr>
-                      <td className='matrix-cell'><Button color='primary' onClick={this.flip}>Flip Matrix</Button></td>
-                      {headings.map(item => (
-                        <td key={item} className='matrix-cell matrix-head'><strong>{item}</strong></td>
-                      ))}
+                      <td>Thumbnail</td>
+                      <td>Image Tags</td>
+                      <td>Action</td>
                     </tr>
                   </thead>
                   <tbody>
-                    {Object.keys(chosenMatrix).map(row => (
-                      <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(chosenMatrix[row]).map(col => (
-                        <td key={row + ', ' + col} className='matrix-cell'>
-                          {chosenMatrix[row][col][0] !== undefined && <div className='matrix-cell-img' onClick={() => this.toggle(chosenMatrix[row][col])}><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosenMatrix[row][col][0]}.jpg`)} alt='' /><div className='matrix-cell-count'><p>{`${chosenMatrix[row][col].length}`}</p></div></div>}
-                          {chosenMatrix[row][col][0] === undefined && <p>Data not collected</p>}
-                        </td>
-                      ))}</tr>
+                    {this.state.selectedSet.map(img => (
+                      <MatrixModalListComponent iid={img} modalCallback={this.setModal} />
                     ))}
                   </tbody>
                 </Table>
-              </div>
-            </Col>
-          </Row>
-          <Modal isOpen={this.state.modal} toggle={() => this.toggle([])} className='matrix-modal'>
-            <ModalHeader toggle={() => this.toggle([])}>Image List</ModalHeader>
-            <ModalBody>
-              <Table>
-                <thead>
-                  <tr>
-                    <td>Thumbnail</td>
-                    <td>Image Tags</td>
-                    <td>Action</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.state.selectedSet.map(img => (
-                    <MatrixModalListComponent iid={img} modalCallback={this.setModal} />
-                  ))}
-                </tbody>
-              </Table>
-            </ModalBody>
-            <ModalFooter>
-              <Button color='danger' onClick={() => this.toggle([])}>Dismiss</Button>
-            </ModalFooter>
-          </Modal>
-          <ImageModal toggle={this.toggleDetail} isOpen={this.state.modalOpen} modalData={this.state.modalData} />
-        </Container>
-
+              </ModalBody>
+              <ModalFooter>
+                <Button color='danger' onClick={() => this.toggle([])}>Dismiss</Button>
+              </ModalFooter>
+            </Modal>
+            <ImageModal toggle={this.toggleDetail} isOpen={this.state.modalOpen} modalData={this.state.modalData} />
+          </Container>
+        </div>
       )
     } else if (this.state.error !== undefined) {
       return <Container><Error error_desc={this.state.error.message} /></Container>
