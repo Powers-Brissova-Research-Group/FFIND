@@ -1,4 +1,5 @@
 import api.omero_api as api
+import pprint
 
-img = api.get_image_by_id(16777)
-print img.id
+ds = api.get_dataset(384)
+pprint.pprint(ds.kvals)

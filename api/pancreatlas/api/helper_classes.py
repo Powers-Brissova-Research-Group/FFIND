@@ -3,6 +3,7 @@ import re
 import collections
 import logging
 import sys
+import json
 
 class Image:
     def __init__(self, img_wrapper):
@@ -162,4 +163,13 @@ class Dataset():
         self.did = ds_wrapper.getId()
         self.name = ds_wrapper.getName()
         self.desc = ds_wrapper.getDescription()
+        self.kvals = {}
         self.imgs = []
+        self.fetch_annotations()
+
+    def fetch_annotations(self):
+        anns = list(self.wrapper.listAnnotations())
+        for ann in anns:
+            if isinstance(ann, MapAnnotationWrapper):
+                for kval in ann.getValue():
+                    self.kvals[kval[0]] = kval[1]
