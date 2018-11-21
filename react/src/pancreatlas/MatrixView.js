@@ -2,19 +2,21 @@ import React from 'react'
 import {
   Button,
   Container,
-  Progress,
+  Row,
+  Col,
   Table
 } from 'reactstrap'
 
 import MetaTags from 'react-meta-tags'
 
-import ImageMatrix from './ImageMatrix';
+import ImageMatrix from './ImageMatrix'
+import LoadingBar from './LoadingBar'
 
 import Error from './Error'
 
 export default class MatrixView extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       tag1: null,
       tag2: null,
@@ -28,8 +30,8 @@ export default class MatrixView extends React.Component {
     this.showMatrix = this.showMatrix.bind(this)
   }
 
-  componentDidMount() {
-    fetch(`${process.env.REACT_APP_API_URL}/tagsets`)
+  componentDidMount () {
+    window.fetch(`${process.env.REACT_APP_API_URL}/tagsets`)
       .then(res => res.json())
       .then(result => {
         this.setState({
@@ -48,7 +50,7 @@ export default class MatrixView extends React.Component {
       })
   }
 
-  handleChange(event) {
+  handleChange (event) {
     let key = event.target.id
     if (key === 'tag1') {
       this.setState({
@@ -59,16 +61,15 @@ export default class MatrixView extends React.Component {
         tag2: event.target.value
       })
     }
-
   }
 
-  showMatrix() {
+  showMatrix () {
     this.setState({
       showMatrix: true
     })
   }
 
-  setMatrix(t1, t2) {
+  setMatrix (t1, t2) {
     this.setState({
       tag1: t1,
       tag2: t2,
@@ -76,7 +77,7 @@ export default class MatrixView extends React.Component {
     })
   }
 
-  render() {
+  render () {
     if (this.state.loaded) {
       if (!this.state.showMatrix) {
         return (
@@ -84,29 +85,37 @@ export default class MatrixView extends React.Component {
             <div className='matrix-view'>
               <MetaTags>
                 <title>Compare Attributes -- Pancreatlas / HANDEL-P</title>
-                <meta name="description" content="Pick two attribute sets and compare matching images in the pancreatlas"/>
+                <meta name='description' content='Pick two attribute sets and compare matching images in the pancreatlas' />
               </MetaTags>
-              <h1>Matrix View</h1>
-              <p>Select two dimensions to generate a matrix of images based on these filters.</p>
-              <div className='grid-select'>
+              <Row>
+                <Col md='12'>
+                  <h1>Matrix View</h1>
+                </Col>
+              </Row>
+              <Row>
+                <Col md='12'>
+                  <p>Select two dimensions to generate a matrix of images based on these filters.</p>
+                </Col>
+              </Row>
+              <div className='table table-responsive'>
                 <Table className='matrix-table'>
                   <thead>
-                    <tr className='row'>
-                      <td className='col-md-2 matrix-sel'></td>
+                    <tr>
+                      <td className='matrix-sel' />
                       {this.state.tagsets.map(ts => (
-                        <td className='col-md-2 matrix-sel'><strong>{ts.set_name}</strong></td>
+                        <td className='matrix-sel'><strong>{ts.set_name}</strong></td>
                       ))}
                     </tr>
                   </thead>
                   {this.state.tagsets.map(tagset1 => (
-                    <tr className='row'>
-                      <td className='matrix-sel col-md-2'><strong>{tagset1.set_name}</strong></td>
-                      {Array(this.state.tagsets.indexOf(tagset1) + 1).fill(0).map(key => (<td class='col-md-2 matrix-sel'>&mdash;</td>))}
+                    <tr>
+                      <td className='matrix-sel'><strong>{tagset1.set_name}</strong></td>
+                      {Array(this.state.tagsets.indexOf(tagset1) + 1).fill(0).map(key => (<td class='matrix-sel' style={{ width: `${Math.floor(100 / (this.state.tagsets.length))}%` }}>&mdash;</td>))}
                       {this.state.tagsets.slice(this.state.tagsets.indexOf(tagset1) + 1).map(tagset2 => {
                         if (tagset1.set_name === tagset2.set_name) {
-                          return <td className='col-md-2 matrix-sel'><span>&mdash;</span></td>
+                          return <td className='matrix-sel'><span>&mdash;</span></td>
                         } else {
-                          return (<td className='col-md-2 matrix-sel'><Button className='matrix-select-button' color="link" onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>)
+                          return (<td className='matrix-sel'><Button className='matrix-select-button' color='link' onClick={() => this.setMatrix(tagset1.set_name, tagset2.set_name)}>{tagset1.set_name} vs {tagset2.set_name}</Button></td>)
                         }
                       }
                       )}
@@ -145,12 +154,7 @@ export default class MatrixView extends React.Component {
       return <Error error_desc={this.state.error.message} />
     } else {
       return (
-        <Container>
-          <div className="loading">
-            <strong>Loading {this.props.dataset_name}...</strong>
-            <Progress animated color="success" value="100" />
-          </div>
-        </Container>
+        <LoadingBar />
       )
     }
   }

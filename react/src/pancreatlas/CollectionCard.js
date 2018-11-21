@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   Card,
   CardImg,
@@ -6,18 +6,18 @@ import {
   CardTitle,
   CardText,
   Button
-} from 'reactstrap';
+} from 'reactstrap'
 
-export default class CollectionCard extends React.Component{
-  render(){
+export default class CollectionCard extends React.Component {
+  render () {
     return (
-      <div className="collection-card h-100">
-        <Card className="h-100">
-          <CardImg top width="100%" src={this.props.img} />
-          <CardBody className="d-flex flex-column">
+      <div className='collection-card h-100'>
+        <Card className='h-100'>
+          <CardImg top width='100%' src={this.props.img} />
+          <CardBody className='d-flex flex-column'>
             <CardTitle>{this.props.name} </CardTitle>
             <CardText>{this.props.desc}</CardText>
-            <Button className="mt-auto">View Collection</Button>
+            <Button className='mt-auto'>View Collection</Button>
           </CardBody>
         </Card>
       </div>

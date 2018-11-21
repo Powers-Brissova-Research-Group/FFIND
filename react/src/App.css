@@ -1,40 +1,19 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 /*
-h1, h2, h3 {
-  font-family: 'Julius Sans One', sans-serif;
+Top level tags, headings, etc...
+ */
+
+html {
+  scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'Questrial', sans-serif;
-  text-align: left;
-}*/
+html, body {
+  height: 100%;
+  font-family: 'Raleway', sans-serif;
+  font-size:0.95em;
+}
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Poppins', serif;
+}
 
 a {
   color: #23527c;
@@ -45,13 +24,546 @@ a:hover{
   color: #23527c;
 }
 
+/*
+Layout-specific
+ */
+img.home-logo {
+  width: 45%;
+}
+
+.home-card-icon{
+  margin-top: 1rem;
+}
+
+.home-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.home-card{
+  border: 2px solid rgba(0, 0, 0, 0.125);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.home-description {
+  font-size: 1.5rem;
+  margin-top: 4rem;
+}
+
+.explore-button {
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+  width: 50%;
+  height: 6rem;
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+div.content{
+  min-height:34vh;
+}
+
+.spacer-footer {
+  height: 366px;
+}
+
+/*
+Navigation
+ */
+.pancreatlas-nav {
+  width: 100%;
+  margin-bottom: 3rem;
+  background-color: #1b294a;
+}
+
+.bg-dark {
+  background-color: #204356 !important;
+}
+
+.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand {
+  color: #e4e5d7 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+  color: #e4e5d7 !important;
+}
+
+.navbar-logo { /* TODO check if necessary */
+  height: 35px;
+}
+
+/*
+Footer
+ */
+.footer {
+  background-color: #2e2e2e;;
+  color: #e4e5d7;
+  padding-top: 1rem;
+  padding-bottom: 0;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.footer p{
+  font-size: 14px;
+}
+
+.footer-lower {
+  background-color: #262626;
+}
+
+.footer a:hover {
+  color: #fff;
+}
+
 .footer a{
   color: #999;
 }
 
-.footer a:hover{
-  color: #204356;
+.footer-img {
+  max-width: 60%;
+  margin-bottom: 1rem;
 }
+
+
+/*
+Table
+ */
+.table td {
+  text-align: left;
+  vertical-align: middle;
+}
+
+td.action-column {
+  text-align: center;
+  width: 57%;
+}
+
+td.name-column {
+  font-weight: bold;
+}
+
+.table thead td {
+  text-align: center;
+}
+
+td.image-detail-row > p {
+  margin: 0 0 0 0;
+}
+
+td.image-detail-row {
+  vertical-align: middle;
+}
+
+
+/*
+App-specific
+ */
+
+#root {
+  height: 100%;
+}
+.pancreatlas {
+  height: 100%;
+  margin-top: 1.5rem;
+}
+
+.pancreatlas-row {
+  text-align: center;
+}
+
+.card-img-top {
+  height: 200px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.matrix-thumb {
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+table.image-matrix {
+  width: auto !important;
+}
+
+.image-matrix {
+  overflow: scroll;
+}
+
+.modal-thumb {
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.ds-list-left-button {
+  margin-right: 1rem;
+}
+
+.ds-list-right-button {
+  margin-left: 1rem;
+}
+
+.path-button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.collapse-button {
+  transition: transform 0.33s;
+}
+
+.collapse-button:hover{
+  cursor: pointer;
+}
+
+.collapse-button-open{
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+}
+
+.image-card {
+  max-width: 350px;
+  text-align: left;
+  font-family: Roboto, Sans-Serif;
+}
+
+.image-row {
+  padding-bottom: 2rem;
+}
+
+.image-grid h1 {
+  text-align: left;
+}
+
+.card-title, .card-subtitle{
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size:90%;
+}
+
+.card-body strong { color: #777; font-weight:normal;}
+
+.collection-card {
+  max-width: 350px;
+}
+
+.collection-row {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: left;
+  margin: auto;
+}
+
+.collection-row div {
+  margin: auto;
+}
+
+.subheading {
+  text-align: left;
+}
+
+.dataset-page {
+  width: 100%;
+}
+
+.dataset-page h1{
+  text-align: left;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.dataset-list{
+  width: 100%;
+}
+
+.filter-list {
+  text-align: left;
+  background-color: #f6f6f6;
+  border: 1px solid #e3e3e3;
+  padding:15px;
+  font-family: Roboto, Sans-Serif !important;
+  border-radius: 2px;
+}
+
+.filter-button {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+
+.age-slider {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-set {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-top: 1px solid #e3e3e3;
+  padding-top:15px;
+}
+
+.age-group-list > div:first-child {
+  margin-top: 0
+}
+
+.age-group-list > div {
+  margin-top: 2.5rem;
+}
+
+div.marker-list {
+  line-height: 2.5;
+}
+
+.cy5 {
+  background-color: white;
+  color: black;
+}
+
+span.marker {
+  border: 1px solid rgba(0, 0, 0, .125);
+  display: inline-block;
+  padding: 0 0.25rem 0 0.25rem;
+  border-radius: 5px;
+  line-height: 2rem;
+  cursor: pointer;
+}
+
+.cy3 {
+  background-color: red;
+  color: black;
+}
+
+.cy2 {
+  background-color: green;
+  color: white;
+}
+
+.DAPI {
+  background-color: blue;
+  color: white;
+}
+
+.matrix-select-button{
+  white-space: normal !important;
+  word-break: initial;
+}
+
+
+.large-thumbnail {
+  max-width: 700px;
+  overflow: hidden;
+}
+
+td.matrix-cell {
+  width: 150px;
+  height: 150px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+td.matrix-head {
+  background-color: #a1a1a1;
+}
+
+.matrix-cell-img {
+  position: relative;
+  width: 100%;
+}
+
+div.matrix-cell-count {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* margin-top: 43%; */
+  color: white;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+div.matrix-cell-count > p {
+  margin: 0 0 0 0;
+}
+
+/* div.matrix-cell-count > div {
+  color: white;
+  letter-spacing: -1px;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.view-counter {
+  color: #7a7a7a
+}
+*/
+td.matrix-selector-cell > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-data{
+  text-align: center;
+}
+
+.modal-data img {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.modal-data button {
+  margin-bottom: 1rem;
+}
+
+img.image-card-thumb {
+  position: absolute;
+  z-index: 1
+}
+
+.modal-dialog {
+  max-width: 800px;
+}
+
+.pathviewer-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.pathviewer-button {
+  width: 50%;
+}
+
+.pathviewer-button > button {
+  width: 99%;
+}
+
+.marker-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 5px;
+  margin: 0.125rem;
+}
+
+.marker-cell > p {
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+span.age-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+span.age-group:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+  -webkit-transition: background-color 250ms linear;
+  -ms-transition: background-color 250ms linear;
+  transition: background-color 250ms linear;
+}
+
+span.age-group-text {
+  position: absolute;
+  color: white;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+span.age-group-imgs {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: -2;
+}
+
+img.age-group-img {
+  z-index: -1;
+  max-height: 100%;
+}
+
+img.age-group-img:not(.islet) {
+  opacity: 0;
+}
+
+img.age-group-img.islet {
+  position:absolute;
+}
+button.view-all {
+  height: 5rem;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+
+div.card-img-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  z-index: 50;
+  cursor: pointer;
+  height: 200px;
+}
+
+div.card-img-wrapper .card-search-plus {
+  color: white;
+  opacity: 0.5;
+  z-index: 3;
+  margin: 0 auto;
+}
+
+div.card-img-wrapper:hover .card-search-plus {
+  opacity: 0.9
+}
+
+span.undo {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+
+
+/* original app.css stuff, TODO finish reorganizing */
 
 .v-padded{
   padding-top: 60px;
@@ -86,10 +598,10 @@ a:hover{
   margin-right: 10px;
 }
 
-.row {
+/* .row {
   text-align: left;
   padding-bottom: 10px;
-}
+} */
 
 .banner-container{
   height: 600px;
@@ -276,5 +788,60 @@ div.browser-not-supported-banner {
 }
 
 div.browser-not-supported-banner a, a:visited, a:hover {
+  color: #fff;
+}
+.navbar-nav {
+  align-items: center;
+}
+
+.dropdown-item, .dropdown-item.active {
+  width: auto
+}
+
+.dropdown-item {
+  color: #1B294A !important;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+
+.dropdown-item, .dropdown-item.active {
+  width: auto
+}
+
+.dropdown-item {
+  color: #1B294A !important;
+}
+
+.dropdown-item.active {
+  background-color: #1B294A !important;
+  color: #FFFFFF !important;
+}
+
+.favorites {
+  color: #6f6f6f;
+  cursor: pointer;
+}
+
+div.favorites-row {
+  align-items: center;
+}
+
+button.save-favorites {
+  margin-bottom: 1rem;
+}
+
+td.matrix-sel {
+  text-align: center;
+}
+
+span.scroll-button {
+  color: #999;
+  cursor: pointer;
+}
+
+span.scroll-button:hover {
   color: #fff;
 }

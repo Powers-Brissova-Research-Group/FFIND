@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 import {
   Container,
   Row,
   Col
-} from 'reactstrap';
+} from 'reactstrap'
 
 import {
   Link
@@ -11,14 +11,14 @@ import {
 
 import HomeModal from './HomeModal'
 
-import Particles from 'react-particles-js';
+import Particles from 'react-particles-js'
 
-import bannerImg from './assets/banner-bg3-fade.png';
+import bannerImg from './assets/banner-bg3-fade.png'
 
 import illustration from './assets/pancreas-islet-cells.png'
 
 export default class Banner extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       modalOpen: false
@@ -26,13 +26,13 @@ export default class Banner extends React.Component {
     this.toggle = this.toggle.bind(this)
   }
 
-  toggle() {
+  toggle () {
     this.setState({
       modalOpen: !this.state.modalOpen
     })
   }
 
-  render() {
+  render () {
     return (
       <div>
         <div className='overlay'>
@@ -160,27 +160,27 @@ export default class Banner extends React.Component {
         </div>
 
         <Container className='banner-container'>
-          <Row className='banner-row'>
-            <Col md="6" className='align-self-center'>
+          <Row className='banner-row hidden-sm-up'>
+            <Col md='6' className='align-self-center'>
               <h1 className='banner-header'>We study the human pancreas and islet during the first decade of life.</h1>
-              <h4 className="banner-subheader-left">Our goal is to assemble a world-class resource for collecting and sharing data from human pancreas samples.</h4>
+              <h4 className='banner-subheader-left'>Our goal is to assemble a world-class resource for collecting and sharing data from human pancreas samples.</h4>
 
             </Col>
-            <Col md="1"></Col>
-            <Col md="5" className='align-self-center'>
-              <Row className="mt-3">
-                  <div>
-                      <Link to={'/pancreatlas/dataset/'}><img src={illustration} responsive alt='View our datasets' /></Link>
-                    </div>
+            <Col md='1' />
+            <Col md='5' className='align-self-center d-none d-md-block'>
+              <Row className='mt-3'>
+                <div>
+                  <Link to={'/pancreatlas/dataset/'}><img src={illustration} responsive alt='View our datasets' /></Link>
+                </div>
               </Row>
 
-              {/*<Row className="mt-3"><Button size="lg" color="info" className='banner-button' onClick={this.toggle}>Markers of beta cell-directed autoimmunity appear in some individuals in the first 2-3 years of life</Button></Row>
-              <Row className="mt-3"><Link to='/handelp/collaborators'><Button size="lg" color="info" className='banner-button'>The number of beta cells and islets in the human pancreas is determined in the first decade of life</Button></Link></Row>*/}
+              {/* <Row className="mt-3"><Button size="lg" color="info" className='banner-button' onClick={this.toggle}>Markers of beta cell-directed autoimmunity appear in some individuals in the first 2-3 years of life</Button></Row>
+              <Row className="mt-3"><Link to='/handelp/collaborators'><Button size="lg" color="info" className='banner-button'>The number of beta cells and islets in the human pancreas is determined in the first decade of life</Button></Link></Row> */}
             </Col>
           </Row>
           <HomeModal isOpen={this.state.modalOpen} toggle={this.toggle} />
         </Container>
       </div>
-    );
+    )
   }
 }

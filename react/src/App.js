@@ -14,14 +14,30 @@ import PancreatlasFooter from './pancreatlas/PancreatlasFooter'
 import BrowserNotSupportedBanner from './BrowserNotSupportedBanner'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus } from '@fortawesome/free-solid-svg-icons'
+import { faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus)
+library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane)
 
 class App extends Component {
   constructor (props) {
     super(props)
+
+    this.addFavorite = this.addFavorite.bind(this)
     this.checkCompatability = this.checkCompatability.bind(this)
+    this.addFavorite = this.addFavorite.bind(this)
+
+    let urlVars = new URLSearchParams(window.location.search)
+
+    let favs = []
+    let encFavs = window.btoa(JSON.stringify(favs))
+    if (urlVars.has('iids')) {
+      favs = JSON.parse(window.atob(urlVars.get('iids')))
+      encFavs = urlVars.get('iids')
+    }
+    this.state = {
+      favorites: favs,
+      encodedFavorites: encFavs
+    }
   }
 
   checkCompatability () {
@@ -53,6 +69,23 @@ class App extends Component {
     return { isSupported: supported, browserInfo: browser }
   }
 
+  addFavorite (iid) {
+    if (this.state.favorites.indexOf(iid) !== -1) {
+      let tmp = this.state.favorites
+      tmp.splice(tmp.indexOf(iid), 1)
+      this.setState({
+        favorites: tmp,
+        encodedFavorites: window.btoa(JSON.stringify(tmp))
+      })
+    } else {
+      let tmp = this.state.favorites.concat(iid)
+      this.setState({
+        favorites: tmp,
+        encodedFavorites: window.btoa(JSON.stringify(tmp))
+      })
+    }
+  }
+
   render () {
     var supportInfo = this.checkCompatability()
     var supported = supportInfo.isSupported
@@ -63,7 +96,7 @@ class App extends Component {
     //   supported = false
     // }
     return (
-      <div className='app'>
+      <div>
         {supported === false && <BrowserNotSupportedBanner version={version} browser={browser.name === 'ie' ? 'Internet Explorer' : browser.name} />}
         {/* <Container fluid className='test-feedback'>
           <Row>
@@ -74,10 +107,10 @@ class App extends Component {
         </Container> */}
         <Router>
           <div className='App'>
-            <TopNav />
+            <TopNav favorites={this.state.encodedFavorites} />
             <Switch>
               <Route exact path='/' component={HandelApp} />
-              <Route path='/pancreatlas' component={PancreatlasApp} />
+              <Route path={`/pancreatlas`} render={(props) => <PancreatlasApp {...props} favoriteCallback={this.addFavorite} favorites={this.state.encodedFavorites} />} />
               <Route path='/' component={HandelApp} />
             </Switch>
             <PancreatlasFooter />
