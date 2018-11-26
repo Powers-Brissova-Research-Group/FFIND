@@ -83,6 +83,11 @@ export default class PancreatlasFooter extends React.Component {
                 </Col>
 
               </Row>
+              <Row>
+                <Col md='12'>
+                  <p className='version-info'>pancreatlas v0.2</p>
+                </Col>
+              </Row>
             </Container>
           </Container>
         </footer>

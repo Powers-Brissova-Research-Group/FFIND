@@ -845,3 +845,7 @@ span.scroll-button {
 span.scroll-button:hover {
   color: #fff;
 }
+
+.secondary {
+  color: #808080;
+}
