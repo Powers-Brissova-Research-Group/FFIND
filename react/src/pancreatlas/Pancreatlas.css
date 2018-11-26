@@ -430,10 +430,6 @@ img.image-card-thumb {
   width: 50%;
 }
 
-.pathviewer-button > button {
-  width: 99%;
-}
-
 .marker-cell {
   display: flex;
   justify-content: center;
@@ -567,4 +563,11 @@ span.undo {
 
 p.version-info {
   color: #404040;
+}
+
+div.modal-markers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: space-around;
 }

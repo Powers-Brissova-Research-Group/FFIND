@@ -236,7 +236,6 @@ table.image-matrix {
 }
 
 .image-card {
-  max-width: 350px;
   text-align: left;
   font-family: Roboto, Sans-Serif;
 }
@@ -453,10 +452,6 @@ img.image-card-thumb {
 
 .pathviewer-button {
   width: 50%;
-}
-
-.pathviewer-button > button {
-  width: 99%;
 }
 
 .marker-cell {
@@ -848,4 +843,16 @@ span.scroll-button:hover {
 
 .secondary {
   color: #808080;
+}
+
+div.modal-markers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: space-around;
+}
+
+div.modal-image {
+  background-color: black;
+  padding-bottom: 0.5rem;
 }

@@ -9,6 +9,8 @@ import {
   Button
 } from 'reactstrap'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import DetailRow from './DetailRow'
 
 export default class ImageModal extends React.Component {
@@ -41,39 +43,51 @@ export default class ImageModal extends React.Component {
             <div className='modal-data'>
               <Row>
                 <Col md='6' sm='12'>
-                  <Row>
-                    {Object.keys(this.markers).filter(key => this.markers[key] !== '').map(key => (
-                      <Col md='6' sm='12'>
-                        <div className={'marker-cell'} style={{ color: (tinycolor(this.props.modalData.markerColors[key.toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.props.modalData.markerColors[key.toUpperCase()]}` }}>
-                          <p>{this.markers[key]}</p>
+                  <div className='modal-image'>
+                    <Row>
+                      <Col sm='12'>
+                        <a href={this.props.modalData.path_path}><img src={require(`../assets/pancreatlas/thumbs/${this.props.modalData.img_id}.jpg`)} alt={this.props.modalData.img_id} className='modal-image' /></a>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md='12'>
+                        <div className='modal-markers'>
+                          {Object.keys(this.markers).filter(key => this.markers[key] !== '').map(key => (
+                            <span
+                              className='tag marker'
+                              style={{
+                                color: (tinycolor(this.props.modalData.markerColors[key.toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF',
+                                backgroundColor: `#${this.props.modalData.markerColors[key.toUpperCase()]}`
+                              }}>
+                              {this.markers[key]}
+                            </span>
+                            // <div className={'marker-cell'} style={{ color: (tinycolor(this.props.modalData.markerColors[key.toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.props.modalData.markerColors[key.toUpperCase()]}` }}>
+                            //   <p>{this.markers[key]}</p>
+                            // </div>
+                          ))}
                         </div>
                       </Col>
-                    ))}
-                  </Row>
-
-                  <Row>
-                    <Col sm='12'>
-                      <a href={this.props.modalData.path_path}><img src={require(`../assets/pancreatlas/thumbs/${this.props.modalData.img_id}.jpg`)} alt={this.props.modalData.img_id} className='modal-image' /></a>
-
-                      <div class='carousel-caption'>
-                        <div className='pathviewer-buttons'>
-                          <a href={this.props.modalData.path_path} className='pathviewer-button'><Button color='success'>Open</Button></a>
-                          <a href={this.props.modalData.path_path} target='_blank' className='pathviewer-button'><Button color='primary'>Open in New Tab</Button></a>
-                        </div>
-                      </div>
-
-                    </Col>
-                  </Row>
-
+                    </Row>
+                  </div>
                 </Col>
                 <Col md='6' sm='12'>
-                  <Table>
-                    <tbody>
-                      {this.relevantKeys.map(key => {
-                        return <DetailRow data={this.props.modalData.img_data[key].val} desc={this.defs[key].short_desc} heading={labelRe.exec(key)[3]} />
-                      })}
-                    </tbody>
-                  </Table>
+                  <Row>
+                    <a href={this.props.modalData.path_path} target='_blank' className='pathviewer-button'>
+                      <Button color='primary'>Open <FontAwesomeIcon size='1x' icon='external-link-alt' /></Button>
+                    </a>
+                    <Button color='success'>Save Image <FontAwesomeIcon size='1x' icon='bookmark' /></Button>
+                  </Row>
+                  <Row>
+                    <Col md='12'>
+                      <Table>
+                        <tbody>
+                          {this.relevantKeys.map(key => {
+                            return <DetailRow data={this.props.modalData.img_data[key].val} desc={this.defs[key].short_desc} heading={labelRe.exec(key)[3]} />
+                          })}
+                        </tbody>
+                      </Table>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
             </div>
