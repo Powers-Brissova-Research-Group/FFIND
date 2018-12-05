@@ -69,8 +69,7 @@ export default class Home extends React.Component {
           <div className='support v-padded'>
             <Row className='center-row'>
               <Col sm='12'>
-                <h2>Support</h2>
-                <p>This project is generously supported by:</p>
+                <h2>This project is generously supported by:</h2>
               </Col>
             </Row>
             <Row className='center-row'>
@@ -80,7 +79,7 @@ export default class Home extends React.Component {
             </Row>
             <Row className='center-row'>
               <Col sm='12'>
-                <p>We also thank the following</p>
+                <p>We also thank the following:</p>
               </Col>
             </Row>
             <Row>

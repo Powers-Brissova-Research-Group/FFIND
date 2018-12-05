@@ -3,7 +3,9 @@ import {
   Card,
   CardImg,
   CardBody,
-  Button
+  Button,
+  Row,
+  Col
 } from 'reactstrap'
 
 import {
@@ -14,7 +16,7 @@ import Error from './Error'
 import MarkerTag from './MarkerTag'
 
 export default class ImageCard extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.toggleTooltip = this.toggleTooltip.bind(this)
@@ -29,7 +31,7 @@ export default class ImageCard extends React.Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     // Load information about the image
     window.fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`)
       .then(res => res.json())
@@ -110,13 +112,13 @@ export default class ImageCard extends React.Component {
       })
   }
 
-  toggleTooltip () {
+  toggleTooltip() {
     this.setState({
       ttOpen: !this.state.ttOpen
     })
   }
 
-  render () {
+  render() {
     if (this.state.loaded) {
       let lastMarker = Object.keys(this.state.markers)[Object.keys(this.state.markers).length - 1]
       return (
@@ -153,9 +155,15 @@ export default class ImageCard extends React.Component {
               ))}
               <span className='tag' key={this.props.iid + this.state.imgTags[this.state.imgTags.length - 1]}> {this.state.imgTags[this.state.imgTags.length - 1]}</span>
             </div>
-            <Button color='link' className='mt-auto' onClick={() => this.props.callback(this.props.iid)}>Preview</Button>
-            {this.props.isFavorite && <Button color='success' className='favorite' onClick={() => this.props.favoriteCallback(this.props.iid)}>Favorite</Button>}
-            {!this.props.isFavorite && <Button color='danger' className='favorite' onClick={() => this.props.favoriteCallback(this.props.iid)}>Unfavorite</Button>}
+            <Row>
+              <Col md='6'>
+                <Button color='link' className='mt-auto' onClick={() => this.props.callback(this.props.iid)}>Preview</Button>
+              </Col>
+              <Col md='6'>
+                {this.props.isFavorite && <Button color='success' className='favorite' onClick={() => this.props.favoriteCallback(this.props.iid)}>Save</Button>}
+                {!this.props.isFavorite && <Button color='danger' className='favorite' onClick={() => this.props.favoriteCallback(this.props.iid)}>Remove</Button>}
+              </Col>
+            </Row>
             {/* <a href={this.props.path_path} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></a> */}
           </CardBody>
         </Card>

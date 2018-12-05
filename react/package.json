@@ -37,6 +37,8 @@
     "standard": "^12.0.1"
   },
   "standard": {
-    "env": [ "jest" ]
+    "env": [
+      "jest"
+    ]
   }
 }

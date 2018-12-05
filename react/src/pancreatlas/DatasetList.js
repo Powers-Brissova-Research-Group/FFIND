@@ -67,7 +67,7 @@ export default class DatasetList extends React.Component {
                 <Col md='6'>
                   <h3>&nbsp;</h3>
                   <h1>&nbsp;</h1>
-                  <p>Generously funded by The Leona M. and Harry B. Helmsley Charitable Trust, <strong>HANDEL-P aims to improve understanding of early events and processes in human pancreatic development through an interactive image atlas.</strong> By examining the islet structure and gene expression in pancreata from donors spanning the neonatal and juvenile stages of life, we hope to gain insight into type 1 diabetes.</p>
+                  <p>Images are organized into curated <strong>collections</strong>, each focusing on a different topic or research question. Click on the collection <strong>title</strong> to read more about that project, and use the buttons to the right to view and explore images. For more information on our data, please visit our <Link to='/pancreatlas/nomenclature'>nomenclature page</Link>.</p>
                 </Col>
               </Row>
             </Container>
@@ -81,20 +81,20 @@ export default class DatasetList extends React.Component {
                   <thead>
                     <tr>
                       <th>Description</th>
-                      <th>Images</th>
-                      <th>Action</th>
-                      <th>ID</th>
-                      <th>Date</th>
+                      <th className='text-center'>Images</th>
+                      <th className='text-center'>Action</th>
+                      <th className='text-center'>ID</th>
+                      <th className='text-center'>Date</th>
                     </tr>
                   </thead>
                   <tbody>
                     {this.state.datasets.map(item => (
                       <tr key={item.did}>
-                        <td><strong>{item.dsname}</strong> <Badge color='light' pill><a href=''>? Learn more</a></Badge> <br />
+                        <td><strong>{item.dsname}</strong> <Badge color='dark' pill><a href=''>? Learn more</a></Badge> <br />
                           {item.desc || ''}
                         </td>
-                        <td>{item.kvals.image_count}</td>
-                        <td className='action-column'>
+                        <td className='text-center'>{item.kvals.image_count}</td>
+                        <td className='action-column text-center'>
                           <Row>
                             <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false' }}>
                               <Button className='ds-list-left-button' >Browse All Images</Button>
@@ -107,8 +107,8 @@ export default class DatasetList extends React.Component {
                             </Link>
                           </Row>
                         </td>
-                        <td>{item.did}</td>
-                        <td>{item.kvals.release_date}</td>
+                        <td className='text-center'>{item.did}</td>
+                        <td className='text-center'>{item.kvals.release_date}</td>
                       </tr>
                     ))}
                   </tbody>

@@ -30,14 +30,14 @@ export default class PancreatlasFooter extends React.Component {
               <Col md='6'>
                 <h3>About Us</h3>
                 <p>Our investigators are studying how the human pancreas and islets change in the first decade of life. This website, an atlas of our results, seeks to make this new information available to scientists to accelerate research throughout the world with the goal of understanding of the events in the pancreas and islet that trigger type 1 diabetes.</p>
+                <p>For more information on our data, please visit our <Link to={'/pancreatlas/nomenclature'}>nomenclature page</Link>.</p>
                 <p>Supported by the <b><a href='http://www.helmsleytrust.org'>Helmsley Charitable Trust</a></b>, <a href='http://www.hirnetwork.org'>HIRN</a>, <a href='http://www.iiam.org'>IIAM</a>, <a href='https://iidp.coh.org'>IIDP</a>, <a href='http://www.jdrf.org'>JDRF</a>, <a href='http://www.ndri.org'>NDRI</a>, <a href='https://www.nih.gov'>NIH</a>, <a href='https://www.jdrfnpod.org'>nPOD</a>, <a href='http://www.research.va.gov'>VA research service</a>, and both institutional funds and space from <a href='https://www.mc.vanderbilt.edu'>VUMC</a></p>
               </Col>
 
               <Col md='3'>
                 <Row>
                   <Col md='12'>
-                    <h2>Labs &amp; Info</h2>
-                    <p>For more information on our data, please visit our <Link to={'/pancreatlas/nomenclature'}>nomenclature page</Link>.</p>
+                    <h2>Contributors</h2>
                   </Col>
                   <Col md='6'>
                     <p><a href='http://pathology.ufl.edu/faculty/experimental-pathology/mark-a-atkinson/'> Atkinson Lab</a></p>
@@ -54,7 +54,7 @@ export default class PancreatlasFooter extends React.Component {
               </Col>
 
               <Col md='3'>
-                <h3 className='get-in-touch'>Get in touch</h3>
+                <h2 className='get-in-touch'>Get in touch</h2>
                 <p>
                   Vanderbilt University School of Medicine<br />
                   8435F Medical Research Bldg IV<br />
@@ -73,12 +73,12 @@ export default class PancreatlasFooter extends React.Component {
           <Container fluid>
             <Container>
               <Row className='v-padded'>
-                <Col md='6'>
+                <Col md='8'>
                   <p>Developed and managed by Jimmy Messmer (<a href='https://www.powersresearch.org'>Powers Laboratory</a>) and JP Cartailler (<a href='https://labnodes.vanderbilt.edu/cds'>Creative Data Solutions</a>)</p>
                   <p>&copy; 2016-2018 Vanderbilt University Medical Center <span> | </span> All Rights Reserved</p>
                 </Col>
 
-                <Col md='6'>
+                <Col md='4'>
                   <span className='float-right scroll-button'><FontAwesomeIcon icon='hand-pointer' size='2x' id='x' onClick={this.scrollToTop} /></span>
                 </Col>
 

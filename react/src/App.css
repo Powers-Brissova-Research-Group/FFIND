@@ -856,3 +856,7 @@ div.modal-image {
   background-color: black;
   padding-bottom: 0.5rem;
 }
+
+td.action-column div.row {
+  justify-content: center
+}
