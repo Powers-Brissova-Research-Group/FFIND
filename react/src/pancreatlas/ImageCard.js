@@ -157,7 +157,7 @@ export default class ImageCard extends React.Component {
             </div>
             <Row>
               <Col md='6'>
-                <Button color='link' className='mt-auto' onClick={() => this.props.callback(this.props.iid)}>Preview</Button>
+                <Button color='primary' className='mt-auto' onClick={() => this.props.callback(this.props.iid)}>Preview</Button>
               </Col>
               <Col md='6'>
                 {this.props.isFavorite && <Button color='success' className='favorite' onClick={() => this.props.favoriteCallback(this.props.iid)}>Save</Button>}
