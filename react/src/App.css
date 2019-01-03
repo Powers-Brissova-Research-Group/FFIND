@@ -860,3 +860,25 @@ div.modal-image {
 td.action-column div.row {
   justify-content: center
 }
+
+div .row.ds-alt {
+  background-color: #a3d6ff;
+  color: #0000aa;
+  margin-left: -1.35em;
+  margin-right: -1.35em;
+  margin-bottom: 0.95em;
+  min-height: 3em;
+  max-height: 3em;
+}
+
+a.navlink {
+  cursor: pointer;
+}
+
+div.dataset-lists ul.nav.nav-tabs {
+  margin-bottom: 1rem;
+}
+
+img.dataset-funder {
+  max-width: 100%;
+}

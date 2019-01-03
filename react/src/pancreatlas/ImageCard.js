@@ -16,7 +16,7 @@ import Error from './Error'
 import MarkerTag from './MarkerTag'
 
 export default class ImageCard extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.toggleTooltip = this.toggleTooltip.bind(this)
@@ -31,7 +31,7 @@ export default class ImageCard extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     // Load information about the image
     window.fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`)
       .then(res => res.json())
@@ -112,13 +112,13 @@ export default class ImageCard extends React.Component {
       })
   }
 
-  toggleTooltip() {
+  toggleTooltip () {
     this.setState({
       ttOpen: !this.state.ttOpen
     })
   }
 
-  render() {
+  render () {
     if (this.state.loaded) {
       let lastMarker = Object.keys(this.state.markers)[Object.keys(this.state.markers).length - 1]
       return (
@@ -157,7 +157,7 @@ export default class ImageCard extends React.Component {
             </div>
             <Row>
               <Col md='6'>
-                <Button color='link' className='mt-auto' onClick={() => this.props.callback(this.props.iid)}>Preview</Button>
+                <Button color='primary' className='mt-auto' onClick={() => this.props.callback(this.props.iid)}>Preview</Button>
               </Col>
               <Col md='6'>
                 {this.props.isFavorite && <Button color='success' className='favorite' onClick={() => this.props.favoriteCallback(this.props.iid)}>Save</Button>}

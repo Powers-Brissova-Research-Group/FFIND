@@ -436,7 +436,7 @@ export default class ImageGrid extends React.Component {
                 </Row>
               </Col>
             </Row>
-            <ImageModal toggle={this.toggle} isOpen={this.state.modalOpen} modalData={this.state.modalData} />
+            <ImageModal toggle={this.toggle} isOpen={this.state.modalOpen} modalData={this.state.modalData} favorites={this.props.favorites} favoriteCallback={this.props.favoriteCallback} />
           </Container>
         </div>
       )

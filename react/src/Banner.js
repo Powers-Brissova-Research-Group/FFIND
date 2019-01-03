@@ -162,8 +162,8 @@ export default class Banner extends React.Component {
         <Container className='banner-container'>
           <Row className='banner-row hidden-sm-up'>
             <Col md='6' className='align-self-center'>
-              <h1 className='banner-header'>We study the human pancreas and islet during the first decade of life.</h1>
-              <h4 className='banner-subheader-left'>Our goal is to assemble a world-class resource for collecting and sharing data from human pancreas samples.</h4>
+              <h1 className='banner-header'>We study the human pancreas and islets from birth to adulthood.</h1>
+              <h4 className='banner-subheader-left'>Our goal is to build a practical resource for assembling and sharing data from human pancreas samples.</h4>
 
             </Col>
             <Col md='1' />
