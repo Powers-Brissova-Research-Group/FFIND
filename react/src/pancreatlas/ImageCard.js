@@ -16,7 +16,7 @@ import Error from './Error'
 import MarkerTag from './MarkerTag'
 
 export default class ImageCard extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.toggleTooltip = this.toggleTooltip.bind(this)
@@ -31,7 +31,7 @@ export default class ImageCard extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     // Load information about the image
     window.fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`)
       .then(res => res.json())
@@ -112,13 +112,13 @@ export default class ImageCard extends React.Component {
       })
   }
 
-  toggleTooltip() {
+  toggleTooltip () {
     this.setState({
       ttOpen: !this.state.ttOpen
     })
   }
 
-  render() {
+  render () {
     if (this.state.loaded) {
       let lastMarker = Object.keys(this.state.markers)[Object.keys(this.state.markers).length - 1]
       return (
