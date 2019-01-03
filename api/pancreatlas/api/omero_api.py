@@ -6,13 +6,17 @@ import os
 from os.path import expanduser
 import pprint
 import json
+import logging
 
 tag_set = None
 conn = None 
+logging.basicConfig()
 def connect(username, password, host, portnum=4064):
     global conn
     c = BlitzGateway(username, password, host=host, port=portnum)
     success = c.connect()
+    if success == False:
+        print "LAST ERROR: %s" % (c.getLastError())
     conn = c
     return (conn, success)
 
@@ -272,7 +276,7 @@ def generate_image_matrix_from_ds(tagset_a, tagset_b, dsid):
             matrix[str(tag)][str(t)] = []
 
 	dir = os.getcwd()
-	f = open('/var/www/pancreatlas/dev/dev7/pancreatlas/api/pancreatlas/api/' + str(dsid) + '.txt', 'r')
+	f = open("/app001/www/assets/pancreatlas/datasets/%s.txt" % (str(dsid), ), 'r')
     json_str = f.readline()
 
     imgs = json.loads(json_str)

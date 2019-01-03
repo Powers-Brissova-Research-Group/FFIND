@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/jmessmer/Documents/pancreatlas/pancreatlas"
+VIRTUAL_ENV="/app001/www/pancreatlas/dev7/pancreatlas/api"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

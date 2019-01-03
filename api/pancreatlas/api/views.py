@@ -30,7 +30,7 @@ import os
 class ImageViewSet(viewsets.ViewSet):
 
     def list(self, request):
-        f = open('file:///var/www/pancreatlas/assets/datasets/image_ids.txt', 'r')
+        f = open('/app001/www/assets/pancreatlas/datasets/image_index.txt', 'r')
         data = f.readline()
         # ids = ids[:-1]
 
@@ -60,7 +60,7 @@ class DatasetViewset(viewsets.ViewSet):
         # ds = omero_api.get_dataset_images(pk)
         # ds.imgs = omero_api.filter_imgs_by_tag(ds.imgs, "Aperio")
         cwd = os.getcwd()
-        f = open('/var/www/pancreatlas/assets/datasets/' + str(pk) + '.txt', 'r')
+        f = open('/app001/www/assets/pancreatlas/datasets/' + str(pk) + '.txt', 'r')
         data = f.readline()
         # imgs = [Image(img.id, img.file_name, "assets/thumbnails/" + img.file_name, "assets/details/" +
         #               img.file_name, img.get_tag_names(), img.get_key_values()) for img in ds.imgs]

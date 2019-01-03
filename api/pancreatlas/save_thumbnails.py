@@ -54,7 +54,7 @@ def save_thumbnail(iid, roi, session):
         chdata.append((0, 65535, 'FFFFFF'))
     url = 'https://omero.app.vumc.org/webgateway/render_image_region/%s/0/0/?c=1|%s:%s$%s,2|%s:%s$%s,3|%s:%s$%s,4|%s:%s$%s&m=c&region=%s,%s,%s,%s' % (iid, chdata[0][0], chdata[0][1], chdata[0][2], chdata[1][0], chdata[1][1], chdata[1][2], chdata[2][0], chdata[2][1], chdata[2][2], chdata[3][0], chdata[3][1], chdata[3][2], roi[0], roi[1], roi[2], roi[3])
     print url
-    fpath = '/var/www/pancreatlas/dev/dev7/pancreatlas/react/src/assets/pancreatlas/thumbs/%s.jpg' % (iid, )
+    fpath = '/app001/www/assets/pancreatlas/thumbs/%s.jpg' % (iid, )
     f = open(fpath, 'w')
     r = session.get(url, stream=True)
     if r.status_code == 200:
@@ -65,6 +65,7 @@ def save_thumbnail(iid, roi, session):
     # urllib.retrieve(url, '%s' % (iid, ))
 
 def login(token, session):
+    print "Logging in"
     url = "https://omero.app.vumc.org/api/v0/login/"
 
     payload = "server=1&username=import.user&password=%2B0rLA6KdhQM%3D"
@@ -81,13 +82,14 @@ def login(token, session):
     return response.ok
 
 def main():
+    print "Generating session"
     sesh = requests.Session()
     token = get_token(sesh)
+    print "Session successfully generated"
     success = login(token, sesh)
     print "Logged in? %s" % (success, )
     if success == True:
-#        iids = get_image_list()
-        iids = ['17342', '17437', '17512']
+        iids = get_image_list()
         print len(iids)
         for iid in iids:
             # save_thumbnail(iid, None, sesh)

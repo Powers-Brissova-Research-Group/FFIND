@@ -1,4 +1,4 @@
-#!/home/jmessmer/Documents/pancreatlas/pancreatlas/bin/python2
+#!/app001/www/pancreatlas/dev7/pancreatlas/api/bin/python
 from django.core import management
 
 if __name__ == "__main__":

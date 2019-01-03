@@ -1,4 +1,4 @@
-#!/home/jmessmer/Documents/pancreatlas/pancreatlas/bin/python
+#!/app001/www/pancreatlas/dev7/pancreatlas/api/bin/python
 
 import sys
 import getopt
