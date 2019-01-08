@@ -40,7 +40,7 @@ export default class Collaborators extends React.Component {
           <Container className='v-padded'>
             <h5><span>Meet the investigators</span></h5>
             <h2>Accelerating discovery by teaming up</h2>
-            <Row>
+            <Row className='mt-2'>
               <Col md='4'>
                 <TeamMember name='Mark Atkinson' institution='University of Florida' desc='Our laboratory seeks to directly define methods for disease prevention in non-diabetic subjects identified to be at increased risk for the disease or diabetic subjects through pancreatic transplantation in association with novel forms of immunotherapy.' imgSrc='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/mark-atkinson.jpg' site='http://pathology.ufl.edu/faculty/experimental-pathology/mark-a-atkinson/' email='mailto:atkinson@pathology.ufl.edu?subject=Inquiry via Collaboration on Human Islets and Diabetes' phone='tel:352-273-8277' />
               </Col>
@@ -51,7 +51,7 @@ export default class Collaborators extends React.Component {
                 <TeamMember name='Marcela Brissova' institution='Vanderbilt University Medical Center' imgSrc='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/marcela-brissova.jpg' site='https://labnodes.vanderbilt.edu/member/profile/id/10427' email='mailto:marcela.brissova@vanderbilt.edu?subject=Inquiry via Collaboration on Human Islets and Diabetes' phone='tel:615-936-1729' desc='Our research interests include the biology of pancreatic islets with a focus on the regulation of beta cell gene expression to provide insight into processes controlling normal pancreatic beta cell function in rodent models and translating this research to human islet biology.' />
               </Col>
             </Row>
-            <Row>
+            <Row className='mt-2'>
               <Col md='4'>
                 <TeamMember name='Chunhua Dai' institution='Vanderbilt University Medical Center' imgSrc='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/chunhua-dai.jpg' site='https://faculty.mc.vanderbilt.edu/Faculty/Details/34956' email='mailto:chunhua.dai@vanderbilt.edu?subject=Inquiry via Collaboration on Human Islets and Diabetes' phone='tel:615-936-7678' desc='Our research is focused on the molecular, cellular, and vascular changes in human islets when they are challenged with hyperglycemia and/or insulin resistance in vivo.' />
               </Col>
@@ -62,7 +62,7 @@ export default class Collaborators extends React.Component {
                 <TeamMember name='Al Powers' institution='Vanderbilt University Medical Center' imgSrc='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/al-powers.jpg' site='https://www.powersresearch.org/' email='mailto:al.powers@vanderbilt.edu?subject=Inquiry via Collaboration on Human Islets and Diabetes' phone='tel:615-936-7678' desc='The Powers lab seeks to understand and reverse β-cell and islet abnormalities and dysfunction in type 1 and type 2 diabetes.' />
               </Col>
             </Row>
-            <Row>
+            <Row className='mt-2'>
               <Col md='4'>
                 <TeamMember name='Chris Wright' institution='Vanderbilt University Medical Center' imgSrc='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/chris-wright.jpg' site='https://medschool.vanderbilt.edu/wright-lab/' email='mailto:chris.wright@vanderbilt.Edu?subject=Inquiry via Collaboration on Human Islets and Diabetes' phone='tel:615-343-8256' desc='The Wright lab focuses on early embryonic development and organogenesis.' />
               </Col>

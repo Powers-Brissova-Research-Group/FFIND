@@ -78,7 +78,7 @@ export default class TopNav extends React.Component {
                 <NavLink to='/about'>About pancreatlas</NavLink>
               </NavItem>
               <NavItem className='btn btn-info'>
-                <NavLink to='https://webapp.mis.vanderbilt.edu/vumc-giving/landing?appealCode=J1001'>Join Our Efforts</NavLink>
+                <a href='https://webapp.mis.vanderbilt.edu/vumc-giving/landing?appealCode=J1001'>Join Our Efforts</a>
               </NavItem>
             </Nav>
           </Collapse>

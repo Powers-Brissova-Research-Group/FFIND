@@ -782,7 +782,7 @@ div.browser-not-supported-banner {
   align-items: center;
 }
 
-div.browser-not-supported-banner a, a:visited, a:hover {
+div.browser-not-supported-banner a a:visited a:hover {
   color: #fff;
 }
 .navbar-nav {
