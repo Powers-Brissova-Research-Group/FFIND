@@ -80,7 +80,7 @@ export default class Home extends React.Component {
                 <h5>We also thank the following:</h5>
               </Col>
             </Row>
-            <Row>
+            <Row className='justify-content-around'>
               <Col sm='2'>
                 <img src={IIAM} alt='IIAM' className='img-fluid' />
               </Col>

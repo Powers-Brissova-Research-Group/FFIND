@@ -861,14 +861,16 @@ td.action-column div.row {
   justify-content: center
 }
 
-div .row.ds-alt {
+div .ds-alt {
   background-color: #a3d6ff;
   color: #0000aa;
-  margin-left: -1.35em;
-  margin-right: -1.35em;
   margin-bottom: 0.95em;
   min-height: 3em;
   max-height: 3em;
+  margin-left: -1.35em;
+  margin-right: -1.35em;
+  padding-left: 1.35em;
+  padding-right: 1.35em;
 }
 
 a.navlink {
@@ -881,4 +883,8 @@ div.dataset-lists ul.nav.nav-tabs {
 
 img.dataset-funder {
   max-width: 100%;
+}
+img.ds-logo {
+  min-height: 100px;
+  padding: 0.75em;
 }
