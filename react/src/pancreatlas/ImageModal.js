@@ -20,8 +20,24 @@ export default class ImageModal extends React.Component {
     this.markers = {}
     this.relevantKeys = {}
     this.state = {
-      isFavorite: this.props.modalData === undefined || this.props.favorites.indexOf(this.props.modalData.img_id) === -1
+      isFavorite: this.props.modalData !== undefined && this.props.favorites.indexOf(this.props.modalData.img_id) !== -1
     }
+    this.favorite = this.favorite.bind(this)
+  }
+
+  componentDidUpdate(prevProps) {
+    if(JSON.stringify(prevProps.favorites) !== JSON.stringify(this.props.favorites)) {
+      this.setState({
+        isFavorite: this.props.modalData !== undefined && this.props.favorites.indexOf(this.props.modalData.img_id) !== -1
+      })
+    }
+  }
+
+  favorite () {
+    this.setState({
+      isFavorite: !this.state.isFavorite
+    })
+    this.props.favoriteCallback(this.props.modalData.img_id)
   }
 
   render() {
@@ -78,8 +94,8 @@ export default class ImageModal extends React.Component {
                     <a href={this.props.modalData.path_path} target='_blank' className='pathviewer-button'>
                       <Button color='primary'>Open <FontAwesomeIcon size='1x' icon='external-link-alt' /></Button>
                     </a>
-                    {this.state.isFavorite && <Button color='success' className='favorite' onClick={() => this.props.favoriteCallback(this.props.modalData.img_id)}>Save</Button>}
-                    {!this.state.isFavorite && <Button color='danger' className='favorite' onClick={() => this.props.favoriteCallback(this.props.modalData.img_id)}>Remove</Button>}
+                    {!this.state.isFavorite && <Button color='success' className='favorite' onClick={() => this.favorite()}>Save</Button>}
+                    {this.state.isFavorite && <Button color='danger' className='favorite' onClick={() => this.favorite()}>Remove</Button>}
                   </Row>
                   <Row>
                     <Col md='12'>
