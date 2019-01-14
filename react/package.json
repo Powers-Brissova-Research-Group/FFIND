@@ -18,6 +18,7 @@
     "react-fontawesome": "^1.6.1",
     "react-meta-tags": "^0.7.1",
     "react-motion": "^0.5.2",
+    "react-parallax": "^2.0.1",
     "react-particles-js": "^2.3.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",

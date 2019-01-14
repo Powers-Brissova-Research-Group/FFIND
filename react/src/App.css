@@ -892,3 +892,9 @@ img.ds-logo {
 span.badge-dark a {
   color: white;
 }
+
+span.dataset-title {
+  background-color: #00000099;
+  color: white;
+  padding: 2rem;
+}
