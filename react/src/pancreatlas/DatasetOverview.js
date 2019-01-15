@@ -11,6 +11,26 @@ import {
 import { Parallax } from 'react-parallax'
 
 export default class DatasetOverview extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      title: 'Default Title',
+      desc: 'Default desc'
+    }
+    let re = /(\/\w+\/?)+([0-9]+)(\/\w+\/?)+/
+    let dsid = re.exec(window.location.pathname)[2]
+    console.log(dsid)
+    window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${dsid}`)
+      .then(res => res.json())
+      .then((result) => {
+        console.log(result)
+        this.setState({
+          title: result.dsname,
+          desc: result.kvals.description_long,
+          funders: result.kvals.funding.split(',')
+        })
+      })
+  }
   render () {
     return (
       <div className='datasetOverviewWrapper'>
@@ -25,11 +45,14 @@ export default class DatasetOverview extends React.Component {
             <Container className='h-100'>
               <Row className='h-100'>
                 <Col md='6' className='d-flex align-items-center'>
-                  <span className='dataset-title'><h1>About &lt;dataset title&gt;</h1></span>
+                  <span className='dataset-title'><h1>About {this.state.title}</h1></span>
                 </Col>
                 <Col md='6' className='d-flex align-items-center'>
-                  <span className='dataset-title'><h3>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris imperdiet mattis auctor. Morbi sagittis arcu erat, et hendrerit justo tempus iaculis. Nulla finibus erat in lacus congue dapibus ut sed tortor. Donec finibus blandit quam nec molestie. Nam id interdum arcu. Ut ultricies, dolor pharetra venenatis eleifend, sem lectus vestibulum libero, non feugiat sem lacus id eros. </h3></span>
+                  <span className='dataset-title'>
+                    <h3>
+                      {this.state.desc}
+                    </h3>
+                  </span>
                 </Col>
               </Row>
             </Container>

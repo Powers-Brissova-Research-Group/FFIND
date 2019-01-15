@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import DetailRow from './DetailRow'
 
 export default class ImageModal extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.defs = require('../assets/pancreatlas/definitions.json')
     this.markers = {}
@@ -25,8 +25,8 @@ export default class ImageModal extends React.Component {
     this.favorite = this.favorite.bind(this)
   }
 
-  componentDidUpdate(prevProps) {
-    if(JSON.stringify(prevProps.favorites) !== JSON.stringify(this.props.favorites)) {
+  componentDidUpdate (prevProps) {
+    if (JSON.stringify(prevProps.favorites) !== JSON.stringify(this.props.favorites)) {
       this.setState({
         isFavorite: this.props.modalData !== undefined && this.props.favorites.indexOf(this.props.modalData.img_id) !== -1
       })
@@ -40,7 +40,7 @@ export default class ImageModal extends React.Component {
     this.props.favoriteCallback(this.props.modalData.img_id)
   }
 
-  render() {
+  render () {
     var tinycolor = require('tinycolor2')
     let labelRe = /^([a-zA-Z]+\s+info)?(\s+-\s+)?(.+)$/
     if (this.props.modalData !== undefined) {
