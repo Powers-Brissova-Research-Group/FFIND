@@ -23,12 +23,12 @@ export default class LoginPage extends React.Component {
 
     this.state = {
       email: '',
-      emailValid: true,
+      emailValid: false,
       emailConf: '',
-      emailsMatch: true,
+      emailsMatch: false,
       password: '',
       passwordConf: '',
-      passMatch: true
+      passMatch: false
     }
   }
 
@@ -93,7 +93,7 @@ export default class LoginPage extends React.Component {
                 <Input valid={this.state.passMatch} invalid={!this.state.passMatch} id='acctPassConf' onChange={this.handleChange} value={this.state.passwordConf} type='password' />
                 <FormFeedback invalid>The two passwords do not match</FormFeedback>
               </FormGroup>
-              <Button color='success'>Create Account</Button>
+              <Button color='success' disabled={!this.state.emailValid || !this.state.emailsMatch || !this.state.passMatch}>Create Account</Button>
             </Form>
           </Col>
         </Row>
