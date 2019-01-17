@@ -898,3 +898,7 @@ span.dataset-title {
   color: white;
   padding: 2rem;
 }
+
+.display-linebreak {
+  white-space: pre-line
+}

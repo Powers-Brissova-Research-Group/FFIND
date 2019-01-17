@@ -10,7 +10,8 @@ import {
   Label,
   Input,
   FormText,
-  Button
+  Button,
+  Progress
 } from 'reactstrap'
 
 export default class LoginPage extends React.Component {
@@ -28,7 +29,11 @@ export default class LoginPage extends React.Component {
       emailsMatch: false,
       password: '',
       passwordConf: '',
-      passMatch: false
+      passMatch: false,
+      strengthColor: 'danger',
+      passStrength: 0,
+      passMessage: '',
+      passFeedback: ''
     }
   }
 
@@ -48,8 +53,39 @@ export default class LoginPage extends React.Component {
         })
         break
       case 'acctPass':
+        let zxcvbn = require('zxcvbn')
+        let passStrengthInfo = zxcvbn(event.target.value)
+        console.log(passStrengthInfo)
+        let color = 'danger'
+        let message = 'Very weak password'
+        switch (passStrengthInfo.score) {
+          case 1:
+            color = 'warning'
+            message = 'Weak password'
+            break
+          case 2:
+            color = 'info'
+            message = 'Average password'
+            break
+          case 3:
+            color = 'primary'
+            message = 'Strong password'
+            break
+          case 4:
+            color = 'success'
+            message = 'Very strong password'
+            break
+          default:
+            color = 'danger'
+            message = 'Very weak password'
+            break
+        }
         this.setState({
-          password: event.target.value
+          password: event.target.value,
+          passStrength: passStrengthInfo.score,
+          passMessage: message,
+          strengthColor: color,
+          passFeedback: `${passStrengthInfo.feedback.warning} \n ${passStrengthInfo.feedback.suggestions.join(` `)}`
         })
         break
       case 'acctPassConf':
@@ -79,7 +115,7 @@ export default class LoginPage extends React.Component {
                 <FormText>You must register with a valid educational email address (ex. john.doe@university.edu)</FormText>
               </FormGroup>
               <FormGroup>
-                <Label for='acctEmailConf'>Email</Label>
+                <Label for='acctEmailConf'>Confirm Email</Label>
                 <Input valid={this.state.emailsMatch} invalid={!this.state.emailsMatch} id='acctEmailConf' onChange={this.handleChange} value={this.state.emailConf} type='email' />
                 <FormFeedback invalid>Please make sure both emails match</FormFeedback>
               </FormGroup>
@@ -87,6 +123,8 @@ export default class LoginPage extends React.Component {
                 <Label for='acctPass'>Password</Label>
                 <Input id='acctPass' onChange={this.handleChange} value={this.state.password} type='password' />
                 <FormText>Please choose a strong password consisting of both alphanumeric and special characters</FormText>
+                <Progress color={this.state.strengthColor} value={20 * (1 + this.state.passStrength)}>{this.state.passMessage}</Progress>
+                <span className='display-linebreak'><strong>Password Feedback:</strong> {this.state.passFeedback}</span>
               </FormGroup>
               <FormGroup>
                 <Label for='acctPassConf'>Confirm Password</Label>
