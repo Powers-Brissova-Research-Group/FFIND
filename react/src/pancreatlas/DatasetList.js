@@ -116,7 +116,7 @@ export default class DatasetList extends React.Component {
                             <tbody>
                               {this.state.datasets.map(item => (
                                 <tr key={item.did}>
-                                  <td><strong>{item.dsname}</strong> <Badge color='dark' pill><a href=''>? Learn more</a></Badge> <br />
+                                  <td><strong>{item.dsname}</strong> <Badge color='dark' pill><Button color='link'>? Learn more</Button></Badge> <br />
                                     {item.desc || ''}
                                   </td>
                                   <td className='text-center'>{item.kvals.image_count}</td>

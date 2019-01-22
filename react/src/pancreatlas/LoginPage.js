@@ -98,6 +98,9 @@ export default class LoginPage extends React.Component {
         this.setState({
           username: event.target.value
         })
+        break
+      default:
+        break
     }
   }
 
@@ -123,13 +126,11 @@ export default class LoginPage extends React.Component {
   render () {
     return (
       <Container>
-        <Row md='12'>
-          <Col>
-            <h1>Login or Create an Account</h1>
-          </Col>
-        </Row>
+
         <Row>
+          <h1>Access your pancreatlas account</h1>
           <Col md='6'>
+            <h3>Create an Account</h3>
             <Form>
               <FormGroup>
                 <Label for='acctUsername'>Username</Label>
@@ -159,6 +160,20 @@ export default class LoginPage extends React.Component {
                 <FormFeedback invalid>The two passwords do not match</FormFeedback>
               </FormGroup>
               <Button color='success' disabled={!this.state.emailValid || !this.state.emailsMatch || !this.state.passMatch} onClick={this.submit}>Create Account</Button>
+            </Form>
+          </Col>
+          <Col md='6'>
+            <h3>Log In</h3>
+            <Form>
+              <FormGroup>
+                <Label for='loginUsername'>Username</Label>
+                <Input id='loginUsername' onChange={this.handleLoginChange} value={this.state.loginUsername} type='text' />
+              </FormGroup>
+              <FormGroup>
+                <Label for='loginPassword'>Password</Label>
+                <Input id='loginPassword' onChange={this.handleLoginChange} value={this.state.loginPassword} type='password' />
+              </FormGroup>
+              <Button color='primary'>Log In</Button>
             </Form>
           </Col>
         </Row>

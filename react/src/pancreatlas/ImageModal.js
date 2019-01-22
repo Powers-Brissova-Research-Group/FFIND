@@ -91,7 +91,7 @@ export default class ImageModal extends React.Component {
                 </Col>
                 <Col md='6' sm='12'>
                   <Row>
-                    <a href={this.props.modalData.path_path} target='_blank' className='pathviewer-button'>
+                    <a href={this.props.modalData.path_path} target='_blank' rel='noopener noreferrer' className='pathviewer-button'>
                       <Button color='primary'>Open <FontAwesomeIcon size='1x' icon='external-link-alt' /></Button>
                     </a>
                     {!this.state.isFavorite && <Button color='success' className='favorite' onClick={() => this.favorite()}>Save</Button>}
