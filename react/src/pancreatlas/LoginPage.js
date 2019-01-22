@@ -19,10 +19,12 @@ export default class LoginPage extends React.Component {
     super(props)
 
     this.handleChange = this.handleChange.bind(this)
+    this.submit = this.submit.bind(this)
 
     this.emailRe = /\w+(\.\w+)*@\w+(\.\w+)*\.edu/
 
     this.state = {
+      username: '',
       email: '',
       emailValid: false,
       emailConf: '',
@@ -38,7 +40,6 @@ export default class LoginPage extends React.Component {
   }
 
   handleChange (event) {
-    console.log(event.target.id)
     switch (event.target.id) {
       case 'acctEmail':
         this.setState({
@@ -55,7 +56,6 @@ export default class LoginPage extends React.Component {
       case 'acctPass':
         let zxcvbn = require('zxcvbn')
         let passStrengthInfo = zxcvbn(event.target.value)
-        console.log(passStrengthInfo)
         let color = 'danger'
         let message = 'Very weak password'
         switch (passStrengthInfo.score) {
@@ -94,7 +94,30 @@ export default class LoginPage extends React.Component {
           passMatch: this.state.password === event.target.value
         })
         break
+      case 'acctUsername':
+        this.setState({
+          username: event.target.value
+        })
     }
+  }
+
+  submit (event) {
+    let data = {
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password
+    }
+
+    console.log(data)
+    window.fetch(`${process.env.REACT_APP_API_URL}/user/`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+      .then(response => console.log('Form Submitted', JSON.stringify(response)))
+      .catch(error => console.error('Error', error))
   }
 
   render () {
@@ -108,6 +131,10 @@ export default class LoginPage extends React.Component {
         <Row>
           <Col md='6'>
             <Form>
+              <FormGroup>
+                <Label for='acctUsername'>Username</Label>
+                <Input id='acctUsername' onChange={this.handleChange} value={this.state.username} type='text' />
+              </FormGroup>
               <FormGroup>
                 <Label for='acctEmail'>Email</Label>
                 <Input valid={this.state.emailValid} invalid={!this.state.emailValid} id='acctEmail' onChange={this.handleChange} value={this.state.email} type='email' />
@@ -131,7 +158,7 @@ export default class LoginPage extends React.Component {
                 <Input valid={this.state.passMatch} invalid={!this.state.passMatch} id='acctPassConf' onChange={this.handleChange} value={this.state.passwordConf} type='password' />
                 <FormFeedback invalid>The two passwords do not match</FormFeedback>
               </FormGroup>
-              <Button color='success' disabled={!this.state.emailValid || !this.state.emailsMatch || !this.state.passMatch}>Create Account</Button>
+              <Button color='success' disabled={!this.state.emailValid || !this.state.emailsMatch || !this.state.passMatch} onClick={this.submit}>Create Account</Button>
             </Form>
           </Col>
         </Row>
