@@ -12,13 +12,14 @@ export default class LoginAccountForm extends React.Component {
     super(props)
 
     this.handleLoginChange = this.handleLoginChange.bind(this)
+    this.login = this.login.bind(this)
 
     this.state = {
       loginUsername: '',
       loginPassword: ''
     }
   }
-
+e
   handleLoginChange (event) {
     switch (event.target.id) {
       case 'loginUsername':
@@ -36,6 +37,21 @@ export default class LoginAccountForm extends React.Component {
     }
   }
 
+  login () {
+    window.fetch(`${process.env.REACT_APP_API_URL}/user/login/`, {
+      method: 'POST',
+      body: JSON.stringify({
+        'username': this.state.loginUsername,
+        'password': this.state.loginPassword
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+      .then(response => console.log('Form Submitted', JSON.stringify(response)))
+      .catch(error => console.error('Error', error))
+  }
+
   render () {
     return (
       <div className='login-form'>
@@ -49,7 +65,7 @@ export default class LoginAccountForm extends React.Component {
             <Label for='loginPassword'>Password</Label>
             <Input id='loginPassword' onChange={this.handleLoginChange} value={this.state.loginPassword} type='password' />
           </FormGroup>
-          <Button color='primary'>Log In</Button>
+          <Button color='primary' onClick={this.login}>Log In</Button>
         </Form>
       </div>
     )
