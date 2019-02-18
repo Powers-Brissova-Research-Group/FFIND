@@ -1,4 +1,9 @@
 api/pancreatlas/assets/
+api/bin/
+api/include/
+api/lib/
+api/lib64
+api/pip-selfcheck.json
 .vscode/
 package-lock.json
 .idea/
