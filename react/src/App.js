@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
 
+import * as Sentry from '@sentry/browser'
+
 import {
   BrowserRouter as Router,
   Route,
@@ -23,6 +25,10 @@ class App extends Component {
   constructor (props) {
     super(props)
 
+    Sentry.init({
+      dsn: 'https://727efb032f954ff7baf2421cbcf2ace8@sentry.io/1412698'
+    })
+
     this.addFavorite = this.addFavorite.bind(this)
     this.checkCompatability = this.checkCompatability.bind(this)
     this.addFavorite = this.addFavorite.bind(this)
@@ -37,7 +43,8 @@ class App extends Component {
     }
     this.state = {
       favorites: favs,
-      encodedFavorites: encFavs
+      encodedFavorites: encFavs,
+      error: null
     }
   }
 
@@ -87,6 +94,16 @@ class App extends Component {
     }
   }
 
+  componentDidCatch (error, errorInfo) {
+    this.setState({ error })
+    Sentry.withScope(scope => {
+      Object.keys(errorInfo).forEach(key => {
+        scope.setExtra(key, errorInfo[key])
+      })
+    })
+    Sentry.captureException(error)
+  }
+
   render () {
     var supportInfo = this.checkCompatability()
     var supported = supportInfo.isSupported
@@ -96,30 +113,35 @@ class App extends Component {
     // if (browser.name.toLowerCase() !== 'firefox' && browser.name.toLowerCase() !== 'chrome'){
     //   supported = false
     // }
-    return (
-      <div>
-        {supported === false && <BrowserNotSupportedBanner version={version} browser={browser.name === 'ie' ? 'Internet Explorer' : browser.name} />}
-        {/* <Container fluid className='test-feedback'>
-          <Row>
-            <Col sm="12">
-              <p><strong>N.B. This is a test version of the Pancreatlas.</strong></p>
-            </Col>
-          </Row>
-        </Container> */}
-        <Router>
-          <div className='App'>
-            <TopNav favorites={this.state.encodedFavorites} />
-            <Switch>
-              <Route exact path='/' component={HandelApp} />
-              <Route path={`/pancreatlas`} render={(props) => <PancreatlasApp {...props} favoriteCallback={this.addFavorite} favorites={this.state.encodedFavorites} />} />
-              <Route path='/releases' component={Releases} />
-              <Route path='/' component={HandelApp} />
-            </Switch>
-            <PancreatlasFooter />
-          </div>
-        </Router>
-      </div>
-    )
+
+    if (this.state.error) {
+      return <a onClick={() => Sentry.showReportDialog()}>Report feedback</a>
+    } else {
+      return (
+        <div>
+          {supported === false && <BrowserNotSupportedBanner version={version} browser={browser.name === 'ie' ? 'Internet Explorer' : browser.name} />}
+          {/* <Container fluid className='test-feedback'>
+            <Row>
+              <Col sm="12">
+                <p><strong>N.B. This is a test version of the Pancreatlas.</strong></p>
+              </Col>
+            </Row>
+          </Container> */}
+          <Router>
+            <div className='App'>
+              <TopNav favorites={this.state.encodedFavorites} />
+              <Switch>
+                <Route exact path='/' component={HandelApp} />
+                <Route path={`/pancreatlas`} render={(props) => <PancreatlasApp {...props} favoriteCallback={this.addFavorite} favorites={this.state.encodedFavorites} />} />
+                <Route path='/releases' component={Releases} />
+                <Route path='/' component={HandelApp} />
+              </Switch>
+              <PancreatlasFooter />
+            </div>
+          </Router>
+        </div>
+      )
+    }
   }
 }
 
