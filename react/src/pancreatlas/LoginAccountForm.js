@@ -19,7 +19,7 @@ export default class LoginAccountForm extends React.Component {
       loginPassword: ''
     }
   }
-e
+
   handleLoginChange (event) {
     switch (event.target.id) {
       case 'loginUsername':
@@ -45,7 +45,8 @@ e
         'password': this.state.loginPassword
       }),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': process.env.REACT_APP_API_AUTH
       }
     }).then(res => res.json())
       .then(response => console.log('Form Submitted', JSON.stringify(response)))

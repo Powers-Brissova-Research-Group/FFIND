@@ -20,10 +20,6 @@ import Error from './Error'
 import ImageModal from './ImageModal'
 import LoadingBar from './LoadingBar'
 
-function testThrow () {
-  throw new Error('child error')
-}
-
 export default class ImageGrid extends React.Component {
   constructor (props) {
     super(props)
@@ -64,14 +60,22 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidMount () {
-    window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`, {
+      headers: {
+        'Authorization': process.env.REACT_APP_API_URL
+      }
+    })
       .then(res => res.json())
       .then(result => {
         this.setState({
           datasetName: result.dsname
         })
       })
-    window.fetch(`${process.env.REACT_APP_API_URL}/tagsets/`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/tagsets/`, {
+      headers: {
+        'Authorization': process.env.REACT_APP_API_URL
+      }
+    })
       .then(res => res.json())
       .then(
         (tresult) => {
@@ -90,7 +94,11 @@ export default class ImageGrid extends React.Component {
               }
             }
           }
-          window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`)
+          window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`, {
+            headers: {
+              'Authorization': process.env.REACT_APP_API_URL
+            }
+          })
             .then(res => res.json())
             .then(
               (result) => {
@@ -233,7 +241,11 @@ export default class ImageGrid extends React.Component {
   }
 
   setModal (imgInfo) {
-    window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
+      headers: {
+        'Authorization': process.env.REACT_APP_API_URL
+      }
+    })
       .then(res => res.json())
       .then(
         (result) => {
@@ -313,7 +325,6 @@ export default class ImageGrid extends React.Component {
   }
 
   render () {
-    testThrow()
     if (this.state.loaded) {
       if (this.state.matches.length === 0) {
         return (

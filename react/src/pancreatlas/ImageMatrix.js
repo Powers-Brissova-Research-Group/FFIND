@@ -103,7 +103,11 @@ export default class ImageMatrix extends React.Component {
   }
 
   componentDidMount () {
-    window.fetch(`${process.env.REACT_APP_API_URL}/matrix/${this.props.tag_1},${this.props.tag_2},${this.props.dsid}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/matrix/${this.props.tag_1},${this.props.tag_2},${this.props.dsid}`, {
+      headers: {
+        'Authorization': process.env.REACT_APP_API_URL
+      }
+    })
       .then(res => res.json())
       .then((result) => {
         let m = result['matrix']
@@ -194,7 +198,11 @@ export default class ImageMatrix extends React.Component {
   }
 
   setModal (imgInfo) {
-    window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
+      headers: {
+        'Authorization': process.env.REACT_APP_API_URL
+      }
+    })
       .then(res => res.json())
       .then(
         (result) => {

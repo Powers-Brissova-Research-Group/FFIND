@@ -33,7 +33,11 @@ export default class ImageCard extends React.Component {
 
   componentDidMount () {
     // Load information about the image
-    window.fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`, {
+      headers: {
+        'Authorization': process.env.REACT_APP_API_URL
+      }
+    })
       .then(res => res.json())
       .then(result => {
         let kvals = result.kvals
