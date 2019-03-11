@@ -31,7 +31,7 @@ export default class ImageDetail extends React.Component {
     this.defs = require('../assets/pancreatlas/definitions.json')
     window.fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.match.params.iid}`, {
       headers: {
-        'Authorization': process.env.REACT_APP_API_URL
+        'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
       .then(res => res.json())

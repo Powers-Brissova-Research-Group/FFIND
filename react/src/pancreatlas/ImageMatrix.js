@@ -105,7 +105,7 @@ export default class ImageMatrix extends React.Component {
   componentDidMount () {
     window.fetch(`${process.env.REACT_APP_API_URL}/matrix/${this.props.tag_1},${this.props.tag_2},${this.props.dsid}`, {
       headers: {
-        'Authorization': process.env.REACT_APP_API_URL
+        'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
       .then(res => res.json())
@@ -200,7 +200,7 @@ export default class ImageMatrix extends React.Component {
   setModal (imgInfo) {
     window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
       headers: {
-        'Authorization': process.env.REACT_APP_API_URL
+        'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
       .then(res => res.json())

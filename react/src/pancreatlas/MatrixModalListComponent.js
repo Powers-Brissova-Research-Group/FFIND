@@ -14,7 +14,7 @@ export default class MatrixModalListComponent extends React.Component {
   componentDidMount () {
     window.fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`, {
       headers: {
-        'Authorization': process.env.REACT_APP_API_URL
+        'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
       .then(res => res.json())

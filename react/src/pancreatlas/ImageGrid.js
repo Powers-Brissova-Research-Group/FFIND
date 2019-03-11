@@ -62,7 +62,7 @@ export default class ImageGrid extends React.Component {
   componentDidMount () {
     window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`, {
       headers: {
-        'Authorization': process.env.REACT_APP_API_URL
+        'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
       .then(res => res.json())
@@ -73,7 +73,7 @@ export default class ImageGrid extends React.Component {
       })
     window.fetch(`${process.env.REACT_APP_API_URL}/tagsets/`, {
       headers: {
-        'Authorization': process.env.REACT_APP_API_URL
+        'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
       .then(res => res.json())
@@ -96,7 +96,7 @@ export default class ImageGrid extends React.Component {
           }
           window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`, {
             headers: {
-              'Authorization': process.env.REACT_APP_API_URL
+              'Authorization': process.env.REACT_APP_API_AUTH
             }
           })
             .then(res => res.json())
@@ -243,7 +243,7 @@ export default class ImageGrid extends React.Component {
   setModal (imgInfo) {
     window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
       headers: {
-        'Authorization': process.env.REACT_APP_API_URL
+        'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
       .then(res => res.json())

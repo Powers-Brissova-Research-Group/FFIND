@@ -22,7 +22,7 @@ export default class DatasetOverview extends React.Component {
     console.log(dsid)
     window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${dsid}`, {
       headers: {
-        'Authorization': process.env.REACT_APP_API_URL
+        'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
       .then(res => res.json())

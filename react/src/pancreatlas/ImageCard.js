@@ -35,7 +35,7 @@ export default class ImageCard extends React.Component {
     // Load information about the image
     window.fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`, {
       headers: {
-        'Authorization': process.env.REACT_APP_API_URL
+        'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
       .then(res => res.json())
