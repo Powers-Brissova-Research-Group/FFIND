@@ -20,6 +20,10 @@ import Error from './Error'
 import ImageModal from './ImageModal'
 import LoadingBar from './LoadingBar'
 
+function testThrow () {
+  throw new Error('child error')
+}
+
 export default class ImageGrid extends React.Component {
   constructor (props) {
     super(props)
@@ -309,6 +313,7 @@ export default class ImageGrid extends React.Component {
   }
 
   render () {
+    testThrow()
     if (this.state.loaded) {
       if (this.state.matches.length === 0) {
         return (

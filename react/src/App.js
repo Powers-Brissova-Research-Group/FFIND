@@ -21,6 +21,11 @@ import Releases from './Releases'
 
 library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark)
 
+function testThrow () {
+  let err = { message: 'test message' }
+  throw err
+}
+
 class App extends Component {
   constructor (props) {
     super(props)
