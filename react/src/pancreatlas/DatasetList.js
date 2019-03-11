@@ -39,6 +39,7 @@ export default class DatasetList extends React.Component {
     // Get the list of all datasets from our API and store them in the current state
     window.fetch(`${process.env.REACT_APP_API_URL}/datasets/`, {
       headers: {
+        'Access-Control-Allow-Origin': '*',
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })

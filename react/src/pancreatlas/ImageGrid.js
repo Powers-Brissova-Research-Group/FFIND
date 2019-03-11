@@ -62,6 +62,7 @@ export default class ImageGrid extends React.Component {
   componentDidMount () {
     window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`, {
       headers: {
+        'Access-Control-Allow-Origin': '*',
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
@@ -73,6 +74,7 @@ export default class ImageGrid extends React.Component {
       })
     window.fetch(`${process.env.REACT_APP_API_URL}/tagsets/`, {
       headers: {
+        'Access-Control-Allow-Origin': '*',
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
@@ -96,6 +98,7 @@ export default class ImageGrid extends React.Component {
           }
           window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`, {
             headers: {
+              'Access-Control-Allow-Origin': '*',
               'Authorization': process.env.REACT_APP_API_AUTH
             }
           })
@@ -243,6 +246,7 @@ export default class ImageGrid extends React.Component {
   setModal (imgInfo) {
     window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
       headers: {
+        'Access-Control-Allow-Origin': '*',
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })

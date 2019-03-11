@@ -113,6 +113,7 @@ export default class CreateAccountForm extends React.Component {
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     }).then(res => res.json())
