@@ -115,7 +115,7 @@ export default class CreateAccountForm extends React.Component {
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': true,
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     }).then(res => res.json())

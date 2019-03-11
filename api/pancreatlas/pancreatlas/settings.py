@@ -67,6 +67,7 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(dev[0-9]+)(-api)?(-pancreatlas\.app\.vumc\.org)(:844[0-9]+)?$', r'(https?://)?(staging)(-api)?(\.pancreatlas\.org)(:844[0-9]+)?$')
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'pancreatlas.urls'
 
