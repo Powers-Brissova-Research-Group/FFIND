@@ -27,7 +27,7 @@ SECRET_KEY = '_)s607_b+8av-d0mza4(6)mz)igi31p=sh4h^%$3jr=63djq_c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'pancreapi', 'dev7-api-pancreatlas.app.vumc.org', 'dev8-api-pancreatlas.app.vumc.org']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'pancreapi', 'dev7-api-pancreatlas.app.vumc.org', 'dev8-api-pancreatlas.app.vumc.org', 'staging-api.pancreatlas.org']
 
 
 # Application definition
@@ -66,7 +66,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1'
 )
 
-CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(dev[0-9]+)(-api)?(-pancreatlas\.app\.vumc\.org)(:844[0-9]+)?$')
+CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(dev[0-9]+)(-api)?(-pancreatlas\.app\.vumc\.org)(:844[0-9]+)?$', r'(https?://)?(staging)(-api)?(\.pancreatlas\.org)(:844[0-9]+)?$')
 
 ROOT_URLCONF = 'pancreatlas.urls'
 

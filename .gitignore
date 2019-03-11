@@ -8,3 +8,5 @@ api/pancreatlas/db/
 .vscode/
 package-lock.json
 .idea/
+react/.env.development
+react/.env.production
