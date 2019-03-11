@@ -4,6 +4,7 @@ api/include/
 api/lib/
 api/lib64
 api/pip-selfcheck.json
+api/pancreatlas/db/
 .vscode/
 package-lock.json
 .idea/

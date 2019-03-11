@@ -70,7 +70,8 @@ class DatasetViewset(viewsets.ViewSet):
         # ret_imgs = DatasetImages(
         #     "full no copy aperio", len(imgs), img_serializer.data)
 
-        # serializer = DatasetImageSerializer(ret_imgs)
+        # serializer = DatasetImageSerializer(ret_imgs)    
+
         return Response(json.loads(data))
 
     def retrieve(self, request, pk=None):
