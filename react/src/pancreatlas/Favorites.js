@@ -57,6 +57,8 @@ export default class Favorites extends React.Component {
 
   setModal (imgInfo) {
     window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
+      withCredentials: true,
+      credentials: 'include',
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Authorization': process.env.REACT_APP_API_AUTH

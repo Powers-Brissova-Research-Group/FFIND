@@ -21,6 +21,8 @@ export default class DatasetOverview extends React.Component {
     let dsid = re.exec(window.location.pathname)[2]
     console.log(dsid)
     window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${dsid}`, {
+      withCredentials: true,
+      credentials: 'include',
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Authorization': process.env.REACT_APP_API_AUTH

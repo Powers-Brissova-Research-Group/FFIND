@@ -111,6 +111,8 @@ export default class CreateAccountForm extends React.Component {
     window.fetch(`${process.env.REACT_APP_API_URL}/user/`, {
       method: 'POST',
       body: JSON.stringify(data),
+      withCredentials: true,
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',

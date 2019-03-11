@@ -39,6 +39,8 @@ export default class LoginAccountForm extends React.Component {
 
   login () {
     window.fetch(`${process.env.REACT_APP_API_URL}/user/login/`, {
+      withCredentials: true,
+      credentials: 'include',
       method: 'POST',
       body: JSON.stringify({
         'username': this.state.loginUsername,
