@@ -10,7 +10,6 @@ import Nomenclature from './Nomenclature'
 import PageNotFound from './PageNotFound'
 import Favorites from './Favorites'
 import DatasetOverview from './DatasetOverview'
-import LoginPage from './LoginPage'
 
 import {
   Switch,
