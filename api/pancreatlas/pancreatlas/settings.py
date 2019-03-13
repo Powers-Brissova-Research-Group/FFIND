@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+from corsheaders.defaults import default_headers
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +28,7 @@ SECRET_KEY = '_)s607_b+8av-d0mza4(6)mz)igi31p=sh4h^%$3jr=63djq_c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'pancreapi', 'dev7-api-pancreatlas.app.vumc.org', 'dev8-api-pancreatlas.app.vumc.org']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'pancreapi', 'dev7-api-pancreatlas.app.vumc.org', 'dev8-api-pancreatlas.app.vumc.org', 'staging-api.pancreatlas.org']
 
 
 # Application definition
@@ -64,7 +67,13 @@ CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1'
 )
 
-CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(dev[0-9]+)(-api)?(-pancreatlas\.app\.vumc\.org)(:844[0-9]+)?$')
+CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(dev[0-9]+)(-api)?(-pancreatlas\.app\.vumc\.org)(:844[0-9]+)?$', r'(https?://)?(staging)(-api)?(\.pancreatlas\.org)(:844[0-9]+)?$')
+
+CORS_ALLOW_HEADERS = default_headers + (
+    'access-control-allow-origin',
+)
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'pancreatlas.urls'
 
@@ -137,3 +146,8 @@ USE_TZ = True
 STATIC_ROOT = ''
 STATIC_URL = '/assets/'
 STATICFILES_DIRS = ( os.path.join('assets'), )
+
+sentry_sdk.init(
+    dsn="https://0379f90f085a435993394be4c33c3ac8@sentry.io/1412770",
+    integrations=[DjangoIntegration()]
+)

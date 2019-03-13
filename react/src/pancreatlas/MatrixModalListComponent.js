@@ -12,7 +12,14 @@ export default class MatrixModalListComponent extends React.Component {
     }
   }
   componentDidMount () {
-    window.fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`, {
+      withCredentials: true,
+      credentials: 'include',
+      headers: {
+        'Access-Control-Allow-Origin': true,
+        'Authorization': process.env.REACT_APP_API_AUTH
+      }
+    })
       .then(res => res.json())
       .then(result => {
         let kvals = result.kvals

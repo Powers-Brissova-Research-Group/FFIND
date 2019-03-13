@@ -10,6 +10,7 @@ import Nomenclature from './Nomenclature'
 import PageNotFound from './PageNotFound'
 import Favorites from './Favorites'
 import DatasetOverview from './DatasetOverview'
+import LoginPage from './LoginPage'
 
 import {
   Switch,
@@ -41,6 +42,7 @@ class PancreatlasApp extends Component {
               <Route path='/pancreatlas/nomenclature' component={Nomenclature} />
               <Route path={`/pancreatlas/favorites`} render={(props) => <Favorites {...props} favoriteCallback={this.props.favoriteCallback} favorites={JSON.parse(window.atob(this.props.favorites))} />} />
               <Route path={`/pancreatlas/dataset/:did/overview`} component={DatasetOverview} />
+              <Route path={`/pancreatlas/login`} component={LoginPage} />
               <Route component={PageNotFound} />
             </Switch>
           </div>

@@ -60,14 +60,28 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidMount () {
-    window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`, {
+      withCredentials: true,
+      credentials: 'include',
+      headers: {
+        'Access-Control-Allow-Origin': true,
+        'Authorization': process.env.REACT_APP_API_AUTH
+      }
+    })
       .then(res => res.json())
       .then(result => {
         this.setState({
           datasetName: result.dsname
         })
       })
-    window.fetch(`${process.env.REACT_APP_API_URL}/tagsets/`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/tagsets/`, {
+      withCredentials: true,
+      credentials: 'include',
+      headers: {
+        'Access-Control-Allow-Origin': true,
+        'Authorization': process.env.REACT_APP_API_AUTH
+      }
+    })
       .then(res => res.json())
       .then(
         (tresult) => {
@@ -86,7 +100,14 @@ export default class ImageGrid extends React.Component {
               }
             }
           }
-          window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`)
+          window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`, {
+            withCredentials: true,
+            credentials: 'include',
+            headers: {
+              'Access-Control-Allow-Origin': true,
+              'Authorization': process.env.REACT_APP_API_AUTH
+            }
+          })
             .then(res => res.json())
             .then(
               (result) => {
@@ -229,7 +250,14 @@ export default class ImageGrid extends React.Component {
   }
 
   setModal (imgInfo) {
-    window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
+      withCredentials: true,
+      credentials: 'include',
+      headers: {
+        'Access-Control-Allow-Origin': true,
+        'Authorization': process.env.REACT_APP_API_AUTH
+      }
+    })
       .then(res => res.json())
       .then(
         (result) => {

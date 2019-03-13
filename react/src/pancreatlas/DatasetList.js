@@ -37,7 +37,14 @@ export default class DatasetList extends React.Component {
 
   componentDidMount () {
     // Get the list of all datasets from our API and store them in the current state
-    window.fetch(`${process.env.REACT_APP_API_URL}/datasets/`)
+    window.fetch(`${process.env.REACT_APP_API_URL}/datasets/`, {
+      withCredentials: true,
+      credentials: 'include',
+      headers: {
+        'Access-Control-Allow-Origin': true,
+        'Authorization': process.env.REACT_APP_API_AUTH
+      }
+    })
       .then(res => res.json())
       .then(
         (result) => {
@@ -116,7 +123,7 @@ export default class DatasetList extends React.Component {
                             <tbody>
                               {this.state.datasets.map(item => (
                                 <tr key={item.did}>
-                                  <td><strong>{item.dsname}</strong> <Badge color='dark' pill><a href=''>? Learn more</a></Badge> <br />
+                                  <td><strong>{item.dsname}</strong> <Badge color='dark' pill><a href='dataset'>? Learn more</a></Badge> <br />
                                     {item.desc || ''}
                                   </td>
                                   <td className='text-center'>{item.kvals.image_count}</td>

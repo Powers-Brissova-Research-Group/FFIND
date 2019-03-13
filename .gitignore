@@ -1,4 +1,12 @@
 api/pancreatlas/assets/
+api/bin/
+api/include/
+api/lib/
+api/lib64
+api/pip-selfcheck.json
+api/pancreatlas/db/
 .vscode/
 package-lock.json
 .idea/
+react/.env.development
+react/.env.production
