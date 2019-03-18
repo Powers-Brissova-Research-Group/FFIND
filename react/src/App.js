@@ -4,6 +4,10 @@ import './App.css'
 import * as Sentry from '@sentry/browser'
 
 import {
+  Button
+} from 'reactstrap'
+
+import {
   BrowserRouter as Router,
   Route,
   Switch
@@ -20,11 +24,6 @@ import { faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus,
 import Releases from './Releases'
 
 library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark)
-
-function testThrow () {
-  let err = { message: 'test message' }
-  throw err
-}
 
 class App extends Component {
   constructor (props) {
@@ -120,7 +119,7 @@ class App extends Component {
     // }
 
     if (this.state.error) {
-      return <a onClick={() => Sentry.showReportDialog()}>Report feedback</a>
+      return <Button onClick={() => Sentry.showReportDialog()}>Report feedback</Button>
     } else {
       return (
         <div>
