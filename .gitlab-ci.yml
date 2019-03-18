@@ -1,0 +1,21 @@
+stages:
+  - build
+
+cache:
+  paths:
+    - react/node_modules/
+
+install_dependencies:
+  stage: build
+  script:
+    - cd react
+    - npm install
+  artifacts:
+    paths:
+      - react/node_modules/
+
+build:
+  stage: build
+  script:
+    - cd react
+    - npm run build
