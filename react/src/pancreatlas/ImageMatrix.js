@@ -11,6 +11,8 @@ import {
   Button
 } from 'reactstrap'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import ImageModal from './ImageModal'
 import MatrixModalListComponent from './MatrixModalListComponent'
 import LoadingBar from './LoadingBar'
@@ -280,15 +282,15 @@ export default class ImageMatrix extends React.Component {
                   <Table hover className='image-matrix mx-auto'>
                     <thead>
                       <tr>
-                        <td className='matrix-cell'><Button color='primary' onClick={this.flip}>Flip Matrix</Button></td>
+                        <th className='matrix-cell'><Button color='primary' onClick={this.flip}><FontAwesomeIcon size='1x' icon={'redo'} /> Flip Matrix</Button></th>
                         {headings.map(item => (
-                          <td key={item} className='matrix-cell matrix-head'><strong>{item}</strong></td>
+                          <th key={item} className='matrix-cell matrix-head'><strong>{item}</strong></th>
                         ))}
                       </tr>
                     </thead>
                     <tbody>
                       {Object.keys(chosenMatrix).map(row => (
-                        <tr key={row}><td className='matrix-cell matrix-head'><strong>{row}</strong></td>{Object.keys(chosenMatrix[row]).map(col => (
+                        <tr key={row}><td className='matrix-cell border-right'><strong>{row}</strong></td>{Object.keys(chosenMatrix[row]).map(col => (
                           <td key={row + ', ' + col} className='matrix-cell'>
                             {chosenMatrix[row][col][0] !== undefined && <div className='matrix-cell-img' onClick={() => this.toggle(chosenMatrix[row][col])}><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosenMatrix[row][col][0]}.jpg`)} alt='' /><div className='matrix-cell-count'><p>{`${chosenMatrix[row][col].length}`}</p></div></div>}
                             {chosenMatrix[row][col][0] === undefined && <p>Data not collected</p>}

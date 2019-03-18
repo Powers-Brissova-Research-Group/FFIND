@@ -187,8 +187,8 @@ App-specific
 }
 
 .matrix-thumb {
-  height: 150px;
-  width: 150px;
+  height: 75px;
+  width: 75px;
   overflow: hidden;
   object-fit: cover;
 }
@@ -376,6 +376,11 @@ span.marker {
   overflow: hidden;
 }
 
+th.matrix-cell {
+  text-align: center;
+
+}
+
 td.matrix-cell {
   width: 150px;
   height: 150px;
@@ -384,7 +389,8 @@ td.matrix-cell {
 }
 
 td.matrix-head {
-  background-color: #a1a1a1;
+  max-height: 2rem;
+  border-right: 2px black;
 }
 
 .matrix-cell-img {
@@ -406,6 +412,7 @@ div.matrix-cell-count {
   flex-direction: column;
   justify-content: center;
   cursor: pointer;
+  font-size: 2rem;
 }
 
 div.matrix-cell-count > p {
