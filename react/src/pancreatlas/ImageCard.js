@@ -3,6 +3,7 @@ import {
   Card,
   CardImg,
   CardBody,
+  CardFooter,
   Button,
   Row,
   Col
@@ -162,6 +163,9 @@ export default class ImageCard extends React.Component {
               ))}
               <span className='tag' key={this.props.iid + this.state.imgTags[this.state.imgTags.length - 1]}> {this.state.imgTags[this.state.imgTags.length - 1]}</span>
             </div>
+            {/* <a href={this.props.path_path} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></a> */}
+          </CardBody>
+          <CardFooter>
             <Row>
               <Col md='6'>
                 <Button color='primary' className='mt-auto' onClick={() => this.props.callback(this.props.iid)}>Preview</Button>
@@ -171,8 +175,7 @@ export default class ImageCard extends React.Component {
                 {!this.props.isFavorite && <Button color='danger' className='favorite' onClick={() => this.props.favoriteCallback(this.props.iid)}>Remove</Button>}
               </Col>
             </Row>
-            {/* <a href={this.props.path_path} target="_blank"><Button color="link" className="mt-auto">View More Info</Button></a> */}
-          </CardBody>
+          </CardFooter>
         </Card>
       )
     } else if (this.state.error !== undefined) {
