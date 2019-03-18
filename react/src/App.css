@@ -342,6 +342,14 @@ span.marker {
   cursor: pointer;
 }
 
+  span.marker-nofilter {
+    border: 1px solid rgba(0, 0, 0, .125);
+    display: inline-block;
+    padding: 0 0.25rem 0 0.25rem;
+    border-radius: 5px;
+    line-height: 2rem;
+  }
+
 .cy3 {
   background-color: red;
   color: black;
@@ -901,4 +909,8 @@ span.dataset-title {
 
 .display-linebreak {
   white-space: pre-line
+}
+
+div.favorites-block {
+  margin-bottom: 2rem;
 }

@@ -144,11 +144,11 @@ export default class ImageCard extends React.Component {
             <div><strong>Markers:</strong></div>
             <div className='marker-list'>
               {Object.keys(this.state.markers).slice(0, Object.keys(this.state.markers).length - 1).map(marker => (
-                <MarkerTag filterCallback={this.props.filterCallback} marker={marker} iid={this.props.iid} color={this.state.markerColors[this.state.markers[marker].toUpperCase()]} />
+                <MarkerTag filterActive={this.props.filterActive} filterCallback={this.props.filterCallback} marker={marker} iid={this.props.iid} color={this.state.markerColors[this.state.markers[marker].toUpperCase()]} />
                 // <span className='tag' key={this.props.iid + marker}> <span id={`${marker}-${this.props.iid}`} onClick={() => this.props.filterCallback(marker)} className='tag marker' style={{color: (tinycolor(this.state.markerColors[this.state.markers[marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[marker].toUpperCase()]}`}}>{marker}</span><Tooltip placement="right" isOpen={this.state.ttOpen} target={`${marker}-${this.props.iid}`} toggle={this.toggle}>The filters work as an AND function between groups and an OR within them. Example: (Childhood) AND (F OR M)</Tooltip></span>
               ))}
               {(Object.keys(this.state.markers).length > 0 && Object.keys(this.state.markers)[0] !== 'DEFAULT VAL') ? (
-                <MarkerTag filterCallback={this.props.filterCallback} marker={lastMarker} iid={this.props.iid} color={this.state.markerColors[this.state.markers[lastMarker].toUpperCase()]} />
+                <MarkerTag filterActive={this.props.filterActive} filterCallback={this.props.filterCallback} marker={lastMarker} iid={this.props.iid} color={this.state.markerColors[this.state.markers[lastMarker].toUpperCase()]} />
               ) : null}
               {/* // <span className={'tag'} key={this.props.iid + last_marker}> <span onClick={() => this.props.filterCallback(last_marker)} title="Filter result by this marker" className={'marker'} style={{color: (tinycolor(this.state.markerColors[this.state.markers[last_marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[last_marker].toUpperCase()]}`}}> {last_marker}</span></span>) : null} */}
             </div>

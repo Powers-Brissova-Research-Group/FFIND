@@ -70,12 +70,12 @@ export default class Favorites extends React.Component {
           if (Object.keys(result.kvals).length > 0) {
             let path = result.kvals['File path'].val
             let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
-            let age_re = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
+            let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
 
             let markerColors = result.channel_info
-            let markerColor_re = /^.+\((.+)\)$/
+            let markerColorRe = /^.+\((.+)\)$/
             Object.keys(markerColors).forEach(function (key) {
-              var newKey = markerColor_re.test(key) ? markerColor_re.exec(key)[1] : key
+              var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
               if (newKey !== key) {
                 markerColors[newKey] = markerColors[key]
                 delete markerColors[key]
@@ -84,7 +84,7 @@ export default class Favorites extends React.Component {
 
             let matches = re.exec(path)
             result.kvals['File path'].val = matches[0]
-            result.kvals['Donor info - Age'].val = result.tags.filter(val => age_re.test(val))[0]
+            result.kvals['Donor info - Age'].val = result.tags.filter(val => ageRe.test(val))[0]
             this.setState({
               modalData: {
                 img_id: imgInfo,
@@ -182,19 +182,21 @@ export default class Favorites extends React.Component {
             </Alert>
           </Col>
         </Row>
-        <Row>
-          {this.state.iids.map(iid =>
-            <Col md='3'>
-              <ImageCard favoriteCallback={this.props.favoriteCallback} key={iid} iid={iid} callback={this.setModal} />
-            </Col>
-          )}
-        </Row>
+        <div className='favorites-block'>
+          <Row>
+            {this.state.iids.map(iid =>
+              <Col md='3'>
+                <ImageCard filterActive={false} favoriteCallback={this.props.favoriteCallback} key={iid} iid={iid} callback={this.setModal} />
+              </Col>
+            )}
+          </Row>
+        </div>
         <Modal isOpen={this.state.saveModalOpen} toggle={() => this.toggle('save')}>
           <ModalHeader toggle={() => this.toggle('save')}>Save for Later</ModalHeader>
           <ModalBody>
             <Row className='flex favorites-row'>
               <Col md='10'>
-                <input id='favorites-url' className='form-control' ref={url => this.urlRef = url} type='text' value={this.state.urlText} />
+                <input id='favorites-url' className='form-control' ref={url => (this.urlRef = url)} type='text' value={this.state.urlText} />
               </Col>
               <Col md='2 '>
                 <FontAwesomeIcon icon='copy' size='2x' className='favorites copy' onClick={this.copy} />
