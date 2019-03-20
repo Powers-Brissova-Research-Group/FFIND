@@ -21,7 +21,9 @@ build:
 deploy_staging:
   stage: deploy
   script:
-    - echo "Deploying to staging"
+    - echo "Deploying"
+    - npm install
+    - npm run build
 
   environment:
     name: local-dev
