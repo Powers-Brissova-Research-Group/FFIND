@@ -247,3 +247,10 @@ export default class AgeFilterSet extends React.Component {
     )
   }
 }
+
+AgeFilterSet.defaultProps = {
+  ageGroup: '',
+  ages: [],
+  callback: function () {},
+  filters: []
+}

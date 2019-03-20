@@ -23,7 +23,7 @@
     "react-particles-js": "^2.3.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.3",
+    "react-scripts": "^2.1.8",
     "reactstrap": "^7.1.0",
     "source-map-explorer": "^1.6.0",
     "tinycolor2": "^1.4.1",
@@ -37,11 +37,13 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "jest-canvas-mock": "^2.0.0-beta.1",
     "standard": "^12.0.1"
   },
   "standard": {
     "env": [
-      "jest"
+      "jest",
+      "mocha"
     ]
   },
   "browserslist": [

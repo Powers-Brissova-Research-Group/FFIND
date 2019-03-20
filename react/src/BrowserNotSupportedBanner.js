@@ -14,3 +14,7 @@ export default class BrowserNotSupportedBanner extends React.Component {
     )
   }
 }
+
+BrowserNotSupportedBanner.defaultProps = {
+  browser: 'Unknown'
+}

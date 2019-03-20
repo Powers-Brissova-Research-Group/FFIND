@@ -87,3 +87,7 @@ export default class TopNav extends React.Component {
     )
   }
 }
+
+TopNav.defaultProps = {
+  favorites: window.btoa(JSON.stringify({}))
+}

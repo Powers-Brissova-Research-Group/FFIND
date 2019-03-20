@@ -24,7 +24,7 @@ export default class MatrixView extends React.Component {
       tagsets: [],
       loaded: false,
       showMatrix: false,
-      dsid: this.props.match.params.dsid
+      dsid: (this.props.match === undefined) ? 0 : this.props.match.params.dsid
     }
     this.handleChange = this.handleChange.bind(this)
     this.showMatrix = this.showMatrix.bind(this)
@@ -130,26 +130,6 @@ export default class MatrixView extends React.Component {
                   ))}
                 </Table>
               </div>
-
-              {/* <Form>
-              <FormGroup>
-                <Label for="tag1">Choose the first tag</Label>
-                <Input type="select" name="tag_1" id="tag1" onChange={this.handleChange}>
-                  {this.state.tagsets.map(tagset => (
-                    <option key={tagset.set_name}>{tagset.set_name}</option>
-                  ))}
-                </Input>
-              </FormGroup>
-              <FormGroup>
-                <Label for="tag2">Choose the second tag</Label>
-                <Input type="select" name="tag_2" id="tag2" onChange={this.handleChange}>
-                  {this.state.tagsets.map(tagset => (
-                    <option key={tagset.set_name}>{tagset.set_name}</option>
-                  ))}
-                </Input>
-              </FormGroup>
-              <Button onClick={this.showMatrix}>Generate Matrix</Button>
-            </Form> */}
             </div>
           </Container>
 
@@ -165,4 +145,8 @@ export default class MatrixView extends React.Component {
       )
     }
   }
+}
+
+MatrixView.defaultProps = {
+  match: undefined
 }

@@ -2,6 +2,7 @@ image: node:latest
 
 stages:
   - build
+  - deploy
 
 cache:
   paths:
@@ -16,3 +17,15 @@ build:
   artifacts:
     paths:
       - react/node_modules/
+
+deploy_staging:
+  stage: deploy
+  script:
+    - echo "Deploying to staging"
+
+  environment:
+    name: staging
+    url: https://staging.pancreatlas.org
+  
+  only:
+    - development

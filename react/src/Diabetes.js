@@ -29,7 +29,7 @@ export default class Diabetes extends React.Component {
             </Col>
             <Col md='6'>
               <div className='embed-responsive embed-responsive-16by9'>
-                <iframe className='embed-responsive-item' title='Diabetes Video' width='560' height='315' src='https://www.youtube-nocookie.com/embed/wmOW091P2ew?rel=0' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen />
+                <iframe className='embed-responsive-item' title='Diabetes Video' width='560' height='315' src='https://www.youtube-nocookie.com/embed/wmOW091P2ew?rel=0' frameBorder='0' allow='autoplay; encrypted-media' allowFullScreen />
               </div>
               <small className='pull-right'>Courtesy of <a href='https://www.cdc.gov/'>Centers for Disease Control and Prevention (CDC)</a></small>
               <h4>Links</h4>

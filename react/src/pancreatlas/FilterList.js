@@ -122,7 +122,7 @@ export default class FilterList extends React.Component {
         <div className='filter-list'>
           <Row className='pancreatlas-row'>
             <Col className='text-left' md='8'>
-              <h3><strong>Filters:</strong> <FontAwesomeIcon icon={faQuestionCircle} id='QuestionCircle' /> <Tooltip placement='right' isOpen={this.state.ttOpen} target='QuestionCircle' toggle={this.toggle}>The filters work as an AND function between groups and an OR within them. Example: (Childhood) AND (F OR M)</Tooltip></h3>
+              <h3><strong>Filters:</strong> <span id='QuestionCircle'><FontAwesomeIcon icon={faQuestionCircle} /></span> <Tooltip placement='right' isOpen={this.state.ttOpen} target='QuestionCircle' toggle={this.toggle}>The filters work as an AND function between groups and an OR within them. Example: (Childhood) AND (F OR M)</Tooltip></h3>
             </Col>
             <Col className='text-right' md='4'>
               <Button outline className='filter-button text-center' color='danger' size='sm' onClick={this.clear}><i
@@ -155,5 +155,6 @@ export default class FilterList extends React.Component {
 }
 
 FilterList.defaultProps = {
-  filters: ['filter 1', 'filter 2', 'filter 3', 'filter 4']
+  filters: ['filter 1', 'filter 2', 'filter 3', 'filter 4'],
+  tags: {}
 }

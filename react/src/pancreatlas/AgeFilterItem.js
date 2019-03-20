@@ -70,3 +70,7 @@ export default class AgeFilterItem extends React.Component {
     }
   }
 }
+
+AgeFilterItem.defaultProps = {
+  ages: []
+}

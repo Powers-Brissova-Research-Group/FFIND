@@ -54,28 +54,33 @@ class App extends Component {
 
   checkCompatability () {
     const { detect } = require('detect-browser')
-    const browser = detect()
+    var browser = detect()
     var supported = true
 
-    switch (browser.name.toLowerCase()) {
-      case 'firefox':
-        if (parseInt(browser.version.split('.')[0], 10) < 50) {
+    if (browser !== null) {
+      switch (browser.name.toLowerCase()) {
+        case 'firefox':
+          if (parseInt(browser.version.split('.')[0], 10) < 50) {
+            supported = false
+          }
+          break
+        case 'chrome':
+          if (parseInt(browser.version.split('.')[0], 10) < 55) {
+            supported = false
+          }
+          break
+        case 'ie':
+        case 'safari':
+        case 'opera':
+        case 'edge':
           supported = false
-        }
-        break
-      case 'chrome':
-        if (parseInt(browser.version.split('.')[0], 10) < 55) {
+          break
+        default:
           supported = false
-        }
-        break
-      case 'ie':
-      case 'safari':
-      case 'opera':
-      case 'edge':
-        supported = false
-        break
-      default:
-        supported = false
+      }
+    } else {
+      supported = false
+      browser = 'Unknown'
     }
 
     return { isSupported: supported, browserInfo: browser }

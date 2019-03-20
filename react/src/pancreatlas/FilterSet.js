@@ -53,3 +53,7 @@ export default class FilterSet extends React.Component {
     }
   }
 }
+
+FilterSet.defaultProps = {
+  tags: {}
+}
