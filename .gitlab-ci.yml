@@ -24,8 +24,7 @@ deploy_staging:
     - echo "Deploying to staging"
 
   environment:
-    name: staging
-    url: https://staging.pancreatlas.org
-  
+    name: local-dev
+
   only:
     - development
