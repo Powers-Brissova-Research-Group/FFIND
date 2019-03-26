@@ -18,10 +18,14 @@ build:
     paths:
       - react/node_modules/
 
-deploy_staging:
+deploy:
   stage: deploy
   script:
-    - echo "Deploying to staging"
+    - echo "Deploying"
+    - pwd
+    - cd react
+    - npm install
+    - npm run build
 
   environment:
     name: local-dev
