@@ -129,7 +129,8 @@ export default class AgeBrowser extends React.Component {
         </div>
       )
     } else {
-      let did = (this.props.match !== undefined) ? this.props.match.did.split('?')[0] : 0
+      console.log(this.props.match)
+      let did = (this.props.match.params !== undefined) ? this.props.match.params.did : 0
       return (
         <ImageGrid favorites={this.props.favorites} favoriteCallback={this.props.favoriteCallback} filters={{}} group={this.state.group} groupName={this.state.groupName} did={did} />
       )
