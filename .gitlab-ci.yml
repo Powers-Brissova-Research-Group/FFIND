@@ -29,6 +29,9 @@ deploy:
 
   environment:
     name: local-dev
+    
+  tags:
+    - pancreatlas
 
   only:
     - development
