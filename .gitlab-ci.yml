@@ -1,30 +1,13 @@
 image: node:latest
 
 stages:
-  - build
   - deploy
 
-cache:
-  paths:
-    - react/node_modules/
-
-build:
-  stage: build
-  script:
-    - cd react
-    - npm install
-    - npm run build
-  artifacts:
-    paths:
-      - react/node_modules/
 
 deploy:
   stage: deploy
-  before_script:
-    - cd /app001/gitlab-runner
-    - echo "Set directory"
+
   script:
-  
     - echo "Deploying"
     - pwd
     - cd react
