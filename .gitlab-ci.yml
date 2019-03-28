@@ -20,7 +20,11 @@ build:
 
 deploy:
   stage: deploy
+  before_script:
+    - cd /app001/gitlab-runner
+    - echo "Set directory"
   script:
+  
     - echo "Deploying"
     - pwd
     - cd react
