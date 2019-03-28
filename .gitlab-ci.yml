@@ -26,7 +26,8 @@ deploy:
     - cd react
     - npm install && npm audit fix
     - npm run build
-    - mv ./build /var/www/pancreatlas
+    - rm -r /var/www/pancreatlas/*
+    - mv ./build/* /var/www/pancreatlas
 
   environment:
     name: local-dev
