@@ -24,9 +24,9 @@ deploy:
     - echo "Deploying"
     - pwd
     - cd react
-    - npm install && npm audit fix
+    - npm install
     - npm run build
-    - rm -r /app001/www/pancreatlas/build
+    - rm -r /app001/www/pancreatlas/build/*
     - mv ./build/* /app001/www/pancreatlas/build
 
   environment:
