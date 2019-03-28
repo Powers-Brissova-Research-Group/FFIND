@@ -24,8 +24,9 @@ deploy:
     - echo "Deploying"
     - pwd
     - cd react
-    - npm install
+    - npm install && npm audit fix
     - npm run build
+    - mv ./build /var/www/html
 
   environment:
     name: local-dev
