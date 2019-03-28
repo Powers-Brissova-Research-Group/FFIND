@@ -26,14 +26,14 @@ deploy:
     - cd react
     - npm install && npm audit fix
     - npm run build
-    - rm -r /var/www/pancreatlas/*
-    - mv ./build/* /var/www/pancreatlas
+    - rm -r /app001/www/pancreatlas/build
+    - mv ./build/* /app001/www/pancreatlas/build
 
   environment:
     name: local-dev
     
   tags:
-    - pancreatlas
+    - dev7-runner
 
   only:
     - development
