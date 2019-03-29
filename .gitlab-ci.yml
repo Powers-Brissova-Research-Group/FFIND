@@ -2,6 +2,7 @@ image: node:latest
 
 stages:
   - build
+  - test
   - deploy
 
 cache:
@@ -17,6 +18,13 @@ build:
   artifacts:
     paths:
       - react/node_modules/
+
+test:
+  stage: test
+  script:
+    - cd react
+    - npm install
+    - npm run test
 
 deploy:
   stage: deploy

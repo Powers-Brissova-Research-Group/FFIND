@@ -18,7 +18,7 @@ export default class DatasetOverview extends React.Component {
       desc: 'Default desc'
     }
     let re = /(\/\w+\/?)+([0-9]+)(\/\w+\/?)+/
-    let dsid = re.exec(window.location.pathname)[2]
+    let dsid = (re.exec(window.location.pathname) !== null) ? re.exec(window.location.pathname)[2] : 0
     console.log(dsid)
     window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${dsid}`, {
       withCredentials: true,

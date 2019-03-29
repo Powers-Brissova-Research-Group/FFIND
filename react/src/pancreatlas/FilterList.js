@@ -18,7 +18,7 @@ import AgeFilterSet from './AgeFilterSet'
 import Error from './Error'
 
 export default class FilterList extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.setFilters = this.setFilters.bind(this)
     this.clear = this.clear.bind(this)
@@ -32,7 +32,7 @@ export default class FilterList extends React.Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     let extras = ['depth 1', 'depth 2', 'depth 3']
     if (this.props.tags !== null) {
       let t = {}
@@ -53,7 +53,7 @@ export default class FilterList extends React.Component {
     }
   }
 
-  componentDidUpdate (prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     if (JSON.stringify(prevState.filters) !== JSON.stringify(this.props.filters)) {
       this.setState({
         filters: this.props.filters
@@ -61,7 +61,7 @@ export default class FilterList extends React.Component {
     }
   }
 
-  setFilters (tagset, newTag) {
+  setFilters(tagset, newTag) {
     let tagList = this.state.filters
     let prevFilters = JSON.parse(JSON.stringify(tagList))
 
@@ -101,7 +101,7 @@ export default class FilterList extends React.Component {
     this.props.callback(this.state.filters, prevFilters)
   }
 
-  clear () {
+  clear() {
     this.setState({
       filters: {
         'AGE': []
@@ -110,19 +110,31 @@ export default class FilterList extends React.Component {
     this.props.callback({})
   }
 
-  toggle () {
+  toggle() {
     this.setState({
       ttOpen: !this.state.ttOpen
     })
   }
 
-  render () {
+  render() {
     if (this.props.tags !== null) {
       return (
         <div className='filter-list'>
           <Row className='pancreatlas-row'>
             <Col className='text-left' md='8'>
-              <h3><strong>Filters:</strong> <span id='QuestionCircle'><FontAwesomeIcon icon={faQuestionCircle} /></span> <Tooltip placement='right' isOpen={this.state.ttOpen} target='QuestionCircle' toggle={this.toggle}>The filters work as an AND function between groups and an OR within them. Example: (Childhood) AND (F OR M)</Tooltip></h3>
+              <h3>
+                <strong>Filters:</strong>
+              </h3>
+              <span id='QuestionCircle'>
+                <FontAwesomeIcon icon={faQuestionCircle} />
+              </span>
+              <Tooltip placement='right'
+                isOpen={this.state.ttOpen}
+                target='QuestionCircle'
+                toggle={this.toggle}>
+                The filters work as an AND function between groups and an OR within them. Example: (Childhood) AND (F OR M)
+              </Tooltip>
+
             </Col>
             <Col className='text-right' md='4'>
               <Button outline className='filter-button text-center' color='danger' size='sm' onClick={this.clear}><i
