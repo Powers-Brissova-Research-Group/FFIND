@@ -27,8 +27,10 @@ deploy:
     - cd react
     - npm install
     - npm run build
-    - rm -r /app001/www/pancreatlas/build/*
-    - mv ./build/* /app001/www/pancreatlas/build
+    - rm -r /app001/www/pancreatlas/dev7/www/*
+    - mv ./build/* /app001/www/pancreatlas/dev7/www
+    - cd ..
+    - mv ./api/* /app001/www/pancreatlas/dev7/api
 
   environment:
     name: local-dev
