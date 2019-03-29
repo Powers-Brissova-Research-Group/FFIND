@@ -36,7 +36,8 @@ deploy:
     - rm -r /app001/www/pancreatlas/dev7/api/*
     - mv ./api/* /app001/www/pancreatlas/dev7/api
     - cd /app001/www/pancreatlas/dev7/api
-    - pip virtualenv .
+    - virtualenv .
+    - source bin/activate
     - pip install -r requirements.txt
     - echo "api installed"
     - echo "Restarting Apache"
