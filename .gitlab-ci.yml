@@ -33,6 +33,7 @@ deploy:
     - echo "React app installed"
     - echo "Installing api"
     - cd ..
+    - rm -r /app001/www/pancreatlas/dev7/api/*
     - mv ./api/* /app001/www/pancreatlas/dev7/api
     - cd /app001/www/pancreatlas/dev7/api
     - pip virtualenv .
