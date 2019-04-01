@@ -35,7 +35,7 @@ deploy:
     - echo "Deploying"
     - pwd
     - cd react
-    - cp /app001/gitlab-runner/dotenv/* ./
+    - cp /app001/gitlab-runner/dotenv/.env.* ./
     - npm install
     - npm run build
     - echo "Installing react app"
