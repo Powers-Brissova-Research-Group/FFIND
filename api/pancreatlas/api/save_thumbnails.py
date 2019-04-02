@@ -19,7 +19,7 @@ def get_token(session):
     return response['data']
 
 def get_roi(iid, session):
-    url = 'https://omero.app.vumc.org/api/v0/m/images/' + iid + '/rois/'
+    url = 'https://omero.app.vumc.org/api/v0/m/images/' + str(iid) + '/rois/'
     r = session.request('GET', url)
     rois = json.loads(r.text)
     gallery_roi = None
@@ -32,7 +32,7 @@ def get_roi(iid, session):
     return gallery_roi
 
 def get_size(iid, session):
-    url = 'https://omero.app.vumc.org/api/v0/m/images/' + iid
+    url = 'https://omero.app.vumc.org/api/v0/m/images/' + str(iid)
     r = session.request('GET', url)
     idata = json.loads(r.text)
     if 'data' in idata:
@@ -43,9 +43,11 @@ def get_size(iid, session):
 def get_image_colors(iid, session):
     url = 'https://omero.app.vumc.org/webgateway/imgData/%s/' % (iid, )
     r = session.request('GET', url)
-    data = json.loads(r.text)
-    channels = data['channels']
-    chdata = [(int(channel['window']['start']), int(channel['window']['end']), channel['color']) for channel in channels]
+    chdata = [(0, 65535, 'FF0000'), (0, 65535, '00FF00'), (0, 65535, '0000FF')]
+    if r.text != u'""':
+        data = json.loads(r.text)
+        channels = data['channels']
+        chdata = [(int(channel['window']['start']), int(channel['window']['end']), channel['color']) for channel in channels]
     return chdata
 
 def save_thumbnail(iid, roi, session):
@@ -54,7 +56,7 @@ def save_thumbnail(iid, roi, session):
         chdata.append((0, 65535, 'FFFFFF'))
     url = 'https://omero.app.vumc.org/webgateway/render_image_region/%s/0/0/?c=1|%s:%s$%s,2|%s:%s$%s,3|%s:%s$%s,4|%s:%s$%s&m=c&region=%s,%s,%s,%s' % (iid, chdata[0][0], chdata[0][1], chdata[0][2], chdata[1][0], chdata[1][1], chdata[1][2], chdata[2][0], chdata[2][1], chdata[2][2], chdata[3][0], chdata[3][1], chdata[3][2], roi[0], roi[1], roi[2], roi[3])
     print url
-    fpath = '/var/www/pancreatlas/dev/dev7/pancreatlas/react/src/assets/pancreatlas/thumbs/%s.jpg' % (iid, )
+    fpath = '/home/jmessmer/Documents/Projects/pancreatlas/react/src/assets/pancreatlas/thumbs/%s.jpg' % (iid, )
     f = open(fpath, 'w')
     r = session.get(url, stream=True)
     if r.status_code == 200:
@@ -86,8 +88,8 @@ def main():
     success = login(token, sesh)
     print "Logged in? %s" % (success, )
     if success == True:
-#        iids = get_image_list()
-        iids = ['17342', '17437', '17512']
+        # iids = get_image_list()
+        iids = [17862, 17763, 17770, 17773]
         print len(iids)
         for iid in iids:
             # save_thumbnail(iid, None, sesh)

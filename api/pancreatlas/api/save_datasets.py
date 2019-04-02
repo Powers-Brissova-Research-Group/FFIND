@@ -3,7 +3,7 @@ import omero_api as api
 
 def save_datasets():
     dsets = api.get_datasets()
-    dids = [390]
+    dids = [384, 390, 408]
     for did in dids:
         print "Saving %s" % (str(did),)
         fname = str(did) + '.txt'
@@ -18,9 +18,9 @@ def save_datasets():
         f.write(data)
         f.close() 
 
-def save_index():
+def save_index(ds):
     print 'Retrieving images'
-    imgs = api.get_images_from_dataset(384)
+    imgs = api.get_images_from_dataset(ds)
     print "hello"
     print imgs
     print 'Images retrieved'
@@ -39,6 +39,9 @@ def save_index():
     
 def main():
     save_datasets()
+    save_index(384)
+    save_index(390)
+    save_index(408)
 
 if __name__=='__main__':
     main()
