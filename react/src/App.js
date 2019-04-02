@@ -26,6 +26,7 @@ import Releases from './Releases'
 library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faRedo)
 
 class App extends Component {
+// blank line for new commit
   constructor (props) {
     super(props)
 
