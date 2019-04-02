@@ -24,6 +24,8 @@ test:
   script:
     - cd react
     - npm install
+    - npm install -g standard
+    - standard --fix
     - npm run test
 
 deploy:
@@ -33,6 +35,7 @@ deploy:
     - echo "Deploying"
     - pwd
     - cd react
+    - cp /app001/gitlab-runner/dotenv/.env.* ./
     - npm install
     - npm run build
     - echo "Installing react app"
