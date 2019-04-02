@@ -50,7 +50,7 @@ class ImageViewSet(viewsets.ViewSet):
 class DatasetViewset(viewsets.ViewSet):
     def list(self, request):
         dsets = omero_api.get_datasets()
-        dsets = [Dataset(dset.did, dset.name, dset.desc, dset.kvals) for dset in dsets if dset.did == 384 or dset.did == 390]
+        dsets = [Dataset(dset.did, dset.name, dset.desc, dset.kvals) for dset in dsets if dset.did == 384 or dset.did == 390 or dset.did == 408]
 
         serializer = DatasetSerializer(dsets, many=True)
         return Response(serializer.data)
