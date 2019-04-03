@@ -52,9 +52,12 @@ def get_image_colors(iid, session):
 
 def save_thumbnail(iid, roi, session):
     chdata = get_image_colors(iid, session)
-    if len(chdata) == 3:
+    if len(chdata) <= 3:
         chdata.append((0, 65535, 'FFFFFF'))
-    url = 'https://omero.app.vumc.org/webgateway/render_image_region/%s/0/0/?c=1|%s:%s$%s,2|%s:%s$%s,3|%s:%s$%s,4|%s:%s$%s&m=c&region=%s,%s,%s,%s' % (iid, chdata[0][0], chdata[0][1], chdata[0][2], chdata[1][0], chdata[1][1], chdata[1][2], chdata[2][0], chdata[2][1], chdata[2][2], chdata[3][0], chdata[3][1], chdata[3][2], roi[0], roi[1], roi[2], roi[3])
+    channel_params = ''
+    for i in range(0, len(chdata)):
+        channel_params += '%s|%s:%s$%s,' % (str(i + 1), chdata[i][0], chdata[i][1], chdata[i][2])
+    url = 'https://omero.app.vumc.org/webgateway/render_image_region/%s/0/0/?c=%s&m=c&region=%s,%s,%s,%s' % (iid, channel_params[0:-1], roi[0], roi[1], roi[2], roi[3])
     print url
     fpath = '/home/jmessmer/Documents/Projects/pancreatlas/react/src/assets/pancreatlas/thumbs/%s.jpg' % (iid, )
     f = open(fpath, 'w')
@@ -89,7 +92,7 @@ def main():
     print "Logged in? %s" % (success, )
     if success == True:
         # iids = get_image_list()
-        iids = [17862, 17763, 17770, 17773]
+        iids = [17826]
         print len(iids)
         for iid in iids:
             # save_thumbnail(iid, None, sesh)
