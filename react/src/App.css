@@ -896,6 +896,15 @@ div.dataset-lists ul.nav.nav-tabs {
   margin-bottom: 1rem;
 }
 
+div.dataset-cards {
+  margin-bottom: 1rem;
+}
+
+div.dataset-card-sponsors {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 img.dataset-funder {
   max-width: 100%;
 }
@@ -914,10 +923,21 @@ span.dataset-title {
   padding: 2rem;
 }
 
+div.dataset-title {
+  background-color: #00000099;
+  color: white;
+  padding: 2rem;
+}
+
 .display-linebreak {
   white-space: pre-line
 }
 
 div.favorites-block {
   margin-bottom: 2rem;
+}
+
+img.header-img {
+  max-width: 250px;
+  border-radius: 50%;
 }
