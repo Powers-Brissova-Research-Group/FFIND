@@ -40,7 +40,22 @@ export default class DatasetOverview extends React.Component {
         const images = require.context('../assets/', true)
         // this.props.funding !== undefined ? this.props.funding.split(',').map(source => images(`./${source}.jpg`)) : []
         let sponsors = result.kvals.funding !== undefined ? result.kvals.funding.split(',').map(source => images(`./${source}.jpg`)) : []
-        console.log(sponsors)
+        console.log(sponsors)    /*
+        <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false' }}>
+          <Button className='ds-list-left-button' >Browse All Images</Button>
+        </Link>
+        <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=true' }}>
+          <Button color='primary'>Browse by Age</Button>
+        </Link>
+        <Link to={'/pancreatlas/matrixview/' + item.did}>
+          <Button className='ds-list-right-button' outline color='success'>Compare Attributes</Button>
+import {
+Link
+} from 'react-router-dom'
+</Link>
+
+*/
+
         this.setState({
           title: result.dsname,
           desc: result.kvals.description_long,
@@ -49,21 +64,6 @@ export default class DatasetOverview extends React.Component {
       })
   }
   render() {
-    /*
-                                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false' }}>
-                                      <Button className='ds-list-left-button' >Browse All Images</Button>
-                                    </Link>
-                                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=true' }}>
-                                      <Button color='primary'>Browse by Age</Button>
-                                    </Link>
-                                    <Link to={'/pancreatlas/matrixview/' + item.did}>
-                                      <Button className='ds-list-right-button' outline color='success'>Compare Attributes</Button>
-                  import {
-  Link
-} from 'react-router-dom'
-                  </Link>
-
-    */
     return (
       <div className='datasetOverviewWrapper'>
         <Parallax
@@ -144,7 +144,7 @@ export default class DatasetOverview extends React.Component {
           <Row>
             {this.state.funders.map(funder => (
               <Col md='4'>
-                <img src={funder} />
+                <img src={funder} alt='Sponsor Logo'/>
               </Col>
             ))}
           </Row>
