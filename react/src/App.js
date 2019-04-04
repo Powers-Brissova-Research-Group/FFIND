@@ -118,7 +118,6 @@ class App extends Component {
     var supportInfo = this.checkCompatability()
     var supported = supportInfo.isSupported
     var browser = supportInfo.browserInfo
-    /* console.log(`Browser: ${JSON.stringify(supportInfo)}`) */
     var version = supportInfo.browserInfo.version
     // if (browser.name.toLowerCase() !== 'firefox' && browser.name.toLowerCase() !== 'chrome'){
     //   supported = false

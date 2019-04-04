@@ -20,6 +20,8 @@ import Error from './Error'
 import ImageModal from './ImageModal'
 import LoadingBar from './LoadingBar'
 
+import axios from 'axios'
+
 export default class ImageGrid extends React.Component {
   constructor (props) {
     super(props)
@@ -60,7 +62,7 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidMount () {
-    window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`, {
+    axios.create({
       withCredentials: true,
       credentials: 'include',
       headers: {
@@ -68,67 +70,49 @@ export default class ImageGrid extends React.Component {
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
-      .then(res => res.json())
-      .then(result => {
-        this.setState({
-          datasetName: result.dsname
-        })
+    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`).then(response => {
+      let result = response.data
+      this.setState({
+        datasetName: result.dsname
       })
-    window.fetch(`${process.env.REACT_APP_API_URL}/tagsets/`, {
-      withCredentials: true,
-      credentials: 'include',
-      headers: {
-        'Access-Control-Allow-Origin': true,
-        'Authorization': process.env.REACT_APP_API_AUTH
-      }
     })
-      .then(res => res.json())
-      .then(
-        (tresult) => {
-          this.raw_tags = tresult
-          for (let o of Object.keys(tresult)) {
-            if ('set_name' in tresult[o]) {
-              this.tag_idx[tresult[o].set_name] = o
-              this.tag_dict[tresult[o].set_name] = []
-              let extras = ['depth 1', 'depth 2', 'depth 3']
-              for (let t of Object.keys(tresult[o].tags)) {
-                if (extras.indexOf(t) === -1) {
-                  this.tag_dict[tresult[o].set_name].push(t)
-                } else {
-                  delete this.raw_tags[o].tags[t]
-                }
-              }
+
+    axios.get(`${process.env.REACT_APP_API_URL}/tagsets/`).then(response => {
+      let result = response.data
+      this.raw_tags = result
+      for (let o of Object.keys(result)) {
+        if ('set_name' in result[o]) {
+          this.tag_idx[result[o].set_name] = o
+          this.tag_dict[result[o].set_name] = []
+          let extras = ['depth 1', 'depth 2', 'depth 3']
+          for (let t of Object.keys(result[o].tags)) {
+            if (extras.indexOf(t) === -1) {
+              this.tag_dict[result[o].set_name].push(t)
+            } else {
+              delete this.raw_tags[o].tags[t]
             }
           }
-          window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`, {
-            withCredentials: true,
-            credentials: 'include',
-            headers: {
-              'Access-Control-Allow-Origin': true,
-              'Authorization': process.env.REACT_APP_API_AUTH
-            }
-          })
-            .then(res => res.json())
-            .then(
-              (result) => {
-                this.setState({
-                  loaded: true,
-                  ids: result,
-                  matches: Object.keys(result),
-                  page: 0
-                })
-                this.updateTags(true)
-                // this.filter(this.props.filters)
-              })
-            .catch(err => {
-              console.log(err)
-              this.setState({
-                loaded: false,
-                error: err
-              })
-            })
         }
-      )
+      }
+      axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`).then(response => {
+        let result = response.data
+        this.setState({
+          loaded: true,
+          ids: result,
+          matches: Object.keys(result),
+          page: 0
+        })
+        this.updateTags(true)
+        // this.filter(this.props.filters)
+      })
+        .catch(err => {
+          console.log(err)
+          this.setState({
+            loaded: false,
+            error: err
+          })
+        })
+    })
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -187,7 +171,6 @@ export default class ImageGrid extends React.Component {
   }
 
   filter (tagList, prevFilters) {
-    console.log(prevFilters)
     let empty = true
     for (let key of Object.keys(tagList)) {
       if (tagList[key].length > 0) {
@@ -250,7 +233,7 @@ export default class ImageGrid extends React.Component {
   }
 
   setModal (imgInfo) {
-    window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
+    axios.create({
       withCredentials: true,
       credentials: 'include',
       headers: {
@@ -258,52 +241,50 @@ export default class ImageGrid extends React.Component {
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          if (Object.keys(result.kvals).length > 0) {
-            let path = result.kvals['File path'].val
-            let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
-            let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
+    axios.get(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`).then(response => {
+      let result = response.data
+      if (Object.keys(result.kvals).length > 0) {
+        let path = result.kvals['File path'].val
+        let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
+        let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
 
-            let markerColors = result.channel_info
-            let markerColorRe = /^.+\((.+)\)$/
-            Object.keys(markerColors).forEach(function (key) {
-              var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
-              if (newKey !== key) {
-                markerColors[newKey] = markerColors[key]
-                delete markerColors[key]
-              }
-            })
-
-            let matches = re.exec(path)
-            result.kvals['File path'].val = matches[0]
-            result.kvals['Donor info - Age'].val = result.tags.filter(val => ageRe.test(val))[0]
-            this.setState({
-              modalData: {
-                img_id: imgInfo,
-                img_data: result.kvals,
-                path_path: result.pathpath,
-                markerColors: markerColors
-              }
-            })
-          } else {
-            this.setState({
-              modalData: {
-                img_id: imgInfo,
-                img_data: { 'Warning': 'No information for this image' },
-                path_path: result.pathpath
-              }
-            })
+        let markerColors = result.channel_info
+        let markerColorRe = /^.+\((.+)\)$/
+        Object.keys(markerColors).forEach(function (key) {
+          var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
+          if (newKey !== key) {
+            markerColors[newKey] = markerColors[key]
+            delete markerColors[key]
           }
-          this.toggle()
         })
-      .catch(err => {
+
+        let matches = re.exec(path)
+        result.kvals['File path'].val = matches[0]
+        result.kvals['Donor info - Age'].val = result.tags.filter(val => ageRe.test(val))[0]
         this.setState({
-          loaded: false,
-          error: err
+          modalData: {
+            img_id: imgInfo,
+            img_data: result.kvals,
+            path_path: result.pathpath,
+            markerColors: markerColors
+          }
         })
+      } else {
+        this.setState({
+          modalData: {
+            img_id: imgInfo,
+            img_data: { 'Warning': 'No information for this image' },
+            path_path: result.pathpath
+          }
+        })
+      }
+      this.toggle()
+    }).catch(err => {
+      this.setState({
+        loaded: false,
+        error: err
       })
+    })
   }
 
   setDensity (density) {

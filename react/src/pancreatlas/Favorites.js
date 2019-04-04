@@ -19,6 +19,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ImageCard from './ImageCard'
 import ImageModal from './ImageModal'
 
+import axios from 'axios'
+
 export default class Favorites extends React.Component {
   constructor (props) {
     super(props)
@@ -56,7 +58,7 @@ export default class Favorites extends React.Component {
   }
 
   setModal (imgInfo) {
-    window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
+    axios.create({
       withCredentials: true,
       credentials: 'include',
       headers: {
@@ -64,52 +66,50 @@ export default class Favorites extends React.Component {
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          if (Object.keys(result.kvals).length > 0) {
-            let path = result.kvals['File path'].val
-            let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
-            let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
+    axios.get(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`).then(response => {
+      let result = response.data
+      if (Object.keys(result.kvals).length > 0) {
+        let path = result.kvals['File path'].val
+        let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
+        let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
 
-            let markerColors = result.channel_info
-            let markerColorRe = /^.+\((.+)\)$/
-            Object.keys(markerColors).forEach(function (key) {
-              var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
-              if (newKey !== key) {
-                markerColors[newKey] = markerColors[key]
-                delete markerColors[key]
-              }
-            })
-
-            let matches = re.exec(path)
-            result.kvals['File path'].val = matches[0]
-            result.kvals['Donor info - Age'].val = result.tags.filter(val => ageRe.test(val))[0]
-            this.setState({
-              modalData: {
-                img_id: imgInfo,
-                img_data: result.kvals,
-                path_path: result.pathpath,
-                markerColors: markerColors
-              }
-            })
-          } else {
-            this.setState({
-              modalData: {
-                img_id: imgInfo,
-                img_data: { 'Warning': 'No information for this image' },
-                path_path: result.pathpath
-              }
-            })
+        let markerColors = result.channel_info
+        let markerColorRe = /^.+\((.+)\)$/
+        Object.keys(markerColors).forEach(function (key) {
+          var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
+          if (newKey !== key) {
+            markerColors[newKey] = markerColors[key]
+            delete markerColors[key]
           }
-          this.toggle('image')
         })
-      .catch(err => {
+
+        let matches = re.exec(path)
+        result.kvals['File path'].val = matches[0]
+        result.kvals['Donor info - Age'].val = result.tags.filter(val => ageRe.test(val))[0]
         this.setState({
-          loaded: false,
-          error: err
+          modalData: {
+            img_id: imgInfo,
+            img_data: result.kvals,
+            path_path: result.pathpath,
+            markerColors: markerColors
+          }
         })
+      } else {
+        this.setState({
+          modalData: {
+            img_id: imgInfo,
+            img_data: { 'Warning': 'No information for this image' },
+            path_path: result.pathpath
+          }
+        })
+      }
+      this.toggle('image')
+    }).catch(err => {
+      this.setState({
+        loaded: false,
+        error: err
       })
+    })
   }
 
   toggle (modalType) {

@@ -26,11 +26,6 @@ export default class FilterSet extends React.Component {
 
   render () {
     if (this.props.setName !== 'AGE') {
-      // Object.keys(this.props.tags).map(tag => {
-      //   if(this.props.filters !== undefined && this.props.filter.indexOf(tag) !== -1){
-      //     console.log(tag)
-      //   }
-      // })
       return (
         <div className='filter-set'>
           <Row className='pancreatlas-row'>

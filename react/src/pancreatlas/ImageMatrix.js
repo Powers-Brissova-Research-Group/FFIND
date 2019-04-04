@@ -19,6 +19,8 @@ import LoadingBar from './LoadingBar'
 
 import Error from './Error'
 
+import axios from 'axios'
+
 export default class ImageMatrix extends React.Component {
   constructor (props) {
     super(props)
@@ -105,7 +107,7 @@ export default class ImageMatrix extends React.Component {
   }
 
   componentDidMount () {
-    window.fetch(`${process.env.REACT_APP_API_URL}/matrix/${this.props.tag_1},${this.props.tag_2},${this.props.dsid}`, {
+    axios.create({
       withCredentials: true,
       credentials: 'include',
       headers: {
@@ -113,74 +115,55 @@ export default class ImageMatrix extends React.Component {
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
-      .then(res => res.json())
-      .then((result) => {
-        let m = result['matrix']
-        let newMatrix = {}
-        let newMatrixT = {}
-        let tags1 = Object.keys(m)
-        let tags2 = Object.keys(m[tags1[0]])
-        if (this.props.tag_1 === 'AGE') {
-          tags1.sort(this.compareAges)
-        } else {
-          tags1.sort()
-        }
+    axios.get(`${process.env.REACT_APP_API_URL}/matrix/${this.props.tag_1},${this.props.tag_2},${this.props.dsid}`).then(response => {
+      let result = response.data
 
-        if (this.props.tag_2 === 'AGE') {
-          tags2.sort(this.compareAges)
-        } else {
-          tags2.sort()
-        }
+      let m = result['matrix']
+      let newMatrix = {}
+      let newMatrixT = {}
+      let tags1 = Object.keys(m)
+      let tags2 = Object.keys(m[tags1[0]])
+      if (this.props.tag_1 === 'AGE') {
+        tags1.sort(this.compareAges)
+      } else {
+        tags1.sort()
+      }
 
-        for (let tag1 of tags1) {
-          newMatrix[tag1] = {}
-          for (let tag2 of tags2) {
-            if (newMatrixT[tag2] === undefined) {
-              newMatrixT[tag2] = {}
-            }
-            newMatrixT[tag2][tag1] = []
-            newMatrix[tag1][tag2] = []
-            for (let imgId of m[tag1][tag2]) {
-              newMatrix[tag1][tag2].push(imgId)
-              newMatrixT[tag2][tag1].push(imgId)
-              // let url = `${process.env.REACT_APP_API_URL}/images/${img_id}`
-              // fetch(url)
-              //   .then(res => res.json())
-              //   .then(result => {
-              //     new_matrix[tag_1][tag_2].push(result)
-              //     new_matrix_t[tag_2][tag_1].push(result)
-              //     this.setState({
-              //       loaded: true,
-              //       matrix: new_matrix,
-              //       matrix_t: new_matrix_t,
-              //       view_transpose: ((Object.keys(new_matrix).length <= Object.keys(new_matrix_t).length) ? true : false),
-              //     })
-              //   })
-              //   .catch(err => {
-              //     this.setState({
-              //       loaded: false,
-              //       error: err
-              //     })
-              //   });
-            }
+      if (this.props.tag_2 === 'AGE') {
+        tags2.sort(this.compareAges)
+      } else {
+        tags2.sort()
+      }
+
+      for (let tag1 of tags1) {
+        newMatrix[tag1] = {}
+        for (let tag2 of tags2) {
+          if (newMatrixT[tag2] === undefined) {
+            newMatrixT[tag2] = {}
+          }
+          newMatrixT[tag2][tag1] = []
+          newMatrix[tag1][tag2] = []
+          for (let imgId of m[tag1][tag2]) {
+            newMatrix[tag1][tag2].push(imgId)
+            newMatrixT[tag2][tag1].push(imgId)
           }
         }
-        this.setState({
-          loaded: true,
-          matrix: newMatrix,
-          matrix_t: newMatrixT,
-          view_transpose: ((Object.keys(newMatrix).length <= Object.keys(newMatrixT).length)),
-          tagA: result['tag_a'],
-          tagB: result['tag_b']
-          // matrix: result['matrix']
-        })
+      }
+      this.setState({
+        loaded: true,
+        matrix: newMatrix,
+        matrix_t: newMatrixT,
+        view_transpose: ((Object.keys(newMatrix).length <= Object.keys(newMatrixT).length)),
+        tagA: result['tag_a'],
+        tagB: result['tag_b']
+        // matrix: result['matrix']
       })
-      .catch(err => {
-        this.setState({
-          loaded: false,
-          error: err
-        })
+    }).catch(err => {
+      this.setState({
+        loaded: false,
+        error: err
       })
+    })
   }
 
   toggle (new_set = []) {
@@ -203,7 +186,7 @@ export default class ImageMatrix extends React.Component {
   }
 
   setModal (imgInfo) {
-    window.fetch(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
+    axios.create({
       withCredentials: true,
       credentials: 'include',
       headers: {
@@ -211,36 +194,35 @@ export default class ImageMatrix extends React.Component {
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          let path = result.kvals['File path'].val
-          let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
-          let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
+    axios.get(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`).then(response => {
+      let result = response.data
+      let path = result.kvals['File path'].val
+      let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
+      let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
 
-          let markerColors = result.channel_info
-          let markerColorRe = /^.+\((.+)\)$/
-          Object.keys(markerColors).forEach(function (key) {
-            var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
-            if (newKey !== key) {
-              markerColors[newKey] = markerColors[key]
-              delete markerColors[key]
-            }
-          })
+      let markerColors = result.channel_info
+      let markerColorRe = /^.+\((.+)\)$/
+      Object.keys(markerColors).forEach(function (key) {
+        var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
+        if (newKey !== key) {
+          markerColors[newKey] = markerColors[key]
+          delete markerColors[key]
+        }
+      })
 
-          let matches = re.exec(path)
-          result.kvals['File path'].val = matches[0]
-          result.kvals['Donor info - Age'].val = result.tags.filter(val => ageRe.test(val))[0]
-          this.setState({
-            modalData: {
-              img_id: imgInfo,
-              img_data: result.kvals,
-              path_path: result.pathpath,
-              markerColors: markerColors
-            }
-          })
-          this.toggleDetail()
-        })
+      let matches = re.exec(path)
+      result.kvals['File path'].val = matches[0]
+      result.kvals['Donor info - Age'].val = result.tags.filter(val => ageRe.test(val))[0]
+      this.setState({
+        modalData: {
+          img_id: imgInfo,
+          img_data: result.kvals,
+          path_path: result.pathpath,
+          markerColors: markerColors
+        }
+      })
+      this.toggleDetail()
+    })
       .catch(err => {
         this.setState({
           loaded: false,

@@ -16,6 +16,8 @@ import {
 import Error from './Error'
 import MarkerTag from './MarkerTag'
 
+import axios from 'axios'
+
 export default class ImageCard extends React.Component {
   constructor (props) {
     super(props)
@@ -34,7 +36,7 @@ export default class ImageCard extends React.Component {
 
   componentDidMount () {
     // Load information about the image
-    window.fetch(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`, {
+    axios.create({
       withCredentials: true,
       credentials: 'include',
       headers: {
@@ -42,82 +44,71 @@ export default class ImageCard extends React.Component {
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
-      .then(res => res.json())
-      .then(result => {
-        let kvals = result.kvals
-        if (Object.keys(kvals).length > 0) {
-          let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
-          let donorRe = /(^Donor info)(\s+-\s+)(.+$)/i
-          let regionRe = /(^Image info)(\s+-\s+)(Section Plane$|Pancreas Region$)/
-          let markerColors = result.channel_info
+    axios.get(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`).then(response => {
+      let result = response.data
+      let kvals = result.kvals
+      if (Object.keys(kvals).length > 0) {
+        let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
+        let donorRe = /(^Donor info)(\s+-\s+)(.+$)/i
+        let regionRe = /(^Image info)(\s+-\s+)(Section Plane$|Pancreas Region$)/
+        let markerColors = result.channel_info
 
-          let markerColorRe = /^.+\((.+)\)$/
-          Object.keys(markerColors).forEach(function (key) {
-            var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
-            if (newKey !== key) {
-              markerColors[newKey] = markerColors[key]
-              delete markerColors[key]
-            }
-          })
-          let markerKeys = Object.keys(kvals).filter(key => markerRe.test(key))
-          let donorKeys = Object.keys(kvals).filter(key => donorRe.test(key))
-          let regionKeys = Object.keys(kvals).filter(key => regionRe.test(key))
-
-          donorKeys.sort()
-          regionKeys.sort()
-          let markers = {}
-          let donor = {}
-          let region = {
-            [regionKeys[1]]: kvals[regionKeys[1]].val,
-            [regionKeys[0]]: kvals[regionKeys[0]].val
-
+        let markerColorRe = /^.+\((.+)\)$/
+        Object.keys(markerColors).forEach(function (key) {
+          var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
+          if (newKey !== key) {
+            markerColors[newKey] = markerColors[key]
+            delete markerColors[key]
           }
-          for (let key of markerKeys) {
-            kvals[key].val.split(',').filter(val => val !== '').map(val => (markers[val.trim()] = markerRe.exec(key)[3]))
-          }
-          for (let key of donorKeys) {
-            if (kvals[key].val !== '' && kvals[key].val !== undefined) {
-              let valKey = donorRe.exec(key)[3]
-              if (valKey !== 'UNOS ID' && valKey !== 'LIMS ID' && kvals[key] !== '') {
-                if (valKey === 'Age') {
-                  let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
-                  donor[donorRe.exec(key)[3]] = result.tags.filter(tag => ageRe.test(tag))[0]
-                } else {
-                  donor[donorRe.exec(key)[3]] = kvals[key].val
-                }
+        })
+        let markerKeys = Object.keys(kvals).filter(key => markerRe.test(key))
+        let donorKeys = Object.keys(kvals).filter(key => donorRe.test(key))
+        let regionKeys = Object.keys(kvals).filter(key => regionRe.test(key))
+
+        donorKeys.sort()
+        regionKeys.sort()
+        let markers = {}
+        let donor = {}
+        let region = {
+          [regionKeys[1]]: kvals[regionKeys[1]].val,
+          [regionKeys[0]]: kvals[regionKeys[0]].val
+
+        }
+        for (let key of markerKeys) {
+          kvals[key].val.split(',').filter(val => val !== '').map(val => (markers[val.trim()] = markerRe.exec(key)[3]))
+        }
+        for (let key of donorKeys) {
+          if (kvals[key].val !== '' && kvals[key].val !== undefined) {
+            let valKey = donorRe.exec(key)[3]
+            if (valKey !== 'UNOS ID' && valKey !== 'LIMS ID' && kvals[key] !== '') {
+              if (valKey === 'Age') {
+                let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
+                donor[donorRe.exec(key)[3]] = result.tags.filter(tag => ageRe.test(tag))[0]
+              } else {
+                donor[donorRe.exec(key)[3]] = kvals[key].val
               }
             }
           }
-
-          this.setState({
-            loaded: true,
-            imgUrl: '/' + result.iname, // https://omero.app.vumc.org/webgateway/render_image_region/' + this.props.iid + '/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&format=jpeg&region=0,0,300,300',
-            imgName: result.iname,
-            omeroId: result.iid,
-            imgTags: result.tags.filter(tag => markers[tag] === undefined && Object.values(donor).indexOf(tag) === -1 && Object.values(region).indexOf(tag) === -1),
-            markers: markers,
-            donor: donor,
-            region: region,
-            markerColors: (markerColors !== undefined) ? markerColors : {}
-          })
-        } else {
-          this.setState({
-            loaded: true,
-            imgUrl: '/' + result.iname, // https://omero.app.vumc.org/webgateway/render_image_region/' + this.props.iid + '/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&format=jpeg&region=0,0,300,300',
-            imgName: result.iname,
-            omeroId: result.iid,
-            imgTags: [],
-            markers: { 'DEFAULT VAL': 'DEFAULT VAL' },
-            donor: { 'Donor': 'DEFAULT VAL' },
-            region: { 'Region': 'DEFAULT VAL' }
-          })
         }
-      }).catch(err => {
+
         this.setState({
-          loaded: false,
-          error: err
+          loaded: true,
+          imgUrl: '/' + result.iname, // https://omero.app.vumc.org/webgateway/render_image_region/' + this.props.iid + '/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&format=jpeg&region=0,0,300,300',
+          imgName: result.iname,
+          omeroId: result.iid,
+          imgTags: result.tags.filter(tag => markers[tag] === undefined && Object.values(donor).indexOf(tag) === -1 && Object.values(region).indexOf(tag) === -1),
+          markers: markers,
+          donor: donor,
+          region: region,
+          markerColors: (markerColors !== undefined) ? markerColors : {}
         })
+      }
+    }).catch(err => {
+      this.setState({
+        loaded: false,
+        error: err
       })
+    })
   }
 
   toggleTooltip () {

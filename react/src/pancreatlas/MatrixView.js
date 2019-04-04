@@ -14,6 +14,8 @@ import LoadingBar from './LoadingBar'
 
 import Error from './Error'
 
+import axios from 'axios'
+
 export default class MatrixView extends React.Component {
   constructor (props) {
     super(props)
@@ -31,7 +33,7 @@ export default class MatrixView extends React.Component {
   }
 
   componentDidMount () {
-    window.fetch(`${process.env.REACT_APP_API_URL}/tagsets`, {
+    axios.create({
       withCredentials: true,
       credentials: 'include',
       headers: {
@@ -39,17 +41,16 @@ export default class MatrixView extends React.Component {
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
-      .then(res => res.json())
-      .then(result => {
-        this.setState({
-          tagsets: result,
-          loaded: true,
-          tag1: result[0].set_name,
-          tag2: result[0].set_name
-        })
+    axios.get(`${process.env.REACT_APP_API_URL}/tagsets`).then(response => {
+      let result = response.data
+      this.setState({
+        tagsets: result,
+        loaded: true,
+        tag1: result[0].set_name,
+        tag2: result[0].set_name
       })
+    })
       .catch(err => {
-        console.log(err)
         this.setState({
           loaded: false,
           error: err

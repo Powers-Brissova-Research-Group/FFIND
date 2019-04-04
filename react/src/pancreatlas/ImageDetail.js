@@ -15,6 +15,8 @@ import Error from './Error'
 
 import { Link } from 'react-router-dom'
 
+import axios from 'axios'
+
 export default class ImageDetail extends React.Component {
   constructor (props) {
     super(props)
@@ -30,7 +32,8 @@ export default class ImageDetail extends React.Component {
   componentDidMount () {
     this.defs = require('../assets/pancreatlas/definitions.json')
     let iid = (this.props.match !== undefined) ? this.props.match.params.iid : 0
-    window.fetch(`${process.env.REACT_APP_API_URL}/images/${iid}`, {
+
+    axios.create({
       withCredentials: true,
       credentials: 'include',
       headers: {
@@ -38,27 +41,26 @@ export default class ImageDetail extends React.Component {
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          let path = result.kvals['File path'].val
-          let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
-          let matches = re.exec(path)
-          result.kvals['File path'].val = matches[0]
-          this.setState({
-            loaded: true,
-            detailpath: result.detailpath,
-            img_data: result.kvals,
-            tags: result.tags,
-            path_path: result.pathpath
-          })
-        })
-      .catch(err => {
-        this.setState({
-          loaded: false,
-          error: err
-        })
+
+    axios.get(`${process.env.REACT_APP_API_URL}/images/${iid}`).then(response => {
+      let result = response.data
+      let path = result.kvals['File path'].val
+      let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
+      let matches = re.exec(path)
+      result.kvals['File path'].val = matches[0]
+      this.setState({
+        loaded: true,
+        detailpath: result.detailpath,
+        img_data: result.kvals,
+        tags: result.tags,
+        path_path: result.pathpath
       })
+    }).catch(err => {
+      this.setState({
+        loaded: false,
+        error: err
+      })
+    })
   }
 
   render () {

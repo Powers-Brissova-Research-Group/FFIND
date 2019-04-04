@@ -14,8 +14,10 @@ import {
 
 import { Parallax } from 'react-parallax'
 
+import axios from 'axios'
+
 export default class DatasetOverview extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     let re = /(\/\w+\/?)+([0-9]+)(\/\w+\/?)+/
 
@@ -25,45 +27,29 @@ export default class DatasetOverview extends React.Component {
       did: (re.exec(window.location.pathname) !== null) ? re.exec(window.location.pathname)[2] : 0,
       funders: []
     }
-    let dsid = (re.exec(window.location.pathname) !== null) ? re.exec(window.location.pathname)[2] : 0
-    console.log(dsid)
-    window.fetch(`${process.env.REACT_APP_API_URL}/datasets/${dsid}`, {
+  }
+
+  componentDidMount () {
+    axios.create({
       withCredentials: true,
       credentials: 'include',
       headers: {
         'Access-Control-Allow-Origin': true,
         'Authorization': process.env.REACT_APP_API_AUTH
       }
+
     })
-      .then(res => res.json())
-      .then((result) => {
-        const images = require.context('../assets/', true)
-        // this.props.funding !== undefined ? this.props.funding.split(',').map(source => images(`./${source}.jpg`)) : []
-        let sponsors = result.kvals.funding !== undefined ? result.kvals.funding.split(',').map(source => images(`./${source}.jpg`)) : []
-        console.log(sponsors)    /*
-        <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false' }}>
-          <Button className='ds-list-left-button' >Browse All Images</Button>
-        </Link>
-        <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=true' }}>
-          <Button color='primary'>Browse by Age</Button>
-        </Link>
-        <Link to={'/pancreatlas/matrixview/' + item.did}>
-          <Button className='ds-list-right-button' outline color='success'>Compare Attributes</Button>
-import {
-Link
-} from 'react-router-dom'
-</Link>
+    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.state.did}`).then(result => {
+      let sponsors = result.data.kvals.funding !== undefined ? result.data.kvals.funding.split(',').map(source => require(`../assets/${source}.jpg`)) : []
+      this.setState({
+        title: result.dsname,
+        desc: result.data.kvals.description_long,
+        funders: sponsors
 
-*/
-
-        this.setState({
-          title: result.dsname,
-          desc: result.kvals.description_long,
-          funders: sponsors
-        })
       })
+    })
   }
-  render() {
+  render () {
     return (
       <div className='datasetOverviewWrapper'>
         <Parallax
@@ -144,7 +130,7 @@ Link
           <Row>
             {this.state.funders.map(funder => (
               <Col md='4'>
-                <img src={funder} alt='Sponsor Logo'/>
+                <img src={funder} alt='Sponsor Logo' />
               </Col>
             ))}
           </Row>

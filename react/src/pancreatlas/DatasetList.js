@@ -25,8 +25,10 @@ import Error from './Error'
 import LoadingBar from './LoadingBar'
 import DatasetCard from './DatasetCard'
 
+import axios from 'axios'
+
 export default class DatasetList extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       loaded: false,
@@ -37,9 +39,9 @@ export default class DatasetList extends React.Component {
     this.iids = (params.has('iids') ? params.get('iids') : window.btoa(JSON.stringify([])))
   }
 
-  componentDidMount() {
+  componentDidMount () {
     // Get the list of all datasets from our API and store them in the current state
-    window.fetch(`${process.env.REACT_APP_API_URL}/datasets/`, {
+    axios.create({
       withCredentials: true,
       credentials: 'include',
       headers: {
@@ -47,26 +49,22 @@ export default class DatasetList extends React.Component {
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            loaded: true,
-            datasets: result.sort(function(a, b) {
-              if (a.did < b.did) return -1
-              if (a.did > b.did) return 1
-              return 0
-            })
-          })
-        })
-      .catch(err => {
-        this.setState({
-          error: err
+    axios.get(`${process.env.REACT_APP_API_URL}/datasets/`).then(result => {
+      this.setState({
+        loaded: true,
+        datasets: result.data.sort(function (a, b) {
+          if (a.did < b.did) return -1
+          if (a.did > b.did) return 1
+          return 0
         })
       })
+    }).catch(err => {
+      this.setState({
+        error: err
+      })
+    })
   }
-
-  toggle(tab) {
+  toggle (tab) {
     if (this.state.activeTab !== tab) {
       this.setState({
         activeTab: tab
@@ -74,7 +72,7 @@ export default class DatasetList extends React.Component {
     }
   }
 
-  render() {
+  render () {
     if (this.state.loaded) {
       return (
         <div className='dataset-list'>
@@ -118,12 +116,12 @@ export default class DatasetList extends React.Component {
                 <NavItem>
                   <NavLink className={`${(this.state.activeTab === '0') ? 'active' : undefined} navlink`} onClick={() => { this.toggle('0') }}>
                     Grid View
-                    </NavLink>
+                  </NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink className={`${(this.state.activeTab === '1') ? 'active' : undefined} navlink`} onClick={() => { this.toggle('1') }}>
                     List View
-                    </NavLink>
+                  </NavLink>
                 </NavItem>
 
               </Nav>
@@ -132,8 +130,8 @@ export default class DatasetList extends React.Component {
                   <div className='dataset-cards'>
                     <Row>
                       {this.state.datasets.map(item => (
-                        <Col md='4'>
-                          <DatasetCard title={item.dsname} description={item.desc || undefined} funding={item.kvals.funding} did={item.did} />
+                        <Col key={`${item.dsname}-col`} md='4'>
+                          <DatasetCard key={item.dsname} title={item.dsname} description={item.desc || undefined} funding={item.kvals.funding} did={item.did} />
                         </Col>
                       ))}
                     </Row>
