@@ -158,3 +158,20 @@ class UserViewset(viewsets.ViewSet):
         print json.loads(r.content)
         return Response(json.loads(r.content), status=r.status_code, content_type=r.headers['Content-Type'])
 
+    def update(self, request, pk=None):
+        data = request.data
+        email = data['email']
+
+        api_data = {
+            'email_address': email,
+            'status': 'subscribed'
+        }
+        
+        url = "https://us18.api.mailchimp.com/3.0/lists/eceb982b65/members"
+
+        r = requests.post(url, json=api_data, auth=('user', '4db489c84c572b13b6846613efbf40bc-us18'))
+        print r.request
+        print json.loads(r.content)
+        return Response(json.loads(r.content), status=r.status_code, content_type=r.headers['Content-Type'])
+
+
