@@ -147,14 +147,6 @@ export default class FilterList extends React.Component {
             } else {
               return (<FilterSet clear={this.state.clear} classname='filter-set' setName={this.props.tags[key]['set_name']} tags={this.props.tags[key]['tags']} callback={this.setFilters} key={key} filters={this.props.filters[this.props.tags[key]['set_name']]} />)
             }
-            // <Collapse isOpened={true}>
-            //   <div className='tagset' key={key}>
-            //     <h4>{this.props.tags[key]['set_name']}</h4>
-            //     {Object.keys(this.props.tags[key]['tags']).map(tag => (
-            //       <FilterItem key={tag} filterName={tag} filterQty={this.props.tags[key]['tags'][tag]} callback={() => this.setFilters(this.props.tags[key]['set_name'], tag)} />
-            //     ))}
-            //   </div>
-            // </Collapse>
           })}
         </div>
       )

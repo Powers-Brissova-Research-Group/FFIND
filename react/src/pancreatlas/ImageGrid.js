@@ -358,6 +358,7 @@ export default class ImageGrid extends React.Component {
           </div>
         )
       }
+
       // images_per_row * images_col_split must equal 12
       // var images_per_row = 3
       // var images_col_split = 4

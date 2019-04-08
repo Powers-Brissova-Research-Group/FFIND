@@ -48,15 +48,6 @@ export default class AgeFilterItem extends React.Component {
   }
 
   render () {
-    // const Handle = Slider.Handle;
-    // const handle = (props) => {
-    //   const { value, dragging, index, ...restProps} = props
-    //   return (
-    //     <Tooltip prefixCls="rc-slider-tooltip" overlay={value} visible={dragging} placement="top" key={index}>
-    //       <Handle value={value} {...restProps} />
-    //     </Tooltip>
-    //   )
-    // }
     if (this.props.hidden) {
       return null
     } else {
