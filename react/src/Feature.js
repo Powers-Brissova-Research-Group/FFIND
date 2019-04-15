@@ -18,7 +18,7 @@ export default class Feature extends React.Component {
             </Col>
             <Col sm='10'>
               <Row className='feature-header-row'><h6>{this.props.heading}</h6></Row>
-              <Row className='feature-body-row'><p>{this.props.description}</p></Row>
+              <Row className='feature-body-row'><p className='text-larger'>{this.props.description}</p></Row>
             </Col>
           </Row>
         </Container>

@@ -35,25 +35,6 @@ export default class PancreatlasFooter extends React.Component {
               </Col>
 
               <Col md='3'>
-                <Row>
-                  <Col md='12'>
-                    <h2>Contributors</h2>
-                  </Col>
-                  <Col md='6'>
-                    <p><a href='http://pathology.ufl.edu/faculty/experimental-pathology/mark-a-atkinson/'> Atkinson Lab</a></p>
-                    <p><a href='https://labnodes.vanderbilt.edu/member/profile/id/10427'>Brissova Lab</a></p>
-                    <p><a href='http://seungkimlab.stanford.edu/'>Kim Lab</a></p>
-                    <p><a href='https://medschool.vanderbilt.edu/wright-lab/'>Wright Lab</a></p>
-                  </Col>
-                  <Col md='6'>
-                    <p><a href='https://www.ahn.org/research/our-research-institutes/cellular-therapeutics/our-team'> Bottino Lab</a></p>
-                    <p><a href='https://faculty.mc.vanderbilt.edu/Faculty/Details/34956'>Dai Lab</a></p>
-                    <p><a href='https://www.powersresearch.org/'>Powers Lab</a></p>
-                  </Col>
-                </Row>
-              </Col>
-
-              <Col md='3'>
                 <h2 className='get-in-touch'>Get in touch</h2>
                 <p>
                   Vanderbilt University Medical Center<br />

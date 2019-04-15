@@ -57,18 +57,18 @@ export default class TopNav extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className='ml-auto' navbar>
               {JSON.parse(window.atob(this.props.favorites)).length > 0 &&
-                <NavItem>
+                <NavItem className='btn btn-info'>
                   <UncontrolledDropdown>
                     <DropdownToggle nav caret>Image Atlas <Badge color='primary'>{JSON.parse(window.atob(this.props.favorites)).length}</Badge></DropdownToggle>
                     <DropdownMenu right>
-                      <Link className='dropdown-item' to='/pancreatlas/dataset'>Image Atlas</Link>
+                      <Link className='dropdown-item' to='/pancreatlas/dataset'>Image Collections</Link>
                       <Link className='dropdown-item' to={`/pancreatlas/favorites?iids=${this.props.favorites}`}>Favorites <Badge color='primary'>{JSON.parse(window.atob(this.props.favorites)).length}</Badge></Link>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 </NavItem>}
               {JSON.parse(window.atob(this.props.favorites)).length <= 0 &&
-                <NavItem active={(window.location.pathname === '/pancreatlas/dataset')}>
-                  <NavLink to='/pancreatlas/dataset'>Image Atlas</NavLink>
+                <NavItem className='btn btn-info' active={(window.location.pathname === '/pancreatlas/dataset')}>
+                  <NavLink to='/pancreatlas/dataset'>Image Collections</NavLink>
                 </NavItem>
               }
               <NavItem active={(window.location.pathname === '/collaborators')}>
@@ -77,7 +77,7 @@ export default class TopNav extends React.Component {
               <NavItem>
                 <NavLink to='/about'>About pancreatlas</NavLink>
               </NavItem>
-              <NavItem className='btn btn-info'>
+              <NavItem>
                 <a href='https://webapp.mis.vanderbilt.edu/vumc-giving/landing?appealCode=J1001'>Join Our Efforts</a>
               </NavItem>
             </Nav>

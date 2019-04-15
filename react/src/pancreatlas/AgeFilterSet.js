@@ -93,10 +93,12 @@ export default class AgeFilterSet extends React.Component {
       }
     }
     let activeFilters = []
-    for (let key of Object.keys(ageGroups)) {
-      ageGroups[key].sort(this.compareAges)
-      if (!this.state[key]) {
-        activeFilters = activeFilters.concat(ageGroups[key])
+    if (this.state !== undefined) {
+      for (let key of Object.keys(ageGroups)) {
+        ageGroups[key].sort(this.compareAges)
+        if (!this.state[key]) {
+          activeFilters = activeFilters.concat(ageGroups[key])
+        }
       }
     }
     if (!this.initialized) {

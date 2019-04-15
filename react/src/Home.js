@@ -12,6 +12,7 @@ import Helmsley from './assets/helmsley.jpg'
 import HIRN from './assets/hirn.jpg'
 import IIAM from './assets/IIAM.png'
 import IIDP from './assets/IIDP.png'
+import NDRI from './assets/NDRI.jpg'
 import VUMC from './assets/VUMC.png'
 
 export default class Home extends React.Component {
@@ -19,6 +20,7 @@ export default class Home extends React.Component {
     return (
       <div className='home'>
         <Banner />
+        { /* Add more space between rows */ }
         <Container>
           <Row>
             <div className='head-description v-padded'>
@@ -70,6 +72,7 @@ export default class Home extends React.Component {
                 <h2>This project is generously supported by:</h2>
               </Col>
             </Row>
+            {/* Add space here!! */}
             <Row className='center-row'>
               <Col sm='12'>
                 <img className='img-fluid' src={Helmsley} alt='The Leona M. and Harry B. Helmsley Charitable Trust' />
@@ -85,8 +88,9 @@ export default class Home extends React.Component {
                 <img src={IIAM} alt='IIAM' className='img-fluid' />
               </Col>
               <Col sm='2'>
-                <img src={HIRN} alt='HIRN' className='img-fluid' />
+                <img src={NDRI} alt='NDRI' className='img-fluid' />
               </Col>
+
               <Col sm='2'>
                 <img src={IIDP} alt='IIDP' className='img-fluid' />
               </Col>

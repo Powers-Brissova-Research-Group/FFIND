@@ -8,7 +8,7 @@ html {
 
 html, body {
   height: 100%;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size:0.95em;
 }
 h1, h2, h3, h4, h5, h6{
@@ -237,7 +237,7 @@ table.image-matrix {
 
 .image-card {
   text-align: left;
-  font-family: Roboto, Sans-Serif;
+  font-family: 'Roboto', 'Sans-Serif';
 }
 
 .image-row {
@@ -294,7 +294,7 @@ table.image-matrix {
   background-color: #f6f6f6;
   border: 1px solid #e3e3e3;
   padding:15px;
-  font-family: Roboto, Sans-Serif !important;
+  font-family: 'Roboto', 'Sans-Serif' !important;
   border-radius: 2px;
 }
 
@@ -761,7 +761,7 @@ div.overlay {
 }
 
 .nav-item a {
-  font-family: Raleway, Sans-Serif;
+  font-family: 'Roboto', 'Sans-Serif';
   font-size:130%;
   color: #fff;
   margin-left:0.75rem;
@@ -940,4 +940,8 @@ div.favorites-block {
 img.header-img {
   max-width: 250px;
   border-radius: 50%;
+}
+
+p.text-larger {
+  font-size: 20px;
 }
