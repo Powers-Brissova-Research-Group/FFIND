@@ -26,14 +26,8 @@ export default class AgeFilterSet extends React.Component {
     // this.createFilters = this.createFilters.bind(this)
     this.updateFilters = this.updateFilters.bind(this)
     this.toggleGroup = this.toggleGroup.bind(this)
-    this.state = {
-      open: true,
-      ageFilters: [],
-      gestational: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'GESTATIONAL',
-      neonatal: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'NEONATAL',
-      infancy: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'INFANCY',
-      childhood: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'CHILDHOOD'
-    }
+    this.updateAgeGroups = this.updateAgeGroups.bind(this)
+
     this.allFilters = this.props.ages
     this.AgeGroups = {
       GESTATIONAL: 0,
@@ -42,10 +36,19 @@ export default class AgeFilterSet extends React.Component {
       CHILDHOOD: 3,
       ADULT: 4
     }
+    this.state = {
+      open: true,
+      ageFilters: [],
+      gestational: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'GESTATIONAL',
+      neonatal: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'NEONATAL',
+      infancy: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'INFANCY',
+      childhood: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'CHILDHOOD',
+      ageGroups: this.updateAgeGroups()
+    }
     this.initialized = false
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps, prevState) {
     if ((prevProps.filters !== undefined && prevProps.filters.length) !== 0 && this.props.filters.length === 0) {
       this.setState({
         open: true,
@@ -56,6 +59,51 @@ export default class AgeFilterSet extends React.Component {
         childhood: true
       })
     }
+    if (JSON.stringify(this.state.ageGroups) !== JSON.stringify(prevState.ageGroups)) {
+      this.setState({
+        ageGroups: this.updateAgeGroups()
+      })
+    }
+  }
+
+  updateAgeGroups () {
+    let ageGroups = {
+      gestational: [],
+      neonatal: [],
+      infancy: [],
+      childhood: []
+    }
+    for (let age of this.allFilters) {
+      let grp = this.findAgeGroup(age)
+      switch (grp) {
+        case 0:
+          ageGroups.gestational.push(age)
+          break
+        case 1:
+          ageGroups.neonatal.push(age)
+          break
+        case 2:
+          ageGroups.infancy.push(age)
+          break
+        case 3:
+          ageGroups.childhood.push(age)
+          break
+        default:
+          break
+      }
+    }
+    let activeFilters = []
+    for (let key of Object.keys(ageGroups)) {
+      ageGroups[key].sort(this.compareAges)
+      if (!this.state[key]) {
+        activeFilters = activeFilters.concat(ageGroups[key])
+      }
+    }
+    if (!this.initialized) {
+      this.updateFilters(activeFilters)
+      this.initialized = true
+    }
+    return ageGroups
   }
 
   findAgeGroup (age) {
@@ -180,42 +228,6 @@ export default class AgeFilterSet extends React.Component {
   render () {
     // let ages = ['G8w', 'G12w', 'G12.3w', 'G15w', 'G15.5w', 'G17w', 'G17.3w', 'G18w', 'G32w', 'G33w', 'G33.4w+4d', 'G37w', 'G39.9w', 'G41w', '1d', '5d', '2mo', '3mo', '10mo', '20mo', '4y', '5y', '10y']
 
-    let ageGroups = {
-      gestational: [],
-      neonatal: [],
-      infancy: [],
-      childhood: []
-    }
-    for (let age of this.allFilters) {
-      let grp = this.findAgeGroup(age)
-      switch (grp) {
-        case 0:
-          ageGroups.gestational.push(age)
-          break
-        case 1:
-          ageGroups.neonatal.push(age)
-          break
-        case 2:
-          ageGroups.infancy.push(age)
-          break
-        case 3:
-          ageGroups.childhood.push(age)
-          break
-        default:
-          break
-      }
-    }
-    let activeFilters = []
-    for (let key of Object.keys(ageGroups)) {
-      ageGroups[key].sort(this.compareAges)
-      if (!this.state[key]) {
-        activeFilters = activeFilters.concat(ageGroups[key])
-      }
-    }
-    if (!this.initialized) {
-      this.updateFilters(activeFilters)
-      this.initialized = true
-    }
     return (
       <div className='age-filter'>
         <Row className='pancreatlas-row'>
@@ -227,18 +239,18 @@ export default class AgeFilterSet extends React.Component {
           </Col>
         </Row>
         <Collapse isOpened={this.state.open}>
-          {Object.keys(ageGroups).map(key => (
+          {Object.keys(this.state.ageGroups).map(key => (
             <div className='group-filter' key={key}>
               <Row className='pancreatlas-row'>
                 <Col md='12' className='text-left'>
                   <FormGroup check>
                     <Label check>
-                      <Input type='checkbox' checked={!this.state[key]} onChange={evt => this.toggleGroup(evt.target.checked, ageGroups[key], key)} />{key.charAt(0).toUpperCase() + key.slice(1)}
+                      <Input type='checkbox' checked={!this.state[key]} onChange={evt => this.toggleGroup(evt.target.checked, this.state.ageGroups[key], key)} />{key.charAt(0).toUpperCase() + key.slice(1)}
                     </Label>
                   </FormGroup>
                 </Col>
               </Row>
-              <AgeFilterItem ages={ageGroups[key]} group={key} callback={this.updateFilters} allFilters={this.allFilters} currentFilters={this.state.ageFilters} hidden={this.state[key]} />
+              <AgeFilterItem ages={this.state.ageGroups[key]} group={key} callback={this.updateFilters} allFilters={this.allFilters} currentFilters={this.state.ageFilters} hidden={this.state[key]} />
             </div>
           ))}
         </Collapse>

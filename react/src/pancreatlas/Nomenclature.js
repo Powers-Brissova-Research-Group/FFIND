@@ -31,7 +31,7 @@ export default class Nomenclature extends React.Component {
             </thead>
             <tbody>
               {Object.keys(this.defs).map(key => (
-                <tr>
+                <tr key={key}>
                   <td><strong>{key}</strong></td>
                   <td>{this.defs[key].short_desc}</td>
                   <td>{this.defs[key].long_desc}</td>
