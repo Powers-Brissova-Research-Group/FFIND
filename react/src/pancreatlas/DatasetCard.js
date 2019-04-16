@@ -27,7 +27,6 @@ export default class DatasetCard extends React.Component {
       <Card className='h-100'>
         <CardImg className='ds-logo' src={logo} alt='placeholder' />
         <CardBody className='text-left'>
-          <CardText><strong>{this.props.title}</strong></CardText>
           <div className='ds-alt'><CardText>{this.props.description}</CardText></div>
           <div className='dataset-card-sponsors'>
             {sponsors.map(item =>
@@ -41,7 +40,7 @@ export default class DatasetCard extends React.Component {
           <Row>
             <Col md='6'>
               <Link to={`/pancreatlas/dataset/${this.props.did}/overview`}>
-                <Button color='primary'>View Dataset</Button>
+                <Button color='info'>View Dataset</Button>
               </Link>
             </Col>
           </Row>

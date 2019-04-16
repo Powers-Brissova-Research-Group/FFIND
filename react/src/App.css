@@ -903,6 +903,8 @@ div.dataset-cards {
 div.dataset-card-sponsors {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 img.dataset-funder {
