@@ -35,7 +35,7 @@ export default class Footer extends React.Component {
                   </Col>
                 </Row>
               </Col>
-              <Col md='3'>
+              <Col className='pull-left' md='6'>
                 <h2>Contact</h2>
                 <p>Office: Division of Diabetes, Endocrinology, and Metabolism<br />
                   Vanderbilt University School of Medicine<br />

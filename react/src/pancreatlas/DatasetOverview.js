@@ -54,12 +54,12 @@ export default class DatasetOverview extends React.Component {
       <div className='datasetOverviewWrapper'>
         <Parallax
           blur={0}
-          bgImage={require('../assets/parallax-bg.jpg')}
+          bgImage={require('../assets/header1.jpg')}
           bgImageAlt='Sample Image'
-          strength={800}
+          strength={500}
           style={{ marginTop: '-1.5rem' }}
         >
-          <div className='parallax-filler' style={{ height: '90vh' }}>
+          <div className='parallax-filler' style={{ height: '50vh' }}>
             <Container className='h-100'>
               <Row className='h-100'>
                 <Col md='6' className='d-flex align-items-center'>

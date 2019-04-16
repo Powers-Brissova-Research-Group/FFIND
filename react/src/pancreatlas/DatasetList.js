@@ -82,7 +82,7 @@ export default class DatasetList extends React.Component {
           </MetaTags>
           <Parallax
             blur={0}
-            bgImage={require('../assets/parallax-bg.jpg')}
+            bgImage={require('../assets/header1.jpg')}
             bgImageAlt='Sample Image'
             strength={800}
             style={{ marginTop: '-1.5rem', marginBottom: '1.5rem' }}

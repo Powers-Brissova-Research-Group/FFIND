@@ -34,15 +34,17 @@ export default class PancreatlasFooter extends React.Component {
                 <p>Supported by <b><a href='http://www.helmsleytrust.org'>The Leona M. and Harry B. Helmsley Charitable Trust</a></b>, <a href='https://www.jdrfnpod.org'>nPOD</a>, <a href='http://www.hirnetwork.org'>HIRN</a>, <a href='http://www.jdrf.org'>JDRF</a>, <a href='http://www.iiam.org'>IIAM</a>, <a href='http://www.ndri.org'>NDRI</a>, <a href='https://iidp.coh.org'>IIDP</a>, <a href='https://www.nih.gov'>NIH</a>, <a href='http://www.research.va.gov'>VA</a>, and <a href='https://www.mc.vanderbilt.edu'>VUMC</a></p>
               </Col>
 
-              <Col md='3'>
-                <h2 className='get-in-touch'>Get in touch</h2>
-                <p>
+              <Col className='float-right' md='6'>
+                <div className='float-right'>
+                  <h2 className='get-in-touch'>Get in touch</h2>
+                  <p>
                   Vanderbilt University Medical Center<br />
                   8435F Medical Research Bldg IV<br />
                   2215 Garland Avenue<br />
                   Nashville, TN 37232-0475<br />
                   Phone: (615) 936-7678<br />
                   E-mail: <a href='mailto:powers.research@vanderbilt.edu'>powers-research@vanderbilt.edu</a></p>
+                </div>
               </Col>
             </Row>
           </Container>

@@ -6,6 +6,7 @@ import {
   Container
 } from 'reactstrap'
 import Feature from './Feature'
+import SponsorLogo from './SponsorLogo'
 
 import MapPicture from './assets/map-collaborations6.png'
 import Helmsley from './assets/helmsley.jpg'
@@ -73,35 +74,35 @@ export default class Home extends React.Component {
               </Col>
             </Row>
             {/* Add space here!! */}
-            <Row className='center-row'>
+            <Row className='center-row my-4'>
               <Col sm='12'>
-                <img className='img-fluid' src={Helmsley} alt='The Leona M. and Harry B. Helmsley Charitable Trust' />
+                <SponsorLogo location='https://helmsleytrust.org/' name='The Leona M. and Harry B. Helmsley Charitable Trust' imgSrc={Helmsley} size='large' />
               </Col>
             </Row>
-            <Row className='center-row'>
+            <Row className='center-row my-4'>
               <Col sm='12'>
                 <h5>We also thank the following:</h5>
               </Col>
             </Row>
-            <Row className='justify-content-around'>
+            <Row className='justify-content-around my-4'>
               <Col sm='2'>
-                <img src={IIAM} alt='IIAM' className='img-fluid' />
+                <SponsorLogo location='https://www.iiam.org/' name='IIAM' imgSrc={IIAM} size='small' />
               </Col>
               <Col sm='2'>
-                <img src={NDRI} alt='NDRI' className='img-fluid' />
-              </Col>
-
-              <Col sm='2'>
-                <img src={IIDP} alt='IIDP' className='img-fluid' />
+                <SponsorLogo location='https://ndriresource.org/' name='NDRI' imgSrc={NDRI} size='small' />
               </Col>
               <Col sm='2'>
-                <img src={HIRN} alt='HIRN' className='img-fluid' />
+                <SponsorLogo location='https://iidp.coh.org/' name='IIDP' imgSrc={IIDP} size='small' />
               </Col>
               <Col sm='2'>
-                <img src={VUMC} alt='VUMC' className='img-fluid' />
+                <SponsorLogo location='https://hirnetwork.org/' name='HIRN' imgSrc={HIRN} size='small' />
+                {/* <img src={HIRN} alt='HIRN' className='img-fluid' /> */}
+              </Col>
+              <Col sm='2'>
+                <SponsorLogo location='https://vumc.org' name='VUMC' imgSrc={VUMC} size='small' />
               </Col>
             </Row>
-            <Row className='center-row'>
+            <Row className='center-row my-4'>
               <Col sm='12'>
                 <h5><i>We are extremely grateful to organ donors and their families.</i></h5>
               </Col>
