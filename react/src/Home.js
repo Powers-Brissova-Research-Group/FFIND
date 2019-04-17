@@ -21,9 +21,8 @@ export default class Home extends React.Component {
     return (
       <div className='home'>
         <Banner />
-        { /* Add more space between rows */ }
         <Container>
-          <Row>
+          <Row className='my-4'>
             <div className='head-description v-padded'>
               <Row>
                 <Col md='12'>
@@ -36,8 +35,7 @@ export default class Home extends React.Component {
                 </Col>
               </Row>
             </div>
-
-            <Row>
+            <Row className='mb-4'>
               <Col md='4'>
                 <Feature icon='users' heading='Team Science' description='Led by research groups at Vanderbilt University, the University of Florida, and Stanford University, in collaboration with organizations and scientists around the country' />
               </Col>
@@ -52,7 +50,7 @@ export default class Home extends React.Component {
         </Container>
         <Container fluid className='shaded'>
           <Container>
-            <Row className='v-padded'>
+            <Row className='v-padded mb-4'>
               <Col md='6'>
                 <h3>Creating new</h3>
                 <h1>Connections</h1>
@@ -73,7 +71,6 @@ export default class Home extends React.Component {
                 <h2>This project is generously supported by:</h2>
               </Col>
             </Row>
-            {/* Add space here!! */}
             <Row className='center-row my-4'>
               <Col sm='12'>
                 <SponsorLogo location='https://helmsleytrust.org/' name='The Leona M. and Harry B. Helmsley Charitable Trust' imgSrc={Helmsley} size='large' />
@@ -96,7 +93,6 @@ export default class Home extends React.Component {
               </Col>
               <Col sm='2'>
                 <SponsorLogo location='https://hirnetwork.org/' name='HIRN' imgSrc={HIRN} size='small' />
-                {/* <img src={HIRN} alt='HIRN' className='img-fluid' /> */}
               </Col>
               <Col sm='2'>
                 <SponsorLogo location='https://vumc.org' name='VUMC' imgSrc={VUMC} size='small' />

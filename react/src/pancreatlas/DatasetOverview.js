@@ -65,11 +65,8 @@ export default class DatasetOverview extends React.Component {
           <div className='parallax-filler' style={{ height: '50vh' }}>
             <Container className='h-100'>
               <Row className='h-100'>
-                <Col md='6' className='d-flex align-items-center'>
-                  <span className='dataset-title'><h1>About {this.state.title}</h1></span>
-                </Col>
-                <Col md='6' className='d-flex align-items-center'>
-                  <span className='dataset-title'>
+                <Col md='12' className='d-flex align-items-center'>
+                  <span className='dataset-title'><h1><strong>About {this.state.title}</strong></h1>
                     <h3>
                       {this.state.short_desc}
                     </h3>
@@ -84,13 +81,12 @@ export default class DatasetOverview extends React.Component {
             <Col md='12'>
               <Row className='my-4'>
                 <Col md='12'>
-                  <h1>About this Collection</h1>
+                  <h3>About this Collection</h3>
                   <p>{this.state.long_desc}</p>
                 </Col>
               </Row>
               <Row className='mb-4'>
                 <Col md='12'>
-                  <h1><strong>Explore the Data</strong></h1>
                   <h3>Here are some suggested projections of the data within this set</h3>
                 </Col>
               </Row>
@@ -133,7 +129,7 @@ export default class DatasetOverview extends React.Component {
           </Row>
           <Row className='mb-4'>
             <Col md='12'>
-              <h1>We thank the following sponsors who made gathering these data possible:</h1>
+              <h3>We thank the following sponsors who made gathering these data possible:</h3>
             </Col>
           </Row>
           <Row className='mb-4'>
