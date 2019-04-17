@@ -18,7 +18,7 @@ import {
   NavLink
 } from 'react-router-dom'
 
-import logo from './assets/logo-pancreatlas-300w_light.png'
+import logo from './assets/pancreatlas12b.png'
 
 export default class TopNav extends React.Component {
   constructor (props) {
@@ -51,7 +51,7 @@ export default class TopNav extends React.Component {
       <Navbar color='dark' dark expand='md'>
         <Container fluid>
           <NavbarBrand tag={Link} to='/'>
-            <img className='img-fluid' src={logo} alt={'Pancreatlas -- Home'} />
+            <img style={{ maxHeight: '5rem' }}className='img-fluid' src={logo} alt={'Pancreatlas -- Home'} />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
