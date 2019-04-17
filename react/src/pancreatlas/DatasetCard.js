@@ -58,7 +58,7 @@ export default class DatasetCard extends React.Component {
         <Card className='h-100'>
           <CardImg className='ds-logo' src={logo} alt='placeholder' />
           <CardBody className='text-left'>
-            <div className='ds-alt'><CardText>{this.props.description}</CardText></div>
+            <CardText>{this.props.description}</CardText>
             <Link to={{ pathname: `/pancreatlas/dataset/${this.props.did}`, search: '?browse=false' }}><Button className='w-100' color='info'>Browse All Images</Button></Link>
           </CardBody>
           <Collapse isOpened={this.state.showActions}>
