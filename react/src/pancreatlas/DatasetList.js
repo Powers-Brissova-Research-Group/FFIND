@@ -83,7 +83,7 @@ export default class DatasetList extends React.Component {
             blur={0}
             bgImage={require('../assets/header1.jpg')}
             bgImageAlt='Sample Image'
-            strength={800}
+            strength={0}
             style={{ marginTop: '-1.5rem', marginBottom: '1.5rem' }}
           >
             <div className='parallax-filler' style={{ height: '45vh' }}>
@@ -136,7 +136,6 @@ export default class DatasetList extends React.Component {
                     </Row>
                   </div>
                 </TabPane>
-
                 <TabPane tabId='1'>
                   <Row>
                     <Col md='12'>

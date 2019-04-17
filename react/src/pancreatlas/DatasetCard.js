@@ -7,7 +7,11 @@ import {
   CardFooter,
   Row,
   Col,
-  Button
+  Button,
+  ButtonDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
 } from 'reactstrap'
 
 import {
@@ -15,6 +19,22 @@ import {
 } from 'react-router-dom'
 
 export default class DatasetCard extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.toggleDropdown = this.toggleDropdown.bind(this)
+
+    this.state = {
+      dropdownOpen: false
+    }
+  }
+
+  toggleDropdown () {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    })
+  }
+
   render () {
     let sponsors = this.props.funding !== undefined ? this.props.funding.split(',').map(source => require(`../assets/${source}.jpg`)) : []
     let logo = 'http://www.placehold.it/326x116'
@@ -37,11 +57,31 @@ export default class DatasetCard extends React.Component {
           </div>
         </CardBody>
         <CardFooter>
-          <Row>
-            <Col md='6'>
-              <Link to={`/pancreatlas/dataset/${this.props.did}/overview`}>
-                <Button color='info'>View Dataset</Button>
-              </Link>
+          <Row className='mb-2'>
+            <Col md='12'>
+              <div className='dataset-card-buttons'>
+                <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
+                  <DropdownToggle color='info' caret>
+                    Viewing Options
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem>
+                      <Link to={{ pathname: `/pancreatlas/dataset/${this.props.did}`, search: '?browse=false' }}>Browse All Images</Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link to={{ pathname: `/pancreatlas/dataset/${this.props.did}`, search: '?browse=true' }}>Browse Images by Age</Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link to={'/pancreatlas/matrixview/' + this.props.did}>
+                    Browse Images via Matrix
+                      </Link>
+                    </DropdownItem>
+                  </DropdownMenu>
+                </ButtonDropdown>
+                <Link to={`/pancreatlas/dataset/${this.props.did}/overview`}>
+                  <Button>Collection  Details</Button>
+                </Link>
+              </div>
             </Col>
           </Row>
         </CardFooter>

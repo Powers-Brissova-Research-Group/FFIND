@@ -907,6 +907,15 @@ div.dataset-card-sponsors {
   justify-content: space-evenly;
 }
 
+div.dataset-card-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+div.dataset-card-buttons > a:first-child {
+  margin-right: 0.25rem;
+}
+
 img.dataset-funder {
   max-width: 100%;
 }
@@ -946,4 +955,9 @@ img.header-img {
 
 p.text-larger {
   font-size: 20px;
+}
+
+div.overview-sponsors {
+  display: flex;
+  justify-content: space-evenly;
 }

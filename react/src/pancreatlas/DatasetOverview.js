@@ -14,6 +14,8 @@ import {
 
 import { Parallax } from 'react-parallax'
 
+import SponsorLogo from '../SponsorLogo'
+
 import axios from 'axios'
 
 export default class DatasetOverview extends React.Component {
@@ -42,8 +44,9 @@ export default class DatasetOverview extends React.Component {
     axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.state.did}`).then(result => {
       let sponsors = result.data.kvals.funding !== undefined ? result.data.kvals.funding.split(',').map(source => require(`../assets/${source}.jpg`)) : []
       this.setState({
-        title: result.dsname,
-        desc: result.data.kvals.description_long,
+        title: result.data.dsname,
+        short_desc: result.data.kvals.description_short,
+        long_desc: result.data.kvals.description_long,
         funders: sponsors
 
       })
@@ -68,7 +71,7 @@ export default class DatasetOverview extends React.Component {
                 <Col md='6' className='d-flex align-items-center'>
                   <span className='dataset-title'>
                     <h3>
-                      {this.state.desc}
+                      {this.state.short_desc}
                     </h3>
                   </span>
                 </Col>
@@ -77,17 +80,23 @@ export default class DatasetOverview extends React.Component {
           </div>
         </Parallax>
         <Container>
-          <Row>
+          <Row className='mb-4'>
             <Col md='12'>
-              <Row>
+              <Row className='my-4'>
+                <Col md='12'>
+                  <h1>About this Collection</h1>
+                  <p>{this.state.long_desc}</p>
+                </Col>
+              </Row>
+              <Row className='mb-4'>
                 <Col md='12'>
                   <h1><strong>Explore the Data</strong></h1>
                   <h3>Here are some suggested projections of the data within this set</h3>
                 </Col>
               </Row>
-              <Row>
+              <Row className='mb-4'>
                 <Col md='4'>
-                  <Card>
+                  <Card className='h-100'>
                     <CardBody>
                       <h3>Browse by Age</h3>
                       <p>Choose a specific age range of donors within which to view samples</p>
@@ -98,7 +107,7 @@ export default class DatasetOverview extends React.Component {
                   </Card>
                 </Col>
                 <Col md='4'>
-                  <Card>
+                  <Card className='h-100'>
                     <CardBody>
                       <h3>Browse by Matrix</h3>
                       <p>Create a two-dimensional matrix comparing specified attribute sets to find data matching specific criteria</p>
@@ -109,7 +118,7 @@ export default class DatasetOverview extends React.Component {
                   </Card>
                 </Col>
                 <Col md='4'>
-                  <Card>
+                  <Card className='h-100'>
                     <CardBody>
                       <h3>View All Images</h3>
                       <p>Don't restrict the data by any filters and view the entire collection</p>
@@ -122,17 +131,21 @@ export default class DatasetOverview extends React.Component {
               </Row>
             </Col>
           </Row>
-          <Row>
+          <Row className='mb-4'>
             <Col md='12'>
               <h1>We thank the following sponsors who made gathering these data possible:</h1>
             </Col>
           </Row>
-          <Row>
-            {this.state.funders.map(funder => (
-              <Col md='4'>
-                <img src={funder} alt='Sponsor Logo' />
-              </Col>
-            ))}
+          <Row className='mb-4'>
+            <div className='overview-sponsors'>
+              {this.state.funders.map(funder => (
+                <SponsorLogo imgSrc={funder} name='Sponsor Logo' location='http://example.com' size='large' />
+              // <Col md='4'>
+              //   <img src={funder} alt='Sponsor Logo' />
+              // </Col>
+              ))}
+            </div>
+
           </Row>
         </Container>
       </div>
