@@ -962,12 +962,12 @@ div.overview-sponsors {
   justify-content: space-evenly;
 }
 
-div.sponsor-logo {
+div.pancreatlas-sponsor-logo {
   opacity: 1;
   transition: opacity 0.3s;
 }
 
-div.sponsor-logo:hover {
+div.pancreatlas-sponsor-logo:hover {
   opacity: 0.75;
   transition: opacity 0.3s
 }
