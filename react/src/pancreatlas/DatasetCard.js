@@ -47,19 +47,29 @@ export default class DatasetCard extends React.Component {
 
   render () {
     // let sponsors = this.props.funding !== undefined ? this.props.funding.split(',').map(source => require(`../assets/${source}.jpg`)) : []
-    let logo = 'http://www.placehold.it/326x116'
+    let logo = null
+    let banner = 'http://www.placehold.it/326x50'
     try {
       logo = require(`../assets/pancreatlas/logos/${this.props.title.toLowerCase().replace(/ /g, '-')}.png`)
     } catch (e) {
       console.log('Cannot find logo')
     }
+    try {
+      banner = require(`../assets/pancreatlas/logos/${this.props.title.toLowerCase().replace(/ /g, '-')}-banner.png`)
+    } catch (e) {
+      console.log('Cannot find banner')
+    }
     return (
-      <div className='dataset-card' onMouseEnter={this.revealActions} onMouseLeave={this.revealActions}>
+      <div className='dataset-card h-100' onMouseEnter={this.revealActions} onMouseLeave={this.revealActions}>
         <Card className='h-100'>
-          <CardImg className='ds-logo' src={logo} alt='placeholder' />
+          {logo !== null && <CardImg className='ds-logo' src={logo} alt='placeholder' />}
           <CardBody className='text-left'>
+            {logo === null && <div className='card-heading-text'><h1 className='full-width'>{this.props.title}</h1></div>}
+            <div className='w-100 mb-2'>
+              <img className='card-banner-img' src={banner} alt='banner img' />
+            </div>
             <CardText>{this.props.description}</CardText>
-            <Link to={{ pathname: `/pancreatlas/dataset/${this.props.did}`, search: '?browse=false' }}><Button className='w-100' color='info'>Browse All Images</Button></Link>
+            <Link className='h-100' to={{ pathname: `/pancreatlas/dataset/${this.props.did}`, search: '?browse=false' }}><Button className='w-100 align-bottom' color='info'>Browse All Images</Button></Link>
           </CardBody>
           <Collapse isOpened={this.state.showActions}>
             <CardFooter>

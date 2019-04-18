@@ -971,3 +971,23 @@ div.sponsor-logo:hover {
   opacity: 0.75;
   transition: opacity 0.3s
 }
+
+div.dataset-card-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+img.card-banner-img {
+  max-width: calc(100% + 2.5rem);
+  margin-left: -1.25rem;
+}
+
+h1.full-width {
+  font-size: 1.5vw;
+  text-align: center;
+}
+
+div.card-heading-text {
+  height: 138px;
+}
