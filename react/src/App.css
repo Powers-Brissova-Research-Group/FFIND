@@ -997,4 +997,5 @@ div.favorites-counter {
   position: sticky;
   bottom: 4rem;
   padding-left: 80vw;
+  margin-top: -6rem;
 }

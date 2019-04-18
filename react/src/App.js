@@ -18,7 +18,6 @@ import PancreatlasApp from './pancreatlas/PancreatlasApp'
 import TopNav from './TopNav'
 import PancreatlasFooter from './pancreatlas/PancreatlasFooter'
 import BrowserNotSupportedBanner from './BrowserNotSupportedBanner'
-import FavoritesCounter from './pancreatlas/FavoritesCounter'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faRedo, faBook } from '@fortawesome/free-solid-svg-icons'
