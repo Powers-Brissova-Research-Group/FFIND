@@ -63,13 +63,14 @@ export default class DatasetCard extends React.Component {
       <div className='dataset-card h-100' onMouseEnter={this.revealActions} onMouseLeave={this.revealActions}>
         <Card className='h-100'>
           {logo !== null && <CardImg className='ds-logo' src={logo} alt='placeholder' />}
-          <CardBody className='text-left'>
+          <CardBody className='text-left d-flex flex-column'>
             {logo === null && <div className='card-heading-text'><h1 className='full-width'>{this.props.title}</h1></div>}
             <div className='w-100 mb-2'>
               <img className='card-banner-img' src={banner} alt='banner img' />
             </div>
             <CardText>{this.props.description}</CardText>
-            <Link className='h-100' to={{ pathname: `/pancreatlas/dataset/${this.props.did}`, search: '?browse=false' }}><Button className='w-100 align-bottom' color='info'>Browse All Images</Button></Link>
+            <Link className='mt-auto' to={{ pathname: `/pancreatlas/dataset/${this.props.did}`, search: '?browse=false' }}><Button className='w-100 align-bottom' color='info'>Browse All Images</Button></Link>
+            {/* <Button className='mt-auto'>Test</Button> */}
           </CardBody>
           <Collapse isOpened={this.state.showActions}>
             <CardFooter>

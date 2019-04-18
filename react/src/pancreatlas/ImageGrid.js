@@ -19,6 +19,7 @@ import FilterList from './FilterList'
 import Error from './Error'
 import ImageModal from './ImageModal'
 import LoadingBar from './LoadingBar'
+import FavoritesCounter from './FavoritesCounter'
 
 import axios from 'axios'
 
@@ -390,7 +391,6 @@ export default class ImageGrid extends React.Component {
             <title>Browse &amp; Filter Dataset -- Pancreatlas / HANDEL-P</title>
             <meta name='description' content='View an entire dataset in the pancreatlas' />
           </MetaTags>
-
           <Container>
             <Alert color='info'>
               <Row>
@@ -448,6 +448,7 @@ export default class ImageGrid extends React.Component {
             </Row>
             <ImageModal toggle={this.toggle} isOpen={this.state.modalOpen} modalData={this.state.modalData} favorites={this.props.favorites} favoriteCallback={this.props.favoriteCallback} />
           </Container>
+          <FavoritesCounter count={this.props.favorites.length} />
         </div>
       )
     } else if (this.state.error !== undefined) {

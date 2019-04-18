@@ -991,3 +991,10 @@ h1.full-width {
 div.card-heading-text {
   height: 138px;
 }
+
+div.favorites-counter {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 4rem;
+  padding-left: 80vw;
+}
