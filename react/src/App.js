@@ -21,9 +21,10 @@ import BrowserNotSupportedBanner from './BrowserNotSupportedBanner'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faRedo, faBook } from '@fortawesome/free-solid-svg-icons'
+import { faBookmark as faBookmarkOutline } from '@fortawesome/free-regular-svg-icons'
 import Releases from './Releases'
 
-library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faRedo, faBook)
+library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faBookmarkOutline, faRedo, faBook)
 
 class App extends Component {
 // blank line for new commit

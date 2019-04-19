@@ -89,19 +89,20 @@ export default class DatasetList extends React.Component {
             <div className='parallax-filler' style={{ height: '45vh' }}>
               <Container className='h-100'>
                 <Row className='h-100'>
-                  <Col md='6' className='d-flex align-items-center'>
+                  <Col md='12' className='d-flex align-items-center'>
                     <div className='dataset-title align-middle'>
-                      <h1>Explore the pancreatlas</h1>
-                      <p className='text-larger'>Images are organized into curated <strong>collections</strong>, each focusing on a different topic or research question. Click on the collection <strong>title</strong> to read more about that project, and use the buttons to the right to view and explore images. For more information on our data, please visit our <Link to='/pancreatlas/nomenclature'>nomenclature page</Link>.</p>
+                      {/* <h1>Explore the pancreatlas</h1> */}
+                      <h1>Explore Image Collections</h1>
+                      <p className='text-larger'>For more information on our data, please visit our <Link to='/pancreatlas/nomenclature'>nomenclature page</Link>.</p>
                     </div>
                   </Col>
-                  <Col md='6' className='d-flex align-items-center'>
+                  {/* <Col md='6' className='d-flex align-items-center'>
                     <span className='dataset-title'>
                       <h3>
                         {this.state.desc}
                       </h3>
                     </span>
-                  </Col>
+                  </Col> */}
                 </Row>
               </Container>
             </div>
@@ -110,7 +111,7 @@ export default class DatasetList extends React.Component {
           <Container>
 
             <div className='dataset-lists'>
-              <h1 className='mb-4'>Image Collections</h1>
+              {/* <h1 className='mb-4'>Image Collections</h1> */}
               <Nav tabs>
                 <NavItem>
                   <NavLink className={`${(this.state.activeTab === '0') ? 'active' : undefined} navlink`} onClick={() => { this.toggle('0') }}>

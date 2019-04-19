@@ -5,8 +5,7 @@ import {
   CardBody,
   CardFooter,
   Button,
-  Row,
-  Col
+  Row
 } from 'reactstrap'
 
 import {
@@ -158,13 +157,11 @@ export default class ImageCard extends React.Component {
           </CardBody>
           <CardFooter>
             <Row>
-              <Col md='6'>
-                <Button outline color='secondary' className='mt-auto' onClick={() => this.props.callback(this.props.iid)}>Preview</Button>
-              </Col>
-              <Col md='6'>
-                {this.props.isFavorite && <Button outline color='info' className='favorite' onClick={() => this.props.favoriteCallback(this.props.iid)}>Save</Button>}
-                {!this.props.isFavorite && <Button outline color='danger' className='favorite' onClick={() => this.props.favoriteCallback(this.props.iid)}>Remove</Button>}
-              </Col>
+              <div className='w-100 card-footer-buttons'>
+                <Button outline color='secondary' className='mt-auto' onClick={() => this.props.callback(this.props.iid)}>Preview <FontAwesomeIcon icon='search-plus' size='1x' /></Button>
+                {this.props.isFavorite && <Button outline color='info' className='favorite' onClick={() => this.props.favoriteCallback(this.props.iid)}>Save <FontAwesomeIcon icon={['far', 'bookmark']} size='1x' /></Button>}
+                {!this.props.isFavorite && <Button outline color='danger' className='favorite' onClick={() => this.props.favoriteCallback(this.props.iid)}>Remove <FontAwesomeIcon icon={['fas', 'bookmark']} size='1x' /></Button>}
+              </div>
             </Row>
           </CardFooter>
         </Card>

@@ -91,11 +91,13 @@ export default class ImageModal extends React.Component {
                 </Col>
                 <Col md='6' sm='12'>
                   <Row>
-                    <a href={this.props.modalData.path_path} target='_blank' rel='noopener noreferrer' className='pathviewer-button'>
-                      <Button color='primary'>Open <FontAwesomeIcon size='1x' icon='external-link-alt' /></Button>
-                    </a>
-                    {!this.state.isFavorite && <Button color='success' className='favorite' onClick={() => this.favorite()}>Save</Button>}
-                    {this.state.isFavorite && <Button color='danger' className='favorite' onClick={() => this.favorite()}>Remove</Button>}
+                    <div className='w-100 modal-actions'>
+                      <a href={this.props.modalData.path_path} target='_blank' rel='noopener noreferrer' className='pathviewer-button'>
+                        <Button outline color='secondary'>Open <FontAwesomeIcon size='1x' icon='external-link-alt' /></Button>
+                      </a>
+                      {!this.state.isFavorite && <Button outline color='success' className='favorite' onClick={() => this.favorite()}>Save <FontAwesomeIcon icon={['far', 'bookmark']} size='1x' /></Button>}
+                      {this.state.isFavorite && <Button outline color='danger' className='favorite' onClick={() => this.favorite()}>Remove <FontAwesomeIcon icon={['fas', 'bookmark']} size='1x' /></Button>}
+                    </div>
                   </Row>
                   <Row>
                     <Col md='12'>

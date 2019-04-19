@@ -256,6 +256,12 @@ table.image-matrix {
 
 .card-body strong { color: #777; font-weight:normal;}
 
+div.card-footer-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .collection-card {
   max-width: 350px;
 }
@@ -463,10 +469,6 @@ img.image-card-thumb {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
-}
-
-.pathviewer-button {
-  width: 50%;
 }
 
 .marker-cell {
@@ -868,8 +870,15 @@ div.modal-markers {
 }
 
 div.modal-image {
-  background-color: black;
+  /* background-color: black; */
   padding-bottom: 0.5rem;
+}
+
+div.modal-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: space-around;
 }
 
 td.action-column div.row {
