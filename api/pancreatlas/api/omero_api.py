@@ -175,6 +175,9 @@ def get_datasets():
     dset_list = [Dataset(dset) for dset in dsets]
     return dset_list
 
+def get_active_datasets():
+    return [ds.did for ds in api.get_datasets() if ds.active]
+
 def get_dataset(did):
     global conn
     if conn == None:
@@ -186,7 +189,7 @@ def get_dataset(did):
     ds = conn.getObject("Dataset", oid=did)
     dataset = Dataset(ds)
     # dataset.imgs = get_images_from_dataset(conn, dataset)
-    return dataset
+    return dataset    
 
 def get_dataset_images(did):
     global conn

@@ -168,8 +168,12 @@ class Dataset():
         self.fetch_annotations()
 
     def fetch_annotations(self):
+        act = False
         anns = list(self.wrapper.listAnnotations())
         for ann in anns:
             if isinstance(ann, MapAnnotationWrapper):
                 for kval in ann.getValue():
+                    if kval[0] == 'active':
+                        act = kval[1] == 'true'
                     self.kvals[kval[0]] = kval[1]
+        self.active = act
