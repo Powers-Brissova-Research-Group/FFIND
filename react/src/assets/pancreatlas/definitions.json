@@ -246,21 +246,21 @@
   },
   "Section Plane": {
       "Sagittal": {
-        "Image": "../assets/pancreatlas/Pancreas_RC_sagittal",
+        "Image": "Pancreas_RC_sagittal.png",
         "Description": "Plane cutting “cross-sections” or dividing organ into left and right sections"
       },
       "Transverse": {
-        "Image": "../assets/pancreatlas/Pancreas_RC_transverse.png",
+        "Image": "Pancreas_RC_transverse.png",
         "Description": "Plane dividing into upper and lower segments; also called horizontal or axial"
       }
   },
   "Pancreas Region": {
     "Anatomical Region": {
-      "Image": "../assets/pancreatlas/Pancreas_RC_sagittal_HBT.png",
+      "Image": "Pancreas_RC_sagittal_HBT.png",
       "Description": "<p><strong>Head: </strong>located next to duodenum</p><p><strong>Body: </strong>located posterior to distal portion of stomach</p><p><strong>Tail: </strong>located adjacent to the spleen</p>"
     },
     "Tissue Region": {
-      "Image": "../assets/pancreatlas/Pancreas_RC_transverse_CP.png",
+      "Image": "Pancreas_RC_transverse_CP.png",
       "Description": "<p><strong>Core: </strong>refers to central region of transverse section</p><p><strong>Periphery: </strong>refers to outer edge of transverse section</p>"
     }
   },

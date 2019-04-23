@@ -46,8 +46,15 @@ export default class NomenclatureSection extends React.Component {
                 return (
                   <tr>
                     <td><strong>{row}</strong></td>
-                    {Object.keys(this.props.data[row]).filter(key => key.toLowerCase() !== 'image').map(heading =>
-                      <td dangerouslySetInnerHTML={{ __html: this.props.data[row][heading] }} />
+                    {Object.keys(this.props.data[row]).filter(key => key.toLowerCase() !== 'image').map(heading => {
+                      if (heading.toLowerCase() === 'description' && Object.keys(this.props.data[row]).includes('Image')) {
+                        let img = require(`../assets/pancreatlas/${this.props.data[row]['Image']}`)
+                        let asdf = (<td><img className='nomenclature-img' src={img} alt='demo img' /><p dangerouslySetInnerHTML={{ __html: this.props.data[row][heading] }} /></td>)
+                        return asdf
+                      } else {
+                        return (<td dangerouslySetInnerHTML={{ __html: this.props.data[row][heading] }} />)
+                      }
+                    }
                     )}
                   </tr>
                 )

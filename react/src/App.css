@@ -1039,3 +1039,7 @@ div.white-mask {
 span.nomenclature-collapse {
   cursor: pointer;
 }
+
+img.nomenclature-img {
+  max-width: 20rem;
+}
