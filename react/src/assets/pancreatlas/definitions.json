@@ -1,90 +1,281 @@
 {
+  "Image Tags": {
     "External id": {
-        "short_desc": "Unique identifier",
-        "long_desc": "Unique identifier of image as provided by image capture platform"
+      "short_desc": "Unique identifier",
+      "long_desc": "Unique identifier of image as provided by image capture platform"
     },
     "File path": {
-        "short_desc": "Filename and path/directory",
-        "long_desc": "The relevant path (directory) of the image file, including its filename"
+      "short_desc": "Filename and path/directory",
+      "long_desc": "The relevant path (directory) of the image file, including its filename"
     },
     "Donor info - UNOS ID": {
-        "short_desc": "Donor UNOS ID",
-        "long_desc": "Unique donor identifier provided by donor agency."
+      "short_desc": "Donor UNOS ID",
+      "long_desc": "Unique donor identifier provided by donor agency."
     },
     "Donor info - LIMS ID": {
-        "short_desc": "DONOR LIMS ID",
-        "long_desc": "Unique donor identifier provided via Powers Laboratory LIMS"
+      "short_desc": "DONOR LIMS ID",
+      "long_desc": "Unique donor identifier provided via Powers Laboratory LIMS"
     },
     "Donor info - Disease Status": {
-        "short_desc": "Disease associated with donor",
-        "long_desc": "One of several diseases associated with donor - ND (No Disease), T1D (Type 1 Diabetes), T2D (Type 2 Diabetes)"
+      "short_desc": "Disease associated with donor",
+      "long_desc": "One of several diseases associated with donor - ND (No Disease), T1D (Type 1 Diabetes), T2D (Type 2 Diabetes)"
     },
     "Donor info - Disease Duration": {
-        "short_desc": "Duration of disease",
-        "long_desc": "Time that disease was known/diagnosed in donor"
+      "short_desc": "Duration of disease",
+      "long_desc": "Time that disease was known/diagnosed in donor"
     },
     "Donor info - Age": {
-        "short_desc": "Age of donor",
-        "long_desc": "Age of donor at the time sample was collected"
+      "short_desc": "Age of donor",
+      "long_desc": "Age of donor at the time sample was collected"
     },
     "Donor info - Sex": {
-        "short_desc": "Sex of donor",
-        "long_desc": "Biological sex of donor"
+      "short_desc": "Sex of donor",
+      "long_desc": "Biological sex of donor"
     },
     "Stain info - cy2": {
-        "short_desc": "Cy2 channel",
-        "long_desc": "Cy2 channel"
+      "short_desc": "Cy2 channel",
+      "long_desc": "Cy2 channel"
     },
     "Stain info - cy2-Ab": {
-        "short_desc": "Cy2-Ab channel",
-        "long_desc": "Cy2-Ab channel"
+      "short_desc": "Cy2-Ab channel",
+      "long_desc": "Cy2-Ab channel"
     },
     "Stain info - cy3": {
-        "short_desc": "Cy3 channel",
-        "long_desc": "Cy3 channel"
+      "short_desc": "Cy3 channel",
+      "long_desc": "Cy3 channel"
     },
     "Stain info - cy3-Ab": {
-        "short_desc": "Cy3-Ab channel",
-        "long_desc": "Cy3-Ab channel"
+      "short_desc": "Cy3-Ab channel",
+      "long_desc": "Cy3-Ab channel"
     },
     "Stain info - cy5": {
-        "short_desc": "Cy5 channel",
-        "long_desc": "Cy5 channel"
+      "short_desc": "Cy5 channel",
+      "long_desc": "Cy5 channel"
     },
     "Stain info - cy5-Ab": {
-        "short_desc": "Cy5-Ab channel",
-        "long_desc": "Cy5-Ab channel"
+      "short_desc": "Cy5-Ab channel",
+      "long_desc": "Cy5-Ab channel"
     },
     "Stain info - DAPI": {
-        "short_desc": "DAPI channel",
-        "long_desc": "DAPI channel"
+      "short_desc": "DAPI channel",
+      "long_desc": "DAPI channel"
     },
     "Image info - Section Plane": {
-        "short_desc": "Section plane of pancreas",
-        "long_desc": "Section plane collected of sample - saggital, coronal, transverse"
+      "short_desc": "Section plane of pancreas",
+      "long_desc": "Section plane collected of sample - saggital, coronal, transverse"
     },
     "Image info - Pancreas Region": {
-        "short_desc": "Region sample collected from",
-        "long_desc": "General region the sample was collected from - head, body, tail"
+      "short_desc": "Region sample collected from",
+      "long_desc": "General region the sample was collected from - head, body, tail"
     },
     "Image info - File Type": {
-        "short_desc": "Imaging type",
-        "long_desc": "Imaging platform used to collect data"
+      "short_desc": "Imaging type",
+      "long_desc": "Imaging platform used to collect data"
     },
     "Image info - Annotations": {
-        "short_desc": "Image annotations",
-        "long_desc": "Expert-provided annotations for image"
+      "short_desc": "Image annotations",
+      "long_desc": "Expert-provided annotations for image"
     },
     "Image info - Analysis": {
-        "short_desc": "Associated analysis",
-        "long_desc": "Whether or not associated/downstream analysis has been performed"
+      "short_desc": "Associated analysis",
+      "long_desc": "Whether or not associated/downstream analysis has been performed"
     },
     "(DS notes)": {
-        "short_desc": "Annotation notes",
-        "long_desc": "Notes left by annotator / safe to ignore"
+      "short_desc": "Annotation notes",
+      "long_desc": "Notes left by annotator / safe to ignore"
     },
     "Warning": {
-        "short_desc": "Uh oh! Something went wrong",
-        "long_desc": "Ideally you should not see this"
+      "short_desc": "Uh oh! Something went wrong",
+      "long_desc": "Ideally you should not see this"
     }
+  },
+  "Disease Status": {
+    "CF": {
+      "Description": "Cystic fibrosis"
+    },
+    "CFRD": {
+      "Description": "Cystic fibrosis-related diabetes"
+    },
+    "CP": {
+      "Description": "Chronic pancreatitis"
+    },
+    "MD": {
+      "Description": "Monogenic diabetes"
+    },
+    "ND": {
+      "Description": "Non-diabetic"
+    },
+    "T1D": {
+      "Description": "Type 1 diabetes"
+    },
+    "T2D": {
+      "Description": "Type 2 diabetes"
+    }
+  },
+  "Markers": {
+    "AMY1A": {
+      "Antigen description": "Amylase alpha 1a; secreted protein helping to catalyze digestion of dietary starch and glycogen",
+      "Pancreas cell/region specificity": "Acinar cells"
+    },
+    "CD31 (PECAM1)": {
+      "Antigen description": "Platelet and endothelial cell adhesion molecule 1",
+      "Pancreas cell/region specificity": "Vasculature (endothelial cells)"
+    },
+    "CD45 (PTPRC)": {
+      "Antigen description": "Protein tyrosine phosphatase, receptor type C",
+      "Pancreas cell/region specificity": "Hematopoietic cells"
+    },
+    "COL4A1": {
+      "Antigen description": "Collagen type IV, alpha 1 chain; integral component of basement membranes",
+      "Pancreas cell/region specificity": "Extracellular matrix"
+    },
+    "CPA1": {
+      "Antigen description": "Carboxypeptidase A1; enzyme that cleaves branched-chain and aromatic amino acids from dietary proteins",
+      "Pancreas cell/region specificity": "Acinar cells"
+    },
+    "FOXA2": {
+      "Antigen description": "Forkhead box A2; transcription factor that influences α cell development, maturation",
+      "Pancreas cell/region specificity": "&alpha; cells (<a href='https://doi.org/10.1016/j.ydbio.2004.10.012'>Lee et al. 2005</a>)"
+    },
+    "GCG": {
+      "Antigen description": "Glucagon (hormone)",
+      "Pancreas cell/region specificity": "&alpha; cells"
+    },
+    "GFAP": {
+      "Antigen description": "Glial fibrillary acidic protein; intermediate filament in mature astrocytes",
+      "Pancreas cell/region specificity": "Nerve bundles (astrocytes)"
+    },
+    "GHRL": {
+      "Antigen description": "Ghrelin (hormone)",
+      "Pancreas cell/region specificity": "&epsilon; cells (<a href='https://doi.org/10.1016/S0167-0115(02)00067-8'>Wierup et al. 2002</a>)"
+    },
+    "GP2": {
+      "Antigen description": "Glycoprotein 2",
+      "Pancreas cell/region specificity": "Pancreatic progenitor cells (<a href='https://doi.org/10.1038/s41467-017-00561-0'>Cogger et al. 2002</a>)"
+    },
+    "HNF1B*": {
+      "Antigen description": "Hepatocyte nuclear factor 1-beta; transcription factor critical for pancreatic development",
+      "Pancreas cell/region specificity": "Pancreatic progenitor cells (<a href='http://dev.biologists.org/content/142/5/871'>De Vas et al. 2002</a>; adult ductal cells (<a href='https://doi.org/10.1016/j.modgep.2007.09.006'>Nammo et al.</a>)"
+    },
+    "INS": {
+      "Antigen description": "Insulin (hormone)",
+      "Pancreas cell/region specificity": "&beta; cells"
+    },
+    "MK167": {
+      "Antigen description": "Nuclear protein associated with cellular proliferation",
+      "Pancreas cell/region specificity": "Nuclei of proliferating cells"
+    },
+    "NEUROG3 (NGN3)": {
+      "Antigen description": "Neurogenin 3; transcription factor critical for pancreatic development",
+      "Pancreas cell/region specificity": "Pancreatic progenitor cells (<a href='https://doi.org/10.2337/db12-1479'>Jennings et al. 2013</a>)"
+    },
+    "NKX6-1*": {
+      "Antigen description": "NK6 homeobox; transcription factor required for &beta; cell development",
+      "Pancreas cell/region specificity": "&beta; cells (<a href='https://doi.org/10.1007/s00125-008-1006-z'>Lyttle et al. 2007</a>, <a href='https://doi.org/10.2337/db12-1479'>Jennings et al. 2013</a>)"
+    },
+    "ONECUT1 (HNF6)": {
+      "Antigen description": "Onecut homeobox 1 (hepatic nuclear factor 6)",
+      "Pancreas cell/region specificity": "Acinar, ductal cells (<a href='https://doi.org/10.3892/or.19.1.157'>Jiang et al. 2008</a>, <a href='https://dx.doi.org/10.1038%2Flabinvest.2014.47'>Pekala et al. 2014</a>"
+    },
+    "PAX6": {
+      "Antigen description": "Paired box 6; key transcription factor in endocrine development",
+      "Pancreas cell/region specificity": "Endocrine cells"
+    },
+    "PDX1": {
+      "Antigen description": "Pancreatic and duodenal homeobox 1; key transcription factor in pancreatic development",
+      "Pancreas cell/region specificity": "Pancreatic progenitor cells, mature &beta; cells"
+    },
+    "PPY": {
+      "Antigen description": "Pancreatic polypeptide",
+      "Pancreas cell/region specificity": "PP cells"
+    },
+    "PTF1A": {
+      "Antigen description": "Pancreas associated transcription factor 1a",
+      "Pancreas cell/region specificity": "Exocrine cells"
+    },
+    "SOX9": {
+      "Antigen description": "SRY (Sex-Determining Region Y)-box 9 protein",
+      "Pancreas cell/region specificity": "Pancreatic progenitor cells (<a href='https://doi.org/10.1016/S0925-4773(02)00145-4'>Piper et al. 2002</a>)"
+    },
+    "SST": {
+      "Antigen description": "Somatostatin (hormone)",
+      "Pancreas cell/region specificity": "&delta; cells"
+    },
+    "SYN1": {
+      "Antigen description": "Synapsin I, neuronal phosphoprotein associated with synaptic vesicles",
+      "Pancreas cell/region specificity": "Neurons, some endocrine cells"
+    },
+    "SYN2": {
+      "Antigen description": "Synapsin II, neuronal phosphoprotein associated with synaptic vesicles",
+      "Pancreas cell/region specificity": "Neurons, some endocrine cells"
+    },
+    "SYP": {
+      "Antigen description": "Synaptophysin, integral membrane protein of small synaptic vesicles",
+      "Pancreas cell/region specificity": "Endocrine cells"
+    },
+    "TUBB3": {
+      "Antigen description": "Neuron-specific class III beta-tubulin; core component of microtubules",
+      "Pancreas cell/region specificity": "Neurons"
+    }
+  },
+  "Stain": {
+    "DAB": {
+      "Description": "3,3'-Diaminobenzidine; forms precipitate via horseradish peroxidase",
+      "Cell specificity": "n/a/ (chromogen only)"
+    },
+    "DAPI": {
+      "Description": "4′,6-diamidino-2-phenylindole; binds strongly to adenine–thymine rich regions in DNA",
+      "Cell specificity": "Nuclei"
+    },
+    "Eosin": {
+      "Description": "Red or pink acidic compound that binds to acidophilic substances, such as positively charged amino-acid side chains",
+      "Cell specificity": "Cell cytoplasm, filaments, extracellular fibers"
+    },
+    "H&E": {
+      "Description": "Hematoxylin & Eosin (standard pathology stain to visualize tissue structure)",
+      "Cell specificity": "n/a"
+    },
+    "Hematoxylin": {
+      "Description": "Naturally derived dark blue/violet dye that binds to basophilic substances, such as DNA and RNA",
+      "Cell specificity": "Nuclei"
+    },
+    "TUNEL": {
+      "Description": "Terminal deoxynucleotidyl transferase dUTP nick end labeling (TUNEL); uses tagged TdT to visualize blunt ends of double-stranded DNA breaks",
+      "Cell specificity": "Apoptotic cells"
+    }
+  },
+  "Section Plane": {
+      "Sagittal": {
+        "Image": "../assets/pancreatlas/Pancreas_RC_sagittal",
+        "Description": "Plane cutting “cross-sections” or dividing organ into left and right sections"
+      },
+      "Transverse": {
+        "Image": "../assets/pancreatlas/Pancreas_RC_transverse.png",
+        "Description": "Plane dividing into upper and lower segments; also called horizontal or axial"
+      }
+  },
+  "Pancreas Region": {
+    "Anatomical Region": {
+      "Image": "../assets/pancreatlas/Pancreas_RC_sagittal_HBT.png",
+      "Description": "<p><strong>Head: </strong>located next to duodenum</p><p><strong>Body: </strong>located posterior to distal portion of stomach</p><p><strong>Tail: </strong>located adjacent to the spleen</p>"
+    },
+    "Tissue Region": {
+      "Image": "../assets/pancreatlas/Pancreas_RC_transverse_CP.png",
+      "Description": "<p><strong>Core: </strong>refers to central region of transverse section</p><p><strong>Periphery: </strong>refers to outer edge of transverse section</p>"
+    }
+  },
+  "Imaging Modality": {
+    "IHC": {
+      "Description": "Immunohistochemistry"
+    },
+    "FL IHC": {
+      "Description": "Fluorescence immunohistochemistry"
+    },
+    "IMC": {
+      "Description": "Imaging mass cytometry"
+    },
+    "CODEX": {
+      "Description": "Co-detection by indexing"
+    }
+  }
 }

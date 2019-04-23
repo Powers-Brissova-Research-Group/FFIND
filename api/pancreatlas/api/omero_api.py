@@ -176,7 +176,7 @@ def get_datasets():
     return dset_list
 
 def get_active_datasets():
-    return [ds.did for ds in api.get_datasets() if ds.active]
+    return [ds for ds in get_datasets() if ds.active]
 
 def get_dataset(did):
     global conn
