@@ -104,7 +104,7 @@ export default class ImageModal extends React.Component {
                       <Table>
                         <tbody>
                           {this.relevantKeys.map(key => {
-                            return <DetailRow data={this.props.modalData.img_data[key].val} desc={this.defs[key].short_desc} heading={labelRe.exec(key)[3]} />
+                            return <DetailRow data={this.props.modalData.img_data[key].val} desc={this.defs['Image Tags'][key].short_desc} heading={labelRe.exec(key)[3]} />
                           })}
                         </tbody>
                       </Table>
