@@ -107,15 +107,13 @@ export default class ImageMatrix extends React.Component {
   }
 
   componentDidMount () {
-    axios.create({
+    axios.get(`${process.env.REACT_APP_API_URL}/matrix/${this.props.tag_1},${this.props.tag_2},${this.props.dsid}`, {
       withCredentials: true,
       credentials: 'include',
       headers: {
-        'Access-Control-Allow-Origin': true,
         'Authorization': process.env.REACT_APP_API_AUTH
       }
-    })
-    axios.get(`${process.env.REACT_APP_API_URL}/matrix/${this.props.tag_1},${this.props.tag_2},${this.props.dsid}`).then(response => {
+    }).then(response => {
       let result = response.data
 
       let m = result['matrix']
@@ -186,15 +184,13 @@ export default class ImageMatrix extends React.Component {
   }
 
   setModal (imgInfo) {
-    axios.create({
+    axios.get(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
       withCredentials: true,
       credentials: 'include',
       headers: {
-        'Access-Control-Allow-Origin': true,
         'Authorization': process.env.REACT_APP_API_AUTH
       }
-    })
-    axios.get(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`).then(response => {
+    }).then(response => {
       let result = response.data
       let path = result.kvals['File path'].val
       let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/

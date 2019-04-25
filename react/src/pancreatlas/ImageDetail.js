@@ -33,16 +33,13 @@ export default class ImageDetail extends React.Component {
     this.defs = require('../assets/pancreatlas/definitions.json')
     let iid = (this.props.match !== undefined) ? this.props.match.params.iid : 0
 
-    axios.create({
+    axios.get(`${process.env.REACT_APP_API_URL}/images/${iid}`, {
       withCredentials: true,
       credentials: 'include',
       headers: {
-        'Access-Control-Allow-Origin': true,
         'Authorization': process.env.REACT_APP_API_AUTH
       }
-    })
-
-    axios.get(`${process.env.REACT_APP_API_URL}/images/${iid}`).then(response => {
+    }).then(response => {
       let result = response.data
       let path = result.kvals['File path'].val
       let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/

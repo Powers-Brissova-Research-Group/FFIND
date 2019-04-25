@@ -58,7 +58,7 @@ export default class DatasetCard extends React.Component {
     return (
       <div className='dataset-card h-100'>
         <Card className='h-100'>
-          {logo !== null && <div className='dataset-card-heading' style={{ backgroundImage: `url(${banner})` }}><CardImg className='ds-logo' src={logo} alt='placeholder' /></div>}
+          {logo !== null && <div className='dataset-card-heading' style={{ backgroundImage: `url(${banner})` }}><div className='h-100 white-mask'><CardImg className='ds-logo' src={logo} alt='placeholder' /></div></div>}
           {logo === null && <div className='card-heading-text w-100' style={{ backgroundImage: `url(${banner})` }}><div className='white-mask'><h1 className='full-width w-100'>{this.props.title}</h1></div></div>}
           <CardBody className='text-left d-flex flex-column'>
             {/* <div className='w-100 mb-2'>

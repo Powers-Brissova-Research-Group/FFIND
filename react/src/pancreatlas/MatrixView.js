@@ -33,15 +33,13 @@ export default class MatrixView extends React.Component {
   }
 
   componentDidMount () {
-    axios.create({
+    axios.get(`${process.env.REACT_APP_API_URL}/tagsets`, {
       withCredentials: true,
       credentials: 'include',
       headers: {
-        'Access-Control-Allow-Origin': true,
         'Authorization': process.env.REACT_APP_API_AUTH
       }
-    })
-    axios.get(`${process.env.REACT_APP_API_URL}/tagsets`).then(response => {
+    }).then(response => {
       let result = response.data
       this.setState({
         tagsets: result,

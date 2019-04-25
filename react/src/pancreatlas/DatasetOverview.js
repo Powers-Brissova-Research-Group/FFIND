@@ -32,16 +32,13 @@ export default class DatasetOverview extends React.Component {
   }
 
   componentDidMount () {
-    axios.create({
+    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.state.did}`, {
       withCredentials: true,
       credentials: 'include',
       headers: {
-        'Access-Control-Allow-Origin': true,
         'Authorization': process.env.REACT_APP_API_AUTH
       }
-
-    })
-    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.state.did}`).then(result => {
+    }).then(result => {
       let sponsors = result.data.kvals.funding !== undefined ? result.data.kvals.funding.split(',').map(source => require(`../assets/${source}.jpg`)) : []
       this.setState({
         title: result.data.dsname,

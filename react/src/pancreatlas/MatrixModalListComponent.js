@@ -14,16 +14,13 @@ export default class MatrixModalListComponent extends React.Component {
     }
   }
   componentDidMount () {
-    axios.create({
+    axios.get(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`, {
       withCredentials: true,
       credentials: 'include',
       headers: {
-        'Access-Control-Allow-Origin': true,
         'Authorization': process.env.REACT_APP_API_AUTH
       }
-    })
-
-    axios.get(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`).then(response => {
+    }).then(response => {
       let result = response.data
       let kvals = result.kvals
       let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i

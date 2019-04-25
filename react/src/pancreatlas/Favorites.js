@@ -58,15 +58,13 @@ export default class Favorites extends React.Component {
   }
 
   setModal (imgInfo) {
-    axios.create({
+    axios.get(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
       withCredentials: true,
       credentials: 'include',
       headers: {
-        'Access-Control-Allow-Origin': true,
         'Authorization': process.env.REACT_APP_API_AUTH
       }
-    })
-    axios.get(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`).then(response => {
+    }).then(response => {
       let result = response.data
       if (Object.keys(result.kvals).length > 0) {
         let path = result.kvals['File path'].val

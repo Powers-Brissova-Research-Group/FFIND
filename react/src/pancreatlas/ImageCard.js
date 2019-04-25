@@ -35,15 +35,14 @@ export default class ImageCard extends React.Component {
 
   componentDidMount () {
     // Load information about the image
-    axios.create({
+    axios.get(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`, {
       withCredentials: true,
       credentials: 'include',
       headers: {
         'Access-Control-Allow-Origin': true,
         'Authorization': process.env.REACT_APP_API_AUTH
       }
-    })
-    axios.get(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`).then(response => {
+    }).then(response => {
       let result = response.data
       let kvals = result.kvals
       if (Object.keys(kvals).length > 0) {

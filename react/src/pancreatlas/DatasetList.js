@@ -39,17 +39,13 @@ export default class DatasetList extends React.Component {
   }
 
   componentDidMount () {
-    // Get the list of all datasets from our API and store them in the current state
-    axios.create({
+    axios.get(`${process.env.REACT_APP_API_URL}/datasets/`, {
       withCredentials: true,
-      credentials: 'include',
       crossDomain: true,
       headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Authorization': process.env.REACT_APP_API_AUTH
+        'Authentication': process.env.REACT_APP_API_AUTH
       }
-    })
-    axios.get(`${process.env.REACT_APP_API_URL}/datasets/`).then(result => {
+    }).then(result => {
       this.setState({
         loaded: true,
         datasets: result.data.sort(function (a, b) {

@@ -62,22 +62,26 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidMount () {
-    axios.create({
+    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`, {
       withCredentials: true,
       credentials: 'include',
       headers: {
-        'Access-Control-Allow-Origin': true,
         'Authorization': process.env.REACT_APP_API_AUTH
       }
-    })
-    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`).then(response => {
+    }).then(response => {
       let result = response.data
       this.setState({
         datasetName: result.dsname
       })
     })
 
-    axios.get(`${process.env.REACT_APP_API_URL}/tagsets/`).then(response => {
+    axios.get(`${process.env.REACT_APP_API_URL}/tagsets/`, {
+      withCredentials: true,
+      credentials: 'include',
+      headers: {
+        'Authorization': process.env.REACT_APP_API_AUTH
+      }
+    }).then(response => {
       let result = response.data
       this.raw_tags = result
       for (let o of Object.keys(result)) {
@@ -94,7 +98,13 @@ export default class ImageGrid extends React.Component {
           }
         }
       }
-      axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`).then(response => {
+      axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`, {
+        withCredentials: true,
+        credentials: 'include',
+        headers: {
+          'Authorization': process.env.REACT_APP_API_AUTH
+        }
+      }).then(response => {
         let result = response.data
         this.setState({
           loaded: true,
@@ -233,15 +243,13 @@ export default class ImageGrid extends React.Component {
   }
 
   setModal (imgInfo) {
-    axios.create({
+    axios.get(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
       withCredentials: true,
       credentials: 'include',
       headers: {
-        'Access-Control-Allow-Origin': true,
         'Authorization': process.env.REACT_APP_API_AUTH
       }
-    })
-    axios.get(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`).then(response => {
+    }).then(response => {
       let result = response.data
       if (Object.keys(result.kvals).length > 0) {
         let path = result.kvals['File path'].val
