@@ -129,17 +129,17 @@ export default class ImageCard extends React.Component {
             {/* <CardTitle>{this.state.imgName}</CardTitle>
             <CardSubtitle>{this.state.omeroId}</CardSubtitle> */}
             {Object.keys(this.state.donor).map(key => (
-              <div key={this.props.iid + key}><strong>{key}: </strong>{this.state.donor[key]}</div>
+              <div key={`${this.props.iid}-${key.replace(' ', '_')}`}><strong>{key}: </strong>{this.state.donor[key]}</div>
             ))}
             {/* onClick={() => this.props.filterCallback(marker)} */}
             <div><strong>Markers:</strong></div>
             <div className='marker-list'>
               {Object.keys(this.state.markers).slice(0, Object.keys(this.state.markers).length - 1).map(marker => (
-                <MarkerTag filterActive={this.props.filterActive} key={`${marker}-${this.props.iid}`} filterCallback={this.props.filterCallback} marker={marker} iid={this.props.iid} color={this.state.markerColors[this.state.markers[marker].toUpperCase()]} />
+                <MarkerTag filterActive={this.props.filterActive} key={`${marker.replace(' ', '_').replace(/[^0-9a-zA-Z\-_]/gi, '')}`} filterCallback={this.props.filterCallback} marker={marker} iid={this.props.iid} color={this.state.markerColors[this.state.markers[marker].toUpperCase()]} />
                 // <span className='tag' key={this.props.iid + marker}> <span id={`${marker}-${this.props.iid}`} onClick={() => this.props.filterCallback(marker)} className='tag marker' style={{color: (tinycolor(this.state.markerColors[this.state.markers[marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[marker].toUpperCase()]}`}}>{marker}</span><Tooltip placement="right" isOpen={this.state.ttOpen} target={`${marker}-${this.props.iid}`} toggle={this.toggle}>The filters work as an AND function between groups and an OR within them. Example: (Childhood) AND (F OR M)</Tooltip></span>
               ))}
               {(Object.keys(this.state.markers).length > 0 && Object.keys(this.state.markers)[0] !== 'DEFAULT VAL') ? (
-                <MarkerTag filterActive={this.props.filterActive} key={`${this.state.markers[lastMarker]}-${this.props.iid}`} filterCallback={this.props.filterCallback} marker={lastMarker} iid={this.props.iid} color={this.state.markerColors[this.state.markers[lastMarker].toUpperCase()]} />
+                <MarkerTag filterActive={this.props.filterActive} key={`${this.state.markers[lastMarker].replace(' ', '_').replace(/[^0-9a-zA-Z\-_]/gi, '')}`} filterCallback={this.props.filterCallback} marker={lastMarker} iid={this.props.iid} color={this.state.markerColors[this.state.markers[lastMarker].toUpperCase()]} />
               ) : null}
               {/* // <span className={'tag'} key={this.props.iid + last_marker}> <span onClick={() => this.props.filterCallback(last_marker)} title="Filter result by this marker" className={'marker'} style={{color: (tinycolor(this.state.markerColors[this.state.markers[last_marker].toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.state.markerColors[this.state.markers[last_marker].toUpperCase()]}`}}> {last_marker}</span></span>) : null} */}
             </div>
@@ -149,7 +149,7 @@ export default class ImageCard extends React.Component {
             <div><strong>Other Tags: </strong>
 
               {this.state.imgTags.slice(0, this.state.imgTags.length - 1).map(item => (
-                <span className='tag' key={this.props.iid + item}><span>{' ' + item}</span><span>, </span></span>
+                <span className='tag' key={`${this.props.iid}-${item.replace(' ', '_')}`}><span>{' ' + item}</span><span>, </span></span>
               ))}
               <span className='tag' key={this.props.iid + this.state.imgTags[this.state.imgTags.length - 1]}> {this.state.imgTags[this.state.imgTags.length - 1]}</span>
             </div>

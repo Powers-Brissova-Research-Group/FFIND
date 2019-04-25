@@ -60,6 +60,14 @@
       "short_desc": "DAPI channel",
       "long_desc": "DAPI channel"
     },
+    "Stain info - brightfield": {
+      "short_desc": "Brightfield channel",
+      "long_desc": "Brightfield channel"
+    },
+    "Stain info - brightfield-Ab": {
+      "short_desc": "Brightfield-Ab channel",
+      "long_desc": "Brightfield-Ab channel"
+    },
     "Image info - Section Plane": {
       "short_desc": "Section plane of pancreas",
       "long_desc": "Section plane collected of sample - saggital, coronal, transverse"
@@ -79,6 +87,10 @@
     "Image info - Analysis": {
       "short_desc": "Associated analysis",
       "long_desc": "Whether or not associated/downstream analysis has been performed"
+    },
+    "Image info - Modality": {
+      "short_desc": "Modality short desc",
+      "long_desc": "Modality long desc"
     },
     "(DS notes)": {
       "short_desc": "Annotation notes",

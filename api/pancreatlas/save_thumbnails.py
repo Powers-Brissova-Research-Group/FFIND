@@ -7,7 +7,7 @@ import pprint
 # PASSWORD = 'ts6t6r1537k='
 
 def get_image_list():
-    f = open('image_index.txt', 'r')
+    f = open('../../react/src/assets/pancreatlas/image_index.txt', 'r')
     enc = f.readline()
     imgs = json.loads(enc)
     return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
@@ -54,7 +54,7 @@ def save_thumbnail(iid, roi, session):
         chdata.append((0, 65535, 'FFFFFF'))
     url = 'https://omero.app.vumc.org/webgateway/render_image_region/%s/0/0/?c=1|%s:%s$%s,2|%s:%s$%s,3|%s:%s$%s,4|%s:%s$%s&m=c&region=%s,%s,%s,%s' % (iid, chdata[0][0], chdata[0][1], chdata[0][2], chdata[1][0], chdata[1][1], chdata[1][2], chdata[2][0], chdata[2][1], chdata[2][2], chdata[3][0], chdata[3][1], chdata[3][2], roi[0], roi[1], roi[2], roi[3])
     print url
-    fpath = '/app001/www/assets/pancreatlas/thumbs/%s.jpg' % (iid, )
+    fpath = '../../react/src/assets/pancreatlas/thumbs/%s.jpg' % (iid, )
     f = open(fpath, 'w')
     r = session.get(url, stream=True)
     if r.status_code == 200:

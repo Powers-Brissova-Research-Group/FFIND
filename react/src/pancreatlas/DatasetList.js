@@ -44,7 +44,7 @@ export default class DatasetList extends React.Component {
       withCredentials: true,
       credentials: 'include',
       headers: {
-        'Access-Control-Allow-Origin': true,
+        'Access-Control-Allow-Origin': '*',
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     })
@@ -97,10 +97,10 @@ export default class DatasetList extends React.Component {
                     </div>
                   </Col>
                   {/* <Col md='6' className='d-flex align-items-center'>
-                    <span className='dataset-title'>
+                    <span c<div className='dataset-title align-middle'>
                       <h3>
-                        {this.state.desc}
-                      </h3>
+                        {th<div className='dataset-title align-middle'>
+                      </h3><div className='dataset-title align-middle'>
                     </span>
                   </Col> */}
                 </Row>
