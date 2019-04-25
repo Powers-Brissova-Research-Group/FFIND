@@ -46,12 +46,12 @@ export default class DatasetCard extends React.Component {
     let logo = null
     let banner = 'http://www.placehold.it/326x50'
     try {
-      logo = require(`../assets/pancreatlas/logos/${this.props.title.toLowerCase().replace(/ /g, '-')}.png`)
+      logo = require(`../assets/pancreatlas/logos/${this.props.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.png`)
     } catch (e) {
       console.log('Cannot find logo')
     }
     try {
-      banner = require(`../assets/pancreatlas/logos/${this.props.title.toLowerCase().replace(/ /g, '-')}-banner.png`)
+      banner = require(`../assets/pancreatlas/logos/${this.props.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}-banner.png`)
     } catch (e) {
       console.log('Cannot find banner')
     }

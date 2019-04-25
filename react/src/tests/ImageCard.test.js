@@ -6,11 +6,11 @@ import ImageCard from '../pancreatlas/ImageCard'
 
 import { mount } from 'enzyme'
 
+import axios from 'axios'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSearchPlus, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { faBookmark as faBookmarkOutline } from '@fortawesome/free-regular-svg-icons'
-
-import axios from 'axios'
 
 library.add(faSearchPlus, faBookmark, faBookmarkOutline)
 

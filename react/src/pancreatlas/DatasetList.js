@@ -43,6 +43,7 @@ export default class DatasetList extends React.Component {
     axios.create({
       withCredentials: true,
       credentials: 'include',
+      crossDomain: true,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Authorization': process.env.REACT_APP_API_AUTH
@@ -130,7 +131,7 @@ export default class DatasetList extends React.Component {
                   <div className='dataset-cards'>
                     <Row>
                       {this.state.datasets.map(item => (
-                        <Col key={`${item.dsname}-col`} md='4'>
+                        <Col className='mb-4' key={`${item.dsname}-col`} md='4'>
                           <DatasetCard key={item.dsname} title={item.dsname} description={item.desc || undefined} funding={item.kvals.funding} did={item.did} />
                         </Col>
                       ))}
