@@ -271,7 +271,7 @@ export default class ImageMatrix extends React.Component {
                         <tr key={row}><td className='matrix-cell border-right'><strong>{row}</strong></td>{Object.keys(chosenMatrix[row]).map(col => (
                           <td key={row + ', ' + col} className='matrix-cell'>
                             {chosenMatrix[row][col][0] !== undefined && <div className='matrix-cell-img' onClick={() => this.toggle(chosenMatrix[row][col])}><img className='matrix-thumb' src={require(`./../assets/pancreatlas/thumbs/${chosenMatrix[row][col][0]}.jpg`)} alt='' /><div className='matrix-cell-count'><p>{`${chosenMatrix[row][col].length}`}</p></div></div>}
-                            {chosenMatrix[row][col][0] === undefined && <p>Data not collected</p>}
+                            {chosenMatrix[row][col][0] === undefined && <p>N/A</p>}
                           </td>
                         ))}</tr>
                       ))}

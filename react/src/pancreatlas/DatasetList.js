@@ -43,7 +43,7 @@ export default class DatasetList extends React.Component {
       withCredentials: true,
       crossDomain: true,
       headers: {
-        'Authentication': process.env.REACT_APP_API_AUTH
+        'Authorization': process.env.REACT_APP_API_AUTH
       }
     }).then(result => {
       this.setState({

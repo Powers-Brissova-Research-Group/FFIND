@@ -71,6 +71,7 @@ CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(dev[0-9]+)(-api)?(-pancreatlas\.a
 
 CORS_ALLOW_HEADERS = default_headers + (
     'access-control-allow-origin',
+    'authentication'
 )
 
 CORS_ALLOW_CREDENTIALS = True
