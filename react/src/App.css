@@ -193,12 +193,25 @@ App-specific
   object-fit: cover;
 }
 
+.image-matrix tbody {
+  display: block;
+  height: 80vh;
+  overflow-y: scroll
+
+}
+
+.image-matrix thead {
+  display: table;
+  width: 98.7%;
+  table-layout: fixed;
+}
+
 table.image-matrix {
   width: auto !important;
 }
 
 .image-matrix {
-  overflow: scroll;
+  overflow-x: scroll;
 }
 
 .modal-thumb {

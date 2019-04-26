@@ -113,12 +113,6 @@ export default class AgeFilterSet extends React.Component {
     this.initialized = false
   }
 
-  // componentDidMount () {
-  //   this.setState({
-  //     ageGroups: this.updateAgeGroups()
-  //   })
-  // }
-
   componentDidUpdate (prevProps, prevState) {
     if ((prevProps.filters !== undefined && prevProps.filters.length) !== 0 && this.props.filters.length === 0) {
       this.setState({
