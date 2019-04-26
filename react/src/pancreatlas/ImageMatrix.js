@@ -260,9 +260,9 @@ export default class ImageMatrix extends React.Component {
                   <Table hover className='image-matrix mx-auto'>
                     <thead>
                       <tr>
-                        <th className='matrix-cell'><Button color='primary' onClick={this.flip}><FontAwesomeIcon size='1x' icon={'redo'} /> Flip Matrix</Button></th>
+                        <th className='matrix-cell sticky-top'><Button color='primary' onClick={this.flip}><FontAwesomeIcon size='1x' icon={'redo'} /> Flip Matrix</Button></th>
                         {headings.map(item => (
-                          <th key={item} className='matrix-cell matrix-head'><strong>{item}</strong></th>
+                          <th key={item} className='matrix-cell matrix-head sticky-top'><strong>{item}</strong></th>
                         ))}
                       </tr>
                     </thead>

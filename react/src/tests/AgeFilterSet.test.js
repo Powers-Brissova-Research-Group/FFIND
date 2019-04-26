@@ -2,7 +2,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import AgeFilterSet from '../pancreatlas/AgeFilterSet'
+import AgeFilterSet, { compareAges } from '../pancreatlas/AgeFilterSet'
 
 import { mount } from 'enzyme'
 
@@ -26,4 +26,9 @@ describe('Checkbox works properly', () => {
       expect(mockCallback).toHaveBeenCalled()
     })
   })
+})
+
+describe('compareAges works properly', () => {
+  expect(compareAges('G8w', 'G12w')).toBe(-1)
+  expect(compareAges('G12w', 'G8w')).toBe(1)
 })

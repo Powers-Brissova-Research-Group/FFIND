@@ -19,6 +19,71 @@ import {
 
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
+export function compareAges (age1, age2) {
+  let ageRe = /^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$/
+  let a = ageRe.exec(age1)
+  let b = ageRe.exec(age2)
+  switch (a[3]) {
+    case 'd':
+      a[3] = 0
+      break
+    case 'w':
+      a[3] = 1
+      break
+    case 'mo':
+      a[3] = 2
+      break
+    case 'y':
+      a[3] = 3
+      break
+    default:
+      a[3] = -1
+  }
+
+  switch (b[3]) {
+    case 'd':
+      b[3] = 0
+      break
+    case 'w':
+      b[3] = 1
+      break
+    case 'mo':
+      b[3] = 2
+      break
+    case 'y':
+      b[3] = 3
+      break
+    default:
+      b[3] = -1
+  }
+
+  if (a[1] === 'G' && b[1] !== 'G') {
+    return -1
+  } else if (a[1] !== 'G' && b[1] === 'G') {
+    return 1
+  } else {
+    if (a[3] < b[3]) {
+      return -1
+    } else if (a[3] > b[3]) {
+      return 1
+    } else {
+      if (Number(a[2]) < Number(b[2])) {
+        return -1
+      } else if (Number(a[2]) > Number(b[2])) {
+        return 1
+      } else {
+        if (a[4] === undefined && b[4] !== undefined) {
+          return -1
+        } else if (a[4] !== undefined && b[4] === undefined) {
+          return 1
+        } else {
+          return 0
+        }
+      }
+    }
+  }
+};
+
 export default class AgeFilterSet extends React.Component {
   constructor (props) {
     super(props)
@@ -42,11 +107,17 @@ export default class AgeFilterSet extends React.Component {
       gestational: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'GESTATIONAL',
       neonatal: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'NEONATAL',
       infancy: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'INFANCY',
-      childhood: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'CHILDHOOD',
-      ageGroups: this.updateAgeGroups()
+      childhood: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'CHILDHOOD'
     }
+    this.state['ageGroups'] = this.updateAgeGroups()
     this.initialized = false
   }
+
+  // componentDidMount () {
+  //   this.setState({
+  //     ageGroups: this.updateAgeGroups()
+  //   })
+  // }
 
   componentDidUpdate (prevProps, prevState) {
     if ((prevProps.filters !== undefined && prevProps.filters.length) !== 0 && this.props.filters.length === 0) {
@@ -92,13 +163,12 @@ export default class AgeFilterSet extends React.Component {
           break
       }
     }
+
     let activeFilters = []
-    if (this.state !== undefined) {
-      for (let key of Object.keys(ageGroups)) {
-        ageGroups[key].sort(this.compareAges)
-        if (!this.state[key]) {
-          activeFilters = activeFilters.concat(ageGroups[key])
-        }
+    for (let key of Object.keys(ageGroups)) {
+      ageGroups[key].sort((a, b) => compareAges(a, b))
+      if (!this.state[key]) {
+        activeFilters = activeFilters.concat(ageGroups[key])
       }
     }
     if (!this.initialized) {
@@ -134,71 +204,6 @@ export default class AgeFilterSet extends React.Component {
         return this.AgeGroups.CHILDHOOD
       } else {
         return this.AgeGroups.ADULT
-      }
-    }
-  }
-
-  compareAges (age1, age2) {
-    let ageRe = /^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$/
-    let a = ageRe.exec(age1)
-    let b = ageRe.exec(age2)
-    switch (a[3]) {
-      case 'd':
-        a[3] = 0
-        break
-      case 'w':
-        a[3] = 1
-        break
-      case 'mo':
-        a[3] = 2
-        break
-      case 'y':
-        a[3] = 3
-        break
-      default:
-        a[3] = -1
-    }
-
-    switch (b[3]) {
-      case 'd':
-        b[3] = 0
-        break
-      case 'w':
-        b[3] = 1
-        break
-      case 'mo':
-        b[3] = 2
-        break
-      case 'y':
-        b[3] = 3
-        break
-      default:
-        b[3] = -1
-    }
-
-    if (a[1] === 'G' && b[1] !== 'G') {
-      return -1
-    } else if (a[1] !== 'G' && b[1] === 'G') {
-      return 1
-    } else {
-      if (a[3] < b[3]) {
-        return -1
-      } else if (a[3] > b[3]) {
-        return 1
-      } else {
-        if (Number(a[2]) < Number(b[2])) {
-          return -1
-        } else if (Number(a[2]) > Number(b[2])) {
-          return 1
-        } else {
-          if (a[4] === undefined && b[4] !== undefined) {
-            return -1
-          } else if (a[4] !== undefined && b[4] === undefined) {
-            return 1
-          } else {
-            return 0
-          }
-        }
       }
     }
   }
