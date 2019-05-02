@@ -206,6 +206,13 @@ App-specific
   table-layout: fixed;
 }
 
+td.left-header {
+  position: absolute;
+  width: 5em;
+  left: 0;
+  top: auto;
+}
+
 table.image-matrix {
   width: auto !important;
 }
