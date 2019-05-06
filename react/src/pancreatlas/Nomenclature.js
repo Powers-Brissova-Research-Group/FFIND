@@ -48,7 +48,7 @@ export default class Nomenclature extends React.Component {
               </ButtonGroup>
             </Row>
             {Object.keys(this.defs).map(section => (
-              <div className='definitions'>
+              <div key={section} className='definitions'>
                 <NomenclatureSection data={this.defs[section]} sectionName={section} openOverride={this.state.open} />
               </div>
             ))}
