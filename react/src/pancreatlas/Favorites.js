@@ -151,11 +151,11 @@ export default class Favorites extends React.Component {
   render () {
     if (this.state.iids.length <= 0) {
       return (
-        <Container>
+        <Container style={{ marginTop: '1.5rem' }}>
           <Row>
             <Col md='12'>
               <Alert color='danger'>
-                <span>You do not have any images saved. <strong><Link to='/pancreatlas/dataset'>Click here to view our datasets</Link></strong></span>
+                <span>You do not have any images saved. <strong><Link to='/datasets'>Click here to view our datasets</Link></strong></span>
               </Alert>
             </Col>
           </Row>
@@ -163,7 +163,7 @@ export default class Favorites extends React.Component {
       )
     }
     return (
-      <Container>
+      <Container style={{ marginTop: '1.5rem' }}>
         <Row>
           <Col md='12'>
             <Alert color='info'>

@@ -65,7 +65,7 @@ export default class PancreatlasFooter extends React.Component {
               </Row>
               <Row>
                 <Col md='12'>
-                  <p className='version-info'>pancreatlas v0.2</p>
+                  <p className='version-info'>pancreatlas v{`${process.env.REACT_APP_VERSION}`}</p>
                 </Col>
               </Row>
             </Container>

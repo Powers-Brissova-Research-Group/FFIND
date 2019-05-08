@@ -82,7 +82,7 @@ export default class HomeModal extends React.Component {
                   <h6>Options:</h6>
                 </Col>
               </Row>
-              <Link to='/pancreatlas/dataset/384'><Button color='primary'>View in Pancreatlas</Button></Link>
+              <Link to='/datasets/384'><Button color='primary'>View in Pancreatlas</Button></Link>
             </Col>
           </Row>
         </ModalBody>

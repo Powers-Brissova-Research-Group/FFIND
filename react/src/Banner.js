@@ -2,12 +2,15 @@ import React from 'react'
 import {
   Container,
   Row,
-  Col
+  Col,
+  Button
 } from 'reactstrap'
 
 import {
   Link
 } from 'react-router-dom'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import HomeModal from './HomeModal'
 
@@ -155,27 +158,37 @@ export default class Banner extends React.Component {
               background: `url(${bannerImg}) no-repeat center center fixed`,
               backgroundSize: 'cover'
             }}
-            height={600}
+            height={'90vh'}
           />
         </div>
 
         <Container className='banner-container'>
-          <Row className='banner-row hidden-sm-up'>
+          <Row className='mt-4' style={{ height: '70%' }}>
             <Col md='6' className='align-self-center'>
               <h1 className='banner-header'>We study the human pancreas and islets from birth to adulthood.</h1>
-              <h4 className='banner-subheader-left'>Our goal is to build a practical resource for assembling and sharing data from human pancreas samples.</h4>
-
+              <h4 className='banner-subheader-left'>We are building a practical resource for assembling and sharing data from human pancreas samples.</h4>
+              {/* <Link to='/datasets'><Button className='banner-btn'color='info'size='lg' block>View our Collections</Button></Link> */}
             </Col>
             <Col md='1' />
             <Col md='5' className='align-self-center d-none d-md-block'>
               <Row className='mt-3'>
                 <div>
-                  <Link to={'/pancreatlas/dataset/'} ><img src={illustration} responsive={'true'} alt='View our datasets' /></Link>
+                  <Link to={'/datasets'} ><img src={illustration} responsive={'true'} alt='View our datasets' /></Link>
                 </div>
               </Row>
-
-              {/* <Row className="mt-3"><Button size="lg" color="info" className='banner-button' onClick={this.toggle}>Markers of beta cell-directed autoimmunity appear in some individuals in the first 2-3 years of life</Button></Row>
-              <Row className="mt-3"><Link to='/handelp/collaborators'><Button size="lg" color="info" className='banner-button'>The number of beta cells and islets in the human pancreas is determined in the first decade of life</Button></Link></Row> */}
+            </Col>
+          </Row>
+          <Row className='mt-4' style={{ height: '15%' }}>
+            <Col md='6'>
+              <Link to={'/datasets'}><Button className='banner-btn' color='info' size='lg' block>View Our Collections</Button></Link>
+            </Col>
+            <Col md='6'>
+              <Link to={'/about'}><Button className='banner-btn' color='secondary' size='lg' block>Learn About pancreatlas</Button></Link>
+            </Col>
+          </Row>
+          <Row className='mb-1' style={{ height: '10%' }}>
+            <Col md='12' className='text-center'>
+              <FontAwesomeIcon className='scroll-down-arrow' onClick={this.props.scrollDown} icon='angle-down' size='6x' color='white' />
             </Col>
           </Row>
           <HomeModal isOpen={this.state.modalOpen} toggle={this.toggle} />

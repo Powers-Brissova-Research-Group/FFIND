@@ -30,7 +30,7 @@ export default class PancreatlasNavbar extends React.Component {
     return (
       <div className='pancreatlas-nav'>
         <Navbar color='dark' dark expand='md'>
-          <Link to={'/pancreatlas'} className='navbar-brand'><img className='navbar-logo' src={Logo} alt='Pancreatlas' /></Link>
+          <Link to={'/'} className='navbar-brand'><img className='navbar-logo' src={Logo} alt='Pancreatlas' /></Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className='ml-auto' navbar>
@@ -38,7 +38,7 @@ export default class PancreatlasNavbar extends React.Component {
                 <Link to={'/pancreatlas/collections'} className='nav-link'>Collections</Link>
               </NavItem> */}
               <NavItem>
-                <Link to={'/pancreatlas/dataset'} className='nav-link'>Datasets</Link>
+                <Link to={'/datasets'} className='nav-link'>Datasets</Link>
               </NavItem>
             </Nav>
           </Collapse>

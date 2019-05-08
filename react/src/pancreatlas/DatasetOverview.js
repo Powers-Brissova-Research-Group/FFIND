@@ -57,7 +57,6 @@ export default class DatasetOverview extends React.Component {
           bgImage={require('../assets/header1.jpg')}
           bgImageAlt='Sample Image'
           strength={500}
-          style={{ marginTop: '-1.5rem' }}
         >
           <div className='parallax-filler' style={{ height: '50vh' }}>
             <Container className='h-100'>
@@ -93,7 +92,7 @@ export default class DatasetOverview extends React.Component {
                     <CardBody>
                       <h3>Browse by Age</h3>
                       <p>Choose a specific age range of donors within which to view samples</p>
-                      <Link to={{ pathname: `/pancreatlas/dataset/${this.state.did}`, search: '?browse=true' }}>
+                      <Link to={{ pathname: `/datasets/${this.state.did}`, search: '?browse=true' }}>
                         <Button>Browse</Button>
                       </Link>
                     </CardBody>
@@ -104,7 +103,7 @@ export default class DatasetOverview extends React.Component {
                     <CardBody>
                       <h3>Browse by Matrix</h3>
                       <p>Create a two-dimensional matrix comparing specified attribute sets to find data matching specific criteria</p>
-                      <Link to={`/pancreatlas/matrixview/${this.state.did}`}>
+                      <Link to={`/matrixview/${this.state.did}`}>
                         <Button>Browse</Button>
                       </Link>
                     </CardBody>
@@ -115,7 +114,7 @@ export default class DatasetOverview extends React.Component {
                     <CardBody>
                       <h3>View All Images</h3>
                       <p>Don't restrict the data by any filters and view the entire collection</p>
-                      <Link to={{ pathname: `/pancreatlas/dataset/${this.state.did}`, search: '?browse=false' }}>
+                      <Link to={{ pathname: `/datasets/${this.state.did}`, search: '?browse=false' }}>
                         <Button>Browse</Button>
                       </Link>
                     </CardBody>

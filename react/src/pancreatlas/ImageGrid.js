@@ -346,7 +346,6 @@ export default class ImageGrid extends React.Component {
                 </Row>
               </Alert>
             </Container>
-
             <Container>
               <Row className='pancreatlas-row'>
                 <Col md='3'>

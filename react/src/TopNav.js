@@ -61,14 +61,14 @@ export default class TopNav extends React.Component {
                   <UncontrolledDropdown>
                     <DropdownToggle nav caret>Image Atlas <Badge color='primary'>{JSON.parse(window.atob(this.props.favorites)).length}</Badge></DropdownToggle>
                     <DropdownMenu right>
-                      <Link className='dropdown-item' to='/pancreatlas/dataset'>Image Collections</Link>
-                      <Link className='dropdown-item' to={`/pancreatlas/favorites?iids=${this.props.favorites}`}>Favorites <Badge color='primary'>{JSON.parse(window.atob(this.props.favorites)).length}</Badge></Link>
+                      <Link className='dropdown-item' to='/datasets'>Image Collections</Link>
+                      <Link className='dropdown-item' to={`/favorites?iids=${this.props.favorites}`}>Favorites <Badge color='primary'>{JSON.parse(window.atob(this.props.favorites)).length}</Badge></Link>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 </NavItem>}
               {JSON.parse(window.atob(this.props.favorites)).length <= 0 &&
-                <NavItem className='btn btn-info' active={(window.location.pathname === '/pancreatlas/dataset')}>
-                  <NavLink to='/pancreatlas/dataset'>Image Collections</NavLink>
+                <NavItem className='btn btn-info' active={(window.location.pathname === '/datasets')}>
+                  <NavLink to='/datasets'>Image Collections</NavLink>
                 </NavItem>
               }
               <NavItem active={(window.location.pathname === '/collaborators')}>
@@ -78,7 +78,7 @@ export default class TopNav extends React.Component {
                 <NavLink to='/about'>About pancreatlas</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='/pancreatlas/nomenclature'>Nomenclature</NavLink>
+                <NavLink to='/nomenclature'>Nomenclature</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

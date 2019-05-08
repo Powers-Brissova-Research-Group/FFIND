@@ -81,7 +81,7 @@ export default class DatasetList extends React.Component {
             bgImage={require('../assets/header1.jpg')}
             bgImageAlt='Sample Image'
             strength={0}
-            style={{ marginTop: '-1.5rem', marginBottom: '1.5rem' }}
+            style={{ marginBottom: '1.5rem' }}
           >
             <div className='parallax-filler' style={{ height: '45vh' }}>
               <Container className='h-100'>
@@ -90,7 +90,7 @@ export default class DatasetList extends React.Component {
                     <div className='dataset-title align-middle'>
                       {/* <h1>Explore the pancreatlas</h1> */}
                       <h1>Explore Image Collections</h1>
-                      <p className='text-larger'>For more information on our data, please visit our <Link to='/pancreatlas/nomenclature'>nomenclature page</Link>.</p>
+                      <p className='text-larger'>For more information on our data, please visit our <Link to='/nomenclature'>nomenclature page</Link>.</p>
                     </div>
                   </Col>
                   {/* <Col md='6' className='d-flex align-items-center'>
@@ -158,13 +158,13 @@ export default class DatasetList extends React.Component {
                                 <td className='text-center'>{item.kvals.image_count}</td>
                                 <td className='action-column text-center'>
                                   <Row>
-                                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=false' }}>
+                                    <Link to={{ pathname: `/datasets/${item.did}`, search: '?browse=false' }}>
                                       <Button className='ds-list-left-button' >Browse All Images</Button>
                                     </Link>
-                                    <Link to={{ pathname: `/pancreatlas/dataset/${item.did}`, search: '?browse=true' }}>
+                                    <Link to={{ pathname: `/datasets/${item.did}`, search: '?browse=true' }}>
                                       <Button color='primary'>Browse by Age</Button>
                                     </Link>
-                                    <Link to={'/pancreatlas/matrixview/' + item.did}>
+                                    <Link to={'/matrixview/' + item.did}>
                                       <Button className='ds-list-right-button' outline color='success'>Compare Attributes</Button>
                                     </Link>
                                   </Row>

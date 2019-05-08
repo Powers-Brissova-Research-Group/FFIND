@@ -39,7 +39,7 @@ export default class HomePage extends React.Component {
           </Row>
           <Row className='pancreatlas-row'>
             <Col md='12' sm='12'>
-              <Link to={`pancreatlas/dataset?iids=${this.favs}`}><Button size='lg' className='explore-button' color='success'>Explore Our Atlas</Button></Link>
+              <Link to={`/datasets?iids=${this.favs}`}><Button size='lg' className='explore-button' color='success'>Explore Our Atlas</Button></Link>
             </Col>
           </Row>
           <Row className='pancreatlas-row'>

@@ -13,18 +13,28 @@ import {
   Switch
 } from 'react-router-dom'
 
-import HandelApp from './HandelApp'
-import PancreatlasApp from './pancreatlas/PancreatlasApp'
 import TopNav from './TopNav'
 import PancreatlasFooter from './pancreatlas/PancreatlasFooter'
 import BrowserNotSupportedBanner from './BrowserNotSupportedBanner'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faRedo, faBook, faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faRedo, faBook, faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { faBookmark as faBookmarkOutline } from '@fortawesome/free-regular-svg-icons'
 import Releases from './Releases'
+import Diabetes from './Diabetes'
+import Collaborators from './Collaborators'
+import Home from './Home'
+import About from './About'
 
-library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faBookmarkOutline, faRedo, faBook, faAngleRight)
+import DatasetList from './pancreatlas/DatasetList'
+import AgeBrowser from './pancreatlas/AgeBrowser'
+import MatrixView from './pancreatlas/MatrixView'
+import Nomenclature from './pancreatlas/Nomenclature'
+import Favorites from './pancreatlas/Favorites'
+import DatasetOverview from './pancreatlas/DatasetOverview'
+import PageNotFound from './pancreatlas/PageNotFound'
+
+library.add(faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faBookmarkOutline, faRedo, faBook, faAngleRight, faAngleDown)
 
 class App extends Component {
 // blank line for new commit
@@ -141,10 +151,22 @@ class App extends Component {
             <div className='App'>
               <TopNav favorites={this.state.encodedFavorites} />
               <Switch>
-                <Route exact path='/' component={HandelApp} />
-                <Route path={`/pancreatlas`} render={(props) => <PancreatlasApp {...props} favoriteCallback={this.addFavorite} favorites={this.state.encodedFavorites} />} />
+                <Route exact path='/' component={Home} />
+                {/* <Route path={`/pancreatlas`} render={(props) => <PancreatlasApp {...props} favoriteCallback={this.addFavorite} favorites={this.state.encodedFavorites} />} /> */}
                 <Route path='/releases' component={Releases} />
-                <Route path='/' component={HandelApp} />
+                <Route path='/diabetes' component={Diabetes} />
+                <Route path='/collaborators' component={Collaborators} />
+                <Route path='/about' component={About} />
+
+                <Route exact path={`/datasets`} component={DatasetList} />
+                <Route exact path={`/datasets/:did`} render={(props) => <AgeBrowser {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
+                {/* <Route path='/pancreatlas/image/:iid' component={ImageDetail} /> */}
+                <Route path='/matrixview/:dsid' component={MatrixView} />
+                <Route path='/nomenclature' component={Nomenclature} />
+                <Route path={`/favorites`} render={(props) => <Favorites {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
+                <Route path={`/datasets/:did/overview`} component={DatasetOverview} />
+                <Route component={PageNotFound} />
+
               </Switch>
               <PancreatlasFooter />
             </div>

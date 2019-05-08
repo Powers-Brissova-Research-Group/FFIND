@@ -5,6 +5,7 @@ import {
   Col,
   Container
 } from 'reactstrap'
+
 import Feature from './Feature'
 import SponsorLogo from './SponsorLogo'
 
@@ -17,13 +18,29 @@ import NDRI from './assets/NDRI.jpg'
 import VUMC from './assets/VUMC.png'
 
 export default class Home extends React.Component {
+  constructor (props) {
+    super(props)
+    this.aboutRef = React.createRef()
+
+    this.scrollToAbout = this.scrollToAbout.bind(this)
+  }
+
+  scrollToAbout () {
+    // console.log(this.myRef)
+    window.scrollTo(0, this.aboutRef.current.offsetTop)
+  }
+
+  componentDidMount () {
+    console.log(this.myRef)
+  }
+
   render () {
     return (
       <div className='home'>
-        <Banner />
+        <Banner scrollDown={this.scrollToAbout} />
         <Container>
-          <Row className='my-4'>
-            <div className='head-description v-padded'>
+          <Row className='mb-4'>
+            <div className='head-description v-padded' ref={this.aboutRef}>
               <Row>
                 <Col md='12'>
                   <h2 className='section-heading'>Our Approach</h2>

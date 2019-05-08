@@ -264,6 +264,10 @@ table.image-matrix {
   padding-bottom: 2rem;
 }
 
+div.image-grid {
+  margin-top: 1.5rem;
+}
+
 .image-grid h1 {
   text-align: left;
 }
@@ -636,8 +640,8 @@ span.undo {
 } */
 
 .banner-container{
-  height: 600px;
-  margin-top: -600px;
+  height: 90vh;
+  margin-top: -92vh;
 }
 
 .banner-row{
@@ -1062,4 +1066,14 @@ span.nomenclature-collapse {
 
 img.nomenclature-img {
   max-width: 20rem;
+}
+
+button.banner-btn {
+  font-size: 175%;
+  font-weight: 700;
+  padding: 1.5rem;
+}
+
+.scroll-down-arrow {
+  cursor: pointer;
 }
