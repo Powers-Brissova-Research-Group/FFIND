@@ -36,6 +36,25 @@ deploy:
   
     - echo "Deploying"
     - pwd
+    - cd react
+    - echo "Installing react app"
+    - rm -r /app001/www/pancreatlas/dev7/www/*
+    - mv ./build/* /app001/www/pancreatlas/dev7/www
+    - echo "React app installed"
+    - echo "Installing api"
+    - cd ..
+    - rm -r /app001/www/pancreatlas/dev7/api/*
+    - mv ./api/* /app001/www/pancreatlas/dev7/api
+    - cd /app001/www/pancreatlas/dev7/api
+    - virtualenv .
+    - source bin/activate
+    - pip install -r requirements.txt
+    - echo "api installed"
+    - echo "Restarting Apache"
+    - sudo systemctl restart httpd
+    - echo "Apache restarted"
+
+
 
   environment:
     name: local-dev
