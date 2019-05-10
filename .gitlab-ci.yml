@@ -14,7 +14,7 @@ build:
   stage: build
   script:
     - cd react
-    - echo "REACT_APP_API_URL='https://dev7-api-pancreatlas.app.vumc.org/api'\nREACT_APP_API_AUTH=''\nREACT_APP_VERSION=$npm_package_version" > .env.development
+    - echo -e "REACT_APP_API_URL='https://dev7-api-pancreatlas.app.vumc.org/api'\nREACT_APP_API_AUTH=''\nREACT_APP_VERSION=$npm_package_version" > .env.development
     - cp .env.development .env.production
     - npm install
     - npm run build
