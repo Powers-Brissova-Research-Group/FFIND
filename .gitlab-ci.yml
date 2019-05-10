@@ -32,8 +32,6 @@ test:
 
 deploy:
   stage: deploy
-  dependencies:
-    - build
   script:
   
     - echo "Deploying"
