@@ -178,12 +178,9 @@ export default class Banner extends React.Component {
               </Row>
             </Col>
           </Row>
-          <Row className='mt-4' style={{ height: '15%' }}>
+          <Row className='mt-4 justify-content-center' style={{ height: '15%' }}>
             <Col md='6'>
               <Link to={'/datasets'}><Button className='banner-btn' color='info' size='lg' block>View Our Collections</Button></Link>
-            </Col>
-            <Col md='6'>
-              <Link to={'/about'}><Button className='banner-btn' color='secondary' size='lg' block>Learn About pancreatlas</Button></Link>
             </Col>
           </Row>
           <Row className='mb-1' style={{ height: '10%' }}>

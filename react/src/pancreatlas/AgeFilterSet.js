@@ -107,7 +107,8 @@ export default class AgeFilterSet extends React.Component {
       gestational: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'GESTATIONAL',
       neonatal: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'NEONATAL',
       infancy: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'INFANCY',
-      childhood: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'CHILDHOOD'
+      childhood: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'CHILDHOOD',
+      adult: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'ADULT'
     }
     this.state['ageGroups'] = this.updateAgeGroups()
     this.initialized = false
@@ -121,7 +122,8 @@ export default class AgeFilterSet extends React.Component {
         gestational: true,
         neonatal: true,
         infancy: true,
-        childhood: true
+        childhood: true,
+        adult: true
       })
     }
     if (JSON.stringify(this.state.ageGroups) !== JSON.stringify(prevState.ageGroups)) {
@@ -136,7 +138,8 @@ export default class AgeFilterSet extends React.Component {
       gestational: [],
       neonatal: [],
       infancy: [],
-      childhood: []
+      childhood: [],
+      adult: []
     }
     for (let age of this.allFilters) {
       let grp = this.findAgeGroup(age)
@@ -152,6 +155,9 @@ export default class AgeFilterSet extends React.Component {
           break
         case 3:
           ageGroups.childhood.push(age)
+          break
+        case 4:
+          ageGroups.adult.push(age)
           break
         default:
           break
@@ -240,7 +246,7 @@ export default class AgeFilterSet extends React.Component {
           </Col>
         </Row>
         <Collapse isOpened={this.state.open}>
-          {Object.keys(this.state.ageGroups).map(key => (
+          {Object.keys(this.state.ageGroups).filter(key => this.state.ageGroups[key].length > 0).map(key => (
             <div className='group-filter' key={key}>
               <Row className='pancreatlas-row'>
                 <Col md='12' className='text-left'>

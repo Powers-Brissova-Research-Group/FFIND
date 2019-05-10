@@ -58,3 +58,7 @@ export default class MarkerTag extends React.Component {
     }
   }
 }
+
+MarkerTag.defaultProps = {
+  color: '#FFFFFF'
+}

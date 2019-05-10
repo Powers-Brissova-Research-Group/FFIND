@@ -1076,4 +1076,11 @@ button.banner-btn {
 
 .scroll-down-arrow {
   cursor: pointer;
+  opacity: 0.75;
+  transition: opacity 0.25s;
+  -webkit-transition: opacity 0.25s;
+}
+
+.scroll-down-arrow:hover {
+  opacity: 1;
 }
