@@ -59,7 +59,7 @@ describe('tabs work when clicked', () => {
   it('Shows navlinks', () => {
     expect(wrapper.state().loaded).toEqual(true)
     root.update()
-    expect(root.find('.dataset-list').exists()).toBeTruthy()
+    expect(root.find('.dataset-lists').exists()).toBeTruthy()
   })
 
   it('Should have working tab buttons', () => {
