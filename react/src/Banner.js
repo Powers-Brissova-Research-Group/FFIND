@@ -2,13 +2,8 @@ import React from 'react'
 import {
   Container,
   Row,
-  Col,
-  Button
+  Col
 } from 'reactstrap'
-
-import {
-  Link
-} from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -17,8 +12,6 @@ import HomeModal from './HomeModal'
 import Particles from 'react-particles-js'
 
 import bannerImg from './assets/home-page-bg.jpg'
-
-import illustration from './assets/pancreas-islet-cells.png'
 
 export default class Banner extends React.Component {
   constructor (props) {
@@ -163,26 +156,25 @@ export default class Banner extends React.Component {
         </div>
 
         <Container className='banner-container'>
-          <Row className='mt-4' style={{ height: '70%' }}>
-            <Col md='6' className='align-self-center'>
+          <Row className='mt-4' style={{ height: '90%' }}>
+            <Col md='12' className='align-self-center'>
               <h1 className='banner-header'>We study the human pancreas and islets from birth to adulthood.</h1>
               <h4 className='banner-subheader-left'>We are building a practical resource for assembling and sharing data from human pancreas samples.</h4>
               {/* <Link to='/datasets'><Button className='banner-btn'color='info'size='lg' block>View our Collections</Button></Link> */}
             </Col>
-            <Col md='1' />
-            <Col md='5' className='align-self-center d-none d-md-block'>
+            {/* <Col md='5' className='align-self-center d-none d-md-block'>
               <Row className='mt-3'>
                 <div>
                   <Link to={'/datasets'} ><img src={illustration} responsive={'true'} alt='View our datasets' /></Link>
                 </div>
               </Row>
-            </Col>
+            </Col> */}
           </Row>
-          <Row className='mt-4 justify-content-center' style={{ height: '15%' }}>
+          {/* <Row className='mt-4 justify-content-center' style={{ height: '15%' }}>
             <Col md='6'>
               <Link to={'/datasets'}><Button className='banner-btn' color='info' size='lg' block>View Our Collections</Button></Link>
             </Col>
-          </Row>
+          </Row> */}
           <Row className='mb-1' style={{ height: '10%' }}>
             <Col md='12' className='text-center'>
               <FontAwesomeIcon className='scroll-down-arrow' onClick={this.props.scrollDown} icon='angle-down' size='6x' color='white' />
