@@ -1,21 +1,10 @@
 import React from 'react'
 import Banner from './Banner'
 import {
-  Row,
-  Col,
   Container
 } from 'reactstrap'
 
-import Feature from './Feature'
-import SponsorLogo from './SponsorLogo'
-
-import MapPicture from './assets/map-collaborations6.png'
-import Helmsley from './assets/helmsley.jpg'
-import HIRN from './assets/hirn.jpg'
-import IIAM from './assets/IIAM.png'
-import IIDP from './assets/IIDP.png'
-import NDRI from './assets/NDRI.jpg'
-import VUMC from './assets/VUMC.png'
+import DatasetList from './pancreatlas/DatasetList'
 
 export default class Home extends React.Component {
   constructor (props) {
@@ -38,7 +27,13 @@ export default class Home extends React.Component {
     return (
       <div className='home'>
         <Banner scrollDown={this.scrollToAbout} />
-        <Container>
+        <div className='dataset-list' ref={this.aboutRef}>
+          <Container className='mt-4'>
+            <h1>Our Image Collections</h1>
+            <DatasetList />
+          </Container>
+        </div>
+        {/* <Container>
           <Row className='mb-4'>
             <div className='head-description v-padded' ref={this.aboutRef}>
               <Row>
@@ -121,7 +116,7 @@ export default class Home extends React.Component {
               </Col>
             </Row>
           </div>
-        </Container>
+        </Container> */}
       </div>
     )
   }

@@ -26,7 +26,7 @@ import Collaborators from './Collaborators'
 import Home from './Home'
 import About from './About'
 
-import DatasetList from './pancreatlas/DatasetList'
+import DatasetListPage from './pancreatlas/DatasetListPage'
 import AgeBrowser from './pancreatlas/AgeBrowser'
 import MatrixView from './pancreatlas/MatrixView'
 import Nomenclature from './pancreatlas/Nomenclature'
@@ -158,7 +158,7 @@ class App extends Component {
                 <Route path='/collaborators' component={Collaborators} />
                 <Route path='/about' component={About} />
 
-                <Route exact path={`/datasets`} component={DatasetList} />
+                <Route exact path={`/datasets`} component={DatasetListPage} />
                 <Route exact path={`/datasets/:did`} render={(props) => <AgeBrowser {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
                 {/* <Route path='/pancreatlas/image/:iid' component={ImageDetail} /> */}
                 <Route path='/matrixview/:dsid' component={MatrixView} />
