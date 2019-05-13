@@ -16,7 +16,7 @@ import HomeModal from './HomeModal'
 
 import Particles from 'react-particles-js'
 
-import bannerImg from './assets/banner-bg3-fade.png'
+import bannerImg from './assets/home-page-bg.jpg'
 
 import illustration from './assets/pancreas-islet-cells.png'
 

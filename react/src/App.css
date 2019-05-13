@@ -782,7 +782,7 @@ span.control-element.selected {
 }
 
 div.overlay {
-  background: rgba(44, 111, 110, 0.7) none repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0.25) none repeat scroll 0 0;
 
 }
 
@@ -1076,11 +1076,34 @@ button.banner-btn {
 
 .scroll-down-arrow {
   cursor: pointer;
-  opacity: 0.75;
-  transition: opacity 0.25s;
-  -webkit-transition: opacity 0.25s;
+  animation: pulse 2s infinite;
 }
 
 .scroll-down-arrow:hover {
   opacity: 1;
+  animation: none;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+    transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+  
+  }
+  
+
+  50% {
+    opacity: 1;
+    transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+
+  }
+
+  100% {
+    opacity: 0.5;
+    transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+  
+  }
 }
