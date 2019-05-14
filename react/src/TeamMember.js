@@ -6,33 +6,26 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
-  Col,
-  Row
+  CardFooter
 } from 'reactstrap'
 
-import FontAwesome from 'react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class TeamMember extends React.Component {
   render () {
     return (
       <Card className='h-100'>
-        <CardImg top width='100%' src={this.props.imgSrc} />
+        <a href={this.props.site}><CardImg top width='100%' src={this.props.imgSrc} /></a>
         <CardBody className='d-flex flex-column'>
           <CardTitle className='center-row'>{this.props.name}</CardTitle>
           <CardSubtitle className='center-row'>{this.props.institution}</CardSubtitle>
           <CardText>{this.props.desc}</CardText>
-          <Row className='center-row'>
-            <Col md='4'>
-              <a href={this.props.site}><FontAwesome size='2x' name='link' /></a>
-            </Col>
-            <Col md='4'>
-              <a href={this.props.email}><FontAwesome size='2x' name='envelope' /></a>
-            </Col>
-            <Col md='4'>
-              <a href={this.props.phone}><FontAwesome size='2x' name='phone' /></a>
-            </Col>
-          </Row>
         </CardBody>
+        <CardFooter className='d-flex justify-content-around'>
+          <a href={this.props.site}><FontAwesomeIcon size='2x' icon='link' /></a>
+          <a href={this.props.email}><FontAwesomeIcon size='2x' icon='envelope' /></a>
+          <a href={this.props.phone}><FontAwesomeIcon size='2x' icon='phone' /></a>
+        </CardFooter>
       </Card>
     )
   }
