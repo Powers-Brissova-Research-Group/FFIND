@@ -158,7 +158,8 @@ export default class Banner extends React.Component {
           />
         </div>
         <Container className='banner-container'>
-          <Row className='h-50 align-items-end'>
+          <Row style={{ height: '33%' }} />
+          <Row style={{ height: '33%' }}>
             <Col md='7'>
               <h1 className='banner-header'>We study the human pancreas and islets from birth to adulthood.</h1>
               <h4 className='banner-subheader-left'>We are building a practical resource for assembling and sharing data from human pancreas samples.</h4>
@@ -173,16 +174,21 @@ export default class Banner extends React.Component {
               </Row>
             </Col>
           </Row>
+          <Row className='align-items-end' style={{ height: '33%' }}>
+            <Col md='12' className='text-center'>
+              <FontAwesomeIcon className='scroll-down-arrow' onClick={this.props.scrollDown} icon='angle-down' size='6x' color='white' />
+            </Col>
+          </Row>
           {/* <Row className='mt-4 justify-content-center' style={{ height: '15%' }}>
             <Col md='6'>
               <Link to={'/datasets'}><Button className='banner-btn' color='info' size='lg' block>View Our Collections</Button></Link>
             </Col>
           </Row> */}
-          <Row className='h-50 align-items-end'>
+          {/* <Row className='h-50 align-items-end'>
             <Col md='12' className='text-center'>
               <FontAwesomeIcon className='scroll-down-arrow' onClick={this.props.scrollDown} icon='angle-down' size='6x' color='white' />
             </Col>
-          </Row>
+          </Row> */}
           <HomeModal isOpen={this.state.modalOpen} toggle={this.toggle} />
         </Container>
       </div>
