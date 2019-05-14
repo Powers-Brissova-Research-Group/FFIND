@@ -19,7 +19,7 @@ export default class TeamMember extends React.Component {
         <CardBody className='d-flex flex-column'>
           <CardTitle className='center-row'>{this.props.name}</CardTitle>
           <CardSubtitle className='center-row'>{this.props.institution}</CardSubtitle>
-          <CardText>{this.props.desc}</CardText>
+          <CardText className='mt-2'>{this.props.desc}</CardText>
         </CardBody>
         <CardFooter className='d-flex justify-content-around'>
           <a href={this.props.site}><FontAwesomeIcon size='2x' icon='link' /></a>

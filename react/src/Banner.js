@@ -5,6 +5,8 @@ import {
   Col
 } from 'reactstrap'
 
+import { Link } from 'react-router-dom'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import HomeModal from './HomeModal'
@@ -12,6 +14,7 @@ import HomeModal from './HomeModal'
 import Particles from 'react-particles-js'
 
 import bannerImg from './assets/banner-bg3-fade.png'
+import illustration from './assets/pancreas-islet-cells.png'
 
 export default class Banner extends React.Component {
   constructor (props) {
@@ -156,19 +159,19 @@ export default class Banner extends React.Component {
         </div>
         <Container className='banner-container'>
           <Row className='h-50 align-items-end'>
-            <Col md='12'>
+            <Col md='7'>
               <h1 className='banner-header'>We study the human pancreas and islets from birth to adulthood.</h1>
               <h4 className='banner-subheader-left'>We are building a practical resource for assembling and sharing data from human pancreas samples.</h4>
               {/* <Link to='/datasets'><Button className='banner-btn'color='info'size='lg' block>View our Collections</Button></Link> */}
             </Col>
 
-            {/* <Col md='5' className='align-self-center d-none d-md-block'>
+            <Col md='5' className='d-none d-md-block'>
               <Row className='mt-3'>
                 <div>
                   <Link to={'/datasets'} ><img src={illustration} responsive={'true'} alt='View our datasets' /></Link>
                 </div>
               </Row>
-            </Col> */}
+            </Col>
           </Row>
           {/* <Row className='mt-4 justify-content-center' style={{ height: '15%' }}>
             <Col md='6'>

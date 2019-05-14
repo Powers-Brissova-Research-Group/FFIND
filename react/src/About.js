@@ -19,20 +19,19 @@ export default class About extends React.Component {
         <Container className='v-padded'>
           <Row>
             <Col md='6'>
-              <h5><span>stuff stuff stuff</span></h5>
               <h1>About</h1>
-              <p> Human and rodent islets differ substantially in architecture, cell composition, proliferative capacity, etc. While much of our current knowledge is based on decades of rodent studies, new efforts are needed to study human pancreas and isolated islets, such as CHIPS and the NIDDK-supported Human Islet Research Network (HIRN). </p>
+              <p> The text for this section is still in progress and will be updated soon. </p>
 
-              <h2>FAQ</h2>
-
-              <h3>What browsers are supported on this website/app?</h3>
+              <h1 className='mt-4'>FAQ</h1>
+              <p>Coming Soon</p>
+              <h1 className='mt-4'>What browsers are supported on this website/app?</h1>
               <p>As of the time of writing, we support the following browsers and versions:</p>
               <ul>
-                <li>Chrome >= 55</li>
-                <li>Edge >= 14</li>
-                <li>Firefox >= 50</li>
-                <li>Opera >= 29</li>
-                <li>Safari >= 10</li>
+                <li>Chrome &ge; 55</li>
+                <li>Edge &ge; 14</li>
+                <li>Firefox &ge; 50</li>
+                <li>Opera &ge; 29</li>
+                <li>Safari &ge; 10</li>
               </ul>
               <p>We do not support Internet Explorer. Please let it rest in peace.</p>
 

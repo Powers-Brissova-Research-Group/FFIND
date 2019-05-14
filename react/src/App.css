@@ -269,10 +269,16 @@ div.image-grid {
   text-align: left;
 }
 
-.card-title, .card-subtitle{
+.card-title{
   text-align: center;
   font-family: 'Montserrat', sans-serif;
-  font-size:90%;
+  font-weight: bold;
+}
+
+.card-subtitle {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;;
+  font-size: 90%;
 }
 
 .card-body strong { color: #777; font-weight:normal;}
