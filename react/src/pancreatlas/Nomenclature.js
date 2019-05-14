@@ -7,6 +7,8 @@ import {
   ButtonGroup
 } from 'reactstrap'
 
+import { Parallax } from 'react-parallax'
+
 import MetaTags from 'react-meta-tags'
 
 import NomenclatureSection from './NomenclatureSection'
@@ -27,7 +29,7 @@ export default class Nomenclature extends React.Component {
           <title>Nomenclature -- Pancreatlas</title>
           <meta name='description' content='How pancreatlas organizes its images' />
         </MetaTags>
-        <Container>
+        {/* <Container>
           <div style={{ height: '45vh' }}>
             <Row className='h-100'>
               <Col md='12' className='d-flex align-items-center'>
@@ -38,21 +40,41 @@ export default class Nomenclature extends React.Component {
               </Col>
             </Row>
           </div>
-        </Container>
-        <Container fluid className='shaded'>
-          <Container>
-            <Row className='my-4'>
-              <ButtonGroup className='mt-4'>
-                <Button outline color='secondary' onClick={() => this.setState({ open: false })} active={this.state.open === false}>Close All</Button>
-                <Button outline color='secondary' onClick={() => this.setState({ open: true })} active={this.state.open === true}>Open All</Button>
-              </ButtonGroup>
-            </Row>
-            {Object.keys(this.defs).map(section => (
-              <div key={section} className='definitions'>
-                <NomenclatureSection data={this.defs[section]} sectionName={section} openOverride={this.state.open} />
-              </div>
-            ))}
-          </Container>
+        </Container> */}
+
+        <Parallax
+          blur={0}
+          bgImage={require('../assets/nomenclature-header.jpg')}
+          bgImageAlt='Sample Image'
+          strength={0}
+        >
+          <div className='parallax-filler' style={{ height: '45vh' }}>
+            <Container className='h-100'>
+              <Row className='h-100'>
+                <Col md='12' className='d-flex align-items-center'>
+                  <div className='dataset-title align-middle'>
+                    {/* <h1>Explore the pancreatlas</h1> */}
+                    <h1>Nomenclature</h1>
+                    <p className='text-larger'>Below are descriptions regarding the various annotations we have added to our images</p>
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </div>
+        </Parallax>
+
+        <Container>
+          <Row className='my-4'>
+            <ButtonGroup className='mt-4'>
+              <Button outline color='secondary' onClick={() => this.setState({ open: false })} active={this.state.open === false}>Close All</Button>
+              <Button outline color='secondary' onClick={() => this.setState({ open: true })} active={this.state.open === true}>Open All</Button>
+            </ButtonGroup>
+          </Row>
+          {Object.keys(this.defs).map(section => (
+            <div key={section} className='definitions'>
+              <NomenclatureSection data={this.defs[section]} sectionName={section} openOverride={this.state.open} />
+            </div>
+          ))}
         </Container>
       </div>
     )
