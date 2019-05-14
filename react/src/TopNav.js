@@ -51,13 +51,13 @@ export default class TopNav extends React.Component {
       <Navbar color='dark' dark expand='md'>
         <Container fluid>
           <NavbarBrand tag={Link} to='/'>
-            <img style={{ maxHeight: '5rem' }}className='img-fluid' src={logo} alt={'Pancreatlas -- Home'} />
+            <img style={{ maxHeight: '3rem' }}className='img-fluid' src={logo} alt={'Pancreatlas -- Home'} />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className='ml-auto' navbar>
               {JSON.parse(window.atob(this.props.favorites)).length > 0 &&
-                <NavItem className='btn btn-info'>
+                <NavItem>
                   <UncontrolledDropdown>
                     <DropdownToggle nav caret>Image Atlas <Badge color='primary'>{JSON.parse(window.atob(this.props.favorites)).length}</Badge></DropdownToggle>
                     <DropdownMenu right>
@@ -67,7 +67,7 @@ export default class TopNav extends React.Component {
                   </UncontrolledDropdown>
                 </NavItem>}
               {JSON.parse(window.atob(this.props.favorites)).length <= 0 &&
-                <NavItem className='btn btn-info' active={(window.location.pathname === '/datasets')}>
+                <NavItem active={(window.location.pathname === '/datasets')}>
                   <NavLink to='/datasets'>Image Collections</NavLink>
                 </NavItem>
               }

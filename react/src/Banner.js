@@ -11,7 +11,7 @@ import HomeModal from './HomeModal'
 
 import Particles from 'react-particles-js'
 
-import bannerImg from './assets/home-page-bg.jpg'
+import bannerImg from './assets/banner-bg3-fade.png'
 
 export default class Banner extends React.Component {
   constructor (props) {
@@ -151,17 +151,17 @@ export default class Banner extends React.Component {
               background: `url(${bannerImg}) no-repeat center center fixed`,
               backgroundSize: 'cover'
             }}
-            height={'90vh'}
+            height={'calc(100vh - 70px)'}
           />
         </div>
-
         <Container className='banner-container'>
-          <Row className='mt-4' style={{ height: '90%' }}>
-            <Col md='12' className='align-self-center'>
+          <Row className='h-50 align-items-end'>
+            <Col md='12'>
               <h1 className='banner-header'>We study the human pancreas and islets from birth to adulthood.</h1>
               <h4 className='banner-subheader-left'>We are building a practical resource for assembling and sharing data from human pancreas samples.</h4>
               {/* <Link to='/datasets'><Button className='banner-btn'color='info'size='lg' block>View our Collections</Button></Link> */}
             </Col>
+
             {/* <Col md='5' className='align-self-center d-none d-md-block'>
               <Row className='mt-3'>
                 <div>
@@ -175,7 +175,7 @@ export default class Banner extends React.Component {
               <Link to={'/datasets'}><Button className='banner-btn' color='info' size='lg' block>View Our Collections</Button></Link>
             </Col>
           </Row> */}
-          <Row className='mb-1' style={{ height: '10%' }}>
+          <Row className='h-50 align-items-end'>
             <Col md='12' className='text-center'>
               <FontAwesomeIcon className='scroll-down-arrow' onClick={this.props.scrollDown} icon='angle-down' size='6x' color='white' />
             </Col>

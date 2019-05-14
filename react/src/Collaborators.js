@@ -23,10 +23,9 @@ export default class Collaborators extends React.Component {
           <Container>
             <Row className='v-padded'>
               <Col md='6'>
-                <h3>Creating new</h3>
-                <h1>Connections</h1>
-                <p>We are cross-pollinating numerous activities and programs to develop new ideas and endeavors on diabetes research, education and clinical care.</p>
-                <p>A major strategy of this effort is to branch out to those with novel ideas and approaches in order to and share knowledge, technologies and developments that can more rapidly help us understand the underpinnings of diabetes in people.</p>
+                <h1>Creating Connections</h1>
+                <p>We are cross-pollinating numerous activities and programs to develop new ideas that accelerate diabetes research, education and clinical care.</p>
+                <p>If you are interested in collaborating with us&mdash;eitheer by accessing tissue samples or contributing images&mdash;pease get in touch!</p>
               </Col>
               <Col md='6'>
                 <img src={MapPicture} alt='Collaborators map' className='img-fill' />
@@ -38,8 +37,7 @@ export default class Collaborators extends React.Component {
         <Container fluid className='shaded'>
 
           <Container className='v-padded'>
-            <h5><span>Meet the investigators</span></h5>
-            <h2>Accelerating discovery by teaming up</h2>
+            <h2><span>Meet the investigators</span></h2>
             <Row className='mt-2'>
               <Col md='4'>
                 <TeamMember name='Mark Atkinson' institution='University of Florida' desc='Our laboratory seeks to directly define methods for disease prevention in non-diabetic subjects identified to be at increased risk for the disease or diabetic subjects through pancreatic transplantation in association with novel forms of immunotherapy.' imgSrc='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/mark-atkinson.jpg' site='http://pathology.ufl.edu/faculty/experimental-pathology/mark-a-atkinson/' email='mailto:atkinson@pathology.ufl.edu?subject=Inquiry via Collaboration on Human Islets and Diabetes' phone='tel:352-273-8277' />

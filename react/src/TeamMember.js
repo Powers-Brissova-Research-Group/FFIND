@@ -18,8 +18,8 @@ export default class TeamMember extends React.Component {
       <Card className='h-100'>
         <CardImg top width='100%' src={this.props.imgSrc} />
         <CardBody className='d-flex flex-column'>
-          <CardSubtitle className='center-row'>{this.props.institution}</CardSubtitle>
           <CardTitle className='center-row'>{this.props.name}</CardTitle>
+          <CardSubtitle className='center-row'>{this.props.institution}</CardSubtitle>
           <CardText>{this.props.desc}</CardText>
           <Row className='center-row'>
             <Col md='4'>

@@ -96,9 +96,6 @@ Navigation
   color: #e4e5d7 !important;
 }
 
-.navbar-logo { /* TODO check if necessary */
-  height: 35px;
-}
 
 /*
 Footer
@@ -640,8 +637,8 @@ span.undo {
 } */
 
 .banner-container{
-  height: 90vh;
-  margin-top: -92vh;
+  height: calc(100vh - 70px);
+  margin-top: calc(calc(-100vh + 70px))
 }
 
 .banner-row{
@@ -782,8 +779,7 @@ span.control-element.selected {
 }
 
 div.overlay {
-  background: rgba(0, 0, 0, 0.25) none repeat scroll 0 0;
-
+  background: rgba(44, 111, 110, 0.7) none repeat scroll 0 0;
 }
 
 .nav-item a {
