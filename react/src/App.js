@@ -42,7 +42,9 @@ class App extends Component {
     super(props)
 
     Sentry.init({
-      dsn: 'https://727efb032f954ff7baf2421cbcf2ace8@sentry.io/1412698'
+      dsn: 'https://727efb032f954ff7baf2421cbcf2ace8@sentry.io/1412698',
+      debug: true,
+      release: `pancreatlas@${process.env.REACT_APP_VERSION}`
     })
 
     this.addFavorite = this.addFavorite.bind(this)

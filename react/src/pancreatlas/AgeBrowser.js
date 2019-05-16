@@ -9,6 +9,7 @@ import {
 import MetaTags from 'react-meta-tags'
 
 import ImageGrid from './ImageGrid'
+import ImageGridBoundary from './ImageGridBoundary'
 
 import neonatalTimeline from '../assets/pancreatlas/ages/timeline-neonatal.png'
 import infantTimeline from '../assets/pancreatlas/ages/timeline-infancy.png'
@@ -131,7 +132,9 @@ export default class AgeBrowser extends React.Component {
     } else {
       let did = (this.props.match !== undefined) ? this.props.match.params.did : 0
       return (
-        <ImageGrid favorites={this.props.favorites} favoriteCallback={this.props.favoriteCallback} filters={{}} group={this.state.group} groupName={this.state.groupName} did={did} />
+        <ImageGridBoundary>
+          <ImageGrid favorites={this.props.favorites} favoriteCallback={this.props.favoriteCallback} filters={{}} group={this.state.group} groupName={this.state.groupName} did={did} />
+        </ImageGridBoundary>
       )
     }
   }
