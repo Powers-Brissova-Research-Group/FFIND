@@ -67,7 +67,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1'
 )
 
-CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(dev[0-9]+)(-api)?(-pancreatlas\.app\.vumc\.org)(:844[0-9]+)?$', r'(https?://)?(staging)(-api)?(\.pancreatlas\.org)(:844[0-9]+)?$')
+CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(dev[0-9]+)(-api)?(-pancreatlas\.app\.vumc\.org)(:844[0-9]+)?$', r'(https?://)?(staging)(-api)?(\.pancreatlas\.org)(:844[0-9]+)?$', r'(https?://)?(api\.)?(www\.)?(pancreatlas.org)(:8450)?$')
 
 CORS_ALLOW_HEADERS = default_headers + (
     'access-control-allow-origin',
