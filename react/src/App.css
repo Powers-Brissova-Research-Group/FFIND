@@ -606,7 +606,6 @@ span.undo {
 
 .v-padded{
   padding-top: 60px;
-  padding-bottom: 60px;
 }
 
 .section-heading{
@@ -1108,4 +1107,8 @@ button.banner-btn {
     -webkit-transition: opacity 1s;
   
   }
+}
+
+p.version-info {
+  color: #646464;
 }
