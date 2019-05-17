@@ -32,8 +32,6 @@ export default class ImageGrid extends React.Component {
       matches: [],
       filters: {},
       prevFilters: {},
-      start: 0,
-      end: 12,
       modalOpen: false,
       datasetName: '',
       imgsPerRow: 3,
@@ -109,6 +107,7 @@ export default class ImageGrid extends React.Component {
         this.setState({
           loaded: true,
           ids: result,
+          maxPages: Math.floor(Object.keys(result).length / (this.state.imgsPerRow * this.state.rowsPerPage)),
           matches: Object.keys(result),
           page: 0
         })
@@ -165,7 +164,7 @@ export default class ImageGrid extends React.Component {
   }
 
   nextPage () {
-    if (this.state.page >= Math.ceil(this.state.images.length / 12)) { return false }
+    if (this.state.page >= this.state.maxPages) { return false }
     let newPage = this.state.page + 1
     this.setState({
       page: newPage
@@ -302,6 +301,7 @@ export default class ImageGrid extends React.Component {
           imgsPerRow: 2,
           imgsColSplit: 6,
           rowsPerPage: 6,
+          maxPages: Math.floor((Object.keys(this.state.ids).length / (2 * 6))),
           density: 'sparse'
         })
         break
@@ -310,6 +310,7 @@ export default class ImageGrid extends React.Component {
           imgsPerRow: 4,
           imgsColSplit: 3,
           rowsPerPage: 4,
+          maxPages: Math.floor((Object.keys(this.state.ids).length / (4 * 4))),
           density: 'dense'
         })
         break
@@ -319,6 +320,7 @@ export default class ImageGrid extends React.Component {
           imgsPerRow: 3,
           imgsColSplit: 4,
           rowsPerPage: 5,
+          maxPages: Math.floor((Object.keys(this.state.ids).length / (3 * 5))),
           density: 'normal'
         })
         break
