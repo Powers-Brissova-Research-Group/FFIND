@@ -5,11 +5,6 @@ stages:
   - test
   - deploy
 
-cache:
-  paths:
-    - react/build/
-    - api/
-
 build:
   stage: build
   script:
