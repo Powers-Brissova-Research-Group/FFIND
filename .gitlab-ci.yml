@@ -22,6 +22,7 @@ build:
     paths:
       - react/build/
       - api/
+    expire_in: 1 day
 
 test:
   stage: test
