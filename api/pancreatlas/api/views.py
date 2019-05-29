@@ -88,6 +88,8 @@ class TagsetViewset(viewsets.ViewSet):
         tag_list = omero_api.get_tag_dictionary()
         tagsets = {
             "DISEASE": {},
+            "DISEASE STATUS": {},
+            "DISEASE DURATION": {},
             "MARKER": {},
             "SEX": {},
             "PANCREAS REGION": {},
@@ -98,12 +100,14 @@ class TagsetViewset(viewsets.ViewSet):
 
         tagset_indices = {
             "DISEASE": 0,
-            "AGE": 1,
-            "SEX": 2,
-            "MARKER": 3,
-            "PANCREAS REGION": 4,
-            "SECTION PLANE": 5,
-            "FILE TYPE": 6,
+            "DISEASE STATUS": 1,
+            "DISEASE DURATION": 2
+            "AGE": 3,
+            "SEX": 4,
+            "MARKER": 5,
+            "PANCREAS REGION": 6,
+            "SECTION PLANE": 7,
+            "FILE TYPE": 8,
         }
 
         for name, tags in tag_list.iteritems():
