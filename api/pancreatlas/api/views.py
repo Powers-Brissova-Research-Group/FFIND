@@ -101,7 +101,7 @@ class TagsetViewset(viewsets.ViewSet):
         tagset_indices = {
             "DISEASE": 0,
             "DISEASE STATUS": 1,
-            "DISEASE DURATION": 2
+            "DISEASE DURATION": 2,
             "AGE": 3,
             "SEX": 4,
             "MARKER": 5,
