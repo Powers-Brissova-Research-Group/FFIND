@@ -87,13 +87,14 @@ export default class ImageCard extends React.Component {
             }
           }
         }
-
+        let tagVals = result.tags.map(tag => Object.values(tag)[0])
         this.setState({
+
           loaded: true,
           imgUrl: '/' + result.iname, // https://omero.app.vumc.org/webgateway/render_image_region/' + this.props.iid + '/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&format=jpeg&region=0,0,300,300',
           imgName: result.iname,
           omeroId: result.iid,
-          imgTags: result.tags.filter(tag => markers[tag] === undefined && Object.values(donor).indexOf(tag) === -1 && Object.values(region).indexOf(tag) === -1),
+          imgTags: tagVals.filter(tag => markers[tag] === undefined && Object.values(donor).indexOf(tag) === -1 && Object.values(region).indexOf(tag) === -1),
           markers: markers,
           donor: donor,
           region: region,
