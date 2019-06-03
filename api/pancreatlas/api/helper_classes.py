@@ -46,7 +46,7 @@ class Image:
         for ann in anns:
             if isinstance(ann, TagAnnotationWrapper):
                 tmp = Tag(ann, ann.getId())
-                self.tags.append({tmp.tname: tmp.tagsets[0]})
+                self.tags.append(tmp)
             elif isinstance(ann, MapAnnotationWrapper):
                 for pair in ann.getValue():
                     self.key_values[pair[0]] = {'val': pair[1], 'desc': 'default val'}
@@ -57,7 +57,7 @@ class Image:
         return self.tags
 
     def get_tag_names(self):
-        return [tag.tname for tag in self.tags]
+        return [{tag.tagsets[0]: tag.tname} for tag in self.tags]
 
     def has_tag(self, tag):
         return tag in self.tags
