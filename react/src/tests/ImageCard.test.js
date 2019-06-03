@@ -34,113 +34,147 @@ describe('Image Card works', () => {
   let mockModal = jest.fn(() => console.log('modal'))
 
   let data = {
-    'iid': 16771,
-    'iname': 'FHP-2796-ND-G17.3w-Unknow.jpg',
-    'thumbpath': '/var/www/assets/pancreatlas/thumb/FHP-2796-ND-G17.3w-Unknow.jpg',
-    'detailpath': '/home/jmessmer/Projects/pancreatlas/api/pancreatlas/assets/details/FHP-2796-ND-G17.3w-Unknow.jpg',
-    'pathpath': 'https://omero.app.vumc.org/pathviewer/viewer/16771',
+    'iid': 17839,
+    'iname': '329635.jpg',
+    'thumbpath': '/var/www/assets/pancreatlas/thumb/329635.jpg',
+    'detailpath': '/home/jmessmer/Projects/pancreatlas/api/pancreatlas/assets/details/329635.jpg',
+    'pathpath': 'https://omero.app.vumc.org/pathviewer/viewer/17839',
     'tags': [
-      'DAPI',
-      'GCG',
-      'SST',
-      'ND',
-      'Transverse',
-      'FHP-2796',
-      'G17.3w',
-      'Aperio',
-      'Unknown'
+      {
+        'tag': 'ADH4365',
+        'tagset': 'UNOS ID'
+      },
+      {
+        'tag': 'Tail',
+        'tagset': 'Pancreas Region'
+      },
+      {
+        'tag': '34y',
+        'tagset': 'Age'
+      },
+      {
+        'tag': 'Aperio',
+        'tagset': 'File Type'
+      },
+      {
+        'tag': 'INS (DAB)',
+        'tagset': 'Marker'
+      },
+      {
+        'tag': 'Hematoxylin',
+        'tagset': 'Marker'
+      },
+      {
+        'tag': 'F',
+        'tagset': 'Sex'
+      },
+      {
+        'tag': 'CFRD',
+        'tagset': 'Disease Status'
+      },
+      {
+        'tag': '10y',
+        'tagset': 'Disease Duration'
+      }
     ],
     'kvals': {
-      'Stain info - cy5-Ab': {
-        'val': '',
-        'desc': 'default val'
-      },
       'Donor info - LIMS ID': {
-        'val': '',
-        'desc': 'default val'
-      },
-      'Donor info - Sex': {
-        'val': 'Unknown',
+        'val': 'DON93',
         'desc': 'default val'
       },
       'Image info - File Type': {
         'val': 'Aperio',
         'desc': 'default val'
       },
-      'Stain info - cy2': {
-        'val': 'INS',
-        'desc': 'default val'
-      },
-      'Stain info - cy5': {
-        'val': 'SST',
-        'desc': 'default val'
-      },
       'Image info - Section Plane': {
-        'val': 'Transverse',
+        'val': '',
         'desc': 'default val'
       },
-      'Image info - Annotations': {
-        'val': 'yes',
+      'Stain info - brightfield-Ab': {
+        'val': '',
         'desc': 'default val'
       },
-      'External id': {
-        'val': '89346',
+      'Image info - Pancreas Region': {
+        'val': 'Tail',
         'desc': 'default val'
       },
-      'Image info - Analysis': {
-        'val': 'yes',
+      'Stain info - cy3': {
+        'val': '',
         'desc': 'default val'
       },
       'File path': {
-        'val': '/mnt/drtc-aperio/Images/2013-08-23/89346.afi',
+        'val': '/mnt/drtc-aperio/images3/2017-10-13/329635.svs',
         'desc': 'default val'
       },
-      'Donor info - Age': {
-        'val': 'G17.3w',
+      'Donor info - Disease Duration': {
+        'val': '10y',
+        'desc': 'default val'
+      },
+      'Stain info - cy5': {
+        'val': '',
+        'desc': 'default val'
+      },
+      'Stain info - cy2': {
+        'val': '',
+        'desc': 'default val'
+      },
+      'Image info - Analysis': {
+        'val': '',
+        'desc': 'default val'
+      },
+      'Image info - Annotations': {
+        'val': '',
         'desc': 'default val'
       },
       'Stain info - cy2-Ab': {
         'val': '',
         'desc': 'default val'
       },
-      'Stain info - cy3': {
-        'val': 'GCG',
-        'desc': 'default val'
-      },
       '(DS notes)': {
-        'val': 'slide 21',
+        'val': '',
         'desc': 'default val'
       },
       'Donor info - Disease Status': {
-        'val': 'ND',
-        'desc': 'default val'
-      },
-      'Donor info - Disease Duration': {
-        'val': '',
+        'val': 'CFRD',
         'desc': 'default val'
       },
       'Stain info - cy3-Ab': {
         'val': '',
         'desc': 'default val'
       },
-      'Stain info - DAPI': {
-        'val': 'DAPI',
-        'desc': 'default val'
-      },
-      'Image info - Pancreas Region': {
-        'val': '',
+      'Donor info - Sex': {
+        'val': 'F',
         'desc': 'default val'
       },
       'Donor info - UNOS ID': {
-        'val': 'FHP-2796',
+        'val': 'ADH4365',
+        'desc': 'default val'
+      },
+      'Stain info - cy5-Ab': {
+        'val': '',
+        'desc': 'default val'
+      },
+      'Stain info - DAPI': {
+        'val': '',
+        'desc': 'default val'
+      },
+      'External id': {
+        'val': '329635',
+        'desc': 'default val'
+      },
+      'Stain info - brightfield': {
+        'val': 'INS (DAB), Hematoxylin',
+        'desc': 'default val'
+      },
+      'Donor info - Age': {
+        'val': '34y',
         'desc': 'default val'
       }
     },
     'channel_info': {
-      'DAPI': '0000FF',
-      'CY2': '00FF00',
-      'CY3': 'FF0000',
-      'CY5': 'FFFFFF'
+      '0': 'FF0000',
+      '1': '00FF00',
+      '2': '0000FF'
     }
   }
 
