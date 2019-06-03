@@ -46,7 +46,7 @@ class Image:
         for ann in anns:
             if isinstance(ann, TagAnnotationWrapper):
                 tmp = Tag(ann, ann.getId())
-                self.tags.append(tmp)
+                self.tags.append({tmp.tname: tmp.tagsets[0]})
             elif isinstance(ann, MapAnnotationWrapper):
                 for pair in ann.getValue():
                     self.key_values[pair[0]] = {'val': pair[1], 'desc': 'default val'}
@@ -86,6 +86,7 @@ class Tag:
         self.tag_wrapper = tag_wrapper
         self.tid = tid
         self.tname = tag_wrapper.getValue()
+        self.tagsets = [parent.getValue() for parent in tag_wrapper.listParents()]        
 
     def __eq__(self, other):
         if isinstance(other, Tag):
