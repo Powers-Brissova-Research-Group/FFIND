@@ -132,15 +132,26 @@ export default class ImageGrid extends React.Component {
 
   updateTags (shouldDelete) {
     let appTags = JSON.parse(JSON.stringify(this.raw_tags))
+    let validFilterSets = appTags.map(appTag => appTag.set_name)
     for (let key of this.state.matches) {
-      for (let tag of Object.keys(this.tag_dict)) {
-        let intersection = this.state.ids[key].filter(val => this.tag_dict[tag].indexOf(val) !== -1)
-        if (intersection.length > 0) {
-          for (let tval of intersection) {
-            appTags[this.tag_idx[tag]].tags[tval]++
-          }
+      for (let t of this.state.ids[key]) {
+        var tagset = t.tagset.toUpperCase()
+        console.log(tagset)
+        if (validFilterSets.includes(tagset)) {
+          appTags[this.tag_idx[t.tagset.toUpperCase()]].tags[t.tag]++
         }
       }
+      // let tagset = this.state.ids[key].tagset
+      // let tag = this.state.ids[key].tag
+      // // appTags[this.tag_idx[this.tag_idx[tag]].tags[]]
+      // for (let tag of Object.keys(this.tag_dict)) {
+      //   let intersection = this.state.ids[key].filter(val => this.tag_dict[tag].indexOf(val) !== -1)
+      //   if (intersection.length > 0) {
+      //     for (let tval of intersection) {
+      //       appTags[this.tag_idx[tag]].tags[tval]++
+      //     }
+      //   }
+      // }
     }
     if (shouldDelete) {
       for (let tagset of Object.keys(appTags)) {
@@ -201,7 +212,8 @@ export default class ImageGrid extends React.Component {
         let match = true
         for (let keyset of Object.keys(tagList)) {
           if (keyset !== 'AGE' || (keyset === 'AGE' && tagList[keyset].length > 0)) {
-            let intersection = tagList[keyset].filter(tag => allIds[id].indexOf(tag) !== -1)
+            let relTags = allIds[id].filter(t => t.tagset.toUpperCase() === keyset).map(t => t.tag)
+            let intersection = tagList[keyset].filter(tag => relTags.indexOf(tag) !== -1)
             if (intersection.length <= 0) {
               match = false
               break
