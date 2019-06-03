@@ -13,7 +13,7 @@ def save_datasets():
 #        images = dset.imgs
         f = open(fname, 'w')
         for image in images:
-            ids[int(image.id)] = [tag.tname for tag in image.get_tags()]
+            ids[int(image.id)] = [{tag.tagsets[0]: tag.tname} for tag in image.get_tags()]
         data = json.dumps(ids)
         f.write(data)
         f.close() 
