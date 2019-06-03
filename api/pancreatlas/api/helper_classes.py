@@ -57,7 +57,7 @@ class Image:
         return self.tags
 
     def get_tag_names(self):
-        return [{tag.tagsets[0]: tag.tname} for tag in self.tags]
+        return [{'tagset': tag.tagsets[0], 'tag': tag.tname} for tag in self.tags]
 
     def has_tag(self, tag):
         return tag in self.tags
