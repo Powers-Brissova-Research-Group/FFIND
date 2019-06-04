@@ -37,7 +37,7 @@ export default class DatasetListPage extends React.Component {
                   <div className='dataset-title align-middle'>
                     {/* <h1>Explore the pancreatlas</h1> */}
                     <h1>Explore Image Collections</h1>
-                    <p className='text-larger'>For more information on our data, please visit our <Link to='/nomenclature'>nomenclature page</Link>.</p>
+                    <p className='text-larger'>For more information on our data, please visit our <Link to='/nomenclature' className='link-light'>nomenclature page</Link>.</p>
                   </div>
                 </Col>
                 {/* <Col md='6' className='d-flex align-items-center'>
