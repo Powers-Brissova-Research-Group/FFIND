@@ -7,6 +7,8 @@ import {
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { Link } from 'react-router-dom'
+
 export default class PancreatlasFooter extends React.Component {
   constructor (props) {
     super(props)
@@ -65,7 +67,7 @@ export default class PancreatlasFooter extends React.Component {
               </Row>
               <Row>
                 <Col md='12'>
-                  <p className='version-info'>pancreatlas v{`${process.env.REACT_APP_VERSION}`} | rev. {process.env.REACT_APP_GIT_SHA}</p>
+                  <Link to='/releases'><p className='version-info'>pancreatlas v{`${process.env.REACT_APP_VERSION}`} | rev. {process.env.REACT_APP_GIT_SHA}</p></Link>
                 </Col>
               </Row>
             </Container>

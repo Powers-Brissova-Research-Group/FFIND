@@ -5,60 +5,52 @@ import {
   Col
 } from 'reactstrap'
 
+import PageBanner from './pancreatlas/PageBanner'
+
+import axios from 'axios'
+
 export default class Releases extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      versions: {},
+      loaded: false
+    }
+  }
+
+  componentDidMount () {
+    var releaseNotes = require('./assets/pancreatlas/release_notes')
+    var Remarkable = require('remarkable')
+    var md = new Remarkable()
+    for (let key of Object.keys(releaseNotes)) {
+      axios.get(releaseNotes[key]).then(resp => {
+        var version = key.replace('_', '.')
+        var newVersions = JSON.parse(JSON.stringify(this.state.versions))
+        newVersions[version] = md.render(resp.data)
+        this.setState({ versions: newVersions })
+      })
+    }
+  }
+
   render () {
+    console.log(this.state.versions)
     return (
-      <Container>
-        <Row>
-          <Col md='12'>
-            <h1>pancreatlas Release History</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col md='12'>
-            <h3>Version 1.0 <span className='secondary'>2018-12-10</span></h3>
-          </Col>
-        </Row>
-        <Row>
-          <Col md='12'>
-            <h3>Dataset Name <span className='secondary'>Human Pancreas Development</span></h3>
-          </Col>
-        </Row>
-        <Row>
-          <Col md='12'>
-            <h5>New Features</h5>
-          </Col>
-        </Row>
-        <Row>
-          <Col md='12'>
-            <ol>
-              <li>Created intuitive interface for finding pancreas images</li>
-              <li>Built sorting capability to refine images</li>
-              <li>Added a pairwise comparison of pancreas images</li>
-            </ol>
-          </Col>
-        </Row>
-        <Row>
-          <Col md='12'>
-            <h5>Improvements</h5>
-          </Col>
-        </Row>
-        <Row>
-          <Col md='12'>
-            <p className='secondary'>No Improvements</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col md='12'>
-            <h5>Bug Fixes</h5>
-          </Col>
-        </Row>
-        <Row>
-          <Col md='12'>
-            <p className='secondary'>No Bug Fixes</p>
-          </Col>
-        </Row>
-      </Container >
+      <div className='release-info'>
+        <PageBanner bgColor='#DCDCDC'>
+          <h1>Release History</h1>
+          <p className='text-larger'>Find info about each of our releases here</p>
+        </PageBanner>
+        <Container>
+          {Object.keys(this.state.versions).map(version => {
+            return (
+              <Row>
+                <Col md='12' dangerouslySetInnerHTML={{ __html: this.state.versions[version] }} />
+              </Row>
+            )
+          })}
+        </Container>
+      </div>
     )
   }
 }
