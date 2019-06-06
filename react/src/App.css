@@ -1117,3 +1117,7 @@ a.link-light {
   color: #a8a8a8;
   text-decoration: underline;
 }
+
+.banner-background {
+  margin-bottom: 1.5rem;
+}

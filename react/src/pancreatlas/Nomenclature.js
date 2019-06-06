@@ -13,6 +13,8 @@ import MetaTags from 'react-meta-tags'
 
 import NomenclatureSection from './NomenclatureSection'
 
+import PageBanner from './PageBanner'
+
 export default class Nomenclature extends React.Component {
   constructor (props) {
     super(props)
@@ -41,28 +43,10 @@ export default class Nomenclature extends React.Component {
             </Row>
           </div>
         </Container> */}
-
-        <Parallax
-          blur={0}
-          bgImage={require('../assets/nomenclature-header.jpg')}
-          bgImageAlt='Sample Image'
-          strength={0}
-        >
-          <div className='parallax-filler' style={{ height: '45vh' }}>
-            <Container className='h-100'>
-              <Row className='h-100'>
-                <Col md='12' className='d-flex align-items-center'>
-                  <div className='dataset-title align-middle'>
-                    {/* <h1>Explore the pancreatlas</h1> */}
-                    <h1>Nomenclature</h1>
-                    <p className='text-larger'>Below are descriptions regarding the various annotations we have added to our images</p>
-                  </div>
-                </Col>
-              </Row>
-            </Container>
-          </div>
-        </Parallax>
-
+        <PageBanner image bgImg={require('../assets/nomenclature-header.jpg')}>
+          <h1>Nomenclature</h1>
+          <p className='text-larger'>Below are descriptions regarding the various annotations we have added to our images</p>
+        </PageBanner>
         <Container>
           <Row className='my-4'>
             <ButtonGroup className='mt-4'>
