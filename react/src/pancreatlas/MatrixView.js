@@ -2,8 +2,6 @@ import React from 'react'
 import {
   Button,
   Container,
-  Row,
-  Col,
   Table
 } from 'reactstrap'
 
@@ -15,6 +13,8 @@ import LoadingBar from './LoadingBar'
 import Error from './Error'
 
 import axios from 'axios'
+
+import PageBanner from './PageBanner'
 
 export default class MatrixView extends React.Component {
   constructor (props) {
@@ -87,22 +87,17 @@ export default class MatrixView extends React.Component {
     if (this.state.loaded) {
       if (!this.state.showMatrix) {
         return (
-          <Container>
-            <div className='matrix-view'>
-              <MetaTags>
-                <title>Compare Attributes -- Pancreatlas / HANDEL-P</title>
-                <meta name='description' content='Pick two attribute sets and compare matching images in the pancreatlas' />
-              </MetaTags>
-              <Row>
-                <Col md='12'>
-                  <h1>Matrix View</h1>
-                </Col>
-              </Row>
-              <Row>
-                <Col md='12'>
-                  <p>Select two dimensions to generate a matrix of images based on these filters.</p>
-                </Col>
-              </Row>
+          <div className='matrix-view'>
+            <MetaTags>
+              <title>Compare Attributes -- Pancreatlas / HANDEL-P</title>
+              <meta name='description' content='Pick two attribute sets and compare matching images in the pancreatlas' />
+            </MetaTags>
+            <PageBanner bgColor='#DCDCDC'>
+              <h1>Matrix View</h1>
+              <p className='text-larger'>Select two dimensions to generate a matrix of images based on these filters</p>
+            </PageBanner>
+
+            <Container>
               <div className='table table-responsive'>
                 <Table className='matrix-table'>
                   <thead>
@@ -129,8 +124,8 @@ export default class MatrixView extends React.Component {
                   ))}
                 </Table>
               </div>
-            </div>
-          </Container>
+            </Container>
+          </div>
 
         )
       } else {

@@ -10,6 +10,7 @@ import MetaTags from 'react-meta-tags'
 
 import ImageGrid from './ImageGrid'
 import ImageGridBoundary from './ImageGridBoundary'
+import PageBanner from './PageBanner'
 
 import neonatalTimeline from '../assets/pancreatlas/ages/timeline-neonatal.png'
 import infantTimeline from '../assets/pancreatlas/ages/timeline-infancy.png'
@@ -73,12 +74,11 @@ export default class AgeBrowser extends React.Component {
             <title>Browse Data by Age  -- Pancreatlas / HANDEL-P</title>
             <meta name='description' content='Browse a given dataset by age in the pancreatlas' />
           </MetaTags>
+          <PageBanner bgColor='#DCDCDC'>
+            <h1>Browse Images by Donor Age</h1>
+            <p className='text-larger'>View all images from a specific age group</p>
+          </PageBanner>
           <Container className='age-group-list'>
-            <Row className='pancreatlas-row'>
-              <Col md='12'>
-                <h1>Browse Images by Donor Age</h1>
-              </Col>
-            </Row>
             <Row className='pancreatlas-row'>
               <Col md='3'>
                 <span className='age-group' onClick={() => this.show(0)}>
