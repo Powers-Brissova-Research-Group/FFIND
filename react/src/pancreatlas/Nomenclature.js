@@ -2,12 +2,9 @@ import React from 'react'
 import {
   Container,
   Row,
-  Col,
   Button,
   ButtonGroup
 } from 'reactstrap'
-
-import { Parallax } from 'react-parallax'
 
 import MetaTags from 'react-meta-tags'
 
