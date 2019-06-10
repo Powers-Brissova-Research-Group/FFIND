@@ -605,7 +605,8 @@ span.undo {
 /* original app.css stuff, TODO finish reorganizing */
 
 .v-padded{
-  padding-top: 60px;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .section-heading{
