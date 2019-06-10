@@ -357,6 +357,10 @@ div.card-footer-buttons {
   margin-top: 2.5rem;
 }
 
+.age-group-list > div.last {
+  margin-bottom: 2.5rem;
+}
+
 div.marker-list {
   line-height: 2.5;
 }

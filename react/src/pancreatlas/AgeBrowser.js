@@ -121,7 +121,7 @@ export default class AgeBrowser extends React.Component {
                 {/* <Button color="primary" size="lg" block onClick={() => this.show(3)}>Childhood</Button> */}
               </Col>
             </Row>
-            <Row className='pancreatlas-row view-all-ages'>
+            <Row className='pancreatlas-row view-all-ages last'>
               <Col md={{ size: 8, offset: 2 }}>
                 <Button className='view-all' color='secondary' size='lg' block onClick={() => this.show(4)}>View All Ages</Button>
               </Col>
