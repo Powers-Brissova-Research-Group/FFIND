@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_)s607_b+8av-d0mza4(6)mz)igi31p=sh4h^%$3jr=63djq_c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'pancreapi', 'dev7-api-pancreatlas.app.vumc.org', 'dev8-api-pancreatlas.app.vumc.org', 'staging-api.pancreatlas.org']
 
