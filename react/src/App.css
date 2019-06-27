@@ -1126,3 +1126,7 @@ a.link-light {
 .banner-background {
   margin-bottom: 1.5rem;
 }
+
+img.team-member-img {
+  max-height: 10rem;
+}
