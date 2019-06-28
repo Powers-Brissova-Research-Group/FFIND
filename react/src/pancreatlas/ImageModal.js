@@ -50,7 +50,7 @@ export default class ImageModal extends React.Component {
         this.markers[markerRe.exec(key)[3]] = this.props.modalData.img_data[key].val
       }
       this.relevantKeys = Object.keys(this.props.modalData.img_data).sort().filter(
-        key => ['Stain info - DAPI', 'Stain info - cy2', 'Stain info - cy3', 'Stain info - cy5', 'Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - Pancreas Region'].indexOf(key) === -1
+        key => ['Stain info - DAPI', 'Stain info - cy2', 'Stain info - cy3', 'Stain info - cy5', 'Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis'].indexOf(key) === -1
       )
     }
 
