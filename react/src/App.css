@@ -704,6 +704,10 @@ span.undo {
   color: #204356;
 }
 
+.collaborator-title {
+  font-size: 1.25rem;
+}
+
 .center-row{
   text-align: center;
 }
