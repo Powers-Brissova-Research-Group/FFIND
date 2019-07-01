@@ -22,7 +22,7 @@ export default class DatasetListPage extends React.Component {
         </MetaTags>
         <PageBanner image bgImg={require('../assets/header1.jpg')}>
           <h1>Explore Image Collections</h1>
-          <p className='text-larger'>For more information on our data, please visit our <Link to='/nomenclature' className='link-light'>nomenclature page</Link>.</p>
+          <p className='text-larger'>Collections are organized by specific disease phenotype, biological event, or scientific program. Where possible, we have provided the appropriate citations, tissue processing details, and authorship. All images include metadata in standardized <Link to='/nomenclature' className='link-light'>nomenclature </Link>.</p>
         </PageBanner>
         {/* <Parallax
           blur={0}
