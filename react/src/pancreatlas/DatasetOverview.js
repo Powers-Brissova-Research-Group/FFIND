@@ -62,7 +62,7 @@ export default class DatasetOverview extends React.Component {
             <Container className='h-100'>
               <Row className='h-100'>
                 <Col md='12' className='d-flex align-items-center'>
-                  <span className='dataset-title'><h1><strong>About {this.state.title}</strong></h1>
+                  <span className='dataset-title'><h1><strong>Collection: {this.state.title}</strong></h1>
                     <h3>
                       {this.state.short_desc}
                     </h3>
@@ -83,7 +83,7 @@ export default class DatasetOverview extends React.Component {
               </Row>
               <Row className='mb-4'>
                 <Col md='12'>
-                  <h3>Here are some suggested projections of the data within this set</h3>
+                  <p>Here are some suggested projections of the data within this set:</p>
                 </Col>
               </Row>
               <Row className='mb-4'>

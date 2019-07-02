@@ -29,17 +29,6 @@ export default class About extends React.Component {
               <h1>About Pancreatlas</h1>
               <p> Immunohistochemical analyses have been performed on the human pancreas for over a decade, but until now the field has lacked a central image repository. Pancreatlas was born out of the desire to share full-resolution, multi-channel imaging data – and our hope is that it becomes a practical and useful resource for researchers around the world.</p>
               <p>Images are housed within Collections that are organized by specific disease phenotype, biological event, or scientific program. Where possible, we have provided the appropriate citations, tissue processing details, and authorship. All images include metadata in standardized nomenclature that you can read more about <Link to='/nomenclature'>here</Link>.</p>
-              <h5>Browser Support:</h5>
-              <p>As of the time of writing, we support the following browsers and versions:</p>
-              <ul>
-                <li>Chrome &ge; 55</li>
-                <li>Edge &ge; 14</li>
-                <li>Firefox &ge; 50</li>
-                <li>Opera &ge; 29</li>
-                <li>Safari &ge; 10</li>
-              </ul>
-              <p>We do not support Internet Explorer. Please let it rest in peace.</p>
-
             </Col>
           </Row>
           <Row>
@@ -59,7 +48,7 @@ export default class About extends React.Component {
                   <img className='img-fluid rounded-circle team-member-img' src={require('./assets/pancreatlas/credits/jp.jpg')} alt='JP Cartailler' />
                 </Col>
                 <Col md='8' className='mb-auto mt-auto'>
-                  <h4>JP Cartailler, Ph.D. &bull; <em>Senior Developer</em></h4>
+                  <h4>JP Cartailler, Ph.D. &bull; <em>Chief Technology Officer</em></h4>
                   <p>With an extensive background in database development and experience working with interdisciplinary teams, JP saw the opportunity for this imaging platform and worked tirelessly to make it a reality. In addition to wrangling the necessary IT support and resources to keep everything running smoothly, he provides key leadership in the areas of application development and connectivity.</p>
                 </Col>
               </Row>
@@ -77,7 +66,7 @@ export default class About extends React.Component {
                   <img className='img-fluid rounded-circle team-member-img' src={require('./assets/pancreatlas/credits/marcela.png')} alt='Marcela Brissova' />
                 </Col>
                 <Col md='8' className='mb-auto mt-auto'>
-                  <h4>Marcela Brissova, Ph.D. &bull; <em>Lead Curator</em></h4>
+                  <h4>Marcela Brissova, Ph.D. &bull; <em>Director</em></h4>
                   <p>Marcela’s expertise and leadership in the field of human pancreas and islet biology has been essential to the creation of Pancreatlas. She is the driver of important organizational decisions and overall direction, and she serves as the interface between a number of collaborative efforts to share scientific data and knowledge about the human pancreas.</p>
                 </Col>
               </Row>

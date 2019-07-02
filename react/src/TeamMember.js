@@ -17,7 +17,7 @@ export default class TeamMember extends React.Component {
       <Card className='h-100'>
         <a href={this.props.site}><CardImg top width='100%' src={this.props.imgSrc} /></a>
         <CardBody className='d-flex flex-column'>
-          <CardTitle className='center-row collaborator-title'>{this.props.name}</CardTitle>
+          <CardTitle className='center-row collaborator-title'><h4>{this.props.name}</h4></CardTitle>
           <CardSubtitle className='center-row'>{this.props.institution}</CardSubtitle>
           <CardText className='mt-2'>{this.props.children}</CardText>
         </CardBody>

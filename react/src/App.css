@@ -1134,3 +1134,18 @@ a.link-light {
 img.team-member-img {
   max-height: 10rem;
 }
+
+tr.table-header-row {
+  background-color: rgba(0, 0, 0, 0.075)
+}
+
+td.nomenclature-title {
+  width: 25%;
+}
+
+td.img-cell {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-start
+}

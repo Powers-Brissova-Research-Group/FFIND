@@ -25,7 +25,7 @@ export default class Collaborators extends React.Component {
               <Col md='6'>
                 <h1>Creating Connections</h1>
                 <p style={{ fontSize: '1.5rem' }}>We are cross-pollinating numerous activities and programs to develop new ideas that accelerate diabetes research, education and clinical care.</p>
-                <p style={{ fontSize: '1.5rem' }}>If you are interested in collaborating with us&mdash;either by accessing tissue samples or contributing images&mdash;pease get in touch!</p>
+                <p style={{ fontSize: '1.5rem' }}>If you are interested in collaborating with us&mdash;either by accessing tissue samples or contributing images&mdash;please get in touch!</p>
               </Col>
               <Col md='6'>
                 <img src={MapPicture} alt='Collaborators map' className='img-fill' />
@@ -41,7 +41,7 @@ export default class Collaborators extends React.Component {
             <Row className='mt-2'>
               <Col md='4'>
                 <TeamMember
-                  name='Mark Atkinson'
+                  name='Mark Atkinson, Ph.D.'
                   institution='University of Florida'
                   imgSrc='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/mark-atkinson.jpg'
                   site='https://diabetes.ufl.edu/atkinson-lab/'
@@ -52,7 +52,7 @@ export default class Collaborators extends React.Component {
               </Col>
               <Col md='4'>
                 <TeamMember
-                  name='Rita Bottino'
+                  name='Rita Bottino, Ph.D.'
                   institution='Allegheny Health Network'
                   imgSrc='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/rita-bottino.jpg'
                   site='https://www.ahn.org/research/our-research-institutes/cellular-therapeutics/our-team'
@@ -63,7 +63,7 @@ export default class Collaborators extends React.Component {
               </Col>
               <Col md='4'>
                 <TeamMember
-                  name='Marcela Brissova'
+                  name='Marcela Brissova, Ph.D.'
                   institution='Vanderbilt University'
                   imgSrc='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/marcela-brissova.jpg'
                   site='https://medicine.mc.vanderbilt.edu/person/marcela-brissova-phd'
@@ -76,7 +76,7 @@ export default class Collaborators extends React.Component {
             <Row className='mt-2'>
               <Col md='4'>
                 <TeamMember
-                  name='Seung Kim'
+                  name='Seung Kim, Ph.D.'
                   institution='Stanford University'
                   imgSrc='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/seung-kim.jpg'
                   site='https://seungkimlab.stanford.edu/'
@@ -87,7 +87,7 @@ export default class Collaborators extends React.Component {
               </Col>
               <Col md='4'>
                 <TeamMember
-                  name='Al Powers'
+                  name='Al Powers, M.D.'
                   institution='Vanderbilt University'
                   imgSrc='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/al-powers.jpg'
                   site='https://www.powersresearch.org/'
@@ -98,7 +98,7 @@ export default class Collaborators extends React.Component {
               </Col>
               <Col md='4'>
                 <TeamMember
-                  name='Chris Wright'
+                  name='Chris Wright, Ph.D.'
                   institution='Vanderbilt University'
                   imgSrc='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/chris-wright.jpg'
                   site='https://lab.vanderbilt.edu/wright-lab/'
