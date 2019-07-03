@@ -135,9 +135,11 @@ export default class ImageGrid extends React.Component {
     let validFilterSets = appTags.map(appTag => appTag.set_name)
     for (let key of this.state.matches) {
       for (let t of this.state.ids[key]) {
-        var tagset = t.tagset.toUpperCase()
-        if (validFilterSets.includes(tagset)) {
-          appTags[this.tag_idx[t.tagset.toUpperCase()]].tags[t.tag]++
+        if (t.tagset !== undefined) {
+          var tagset = t.tagset.toUpperCase()
+          if (validFilterSets.includes(tagset)) {
+            appTags[this.tag_idx[t.tagset.toUpperCase()]].tags[t.tag]++
+          }
         }
       }
       // let tagset = this.state.ids[key].tagset
