@@ -3,10 +3,6 @@ import {
   Container
 } from 'reactstrap'
 
-import {
-  Link
-} from 'react-router-dom'
-
 import MetaTags from 'react-meta-tags'
 
 import DatasetList from './DatasetList'
@@ -22,7 +18,7 @@ export default class DatasetListPage extends React.Component {
         </MetaTags>
         <PageBanner image bgImg={require('../assets/header1.jpg')}>
           <h1>Explore Image Collections</h1>
-          <p className='text-larger'>Collections are organized by specific disease phenotype, biological event, or scientific program. Where possible, we have provided the appropriate citations, tissue processing details, and authorship. All images include metadata in standardized <Link to='/nomenclature' className='link-light'>nomenclature </Link>.</p>
+          <p className='text-larger'>Collections are organized by specific disease phenotype, biological event, or scientific program. For more information about a collection’s origin, please click on <em>Collection Details</em>. Appropriate citations and authorship are provided where possible</p>
         </PageBanner>
         {/* <Parallax
           blur={0}

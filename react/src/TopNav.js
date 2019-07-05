@@ -75,7 +75,7 @@ export default class TopNav extends React.Component {
                 <NavLink to='/nomenclature'>Nomenclature</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='/about'>About pancreatlas</NavLink>
+                <NavLink to='/about'>About</NavLink>
               </NavItem>
               <NavItem active={(window.location.pathname === '/collaborators')}>
                 <NavLink to='/collaborators'>Collaborators</NavLink>
