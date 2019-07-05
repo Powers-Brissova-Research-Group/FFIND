@@ -3,11 +3,13 @@ import requests
 import urllib
 import os
 import pprint
+import sys
 # USERNAME = 'api.user'
 # PASSWORD = 'ts6t6r1537k='
 
-def get_image_list():
-    f = open('../../react/src/assets/pancreatlas/image_index.txt', 'r')
+def get_image_list(list_loc):
+    # react\src\assets\pancreatlas\image_index.txt
+    f = open(list_loc, 'r')
     enc = f.readline()
     imgs = json.loads(enc)
     return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
@@ -48,13 +50,13 @@ def get_image_colors(iid, session):
     chdata = [(int(channel['window']['start']), int(channel['window']['end']), channel['color']) for channel in channels]
     return chdata
 
-def save_thumbnail(iid, roi, session):
+def save_thumbnail(iid, roi, session, save_loc):
     chdata = get_image_colors(iid, session)
     if len(chdata) == 3:
         chdata.append((0, 65535, 'FFFFFF'))
     url = 'https://omero.app.vumc.org/webgateway/render_image_region/%s/0/0/?c=1|%s:%s$%s,2|%s:%s$%s,3|%s:%s$%s,4|%s:%s$%s&m=c&region=%s,%s,%s,%s' % (iid, chdata[0][0], chdata[0][1], chdata[0][2], chdata[1][0], chdata[1][1], chdata[1][2], chdata[2][0], chdata[2][1], chdata[2][2], chdata[3][0], chdata[3][1], chdata[3][2], roi[0], roi[1], roi[2], roi[3])
     print url
-    fpath = '../../react/src/assets/pancreatlas/thumbs/%s.jpg' % (iid, )
+    fpath = '%s/%s.jpg' % (save_loc, iid)
     f = open(fpath, 'w')
     r = session.get(url, stream=True)
     if r.status_code == 200:
@@ -88,19 +90,23 @@ def main():
     print "Session successfully generated"
     success = login(token, sesh)
     print "Logged in? %s" % (success, )
+    if (len(sys.argv > 2)):
+        sys.exit("Insufficient arguments provided.")
+    list_loc = sys.argv[0]
+    save_loc = sys.argv[1]
     if success == True:
-        iids = get_image_list()
+        iids = get_image_list(list_loc)
         print len(iids)
         for iid in iids:
             # save_thumbnail(iid, None, sesh)
 			# print 'Saved %s' % (iid, )
             region = get_roi(iid, sesh)
             if region != None:
-               save_thumbnail(iid, region, sesh)
+               save_thumbnail(iid, region, sesh, save_loc)
             else:
                size = get_size(iid, sesh)
                print 'Other: %s' % (size, )
-               save_thumbnail(iid, size, sesh)
+               save_thumbnail(iid, size, sesh, save_loc)
             print 'Saved %s' % (iid, )
 
 if __name__=='__main__':
