@@ -20,7 +20,7 @@ export default class About extends React.Component {
           <meta name='description' content='What is the HANDEL-P project?' />
         </MetaTags>
         {/* <Header heading="About" /> */}
-        <PageBanner bgColor={'#484848'}>
+        <PageBanner image bgImg={require('./assets/about-header.jpg')}>
           <h1>About</h1>
         </PageBanner>
         <Container className='v-padded'>

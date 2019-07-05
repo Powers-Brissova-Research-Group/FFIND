@@ -9,7 +9,8 @@ import {
 } from 'reactstrap'
 
 import {
-  Link
+  Link,
+  withRouter
 } from 'react-router-dom'
 
 import { Parallax } from 'react-parallax'
@@ -18,11 +19,10 @@ import SponsorLogo from '../SponsorLogo'
 
 import axios from 'axios'
 
-export default class DatasetOverview extends React.Component {
+class DatasetOverview extends React.Component {
   constructor (props) {
     super(props)
     let re = /(\/\w+\/?)+([0-9]+)(\/\w+\/?)+/
-
     this.state = {
       title: 'Default Title',
       desc: 'Default desc',
@@ -50,11 +50,15 @@ export default class DatasetOverview extends React.Component {
     })
   }
   render () {
+    var logo = null
+    if (this.state.title.toLowerCase() !== 'default title') {
+      logo = require(`../assets/${this.state.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.jpg`)
+    }
     return (
       <div className='datasetOverviewWrapper'>
         <Parallax
           blur={0}
-          bgImage={require('../assets/header1.jpg')}
+          bgImage={logo}
           bgImageAlt='Sample Image'
           strength={500}
         >
@@ -144,3 +148,5 @@ export default class DatasetOverview extends React.Component {
     )
   }
 }
+
+export default withRouter(DatasetOverview)
