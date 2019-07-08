@@ -90,10 +90,10 @@ def main():
     print "Session successfully generated"
     success = login(token, sesh)
     print "Logged in? %s" % (success, )
-    if (len(sys.argv > 2)):
+    if (len(sys.argv) < 3):
         sys.exit("Insufficient arguments provided.")
-    list_loc = sys.argv[0]
-    save_loc = sys.argv[1]
+    list_loc = sys.argv[1]
+    save_loc = sys.argv[2]
     if success == True:
         iids = get_image_list(list_loc)
         print len(iids)

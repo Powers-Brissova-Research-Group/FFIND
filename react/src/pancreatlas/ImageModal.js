@@ -65,7 +65,7 @@ export default class ImageModal extends React.Component {
                   <div className='modal-image'>
                     <Row>
                       <Col sm='12'>
-                        <a href={this.props.modalData.path_path}><img src={require(`../assets/pancreatlas/thumbs/${this.props.modalData.img_id}.jpg`)} alt={this.props.modalData.img_id} className='modal-image' /></a>
+                        <a href={this.props.modalData.path_path}><img src={`https://dev7-pancreatlas.app.vumc.org/images/${this.props.modalData.img_id}.jpg`} alt={this.props.modalData.img_id} className='modal-image' /></a>
                       </Col>
                     </Row>
                     <Row>
