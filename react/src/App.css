@@ -1149,3 +1149,7 @@ td.img-cell {
   align-items: center;
   justify-content: flex-start
 }
+
+div.loading {
+  min-height: calc(100vh-80px)
+}

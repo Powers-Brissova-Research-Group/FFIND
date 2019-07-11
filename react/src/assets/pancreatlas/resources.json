@@ -1,0 +1,70 @@
+{
+    "resources": [
+        {
+            "title": "ADI IsletCore",
+            "desc": "<p>The IsletCore at the <a href='https://www.ualberta.ca/alberta-diabetes/'>Alberta Diabetes Institute</a> provides human research islets to approximately 100 groups around the world. The Core performs quality control assays on each preparation, with results available to investigators via their online <a href='http://www.isletcore.ca/'>web tool</a>.</p>",
+            "url": "http://www.bcell.org/human-islets.html",
+            "img": "ada-isletcore.png"
+        },
+        {
+            "title": "AMP T2D",
+            "desc": "<p>The <a href='http://www.type2diabetesgenetics.org/informational/about'>AMP type 2 diabetes (AMP T2D)</a> consortium is a collaboration of investigators from around the world focused on type 2 diabetes genetics. Seeking to identify and validate novel molecules and pathways, an important goal of the consortium is to make these data accessible via the Type 2 Diabetes Knowledge Portal.</p>",
+            "url": "http://www.type2diabetesgenetics.org/",
+            "img": "amp-t2d.png"
+        },
+        {
+            "title": "dkNET",
+            "desc": "<p>The NIDDK Information Network (dkNET) serves the needs of basic and clinical investigators by providing seamless access to large pools of data and research resources relevant to the mission of the <a href='https://www.niddk.nih.gov/'>NIDDK</a>.</p>",
+            "url": "http://dknet.org/",
+            "img": "dknet.png"
+        },
+        {
+            "title": "HANDEL-P/I",
+            "desc": "<p>The Human Atlas of the Neonatal Development and Early Life Pancreas and Immune-associated organs (HANDEL-P/I ) project, funded by <a href='https://helmsleytrust.org/'>The Leona M. and Harry B. Helmsley Charitable Trust</a>, is aimed at improving understanding of early processes in human pancreas development to support T1D research, intervention, and ultimately prevention.</p>",
+            "url": "",
+            "img": "HANDEL-PI.jpg"
+        },
+        {
+            "title": "HIPP",
+            "desc": "<p>The Human Islet Phenotyping Program (HIPP), part of <a href='http://iidp.coh.org/'>IIDP</a>, gathers data from U.S. islet distribution centers, performs post-shipment assays on human islet preparations, and disseminates functional information to investigators receiving IIDP islets for research.</p>",
+            "url": "",
+            "img": "hipp.png"
+        },
+        {
+            "title": "HIRN",
+            "desc": "<p>Supported by the NIDDK, the Human Islet Research Network (HIRN) helps organize collaborative research related to the loss of functional beta cell mass in T1D. The project includes various independent research initiatives housed within different <a href='https://hirnetwork.org/consortium'>consortia</a>.</p>",
+            "url": "http://hirnetwork.org/",
+            "img": "hirn.jpg"
+        },
+        {
+            "title": "HPAP/PANC-DB",
+            "desc": "<p>The Human Pancreas Analysis Program (HPAP) is a <a href='http://hirnetwork.org/'>HIRN</a> project with the goal of “deep phenotyping” human endocrine pancreas and immune components to help better understand cellular/molecular events leading to &beta; cell loss in T1D. Its database, <a href='http://hpap.pmacs.upenn.edu/'>PANC-DB</a>, makes datasets available to the broader research community.</p>",
+            "url": "http://hpap.pmacs.upenn.edu/",
+            "img": "HPAP.png"
+        },
+        {
+            "title": "HuBMAP",
+            "desc": "<p>The Human BioMolecular Atlas Program (HuBMAP) aims to facilitate research on single cells within tissues by supporting data generation and technology development to explore the relationship between cellular organization and function, as well as variability in normal tissue organization at the level of individual cells.</p>",
+            "url": "http://commonfund.nih.gov/hubmap",
+            "img": "hubmap.jpg"
+        },
+        {
+            "title": "IIAM",
+            "desc": "<p>The International Institute for the Advancement of Medicine (IIAM) works with organ procurement organizations, tissue banks, and donor families in the U.S. to provide non-transplantable human organs and tissues to qualified medical and scientific professionals around the world.</p>",
+            "url": "http://www.iiam.org/",
+            "img": "IIAM.png"
+        },
+        {
+            "title": "IIDP",
+            "desc": "<p>The NIDDK-funded Integrated Islet Distribution Program (IIDP) coordinates with islet isolation centers across the U.S. to broadcast and distribute human islets to researchers worldwide.</p>",
+            "url": "http://iidp.coh.org/",
+            "img": "IIDP.png"
+        },
+        {
+            "title": "JDRF",
+            "desc": "<p>JDRF works toward a world without T1D by funding research, advocating for government support of research and new therapies, ensuring new therapies come to market, and connecting and engaging the T1D community.</p>",
+            "url": "http://www.jdrf.org/",
+            "img" : "JDRF.png"
+        }
+    ]
+}

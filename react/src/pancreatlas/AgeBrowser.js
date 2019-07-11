@@ -6,6 +6,8 @@ import {
   Button
 } from 'reactstrap'
 
+import axios from 'axios'
+
 import MetaTags from 'react-meta-tags'
 
 import ImageGrid from './ImageGrid'
@@ -64,9 +66,28 @@ export default class AgeBrowser extends React.Component {
     })
   }
 
+  componentDidMount () {
+    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.match.params.did}`, {
+      withCredentials: true,
+      credentials: 'include',
+      headers: {
+        'Authorization': process.env.REACT_APP_API_AUTH
+      }
+    }).then(result => {
+      this.setState({
+        title: result.data.dsname
+      })
+    })
+  }
+
   render () {
     let params = new URLSearchParams(this.props.location.search)
     let browse = !((params.get('browse') === null || params.get('browse').toLowerCase() !== 'true'))
+    var logo = null
+    if (this.state.title !== undefined) {
+      logo = require(`../assets/${this.state.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.jpg`)
+    }
+
     if (!this.state.open && browse === true) {
       return (
         <div className='age-browser'>
@@ -74,7 +95,7 @@ export default class AgeBrowser extends React.Component {
             <title>Browse Data by Age  -- Pancreatlas / HANDEL-P</title>
             <meta name='description' content='Browse a given dataset by age in the pancreatlas' />
           </MetaTags>
-          <PageBanner bgColor='#DCDCDC'>
+          <PageBanner image={logo !== null} bgImg={logo}>
             <h1>Browse Images by Donor Age</h1>
             <p className='text-larger'>View all images from a specific age group</p>
           </PageBanner>

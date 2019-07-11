@@ -33,6 +33,7 @@ import Nomenclature from './pancreatlas/Nomenclature'
 import Favorites from './pancreatlas/Favorites'
 import DatasetOverview from './pancreatlas/DatasetOverview'
 import PageNotFound from './pancreatlas/PageNotFound'
+import Resources from './Resources'
 
 library.add(faLink, faEnvelope, faPhone, faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faBookmarkOutline, faRedo, faBook, faAngleRight, faAngleDown)
 
@@ -166,6 +167,7 @@ class App extends Component {
                 <Route path='/nomenclature' component={Nomenclature} />
                 <Route path={`/favorites`} render={(props) => <Favorites {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
                 <Route path={`/datasets/:did/overview`} component={DatasetOverview} />
+                <Route path='/resources' component={Resources} />
                 <Route component={PageNotFound} />
 
               </Switch>

@@ -12,6 +12,8 @@ import {
   ButtonGroup
 } from 'reactstrap'
 
+import { Link } from 'react-router-dom'
+
 import MetaTags from 'react-meta-tags'
 
 import ImageCard from './ImageCard'
@@ -416,14 +418,19 @@ export default class ImageGrid extends React.Component {
             <Alert color='info'>
               <Row>
                 <Col m='6'>
-                  You are currently viewing <Badge color='info'>{this.state.matches.length}</Badge> out of a possible <Badge color='secondary'>{Object.keys(this.state.ids).length}</Badge> images
+                      You are currently viewing <Badge color='info'>{this.state.matches.length}</Badge> out of a possible <Badge color='secondary'>{Object.keys(this.state.ids).length}</Badge> images
                 </Col>
                 <Col m='6'>
                   <span className='float-right'>Dataset: <strong>{this.state.datasetName}</strong> (ID: {this.props.did})</span>
                 </Col>
               </Row>
               <Row>
-                <Col md='12'>
+                <Col md='6'>
+                  <div className='float-left'>
+                      View more about this collection <Link to={`/datasets/${this.props.did}/overview`}><strong>here</strong></Link>
+                  </div>
+                </Col>
+                <Col md='6'>
                   <div className='density-select float-right'>
                     <strong>Grid Density: </strong>
                     <ButtonGroup>

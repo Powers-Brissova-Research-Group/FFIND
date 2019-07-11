@@ -33,6 +33,18 @@ export default class MatrixView extends React.Component {
   }
 
   componentDidMount () {
+    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.match.params.dsid}`, {
+      withCredentials: true,
+      credentials: 'include',
+      headers: {
+        'Authorization': process.env.REACT_APP_API_AUTH
+      }
+    }).then(result => {
+      this.setState({
+        title: result.data.dsname
+      })
+    })
+
     axios.get(`${process.env.REACT_APP_API_URL}/tagsets`, {
       withCredentials: true,
       credentials: 'include',
@@ -84,6 +96,11 @@ export default class MatrixView extends React.Component {
   }
 
   render () {
+    var logo = null
+    if (this.state.title !== undefined) {
+      logo = require(`../assets/${this.state.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.jpg`)
+    }
+
     if (this.state.loaded) {
       if (!this.state.showMatrix) {
         return (
@@ -92,7 +109,7 @@ export default class MatrixView extends React.Component {
               <title>Compare Attributes -- Pancreatlas / HANDEL-P</title>
               <meta name='description' content='Pick two attribute sets and compare matching images in the pancreatlas' />
             </MetaTags>
-            <PageBanner bgColor='#DCDCDC'>
+            <PageBanner image={logo !== null} bgImg={logo}>
               <h1>Matrix View</h1>
               <p className='text-larger'>Select two dimensions to generate a matrix of images based on these filters</p>
             </PageBanner>

@@ -9,7 +9,7 @@ import {
 export default class LoadingBar extends React.Component {
   render () {
     return (
-      <Container className='loading v-padded'>
+      <Container style={{ minHeight: '100vh' }} className='loading v-padded'>
         <Row>
           <Col md='12'>
             <h4>Loading {this.props.loadingInfo}</h4>

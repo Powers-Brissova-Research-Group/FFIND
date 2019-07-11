@@ -69,7 +69,6 @@ export default class ImageCard extends React.Component {
         let region = {
           [regionKeys[1]]: kvals[regionKeys[1]].val,
           [regionKeys[0]]: kvals[regionKeys[0]].val
-
         }
         for (let key of markerKeys) {
           kvals[key].val.split(',').filter(val => val !== '').map(val => (markers[val.trim()] = markerRe.exec(key)[3]))
