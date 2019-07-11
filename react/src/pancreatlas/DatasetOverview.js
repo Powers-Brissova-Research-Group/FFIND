@@ -81,8 +81,7 @@ class DatasetOverview extends React.Component {
             <Col md='12'>
               <Row className='my-4'>
                 <Col md='12'>
-                  <h3>About this Collection</h3>
-                  <p>{this.state.long_desc}</p>
+                  <div dangerouslySetInnerHTML={{ __html: this.state.long_desc }} />
                 </Col>
               </Row>
               <Row className='mb-4'>

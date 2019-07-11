@@ -33,7 +33,7 @@ export default class Resources extends React.Component {
                     <tr className='mb-4'>
                       {resource.url !== '' && <td><a href={resource.url}><img className='img-fluid' src={require(`./assets/${resource.img}`)} alt={resource.title} /></a></td>}
                       {resource.url === '' && <td><img className='img-fluid' src={require(`./assets/${resource.img}`)} alt={resource.title} /></td>}
-                      <td><h6><strong>{resource.title}</strong></h6><div dangerouslySetInnerHTML={{ __html: resource.desc }} /></td>
+                      <td><h4><strong>{resource.title}</strong></h4><div dangerouslySetInnerHTML={{ __html: resource.desc }} /></td>
                     </tr>
                   )
                 })}
