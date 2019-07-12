@@ -27,7 +27,9 @@ class DatasetOverview extends React.Component {
       title: 'Default Title',
       desc: 'Default desc',
       did: (re.exec(window.location.pathname) !== null) ? re.exec(window.location.pathname)[2] : 0,
-      funders: []
+      funders: [],
+      imgs: [],
+      titleImg: undefined
     }
   }
 
@@ -40,11 +42,15 @@ class DatasetOverview extends React.Component {
       }
     }).then(result => {
       let sponsors = result.data.kvals.funding !== undefined ? result.data.kvals.funding.split(',').map(source => require(`../assets/${source}.jpg`)) : []
+      let imgs = result.data.kvals.imgs !== undefined ? result.data.kvals.imgs.split(',') : []
+      let titleImgData = JSON.parse(result.data.kvals.title_img)
       this.setState({
         title: result.data.dsname,
         short_desc: result.data.kvals.description_short,
         long_desc: result.data.kvals.description_long,
-        funders: sponsors
+        funders: sponsors,
+        imgs: imgs,
+        titleImg: titleImgData
 
       })
     })
@@ -80,8 +86,16 @@ class DatasetOverview extends React.Component {
           <Row className='mb-4'>
             <Col md='12'>
               <Row className='my-4'>
+                <Col md='6'>
+                  <div className='dataset-description' dangerouslySetInnerHTML={{ __html: this.state.long_desc }} />
+                </Col>
+                <Col md='6'>
+                  {this.state.titleImg !== undefined && <a href={this.state.titleImg.url}><img className='img-fluid dataset-picture' src={require(`../assets/pancreatlas/${this.state.did}/${this.state.titleImg.src}`)} alt='' /></a>}
+                </Col>
                 <Col md='12'>
-                  <div dangerouslySetInnerHTML={{ __html: this.state.long_desc }} />
+                  {this.state.imgs.map((img) => {
+                    return <img className='img-fluid dataset-picture' src={require(`../assets/pancreatlas/${this.state.did}/${img}`)} alt='' />
+                  })}
                 </Col>
               </Row>
               <Row className='mb-4'>

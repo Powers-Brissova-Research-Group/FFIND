@@ -1153,3 +1153,11 @@ td.img-cell {
 div.loading {
   min-height: calc(100vh-80px)
 }
+
+div.dataset-description {
+  font-size: 1.25rem;
+}
+
+img.dataset-picture {
+  filter: drop-shadow(2px 4px 4px #000000)
+}

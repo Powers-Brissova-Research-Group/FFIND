@@ -30,8 +30,23 @@ def get_roi(iid, session):
             # print 'checking for thumbnail in image %s' % (str(iid),)
             if 'Name' in roi and roi['Name'] == 'thumbnail':
                 # print 'found for %s' % (str(iid),)
-                gallery_roi = (int(roi['shapes'][0]['X']), int(roi['shapes'][0]['Y']), int(roi['shapes'][0]['Width']), int(roi['shapes'][0]['Height']))
+                if 'Transform' in roi['shapes'][0]:
+                    transform = roi['shapes'][0]['Transform']
+                    matrix = [[transform['A00'], transform['A01'], transform['A02']], [transform['A10'], transform['A11'], transform['A12']]]
+                    coords = (int(roi['shapes'][0]['X']), int(roi['shapes'][0]['Y']))
+                    (x_prime, y_prime) = transform_coords(coords, matrix)
+                    gallery_roi = (x_prime - int(roi['shapes'][0]['Width']), y_prime, int(roi['shapes'][0]['Width']), int(roi['shapes'][0]['Height']))
+                else:
+                    gallery_roi = (int(roi['shapes'][0]['X']), int(roi['shapes'][0]['Y']), int(roi['shapes'][0]['Width']), int(roi['shapes'][0]['Height']))
     return gallery_roi
+
+def transform_coords(coords, matrix):
+    print "Transforming coordinates"
+    x = coords[0]
+    y = coords[1]
+    x_prime = int(matrix[0][0] * x + matrix[0][1] * y + matrix[0][2])
+    y_prime = int(matrix[1][0] * x + matrix[1][1] * y + matrix[1][2])
+    return (x_prime, y_prime)
 
 def get_size(iid, session):
     url = 'https://omero.app.vumc.org/api/v0/m/images/' + iid
