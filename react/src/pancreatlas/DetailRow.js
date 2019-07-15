@@ -25,7 +25,7 @@ export default class DetailRow extends React.Component {
         <tr>
           <td className='image-detail-row'>
             <p className='text-center' id={this.props.heading.split(' ').join('_') + '-tt'}>
-              <Tooltip placement='left' isOpen={this.state.ttOpen} target={this.props.heading.split(' ').join('_') + '-tt'} toggle={this.toggle}>{this.props.desc}</Tooltip>
+              {this.props.desc !== undefined && <Tooltip placement='left' isOpen={this.state.ttOpen} target={this.props.heading.split(' ').join('_') + '-tt'} toggle={this.toggle}>{this.props.desc}</Tooltip>}
               <strong>{this.props.heading}</strong>
             </p>
           </td>
