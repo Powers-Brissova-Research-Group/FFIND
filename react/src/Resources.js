@@ -19,7 +19,7 @@ export default class Resources extends React.Component {
   render () {
     return (
       <div className='resources'>
-        <PageBanner image bgImg={require('./assets/about-header.jpg')}>
+        <PageBanner image bgImg={require('./assets/pancreatlas/headers/resources-header.jpg')}>
           <h1>Resources</h1>
           <p className='text-larger'>Linked below are major organizations and scientific consortia pursuing human pancreas and diabetes research. Please visit their webpages to learn more about how you can get involved.</p>
         </PageBanner>

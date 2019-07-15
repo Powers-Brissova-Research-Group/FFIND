@@ -20,15 +20,16 @@ export default class About extends React.Component {
           <meta name='description' content='What is the Pancreatlas project?' />
         </MetaTags>
         {/* <Header heading="About" /> */}
-        <PageBanner image bgImg={require('./assets/about-header.jpg')}>
+        <PageBanner image bgImg={require('./assets/pancreatlas/headers/about-header.jpg')}>
           <h1>About Pancreatlas</h1>
           <p className='text-larger'>Our goal is to organize and make accessible a subset of the rich, full-resolution images of human pancreas samples. By connecting images from several independent programs and efforts, we have created a practical resource to elevate and accelerate scientific study of the human pancreas.</p>
         </PageBanner>
         <Container className='v-padded'>
           <Row className='mb-4'>
             <Col md='12'>
-              <p> Immunohistochemical analyses have been performed on the human pancreas for over a decade, but until now the field has lacked a central image repository. Pancreatlas was born out of the desire to share full-resolution, multi-channel imaging data – and our hope is that it becomes a practical and useful resource for researchers around the world.</p>
-              <p>Images are housed within Collections that are organized by specific disease phenotype, biological event, or scientific program. Where possible, we have provided the appropriate citations, tissue processing details, and authorship. All images include metadata in standardized nomenclature that you can read more about <Link to='/nomenclature'>here</Link>.</p>
+              <div className='dataset-description'>
+                <p>Images are housed within <Link to='/datasets'>Collections</Link> that are organized by specific disease phenotype, biological event, or scientific program. Where possible, we have provided the appropriate citations, tissue processing details, and authorship. All images include metadata in standardized nomenclature that you can read more about <Link to='/nomenclature'>here</Link>.</p>
+              </div>
             </Col>
           </Row>
         </Container>

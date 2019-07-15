@@ -24,7 +24,7 @@ export default class Collaborators extends React.Component {
           <meta name='description' content='Who is working together to create the HANDEL-P project?' />
         </MetaTags>
         {/* <Header heading="Collaborators" subheading="Creating multi-disciplinary expert groups" /> */}
-        <PageBanner image bgImg={require('./assets/about-header.jpg')}>
+        <PageBanner image bgImg={require('./assets/pancreatlas/headers/collaborators-header.jpg')}>
           <h1>Collaborators</h1>
           <p className='text-larger'>The images displayed in our <Link className='link-light' to='/datasets'>Collections</Link> are the result of team-based efforts around the country. We are grateful to Pancreatlas investigators for their scientific contributions and support of this project.</p>
         </PageBanner>

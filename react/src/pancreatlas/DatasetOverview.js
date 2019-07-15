@@ -82,7 +82,7 @@ class DatasetOverview extends React.Component {
             </Container>
           </div>
         </Parallax>
-        <Container>
+        <Container className='mt-4'>
           <Row className='mb-4'>
             <Col md='12'>
               <Row className='my-4'>
@@ -94,13 +94,13 @@ class DatasetOverview extends React.Component {
                 </Col>
                 <Col md='12'>
                   {this.state.imgs.map((img) => {
-                    return <img className='img-fluid dataset-picture' src={require(`../assets/pancreatlas/${this.state.did}/${img}`)} alt='' />
+                    return <img className='img-fluid' src={require(`../assets/pancreatlas/${this.state.did}/${img}`)} alt='' />
                   })}
                 </Col>
               </Row>
               <Row className='mb-4'>
                 <Col md='12'>
-                  <p>Here are some suggested projections of the data within this set:</p>
+                  <h3>Here are some suggested projections of the data within this set:</h3>
                 </Col>
               </Row>
               <Row className='mb-4'>
@@ -142,7 +142,7 @@ class DatasetOverview extends React.Component {
           </Row>
           <Row className='mb-4'>
             <Col md='12'>
-              <h3>We thank the following sponsors who made gathering these data possible:</h3>
+              <p>We thank the following sponsors who made gathering these data possible:</p>
             </Col>
           </Row>
           <Row className='mb-4'>
