@@ -111,7 +111,7 @@ class TagSetI:
         self.tags = [str(t) for t in tags]
 
     def sort(self):
-        if self.name.upper() == "AGE":
+        if self.name.upper() == "AGE" or self.name.upper() == "DISEASE DURATION":
             # self.tags.sort(self.compare_ages)
             ret = sorted(self.tags, cmp=self.compare_ages)
             return ret

@@ -80,25 +80,25 @@ export default class About extends React.Component {
           </Container>
         </Container>
         <Container>
-          <Row className='mb-4'>
+          <Row className='my-4'>
             <Col md='12'>
               <h1>Credits</h1>
-              <p>Pancreas and islet schematics on the homepage are courtesy of <strong>Rachel Chandler</strong>, a talented biomedical illustrator who worked with our team at Vanderbilt. <strong>Diane Saunders</strong> created the Pancreatlas logo.</p>
-              <p>Pancreatlas depends on the OMERO-Plus software licensed from <a href='https://wwww.glencoesoftware.com'>Glencoe Software</a>. We are especially grateful to <strong>Dr. Jason Swedlow</strong> and <strong>Emil Rozbicki</strong> of Glencoe for their technical expertise and collaboration.</p>
+              <p className='text-larger'>Pancreas and islet schematics on the homepage are courtesy of <strong>Rachel Chandler</strong>, a talented biomedical illustrator who worked with our team at Vanderbilt. <strong>Diane Saunders</strong> created the Pancreatlas logo.</p>
+              <p className='text-larger'>Pancreatlas depends on the OMERO-Plus software licensed from <a href='https://wwww.glencoesoftware.com'>Glencoe Software</a>. We are especially grateful to <strong>Dr. Jason Swedlow</strong> and <strong>Emil Rozbicki</strong> of Glencoe for their technical expertise and collaboration.</p>
             </Col>
           </Row>
         </Container>
         <Container fluid className='shaded'>
           <Container>
             <Row>
-              <Col md='12'>
-                <h1>FAQ</h1>
-                <p><strong>Do I need an account to view/access images?</strong></p>
+              <Col md='12' className='my-4'>
+                <h1 className='my-4'>FAQ</h1>
+                <h5><strong>Do I need an account to view/access images?</strong></h5>
                 <p className='mb-4'>No registration is required to access images. We are committed to making data publicly available.</p>
-                <p><strong>Can I download images for analysis?</strong></p>
+                <h5><strong>Can I download images for analysis?</strong></h5>
                 <p className='mb-4'>At this time, we do not have the capability to offer downloads. If you are interested in seeing this feature added in a future version of Pancreatlas, please send your feedback <a href='mailto:diane.saunders@vumc.org'>here</a>.</p>
-                <p><strong>Can I upload my own images to Pancreatlas?</strong></p>
-                <p>Pancreatlas is a curated resource, and since our goal is to provide a trustworthy reference for human pancreatic architecture, we have chosen to limit content accordingly. If you have images that you feel would be appropriate, we would love to discuss the possibility of including them. Please <a href='mailto:diane.saunders@vumc.org'>get in touch</a> for more information.</p>
+                <h5><strong>Can I upload my own images to Pancreatlas?</strong></h5>
+                <p className='mb-4'>Pancreatlas is a curated resource, and since our goal is to provide a trustworthy reference for human pancreatic architecture, we have chosen to limit content accordingly. If you have images that you feel would be appropriate, we would love to discuss the possibility of including them. Please <a href='mailto:diane.saunders@vumc.org'>get in touch</a> for more information.</p>
               </Col>
             </Row>
           </Container>

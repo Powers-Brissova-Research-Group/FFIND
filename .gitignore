@@ -11,3 +11,5 @@ package-lock.json
 react/.env.development
 react/.env.production
 react/src/gen_tests.py
+
+*.pyc

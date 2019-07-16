@@ -101,16 +101,24 @@ export default class AgeFilterSet extends React.Component {
       CHILDHOOD: 3,
       ADULT: 4
     }
-    this.state = {
-      open: true,
-      ageFilters: [],
-      gestational: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'GESTATIONAL',
-      neonatal: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'NEONATAL',
-      infancy: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'INFANCY',
-      childhood: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'CHILDHOOD',
-      adult: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'ADULT'
+    if (this.props.split) {
+      this.state = {
+        open: true,
+        ageFilters: [],
+        gestational: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'GESTATIONAL',
+        neonatal: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'NEONATAL',
+        infancy: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'INFANCY',
+        childhood: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'CHILDHOOD',
+        adult: this.props.ageGroup === null || this.props.ageGroup.toUpperCase() !== 'ADULT'
+      }
+      this.state['ageGroups'] = this.updateAgeGroups()
+    } else {
+      this.state = {
+        open: true,
+        ageFilters: [],
+        ages: this.props.ages.sort(compareAges)
+      }
     }
-    this.state['ageGroups'] = this.updateAgeGroups()
     this.initialized = false
   }
 
@@ -234,36 +242,54 @@ export default class AgeFilterSet extends React.Component {
 
   render () {
     // let ages = ['G8w', 'G12w', 'G12.3w', 'G15w', 'G15.5w', 'G17w', 'G17.3w', 'G18w', 'G32w', 'G33w', 'G33.4w+4d', 'G37w', 'G39.9w', 'G41w', '1d', '5d', '2mo', '3mo', '10mo', '20mo', '4y', '5y', '10y']
+    if (this.props.split) {
+      return (
+        <div className='age-filter'>
+          <Row className='pancreatlas-row'>
+            <Col md='8' className='text-left'>
+              <h4>{this.props.setName}</h4>
+            </Col>
+            <Col className='text-right' md='4'>
+              <FontAwesomeIcon icon={faAngleRight} className={this.state.open ? 'collapse-button collapse-button-open' : 'collapse-button collapse-button-closed'} onClick={() => this.setState({ open: !this.state.open })} />
+            </Col>
+          </Row>
+          <Collapse isOpened={this.state.open}>
+            {Object.keys(this.state.ageGroups).filter(key => this.state.ageGroups[key].length > 0).map(key => (
+              <div className='group-filter' key={key}>
+                <Row className='pancreatlas-row'>
+                  <Col md='12' className='text-left'>
+                    <FormGroup check>
+                      <Label check>
+                        <Input type='checkbox' checked={!this.state[key]} onChange={evt => this.toggleGroup(evt.target.checked, this.state.ageGroups[key], key)} />{key.charAt(0).toUpperCase() + key.slice(1)}
+                      </Label>
+                    </FormGroup>
+                  </Col>
+                </Row>
+                <AgeFilterItem ages={this.state.ageGroups[key]} group={key} callback={this.updateFilters} allFilters={this.allFilters} currentFilters={this.state.ageFilters} hidden={this.state[key]} />
+              </div>
+            ))}
+          </Collapse>
 
-    return (
-      <div className='age-filter'>
-        <Row className='pancreatlas-row'>
-          <Col md='8' className='text-left'>
-            <h4>AGE</h4>
-          </Col>
-          <Col className='text-right' md='4'>
-            <FontAwesomeIcon icon={faAngleRight} className={this.state.open ? 'collapse-button collapse-button-open' : 'collapse-button collapse-button-closed'} onClick={() => this.setState({ open: !this.state.open })} />
-          </Col>
-        </Row>
-        <Collapse isOpened={this.state.open}>
-          {Object.keys(this.state.ageGroups).filter(key => this.state.ageGroups[key].length > 0).map(key => (
-            <div className='group-filter' key={key}>
-              <Row className='pancreatlas-row'>
-                <Col md='12' className='text-left'>
-                  <FormGroup check>
-                    <Label check>
-                      <Input type='checkbox' checked={!this.state[key]} onChange={evt => this.toggleGroup(evt.target.checked, this.state.ageGroups[key], key)} />{key.charAt(0).toUpperCase() + key.slice(1)}
-                    </Label>
-                  </FormGroup>
-                </Col>
-              </Row>
-              <AgeFilterItem ages={this.state.ageGroups[key]} group={key} callback={this.updateFilters} allFilters={this.allFilters} currentFilters={this.state.ageFilters} hidden={this.state[key]} />
-            </div>
-          ))}
-        </Collapse>
+        </div>
 
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div className='age-filter'>
+          <Row className='pancreatlas-row'>
+            <Col md='8' className='text-left'>
+              <h4>{this.props.setName}</h4>
+            </Col>
+            <Col className='text-right' md='4'>
+              <FontAwesomeIcon icon={faAngleRight} className={this.state.open ? 'collapse-button collapse-button-open' : 'collapse-button collapse-button-closed'} onClick={() => this.setState({ open: !this.state.open })} />
+            </Col>
+          </Row>
+          <Collapse isOpened={this.state.open}>
+            <AgeFilterItem ages={this.state.ages} callback={this.updateFilters} allFilters={this.allFilters} currentFilters={this.state.ageFilters} hidden={false} />
+          </Collapse>
+        </div>
+      )
+    }
   }
 }
 
