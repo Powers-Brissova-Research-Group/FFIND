@@ -22,7 +22,7 @@
             "title": "HANDEL-P/I",
             "desc": "<p>The Human Atlas of the Neonatal Development and Early Life Pancreas and Immune-associated organs (HANDEL-P/I ) project, funded by <a href='https://helmsleytrust.org/'>The Leona M. and Harry B. Helmsley Charitable Trust</a>, is aimed at improving understanding of early processes in human pancreas development to support T1D research, intervention, and ultimately prevention.</p>",
             "url": "",
-            "img": "HANDEL-PI.jpg"
+            "img": "handel-p.jpg"
         },
         {
             "title": "HIPP",
@@ -34,13 +34,13 @@
             "title": "HIRN",
             "desc": "<p>Supported by the NIDDK, the Human Islet Research Network (HIRN) helps organize collaborative research related to the loss of functional beta cell mass in T1D. The project includes various independent research initiatives housed within different <a href='https://hirnetwork.org/consortium'>consortia</a>.</p>",
             "url": "http://hirnetwork.org/",
-            "img": "hirn.jpg"
+            "img": "hirn.png"
         },
         {
             "title": "HPAP/PANC-DB",
             "desc": "<p>The Human Pancreas Analysis Program (HPAP) is a <a href='http://hirnetwork.org/'>HIRN</a> project with the goal of “deep phenotyping” human endocrine pancreas and immune components to help better understand cellular/molecular events leading to &beta; cell loss in T1D. Its database, <a href='http://hpap.pmacs.upenn.edu/'>PANC-DB</a>, makes datasets available to the broader research community.</p>",
             "url": "http://hpap.pmacs.upenn.edu/",
-            "img": "HPAP.png"
+            "img": "hpap.png"
         },
         {
             "title": "HuBMAP",
@@ -52,19 +52,49 @@
             "title": "IIAM",
             "desc": "<p>The International Institute for the Advancement of Medicine (IIAM) works with organ procurement organizations, tissue banks, and donor families in the U.S. to provide non-transplantable human organs and tissues to qualified medical and scientific professionals around the world.</p>",
             "url": "http://www.iiam.org/",
-            "img": "IIAM.png"
+            "img": "iiam.jpg"
         },
         {
             "title": "IIDP",
             "desc": "<p>The NIDDK-funded Integrated Islet Distribution Program (IIDP) coordinates with islet isolation centers across the U.S. to broadcast and distribute human islets to researchers worldwide.</p>",
             "url": "http://iidp.coh.org/",
-            "img": "IIDP.png"
+            "img": "iidp.png"
         },
         {
             "title": "JDRF",
             "desc": "<p>JDRF works toward a world without T1D by funding research, advocating for government support of research and new therapies, ensuring new therapies come to market, and connecting and engaging the T1D community.</p>",
             "url": "http://www.jdrf.org/",
-            "img" : "JDRF.png"
+            "img" : "jdrf.png"
+        },
+        {
+            "title": "NDRI",
+            "desc": "<p>The National Disease Research Interchange (NDRI) partners with organ procurement organizations to recover and distribute donated human organs and tissues for use in research.</p>",
+            "url": "http://ndriresource.org/",
+            "img": "ndri.jpg"
+        },
+        {
+            "title": "nPod",
+            "desc": "Network for Pancreatic Organ Donors with Diabetes (nPOD) is a collaborative T1D research initiative, funded by <a href='http://www.jdrf.org/'>JDRF</a> and <a href='https://helmsleytrust.org/'>The Leona M. and Harry B. Helmsley Charitable Trust</a>, that partners with organ procurement organizations and works to characterize pancreata and related tissues from cadaveric T1D and autoantibody-positive organ donors.",
+            "url": "http://www.jdrfnpod.org/",
+            "img": "npod.jpg"
+        },
+        {
+            "title": "QUOD",
+            "desc": "Quality in Organ Donation (QUOD) is a UK initiative which works to streamline research focusing on improving organ quality in donation and transplantation. QUOD is also creating a national bioresource for biological samples.",
+            "url": "http://www.quod.org.uk/",
+            "img": "quod.png"
+        },
+        {
+            "title": "T1D Exchange",
+            "desc": "Type 1 diabetes (T1D) Exchange is a unique clinical care and research acceleration platform that aims to improve the quality of life for individuals living with T1D. It consists of a clinic research network, a longitudinal clinic registry of T1D patient records, a biorepository of data for scientific analysis, and an online patient and caregiver community.",
+            "url": "http://t1dexchange.org/",
+            "img": "t1d-exchange.png"
+        },
+        {
+            "title": "TrialNet",
+            "desc": "Focused on recruiting patients to clinical trials, Type 1 Diabetes TrialNet is an international network of researchers who are exploring ways to prevent, delay and reverse the progression of type 1 diabetes.",
+            "url": "http://www.trialnet.org",
+            "img": "trialnet.jpg"
         }
     ]
 }

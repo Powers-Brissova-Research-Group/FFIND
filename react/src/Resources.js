@@ -31,8 +31,8 @@ export default class Resources extends React.Component {
                 {resourcesData.resources.map((resource) => {
                   return (
                     <tr className='mb-4'>
-                      {resource.url !== '' && <td><a href={resource.url}><img className='img-fluid' src={require(`./assets/${resource.img}`)} alt={resource.title} /></a></td>}
-                      {resource.url === '' && <td><img className='img-fluid' src={require(`./assets/${resource.img}`)} alt={resource.title} /></td>}
+                      {resource.url !== '' && <td><a href={resource.url}><img className='img-fluid resource-img' src={require(`./assets/pancreatlas/resources_logos/${resource.img}`)} alt={resource.title} /></a></td>}
+                      {resource.url === '' && <td><img className='img-fluid' src={require(`./assets/pancreatlas/resources_logos/${resource.img}`)} alt={resource.title} /></td>}
                       <td><h4><strong>{resource.title}</strong></h4><div dangerouslySetInnerHTML={{ __html: resource.desc }} /></td>
                     </tr>
                   )

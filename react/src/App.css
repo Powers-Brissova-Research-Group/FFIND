@@ -1161,3 +1161,7 @@ div.dataset-description {
 img.dataset-picture {
   filter: drop-shadow(2px 4px 4px #000000)
 }
+
+img.resource-img {
+  max-width: 10rem;
+}
