@@ -141,7 +141,7 @@ class DatasetOverview extends React.Component {
           </Row>
           <Row className='mb-4'>
             <Col md='12'>
-              <p className='text-larger'>{this.state.sponsors}</p>
+              <p dangerouslySetInnerHTML={{ __html: this.state.sponsors }} />
             </Col>
           </Row>
         </Container>
