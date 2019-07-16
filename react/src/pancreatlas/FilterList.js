@@ -143,7 +143,7 @@ export default class FilterList extends React.Component {
           </Row>
           {Object.keys(this.props.tags).map(key => {
             if (this.props.tags[key]['set_name'] === 'AGE') {
-              return (<AgeFilterSet clear={this.state.clear} setName={this.props.tags[key]['set_name']} ageGroup={this.props.ageGroup} className='filter-set' callback={this.setFilters} key={key} ages={Object.keys(this.props.tags[key]['tags'])} filters={this.props.filters['AGE']} />)
+              return (<AgeFilterSet split clear={this.state.clear} setName={this.props.tags[key]['set_name']} ageGroup={this.props.ageGroup} className='filter-set' callback={this.setFilters} key={key} ages={Object.keys(this.props.tags[key]['tags'])} filters={this.props.filters['AGE']} />)
             } else {
               return (<FilterSet clear={this.state.clear} classname='filter-set' setName={this.props.tags[key]['set_name']} tags={this.props.tags[key]['tags']} callback={this.setFilters} key={key} filters={this.props.filters[this.props.tags[key]['set_name']]} />)
             }
