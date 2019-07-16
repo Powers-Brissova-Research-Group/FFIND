@@ -17,7 +17,6 @@ export default class ImageModal extends React.Component {
   constructor (props) {
     super(props)
     this.defs = require('../assets/pancreatlas/definitions.json')
-    this.markers = {}
     this.relevantKeys = {}
     this.state = {
       isFavorite: this.props.modalData !== undefined && this.props.favorites.indexOf(this.props.modalData.img_id) !== -1
@@ -43,11 +42,18 @@ export default class ImageModal extends React.Component {
   render () {
     var tinycolor = require('tinycolor2')
     let labelRe = /^([a-zA-Z]+\s+info)?(\s+-\s+)?(.+)$/
+    var markers = []
     if (this.props.modalData !== undefined) {
       let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
       let matchingKeys = Object.keys(this.props.modalData.img_data).filter(key => markerRe.test(key))
       for (let key of matchingKeys) {
-        this.markers[markerRe.exec(key)[3]] = this.props.modalData.img_data[key].val
+        var chan = markerRe.exec(key)[3].toUpperCase()
+        var val = this.props.modalData.img_data[key].val
+        var clr = this.props.modalData.markerColors[chan] === undefined ? '#FFFFFF' : this.props.modalData.markerColors[chan]
+        markers.push({
+          'val': val,
+          'color': clr
+        })
       }
       this.relevantKeys = Object.keys(this.props.modalData.img_data).sort().filter(
         key => ['Stain info - DAPI', 'Stain info - cy2', 'Stain info - cy3', 'Stain info - cy5', 'Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - File Type', 'Donor info - UNOS ID', 'File path'].indexOf(key) === -1
@@ -71,14 +77,14 @@ export default class ImageModal extends React.Component {
                     <Row>
                       <Col md='12'>
                         <div className='modal-markers'>
-                          {Object.keys(this.markers).filter(key => this.markers[key] !== '').map(key => (
+                          {markers.filter(marker => marker.val !== '').map(marker => (
                             <span
                               className='tag marker'
                               style={{
-                                color: (tinycolor(this.props.modalData.markerColors[key.toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF',
-                                backgroundColor: `#${this.props.modalData.markerColors[key.toUpperCase()]}`
+                                color: (tinycolor(marker.color).isLight()) ? '#000000' : '#FFFFFF',
+                                backgroundColor: `#${marker.color}`
                               }}>
-                              {this.markers[key]}
+                              {marker.val}
                             </span>
                             // <div className={'marker-cell'} style={{ color: (tinycolor(this.props.modalData.markerColors[key.toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.props.modalData.markerColors[key.toUpperCase()]}` }}>
                             //   <p>{this.markers[key]}</p>

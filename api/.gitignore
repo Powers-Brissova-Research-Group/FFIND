@@ -2,3 +2,5 @@ Scripts/
 tcl/
 Include/
 Lib/
+
+*.pyc
