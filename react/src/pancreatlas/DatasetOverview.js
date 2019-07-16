@@ -15,8 +15,6 @@ import {
 
 import { Parallax } from 'react-parallax'
 
-import SponsorLogo from '../SponsorLogo'
-
 import axios from 'axios'
 
 class DatasetOverview extends React.Component {
@@ -50,7 +48,8 @@ class DatasetOverview extends React.Component {
         long_desc: result.data.kvals.description_long,
         funders: sponsors,
         imgs: imgs,
-        titleImg: titleImgData
+        titleImg: titleImgData,
+        sponsors: result.data.kvals.sponsor_text
 
       })
     })
@@ -83,7 +82,7 @@ class DatasetOverview extends React.Component {
           </div>
         </Parallax>
         <Container className='mt-4'>
-          <Row className='mb-4'>
+          <Row className='mb-4 mt-4'>
             <Col md='12'>
               <Row className='my-4'>
                 <Col md='6'>
@@ -98,12 +97,12 @@ class DatasetOverview extends React.Component {
                   })}
                 </Col>
               </Row>
-              <Row className='mb-4'>
+              <Row className='my-4'>
                 <Col md='12'>
-                  <h3>Here are some suggested projections of the data within this set:</h3>
+                  <h3 className='mt-4'>Here are some suggested projections of the data within this set:</h3>
                 </Col>
               </Row>
-              <Row className='mb-4'>
+              <Row className='my-4'>
                 <Col md='4'>
                   <Card className='h-100'>
                     <CardBody>
@@ -142,19 +141,8 @@ class DatasetOverview extends React.Component {
           </Row>
           <Row className='mb-4'>
             <Col md='12'>
-              <p>We thank the following sponsors who made gathering these data possible:</p>
+              <p className='text-larger'>{this.state.sponsors}</p>
             </Col>
-          </Row>
-          <Row className='mb-4'>
-            <div className='overview-sponsors'>
-              {this.state.funders.map(funder => (
-                <SponsorLogo imgSrc={funder} name='Sponsor Logo' location='http://example.com' size='large' />
-              // <Col md='4'>
-              //   <img src={funder} alt='Sponsor Logo' />
-              // </Col>
-              ))}
-            </div>
-
           </Row>
         </Container>
       </div>
