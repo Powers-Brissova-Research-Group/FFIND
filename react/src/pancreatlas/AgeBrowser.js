@@ -109,7 +109,7 @@ export default class AgeBrowser extends React.Component {
                   </span>
                 </span>
               </Col> */}
-              <Col md='12 d-flex flex-row justify-content-around'>
+              <Col md='12 d-flex flex-row justify-content-between'>
                 <span className='age-group' onClick={() => this.show(1)}>
                   <span className='age-group-text'>Neonatal<br /><small>Birth &ndash; 2 months</small></span>
                   <span className='age-group-imgs'>
@@ -137,7 +137,7 @@ export default class AgeBrowser extends React.Component {
               </Col>
             </Row>
             <Row className='pancreatlas-row view-all-ages last'>
-              <Col md={{ size: 8, offset: 2 }}>
+              <Col md='12'>
                 <Button className='view-all' color='secondary' size='lg' block onClick={() => this.show(4)}>View All Ages</Button>
               </Col>
             </Row>
