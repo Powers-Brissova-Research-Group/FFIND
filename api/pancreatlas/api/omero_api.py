@@ -286,12 +286,16 @@ def generate_image_matrix_from_ds(tagset_a, tagset_b, dsid):
 
     for (img_id, img_tags) in imgs.iteritems():
         tags = [img['tag'] for img in img_tags]
-        a_tags = intersection([set(img_tags), set(group_a)])
-        b_tags = intersection([set(img_tags), set(group_b)])
+        a_tags = intersection([set(tags), set(group_a)])
+        b_tags = intersection([set(tags), set(group_b)])
         if(len(a_tags) > 0 and len(b_tags) > 0):
             for a_tag in a_tags:
+                matches = 0
                 for b_tag in b_tags:
                     matrix[a_tag][b_tag].append(str(img_id))
+                    matches += 1
+                if matches == 0:
+                    del matrix[a_ta]
 
     return matrix
 
