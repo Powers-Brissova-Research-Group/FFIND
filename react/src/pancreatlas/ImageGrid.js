@@ -164,6 +164,9 @@ export default class ImageGrid extends React.Component {
             delete this.raw_tags[tagset].tags[tag]
           }
         }
+        if (Object.keys(appTags[tagset].tags).length <= 0) {
+          delete appTags[tagset]
+        }
       }
     }
     this.setState({
@@ -358,7 +361,7 @@ export default class ImageGrid extends React.Component {
                     You are currently viewing <Badge color='info'>{this.state.matches.length}</Badge> out of a possible <Badge color='secondary'>{Object.keys(this.state.ids).length}</Badge> images
                   </Col>
                   <Col m='6'>
-                    <span className='float-right'>Dataset: <strong>{this.state.datasetName}</strong> (ID: {this.props.did})</span>
+                    <span className='float-right'>Dataset: <strong>{this.state.datasetName}</strong></span>
                   </Col>
                 </Row>
               </Alert>
@@ -421,13 +424,13 @@ export default class ImageGrid extends React.Component {
                       You are currently viewing <Badge color='info'>{this.state.matches.length}</Badge> out of a possible <Badge color='secondary'>{Object.keys(this.state.ids).length}</Badge> images
                 </Col>
                 <Col m='6'>
-                  <span className='float-right'>Dataset: <strong>{this.state.datasetName}</strong> (ID: {this.props.did})</span>
+                  <span className='float-right'>Dataset: <strong>{this.state.datasetName}</strong></span>
                 </Col>
               </Row>
               <Row>
                 <Col md='6'>
                   <div className='float-left'>
-                      View more about this collection <Link to={`/datasets/${this.props.did}/overview`}><strong>here</strong></Link>
+                      View more about this dataset <Link to={`/datasets/${this.props.did}/overview`}><strong>here</strong>.</Link>
                   </div>
                 </Col>
                 <Col md='6'>
