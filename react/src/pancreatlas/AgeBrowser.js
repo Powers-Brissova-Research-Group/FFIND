@@ -22,6 +22,25 @@ import neonatalIslet from '../assets/pancreatlas/ages/neonatal-islet.png'
 import infantIslet from '../assets/pancreatlas/ages/infant-islet.png'
 import childhoodIslet from '../assets/pancreatlas/ages/childhood-islet.png'
 
+var ageGroups = {
+  'neonatal': {
+    'start': 'Birth',
+    'end': '2 months'
+  },
+  'infancy': {
+    'start': '2 months',
+    'end': '24 months'
+  },
+  'childhood': {
+    'start': '2 years',
+    'end': '10 years'
+  },
+  'adult': {
+    'start': '10 years',
+    'end': null
+  }
+}
+
 export default class AgeBrowser extends React.Component {
   constructor (props) {
     super(props)
@@ -29,7 +48,8 @@ export default class AgeBrowser extends React.Component {
       open: false,
       tags: undefined,
       groupName: null,
-      group: 4
+      group: 4,
+      ages: []
     }
     this.show = this.show.bind(this)
   }
@@ -74,7 +94,8 @@ export default class AgeBrowser extends React.Component {
       }
     }).then(result => {
       this.setState({
-        title: result.data.dsname
+        title: result.data.dsname,
+        ages: result.data.kvals.ages.split(',')
       })
     })
   }
@@ -110,14 +131,26 @@ export default class AgeBrowser extends React.Component {
                 </span>
               </Col> */}
               <Col md='12 d-flex flex-row justify-content-between'>
-                <span className='age-group' onClick={() => this.show(1)}>
+                {this.state.ages.map((age) => {
+                  return (
+                    <span className='age-group'>
+                      <span className='age-group-text'>{age}<br />{`${ageGroups[age].start} - ${ageGroups[age].end}`}</span>
+                      <span className='age-group-imgs'>
+                        <img className='age-group-img islet' src={neonatalIslet} alt='' />
+                        <img className='age-group-img' src={neonatalTimeline} alt='' />
+
+                      </span>
+                    </span>
+                  )
+                })
+                }
+                {/* <span className='age-group' onClick={() => this.show(1)}>
                   <span className='age-group-text'>Neonatal<br /><small>Birth &ndash; 2 months</small></span>
                   <span className='age-group-imgs'>
                     <img className='age-group-img islet' src={neonatalIslet} alt='neonatal islet' />
                     <img className='age-group-img' src={neonatalTimeline} alt='neonatal' />
                   </span>
                 </span>
-                {/* <Button color="primary" size="lg" block onClick={() => this.show(1)}>Neonatal</Button> */}
                 <span className='age-group' onClick={() => this.show(2)}>
                   <span className='age-group-text'>Infant<br /><small>2 months &ndash; 24 months</small></span>
                   <span className='age-group-imgs'>
@@ -125,14 +158,13 @@ export default class AgeBrowser extends React.Component {
                     <img className='age-group-img' src={infantTimeline} alt='infant' />
                   </span>
                 </span>
-                {/* <Button color="primary" size="lg" block onClick={() => this.show(2)}>Infant</Button> */}
                 <span className='age-group' onClick={() => this.show(3)}>
                   <span className='age-group-text'>Childhood<br /><small>2 years &ndash; 10 years</small></span>
                   <span className='age-group-imgs'>
                     <img className='age-group-img islet' src={childhoodIslet} alt='childhood islet' />
                     <img className='age-group-img' src={childhoodTimeline} alt='childhood' />
                   </span>
-                </span>
+                </span> */}
                 {/* <Button color="primary" size="lg" block onClick={() => this.show(3)}>Childhood</Button> */}
               </Col>
             </Row>
