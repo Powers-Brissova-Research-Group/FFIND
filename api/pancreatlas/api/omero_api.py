@@ -285,6 +285,7 @@ def generate_image_matrix_from_ds(tagset_a, tagset_b, dsid):
     imgs = json.loads(json_str)
 
     for (img_id, img_tags) in imgs.iteritems():
+        tags = [img['tag'] for img in img_tags]
         a_tags = intersection([set(img_tags), set(group_a)])
         b_tags = intersection([set(img_tags), set(group_b)])
         if(len(a_tags) > 0 and len(b_tags) > 0):

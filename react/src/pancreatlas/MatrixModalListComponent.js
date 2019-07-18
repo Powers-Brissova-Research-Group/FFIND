@@ -72,7 +72,7 @@ export default class MatrixModalListComponent extends React.Component {
     if (this.state.loaded === true) {
       return (
         <tr>
-          <td><img className='modal-thumb' src={require(`./../assets/pancreatlas/thumbs/${this.state.img.iid}.jpg`)} alt='' /></td>
+          <td><img className='modal-thumb' src={`https://dev7-pancreatlas.app.vumc.org/images/${this.state.img.iid}.jpg`} alt='' /></td>
           <td>
             {Object.keys(this.state.img.donor).map(key =>
               (<div>
@@ -80,7 +80,7 @@ export default class MatrixModalListComponent extends React.Component {
               </div>))}
             <div><strong>Markers: </strong>{Object.keys(this.state.img.markers).join(', ')}</div>
             <div><strong>Region: </strong>{Object.values(this.state.img.region).join(', ')}</div>
-            <div><strong>Other Tags: </strong>{this.state.img.tags.filter(tag => Object.keys(this.state.img.markers).indexOf(tag) === -1 && Object.values(this.state.img.donor).indexOf(tag) === -1 && Object.values(this.state.img.region).indexOf(tag) === -1).join(', ')}
+            <div><strong>Other Tags: </strong>{this.state.img.tags.filter(tag => Object.keys(this.state.img.markers).indexOf(tag) === -1 && Object.values(this.state.img.donor).indexOf(tag) === -1 && Object.values(this.state.img.region).indexOf(tag) === -1).map(tag => tag.tag).join(', ')}
             </div>
           </td>
           { /* onClick={() => this.setModal(this.state.img.iid)} */}
