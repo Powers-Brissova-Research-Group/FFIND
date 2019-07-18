@@ -244,7 +244,7 @@ export default class AgeFilterSet extends React.Component {
     // let ages = ['G8w', 'G12w', 'G12.3w', 'G15w', 'G15.5w', 'G17w', 'G17.3w', 'G18w', 'G32w', 'G33w', 'G33.4w+4d', 'G37w', 'G39.9w', 'G41w', '1d', '5d', '2mo', '3mo', '10mo', '20mo', '4y', '5y', '10y']
     if (this.props.split) {
       return (
-        <div className='age-filter'>
+        <div className='age-filter filter-set'>
           <Row className='pancreatlas-row'>
             <Col md='8' className='text-left'>
               <h4>{this.props.setName}</h4>

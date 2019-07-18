@@ -53,8 +53,8 @@ export default class About extends React.Component {
                     <img className='img-fluid rounded-circle team-member-img' src={require('./assets/pancreatlas/credits/jp.jpg')} alt='JP Cartailler' />
                   </Col>
                   <Col md='8' className='mb-auto mt-auto'>
-                    <h4>JP Cartailler, Ph.D. &bull; <em>Chief Technology Officer</em></h4>
-                    <p>With an extensive background in database development and experience working with interdisciplinary teams, JP saw the opportunity for this imaging platform and worked tirelessly to make it a reality. In addition to wrangling the necessary IT support and resources to keep everything running smoothly, he provides key leadership in the areas of application development and connectivity.</p>
+                    <h4>JP Cartailler, Ph.D. &bull; <em>Directory, Creative Database Solutions</em></h4>
+                    <p>With an extensive background in systems development and bioinformatics, JP helped envision the multidisciplinary opportunity for this imaging platform and worked tirelessly to make it a reality. In addition to wrangling the necessary IT infrastructure  to provide a flexible and scalable environment, he provides key leadership in the areas of application development and systems integration.</p>
                   </Col>
                 </Row>
                 <Row className='mb-4'>
@@ -84,7 +84,7 @@ export default class About extends React.Component {
             <Col md='12'>
               <h1>Credits</h1>
               <p className='text-larger'>Pancreas and islet schematics on the homepage are courtesy of <strong>Rachel Chandler</strong>, a talented biomedical illustrator who worked with our team at Vanderbilt. <strong>Diane Saunders</strong> created the Pancreatlas logo.</p>
-              <p className='text-larger'>Pancreatlas depends on the OMERO-Plus software licensed from <a href='https://wwww.glencoesoftware.com'>Glencoe Software</a>. We are especially grateful to <strong>Dr. Jason Swedlow</strong> and <strong>Emil Rozbicki</strong> of Glencoe for their technical expertise and collaboration.</p>
+              <p className='text-larger'>Pancreatlas depends on the OMERO-Plus and PathViewer software licensed from <a href='https://wwww.glencoesoftware.com'>Glencoe Software</a>. We are especially grateful to <strong>Dr. Jason Swedlow</strong> and <strong>Emil Rozbicki</strong> of Glencoe for their technical expertise and collaboration.</p>
             </Col>
           </Row>
         </Container>
