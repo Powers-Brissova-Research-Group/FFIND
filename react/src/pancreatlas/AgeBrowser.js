@@ -14,13 +14,13 @@ import ImageGrid from './ImageGrid'
 import ImageGridBoundary from './ImageGridBoundary'
 import PageBanner from './PageBanner'
 
-import neonatalTimeline from '../assets/pancreatlas/ages/timeline-neonatal.png'
-import infantTimeline from '../assets/pancreatlas/ages/timeline-infancy.png'
-import childhoodTimeline from '../assets/pancreatlas/ages/timeline-childhood.png'
+// import neonatalTimeline from '../assets/pancreatlas/ages/timeline-neonatal.png'
+// import infantTimeline from '../assets/pancreatlas/ages/timeline-infancy.png'
+// import childhoodTimeline from '../assets/pancreatlas/ages/timeline-childhood.png'
 
-import neonatalIslet from '../assets/pancreatlas/ages/neonatal-islet.png'
-import infantIslet from '../assets/pancreatlas/ages/infant-islet.png'
-import childhoodIslet from '../assets/pancreatlas/ages/childhood-islet.png'
+// import neonatalIslet from '../assets/pancreatlas/ages/neonatal-islet.png'
+// import infantIslet from '../assets/pancreatlas/ages/infant-islet.png'
+// import childhoodIslet from '../assets/pancreatlas/ages/childhood-islet.png'
 
 var ageGroups = {
   'neonatal': {
@@ -55,32 +55,32 @@ export default class AgeBrowser extends React.Component {
   }
 
   show (ages) {
-    let filters = { AGE: null }
-    let gname = null
-    switch (ages) {
-      case 0:
-        gname = 'GESTATIONAL'
-        filters['AGE'] = ['G12w', 'G12.3w', 'G15w', 'G15.5w', 'G17w', 'G17.3w', 'G18w', 'G33w', 'G34.4w+4d', 'G37w', 'G39.9w', 'G41w']
-        break
-      case 1:
-        gname = 'NEONATAL'
-        filters['AGE'] = ['1d', '5d', '10mo', '2mo', '3mo']
-        break
-      case 2:
-        gname = 'INFANCY'
-        filters['AGE'] = ['20mo', '10y', '4y', '5y']
-        break
-      case 3:
-        gname = 'CHILDHOOD'
-        break
-      default:
-        gname = null
-        break
-    }
+    // let filters = { AGE: null }
+    // let gname = ages
+    // switch (ages) {
+    //   case 'NEONATAL':
+    //     gname = 'GESTATIONAL'
+    //     filters['AGE'] = ['G12w', 'G12.3w', 'G15w', 'G15.5w', 'G17w', 'G17.3w', 'G18w', 'G33w', 'G34.4w+4d', 'G37w', 'G39.9w', 'G41w']
+    //     break
+    //   case 1:
+    //     gname = 'NEONATAL'
+    //     filters['AGE'] = ['1d', '5d', '10mo', '2mo', '3mo']
+    //     break
+    //   case 2:
+    //     gname = 'INFANCY'
+    //     filters['AGE'] = ['20mo', '10y', '4y', '5y']
+    //     break
+    //   case 3:
+    //     gname = 'CHILDHOOD'
+    //     break
+    //   default:
+    //     gname = null
+    //     break
+    // }
     this.setState({
       open: true,
       group: ages,
-      groupName: gname,
+      groupName: ages,
       tags: {}
     })
   }
@@ -112,7 +112,7 @@ export default class AgeBrowser extends React.Component {
       return (
         <div className='age-browser'>
           <MetaTags>
-            <title>Browse Data by Age  -- Pancreatlas / HANDEL-P</title>
+            <title>Browse Data by Age -- Pancreatlas</title>
             <meta name='description' content='Browse a given dataset by age in the pancreatlas' />
           </MetaTags>
           <PageBanner image={logo !== null} bgImg={logo}>
@@ -133,11 +133,11 @@ export default class AgeBrowser extends React.Component {
               <Col md='12 d-flex flex-row justify-content-between'>
                 {this.state.ages.map((age) => {
                   return (
-                    <span className='age-group'>
-                      <span className='age-group-text'>{age}<br />{`${ageGroups[age].start} - ${ageGroups[age].end}`}</span>
+                    <span className='age-group' onClick={() => this.show(age.toUpperCase())}>
+                      <span className='age-group-text'>{`${age.charAt(0).toUpperCase()}${age.slice(1).toLowerCase()}`}<br />{`${ageGroups[age].start} - ${ageGroups[age].end}`}</span>
                       <span className='age-group-imgs'>
-                        <img className='age-group-img islet' src={neonatalIslet} alt='' />
-                        <img className='age-group-img' src={neonatalTimeline} alt='' />
+                        <img className='age-group-img islet' src={require(`../assets/pancreatlas/ages/${age}-islet.png`)} alt='' />
+                        <img className='age-group-img' src={require(`../assets/pancreatlas/ages/timeline-${age}.png`)} alt='' />
 
                       </span>
                     </span>
