@@ -141,9 +141,14 @@ export default class ImageMatrix extends React.Component {
           }
           newMatrixT[tag2][tag1] = []
           newMatrix[tag1][tag2] = []
-          for (let imgId of m[tag1][tag2]) {
-            newMatrix[tag1][tag2].push(imgId)
-            newMatrixT[tag2][tag1].push(imgId)
+          if (tag2 in m[tag1]) {
+            for (let imgId of m[tag1][tag2]) {
+              newMatrix[tag1][tag2].push(imgId)
+              newMatrixT[tag2][tag1].push(imgId)
+            }
+          } else {
+            newMatrix[tag1][tag2] = []
+            newMatrixT[tag2][tag1] = []
           }
         }
       }
