@@ -414,6 +414,8 @@ span.marker {
 }
 
 th.matrix-cell {
+  width: 150px;
+  max-width: 150px !important;
   text-align: center;
 
 }
@@ -659,7 +661,7 @@ span.undo {
   text-align: left;
   color: white;
   text-shadow: 1px 1px 5px #333;
-  font-size: 368%;
+  font-size: 275%;
   font-weight: 700;
 }
 

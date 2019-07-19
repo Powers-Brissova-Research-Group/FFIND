@@ -85,12 +85,12 @@ export default class Home extends React.Component {
                 <h4>This project is generously supported by <a href='https://helmsleytrust.org'>The Leona M. and Harry B. Helmsley Charitable Trust</a>.</h4>
               </Col>
             </Row>
-            <Row className='center-row my-4'>
+            <Row className='center-row my-4 pt-4'>
               <Col sm='12'>
                 <h4>We also thank the following:</h4>
               </Col>
             </Row>
-            <Row className='justify-content-around my-4'>
+            <Row className='justify-content-around my-4 pb-4'>
               <Col md='12' className='d-flex justify-content-center'>
                 <SponsorLogo location='https://www.iiam.org/' name='IIAM' imgSrc={IIAM} size='small' />
                 <SponsorLogo location='https://ndriresource.org/' name='NDRI' imgSrc={NDRI} size='small' />
