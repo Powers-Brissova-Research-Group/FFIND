@@ -28,14 +28,13 @@ export default class PancreatlasFooter extends React.Component {
           <Container>
             <Row className='v-padded'>
               <Col md='6'>
-                <h3>About Us</h3>
-                <p>Our investigators are studying dynamic changes in the human pancreas and islets from birth to adulthood, in health and disease. Through detailed analysis of donor tissue, we hope to better understand events that trigger type 1 and type 2 diabetes. This website&mdash;an “atlas” of our findings&mdash;is designed to engage scientists worldwide and accelerate the discoveries in diabetes research.</p>
-                <p>Supported by <b><a href='http://www.helmsleytrust.org'>The Leona M. and Harry B. Helmsley Charitable Trust</a></b>, <a href='https://www.jdrfnpod.org'>nPOD</a>, <a href='http://www.hirnetwork.org'>HIRN</a>, <a href='http://www.jdrf.org'>JDRF</a>, <a href='http://www.iiam.org'>IIAM</a>, <a href='http://www.ndri.org'>NDRI</a>, <a href='https://iidp.coh.org'>IIDP</a>, <a href='https://www.nih.gov'>NIH</a>, <a href='http://www.research.va.gov'>VA</a>, and <a href='https://www.mc.vanderbilt.edu'>VUMC</a>.</p>
+                <p>Pancreatlas&trade; is an online resource that houses reference datasets from human pancreas samples, achieved through the generosity of organ donors and their families.</p>
+                <p>This website is supported by <strong><a href='http://www.helmsleytrust.org'>The Leona M. and Harry B. Helmsley Charitable Trust</a></strong>, <a href='https://www.jdrfnpod.org'>nPOD</a>, <a href='http://www.hirnetwork.org'>HIRN</a>, <a href='http://www.jdrf.org'>JDRF</a>, <a href='http://www.iiam.org'>IIAM</a>, <a href='http://www.ndri.org'>NDRI</a>, <a href='https://iidp.coh.org'>IIDP</a>, <a href='https://www.nih.gov'>NIH</a>, <a href='http://www.research.va.gov'>VA</a>, and <a href='https://www.mc.vanderbilt.edu'>VUMC</a>.</p>
               </Col>
 
               <Col className='float-right' md='6'>
                 <div className='float-right'>
-                  <h2 className='get-in-touch'>Get in touch</h2>
+                  <h2 className='get-in-touch'>Contact Us</h2>
                   <p>
                   Vanderbilt University Medical Center<br />
                   8435F Medical Research Bldg IV<br />

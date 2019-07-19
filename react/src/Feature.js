@@ -17,7 +17,7 @@ export default class Feature extends React.Component {
               <FontAwesomeIcon size='2x' icon={this.props.icon} className='feature-icon' />
             </Col>
             <Col sm='10'>
-              <Row className='feature-header-row'><h6>{this.props.heading}</h6></Row>
+              <Row className='feature-header-row'><h5>{this.props.heading}</h5></Row>
               <Row className='feature-body-row'><p className='text-larger'>{this.props.description}</p></Row>
             </Col>
           </Row>

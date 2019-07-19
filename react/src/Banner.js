@@ -161,8 +161,8 @@ export default class Banner extends React.Component {
           <Row style={{ height: '33%' }} />
           <Row style={{ height: '33%' }}>
             <Col md='7'>
-              <h1 className='banner-header'>We study the human pancreas and islets from birth to adulthood.</h1>
-              <h4 className='banner-subheader-left'>We are building a practical resource for assembling and sharing data from human pancreas samples.</h4>
+              <h1 className='banner-header'>We study dynamic changes of the human pancreas from birth to adulthood, in health and disease.</h1>
+              <h4 className='banner-subheader-left'>This platform is a practical resource to share data from human pancreas samples.</h4>
               {/* <Link to='/datasets'><Button className='banner-btn'color='info'size='lg' block>View our Collections</Button></Link> */}
             </Col>
 

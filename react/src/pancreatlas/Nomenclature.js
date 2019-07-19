@@ -42,7 +42,7 @@ export default class Nomenclature extends React.Component {
         </Container> */}
         <PageBanner image bgImg={require('../assets/pancreatlas/headers/nomenclature-header.jpg')}>
           <h1>Nomenclature</h1>
-          <p className='text-larger'>Images contain 'tags' or <em>metadata</em> that describe both the tissue sample (donor age, sex, disease phenotype, etc.) and the experimental modality (antigens visualized, imaging technology). Please refer to the tables below for descriptions of these attributes.</p>
+          <p className='text-larger'>Images contain metadata or "tags" that describe both the tissue sample (donor age, sex, disease phenotype, etc.) and the experimental modality (antigens visualized, imaging technology). Please refer to the tables below for descriptions of these attributes.</p>
         </PageBanner>
         <Container>
           <Row className='my-4'>

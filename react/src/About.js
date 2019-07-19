@@ -22,13 +22,13 @@ export default class About extends React.Component {
         {/* <Header heading="About" /> */}
         <PageBanner image bgImg={require('./assets/pancreatlas/headers/about-header.jpg')}>
           <h1>About Pancreatlas</h1>
-          <p className='text-larger'>Our goal is to organize and make accessible a subset of the rich, full-resolution images of human pancreas samples. By connecting images from several independent programs and efforts, we have created a practical resource to elevate and accelerate scientific study of the human pancreas.</p>
+          <p className='text-larger'>Our goal is to organize and make accessible full-resolution images from a diverse array of human pancreas samples. By connecting images from several independent programs and efforts, we have created a practical resource to elevate and accelerate scientific study of the human pancreas.</p>
         </PageBanner>
         <Container className='v-padded'>
           <Row className='mb-4'>
             <Col md='12'>
               <div className='dataset-description'>
-                <p>Images are housed within <Link to='/datasets'>Collections</Link> that are organized by specific disease phenotype, biological event, or scientific program. Where possible, we have provided the appropriate citations, tissue processing details, and authorship. All images include metadata in standardized nomenclature that you can read more about <Link to='/nomenclature'>here</Link>.</p>
+                <p>Images are housed within <Link to='/datasets'>Collections</Link> that are organized by specific disease phenotype, biological event, or scientific program. Where possible, we have provided the appropriate citations, tissue processing details, and authorship. All images include metadata in standardized nomenclature, which you can read more about <Link to='/nomenclature'>here</Link>.</p>
               </div>
             </Col>
           </Row>

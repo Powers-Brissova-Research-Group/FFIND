@@ -107,9 +107,9 @@ export default class Collaborators extends React.Component {
             <Container>
               <Row className='v-padded'>
                 <Col md='6'>
-                  <h1>Creating Connections</h1>
+                  <h1 className='py-4'>Creating Connections</h1>
                   <p style={{ fontSize: '1.5rem' }}>We are cross-pollinating numerous activities and programs to develop new ideas that accelerate diabetes research, education and clinical care.</p>
-                  <p style={{ fontSize: '1.5rem' }}>If you are interested in collaborating with us&mdash;either by accessing tissue samples or contributing images&mdash;please get in touch!</p>
+                  <p style={{ fontSize: '1.5rem' }}>If you are interested in collaborating with us &mdash; either by accessing tissue samples or contributing images &mdash; please <a href='mailto:powers-research@vanderbilt.edu'>get in touch</a>!</p>
                 </Col>
                 <Col md='6'>
                   <img src={MapPicture} alt='Collaborators map' className='img-fill' />
