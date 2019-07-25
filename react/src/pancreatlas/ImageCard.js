@@ -120,7 +120,7 @@ export default class ImageCard extends React.Component {
       return (
         <Card className='image-card h-100'>
           <div className='card-img-wrapper' onClick={() => this.props.callback(this.props.iid)}>
-            <CardImg className='image-card-thumb' top width='100%' src={`https://dev7-pancreatlas.app.vumc.org/images/${this.props.iid}.jpg`} alt={this.state.imgName} />
+            <CardImg className='image-card-thumb' top width='100%' src={`${process.env.REACT_APP_IMAGE_URL}/${this.props.iid}.jpg`} alt={this.state.imgName} />
             <FontAwesomeIcon icon='search-plus' size='3x' className='card-search-plus' />
           </div>
           <CardBody className='d-flex flex-column'>

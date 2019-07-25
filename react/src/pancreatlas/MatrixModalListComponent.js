@@ -72,7 +72,7 @@ export default class MatrixModalListComponent extends React.Component {
     if (this.state.loaded === true) {
       return (
         <tr>
-          <td><img className='modal-thumb' src={`https://dev7-pancreatlas.app.vumc.org/images/${this.state.img.iid}.jpg`} alt='' /></td>
+          <td><img className='modal-thumb' src={`${process.env.REACT_APP_IMAGE_URL}/${this.state.img.iid}.jpg`} alt='' /></td>
           <td>
             {Object.keys(this.state.img.donor).map(key =>
               (<div>
