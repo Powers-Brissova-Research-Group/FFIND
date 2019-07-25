@@ -430,7 +430,7 @@ export default class ImageGrid extends React.Component {
               <Row>
                 <Col md='6'>
                   <div className='float-left'>
-                      View more about this dataset <Link to={`/datasets/${this.props.did}/overview`}><strong>here</strong>.</Link>
+                      View more about this dataset <Link to={`/datasets/${this.props.did}/overview`}><strong><u>here</u></strong>.</Link>
                   </div>
                 </Col>
                 <Col md='6'>

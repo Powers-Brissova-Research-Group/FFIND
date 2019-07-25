@@ -73,6 +73,9 @@ export default class ImageCard extends React.Component {
         for (let key of markerKeys) {
           kvals[key].val.split(',').filter(val => val !== '').map(val => (markers[val.trim()] = markerRe.exec(key)[3]))
         }
+
+        let hasLink = Object.keys(kvals).includes('Program ID link')
+        console.log(`Image ${this.props.iid} has a program link: ${hasLink}`)
         for (let key of donorKeys) {
           if (kvals[key].val !== '' && kvals[key].val !== undefined) {
             let valKey = donorRe.exec(key)[3]
@@ -96,6 +99,7 @@ export default class ImageCard extends React.Component {
           imgTags: tagVals.filter(tag => markers[tag] === undefined && Object.values(donor).indexOf(tag) === -1 && Object.values(region).indexOf(tag) === -1),
           markers: markers,
           donor: donor,
+          idLink: hasLink ? kvals['Program ID link'].val : undefined,
           region: region,
           markerColors: (markerColors !== undefined) ? markerColors : {}
         })
@@ -126,9 +130,13 @@ export default class ImageCard extends React.Component {
           <CardBody className='d-flex flex-column'>
             {/* <CardTitle>{this.state.imgName}</CardTitle>
             <CardSubtitle>{this.state.omeroId}</CardSubtitle> */}
-            {Object.keys(this.state.donor).map(key => (
-              <div key={`${this.props.iid}-${key.replace(' ', '_')}`}><strong>{key}: </strong>{this.state.donor[key]}</div>
-            ))}
+            {Object.keys(this.state.donor).map(key => {
+              if (key === 'Program ID' && this.state.idLink !== undefined) {
+                return <div key={`${this.props.iid}-${key.replace(' ', '_')}`}><strong>{key}: </strong><a href={this.state.idLink}><u>{this.state.donor[key]}</u></a></div>
+              } else {
+                return <div key={`${this.props.iid}-${key.replace(' ', '_')}`}><strong>{key}: </strong>{this.state.donor[key]}</div>
+              }
+            })}
             {/* onClick={() => this.props.filterCallback(marker)} */}
             <div><strong>Markers:</strong></div>
             <div className='marker-list'>
