@@ -45,7 +45,7 @@ def find_origin(coords, width, height, matrix):
     for i in range(0, 2):
         for j in range(0, 2):
             x = coords[0] + width * i
-            y = coords[0] + height * j
+            y = coords[1] + height * j
             transformed = transform_coords((x, y), matrix)
             if transformed[0] < min[0] and transformed[1] < min[1]:
                 min = transformed
