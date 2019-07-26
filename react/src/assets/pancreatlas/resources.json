@@ -13,6 +13,13 @@
             "img": "amp-t2d.png"
         },
         {
+            "title": "CPDPC",
+            "desc": "<p>The Consortium for the Study of Chronic Pancreatitis, Diabetes and Pancreatic Cancer (CPDPC) aims to perform comprehensive clinical research on chronic pancreatitis (including acute recurrent pancreatitis), pancreatic cancer, and pancreatogenic diabetes mellitus (T3cDM).</p>",
+            "url": "http://cpdpc.mdanderson.org/",
+            "img": "cpdpc.png"
+            
+        },
+        {
             "title": "dkNET",
             "desc": "<p>The NIDDK Information Network (dkNET) serves the needs of basic and clinical investigators by providing seamless access to large pools of data and research resources relevant to the mission of the <a href='https://www.niddk.nih.gov/'>NIDDK</a>.</p>",
             "url": "http://dknet.org/",
@@ -21,13 +28,13 @@
         {
             "title": "HANDEL-P/I",
             "desc": "<p>The Human Atlas of the Neonatal Development and Early Life Pancreas and Immune-associated organs (HANDEL-P/I ) project, funded by <a href='https://helmsleytrust.org/'>The Leona M. and Harry B. Helmsley Charitable Trust</a>, is aimed at improving understanding of early processes in human pancreas development to support T1D research, intervention, and ultimately prevention.</p>",
-            "url": "",
+            "url": "#",
             "img": "handel-p.jpg"
         },
         {
             "title": "HIPP",
             "desc": "<p>The Human Islet Phenotyping Program (HIPP) at Vanderbilt, part of <a href='http://iidp.coh.org/'>IIDP</a>, gathers data from U.S. islet distribution centers, performs post-shipment assays on human islet preparations, and disseminates functional information to investigators receiving IIDP islets for research.</p>",
-            "url": "",
+            "url": "https://iidp.coh.org/secure/isletavail/",
             "img": "hipp.png"
         },
         {
@@ -71,6 +78,12 @@
             "desc": "<p>The National Disease Research Interchange (NDRI) partners with organ procurement organizations to recover and distribute donated human organs and tissues for use in research.</p>",
             "url": "http://ndriresource.org/",
             "img": "ndri.jpg"
+        },
+        {
+            "title": "NPF",
+            "desc": "<p>The National Pancreas Foundation (NPF) is a private, nonprofit organization providing support for pancreatic diseases research. NPF funds projects related to pancreatic cancer, acute pancreatitis, chronic pancreatitis, and pediatric pancreatitis.</p>",
+            "url": "http://pancreasfoundation.org/research/",
+            "img": "npf.png"
         },
         {
             "title": "nPOD",

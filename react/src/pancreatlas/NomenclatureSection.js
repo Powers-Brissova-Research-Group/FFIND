@@ -11,13 +11,15 @@ import {
 export default class NomenclatureSection extends React.Component {
   constructor (props) {
     super(props)
-    let rows = Object.keys(this.props.data)
+    let asterisk = (Object.keys(this.props.data).includes('asterisk')) ? this.props.data['asterisk'] : undefined
+    let rows = Object.keys(this.props.data).filter(key => key !== 'asterisk')
     let headings = Object.keys(this.props.data[rows[0]]).filter(key => key.toLowerCase() !== 'image')
 
     this.state = {
       rows: rows,
       headings: headings,
-      open: false
+      open: false,
+      asterisk: asterisk
     }
   }
 
@@ -34,7 +36,7 @@ export default class NomenclatureSection extends React.Component {
       <div className='nomenclature-section'>
         <span className='nomenclature-collapse' onClick={() => this.setState({ open: !this.state.open })}><h3><FontAwesomeIcon className={this.state.open ? 'collapse-button collapse-button-open' : 'collapse-button collapse-button-closed'} icon='angle-right' />&nbsp;{this.props.sectionName}</h3></span>
         <Collapse isOpen={this.state.open} >
-          <Table hover>
+          <Table className='my-4' hover>
             <thead>
               <tr className='table-header-row'>
                 <th>Term</th>
@@ -61,6 +63,7 @@ export default class NomenclatureSection extends React.Component {
               })}
             </tbody>
           </Table>
+          {this.state.asterisk !== undefined && <p><em>* {this.state.asterisk.description}</em></p>}
         </Collapse>
         <hr />
       </div>

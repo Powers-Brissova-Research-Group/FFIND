@@ -257,6 +257,9 @@
     "TUBB3": {
       "Antigen description": "Neuron-specific class III beta-tubulin; core component of microtubules",
       "Pancreas cell/region specificity": "Neurons"
+    },
+    "asterisk": {
+      "description": "Denotes genes associated with Maturity-Onset Diabetes Of The Young (MODY) or neonatal diabetes"
     }
   },
   "Stain": {
