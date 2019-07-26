@@ -34,11 +34,22 @@ def get_roi(iid, session):
                     transform = roi['shapes'][0]['Transform']
                     matrix = [[transform['A00'], transform['A01'], transform['A02']], [transform['A10'], transform['A11'], transform['A12']]]
                     coords = (int(roi['shapes'][0]['X']), int(roi['shapes'][0]['Y']))
-                    (x_prime, y_prime) = transform_coords(coords, matrix)
-                    gallery_roi = (x_prime - int(roi['shapes'][0]['Width']), y_prime, int(roi['shapes'][0]['Width']), int(roi['shapes'][0]['Height']))
+                    (x_prime, y_prime) = find_origin(coords, int(roi['shapes'][0]['Width']), int(roi['shapes'][0]['Height']), matrix)
+                    gallery_roi = (x_prime, y_prime, int(roi['shapes'][0]['Width']), int(roi['shapes'][0]['Height']))
                 else:
                     gallery_roi = (int(roi['shapes'][0]['X']), int(roi['shapes'][0]['Y']), int(roi['shapes'][0]['Width']), int(roi['shapes'][0]['Height']))
     return gallery_roi
+
+def find_origin(coords, width, height, matrix):
+    min = transform_coords(coords, matrix)
+    for i in range(0, 2):
+        for j in range(0, 2):
+            x = coords[0] + width * i
+            y = coords[0] + height * j
+            transformed = transform_coords((x, y), matrix)
+            if transformed[0] < min[0] and transformed[1] < min[1]:
+                min = transformed
+    return transformed
 
 def transform_coords(coords, matrix):
     print "Transforming coordinates"
