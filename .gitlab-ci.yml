@@ -9,7 +9,7 @@ build:
   stage: build
   script:
     - cd react
-    - echo -e "REACT_APP_API_URL='https://staging-api.pancreatlas.org/api'\nREACT_APP_API_AUTH='Basic bWVzc21lajpwYW5jcmVhdGxhczIwMTk='\nREACT_APP_VERSION=$npm_package_version" > .env.development
+    - echo -e "REACT_APP_API_URL='https://staging-api.pancreatlas.org/api'\nREACT_APP_API_AUTH='Basic bWVzc21lajpwYW5jcmVhdGxhczIwMTk='\nREACT_APP_VERSION=$npm_package_version\nREACT_APP_IMAGE_URL='https://stagin.pancreatlas.org/images'" > .env.development
     - cp .env.development .env.production
     - npm install
     - npm run build
