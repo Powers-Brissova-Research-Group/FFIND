@@ -26,7 +26,7 @@
         },
         {
             "title": "HIPP",
-            "desc": "<p>The Human Islet Phenotyping Program (HIPP), part of <a href='http://iidp.coh.org/'>IIDP</a>, gathers data from U.S. islet distribution centers, performs post-shipment assays on human islet preparations, and disseminates functional information to investigators receiving IIDP islets for research.</p>",
+            "desc": "<p>The Human Islet Phenotyping Program (HIPP) at Vanderbilt, part of <a href='http://iidp.coh.org/'>IIDP</a>, gathers data from U.S. islet distribution centers, performs post-shipment assays on human islet preparations, and disseminates functional information to investigators receiving IIDP islets for research.</p>",
             "url": "",
             "img": "hipp.png"
         },
@@ -73,7 +73,7 @@
             "img": "ndri.jpg"
         },
         {
-            "title": "nPod",
+            "title": "nPOD",
             "desc": "Network for Pancreatic Organ Donors with Diabetes (nPOD) is a collaborative T1D research initiative, funded by <a href='http://www.jdrf.org/'>JDRF</a> and <a href='https://helmsleytrust.org/'>The Leona M. and Harry B. Helmsley Charitable Trust</a>, that partners with organ procurement organizations and works to characterize pancreata and related tissues from cadaveric T1D and autoantibody-positive organ donors.",
             "url": "http://www.jdrfnpod.org/",
             "img": "npod.jpg"

@@ -10,7 +10,7 @@
       "Description": "Unique identifier from source initiative or program (e.g. <a href='https://www.jdrfnpod.org/for-investigators/donor-groups/'>nPOD</a>, <a href='https://hpap.pmacs.upenn.edu/explore/donor'>HPAP-T1D</a>)"
     },
     "Donor info - Disease Status": {
-      "Description": "Disease associated with donor"
+      "Description": "Disease associated with donor, as defined by clinical history"
     },
     "Donor info - Disease Duration": {
       "Description": "Time that disease was known/diagnosed in donor"
@@ -116,7 +116,7 @@
     },
     "CD20": {
       "Antigen description": "B-lymphocyte antigen; plays a role in B cell development and differentiation",
-      "Pancreas cell/region specificity": "B cells"
+      "Pancreas cell/region specificity": "B lymphocytes"
     },
     "CD31 (PECAM1)": {
       "Antigen description": "Platelet and endothelial cell adhesion molecule 1",
@@ -194,7 +194,7 @@
       "Antigen description": "Hepatocyte nuclear factor 1-beta; transcription factor critical for pancreatic development",
       "Pancreas cell/region specificity": "Pancreatic progenitor cells (<a href='http://dev.biologists.org/content/142/5/871'>De Vas et al. 2002</a>; adult ductal cells (<a href='https://doi.org/10.1016/j.modgep.2007.09.006'>Nammo et al.</a>)"
     },
-    "INS": {
+    "INS*": {
       "Antigen description": "Insulin (hormone)",
       "Pancreas cell/region specificity": "&beta; cells"
     },
@@ -222,7 +222,7 @@
       "Antigen description": "Paired box 6; key transcription factor in endocrine development",
       "Pancreas cell/region specificity": "Endocrine cells"
     },
-    "PDX1": {
+    "PDX1*": {
       "Antigen description": "Pancreatic and duodenal homeobox 1; key transcription factor in pancreatic development",
       "Pancreas cell/region specificity": "Pancreatic progenitor cells, mature &beta; cells"
     },
@@ -231,7 +231,7 @@
       "Pancreas cell/region specificity": "PP cells"
     },
     "pS6": {
-      "Antigen description": "Phospho-S6 ribosomal protein; considered a marker of cell cycle progression",
+      "Antigen description": "Phospho-S6 ribosomal protein; marker of cell cycle progression",
       "Pancreas cell/region specificity": ""
     },
     "PTF1A": {
@@ -316,11 +316,11 @@
   "Pancreas Region": {
     "Anatomical Region": {
       "Image": "Pancreas_RC_sagittal_HBT.png",
-      "Description": "<p><strong>Head: </strong>located next to duodenum</p><p><strong>Body: </strong>located posterior to distal portion of stomach</p><p><strong>Tail: </strong>located adjacent to the spleen</p>"
+      "Description": "<p><strong>Head: </strong>located next to duodenum</p><p><strong>Body: </strong>located posterior to distal portion of stomach</p><p><strong>Tail: </strong>located adjacent to spleen</p>"
     },
     "Imaging Region": {
       "Image": "Pancreas_RC_transverse_CP.png",
-      "Description": "<p><strong>Core: </strong>refers to central region of transverse section</p><p><strong>Periphery: </strong>refers to outer edge of transverse section</p>"
+      "Description": "<p><strong>Core: </strong>refers to central region of transverse section</p><p><strong>Periphery: </strong>refers to outer edge of transverse section</p><p><strong>ROI: </strong>Region of Interest (arbitrary)"
     }
   },
   "Imaging Modality": {
