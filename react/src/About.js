@@ -53,7 +53,7 @@ export default class About extends React.Component {
                     <img className='img-fluid rounded-circle team-member-img' src={require('./assets/pancreatlas/credits/jp.jpg')} alt='JP Cartailler' />
                   </Col>
                   <Col md='8' className='mb-auto mt-auto'>
-                    <h4>JP Cartailler, Ph.D. &bull; <em>Directory, Creative Database Solutions</em></h4>
+                    <h4>JP Cartailler, Ph.D. &bull; <em>Director, Creative Database Solutions</em></h4>
                     <p>With an extensive background in systems development and bioinformatics, JP helped envision the multidisciplinary opportunity for this imaging platform and worked tirelessly to make it a reality. In addition to wrangling the necessary IT infrastructure  to provide a flexible and scalable environment, he provides key leadership in the areas of application development and systems integration.</p>
                   </Col>
                 </Row>
@@ -63,7 +63,7 @@ export default class About extends React.Component {
                   </Col>
                   <Col md='8' className='mb-auto mt-auto'>
                     <h4>Diane Saunders, Ph.D. &bull; <em>Lead Curator</em></h4>
-                    <p>Diane’s research interest in juvenile pancreas development, as well as her love of beautiful images, fed naturally into the conception of “mapping” the human pancreas. As the main scientist on the Pancreatlas team, Diane reviews and prepares image collections for publication, ensuring that all data and metadata meets our quality standards. She is also responsible for written content and related communications. </p>
+                    <p>Diane’s research interest in juvenile pancreas development, as well as her love of beautiful images, fed naturally into the conception of “mapping” the human pancreas. As the main scientist on the Pancreatlas team, Diane reviews and prepares image collections for publication, ensuring that all data and metadata meets our quality standards. She is also responsible for written content and related communications.</p>
                   </Col>
                 </Row>
                 <Row className='mb-4'>

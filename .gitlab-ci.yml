@@ -9,7 +9,7 @@ build:
   stage: build
   script:
     - cd react
-    - echo -e "REACT_APP_API_URL='https://dev7-api-pancreatlas.app.vumc.org/api'\nREACT_APP_API_AUTH=''\nREACT_APP_VERSION=\$npm_package_version\nREACT_APP_IMAGE_URL='https://dev7-pancreatlas.app.vumc.org/images'" > .env.development
+    - echo -e "REACT_APP_API_URL='https://staging-api.pancreatlas.org/api'\nREACT_APP_API_AUTH='Basic bWVzc21lajpwYW5jcmVhdGxhczIwMTk='\nREACT_APP_VERSION=\$npm_package_version\nREACT_APP_IMAGE_URL='https://staging.pancreatlas.org/images'" > .env.development
     - cp .env.development .env.production
     - npm install
     - npm run build
@@ -36,14 +36,14 @@ deploy:
     - pwd
     - cd react
     - echo "Installing react app"
-    - rm -r /app001/www/pancreatlas/dev7/www/*
-    - mv ./build/* /app001/www/pancreatlas/dev7/www
+    - rm -r /app001/www/pancreatlas/www/*
+    - mv ./build/* /app001/www/pancreatlas/www
     - echo "React app installed"
     - echo "Installing api"
     - cd ..
-    - rm -r /app001/www/pancreatlas/dev7/api/*
-    - mv ./api/* /app001/www/pancreatlas/dev7/api
-    - cd /app001/www/pancreatlas/dev7/api
+    - rm -r /app001/www/pancreatlas/api/*
+    - mv ./api/* /app001/www/pancreatlas/api
+    - cd /app001/www/pancreatlas/api
     - virtualenv .
     - source bin/activate
     - pip install -r requirements.txt
@@ -58,7 +58,7 @@ deploy:
     name: local-dev
     
   tags:
-    - dev7-runner
+    - pancreatlas-staging-runner
 
   only:
-    - development
+    - /^release\/*/
