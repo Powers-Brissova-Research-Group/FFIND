@@ -13,3 +13,5 @@ react/.env.production
 react/src/gen_tests.py
 
 *.pyc
+
+.gitlab-ci.yml

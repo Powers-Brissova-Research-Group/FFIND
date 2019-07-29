@@ -270,7 +270,7 @@ export default class ImageGrid extends React.Component {
       let result = response.data
       if (Object.keys(result.kvals).length > 0) {
         // let path = result.kvals['File path'].val
-        let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
+        // let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
         // let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
 
         let markerColors = result.channel_info
