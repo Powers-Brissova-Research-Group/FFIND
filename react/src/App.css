@@ -198,7 +198,7 @@ App-specific
 }
 
 .image-matrix thead {
-  display: table;
+  display: block;
   width: 98.7%;
   table-layout: fixed;
 }

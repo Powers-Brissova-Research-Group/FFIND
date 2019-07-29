@@ -37,7 +37,7 @@ export default class Releases extends React.Component {
     console.log(this.state.versions)
     return (
       <div className='release-info'>
-        <PageBanner bgColor='#DCDCDC'>
+        <PageBanner image bgImg={require('./assets/pancreatlas/headers/releases-header.jpg')}>
           <h1>Release History</h1>
           <p className='text-larger'>Find info about each of our releases here</p>
         </PageBanner>
