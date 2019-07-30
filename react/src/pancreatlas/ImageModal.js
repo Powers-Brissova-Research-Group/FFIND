@@ -44,7 +44,7 @@ export default class ImageModal extends React.Component {
     let labelRe = /^([a-zA-Z]+\s+info)?(\s+-\s+)?(.+)$/
     var markers = []
     if (this.props.modalData !== undefined) {
-      let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
+      let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9\s]+$)/i
       let matchingKeys = Object.keys(this.props.modalData.img_data).filter(key => markerRe.test(key))
       for (let key of matchingKeys) {
         var chan = markerRe.exec(key)[3].toUpperCase()
@@ -56,7 +56,7 @@ export default class ImageModal extends React.Component {
         })
       }
       this.relevantKeys = Object.keys(this.props.modalData.img_data).sort().filter(
-        key => ['Stain info - DAPI', 'Stain info - cy2', 'Stain info - cy3', 'Stain info - cy5', 'Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - File Type', 'Donor info - UNOS ID', 'File path'].indexOf(key) === -1
+        key => matchingKeys.concat(['Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - File Type', 'Donor info - UNOS ID', 'File path']).indexOf(key) === -1
       )
     }
 

@@ -40,10 +40,10 @@
       "Description": "Plane along which pancreas was sectioned (sagittal, coronal, transverse)"
     },
     "Sample info - Pancreas Region": {
-      "Description": "Anatomical region from which section was collected (pancreas head, body, tail) OR imaging area relative to entire cross-section (core, periphery)"
+      "Description": "Anatomical region from which section was collected (pancreas head, body, tail)."
     },
     "Image info - Pancreas Region": {
-      "Description": "Anatomical region from which section was collected (pancreas head, body, tail) OR imaging area relative to entire cross-section (core, periphery)"
+      "Description": "Anatomical region from which section was collected (pancreas head, body, tail)."
     },    
     "Image info - Section Plane": {
       "Description": "Plane along which pancreas was sectioned (sagittal, coronal, transverse)"

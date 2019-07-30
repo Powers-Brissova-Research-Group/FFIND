@@ -45,7 +45,7 @@ export default class ImageCard extends React.Component {
       let result = response.data
       let kvals = result.kvals
       if (Object.keys(kvals).length > 0) {
-        let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
+        let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9\s]+$)/i
         let donorRe = /(^Donor info)(\s+-\s+)(.+$)/i
         let regionRe = /(^Image info|Sample info)(\s+-\s+)(Section Plane$|Pancreas Region$)/
         let markerColors = result.channel_info
