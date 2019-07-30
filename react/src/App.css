@@ -190,6 +190,10 @@ App-specific
   object-fit: cover;
 }
 
+.image-matrix-content {
+  display: flex;
+}
+
 .image-matrix tbody {
   height: 80vh;
   overflow-y: scroll
@@ -199,7 +203,6 @@ App-specific
 .image-matrix table {
   display: block;
   width: 98.7%;
-  table-layout: block;
 }
 
 td.left-header {

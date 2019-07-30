@@ -157,15 +157,25 @@ export default class ImageGrid extends React.Component {
       // }
     }
     if (shouldDelete) {
-      for (let tagset of Object.keys(appTags)) {
-        for (let tag of Object.keys(appTags[tagset].tags)) {
-          if (appTags[tagset].tags[tag] === 0) {
-            delete appTags[tagset].tags[tag]
-            delete this.raw_tags[tagset].tags[tag]
+      for (let idx = 0; idx < appTags.length; idx++) {
+        for (let tag of Object.keys(appTags[idx].tags)) {
+          if (appTags[idx].tags[tag] === 0) {
+            delete appTags[idx].tags[tag]
+            delete this.raw_tags[idx].tags[tag]
           }
         }
-        if (Object.keys(appTags[tagset].tags).length <= 0) {
-          delete appTags[tagset]
+        if (Object.keys(appTags[idx].tags).length <= 0) {
+          let toDelete = appTags[idx].set_name
+          let listIdx = this.tag_idx[toDelete]
+          for (let t of Object.keys(this.tag_idx)) {
+            if (this.tag_idx[t] > listIdx) {
+              let newIdx = parseInt(this.tag_idx[t]) - 1
+              this.tag_idx[t] = newIdx.toString()
+            }
+          }
+          delete this.tag_idx[toDelete]
+          appTags.splice(idx, 1)
+          this.raw_tags.splice(idx, 1)
         }
       }
     }
