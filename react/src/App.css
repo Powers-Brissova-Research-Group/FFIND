@@ -191,16 +191,15 @@ App-specific
 }
 
 .image-matrix tbody {
-  display: block;
   height: 80vh;
   overflow-y: scroll
 
 }
 
-.image-matrix thead {
+.image-matrix table {
   display: block;
   width: 98.7%;
-  table-layout: fixed;
+  table-layout: block;
 }
 
 td.left-header {
