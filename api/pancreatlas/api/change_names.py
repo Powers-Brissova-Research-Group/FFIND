@@ -3,8 +3,8 @@ import requests
 import urllib
 import os
 import pprint
-import helper_classes
-import omero_api as api
+import api.helper_classes
+import api.omero_api as api
 import threading
 import time
 
