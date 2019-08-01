@@ -176,6 +176,7 @@ export default class ImageGrid extends React.Component {
           delete this.tag_idx[toDelete]
           appTags.splice(idx, 1)
           this.raw_tags.splice(idx, 1)
+          idx--
         }
       }
     }
