@@ -169,7 +169,7 @@ class Dataset():
         self.fetch_annotations()
 
     def fetch_annotations(self):
-        act = 'hidden'
+        act = False
         anns = list(self.wrapper.listAnnotations())
         status_code = 4
         for ann in anns:
@@ -177,6 +177,8 @@ class Dataset():
                 for kval in ann.getValue():
                     if kval[0] == 'status':
                         status_code = int(kval[1])
+                    if kval[0] == 'active':
+                        act = kval[1] == 'true'
                     self.kvals[kval[0]] = kval[1]
         self.active = act
         self.status = status_code
