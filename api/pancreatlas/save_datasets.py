@@ -36,7 +36,7 @@ def save_index(dids):
     f.close
     
 def main():
-    dsets = [ds.did for ds in api.get_datasets() if ds.active]
+    dsets = [ds.did for ds in api.get_private_datasets()]
     save_datasets(dsets)
     save_index(dsets)
 

@@ -176,7 +176,7 @@ def get_datasets():
     return dset_list
 
 def get_active_datasets():
-    return [ds for ds in get_datasets() if ds.active ==  and ds.status <= 1]
+    return [ds for ds in get_datasets() if ds.active and ds.status <= 1]
 
 def get_test_datasets():
     return [ds for ds in get_datasets() if ds.active and ds.status <= 2]
