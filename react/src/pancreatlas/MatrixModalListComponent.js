@@ -25,7 +25,7 @@ export default class MatrixModalListComponent extends React.Component {
       let kvals = result.kvals
       let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9]+$)/i
       let donorRe = /(^Donor info)(\s+-\s+)(.+$)/i
-      let regionRe = /(^Image info)(\s+-\s+)(Section Plane$|Pancreas Region$)/
+      let regionRe = /(^Image info|Sample info)(\s+-\s+)(Section Plane$|Pancreas Region$)/
       let markerKeys = Object.keys(kvals).filter(key => markerRe.test(key))
       let donorKeys = Object.keys(kvals).filter(key => donorRe.test(key))
       let regionKeys = Object.keys(kvals).filter(key => regionRe.test(key))
