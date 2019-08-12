@@ -67,7 +67,6 @@ export default class Favorites extends React.Component {
     }).then(response => {
       let result = response.data
       if (Object.keys(result.kvals).length > 0) {
-        let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
         let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
 
         let markerColors = result.channel_info
