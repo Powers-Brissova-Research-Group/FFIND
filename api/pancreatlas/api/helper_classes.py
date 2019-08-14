@@ -10,7 +10,7 @@ class Image:
         self.img_wrapper = img_wrapper
         self.id = img_wrapper.getId()
         self.tags = []
-        self.key_values = []
+        self.key_values = {}
         self.channel_info = {}
         self.fetch_annotations()
         self.get_channel_info()
@@ -67,7 +67,7 @@ class Image:
         return self.tags
 
     def get_tag_names(self):
-        return [{'tagset': tag['tagset'], 'tag': tag.['tag']} for tag in self.tags]
+        return [{'tagset': tag['tagset'], 'tag': tag['tag']} for tag in self.tags]
 
     def has_tag(self, tag):
         return tag in self.tags

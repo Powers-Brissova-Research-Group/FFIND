@@ -11,7 +11,7 @@ def save_datasets(dids):
 #        images = dset.imgs
         f = open(fname, 'w')
         for image in images:
-            if 'exclude' not in [tag.tname for tag in image.get_tags()]:
+            if 'exclude' not in [tag['tag'] for tag in image.get_tags()]:
                 ids[int(image.id)] = [{'tagset': tag['tagset'], 'tag': tag['tag']} for tag in image.get_tags()]
         data = json.dumps(ids)
         f.write(data)
