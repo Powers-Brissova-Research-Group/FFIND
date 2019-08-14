@@ -12,7 +12,7 @@ def save_datasets(dids):
         f = open(fname, 'w')
         for image in images:
             if 'exclude' not in [tag.tname for tag in image.get_tags()]:
-                ids[int(image.id)] = [{'tagset': tag.tagsets[0], 'tag': tag.tname} for tag in image.get_tags()]
+                ids[int(image.id)] = [{'tagset': tag['tagset'], 'tag': tag['tag']} for tag in image.get_tags()]
         data = json.dumps(ids)
         f.write(data)
         f.close() 
@@ -26,7 +26,7 @@ def save_index(dids):
         # POSSIBLE_TAGS = ['INS', 'COL4A1', 'SST', 'PECAM1', 'PTF1A', 'CPA1', 'FOXA2', 'AMY1A', 'GP2', 'NKX6-1', 'PAX6', 'SYP', 'GCG', 'PPY', 'MK167', 'SYN1', 'SYN2', 'Ki67', 'SOX9', 'AMY1A', 'ONECUT1', 'HNF1B', 'PAX6', 'GP2', 'NKX6-1', 'PTF1A', 'NEUROG3', 'GHRL', 'CDH1']
         for img in imgs:
             print img.id
-            tags = [tag.tname for tag in img.get_tags()]
+            tags = [tag['tag'] for tag in img.get_tags()]
             if 'macro image' not in img.name and 'label image' not in img.name:
                 print 'WARNING: Double check import for image %s' % (img.id,)
             img_dict[str(img.id)] = [tags]

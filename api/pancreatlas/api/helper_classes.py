@@ -10,7 +10,7 @@ class Image:
         self.img_wrapper = img_wrapper
         self.id = img_wrapper.getId()
         self.tags = []
-        self.key_values = {}
+        self.key_values = []
         self.channel_info = {}
         self.fetch_annotations()
         self.get_channel_info()
@@ -42,14 +42,24 @@ class Image:
 #            self.channel_info.append(channel.getLabel())
 
     def fetch_annotations(self):
+        tag_re = re.compile("(Donor info|Image info|Sample info)( - )(.+)")
+        marker_re = re.compile("(Stain info)( - )(.+)(?<!-Ab)$")
+        tags = ['File Type', 'Section Plane', 'Disease Status', 'Sex', 'Disease Duration', 'LIMS ID', 'Age', 'Pancreas Region']
         anns = list(self.img_wrapper.listAnnotations())
         for ann in anns:
-            if isinstance(ann, TagAnnotationWrapper):
-                tmp = Tag(ann, ann.getId())
-                self.tags.append(tmp)
-            elif isinstance(ann, MapAnnotationWrapper):
+            if isinstance(ann, MapAnnotationWrapper):
                 for pair in ann.getValue():
+                    tag_match = tag_re.match(pair[0])
+                    marker_match = marker_re.match(pair[0])
+                    if tag_match != None:
+                        tagset = tag_match.group(3)
+                        if tagset in tags and pair[1] != "":
+                            self.tags.append({'tagset': tagset, 'tag': pair[1]})
+                    if marker_match != None:
+                        if pair[1] != "":
+                            self.tags.append({'tagset': 'Marker', 'tag': pair[1]})
                     self.key_values[pair[0]] = {'val': pair[1], 'desc': 'default val'}
+
         channels = list(self.img_wrapper.getChannels())
         for channel in channels:
             self.channel_info[channel.getLabel().upper()] =  channel.getColor().getHtml()
@@ -57,7 +67,7 @@ class Image:
         return self.tags
 
     def get_tag_names(self):
-        return [{'tagset': tag.tagsets[0], 'tag': tag.tname} for tag in self.tags]
+        return [{'tagset': tag['tagset'], 'tag': tag.['tag']} for tag in self.tags]
 
     def has_tag(self, tag):
         return tag in self.tags
