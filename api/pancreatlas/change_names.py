@@ -19,10 +19,21 @@ class ImageThread (threading.Thread):
     def run(self):
         img = api.get_image_by_id(self.iid)
         kvals = img.key_values
-        if (kvals['Donor info - Disease Status']['val'] == 'ND'):
-            name = "%s-%s-%s-%s" % (kvals['Donor info - UNOS ID']['val'], kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Sex']['val'])
+        id = ''
+        region = ''
+        if 'Donor info - Program ID' in kvals:
+            id = kvals['Donor info - Program ID']['val']
         else:
-            name = "%s-%s-%s-%s-%s" % (kvals['Donor info - UNOS ID']['val'], kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Disease Duration']['val'], kvals['Donor info - Sex']['val'])
+            id = kvals['Donor info - LIMS ID']['val']        
+
+        if 'Image info - Pancreas Region' in kvals:
+            region = kvals['Image info - Pancreas Region']['val']
+        else:
+            region = kvals['Sample info - Pancreas Region']['val']
+        if (kvals['Donor info - Disease Status']['val'] == 'ND'):
+            name = "%s-%s-%s-%s-%s" % (id, kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Sex']['val'], region)
+        else:
+            name = "%s-%s-%s-%s-%s-%s" % (id, kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Disease Duration']['val'], kvals['Donor info - Sex']['val'], region)
         img.img_wrapper.setName(name)
         img.img_wrapper.save()
         new_names[img.id] = name
