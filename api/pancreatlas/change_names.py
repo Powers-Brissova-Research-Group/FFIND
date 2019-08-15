@@ -3,8 +3,8 @@ import requests
 import urllib
 import os
 import pprint
-import helper_classes
-import omero_api as api
+import api.helper_classes
+import api.omero_api as api
 import threading
 import time
 import sys
@@ -78,7 +78,7 @@ def main():
     if len(sys.argv) <= 1:
         sys.exit("Insufficient arguments provided")
     dsid = sys.argv[1]
-    imgs = get_image_list(disd)
+    imgs = get_image_list(dsid)
     run_threaded(imgs)
 #    for img in imgs:
 #        i_thread = ImageThread(img, img)
