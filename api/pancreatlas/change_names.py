@@ -7,6 +7,7 @@ import helper_classes
 import omero_api as api
 import threading
 import time
+import sys
 
 new_names = {}
 
@@ -46,8 +47,8 @@ def timing(f):
         print "%s took %0.3f ms" % (f.func_name, (t2 - t1)*1000.0)
 
     return wrap
-def get_image_list():
-    f = open('image_index.txt', 'r')
+def get_image_list(dsid):
+    f = open('/app001/www/assets/pancreatlas/datasets/%s.txt' % (dsid), 'r')
     enc = f.readline()
     imgs = json.loads(enc)
     return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
@@ -74,9 +75,11 @@ def run_normal(iids):
         name = gen_image_name(iid)
 
 def main():
-    imgs = get_image_list()
+    if len(sys.argv) <= 1:
+        sys.exit("Insufficient arguments provided")
+    dsid = sys.argv[1]
+    imgs = get_image_list(disd)
     run_threaded(imgs)
-    pprint.pprint(new_names)
 #    for img in imgs:
 #        i_thread = ImageThread(img, img)
 #        i_thread.start()
