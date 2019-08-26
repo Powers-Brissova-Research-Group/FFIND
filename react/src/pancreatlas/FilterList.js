@@ -36,6 +36,7 @@ export default class FilterList extends React.Component {
     let extras = ['depth 1', 'depth 2', 'depth 3']
     if (this.props.tags !== null) {
       let t = {}
+      /* eslint-disable no-unused-vars */
       for (let ts of this.props.tags) {
         if (ts !== undefined) {
           for (let tag of Object.keys(ts.tags)) {
@@ -46,6 +47,7 @@ export default class FilterList extends React.Component {
           t[ts.set_name] = ts.tags
         }
       }
+      /* eslint-enable no-unused-vars */
       this.setState({
         loaded: true,
         tags: t

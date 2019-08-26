@@ -84,6 +84,7 @@ export default class ImageGrid extends React.Component {
     }).then(response => {
       let result = response.data
       this.raw_tags = result
+      /* eslint-disable no-unused-vars */
       for (let o of Object.keys(result)) {
         if ('set_name' in result[o]) {
           this.tag_idx[result[o].set_name] = o
@@ -98,6 +99,7 @@ export default class ImageGrid extends React.Component {
           }
         }
       }
+      /* eslint-enable no-unused-vars */
       axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`, {
         withCredentials: true,
         credentials: 'include',
@@ -135,6 +137,7 @@ export default class ImageGrid extends React.Component {
   updateTags (shouldDelete) {
     let appTags = JSON.parse(JSON.stringify(this.raw_tags))
     let validFilterSets = appTags.map(appTag => appTag.set_name)
+    /* eslint-disable no-unused-vars */
     for (let key of this.state.matches) {
       for (let t of this.state.ids[key]) {
         if (t.tagset !== undefined) {
@@ -156,23 +159,28 @@ export default class ImageGrid extends React.Component {
       //   }
       // }
     }
+    /* eslint-enable no-unused-vars */
     if (shouldDelete) {
       for (let idx = 0; idx < appTags.length; idx++) {
+        /* eslint-disable no-unused-vars */
         for (let tag of Object.keys(appTags[idx].tags)) {
           if (appTags[idx].tags[tag] === 0) {
             delete appTags[idx].tags[tag]
             delete this.raw_tags[idx].tags[tag]
           }
         }
+        /* eslint-enable no-unused-vars */
         if (Object.keys(appTags[idx].tags).length <= 0) {
           let toDelete = appTags[idx].set_name
           let listIdx = this.tag_idx[toDelete]
+          /* eslint-disable no-unused-vars */
           for (let t of Object.keys(this.tag_idx)) {
             if (this.tag_idx[t] > listIdx) {
               let newIdx = parseInt(this.tag_idx[t]) - 1
               this.tag_idx[t] = newIdx.toString()
             }
           }
+          /* eslint-enable no-unused-vars */
           delete this.tag_idx[toDelete]
           appTags.splice(idx, 1)
           this.raw_tags.splice(idx, 1)
@@ -209,13 +217,14 @@ export default class ImageGrid extends React.Component {
 
   filter (tagList, prevFilters) {
     let empty = true
+    /* eslint-disable no-unused-vars */
     for (let key of Object.keys(tagList)) {
       if (tagList[key].length > 0) {
         empty = false
         break
       }
     }
-
+    /* eslint-enable no-unused-vars */
     if (empty) {
       this.setState({
         filters: { AGE: [] },
@@ -225,6 +234,7 @@ export default class ImageGrid extends React.Component {
     } else {
       let tmp = JSON.parse(JSON.stringify(Object.keys(this.state.ids)))
       let allIds = JSON.parse(JSON.stringify(this.state.ids))
+      /* eslint-disable no-unused-vars */
       for (let id of Object.keys(allIds)) {
         let match = true
         for (let keyset of Object.keys(tagList)) {
@@ -241,6 +251,7 @@ export default class ImageGrid extends React.Component {
           tmp.splice(tmp.indexOf(id), 1)
         }
       }
+      /* eslint-enable no-unused-vars */
       this.setState({
         prevFilters: prevFilters,
         filters: tagList,

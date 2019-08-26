@@ -39,6 +39,7 @@ export default class MatrixModalListComponent extends React.Component {
         [regionKeys[0]]: kvals[regionKeys[0]].val
 
       }
+      /* eslint-disable no-unused-vars */
       for (let key of markerKeys) {
         kvals[key].val.split(',').map(val => (markers[val.trim()] = markerRe.exec(key)[3]))
       }
@@ -55,6 +56,7 @@ export default class MatrixModalListComponent extends React.Component {
           }
         }
       }
+      /* eslint-enable no-unused-vars */
       result.markers = markers
       result.donor = donor
       result.region = region

@@ -46,6 +46,7 @@ export default class ImageModal extends React.Component {
     if (this.props.modalData !== undefined) {
       let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9\s]+$)/i
       let matchingKeys = Object.keys(this.props.modalData.img_data).filter(key => markerRe.test(key))
+      /* eslint-disable no-unused-vars */
       for (let key of matchingKeys) {
         var chan = markerRe.exec(key)[3].toUpperCase()
         var val = this.props.modalData.img_data[key].val
@@ -55,6 +56,7 @@ export default class ImageModal extends React.Component {
           'color': clr
         })
       }
+      /* eslint-enable no-unused-vars */
       this.relevantKeys = Object.keys(this.props.modalData.img_data).sort().filter(
         key => matchingKeys.concat(['Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - File Type', 'Donor info - UNOS ID', 'File path']).indexOf(key) === -1
       )

@@ -23,6 +23,7 @@ export default class Releases extends React.Component {
     var releaseNotes = require('./assets/pancreatlas/release_notes')
     var Remarkable = require('remarkable')
     var md = new Remarkable()
+    /* eslint-disable no-unused-vars */
     for (let key of Object.keys(releaseNotes)) {
       axios.get(releaseNotes[key]).then(resp => {
         var version = key.replace('_', '.')
@@ -31,6 +32,7 @@ export default class Releases extends React.Component {
         this.setState({ versions: newVersions })
       })
     }
+    /* eslint-enable no-unused-vars */
   }
 
   render () {
