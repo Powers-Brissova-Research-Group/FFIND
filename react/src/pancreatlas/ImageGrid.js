@@ -247,6 +247,7 @@ export default class ImageGrid extends React.Component {
         matches: tmp
       })
     }
+    this.choosePage(0)
   }
 
   markerFilter (marker) {

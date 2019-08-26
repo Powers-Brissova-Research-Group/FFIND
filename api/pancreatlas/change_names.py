@@ -3,10 +3,11 @@ import requests
 import urllib
 import os
 import pprint
-import helper_classes
-import omero_api as api
+import api.helper_classes
+import api.omero_api as api
 import threading
 import time
+import sys
 
 new_names = {}
 
@@ -19,10 +20,21 @@ class ImageThread (threading.Thread):
     def run(self):
         img = api.get_image_by_id(self.iid)
         kvals = img.key_values
-        if (kvals['Donor info - Disease Status']['val'] == 'ND'):
-            name = "%s-%s-%s-%s" % (kvals['Donor info - UNOS ID']['val'], kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Sex']['val'])
+        id = ''
+        region = ''
+        if 'Donor info - Program ID' in kvals:
+            id = kvals['Donor info - Program ID']['val']
         else:
-            name = "%s-%s-%s-%s-%s" % (kvals['Donor info - UNOS ID']['val'], kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Disease Duration']['val'], kvals['Donor info - Sex']['val'])
+            id = kvals['Donor info - LIMS ID']['val']        
+
+        if 'Image info - Pancreas Region' in kvals:
+            region = kvals['Image info - Pancreas Region']['val']
+        else:
+            region = kvals['Sample info - Pancreas Region']['val']
+        if (kvals['Donor info - Disease Status']['val'] == 'ND'):
+            name = "%s-%s-%s-%s-%s" % (id, kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Sex']['val'], region)
+        else:
+            name = "%s-%s-%s-%s-%s-%s" % (id, kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Disease Duration']['val'], kvals['Donor info - Sex']['val'], region)
         img.img_wrapper.setName(name)
         img.img_wrapper.save()
         new_names[img.id] = name
@@ -35,8 +47,8 @@ def timing(f):
         print "%s took %0.3f ms" % (f.func_name, (t2 - t1)*1000.0)
 
     return wrap
-def get_image_list():
-    f = open('image_index.txt', 'r')
+def get_image_list(dsid):
+    f = open('/app001/www/assets/pancreatlas/datasets/%s.txt' % (dsid), 'r')
     enc = f.readline()
     imgs = json.loads(enc)
     return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
@@ -63,9 +75,11 @@ def run_normal(iids):
         name = gen_image_name(iid)
 
 def main():
-    imgs = get_image_list()
+    if len(sys.argv) <= 1:
+        sys.exit("Insufficient arguments provided")
+    dsid = sys.argv[1]
+    imgs = get_image_list(dsid)
     run_threaded(imgs)
-    pprint.pprint(new_names)
 #    for img in imgs:
 #        i_thread = ImageThread(img, img)
 #        i_thread.start()

@@ -11,7 +11,7 @@ class Image():
         self.iname = iname
         self.thumbpath = thumbpath
         self.detailpath = detailpath
-        self.pathpath = "https://omero.app.vumc.org/pathviewer/viewer/#?slide=" + str(iid) + "&q_image=" + str(iid) + "&tabs=bp"
+        self.pathpath = "https://omero.app.vumc.org/pathviewer/viewer/#?slide=" + str(iid) + "&q_image=" + str(iid) + "&tabs=VDp"
         self.tags = tags
         self.kvals = kvals
         self.channel_info = channel_info

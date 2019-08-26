@@ -17,6 +17,7 @@ def connect(username, password, host, portnum=4064):
     success = c.connect()
     if success == False:
         print "LAST ERROR: %s" % (c.getLastError())
+    c.SERVICE_OPTS.setOmeroGroup(153)
     conn = c
     return (conn, success)
 
@@ -43,7 +44,7 @@ def get_images_from_ids(iids):
     imgs = conn.getObjects("Image", ids=iids)
     for img in imgs:
         image = Image(img)
-        if len(image.tags):
+        if '[label image]' not in image.name and '[macro image]' not in image.name:
             img_set.append(image)
     return img_set
 
