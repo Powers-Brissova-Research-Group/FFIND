@@ -19,14 +19,14 @@ build:
       - api/
     expire_in: 1 day
 
-# test:
-#  stage: test
-#  script:
-#    - cd react
-#    - npm install
-#    - npm install -g standard
-#    - standard --fix
-#    - npm run test
+test:
+ stage: test
+ script:
+   - cd react
+   - npm install
+   - npm install -g standard
+   - standard --fix
+   - npm run test
 
 deploy:
   stage: deploy
