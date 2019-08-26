@@ -133,6 +133,8 @@ export default class ImageMatrix extends React.Component {
         tags2.sort()
       }
 
+      /* eslint-disable no-unused-vars */
+
       for (let tag1 of tags1) {
         newMatrix[tag1] = {}
         for (let tag2 of tags2) {
@@ -152,6 +154,7 @@ export default class ImageMatrix extends React.Component {
           }
         }
       }
+      /* eslint-enable no-unused-vars */
       this.setState({
         loaded: true,
         matrix: newMatrix,
