@@ -17,7 +17,7 @@ def connect(username, password, host, portnum=4064):
     success = c.connect()
     if success == False:
         print "LAST ERROR: %s" % (c.getLastError())
-    c.SERVICE_OPTS.setOmeroGroup(153)
+    # c.SERVICE_OPTS.setOmeroGroup(153)
     conn = c
     return (conn, success)
 
