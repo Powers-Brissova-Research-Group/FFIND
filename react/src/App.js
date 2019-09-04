@@ -15,7 +15,7 @@ import {
 
 import TopNav from './TopNav'
 import PancreatlasFooter from './pancreatlas/PancreatlasFooter'
-import BrowserNotSupportedBanner from './BrowserNotSupportedBanner'
+import WarningBanner from './WarningBanner'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faLink, faEnvelope, faPhone, faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faRedo, faBook, faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons'
@@ -131,6 +131,7 @@ class App extends Component {
     var supportInfo = this.checkCompatability()
     var supported = supportInfo.isSupported
     var browser = supportInfo.browserInfo
+    var browserName =browser.name === 'ie' ? 'Internet Explorer' : browser.name
     var version = supportInfo.browserInfo.version
     // if (browser.name.toLowerCase() !== 'firefox' && browser.name.toLowerCase() !== 'chrome'){
     //   supported = false
@@ -141,7 +142,10 @@ class App extends Component {
     } else {
       return (
         <div>
-          {supported === false && <BrowserNotSupportedBanner version={version} browser={browser.name === 'ie' ? 'Internet Explorer' : browser.name} />}
+          <WarningBanner>
+            <h5>WARNING: You are currently using a development version of Pancreatlas. Note that features are not guaranteed to work and that you must log into OMERO to use PathViewer.</h5>
+          </WarningBanner>
+          {supported === false && <WarningBanner><h5>Sorry, but your browser ({browserName.charAt(0).toUpperCase() + browserName.slice(1) + ' ' + version}) is not supported and some site features may not work properly.</h5><p>Please consider using the most recent versions of <a href='https://www.mozilla.org/en-US/firefox/new/'>Mozilla Firefox</a> or <a href='https://www.google.com/chrome'>Google Chrome</a>.</p></WarningBanner>}
           {/* <Container fluid className='test-feedback'>
             <Row>
               <Col sm="12">

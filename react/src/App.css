@@ -826,7 +826,7 @@ div.overlay {
   align-items: center;
 }
 
-div.browser-not-supported-banner {
+div.warning-banner {
   background-color: #b4161a;
   color: #fff;
   text-align: center;
@@ -836,6 +836,18 @@ div.browser-not-supported-banner {
   justify-content: center;
   align-items: center;
 }
+
+div.dev-warning-banner {
+  background-color: #b4161a;
+  color: #fff;
+  text-align: center;
+  padding-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 
 div.browser-not-supported-banner a a:visited a:hover {
   color: #fff;
