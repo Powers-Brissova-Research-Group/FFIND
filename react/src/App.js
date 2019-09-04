@@ -94,7 +94,10 @@ class App extends Component {
       }
     } else {
       supported = false
-      browser = 'Unknown'
+      browser = {
+        name: 'Unknown',
+        version: '-1'
+      }
     }
 
     return { isSupported: supported, browserInfo: browser }
@@ -131,7 +134,7 @@ class App extends Component {
     var supportInfo = this.checkCompatability()
     var supported = supportInfo.isSupported
     var browser = supportInfo.browserInfo
-    var browserName =browser.name === 'ie' ? 'Internet Explorer' : browser.name
+    var browserName = browser.name === 'ie' ? 'Internet Explorer' : browser.name
     var version = supportInfo.browserInfo.version
     // if (browser.name.toLowerCase() !== 'firefox' && browser.name.toLowerCase() !== 'chrome'){
     //   supported = false
