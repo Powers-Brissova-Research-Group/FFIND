@@ -30,7 +30,8 @@ export default class DetailRow extends React.Component {
             </p>
           </td>
           <td className={this.props.heading.split('-').map(val => val.trim()).join(' ') + ' text-center image-detail-row'}>
-            <p>{this.props.data}</p>
+            {this.props.link === undefined && <p>{this.props.data}</p>}
+            {this.props.link !== undefined && <p><a href={this.props.link} targe='_blank'><u>{this.props.data}</u></a></p>}
           </td>
         </tr>)
     } else {
