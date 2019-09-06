@@ -44,13 +44,16 @@ class Image:
     def fetch_annotations(self):
         tag_re = re.compile("(Donor info|Image info|Sample info)( - )(.+)")
         marker_re = re.compile("(Stain info)( - )(.+)(?<!-Ab)$")
+        hex_re = re.compile("(Hex code)( - )(\w+)$")
         tags = ['File Type', 'Section Plane', 'Disease Status', 'Sex', 'Disease Duration', 'LIMS ID', 'Age', 'Pancreas Region']
         anns = list(self.img_wrapper.listAnnotations())
+        found_hex = False
         for ann in anns:
             if isinstance(ann, MapAnnotationWrapper):
                 for pair in ann.getValue():
                     tag_match = tag_re.match(pair[0])
                     marker_match = marker_re.match(pair[0])
+                    hex_match = hex_re.match(pair[0])
                     if tag_match != None:
                         tagset = tag_match.group(3)
                         if tagset in tags and pair[1] != "":
@@ -58,11 +61,16 @@ class Image:
                     if marker_match != None:
                         if pair[1] != "":
                             self.tags.append({'tagset': 'Marker', 'tag': pair[1]})
+                    if hex_match != None:
+                        channel = hex_match.group(3)
+                        self.channel_info = pair[1]
+                        found_hex = True
                     self.key_values[pair[0]] = {'val': pair[1], 'desc': 'default val'}
 
-        channels = list(self.img_wrapper.getChannels())
-        for channel in channels:
-            self.channel_info[channel.getLabel().upper()] =  channel.getColor().getHtml()
+        if not found_hex:
+            channels = list(self.img_wrapper.getChannels())
+            for channel in channels:
+                self.channel_info[channel.getLabel().upper()] =  channel.getColor().getHtml()
     def get_tags(self):
         return self.tags
 
