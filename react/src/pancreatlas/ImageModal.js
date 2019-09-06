@@ -58,7 +58,7 @@ export default class ImageModal extends React.Component {
       }
       /* eslint-enable no-unused-vars */
       this.relevantKeys = Object.keys(this.props.modalData.img_data).sort().filter(
-        key => matchingKeys.concat(['Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - File Type', 'Donor info - UNOS ID', 'File path']).indexOf(key) === -1
+        key => matchingKeys.concat(['Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - File Type', 'Donor info - UNOS ID', 'File path', 'Program ID link']).indexOf(key) === -1
       )
     }
 
