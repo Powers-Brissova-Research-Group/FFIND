@@ -47,6 +47,7 @@ class Image:
         hex_re = re.compile("(Hex code)( - )(\w+)$")
         tags = ['File Type', 'Section Plane', 'Disease Status', 'Sex', 'Disease Duration', 'LIMS ID', 'Age', 'Pancreas Region']
         anns = list(self.img_wrapper.listAnnotations())
+        channel_map = {}
         found_hex = False
         for ann in anns:
             if isinstance(ann, MapAnnotationWrapper):
@@ -60,17 +61,22 @@ class Image:
                             self.tags.append({'tagset': tagset, 'tag': pair[1]})
                     if marker_match != None:
                         if pair[1] != "":
+                            channel_map[marker_match.group(3).upper()] = pair[1]
                             self.tags.append({'tagset': 'Marker', 'tag': pair[1]})
                     if hex_match != None:
                         channel = hex_match.group(3)
-                        self.channel_info = pair[1]
+                        self.channel_info[channel] = pair[1]
                         found_hex = True
                     self.key_values[pair[0]] = {'val': pair[1], 'desc': 'default val'}
 
         if not found_hex:
             channels = list(self.img_wrapper.getChannels())
             for channel in channels:
-                self.channel_info[channel.getLabel().upper()] =  channel.getColor().getHtml()
+                channel_name = channel.getLabel().upper()
+                if channel_name in channel_map:
+                    self.channel_info[channel_map[channel_name]] = channel.getColor().getHtml()
+                else:
+                    self.channel_info[channel_name] =  channel.getColor().getHtml()
     def get_tags(self):
         return self.tags
 
