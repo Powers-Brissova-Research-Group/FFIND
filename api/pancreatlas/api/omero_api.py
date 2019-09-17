@@ -21,25 +21,11 @@ def connect(username, password, host, portnum=4064):
     conn = c
     return (conn, success)
 
-def get_image_by_id(iid):
-    global conn
-    if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    success = conn.keepAlive()
-    if not success:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-
+def get_image_by_id(conn, iid):
     img = conn.getObject("Image", oid=iid)
     return Image(img)
 
-def get_images_from_ids(iids):
-    global conn
-    if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    success = conn.keepAlive()
-    if not success:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-
+def get_images_from_ids(conn, iids):
     img_set = []
     imgs = conn.getObjects("Image", ids=iids)
     for img in imgs:
@@ -48,29 +34,13 @@ def get_images_from_ids(iids):
             img_set.append(image)
     return img_set
 
-def get_all_images():
-    global conn
-    if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    success = conn.keepAlive()
-    if not success:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-
+def get_all_images(conn):
     imgs = list(conn.getObjects("Image"))
     return [Image(img) for img in imgs]
 
-def get_images_from_dataset(dsid):
-    global conn
-    if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    success = conn.keepAlive()
-    if not success:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    # f = open('/var/www/pancreatlas/dev/dev7/pancreatlas/api/pancreatlas/api/%s.txt' % (dsid, ), 'r')
-    # imgs = json.loads(f.readline())
-    # iids = imgs.keys()
+def get_images_from_dataset(conn, dsid):
     iids = []
-    dset = get_dataset(dsid)
+    dset = get_dataset(conn, dsid)
     children = list(dset.wrapper.listChildren())
     for child in children:
         iids.append(child.getId())
@@ -78,28 +48,14 @@ def get_images_from_dataset(dsid):
     print dset.name + " has " + str(len(imgs)) + " images"
     return imgs
 
-def get_images_union_from_tags(tag_names, dsid):
-    global conn
-    if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    success = conn.keepAlive()
-    if not success:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-
+def get_images_union_from_tags(conn, tag_names, dsid):
     tids = map(get_tid, tag_names)
     imgs = conn.getObjectsByAnnotations("Image", tids)
     return get_images_from_ids([i.id for i in imgs])
 
 # Is there a way to do this without getting the image ids first and then the images themselves? (Only making one api call)
 
-def get_images_intersection_from_tags(tag_names):
-    global conn
-    if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    success = conn.keepAlive()
-    if not success:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-
+def get_images_intersection_from_tags(conn, tag_names):
     tids = []
     lists = []
     for name in tag_names:
@@ -112,7 +68,7 @@ def get_images_intersection_from_tags(tag_names):
     tmp = intersection(lists)
     
     # Just returning the intersection doesn't work because for some reason that doesn't inclulde all the possible image tags
-    return get_images_from_ids([i.id for i in tmp])
+    return get_images_from_ids(conn, [i.id for i in tmp])
 
 def save_images(img_set, directory):
     imgnames = map(gen_file_name, img_set)
@@ -123,14 +79,8 @@ def save_images(img_set, directory):
 def gen_file_name(img):
     return img.gen_file_name()
 
-def fetch_tags():
+def fetch_tags(conn):
     global tag_set
-    global conn
-    if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    success = conn.keepAlive()
-    if not success:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
 
     if tag_set == None:
         tag_set = {}
@@ -164,14 +114,7 @@ def filter_imgs_by_tag(img_set, tag_name):
     filtered = [ img for img in img_set if img.has_tag(tag) ]
     return filtered
 
-def get_datasets():
-    global conn
-    if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    success = conn.keepAlive()
-    if not success:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-
+def get_datasets(conn):
     dsets = list(conn.getObjects("Dataset"))
     dset_list = [Dataset(dset) for dset in dsets]
     return dset_list
@@ -185,41 +128,20 @@ def get_test_datasets():
 def get_private_datasets():
     return [ds for ds in get_datasets() if ds.active == True and ds.status <= 3]
 
-def get_dataset(did):
-    global conn
-    if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    success = conn.keepAlive()
-    if not success:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-
+def get_dataset(conn, did):
     ds = conn.getObject("Dataset", oid=did)
     dataset = Dataset(ds)
     # dataset.imgs = get_images_from_dataset(conn, dataset)
     return dataset    
 
-def get_dataset_images(did):
-    global conn
-    if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    success = conn.keepAlive()
-    if not success:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-
-    dset = get_dataset(did)
-    dset.imgs = get_images_from_dataset(dset)
+def get_dataset_images(conn, did):
+    dset = get_dataset(conn, did)
+    dset.imgs = get_images_from_dataset(conn, dset)
     # print dset.name + " has " + str(len(dset.imgs)) + " images."
     return dset
 
-def get_tag_dictionary():
+def get_tag_dictionary(conn):
     global tag_set
-    global conn
-    if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    success = conn.keepAlive()
-    if not success:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-
     if tag_set == None:
         tag_set = fetch_tags()
     tag_dict = {}
@@ -232,15 +154,8 @@ def get_tag_dictionary():
             tag_dict[p.getValue().upper()].append(Tag(tag, tag.getId()))
     return tag_dict
     
-def generate_image_matrix(tagset_a, tagset_b):
-    global conn
-    if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    success = conn.keepAlive()
-    if not success:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-
-    tagsets = get_tag_dictionary()
+def generate_image_matrix(conn, tagset_a, tagset_b):
+    tagsets = get_tag_dictionary(conn)
     group_a = [tag.tname for tag in tagsets[tagset_a]]
     group_b = [tag.tname for tag in tagsets[tagset_b]]
     matrix = { }
@@ -249,8 +164,8 @@ def generate_image_matrix(tagset_a, tagset_b):
         for t in group_b:
             matrix[tag][t] = []
     # print matrix
-    images_a = get_images_union_from_tags(group_a)
-    images_b = get_images_union_from_tags(group_b)
+    images_a = get_images_union_from_tags(conn, group_a)
+    images_b = get_images_union_from_tags(conn, group_b)
     # # print intersect([set(images_a[0].get_tag_names()), set(group_b)])
     images_a = [img for img in images_a if intersect([set(img.get_tag_names()), set(group_b)])]
     images_b = [img for img in images_b if intersect([set(img.get_tag_names()), set(group_a)])]
@@ -268,39 +183,32 @@ def generate_image_matrix(tagset_a, tagset_b):
     return matrix
 
 
-def generate_image_matrix_from_ds(tagset_a, tagset_b, dsid):
-    global conn
-    if conn == None:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-    success = conn.keepAlive()
-    if not success:
-        connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
-        
+def generate_image_matrix_from_ds(conn, tagset_a, tagset_b, dsid):
     tagsets = get_tag_dictionary()
     group_a = [tag.tname for tag in tagsets[tagset_a]]
     group_b = [tag.tname for tag in tagsets[tagset_b]]
     matrix = { }
 
     dir = os.getcwd()
-    f = open("/app001/www/assets/pancreatlas/datasets/%s.txt" % (str(dsid), ), 'r')
-    json_str = f.readline()
+    with open("/app001/www/assets/pancreatlas/datasets/%s.txt" % (str(dsid), ), 'r') as f:
+        json_str = f.readline()
 
-    imgs = json.loads(json_str)
+        imgs = json.loads(json_str)
 
-    for (img_id, img_tags) in imgs.iteritems():
-        tags = [img['tag'] for img in img_tags]
-        a_tags = intersection([set(tags), set(group_a)])
-        b_tags = intersection([set(tags), set(group_b)])
-        if(len(a_tags) > 0 and len(b_tags) > 0):
-            for a_tag in a_tags:
-                if a_tag not in matrix:
-                    matrix[a_tag] = {}
-                for b_tag in b_tags:
-                    if b_tag not in matrix[a_tag]:
-                        matrix[a_tag][b_tag] = []
-                    matrix[a_tag][b_tag].append(str(img_id))
+        for (img_id, img_tags) in imgs.iteritems():
+            tags = [img['tag'] for img in img_tags]
+            a_tags = intersection([set(tags), set(group_a)])
+            b_tags = intersection([set(tags), set(group_b)])
+            if(len(a_tags) > 0 and len(b_tags) > 0):
+                for a_tag in a_tags:
+                    if a_tag not in matrix:
+                        matrix[a_tag] = {}
+                    for b_tag in b_tags:
+                        if b_tag not in matrix[a_tag]:
+                            matrix[a_tag][b_tag] = []
+                        matrix[a_tag][b_tag].append(str(img_id))
 
-    return matrix
+        return matrix
 
     # # print matrix
     # images = get_images_from_dataset_cache(group_a)

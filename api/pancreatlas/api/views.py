@@ -17,6 +17,7 @@ import json
 from django.shortcuts import render
 
 import omero_api
+from omeropy.omero.gateway import BlitzGateway
 
 from helper_classes import TagSetI
 
@@ -26,6 +27,11 @@ import collections
 import os
 
 import hashlib
+import logging
+
+FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
+logging.basicConfig(format=FORMAT)
+logger = logging.getLogger('pancreatlas_api')
 
 # Create your views here.
 
@@ -33,18 +39,23 @@ import hashlib
 class ImageViewSet(viewsets.ViewSet):
 
     def list(self, request):
-        f = open('/app001/www/assets/pancreatlas/datasets/image_index.txt', 'r')
-        data = f.readline()
-        # ids = ids[:-1]
-
-        # serializer = ImageIdSerializer(ImageId(ids))
-        return Response(json.loads(data))
+        with open('/app001/www/assets/pancreatlas/datasets/image_index.txt', 'r') as f:
+            data = f.readline()
+            return Response(json.loads(data))
 
     def retrieve(self, request, pk=None):
-        img = omero_api.get_image_by_id(pk)
-
-        ret_img = Image(pk, img.file_name, "/var/www/assets/pancreatlas/thumb/" + img.file_name,
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=', '10.152.140.10', portnum=4064)
+        try:
+            img = omero_api.get_image_by_id(conn, pk)
+            ret_img = Image(pk, img.file_name, "/var/www/assets/pancreatlas/thumb/" + img.file_name,
                         "/home/jmessmer/Projects/pancreatlas/api/pancreatlas/assets/details/" + img.file_name, img.get_tag_names(), img.get_key_values(), img.get_channel_info())
+        finally:
+            try:
+                conn.close(hard=False)
+            except:
+                logger.warning("Failed to close OMERO connection")
+
+
 
         serializer = ImageSerializer(ret_img)
         return Response(serializer.data)
@@ -52,30 +63,24 @@ class ImageViewSet(viewsets.ViewSet):
 
 class DatasetViewset(viewsets.ViewSet):
     def list(self, request):
-        dsets = [Dataset(dset.did, dset.name, dset.desc, dset.kvals) for dset in omero_api.get_private_datasets()]
-        # dsets = [Dataset(dset.did, dset.name, dset.desc, dset.kvals) for dset in dsets if dset.did == 384 or dset.did == 390 or dset.did == 408]
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=', '10.152.140.10', portnum=4064)
+        try:
+            dsets = [Dataset(dset.did, dset.name, dset.desc, dset.kvals) for dset in omero_api.get_private_datasets(conn)]
+        finally:
+            try:
+                conn.close(hard=False)
+            except:
+                logger.warning("Failed to close OMERO connection")
 
         serializer = DatasetSerializer(dsets, many=True)
         return Response(serializer.data)
 
     @action(methods=['get'], detail=True, url_path='get-images', url_name='get_images')
     def get_images(self, request, pk=None):
-        # ds = omero_api.get_dataset_images(pk)
-        # ds.imgs = omero_api.filter_imgs_by_tag(ds.imgs, "Aperio")
-        cwd = os.getcwd()
-        f = open('/app001/www/assets/pancreatlas/datasets/' + str(pk) + '.txt', 'r')
-        data = f.readline()
-        # imgs = [Image(img.id, img.file_name, "assets/thumbnails/" + img.file_name, "assets/details/" +
-        #               img.file_name, img.get_tag_names(), img.get_key_values()) for img in ds.imgs]
+        with open('/app001/www/assets/pancreatlas/datasets/' + str(pk) + '.txt', 'r') as f:
+            data = f.readline()
 
-        # img_serializer = ImageSerializer(imgs, many=True)
-
-        # ret_imgs = DatasetImages(
-        #     "full no copy aperio", len(imgs), img_serializer.data)
-
-        # serializer = DatasetImageSerializer(ret_imgs)    
-
-        return Response(json.loads(data))
+            return Response(json.loads(data))
 
     def retrieve(self, request, pk=None):
         ds = omero_api.get_dataset(pk)
@@ -92,13 +97,20 @@ class TagsetViewset(viewsets.ViewSet):
 class MatrixViewset(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
         tags = pk.split(',')
-        matrix = omero_api.generate_image_matrix_from_ds(
-            tags[0].upper(), tags[1].upper(), tags[2])
-        for (key, value) in matrix.iteritems():
-            for (col, imgs) in value.iteritems():
-                matrix[key][col] = imgs
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=', '10.152.140.10', portnum=4064)
+        try:
+            matrix = omero_api.generate_image_matrix_from_ds(conn, 
+                tags[0].upper(), tags[1].upper(), tags[2])
+            for (key, value) in matrix.iteritems():
+                for (col, imgs) in value.iteritems():
+                    matrix[key][col] = imgs
 
-        m = Matrix(tags[0], tags[1], matrix)
+            m = Matrix(tags[0], tags[1], matrix)
+        finally:
+            try:
+                conn.close(hard=False)
+            except:
+                logger.warning("Failed to close OMERO connection")
 
         serializer = MatrixSerializer(m)
         # pprint.pprint(matrix)
