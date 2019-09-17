@@ -119,14 +119,14 @@ def get_datasets(conn):
     dset_list = [Dataset(dset) for dset in dsets]
     return dset_list
 
-def get_active_datasets():
-    return [ds for ds in get_datasets() if ds.active == True and ds.status <= 1]
+def get_active_datasets(conn):
+    return [ds for ds in get_datasets(conn) if ds.active == True and ds.status <= 1]
 
-def get_test_datasets():
-    return [ds for ds in get_datasets() if ds.active == True and ds.status <= 2]
+def get_test_datasets(conn):
+    return [ds for ds in get_datasets(conn) if ds.active == True and ds.status <= 2]
 
-def get_private_datasets():
-    return [ds for ds in get_datasets() if ds.active == True and ds.status <= 3]
+def get_private_datasets(conn):
+    return [ds for ds in get_datasets(conn) if ds.active == True and ds.status <= 3]
 
 def get_dataset(conn, did):
     ds = conn.getObject("Dataset", oid=did)

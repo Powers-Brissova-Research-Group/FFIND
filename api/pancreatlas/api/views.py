@@ -46,9 +46,12 @@ class ImageViewSet(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
         conn = BlitzGateway('api.user', 'ts6t6r1537k=', '10.152.140.10', portnum=4064)
         try:
+            conn.connect()
             img = omero_api.get_image_by_id(conn, pk)
             ret_img = Image(pk, img.file_name, "/var/www/assets/pancreatlas/thumb/" + img.file_name,
                         "/home/jmessmer/Projects/pancreatlas/api/pancreatlas/assets/details/" + img.file_name, img.get_tag_names(), img.get_key_values(), img.get_channel_info())
+            serializer = ImageSerializer(ret_img)
+            return Response(serializer.data)
         finally:
             try:
                 conn.close(hard=False)
@@ -57,23 +60,23 @@ class ImageViewSet(viewsets.ViewSet):
 
 
 
-        serializer = ImageSerializer(ret_img)
-        return Response(serializer.data)
 
 
 class DatasetViewset(viewsets.ViewSet):
     def list(self, request):
         conn = BlitzGateway('api.user', 'ts6t6r1537k=', '10.152.140.10', portnum=4064)
         try:
+            conn.connect()
             dsets = [Dataset(dset.did, dset.name, dset.desc, dset.kvals) for dset in omero_api.get_private_datasets(conn)]
+            serializer = DatasetSerializer(dsets, many=True)
+            return Response(serializer.data)
+
         finally:
             try:
                 conn.close(hard=False)
             except:
                 logger.warning("Failed to close OMERO connection")
 
-        serializer = DatasetSerializer(dsets, many=True)
-        return Response(serializer.data)
 
     @action(methods=['get'], detail=True, url_path='get-images', url_name='get_images')
     def get_images(self, request, pk=None):
@@ -83,9 +86,18 @@ class DatasetViewset(viewsets.ViewSet):
             return Response(json.loads(data))
 
     def retrieve(self, request, pk=None):
-        ds = omero_api.get_dataset(pk)
-        serializer = DatasetSerializer(Dataset(ds.did, ds.name, ds.desc, ds.kvals))
-        return Response(serializer.data)
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=', '10.152.140.10', portnum=4064)
+        try:
+            conn.connect()
+            ds = omero_api.get_dataset(pk)
+            serializer = DatasetSerializer(Dataset(ds.did, ds.name, ds.desc, ds.kvals))
+            return Response(serializer.data)
+        finally:
+            try:
+                conn.close(hard=False)
+            except:
+                logger.warning("Failed to close OMERO connection")
+
 
 
 class TagsetViewset(viewsets.ViewSet):
