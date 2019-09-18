@@ -44,7 +44,7 @@ class ImageViewSet(viewsets.ViewSet):
             return Response(json.loads(data))
 
     def retrieve(self, request, pk=None):
-        conn = BlitzGateway('api.user', 'ts6t6r1537k=', '10.152.140.10', portnum=4064)
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=', host='10.152.140.10', portnum=4064)
         try:
             conn.connect()
             img = omero_api.get_image_by_id(conn, pk)
@@ -64,7 +64,7 @@ class ImageViewSet(viewsets.ViewSet):
 
 class DatasetViewset(viewsets.ViewSet):
     def list(self, request):
-        conn = BlitzGateway('api.user', 'ts6t6r1537k=', '10.152.140.10', port=4064)
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=', host='10.152.140.10', port=4064)
         try:
             conn.connect()
             dsets = [Dataset(dset.did, dset.name, dset.desc, dset.kvals) for dset in omero_api.get_private_datasets(conn)]
@@ -86,7 +86,7 @@ class DatasetViewset(viewsets.ViewSet):
             return Response(json.loads(data))
 
     def retrieve(self, request, pk=None):
-        conn = BlitzGateway('api.user', 'ts6t6r1537k=', '10.152.140.10', port=4064)
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=', host='10.152.140.10', port=4064)
         try:
             conn.connect()
             ds = omero_api.get_dataset(pk)
@@ -109,7 +109,7 @@ class TagsetViewset(viewsets.ViewSet):
 class MatrixViewset(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
         tags = pk.split(',')
-        conn = BlitzGateway('api.user', 'ts6t6r1537k=', '10.152.140.10', port=4064)
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=', host='10.152.140.10', port=4064)
         try:
             matrix = omero_api.generate_image_matrix_from_ds(conn, 
                 tags[0].upper(), tags[1].upper(), tags[2])
