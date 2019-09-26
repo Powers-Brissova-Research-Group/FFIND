@@ -44,7 +44,7 @@ class ImageViewSet(viewsets.ViewSet):
             return Response(json.loads(data))
 
     def retrieve(self, request, pk=None):
-        conn = BlitzGateway('api.user', 'ts6t6r1537k=', host='10.152.140.10', portnum=4064)
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=', host='10.152.140.10', port=4064)
         try:
             conn.connect()
             img = omero_api.get_image_by_id(conn, pk)
