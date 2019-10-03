@@ -48,8 +48,7 @@ class ImageViewSet(viewsets.ViewSet):
         try:
             conn.connect()
             img = omero_api.get_image_by_id(conn, pk)
-            ret_img = Image(pk, img.file_name, "/var/www/assets/pancreatlas/thumb/" + img.file_name,
-                        "/home/jmessmer/Projects/pancreatlas/api/pancreatlas/assets/details/" + img.file_name, img.get_tag_names(), img.get_key_values(), img.get_channel_info())
+            ret_img = Image(pk, img.file_name, img.get_tag_names(), img.get_key_values(), img.get_channel_info())
             serializer = ImageSerializer(ret_img)
             return Response(serializer.data)
         finally:
@@ -89,7 +88,7 @@ class DatasetViewset(viewsets.ViewSet):
         conn = BlitzGateway('api.user', 'ts6t6r1537k=', host='10.152.140.10', port=4064)
         try:
             conn.connect()
-            ds = omero_api.get_dataset(pk)
+            ds = omero_api.get_dataset(conn, pk)
             serializer = DatasetSerializer(Dataset(ds.did, ds.name, ds.desc, ds.kvals))
             return Response(serializer.data)
         finally:
