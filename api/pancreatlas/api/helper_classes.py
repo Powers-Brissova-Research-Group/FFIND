@@ -61,7 +61,7 @@ class Image:
                             self.tags.append({'tagset': tagset, 'tag': pair[1]})
                     if marker_match != None:
                         if pair[1] != "":
-                            channel_map[marker_match.group(3).upper()] = pair[1]
+                            channel_map[marker_match.group(3)] = pair[1]
                             self.tags.append({'tagset': 'Marker', 'tag': pair[1]})
                     if hex_match != None:
                         channel = hex_match.group(3)
