@@ -4,8 +4,6 @@ from models import Image
 class ImageSerializer(serializers.Serializer):
     iid = serializers.IntegerField()
     iname = serializers.CharField(max_length=50)
-    thumbpath = serializers.CharField(max_length=128)
-    detailpath = serializers.CharField(max_length=128)
     pathpath = serializers.CharField(max_length=128)
     tags = serializers.ListField()
     kvals = serializers.DictField(child=serializers.DictField())
