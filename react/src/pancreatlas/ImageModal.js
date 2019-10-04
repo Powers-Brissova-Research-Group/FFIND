@@ -41,16 +41,16 @@ export default class ImageModal extends React.Component {
 
   render () {
     var tinycolor = require('tinycolor2')
-    let labelRe = /^([a-zA-Z]+\s+info)?(\s+-\s+)?(.+)$/
+    let labelRe = /^(?!Hex code)([a-zA-Z]+\s+info)?(\s+-\s+)?(.+)$/
     var markers = []
     if (this.props.modalData !== undefined) {
       let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9\s]+$)/i
       let matchingKeys = Object.keys(this.props.modalData.img_data).filter(key => markerRe.test(key))
       /* eslint-disable no-unused-vars */
       for (let key of matchingKeys) {
-        var chan = markerRe.exec(key)[3].toUpperCase()
+        var chan = markerRe.exec(key)[3]
         var val = this.props.modalData.img_data[key].val
-        var clr = this.props.modalData.markerColors[chan] === undefined ? '#FFFFFF' : this.props.modalData.markerColors[chan]
+        var clr = this.props.modalData.markerColors[val] === undefined ? '#FFFFFF' : this.props.modalData.markerColors[val] 
         markers.push({
           'val': val,
           'color': clr

@@ -297,14 +297,14 @@ export default class ImageGrid extends React.Component {
         // let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
 
         let markerColors = result.channel_info
-        let markerColorRe = /^.+\((.+)\)$/
-        Object.keys(markerColors).forEach(function (key) {
-          var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
-          if (newKey !== key) {
-            markerColors[newKey] = markerColors[key]
-            delete markerColors[key]
-          }
-        })
+        // let markerColorRe = /^.+\((.+)\)$/
+        // Object.keys(markerColors).forEach(function (key) {
+        //   var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
+        //   if (newKey !== key) {
+        //     markerColors[newKey] = markerColors[key]
+        //     delete markerColors[key]
+        //   }
+        // })
 
         // let matches = re.exec(path)
         // result.kvals['File path'].val = matches[0]
