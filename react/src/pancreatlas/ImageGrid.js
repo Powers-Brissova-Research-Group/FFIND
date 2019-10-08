@@ -75,7 +75,7 @@ export default class ImageGrid extends React.Component {
       })
     })
 
-    axios.get(`${process.env.REACT_APP_API_URL}/tagsets/`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-tags`, {
       withCredentials: true,
       credentials: 'include',
       headers: {

@@ -79,10 +79,36 @@ class DatasetViewset(viewsets.ViewSet):
 
     @action(methods=['get'], detail=True, url_path='get-images', url_name='get_images')
     def get_images(self, request, pk=None):
-        with open('/app001/www/assets/pancreatlas/datasets/' + str(pk) + '.txt', 'r') as f:
+        with open('/app001/www/assets/pancreatlas/datasets/' + str(pk) + '.txt') as f:
             data = f.readline()
 
-            return Response(json.loads(data))
+    @action(methods=['get'], detail=True, url_path='get-tags', url_name='get_tags')
+    def get_tags(self, request, pk=None):
+        filters = {}
+        sort_weight = {
+            'DISEASE STATUS': 0,
+            'DISEASE DURATION': 1,
+            'AGE': 2,
+            'SEX': 3,
+            'MARKER': 4,
+            'PANCREAS REGION': 5,
+            'SECTION PLANE': 6,
+            'FILE TYPE': 7
+        }
+        with open('/app001/www/assets/pancreatlas/datasets/' + str(pk) + '.txt', 'r') as f:
+            data = json.loads(f.readline())
+            for key, val in data.items():
+                for fil in val:
+                    filter_group = fil['tagset'].upper()
+                    filter_name = fil['tag']
+                    if filter_group in sort_weight:
+                        if filter_group not in filters:
+                            filters[filter_group] = {'set_name': filter_group, 'tags': {}, 'pos': sort_weight[filter_group]}
+                        fset = filters[filter_group]
+                        fset['tags'][filter_name] = 0
+            sorted_filters = sorted(filters.values(), key=lambda fil: fil['pos'])
+            return Response(sorted_filters)
+
 
     def retrieve(self, request, pk=None):
         conn = BlitzGateway('api.user', 'ts6t6r1537k=', host='10.152.140.10', port=4064)

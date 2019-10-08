@@ -1,13 +1,14 @@
 import json
 import api.omero_api as api
+from api.omeropy.omero.gateway import BlitzGateway
 
-def save_datasets(dids):
+def save_datasets(conn, dids):
     for did in dids:
         print "Saving %s" % (str(did),)
         fname = "/app001/www/assets/pancreatlas/datasets/%s.txt" % (str(did), )
         print fname
         ids = {}
-        images = api.get_images_from_dataset(did)
+        images = api.get_images_from_dataset(conn, did)
 #        images = dset.imgs
         f = open(fname, 'w')
         for image in images:
@@ -36,9 +37,17 @@ def save_index(dids):
     f.close
     
 def main():
-    dsets = [ds.did for ds in api.get_private_datasets()]
-    save_datasets(dsets)
-    save_index(dsets)
+    conn = BlitzGateway('api.user', 'ts6t6r1537k=', host='10.152.140.10', port=4064)
+    try:
+        conn.connect()
+        dsets = [ds.did for ds in api.get_private_datasets(conn)]
+        save_datasets(conn, dsets)
+        #save_index(dsets)
+    finally:
+        try:
+            conn.close()
+        except:
+            print("Failed to close omero connection")
 
 if __name__=='__main__':
     main()
