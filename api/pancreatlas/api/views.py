@@ -81,6 +81,7 @@ class DatasetViewset(viewsets.ViewSet):
     def get_images(self, request, pk=None):
         with open('/app001/www/assets/pancreatlas/datasets/' + str(pk) + '.txt') as f:
             data = f.readline()
+            return Response(json.loads(data))
 
     @action(methods=['get'], detail=True, url_path='get-tags', url_name='get_tags')
     def get_tags(self, request, pk=None):
