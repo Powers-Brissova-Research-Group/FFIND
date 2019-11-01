@@ -100,7 +100,11 @@ export default class FilterList extends React.Component {
       filters: tagList,
       prevFilters: prevFilters
     })
-    this.props.callback(this.state.filters, prevFilters)
+    let encoded = window.btoa(JSON.stringify(this.state.filters))
+    let params = new URLSearchParams(window.location.search)
+    params.append('filters', encoded)
+    window.history.pushState({'pageTitle': 'Browse & Filter Dataset'}, '', `${window.location.protocol}//${window.location.host}${window.location.pathname}?${params.toString()}`)
+    this.props.callback(this.state.filters, prevFilters, newTag)
   }
 
   clear () {

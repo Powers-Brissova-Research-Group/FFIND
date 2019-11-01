@@ -22,6 +22,8 @@ import Error from './Error'
 import ImageModal from './ImageModal'
 import LoadingBar from './LoadingBar'
 
+import { FilterTree } from './utilities'
+
 import axios from 'axios'
 
 export default class ImageGrid extends React.Component {
@@ -39,7 +41,8 @@ export default class ImageGrid extends React.Component {
       imgsPerRow: 3,
       imgsColSplit: 4,
       rowsPerPage: 5,
-      density: 'normal'
+      density: 'normal',
+      filterTree: new FilterTree()
     }
 
     this.nextPage = this.nextPage.bind(this)
@@ -85,6 +88,13 @@ export default class ImageGrid extends React.Component {
       let result = response.data
       this.raw_tags = result
       /* eslint-disable no-unused-vars */
+      for (let tagset of result) {
+        let tagsetName = tagset.set_name
+        for (let tag of Object.keys(tagset.tags)) {
+          this.state.filterTree.addNode(tag, tagsetName)
+        }
+      }
+      console.log(this.state.filterTree.generateActiveFilters())
       for (let o of Object.keys(result)) {
         if ('set_name' in result[o]) {
           this.tag_idx[result[o].set_name] = o
@@ -215,7 +225,8 @@ export default class ImageGrid extends React.Component {
     })
   }
 
-  filter (tagList, prevFilters) {
+  filter (tagList, prevFilters, newTag) {
+    this.state.filterTree.activateFilter(newTag)
     let empty = true
     /* eslint-disable no-unused-vars */
     for (let key of Object.keys(tagList)) {

@@ -44,7 +44,7 @@ def get_images_from_dataset(conn, dsid):
     children = list(dset.wrapper.listChildren())
     for child in children:
         iids.append(child.getId())
-    imgs = get_images_from_ids(iids)
+    imgs = get_images_from_ids(conn, iids)
     print dset.name + " has " + str(len(imgs)) + " images"
     return imgs
 

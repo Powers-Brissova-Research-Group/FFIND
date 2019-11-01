@@ -76,7 +76,6 @@ export default class ImageCard extends React.Component {
         }
 
         let hasLink = Object.keys(kvals).includes('Program ID link')
-        console.log(`Image ${this.props.iid} has a program link: ${hasLink}`)
         for (let key of donorKeys) {
           if (kvals[key].val !== '' && kvals[key].val !== undefined) {
             let valKey = donorRe.exec(key)[3]
