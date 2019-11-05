@@ -94,7 +94,6 @@ export default class ImageGrid extends React.Component {
           this.state.filterTree.addNode(tag, tagsetName)
         }
       }
-      console.log(this.state.filterTree.generateActiveFilters())
       for (let o of Object.keys(result)) {
         if ('set_name' in result[o]) {
           this.tag_idx[result[o].set_name] = o
@@ -118,6 +117,14 @@ export default class ImageGrid extends React.Component {
         }
       }).then(response => {
         let result = response.data
+        /* eslint-disable no-unused-vars */
+        for (let img of Object.keys(result)) {
+          for (let tagset of result[img]) {
+            this.state.filterTree.addImg(tagset.tag, img)
+          }
+        }
+        /* eslint-enable no-unused-vars */
+        console.log(this.state.filterTree.generateActiveImages())
         this.setState({
           loaded: true,
           ids: result,
