@@ -10,7 +10,7 @@ import {
 
 import { mount } from 'enzyme'
 
-it('renders without crashing', () => {
+xit('renders without crashing', () => {
   const div = document.createElement('div')
   ReactDOM.render(<FilterSet />, div)
 })
@@ -22,7 +22,7 @@ describe('Collapse changes state as expected', () => {
     wrapper = mount(<FilterSet />)
   })
 
-  it('Should change collapse state when user clicks icon', () => {
+  xit('Should change collapse state when user clicks icon', () => {
     wrapper.find(FontAwesomeIcon).first().simulate('click')
     expect(wrapper.state().open).toBe(false)
   })
