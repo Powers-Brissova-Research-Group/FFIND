@@ -84,7 +84,6 @@ export function compareAges (age1, age2) {
 export default class FilterSet extends React.Component {
   constructor (props) {
     super(props)
-    this.tags = Object.keys(this.props.tags)
     if (this.props.setName === 'DISEASE DURATION') {
       this.tags = this.tags.sort(compareAges)
     }
@@ -106,8 +105,8 @@ export default class FilterSet extends React.Component {
             </Col>
           </Row>
           <Collapse isOpened={this.state.open}>
-            {this.tags.map(tag => (
-              <FilterItem defaultChecked={this.props.filters !== undefined && this.props.filters.indexOf(tag) !== -1} clear={this.props.clear} key={tag} filterName={tag} filterQty={this.props.tags[tag]} callback={() => this.props.callback(this.props.setName, tag)} />
+            {this.props.tags.map(tag => (
+              <FilterItem defaultChecked={tag.active} clear={this.props.clear} key={tag.name} filterName={tag.name} filterQty={this.props.tags[tag]} callback={() => this.props.callback(tag.name)} />
             ))}
           </Collapse>
         </div>

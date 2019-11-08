@@ -13,7 +13,7 @@ import {
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 
 import FilterSet from './FilterSet'
-import AgeFilterSet from './AgeFilterSet'
+// import AgeFilterSet from './AgeFilterSet'
 
 import Error from './Error'
 
@@ -33,26 +33,10 @@ export default class FilterList extends React.Component {
   }
 
   componentDidMount () {
-    let extras = ['depth 1', 'depth 2', 'depth 3']
-    if (this.props.tags !== null) {
-      let t = {}
-      /* eslint-disable no-unused-vars */
-      for (let ts of this.props.tags) {
-        if (ts !== undefined) {
-          for (let tag of Object.keys(ts.tags)) {
-            if (extras.indexOf(tag) !== -1) {
-              delete ts.tags[tag]
-            }
-          }
-          t[ts.set_name] = ts.tags
-        }
-      }
-      /* eslint-enable no-unused-vars */
       this.setState({
         loaded: true,
-        tags: t
+        tags: this.props.filters
       })
-    }
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -63,48 +47,12 @@ export default class FilterList extends React.Component {
     }
   }
 
-  setFilters (tagset, newTag) {
-    let tagList = this.state.filters
-    let prevFilters = JSON.parse(JSON.stringify(tagList))
-
-    // First check to make sure that we have tags from the current tagset defined
-    if (tagList[tagset] !== undefined) {
-      if (tagset === 'AGE') {
-        tagList[tagset] = newTag
-      } else {
-        let idx = tagList[tagset].indexOf(newTag)
-
-        // If the tagset is already selected, remove it from the set of selected tags
-        if (idx >= 0) {
-          tagList[tagset].splice(idx, 1)
-          // If the list of selected tags from the tagset is now empty, remove the key from the tagList object
-          if (tagList[tagset].length <= 0) {
-            delete tagList[tagset]
-          }
-        } else {
-          // If the tag is not in our list, add it
-          tagList[tagset].push(newTag)
-        }
-      }
-    } else {
-      // If we don't have anything from the current tagset, add that key to the object and add the tag
-
-      // Special case for age -- the tags already come in as an array, so no need to create a new one
-      if (tagset === 'AGE') {
-        tagList[tagset] = newTag
-      } else {
-        tagList[tagset] = [newTag]
-      }
-    }
-    this.setState({
-      filters: tagList,
-      prevFilters: prevFilters
-    })
+  setFilters (newTag) {
     let encoded = window.btoa(JSON.stringify(this.state.filters))
     let params = new URLSearchParams(window.location.search)
     params.append('filters', encoded)
     window.history.pushState({'pageTitle': 'Browse & Filter Dataset'}, '', `${window.location.protocol}//${window.location.host}${window.location.pathname}?${params.toString()}`)
-    this.props.callback(this.state.filters, prevFilters, newTag)
+    this.props.callback(newTag)
   }
 
   clear () {
@@ -147,12 +95,12 @@ export default class FilterList extends React.Component {
                 className='fa fa-home fa-fw' />Clear</Button>
             </Col>
           </Row>
-          {Object.keys(this.props.tags).map(key => {
-            if (this.props.tags[key]['set_name'] === 'AGE') {
-              return (<AgeFilterSet split clear={this.state.clear} setName={this.props.tags[key]['set_name']} ageGroup={this.props.ageGroup} className='filter-set' callback={this.setFilters} key={key} ages={Object.keys(this.props.tags[key]['tags'])} filters={this.props.filters['AGE']} />)
-            } else {
-              return (<FilterSet clear={this.state.clear} classname='filter-set' setName={this.props.tags[key]['set_name']} tags={this.props.tags[key]['tags']} callback={this.setFilters} key={key} filters={this.props.filters[this.props.tags[key]['set_name']]} />)
-            }
+          {this.props.filters.children.map(filterSet => {
+            // if (this.props.filters[key]['set_name'] === 'AGE') {
+            //   return (<AgeFilterSet split clear={this.state.clear} setName={this.props.filters[key]['set_name']} ageGroup={this.props.ageGroup} className='filter-set' callback={this.setFilters} key={key} ages={Object.keys(this.props.filters[key]['tags'])} filters={this.props.filters['AGE']} />)
+            // } else {
+              return (<FilterSet clear={this.state.clear} classname='filter-set' setName={filterSet.name} tags={filterSet.children} callback={this.setFilters} key={filterSet.name} filters={[]} />)
+            // }
           })}
         </div>
       )

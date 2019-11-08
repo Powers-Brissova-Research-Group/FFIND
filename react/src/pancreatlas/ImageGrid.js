@@ -124,7 +124,6 @@ export default class ImageGrid extends React.Component {
           }
         }
         /* eslint-enable no-unused-vars */
-        console.log(this.state.filterTree.generateActiveImages())
         this.setState({
           loaded: true,
           ids: result,
@@ -132,7 +131,7 @@ export default class ImageGrid extends React.Component {
           matches: Object.keys(result),
           page: 0
         })
-        this.updateTags(true)
+        // this.updateTags(true)
         // this.filter(this.props.filters)
       })
         .catch(err => {
@@ -232,50 +231,11 @@ export default class ImageGrid extends React.Component {
     })
   }
 
-  filter (tagList, prevFilters, newTag) {
+  filter (newTag) {
     this.state.filterTree.activateFilter(newTag)
-    let empty = true
-    /* eslint-disable no-unused-vars */
-    for (let key of Object.keys(tagList)) {
-      if (tagList[key].length > 0) {
-        empty = false
-        break
-      }
-    }
-    /* eslint-enable no-unused-vars */
-    if (empty) {
-      this.setState({
-        filters: { AGE: [] },
-        prevFilters: { AGE: [] },
-        matches: Object.keys(this.state.ids)
-      })
-    } else {
-      let tmp = JSON.parse(JSON.stringify(Object.keys(this.state.ids)))
-      let allIds = JSON.parse(JSON.stringify(this.state.ids))
-      /* eslint-disable no-unused-vars */
-      for (let id of Object.keys(allIds)) {
-        let match = true
-        for (let keyset of Object.keys(tagList)) {
-          if (keyset !== 'AGE' || (keyset === 'AGE' && tagList[keyset].length > 0)) {
-            let relTags = allIds[id].filter(t => t.tagset.toUpperCase() === keyset).map(t => t.tag)
-            let intersection = tagList[keyset].filter(tag => relTags.indexOf(tag) !== -1)
-            if (intersection.length <= 0) {
-              match = false
-              break
-            }
-          }
-        }
-        if (!match) {
-          tmp.splice(tmp.indexOf(id), 1)
-        }
-      }
-      /* eslint-enable no-unused-vars */
-      this.setState({
-        prevFilters: prevFilters,
-        filters: tagList,
-        matches: tmp
-      })
-    }
+    this.setState({
+      matches: this.state.filterTree.generateActiveImages()
+    })
     this.choosePage(0)
   }
 
@@ -491,7 +451,7 @@ export default class ImageGrid extends React.Component {
           <Container>
             <Row className='pancreatlas-row'>
               <Col md='3'>
-                <FilterList ageGroup={this.props.groupName} tags={this.state.tags} filters={this.state.filters} callback={this.filter} />
+                <FilterList ageGroup={this.props.groupName} filters={this.state.filterTree.generateJSON(this.state.filterTree.root)} callback={this.filter} />
               </Col>
               <Col md='9'>
                 {imgGrid.map((item, idx) => (

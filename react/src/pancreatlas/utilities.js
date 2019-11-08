@@ -71,9 +71,8 @@ export class FilterTree {
           this.activeFilters--
         }
         if (this.activeFilters <= 0) {
-          this.resetTo(true)
+          this.resetTo(false)
         }
-        console.log(this.generateActiveImages())
         return true
       }
       /* eslint-disable no-unused-vars */
@@ -86,40 +85,48 @@ export class FilterTree {
   }
 
   generateActiveImages () {
-    // var actives = []
-
+    if (this.activeFilters <= 0) {
+      return this.generateAllImages()
+    }
     return this.root.getActives()
-    // var q = []
-    // /* eslint-disable no-unused-vars */
-    // for (let child of this.root.children) {
-    //   q.unshift(child)
-    // }
-    // /* eslint-enable no-unused-vars */
+  }
 
-    // while (q.length > 0) {
-    //   var next = q.pop()
-    //   if (next.active && next.type === 'leaf') {
-    //     for (let img of next.images) {
-    //       if (!actives.includes(img)) actives.push(img)
-    //     }
-    //   }
-    //   /* eslint-disable no-unused-vars */
-    //   for (let child of next.children) {
-    //     q.unshift(child)
-    //   }
-    //   /* eslint-enable no-unused-vars */
-    // }
-    // return actives
+  generateAllImages () {
+    var q = []
+    var images = []
+    /* eslint-disable no-unused-vars */
+    for (let child of this.root.children) {
+      q.unshift(child)
+    }
+    /* eslint-enable no-unused-vars */
+    while (q.length > 0) {
+      var curr = q.pop()
+      if (curr.type !== 'leaf') {
+        /* eslint-disable no-unused-vars */
+        for (let child of curr.children) {
+          q.unshift(child)
+        }
+        /* eslint-enable no-unused-vars */
+      } else {
+        /* eslint-disable no-loop-func */
+        let newImgs = curr.images.filter(img => !images.includes(img))
+        images = images.concat(newImgs)
+        /* eslint-enable no-loop-func */
+      }
+    }
+    return images
   }
 
   generateJSON (node) {
     if (node.type === 'leaf') {
       var tmpLeaf = {}
-      tmpLeaf[node.value] = { 'active': node.active, 'images': node.images }
+      tmpLeaf['name'] = node.value
+      tmpLeaf['active'] = node.active
       return tmpLeaf
     } else {
       var tmp = {}
-      tmp[node.value] = node.children.map(child => this.generateJSON(child))
+      tmp['name'] = node.value
+      tmp['children'] = node.children.map(child => this.generateJSON(child))
       return tmp
     }
   }
@@ -129,7 +136,7 @@ class FilterNode {
   constructor (type, value) {
     this.type = type
     this.value = value
-    this.active = true
+    this.active = false
     this.children = []
     this.images = []
   }
