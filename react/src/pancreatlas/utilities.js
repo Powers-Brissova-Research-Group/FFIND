@@ -2,6 +2,7 @@ export class FilterTree {
   constructor () {
     this.root = new FilterNode('root', 'filters')
     this.activeFilters = 0
+    this.operationStack = []
   }
 
   addNode (n, parent) {
@@ -55,6 +56,11 @@ export class FilterTree {
     this.activeFilters = 0
   }
 
+  undo () {
+    var filter = this.operationStack.pop()
+    this.activateFilter(filter)
+  }
+
   activateFilter (n) {
     if (this.activeFilters <= 0) {
       this.resetTo(false)
@@ -73,6 +79,7 @@ export class FilterTree {
         if (this.activeFilters <= 0) {
           this.resetTo(false)
         }
+        this.operationStack.push(n)
         return true
       }
       /* eslint-disable no-unused-vars */

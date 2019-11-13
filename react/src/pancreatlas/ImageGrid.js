@@ -51,6 +51,8 @@ export default class ImageGrid extends React.Component {
     this.filter = this.filter.bind(this)
     this.callback = this.callback.bind(this)
     this.updateTags = this.updateTags.bind(this)
+    this.undo = this.undo.bind(this)
+    this.clear = this.clear.bind(this)
     this.toggle = this.toggle.bind(this)
     this.setModal = this.setModal.bind(this)
     this.markerFilter = this.markerFilter.bind(this)
@@ -203,6 +205,20 @@ export default class ImageGrid extends React.Component {
     }
     this.setState({
       tags: appTags
+    })
+  }
+
+  undo () {
+    this.state.filterTree.undo()
+    this.setState({
+      matches: this.state.filterTree.generateActiveImages()
+    })
+  }
+
+  clear () {
+    this.state.filterTree.resetTo(false)
+    this.setState({
+      matches: this.state.filterTree.generateActiveImages()
     })
   }
 
@@ -373,7 +389,7 @@ export default class ImageGrid extends React.Component {
                   <Alert color='danger'>
                     <Row>
                       <Col md='12'>
-                        The combination of filters you have used returns 0 images. <span className='undo' onClick={() => this.filter(this.state.prevFilters, this.state.filters)}>Undo your most recent change?</span>
+                        The combination of filters you have used returns 0 images. <span className='undo' onClick={this.undo}>Undo your most recent change?</span>
                       </Col>
                     </Row>
                   </Alert>
@@ -448,7 +464,7 @@ export default class ImageGrid extends React.Component {
           <Container>
             <Row className='pancreatlas-row'>
               <Col md='3'>
-                <FilterList ageGroup={this.props.groupName} filters={this.state.filterTree.generateJSON(this.state.filterTree.root)} callback={this.filter} />
+                <FilterList ageGroup={this.props.groupName} filters={this.state.filterTree.generateJSON(this.state.filterTree.root)} callback={this.filter} clear={this.clear} />
               </Col>
               <Col md='9'>
                 {imgGrid.map((item, idx) => (

@@ -74,12 +74,7 @@ export default class FilterList extends React.Component {
   }
 
   clear () {
-    this.setState({
-      filters: {
-        'AGE': []
-      }
-    })
-    this.props.callback({})
+    this.props.clear({})
   }
 
   toggle () {
