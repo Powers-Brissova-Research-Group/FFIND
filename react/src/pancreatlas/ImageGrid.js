@@ -65,6 +65,13 @@ export default class ImageGrid extends React.Component {
   }
 
   componentDidMount () {
+    var paramsString = window.location.search
+    var searchParams = new URLSearchParams(paramsString)
+    var activeFilters = []
+    if (searchParams.has('filters')) {
+      activeFilters = activeFilters.concat(JSON.parse(window.atob(searchParams.get('filters'))))
+    }
+
     axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`, {
       withCredentials: true,
       credentials: 'include',
@@ -94,19 +101,8 @@ export default class ImageGrid extends React.Component {
           this.state.filterTree.addNode(tag, tagsetName)
         }
       }
-      for (let o of Object.keys(result)) {
-        if ('set_name' in result[o]) {
-          this.tag_idx[result[o].set_name] = o
-          this.tag_dict[result[o].set_name] = []
-          let extras = ['depth 1', 'depth 2', 'depth 3']
-          for (let t of Object.keys(result[o].tags)) {
-            if (extras.indexOf(t) === -1) {
-              this.tag_dict[result[o].set_name].push(t)
-            } else {
-              delete this.raw_tags[o].tags[t]
-            }
-          }
-        }
+      for (let filter of activeFilters) {
+        this.state.filterTree.activateFilter(filter)
       }
       /* eslint-enable no-unused-vars */
       axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`, {
@@ -123,12 +119,13 @@ export default class ImageGrid extends React.Component {
             this.state.filterTree.addImg(tagset.tag, img)
           }
         }
+        let activeImages = this.state.filterTree.generateActiveImages()
         /* eslint-enable no-unused-vars */
         this.setState({
           loaded: true,
           ids: result,
           maxPages: Math.floor(Object.keys(result).length / (this.state.imgsPerRow * this.state.rowsPerPage)),
-          matches: Object.keys(result),
+          matches: activeImages,
           page: 0
         })
         // this.updateTags(true)

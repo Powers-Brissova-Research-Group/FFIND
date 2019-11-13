@@ -168,9 +168,13 @@ class FilterNode {
         for (let child of this.children.slice(1)) {
           var childMatches = child.getActives()
           if (childMatches.length > 0) {
-            /* eslint-disable no-loop-func */
-            matches = matches.filter(val => childMatches.includes(val))
-            /* eslint-enable no-loop-func */
+            if (matches.length > 0) {
+              /* eslint-disable no-loop-func */
+              matches = matches.filter(val => childMatches.includes(val))
+              /* eslint-enable no-loop-func */
+            } else {
+              matches = matches.concat(childMatches)
+            }
           }
         }
         /* eslint-enable no-unused-vars */
@@ -180,7 +184,6 @@ class FilterNode {
         /* eslint-disable no-unused-vars */
         for (let child of this.children) {
           var tmp = child.getActives()
-          console.log(tmp)
           /* eslint-disable no-loop-func */
           nodeMatches = nodeMatches.concat(tmp.filter(val => nodeMatches.includes(val) === false))
           /* eslint-enable no-loop-func */

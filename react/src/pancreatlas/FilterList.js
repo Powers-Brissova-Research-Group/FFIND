@@ -20,6 +20,7 @@ import Error from './Error'
 export default class FilterList extends React.Component {
   constructor (props) {
     super(props)
+    this.generateURLParam = this.generateURLParam.bind(this)
     this.setFilters = this.setFilters.bind(this)
     this.clear = this.clear.bind(this)
     this.toggle = this.toggle.bind(this)
@@ -47,10 +48,27 @@ export default class FilterList extends React.Component {
     }
   }
 
-  setFilters (newTag) {
-    let encoded = window.btoa(JSON.stringify(this.state.filters))
+  generateURLParam(newTag) {
     let params = new URLSearchParams(window.location.search)
-    params.append('filters', encoded)
+    if (params.has('filters')) {
+      var activeFilters = JSON.parse(window.atob(params.get('filters')))
+      if (activeFilters.includes(newTag)) {
+        activeFilters = activeFilters.filter(tag => tag !== newTag)
+      } else {
+        activeFilters.push(newTag)
+      }
+      return activeFilters
+    } else {
+      var newFilters = [newTag]
+      return newFilters
+    }
+  }
+
+  setFilters (newTag) {
+    let newParams = this.generateURLParam(newTag)
+    let encoded = window.btoa(JSON.stringify(newParams))
+    let params = new URLSearchParams(window.location.search)
+    params.set('filters', encoded)
     window.history.pushState({'pageTitle': 'Browse & Filter Dataset'}, '', `${window.location.protocol}//${window.location.host}${window.location.pathname}?${params.toString()}`)
     this.props.callback(newTag)
   }
