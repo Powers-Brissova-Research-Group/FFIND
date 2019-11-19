@@ -100,7 +100,8 @@ export default class ImageGrid extends React.Component {
       for (let tagset of result) {
         let tagsetName = tagset.set_name
         for (let tag of Object.keys(tagset.tags)) {
-          this.state.filterTree.addNode(tag, tagsetName)
+          var filterMethod = (tagsetName === 'AGE') ? 'slider' : 'checkbox'
+          this.state.filterTree.addNode(tag, tagsetName, filterMethod)
         }
       }
       for (let filter of activeFilters) {
@@ -244,8 +245,12 @@ export default class ImageGrid extends React.Component {
     })
   }
 
-  filter (newTag) {
-    this.state.filterTree.activateFilter(newTag)
+  filter (newTags) {
+    /* eslint-disable no-unused-vars */
+    for (let newTag of newTags) {
+      this.state.filterTree.activateFilter(newTag)
+    }
+    /* eslint-enable no-unused-vars */
     this.setState({
       matches: this.state.filterTree.generateActiveImages()
     })

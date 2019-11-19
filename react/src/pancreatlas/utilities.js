@@ -5,14 +5,14 @@ export class FilterTree {
     this.operationStack = []
   }
 
-  addNode (n, parent) {
+  addNode (n, parent, filterMethod = undefined) {
     var parentNode = this.search(parent)
     if (parentNode === undefined) {
-      parentNode = new FilterNode('node', parent)
+      parentNode = new FilterNode('node', parent, filterMethod)
       this.root.addNode(parentNode)
     }
     if (parentNode !== undefined) {
-      parentNode.addNode(new FilterNode('leaf', n))
+      parentNode.addNode(new FilterNode('leaf', n, filterMethod))
     }
   }
 
@@ -133,6 +133,7 @@ export class FilterTree {
     } else {
       var tmp = {}
       tmp['name'] = node.value
+      tmp['filterMethod'] = node.filterMethod
       tmp['children'] = node.children.map(child => this.generateJSON(child))
       return tmp
     }
@@ -140,9 +141,10 @@ export class FilterTree {
 }
 
 class FilterNode {
-  constructor (type, value) {
+  constructor (type, value, filterMethod = undefined) {
     this.type = type
     this.value = value
+    this.filterMethod = filterMethod
     this.active = false
     this.children = []
     this.images = []
