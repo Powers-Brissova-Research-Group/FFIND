@@ -70,7 +70,7 @@ export default class ImageGrid extends React.Component {
     this.defs = require('../assets/pancreatlas/definitions.json')
   }
 
-  componentDidMount () {
+  componentDidMount() {
     var paramsString = window.location.search
     var searchParams = new URLSearchParams(paramsString)
     var activeFilters = []
@@ -215,21 +215,21 @@ export default class ImageGrid extends React.Component {
     })
   }
 
-  undo () {
+  undo() {
     this.state.filterTree.undo()
     this.setState({
       matches: this.state.filterTree.generateActiveImages()
     })
   }
 
-  clear () {
+  clear() {
     this.state.filterTree.resetTo(false)
     this.setState({
       matches: this.state.filterTree.generateActiveImages()
     })
   }
 
-  choosePage (newPage) {
+  choosePage(newPage) {
     this.setState({
       page: newPage
     })
@@ -251,7 +251,7 @@ export default class ImageGrid extends React.Component {
     })
   }
 
-  filter (newTags) {
+  filter(newTags) {
     /* eslint-disable no-unused-vars */
     for (let newTag of newTags) {
       this.state.filterTree.activateFilter(newTag)
@@ -371,44 +371,26 @@ export default class ImageGrid extends React.Component {
   }
 
   sortImgs(event) {
-    let oldOrder = this.state.ids
-    let ageList = []
-    for (var id of Object.keys(oldOrder)) {
-      var tmp = oldOrder[id].filter(x => x.tagset === 'Age' || x.tagset === 'Disease Duration')
-      let sortObj = {
-        'id': id
-      }
-      for (var x in tmp) {
-        sortObj[tmp[x].tagset] = tmp[x].tag
-      }
-      ageList.push(sortObj)
+    if (event.target.value === 'sel') {
+      return
     }
-
-    switch(event.target.value) {
-      case 'age-asc':
-        ageList.sort(function(x, y) {
-          return (compareAges(x['Age'], y['Age']))
-        })
-        break
+    var sorted = []
+    switch (event.target.value) {
       case 'age-desc':
-        ageList.sort(function(x, y) {
-          return (-1 * compareAges(x['Age'], y['Age']))
-        })
+        sorted = this.state.filterTree.sortImages('AGE', ((a, b) => -1 * compareAges(a.value, b.value)))
         break
+      case 'age-asc':
       default:
-        ageList.sort(function(x, y) {
-          return (compareAges(x['Age'], y['Age']))
-        })
+        sorted = this.state.filterTree.sortImages('AGE', ((a, b) => compareAges(a.value, b.value)))
+        break
     }
 
-    var newList = ageList.map(x => x.id).filter(i => this.state.matches.indexOf(i) !== -1)
+    var activeSorted = sorted.filter(img => this.state.matches.includes(img))
 
     this.setState({
       sortOrder: event.target.value,
-      matches: newList
+      matches: activeSorted
     })
-
-    
   }
 
   render() {
@@ -517,6 +499,7 @@ export default class ImageGrid extends React.Component {
                       <div className='float-right'>
                         <strong>Sort by</strong>
                         <Input size='sm' type='select' name='sort-select' id='sort-select' value={this.state.sortOrder} onChange={this.sortImgs}>
+                        <option value='sel'>Select</option>
                           <option value='age-asc'>Age Ascending</option>
                           <option value='age-desc'>Age Descending</option>
                           <option value='duration-asc'>Disease Duration Ascending</option>

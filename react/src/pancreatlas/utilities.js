@@ -131,11 +131,13 @@ export class FilterTree {
       // var sortedKeys = filterNode.children.map(child => child.value).sort() // Object.keys(filterNode).sort()
       filterNode.children.sort(sortFn)
       console.log(Object.keys(filterNode.children))
+      /* eslint-disable no-unused-vars */
       for (let child of filterNode.children) {
         for (let img of child.images) {
           images.push(img)
         }
       }
+      /* eslint-enable no-unused-vars */
     }
     return images
   }
