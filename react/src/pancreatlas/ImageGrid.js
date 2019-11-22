@@ -23,6 +23,8 @@ import ImageModal from './ImageModal'
 import LoadingBar from './LoadingBar'
 
 import { FilterTree } from './utilities'
+import { compareAges } from './FilterSet'
+
 
 import axios from 'axios'
 
@@ -123,6 +125,8 @@ export default class ImageGrid extends React.Component {
           }
         }
         let activeImages = this.state.filterTree.generateActiveImages()
+        var sortedImages = this.state.filterTree.sortImages('AGE', ((a, b) => compareAges(a.value, b.value)))
+        var activeSortedImages = sortedImages.filter(img => activeImages.includes(img))
         /* eslint-enable no-unused-vars */
         this.setState({
           loaded: true,

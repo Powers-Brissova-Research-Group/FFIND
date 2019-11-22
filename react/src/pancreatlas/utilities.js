@@ -124,6 +124,22 @@ export class FilterTree {
     return images
   }
 
+  sortImages (f, sortFn = ((a, b) => a.value > b.value ? 1 : -1)) {
+    var filterNode = this.search(f)
+    var images = []
+    if (filterNode !== undefined) {
+      // var sortedKeys = filterNode.children.map(child => child.value).sort() // Object.keys(filterNode).sort()
+      filterNode.children.sort(sortFn)
+      console.log(Object.keys(filterNode.children))
+      for (let child of filterNode.children) {
+        for (let img of child.images) {
+          images.push(img)
+        }
+      }
+    }
+    return images
+  }
+
   generateJSON (node) {
     if (node.type === 'leaf') {
       var tmpLeaf = {}
