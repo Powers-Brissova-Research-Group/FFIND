@@ -9,7 +9,8 @@ import {
   Alert,
   Badge,
   Button,
-  ButtonGroup
+  ButtonGroup,
+  Input
 } from 'reactstrap'
 
 import { Link } from 'react-router-dom'
@@ -29,7 +30,7 @@ import { compareAges } from './FilterSet'
 import axios from 'axios'
 
 export default class ImageGrid extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       loaded: false,
@@ -59,6 +60,7 @@ export default class ImageGrid extends React.Component {
     this.setModal = this.setModal.bind(this)
     this.markerFilter = this.markerFilter.bind(this)
     this.setDensity = this.setDensity.bind(this)
+    this.sortImgs = this.sortImgs.bind(this)
 
     this.image_tags = {}
     this.tag_dict = {}
@@ -148,13 +150,13 @@ export default class ImageGrid extends React.Component {
     })
   }
 
-  componentDidUpdate (prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     if (JSON.stringify(prevState.filters) !== JSON.stringify(this.state.filters)) {
       this.updateTags(false)
     }
   }
 
-  updateTags (shouldDelete) {
+  updateTags(shouldDelete) {
     let appTags = JSON.parse(JSON.stringify(this.raw_tags))
     let validFilterSets = appTags.map(appTag => appTag.set_name)
     /* eslint-disable no-unused-vars */
@@ -233,7 +235,7 @@ export default class ImageGrid extends React.Component {
     })
   }
 
-  nextPage () {
+  nextPage() {
     if (this.state.page >= this.state.maxPages) { return false }
     let newPage = this.state.page + 1
     this.setState({
@@ -241,7 +243,7 @@ export default class ImageGrid extends React.Component {
     })
   }
 
-  prevPage () {
+  prevPage() {
     if (this.state.page <= 0) { return false }
     let newPage = this.state.page - 1
     this.setState({
@@ -261,7 +263,7 @@ export default class ImageGrid extends React.Component {
     this.choosePage(0)
   }
 
-  markerFilter (marker) {
+  markerFilter(marker) {
     let currentFilters = this.state.filters
     if (Object.keys(currentFilters).indexOf('MARKER') === -1) {
       currentFilters['MARKER'] = []
@@ -272,17 +274,17 @@ export default class ImageGrid extends React.Component {
     this.filter(currentFilters, this.state.prevFilters)
   }
 
-  callback (iid, tags) {
+  callback(iid, tags) {
     this.image_tags[iid] = tags
   }
 
-  toggle () {
+  toggle() {
     this.setState({
       modalOpen: !this.state.modalOpen
     })
   }
 
-  setModal (imgInfo) {
+  setModal(imgInfo) {
     axios.get(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
       withCredentials: true,
       credentials: 'include',
@@ -335,7 +337,7 @@ export default class ImageGrid extends React.Component {
     })
   }
 
-  setDensity (density) {
+  setDensity(density) {
     switch (density.toLowerCase()) {
       case 'sparse':
         this.setState({
@@ -368,7 +370,48 @@ export default class ImageGrid extends React.Component {
     }
   }
 
-  render () {
+  sortImgs(event) {
+    let oldOrder = this.state.ids
+    let ageList = []
+    for (var id of Object.keys(oldOrder)) {
+      var tmp = oldOrder[id].filter(x => x.tagset === 'Age' || x.tagset === 'Disease Duration')
+      let sortObj = {
+        'id': id
+      }
+      for (var x in tmp) {
+        sortObj[tmp[x].tagset] = tmp[x].tag
+      }
+      ageList.push(sortObj)
+    }
+
+    switch(event.target.value) {
+      case 'age-asc':
+        ageList.sort(function(x, y) {
+          return (compareAges(x['Age'], y['Age']))
+        })
+        break
+      case 'age-desc':
+        ageList.sort(function(x, y) {
+          return (-1 * compareAges(x['Age'], y['Age']))
+        })
+        break
+      default:
+        ageList.sort(function(x, y) {
+          return (compareAges(x['Age'], y['Age']))
+        })
+    }
+
+    var newList = ageList.map(x => x.id).filter(i => this.state.matches.indexOf(i) !== -1)
+
+    this.setState({
+      sortOrder: event.target.value,
+      matches: newList
+    })
+
+    
+  }
+
+  render() {
     if (this.state.loaded) {
       if (this.state.matches.length === 0) {
         return (
@@ -444,7 +487,7 @@ export default class ImageGrid extends React.Component {
             <Alert color='info'>
               <Row>
                 <Col m='6'>
-                      You are currently viewing <Badge color='info'>{this.state.matches.length}</Badge> out of a possible <Badge color='secondary'>{Object.keys(this.state.ids).length}</Badge> images
+                  You are currently viewing <Badge color='info'>{this.state.matches.length}</Badge> out of a possible <Badge color='secondary'>{Object.keys(this.state.ids).length}</Badge> images
                 </Col>
                 <Col m='6'>
                   <span className='float-right'>Dataset: <strong>{this.state.datasetName}</strong></span>
@@ -453,18 +496,36 @@ export default class ImageGrid extends React.Component {
               <Row>
                 <Col md='6'>
                   <div className='float-left'>
-                      View more about this dataset <Link to={`/datasets/${this.props.did}/overview`}><strong><u>here</u></strong>.</Link>
+                    View more about this dataset <Link to={`/datasets/${this.props.did}/overview`}><strong><u>here</u></strong>.</Link>
                   </div>
                 </Col>
                 <Col md='6'>
-                  <div className='density-select float-right'>
-                    <strong>Grid Density: </strong>
-                    <ButtonGroup>
-                      <Button color='info' onClick={() => this.setDensity('sparse')} active={this.state.density === 'sparse'}>Sparse</Button>
-                      <Button color='info' onClick={() => this.setDensity('normal')} active={this.state.density === 'normal'}>Normal</Button>
-                      <Button color='info' onClick={() => this.setDensity('dense')} active={this.state.density === 'dense'}>Dense</Button>
-                    </ButtonGroup>
-                  </div>
+                  <Row>
+                    <Col xs='12'>
+                      <div className='density-select float-right'>
+                        <strong>Grid Density: </strong>
+                        <ButtonGroup>
+                          <Button color='info' onClick={() => this.setDensity('sparse')} active={this.state.density === 'sparse'}>Sparse</Button>
+                          <Button color='info' onClick={() => this.setDensity('normal')} active={this.state.density === 'normal'}>Normal</Button>
+                          <Button color='info' onClick={() => this.setDensity('dense')} active={this.state.density === 'dense'}>Dense</Button>
+                        </ButtonGroup>
+                      </div>
+                    </Col>
+                  </Row>
+                  <Row className='mt-2'>
+                    <Col xs='12'>
+                      <div className='float-right'>
+                        <strong>Sort by</strong>
+                        <Input size='sm' type='select' name='sort-select' id='sort-select' value={this.state.sortOrder} onChange={this.sortImgs}>
+                          <option value='age-asc'>Age Ascending</option>
+                          <option value='age-desc'>Age Descending</option>
+                          <option value='duration-asc'>Disease Duration Ascending</option>
+                          <option value='duration-desc'>Disease Duration Descending</option>
+                        </Input>
+                      </div>
+                    </Col>
+                  </Row>
+
                 </Col>
               </Row>
             </Alert>
