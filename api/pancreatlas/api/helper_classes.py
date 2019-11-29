@@ -83,16 +83,16 @@ class Image:
         elif match_groups[2] == 'd' or match_groups[2] == 'w':
             return 'NEONATAL'
         elif match_groups[2] == 'mo':
-            if int(match_groups[1] <= 1):
+            if int(match_groups[1]) <= 1:
                 return 'NEONATAL'
-            elif int(match_groups[1] <= 24):
+            elif int(match_groups[1]) <= 24:
                 return 'INFANCY'
             else:
                 return 'CHILDHOOD'
         else:
-            if int(match_groups[1] <= 2):
+            if int(match_groups[1]) <= 2:
                 return 'INFANCY'
-            elif int(match_groups[1] <= 10):
+            elif int(match_groups[1]) <= 10:
                 return 'CHILDHOOD'
             else:
                 return 'ADULT'
@@ -115,7 +115,7 @@ class Image:
                         tagset = tag_match.group(3)
                         if (tagset == 'Age'):
                             age_group = self.get_age_group(pair[1])
-                            self.tags.append({'tagset': "%s-%s" % ('AGE', age_group), 'tag': pair[1]})
+                            self.tags.append({'tagset': "%s-%s" % ('Age', age_group), 'tag': pair[1]})
                         if tagset in tags and pair[1] != "":
                             self.tags.append({'tagset': tagset, 'tag': pair[1]})
                     if marker_match != None:
