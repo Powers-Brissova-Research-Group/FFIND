@@ -1,3 +1,7 @@
+/**
+ * @file Contains definition of FilterItem class
+ * @author Jimmy Messmer
+ */
 import React from 'react'
 import {
   Row,
@@ -7,7 +11,15 @@ import {
   Label
 } from 'reactstrap'
 
-export default class FilterItem extends React.Component {
+/**
+ * Defines a single checkbox corresponding to a single filter. When checked, the event bubbles up to the ImageGrid to update the UI and FilterTree
+ * @class FilterItem
+ * @hideconstructor
+ */
+class FilterItem extends React.Component {
+  /**
+   * Renders the component
+   */
   render () {
     return (
       <div className='filter-item'>
@@ -24,3 +36,5 @@ export default class FilterItem extends React.Component {
     )
   }
 }
+
+export default FilterItem

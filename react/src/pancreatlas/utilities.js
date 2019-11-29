@@ -20,8 +20,6 @@ export class FilterTree {
    * Adds a new node to the tree. First, it checks to see if the parent node exists. If it does, then it adds
    * the new node as a child of the parent. If not, it adds the parent as a child of root, then the node as a
    * child of the new parent
-   * @function
-   * @name addNode
    * @param {string} n Name of the new node we are adding
    * @param {string} parent Name of the parent node for the new one
    * @param {string} filterMethod How we should display this filter in the UI (as a slider, checkbox, etc)

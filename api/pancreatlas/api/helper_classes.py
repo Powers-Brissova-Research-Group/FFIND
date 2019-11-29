@@ -41,6 +41,62 @@ class Image:
 #            print "Getting channel %s: %s" % (channel.getLabel(), channel.getColor.getHtml())
 #            self.channel_info.append(channel.getLabel())
 
+#   findAgeGroup (age) {
+#     let ageRe = /^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$/
+#     let tmp = ageRe.exec(age)
+#     if (tmp[1] !== undefined) {
+#       if (Number(tmp[2]) < 33 && tmp[3] === 'w') {
+#         return this.AgeGroups.GESTATIONAL
+#       } else {
+#         return this.AgeGroups.NEONATAL
+#       }
+#     } else if (tmp[3] === 'd' || tmp[3] === 'w') {
+#       return this.AgeGroups.NEONATAL
+#     } else if (tmp[3] === 'mo') {
+#       if (Number(tmp[2]) <= 2) {
+#         return this.AgeGroups.NEONATAL
+#       } else if (Number(tmp[2]) <= 24) {
+#         return this.AgeGroups.INFANCY
+#       } else {
+#         return this.AgeGroups.CHILDHOOD
+#       }
+#     } else {
+#       if (Number(tmp[2]) <= 2) {
+#         return this.AgeGroups.INFANCY
+#       } else if (Number(tmp[2]) <= 10) {
+#         return this.AgeGroups.CHILDHOOD
+#       } else {
+#         return this.AgeGroups.ADULT
+#       }
+#     }
+#   }
+
+    def get_age_group(self, age):
+        age_re = re.compile(r"^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$")
+        tmp = age_re.search(age)
+        match_groups = tmp.groups()
+        if (match_groups[0] != None):
+            if int(match_groups[1]) < 33 and match_groups[2] == 'w':
+                return 'GESTATIONAL'
+            else:
+                return 'NEONATAL'
+        elif match_groups[2] == 'd' or match_groups[2] == 'w':
+            return 'NEONATAL'
+        elif match_groups[2] == 'mo':
+            if int(match_groups[1] <= 1):
+                return 'NEONATAL'
+            elif int(match_groups[1] <= 24):
+                return 'INFANCY'
+            else:
+                return 'CHILDHOOD'
+        else:
+            if int(match_groups[1] <= 2):
+                return 'INFANCY'
+            elif int(match_groups[1] <= 10):
+                return 'CHILDHOOD'
+            else:
+                return 'ADULT'
+
     def fetch_annotations(self):
         tag_re = re.compile("(Donor info|Image info|Sample info)( - )(.+)")
         marker_re = re.compile("(Stain info)( - )(.+)(?<!-Ab)$")
@@ -57,6 +113,9 @@ class Image:
                     hex_match = hex_re.match(pair[0])
                     if tag_match != None:
                         tagset = tag_match.group(3)
+                        if (tagset == 'AGE'):
+                            age_group = self.get_age_group(pair[1])
+                            self.tags.append({'tagset': "%s-%s" % ('AGE', age_group), 'tag': pair[1]})
                         if tagset in tags and pair[1] != "":
                             self.tags.append({'tagset': tagset, 'tag': pair[1]})
                     if marker_match != None:
