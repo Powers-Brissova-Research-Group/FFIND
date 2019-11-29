@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://pancreatlas.org/sitemap.xml
+Sitemap: https://www.pancreatlas.org/sitemap.xml
