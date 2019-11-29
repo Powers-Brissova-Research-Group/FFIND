@@ -113,7 +113,7 @@ class Image:
                     hex_match = hex_re.match(pair[0])
                     if tag_match != None:
                         tagset = tag_match.group(3)
-                        if (tagset == 'AGE'):
+                        if (tagset == 'Age'):
                             age_group = self.get_age_group(pair[1])
                             self.tags.append({'tagset': "%s-%s" % ('AGE', age_group), 'tag': pair[1]})
                         if tagset in tags and pair[1] != "":
