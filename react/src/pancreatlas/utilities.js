@@ -59,11 +59,9 @@ export class FilterTree {
       if (current.value === n) {
         return current
       }
-      /* eslint-disable no-unused-vars */
       for (let child of current.children) {
         searchQueue.unshift(child)
       }
-      /* eslint-enable no-unused-vars */
     }
     return undefined
   }
