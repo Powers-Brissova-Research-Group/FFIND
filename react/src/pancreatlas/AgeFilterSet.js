@@ -149,7 +149,6 @@ export default class AgeFilterSet extends React.Component {
       childhood: [],
       adult: []
     }
-    /* eslint-disable no-unused-vars */
     for (let age of this.allFilters) {
       let grp = this.findAgeGroup(age)
       switch (grp) {
@@ -179,7 +178,6 @@ export default class AgeFilterSet extends React.Component {
         activeFilters = activeFilters.concat(ageGroups[key])
       }
     }
-    /* eslint-enable no-unused-vars */
 
     if (!this.initialized) {
       this.updateFilters(activeFilters)

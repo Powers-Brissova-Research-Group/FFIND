@@ -77,11 +77,9 @@ export class FilterTree {
     while (q.length > 0) {
       var current = q.pop()
       current.active = val
-      /* eslint-disable no-unused-vars */
       for (let child of current.children) {
         q.unshift(child)
       }
-      /* eslint-enable no-unused-vars */
     }
     this.activeFilters = 0
   }
@@ -119,11 +117,9 @@ export class FilterTree {
         this.operationStack.push(n)
         return true
       }
-      /* eslint-disable no-unused-vars */
       for (let child of current.children) {
         searchQueue.unshift(child)
       }
-      /* eslint-enable no-unused-vars */
     }
     return false
   }
@@ -144,19 +140,15 @@ export class FilterTree {
   generateAllImages () {
     var q = []
     var images = []
-    /* eslint-disable no-unused-vars */
     for (let child of this.root.children) {
       q.unshift(child)
     }
-    /* eslint-enable no-unused-vars */
     while (q.length > 0) {
       var curr = q.pop()
       if (curr.type !== 'leaf') {
-        /* eslint-disable no-unused-vars */
         for (let child of curr.children) {
           q.unshift(child)
         }
-        /* eslint-enable no-unused-vars */
       } else {
         /* eslint-disable no-loop-func */
         let newImgs = curr.images.filter(img => !images.includes(img))
@@ -179,13 +171,11 @@ export class FilterTree {
       // var sortedKeys = filterNode.children.map(child => child.value).sort() // Object.keys(filterNode).sort()
       filterNode.children.sort(sortFn)
       console.log(Object.keys(filterNode.children))
-      /* eslint-disable no-unused-vars */
       for (let child of filterNode.children) {
         for (let img of child.images) {
           images.push(img)
         }
       }
-      /* eslint-enable no-unused-vars */
     }
     return images
   }
@@ -266,7 +256,6 @@ class FilterNode {
     } else {
       if (this.type === 'root') {
         var matches = this.children[0].getActives()
-        /* eslint-disable no-unused-vars */
         for (let child of this.children.slice(1)) {
           var childMatches = child.getActives()
           if (childMatches.length > 0) {
@@ -279,18 +268,15 @@ class FilterNode {
             }
           }
         }
-        /* eslint-enable no-unused-vars */
         return matches
       } else {
         var nodeMatches = []
-        /* eslint-disable no-unused-vars */
         for (let child of this.children) {
           var tmp = child.getActives()
           /* eslint-disable no-loop-func */
           nodeMatches = nodeMatches.concat(tmp.filter(val => nodeMatches.includes(val) === false))
           /* eslint-enable no-loop-func */
         }
-        /* eslint-enable no-unused-vars */
         return nodeMatches
       }
     }

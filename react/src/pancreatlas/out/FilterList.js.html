@@ -124,13 +124,11 @@ class FilterList extends React.Component {
    */
   setFilters(newTags) {
     let newParams = []
-    /* eslint-disable no-unused-vars */
     for (let newTag of newTags) {
       /* eslint-disable no-loop-func */
       newParams = newParams.concat(this.generateURLParam(newTag).filter(param => !newParams.includes(param)))
       /* eslint-enable no-loop-func */
     }
-    /* eslint-enable no-unused-vars */
     let encoded = window.btoa(JSON.stringify(newParams))
     let params = new URLSearchParams(window.location.search)
     params.set('filters', encoded)

@@ -70,7 +70,6 @@ export default class ImageCard extends React.Component {
           [regionKeys[1]]: kvals[regionKeys[1]].val,
           [regionKeys[0]]: kvals[regionKeys[0]].val
         }
-        /* eslint-disable no-unused-vars */
         for (let key of markerKeys) {
           kvals[key].val.split(',').filter(val => val !== '').map(val => (markers[val.trim()] = markerRe.exec(key)[3]))
         }
@@ -89,7 +88,6 @@ export default class ImageCard extends React.Component {
             }
           }
         }
-        /* eslint-enable no-unused-vars */
         let tagVals = result.tags.map(tag => tag.tag)
         this.setState({
 
