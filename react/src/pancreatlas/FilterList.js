@@ -18,15 +18,6 @@ import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 
 import FilterSet from './FilterSet'
 
-import {
-  CheckboxFilterList,
-  SliderFilterList
-} from './FilterInputs'
-
-import {
-  compareAges
-} from './FilterSet'
-
 // import AgeFilterSet from './AgeFilterSet'
 
 import Error from './Error'
@@ -147,22 +138,27 @@ class FilterList extends React.Component {
             </Col>
           </Row>
           {this.props.filters.children.map(filterSet => {
-            switch (filterSet.filterMethod) {
-              case 'slider':
-                var ageSortedTags = filterSet.children.sort((a, b) => compareAges(a.name, b.name))
-                return (
-                  <FilterSet setName={filterSet.name}>
-                    <SliderFilterList clear={this.state.clear} className='slider-filter-set' setName={filterSet.name} tags={ageSortedTags} callback={this.setFilters} key={filterSet.name} filters={[]} />
-                  </FilterSet>
-                )
-              case 'checkbox':
-              default:
-                var sortedTags = filterSet.children.sort((a, b) => (a.name > b.name) ? 1 : -1)
-                return (
-                  <FilterSet setName={filterSet.name}>
-                    <CheckboxFilterList clear={this.state.clear} classname='filter-set' setName={filterSet.name} tags={sortedTags} callback={this.setFilters} key={filterSet.name} filters={[]} />
-                  </FilterSet>)
-            }
+            return (
+              <div className='filter-set'>
+                <FilterSet setName={filterSet.name} node={filterSet} callback={this.setFilters} depth={1} />
+              </div>
+            )
+            // switch (filterSet.filterMethod) {
+            //   case 'slider':
+            //     var ageSortedTags = filterSet.children.sort((a, b) => compareAges(a.name, b.name))
+            //     return (
+            //       <FilterSet setName={filterSet.name} subFilters={filter}>
+            //         <SliderFilterList clear={this.state.clear} className='slider-filter-set' setName={filterSet.name} tags={ageSortedTags} callback={this.setFilters} key={filterSet.name} filters={[]} />
+            //       </FilterSet>
+            //     )
+            //   case 'checkbox':
+            //   default:
+            //     var sortedTags = filterSet.children.sort((a, b) => (a.name > b.name) ? 1 : -1)
+            //     return (
+            //       <FilterSet setName={filterSet.name}>
+            //         <CheckboxFilterList clear={this.state.clear} classname='filter-set' setName={filterSet.name} tags={sortedTags} callback={this.setFilters} key={filterSet.name} filters={[]} />
+            //       </FilterSet>)
+            // }
           })}
         </div>
       )

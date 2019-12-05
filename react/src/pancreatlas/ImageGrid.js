@@ -103,7 +103,8 @@ export default class ImageGrid extends React.Component {
       for (let tagset of result) {
         let tagsetName = tagset.set_name
         for (let tag of Object.keys(tagset.tags)) {
-          var filterMethod = (tagsetName === 'AGE') ? 'slider' : 'checkbox'
+          var ageRe = /AGE*/i
+          var filterMethod = ageRe.test(tagsetName) ? 'slider' : 'checkbox'
           this.state.filterTree.addNode(tag, tagsetName, filterMethod)
         }
       }
@@ -124,13 +125,13 @@ export default class ImageGrid extends React.Component {
           }
         }
         let activeImages = this.state.filterTree.generateActiveImages()
-        var sortedImages = this.state.filterTree.sortImages('AGE', ((a, b) => compareAges(a.value, b.value)))
-        var activeSortedImages = sortedImages.filter(img => activeImages.includes(img))
+        // var sortedImages = this.state.filterTree.sortImages('AGE', ((a, b) => compareAges(a.value, b.value)))
+        // var activeSortedImages = sortedImages.filter(img => activeImages.includes(img))
         this.setState({
           loaded: true,
           ids: result,
           maxPages: Math.floor(Object.keys(result).length / (this.state.imgsPerRow * this.state.rowsPerPage)),
-          matches: activeSortedImages,
+          matches: activeImages,
           page: 0
         })
         // this.updateTags(true)

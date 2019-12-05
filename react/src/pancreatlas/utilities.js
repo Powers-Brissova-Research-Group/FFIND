@@ -17,6 +17,28 @@ export class FilterTree {
   }
 
   /**
+   * Add a hierarchy of nodes to the filter tree. Used for subdividing a filter set into several groups.
+   * For example, dividing age between neonatal, infant, etc.
+   * @param {string} n List of parent nodes, separated by '-'
+   */
+  addSet (n) {
+    var levels = n.split('-')
+    var curr = levels.shift()
+    var node = this.search(curr)
+    if (node === undefined) {
+      node = new FilterNode('node', curr, undefined)
+      this.root.addNode(node)
+    }
+    while (levels.length > 0) {
+      curr = levels.shift()
+      var nextNode = new FilterNode('node', curr, undefined)
+      node.addNode(nextNode)
+      node = nextNode
+    }
+    return node
+  }
+
+  /**
    * Adds a new node to the tree. First, it checks to see if the parent node exists. If it does, then it adds
    * the new node as a child of the parent. If not, it adds the parent as a child of root, then the node as a
    * child of the new parent
@@ -25,10 +47,10 @@ export class FilterTree {
    * @param {string} filterMethod How we should display this filter in the UI (as a slider, checkbox, etc)
    */
   addNode (n, parent, filterMethod = undefined) {
-    var parentNode = this.search(parent)
+    var parentChain = parent.split('-')
+    var parentNode = this.search(parentChain[parentChain.length - 1])
     if (parentNode === undefined) {
-      parentNode = new FilterNode('node', parent, filterMethod)
-      this.root.addNode(parentNode)
+      parentNode = this.addSet(parent)
     }
     if (parentNode !== undefined) {
       parentNode.addNode(new FilterNode('leaf', n, filterMethod))
@@ -189,11 +211,13 @@ export class FilterTree {
       var tmpLeaf = {}
       tmpLeaf['name'] = node.value
       tmpLeaf['active'] = node.active
+      tmpLeaf['type'] = 'leaf'
       return tmpLeaf
     } else {
       var tmp = {}
       tmp['name'] = node.value
       tmp['filterMethod'] = node.filterMethod
+      tmp['type'] = 'node'
       tmp['children'] = node.children.map(child => this.generateJSON(child))
       return tmp
     }
