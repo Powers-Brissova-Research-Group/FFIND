@@ -47,7 +47,6 @@ export default class ImageModal extends React.Component {
       let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9\s]+$)/i
       let matchingKeys = Object.keys(this.props.modalData.img_data).filter(key => markerRe.test(key))
       for (let key of matchingKeys) {
-        var chan = markerRe.exec(key)[3]
         var val = this.props.modalData.img_data[key].val
         var clr = this.props.modalData.markerColors[val] === undefined ? '#FFFFFF' : this.props.modalData.markerColors[val] 
         markers.push({

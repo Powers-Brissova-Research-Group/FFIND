@@ -130,7 +130,7 @@ export default class ImageGrid extends React.Component {
           loaded: true,
           ids: result,
           maxPages: Math.floor(Object.keys(result).length / (this.state.imgsPerRow * this.state.rowsPerPage)),
-          matches: activeImages,
+          matches: activeSortedImages,
           page: 0
         })
         // this.updateTags(true)
