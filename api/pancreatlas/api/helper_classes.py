@@ -101,7 +101,7 @@ class Image:
         tag_re = re.compile("(Donor info|Image info|Sample info)( - )(.+)")
         marker_re = re.compile("(Stain info)( - )(.+)(?<!-Ab)$")
         hex_re = re.compile("(Hex code)( - )([\w\-\d]+)$")
-        tags = ['File Type', 'Section Plane', 'Disease Status', 'Sex', 'Disease Duration', 'LIMS ID', 'Age', 'Pancreas Region']
+        tags = ['File Type', 'Section Plane', 'Disease Status', 'Sex', 'Disease Duration', 'Age', 'Pancreas Region']
         anns = list(self.img_wrapper.listAnnotations())
         channel_map = {}
         found_hex = False
