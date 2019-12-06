@@ -81,7 +81,8 @@ export default class ImageCard extends React.Component {
             if (valKey !== 'UNOS ID' && valKey !== 'LIMS ID' && kvals[key] !== '') {
               if (valKey === 'Age') {
                 // let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
-                donor[donorRe.exec(key)[3]] = result.tags.filter(tag => tag.tagset === 'Age')[0].tag
+                let ageRe = /^(AGE)*/i
+                donor[donorRe.exec(key)[3]] = result.tags.filter(tag => ageRe.test(tag.tagset))[0].tag
               } else {
                 donor[donorRe.exec(key)[3]] = kvals[key].val
               }

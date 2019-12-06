@@ -23,9 +23,7 @@ import Error from './Error'
 import ImageModal from './ImageModal'
 import LoadingBar from './LoadingBar'
 
-import { FilterTree } from './utilities'
-import { compareAges } from './FilterSet'
-
+import { FilterTree, compareAges } from './utilities'
 
 import axios from 'axios'
 
@@ -105,7 +103,8 @@ export default class ImageGrid extends React.Component {
         for (let tag of Object.keys(tagset.tags)) {
           var ageRe = /AGE*/i
           var filterMethod = ageRe.test(tagsetName) ? 'slider' : 'checkbox'
-          this.state.filterTree.addNode(tag, tagsetName, filterMethod)
+          var sortMethod = ageRe.test(tagsetName) ?  (a, b) => compareAges(a.name, b.name) : (a, b) => (a.name > b.name) ? 1 : -1
+          this.state.filterTree.addNode(tag, tagsetName, sortMethod, filterMethod)
         }
       }
       for (let filter of activeFilters) {

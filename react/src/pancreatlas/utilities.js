@@ -21,17 +21,17 @@ export class FilterTree {
    * For example, dividing age between neonatal, infant, etc.
    * @param {string} n List of parent nodes, separated by '-'
    */
-  addSet (n) {
+  addSet (n, sortMethod, filterMethod) {
     var levels = n.split('-')
     var curr = levels.shift()
     var node = this.search(curr)
     if (node === undefined) {
-      node = new FilterNode('node', curr, undefined)
+      node = new FilterNode('node', curr, sortMethod, filterMethod)
       this.root.addNode(node)
     }
     while (levels.length > 0) {
       curr = levels.shift()
-      var nextNode = new FilterNode('node', curr, undefined)
+      var nextNode = new FilterNode('node', curr, sortMethod, filterMethod)
       node.addNode(nextNode)
       node = nextNode
     }
@@ -46,14 +46,14 @@ export class FilterTree {
    * @param {string} parent Name of the parent node for the new one
    * @param {string} filterMethod How we should display this filter in the UI (as a slider, checkbox, etc)
    */
-  addNode (n, parent, filterMethod = undefined) {
+  addNode (n, parent, sortMethod, filterMethod = undefined) {
     var parentChain = parent.split('-')
     var parentNode = this.search(parentChain[parentChain.length - 1])
     if (parentNode === undefined) {
-      parentNode = this.addSet(parent)
+      parentNode = this.addSet(parent, sortMethod, filterMethod)
     }
     if (parentNode !== undefined) {
-      parentNode.addNode(new FilterNode('leaf', n, filterMethod))
+      parentNode.addNode(new FilterNode('leaf', n, sortMethod, filterMethod))
     }
   }
 
@@ -192,7 +192,6 @@ export class FilterTree {
     if (filterNode !== undefined) {
       // var sortedKeys = filterNode.children.map(child => child.value).sort() // Object.keys(filterNode).sort()
       filterNode.children.sort(sortFn)
-      console.log(Object.keys(filterNode.children))
       for (let child of filterNode.children) {
         for (let img of child.images) {
           images.push(img)
@@ -218,6 +217,7 @@ export class FilterTree {
       tmp['name'] = node.value
       tmp['filterMethod'] = node.filterMethod
       tmp['type'] = 'node'
+      tmp['sortMethod'] = node.sortMethod
       tmp['children'] = node.children.map(child => this.generateJSON(child))
       return tmp
     }
@@ -234,11 +234,12 @@ class FilterNode {
    * @param {string} value Value of node (name of filter or set, etc)
    * @param {*} filterMethod Type of filter to display in UI
    */
-  constructor (type, value, filterMethod = undefined) {
+  constructor (type, value, sortMethod, filterMethod = undefined) {
     this.type = type
     this.value = value
     this.filterMethod = filterMethod
     this.active = false
+    this.sortMethod = sortMethod
     this.children = []
     this.images = []
   }
@@ -306,3 +307,113 @@ class FilterNode {
     }
   }
 }
+
+export function compareAges (age1, age2) {
+  let ageGroupRe = /^(NEONATAL)|(CHILDHOOD)|(INFANCY)|(ADULT)$/i
+  if (ageGroupRe.test(age1) && ageGroupRe.test(age2)) {
+    /* eslint-disable no-unused-vars */
+    var age1Val = 0
+    var age2Val = 0
+
+    switch (age1) {
+      case 'NEONATAL':
+        age1Val = 0
+        break
+      case 'INFANCY':
+        age1Val = 1
+        break
+      case 'CHILDHOOD':
+        age1Val = 2
+        break
+      case 'ADULT':
+      default:
+        age1Val = 3
+    }
+
+    switch (age2) {
+      case 'NEONATAL':
+        age2Val = 0
+        break
+      case 'INFANCY':
+        age2Val = 1
+        break
+      case 'CHILDHOOD':
+        age2Val = 2
+        break
+      case 'ADULT':
+      default:
+        age2Val = 3
+    }
+    if (age1 < age2) {
+      return 1
+    } else if (age1 === age2) {
+      return 0
+    } else {
+      return -1
+    }
+    /* eslint-enable no-unused-vars */
+  } else {
+    let ageRe = /^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$/
+    let a = ageRe.exec(age1)
+    let b = ageRe.exec(age2)
+    switch (a[3]) {
+      case 'd':
+        a[3] = 0
+        break
+      case 'w':
+        a[3] = 1
+        break
+      case 'mo':
+        a[3] = 2
+        break
+      case 'y':
+        a[3] = 3
+        break
+      default:
+        a[3] = -1
+    }
+
+    switch (b[3]) {
+      case 'd':
+        b[3] = 0
+        break
+      case 'w':
+        b[3] = 1
+        break
+      case 'mo':
+        b[3] = 2
+        break
+      case 'y':
+        b[3] = 3
+        break
+      default:
+        b[3] = -1
+    }
+
+    if (a[1] === 'G' && b[1] !== 'G') {
+      return -1
+    } else if (a[1] !== 'G' && b[1] === 'G') {
+      return 1
+    } else {
+      if (a[3] < b[3]) {
+        return -1
+      } else if (a[3] > b[3]) {
+        return 1
+      } else {
+        if (Number(a[2]) < Number(b[2])) {
+          return -1
+        } else if (Number(a[2]) > Number(b[2])) {
+          return 1
+        } else {
+          if (a[4] === undefined && b[4] !== undefined) {
+            return -1
+          } else if (a[4] !== undefined && b[4] === undefined) {
+            return 1
+          } else {
+            return 0
+          }
+        }
+      }
+    }
+  }
+};

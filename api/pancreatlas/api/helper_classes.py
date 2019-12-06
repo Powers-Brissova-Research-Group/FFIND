@@ -116,7 +116,7 @@ class Image:
                         if (tagset == 'Age'):
                             age_group = self.get_age_group(pair[1])
                             self.tags.append({'tagset': "%s-%s" % ('Age', age_group), 'tag': pair[1]})
-                        if tagset in tags and pair[1] != "":
+                        elif tagset in tags and pair[1] != "":
                             self.tags.append({'tagset': tagset, 'tag': pair[1]})
                     if marker_match != None:
                         if pair[1] != "":
