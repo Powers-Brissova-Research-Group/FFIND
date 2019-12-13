@@ -11,8 +11,10 @@ import {
   Col
 } from 'reactstrap'
 
-import { Range } from 'rc-slider'
+// import { Range } from 'rc-slider'
+import InputRange from 'react-input-range'
 
+import 'react-input-range/lib/css/index.css'
 
 /**
  * React component for a checkbox. This one is pretty simple--just returns a checkbox for each tag prop
@@ -22,7 +24,7 @@ class CheckboxFilterList extends React.Component {
   render() {
     return (
       this.props.tags.map(tag => (
-        <FilterItem defaultChecked={tag.active} clear={this.props.clear} key={tag.name} filterName={tag.name} filterQty={this.props.tags[tag]} callback={() => this.props.callback([ tag.name ])} />
+        <FilterItem defaultChecked={tag.active} clear={this.props.clear} key={tag.name} filterName={tag.name} filterQty={this.props.tags[tag]} callback={() => this.props.callback([tag.name])} />
       ))
     )
   }
@@ -39,8 +41,10 @@ class SliderFilterList extends React.Component {
     this.updateMarks = this.updateMarks.bind(this)
     this.leftMark = 0
     this.state = {
-      min: 0,
-      max: this.props.tags.length - 1
+      value: {
+        min: 0,
+        max: this.props.tags.length - 1
+      }
     }
   }
   /**
@@ -50,8 +54,10 @@ class SliderFilterList extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.hidden === false && this.props.hidden === true) {
       this.setState({
-        min: 0,
-        max: this.props.tags.length - 1
+        value: {
+          min: 0,
+          max: this.props.tags.length - 1
+        }
       })
     }
   }
@@ -60,9 +66,13 @@ class SliderFilterList extends React.Component {
    * Update the matches from the slider element when it is updated 
    * @param {array} args Array of arguments--first element is the minimum value, second the maximum
    */
-  onSliderChange(args) {
+  onSliderChange(newValue) {
     // We should be able to just get all the current filters outside of the current age group + the selected ages
-    let matches = this.props.tags.slice(args[0], args[1] + 1)
+    console.log(newValue.value)
+    let matches = this.props.tags.slice(newValue.value.min, newValue.value.max)
+    this.setState({
+      value: newValue.value
+    })
     this.props.callback(matches.map(match => match.name))
   }
 
@@ -84,6 +94,13 @@ class SliderFilterList extends React.Component {
       return (
         <Row className='age-slider pancreatlas-row'>
           <Col md='12'>
+            <InputRange
+              formatLabel={value => `${this.props.tags[value].name}`}
+              maxValue={this.props.tags.length - 1}
+              minValue={0}
+              value={this.state.value}
+              onChange={value => this.onSliderChange({ value })} />
+            {/* {this.props.tags.map(tag => { return (<p>{tag.name}</p>) })}
             <Range
               min={0}
               max={this.props.tags.length - 1}
@@ -94,7 +111,7 @@ class SliderFilterList extends React.Component {
               }}
               dots
               onChange={this.updateMarks}
-              onAfterChange={this.onSliderChange} />
+              onAfterChange={this.onSliderChange} /> */}
           </Col>
         </Row>
       )

@@ -14,6 +14,11 @@ import {
 
 import FilterItem from './FilterItem'
 
+import {
+  CheckboxFilterList,
+  SliderFilterList
+} from './FilterInputs'
+
 
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
@@ -43,7 +48,18 @@ export default class FilterSet extends React.Component {
 
 
   recurse(node) {
-    let sortedChildren = node.children.sort(node.sortMethod)
+    let childLeaves = node.children.filter(child => child.type === 'leaf')
+    let childNodes = node.children.filter(child => child.type !== 'leaf')
+    let sortedLeaves = childLeaves.sort(node.sortMethod)
+    let sortedNodes = childNodes.sort(node.sortMethod)
+
+    var leafJSX = undefined
+    if (sortedLeaves.length > 0 && node.filterMethod === 'slider') {
+      leafJSX = <SliderFilterList clear={this.state.clear} className='slider-filter-set' setName={node.name} tags={sortedLeaves} callback={this.props.callback} key={node.name} filters={[]} />
+    } else if (sortedLeaves.length > 0){
+      leafJSX = <CheckboxFilterList clear={this.state.clear} classname='filter-set' setName={node.name} tags={sortedLeaves} callback={this.props.callback} key={node.name} filters={[]} />
+    }
+
     return (
       <div >
         <Row className='pancreatlas-row'>
@@ -54,10 +70,11 @@ export default class FilterSet extends React.Component {
             <FontAwesomeIcon icon={faAngleRight} className={this.state.open ? 'collapse-button collapse-button-open' : 'collapse-button collapse-button-closed'} onClick={() => this.setState({ open: !this.state.open })} />
           </Col>
         </Row>
-        <Collapse isOpened={this.state.open}>
-          {sortedChildren.map(child => {
+        <Collapse isOpened={this.state.open} contentHeight={50}>
+          {leafJSX}
+          {sortedNodes.map(child => {
             return (
-                <FilterSet node={child} setName={child.name} callback={this.props.callback} depth={this.props.depth + 1} />
+              <FilterSet node={child} setName={child.name} callback={this.props.callback} depth={this.props.depth + 1} />
             )
           })}
         </Collapse>
@@ -73,11 +90,12 @@ export default class FilterSet extends React.Component {
   }
 
   render() {
-    if (this.props.node.type === 'leaf') {
-      return this.terminate(this.props.node)
-    } else {
-      return this.recurse(this.props.node)
-    }
+    return this.recurse(this.props.node)
+    // if (this.props.node.type === 'leaf') {
+    //   return this.terminate(this.props.node)
+    // } else {
+    //   return this.recurse(this.props.node)
+    // }
   }
 }
 
