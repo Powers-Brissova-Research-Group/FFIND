@@ -16,6 +16,11 @@ export class FilterTree {
     this.operationStack = []
   }
 
+  buildFromJSON (serializedTree) {
+    var tree = JSON.parse(serializedTree)
+    console.log(tree)
+  }
+
   /**
    * Add a hierarchy of nodes to the filter tree. Used for subdividing a filter set into several groups.
    * For example, dividing age between neonatal, infant, etc.
@@ -211,6 +216,7 @@ export class FilterTree {
       tmpLeaf['name'] = node.value
       tmpLeaf['active'] = node.active
       tmpLeaf['type'] = 'leaf'
+      tmpLeaf['sortMethod'] = node.sortMethod
       return tmpLeaf
     } else {
       var tmp = {}
@@ -238,7 +244,6 @@ class FilterNode {
     this.type = type
     this.value = value
     this.filterMethod = filterMethod
-    this.active = false
     this.sortMethod = sortMethod
     this.children = []
     this.images = []

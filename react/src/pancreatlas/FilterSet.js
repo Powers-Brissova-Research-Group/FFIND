@@ -34,6 +34,7 @@ export default class FilterSet extends React.Component {
     this.recurse = this.recurse.bind(this)
     this.terminate = this.terminate.bind(this)
     this.clear = this.clear.bind(this)
+    this.gatherFilters = this.gatherFilters.bind(this)
     this.state = {
       open: true
     }
@@ -46,6 +47,12 @@ export default class FilterSet extends React.Component {
     this.props.clear({})
   }
 
+  gatherFilters(filters) {
+    var filterObj = {}
+    filterObj[this.props.setName] = filters
+    this.props.callback(filterObj)
+  }
+
 
   recurse(node) {
     let childLeaves = node.children.filter(child => child.type === 'leaf')
@@ -55,9 +62,9 @@ export default class FilterSet extends React.Component {
 
     var leafJSX = undefined
     if (sortedLeaves.length > 0 && node.filterMethod === 'slider') {
-      leafJSX = <SliderFilterList clear={this.state.clear} className='slider-filter-set' setName={node.name} tags={sortedLeaves} callback={this.props.callback} key={node.name} filters={[]} />
+      leafJSX = <SliderFilterList clear={this.state.clear} className='slider-filter-set' setName={node.name} tags={sortedLeaves} callback={this.gatherFilters} key={node.name} filters={[]} />
     } else if (sortedLeaves.length > 0){
-      leafJSX = <CheckboxFilterList clear={this.state.clear} classname='filter-set' setName={node.name} tags={sortedLeaves} callback={this.props.callback} key={node.name} filters={[]} />
+      leafJSX = <CheckboxFilterList clear={this.state.clear} classname='filter-set' setName={node.name} tags={sortedLeaves} callback={this.gatherFilters} key={node.name} filters={[]} />
     }
 
     return (
@@ -74,7 +81,7 @@ export default class FilterSet extends React.Component {
           {leafJSX}
           {sortedNodes.map(child => {
             return (
-              <FilterSet node={child} setName={child.name} callback={this.props.callback} depth={this.props.depth + 1} />
+              <FilterSet node={child} setName={child.name} callback={this.gatherFilters} depth={this.props.depth + 1} />
             )
           })}
         </Collapse>
@@ -85,7 +92,7 @@ export default class FilterSet extends React.Component {
   terminate(tag) {
     return (
       // <p>{tag.name}</p>
-      <FilterItem defaultChecked={tag.active} clear={this.clear} key={tag.name} filterName={tag.name} callback={() => this.props.callback([tag.name])} />
+      <FilterItem defaultChecked={tag.active} clear={this.clear} key={tag.name} filterName={tag.name} callback={() => this.props.callback(this.props.node.name, [tag.name])} />
     )
   }
 

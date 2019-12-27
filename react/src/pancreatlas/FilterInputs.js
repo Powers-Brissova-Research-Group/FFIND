@@ -8,7 +8,8 @@ import FilterItem from './FilterItem'
 
 import {
   Row,
-  Col
+  Col,
+  Input
 } from 'reactstrap'
 
 // import { Range } from 'rc-slider'
@@ -38,13 +39,15 @@ class SliderFilterList extends React.Component {
   constructor(props) {
     super(props)
     this.onSliderChange = this.onSliderChange.bind(this)
+    this.onToggleChange = this.onToggleChange.bind(this)
     this.updateMarks = this.updateMarks.bind(this)
     this.leftMark = 0
     this.state = {
       value: {
         min: 0,
         max: this.props.tags.length - 1
-      }
+      },
+      active: false
     }
   }
   /**
@@ -57,7 +60,8 @@ class SliderFilterList extends React.Component {
         value: {
           min: 0,
           max: this.props.tags.length - 1
-        }
+        },
+        active: false
       })
     }
   }
@@ -68,12 +72,27 @@ class SliderFilterList extends React.Component {
    */
   onSliderChange(newValue) {
     // We should be able to just get all the current filters outside of the current age group + the selected ages
-    console.log(newValue.value)
-    let matches = this.props.tags.slice(newValue.value.min, newValue.value.max)
-    this.setState({
-      value: newValue.value
-    })
-    this.props.callback(matches.map(match => match.name))
+    if (this.state.active) {
+      let matches = this.props.tags.slice(newValue.value.min, newValue.value.max)
+      this.setState({
+        value: newValue.value
+      })
+      this.props.callback(matches.map(match => match.name))
+    }
+  }
+
+  onToggleChange() {
+    this.setState(prevState => ({
+      active: !prevState.active
+    }))
+
+    if (this.state.active) {
+      let matches = this.props.tags
+      this.props.callback(matches.map(match => match.name))
+    } else {
+      this.props.callback([])
+    }
+
   }
 
   /**
@@ -93,25 +112,16 @@ class SliderFilterList extends React.Component {
     } else {
       return (
         <Row className='age-slider pancreatlas-row'>
-          <Col md='12'>
+          <Col md='2'>
+            <Input type='checkbox' checked={this.state.active} onChange={this.onToggleChange} />
+          </Col>
+          <Col md='10'>
             <InputRange
               formatLabel={value => `${this.props.tags[value].name}`}
               maxValue={this.props.tags.length - 1}
               minValue={0}
               value={this.state.value}
               onChange={value => this.onSliderChange({ value })} />
-            {/* {this.props.tags.map(tag => { return (<p>{tag.name}</p>) })}
-            <Range
-              min={0}
-              max={this.props.tags.length - 1}
-              defaultValue={[0, this.props.tags.length - 1]}
-              marks={{
-                [this.state.min]: this.props.tags[this.state.min],
-                [this.state.max]: this.props.tags[this.state.max]
-              }}
-              dots
-              onChange={this.updateMarks}
-              onAfterChange={this.onSliderChange} /> */}
           </Col>
         </Row>
       )

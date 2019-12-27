@@ -33,8 +33,11 @@ class FilterList extends React.Component {
    */
   constructor(props) {
     super(props)
+    console.log(JSON.stringify(this.props.filters))
     this.generateURLParam = this.generateURLParam.bind(this)
     this.setFilters = this.setFilters.bind(this)
+    this.isArray = this.isArray.bind(this)
+    this.extractFilters = this.extractFilters.bind(this)
     this.clear = this.clear.bind(this)
     this.toggle = this.toggle.bind(this)
     this.state = {
@@ -81,22 +84,50 @@ class FilterList extends React.Component {
     }
   }
 
+  isArray(obj) {
+    return Object.prototype.toString.call(obj) === '[object Array]';
+  }
+
+  extractFilters(tagObj) {
+    var objectQueue = []
+    var filters = []
+    for (let key of Object.keys(tagObj)) {
+      objectQueue.push(tagObj[key])
+    }
+    while (objectQueue.length > 0) {
+      var curr = objectQueue.shift()
+      if (this.isArray(curr)) {
+        filters = filters.concat(curr)
+      } else {
+        for (let k of Object.keys(curr)) {
+          objectQueue.push(curr[k])
+        }
+      }
+    }
+    return filters
+  }
+
   /**
    * Generate an updated list of active tags and store that in the URL. Then call the callback method in ImageGrid to propogate changes.
    * @param {array} newTags Array of new tags to add
    */
   setFilters(newTags) {
-    let newParams = []
-    for (let newTag of newTags) {
-      /* eslint-disable no-loop-func */
-      newParams = newParams.concat(this.generateURLParam(newTag).filter(param => !newParams.includes(param)))
-      /* eslint-enable no-loop-func */
+    let urlParams = new URLSearchParams(window.location.search)
+    for (let key of Object.keys(newTags)) {
+      // this.generateURLParam(key, newTags[key])
+      urlParams.set(key, window.btoa(JSON.stringify(newTags[key])))
     }
-    let encoded = window.btoa(JSON.stringify(newParams))
-    let params = new URLSearchParams(window.location.search)
-    params.set('filters', encoded)
-    window.history.pushState({ 'pageTitle': 'Browse & Filter Dataset' }, '', `${window.location.protocol}//${window.location.host}${window.location.pathname}?${params.toString()}`)
-    this.props.callback(newTags)
+    let filtersToActivate = this.extractFilters(newTags)
+    // for (let newTag of newTags) {
+    //   /* eslint-disable no-loop-func */
+    //   newParams = newParams.concat(this.generateURLParam(newTag).filter(param => !newParams.includes(param)))
+    //   /* eslint-enable no-loop-func */
+    // }
+    // let encoded = window.btoa(JSON.stringify(newParams))
+    // let params = new URLSearchParams(window.location.search)
+    // params.set('filters', encoded)
+    window.history.pushState({ 'pageTitle': 'Browse & Filter Dataset' }, '', `${window.location.protocol}//${window.location.host}${window.location.pathname}?${urlParams.toString()}`)
+    this.props.callback(filtersToActivate)
   }
 
   /**
