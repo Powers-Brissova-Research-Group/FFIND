@@ -50,6 +50,7 @@ class App extends Component {
     this.addFavorite = this.addFavorite.bind(this)
     this.checkCompatability = this.checkCompatability.bind(this)
     this.addFavorite = this.addFavorite.bind(this)
+    this.showInfoModal = this.showInfoModal.bind(this)
 
     let urlVars = new URLSearchParams(window.location.search)
 
@@ -128,6 +129,14 @@ class App extends Component {
       })
     })
     Sentry.captureException(error)
+  }
+
+  showInfoModal() {
+    window.alert('hi')
+  }
+
+  componentDidMount() {
+    window.setTimeout(this.showInfoModal, 3000)
   }
 
   render () {
