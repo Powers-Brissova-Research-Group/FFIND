@@ -25,6 +25,7 @@ import Diabetes from './Diabetes'
 import Collaborators from './Collaborators'
 import Home from './Home'
 import About from './About'
+// import UserInfoModal from './pancreatlas/UserInfoModal'
 
 import DatasetListPage from './pancreatlas/DatasetListPage'
 import AgeBrowser from './pancreatlas/AgeBrowser'
@@ -63,7 +64,8 @@ class App extends Component {
     this.state = {
       favorites: favs,
       encodedFavorites: encFavs,
-      error: null
+      error: null,
+      userInfoDisplay: false
     }
   }
 
@@ -132,7 +134,9 @@ class App extends Component {
   }
 
   showInfoModal() {
-    window.alert('hi')
+    this.setState({
+      userInfoDisplay: true
+    })
   }
 
   componentDidMount() {
