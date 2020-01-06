@@ -23,7 +23,7 @@ import Error from './Error'
 import ImageModal from './ImageModal'
 import LoadingBar from './LoadingBar'
 
-import { FilterTree, compareAges } from './utilities'
+import { FilterTree, compareAges, extractFilters } from './utilities'
 
 import axios from 'axios'
 
@@ -107,6 +107,15 @@ export default class ImageGrid extends React.Component {
           this.state.filterTree.addNode(tag, tagsetName, sortMethod, filterMethod)
         }
       }
+      let setNodes = this.state.filterTree.generateAllNodes()
+      for (let key of searchParams.keys()) {
+        if (setNodes.indexOf(key.toUpperCase()) >= 0) {
+          let tmpObj = JSON.parse(window.atob(searchParams.get(key)))
+          let filters = extractFilters(tmpObj)
+          activeFilters = activeFilters.concat(filters)
+        }
+      }
+
       for (let filter of activeFilters) {
         this.state.filterTree.activateFilter(filter)
       }

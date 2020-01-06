@@ -152,6 +152,28 @@ export class FilterTree {
   }
 
   /**
+   * Gets all nodes (filter sets) for this tree
+   */
+
+  generateAllNodes () {
+    var q = []
+    var nodes = []
+    for (let child of this.root.children) {
+      q.unshift(child)
+    }
+    while (q.length > 0) {
+      var curr = q.pop()
+      if (curr.type === 'node') {
+        nodes.push(curr.value)
+        for (let child of curr.children) {
+          q.unshift(child)
+        }
+      }
+    }
+    return nodes
+  }
+
+  /**
    * Generate a list of all the active images in the tree
    */
   generateActiveImages () {
@@ -422,3 +444,26 @@ export function compareAges (age1, age2) {
     }
   }
 };
+
+function isArray (obj) {
+  return Object.prototype.toString.call(obj) === '[object Array]'
+}
+
+export function extractFilters (tagObj) {
+  var objectQueue = []
+  var filters = []
+  for (let key of Object.keys(tagObj)) {
+    objectQueue.push(tagObj[key])
+  }
+  while (objectQueue.length > 0) {
+    var curr = objectQueue.shift()
+    if (isArray(curr)) {
+      filters = filters.concat(curr)
+    } else {
+      for (let k of Object.keys(curr)) {
+        objectQueue.push(curr[k])
+      }
+    }
+  }
+  return filters
+}

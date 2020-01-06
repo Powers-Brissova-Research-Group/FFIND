@@ -47,10 +47,10 @@ export default class FilterSet extends React.Component {
     this.props.clear({})
   }
 
-  gatherFilters(filters) {
+  gatherFilters(filters, diff) {
     var filterObj = {}
     filterObj[this.props.setName] = filters
-    this.props.callback(filterObj)
+    this.props.callback(filterObj, diff)
   }
 
 

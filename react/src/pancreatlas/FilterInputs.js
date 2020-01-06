@@ -25,7 +25,7 @@ class CheckboxFilterList extends React.Component {
   render() {
     return (
       this.props.tags.map(tag => (
-        <FilterItem defaultChecked={tag.active} clear={this.props.clear} key={tag.name} filterName={tag.name} filterQty={this.props.tags[tag]} callback={() => this.props.callback([tag.name])} />
+        <FilterItem defaultChecked={tag.active} clear={this.props.clear} key={tag.name} filterName={tag.name} filterQty={this.props.tags[tag]} callback={() => this.props.callback([tag.name], [tag.name])} />
       ))
     )
   }
@@ -73,26 +73,31 @@ class SliderFilterList extends React.Component {
   onSliderChange(newValue) {
     // We should be able to just get all the current filters outside of the current age group + the selected ages
     if (this.state.active) {
-      let matches = this.props.tags.slice(newValue.value.min, newValue.value.max)
+      let oldMatches = this.props.tags.slice(this.state.value.min, this.state.value.max + 1).map(match => match.name)
+      let matches = this.props.tags.slice(newValue.value.min, newValue.value.max + 1).map(match => match.name)
+      let diff = []
+      if (oldMatches.length > matches.length) {
+        diff = oldMatches.filter(val => matches.indexOf(val) < 0)
+      } else {
+        diff = matches.filter(val => oldMatches.indexOf(val) < 0)
+      }
       this.setState({
         value: newValue.value
       })
-      this.props.callback(matches.map(match => match.name))
+      this.props.callback(matches, diff)
     }
   }
 
   onToggleChange() {
+    if (!this.state.active) {
+      let matches = this.props.tags
+      this.props.callback(matches.map(match => match.name), matches.map(match => match.name))
+    } else {
+      this.props.callback([], [])
+    }
     this.setState(prevState => ({
       active: !prevState.active
     }))
-
-    if (this.state.active) {
-      let matches = this.props.tags
-      this.props.callback(matches.map(match => match.name))
-    } else {
-      this.props.callback([])
-    }
-
   }
 
   /**

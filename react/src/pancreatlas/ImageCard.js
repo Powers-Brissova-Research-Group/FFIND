@@ -18,7 +18,7 @@ import MarkerTag from './MarkerTag'
 import axios from 'axios'
 
 export default class ImageCard extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.toggleTooltip = this.toggleTooltip.bind(this)
@@ -33,7 +33,7 @@ export default class ImageCard extends React.Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     // Load information about the image
     axios.get(`${process.env.REACT_APP_API_URL}/images/${this.props.iid}`, {
       withCredentials: true,
@@ -79,13 +79,7 @@ export default class ImageCard extends React.Component {
           if (kvals[key].val !== '' && kvals[key].val !== undefined) {
             let valKey = donorRe.exec(key)[3]
             if (valKey !== 'UNOS ID' && valKey !== 'LIMS ID' && kvals[key] !== '') {
-              if (valKey === 'Age') {
-                // let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
-                let ageRe = /^(AGE)*/i
-                donor[donorRe.exec(key)[3]] = result.tags.filter(tag => ageRe.test(tag.tagset))[0].tag
-              } else {
-                donor[donorRe.exec(key)[3]] = kvals[key].val
-              }
+              donor[valKey] = kvals[key].val
             }
           }
         }
@@ -112,13 +106,13 @@ export default class ImageCard extends React.Component {
     })
   }
 
-  toggleTooltip () {
+  toggleTooltip() {
     this.setState({
       ttOpen: !this.state.ttOpen
     })
   }
 
-  render () {
+  render() {
     if (this.state.loaded) {
       let lastMarker = Object.keys(this.state.markers)[Object.keys(this.state.markers).length - 1]
       return (
