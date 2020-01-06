@@ -450,20 +450,24 @@ function isArray (obj) {
 }
 
 export function extractFilters (tagObj) {
-  var objectQueue = []
-  var filters = []
-  for (let key of Object.keys(tagObj)) {
-    objectQueue.push(tagObj[key])
-  }
-  while (objectQueue.length > 0) {
-    var curr = objectQueue.shift()
-    if (isArray(curr)) {
-      filters = filters.concat(curr)
-    } else {
-      for (let k of Object.keys(curr)) {
-        objectQueue.push(curr[k])
+  if (isArray(tagObj)) {
+    return tagObj
+  } else {
+    var objectQueue = []
+    var filters = []
+    for (let key of Object.keys(tagObj)) {
+      objectQueue.push(tagObj[key])
+    }
+    while (objectQueue.length > 0) {
+      var curr = objectQueue.shift()
+      if (isArray(curr)) {
+        filters = filters.concat(curr)
+      } else {
+        for (let k of Object.keys(curr)) {
+          objectQueue.push(curr[k])
+        }
       }
     }
+    return filters
   }
-  return filters
 }

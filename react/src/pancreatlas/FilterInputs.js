@@ -41,13 +41,26 @@ class SliderFilterList extends React.Component {
     this.onSliderChange = this.onSliderChange.bind(this)
     this.onToggleChange = this.onToggleChange.bind(this)
     this.updateMarks = this.updateMarks.bind(this)
-    this.leftMark = 0
+    let leftMark = 0
+    let rightMark = this.props.tags.length - 1
+    for (let i = 0; i < this.props.tags.length; i++) {
+      if (this.props.tags[i].active) {
+        leftMark = i
+        break
+      }
+    }
+    for (let i = this.props.tags.length - 1; i >= 0; i--) {
+      if (this.props.tags[i].active) {
+        rightMark = i
+        break
+      }
+    }
     this.state = {
       value: {
-        min: 0,
-        max: this.props.tags.length - 1
+        min: leftMark,
+        max: rightMark
       },
-      active: false
+      active: this.props.tags.filter(tag => tag.active).length > 0
     }
   }
   /**
@@ -93,7 +106,13 @@ class SliderFilterList extends React.Component {
       let matches = this.props.tags
       this.props.callback(matches.map(match => match.name), matches.map(match => match.name))
     } else {
-      this.props.callback([], [])
+      this.props.callback([], this.props.tags.slice(this.state.min, this.state.max))
+      this.setState({
+        value: {
+          min: 0,
+          max: this.props.tags.length - 1
+        }
+      })
     }
     this.setState(prevState => ({
       active: !prevState.active
