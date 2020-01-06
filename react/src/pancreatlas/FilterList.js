@@ -22,7 +22,8 @@ import FilterSet from './FilterSet'
 
 import Error from './Error'
 
-import merge from 'lodash.merge'
+import { isArray } from './utilities'
+import mergeWith from 'lodash.mergewith'
 
 /**
  * React component for the FilterList.
@@ -98,8 +99,12 @@ class FilterList extends React.Component {
         old[key] = JSON.parse(window.atob(urlParams.get(key)))
         let newObj = {}
         newObj[key] = newTags[key]
-        let tmp = merge(old, newObj)
-        toAdd = tmp[key]
+        mergeWith(old, newObj, (objValue, srcValue) => {
+          if (isArray(objValue)) {
+            return srcValue
+          }
+        })
+        toAdd = old[key]
       }      
       urlParams.set(key, window.btoa(JSON.stringify(toAdd)))
     }

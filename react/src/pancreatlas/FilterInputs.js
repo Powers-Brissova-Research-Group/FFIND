@@ -22,10 +22,35 @@ import 'react-input-range/lib/css/index.css'
  * @class CheckboxFilterList
  */
 class CheckboxFilterList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.addFilter = this.addFilter.bind(this)
+    this.state = {
+      activeFilters: this.props.tags.filter(tag => tag.active).map(tag => tag.name)
+    }
+  }
+
+  addFilter(newFilter) {
+    let oldFilters = JSON.parse(JSON.stringify(this.state.activeFilters))
+    let newFilters = []
+    if (oldFilters.indexOf(newFilter) < 0) {
+      oldFilters.push(newFilter)
+      newFilters = oldFilters
+    } else {
+      newFilters = oldFilters.filter(val => val !== newFilter)
+    }
+
+    this.setState({
+      activeFilters: newFilters
+    })
+
+    this.props.callback(newFilters, [newFilter])
+  }
+
   render() {
     return (
       this.props.tags.map(tag => (
-        <FilterItem defaultChecked={tag.active} clear={this.props.clear} key={tag.name} filterName={tag.name} filterQty={this.props.tags[tag]} callback={() => this.props.callback([tag.name], [tag.name])} />
+        <FilterItem defaultChecked={tag.active} clear={this.props.clear} key={tag.name} filterName={tag.name} filterQty={this.props.tags[tag]} callback={() => this.addFilter(tag.name)} />
       ))
     )
   }
@@ -106,7 +131,7 @@ class SliderFilterList extends React.Component {
       let matches = this.props.tags
       this.props.callback(matches.map(match => match.name), matches.map(match => match.name))
     } else {
-      this.props.callback([], this.props.tags.slice(this.state.min, this.state.max))
+      this.props.callback([], this.props.tags.slice(this.state.value.min, this.state.value.max + 1).map(tag => tag.name))
       this.setState({
         value: {
           min: 0,
