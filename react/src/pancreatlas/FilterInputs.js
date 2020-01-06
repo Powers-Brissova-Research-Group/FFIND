@@ -135,7 +135,7 @@ class SliderFilterList extends React.Component {
       this.setState({
         value: {
           min: 0,
-          max: this.props.tags.length - 1
+          max: this.props.tags.length
         }
       })
     }

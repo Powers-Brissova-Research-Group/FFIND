@@ -25,7 +25,7 @@ import Diabetes from './Diabetes'
 import Collaborators from './Collaborators'
 import Home from './Home'
 import About from './About'
-// import UserInfoModal from './pancreatlas/UserInfoModal'
+import UserInfoModal from './pancreatlas/UserInfoModal'
 
 import DatasetListPage from './pancreatlas/DatasetListPage'
 import AgeBrowser from './pancreatlas/AgeBrowser'
@@ -52,6 +52,7 @@ class App extends Component {
     this.checkCompatability = this.checkCompatability.bind(this)
     this.addFavorite = this.addFavorite.bind(this)
     this.showInfoModal = this.showInfoModal.bind(this)
+    this.dismissInfoModal = this.dismissInfoModal.bind(this)
 
     let urlVars = new URLSearchParams(window.location.search)
 
@@ -133,6 +134,12 @@ class App extends Component {
     Sentry.captureException(error)
   }
 
+  dismissInfoModal() {
+    this.setState({
+      userInfoDisplay: false
+    })
+  }
+
   showInfoModal() {
     this.setState({
       userInfoDisplay: true
@@ -140,7 +147,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.setTimeout(this.showInfoModal, 3000)
+    window.setTimeout(this.showInfoModal, 120000)
   }
 
   render () {
@@ -191,6 +198,7 @@ class App extends Component {
                 <Route component={PageNotFound} />
 
               </Switch>
+              <UserInfoModal visible={this.state.userInfoDisplay} toggle={this.dismissInfoModal} />
               <PancreatlasFooter />
             </div>
           </Router>
