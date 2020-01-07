@@ -12,7 +12,9 @@ import {
   Label
 } from 'reactstrap'
 
-export default class UserInfoModal extends React.Component {
+import { withFirebase } from '../firebase'
+
+class UserInfoModal extends React.Component {
   constructor (props) {
     super(props)
 
@@ -45,7 +47,9 @@ export default class UserInfoModal extends React.Component {
   }
 
   submit() {
-    return this.state.formData
+    this.props.firebase.addNewUserInfo(this.state.formData)
+    this.props.toggle()
+    // return this.state.formData
   }
 
   render() {
@@ -110,3 +114,5 @@ export default class UserInfoModal extends React.Component {
     )
   }
 }
+
+export default withFirebase(UserInfoModal)
