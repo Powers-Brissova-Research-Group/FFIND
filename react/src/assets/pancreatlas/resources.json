@@ -13,6 +13,12 @@
             "img": "amp-t2d.png"
         },
         {
+            "title": "Diabetes Epigenome Atlas",
+            "desc": "<p>As part of the AMP T2D consortium, The <a href='http://www.diabetesepigenome.org/'>Diabetes Epigenome Atlas</a> project collects and provides data on the human genome and epigenome to facilitate genetic studies of type 2 diabetes and its complications.</p>",
+            "url": "http://www.diabetesepigenome.org/",
+            "img": "DGA.png"
+        },
+        {
             "title": "CPDPC",
             "desc": "<p>The Consortium for the Study of Chronic Pancreatitis, Diabetes and Pancreatic Cancer (CPDPC) aims to perform comprehensive clinical research on chronic pancreatitis (including acute recurrent pancreatitis), pancreatic cancer, and pancreatogenic diabetes mellitus (T3cDM).</p>",
             "url": "http://cpdpc.mdanderson.org/",
@@ -42,6 +48,12 @@
             "desc": "<p>Supported by the NIDDK, the Human Islet Research Network (HIRN) helps organize collaborative research related to the loss of functional beta cell mass in T1D. The project includes various independent research initiatives housed within different <a href='https://hirnetwork.org/consortium'>consortia</a>.</p>",
             "url": "http://hirnetwork.org/",
             "img": "hirn.png"
+        },
+        {
+            "title": "HPA",
+            "desc": "<p>Funded by <a href='https://kaw.wallenberg.org/en'>The Knut and Alice Wallenberg Foundation</a>, this Swedish program aims to bring together proteomic information for cells, tissues, and organs using a combination of techniques. This resource encompasses multiple atlases, including a Tissue Atlas that includes the <a href='https://www.proteinatlas.org/humanproteome/tissue/pancreas'>pancreas</a>.</p>",
+            "url": "http://www.proteinatlas.org/",
+            "img": "HPA.png"
         },
         {
             "title": "HPAP/PANC-DB",
