@@ -219,8 +219,14 @@ export class FilterTree {
     if (filterNode !== undefined) {
       // var sortedKeys = filterNode.children.map(child => child.value).sort() // Object.keys(filterNode).sort()
       filterNode.children.sort(sortFn)
-      for (let child of filterNode.children) {
-        for (let img of child.images) {
+      let q = Object.assign([], filterNode.children)
+      while (q.length > 0) {
+        let curr = q.shift()
+        curr.children.sort(sortFn)
+        for (let child of curr.children) {
+          q.push(Object.assign({}, child))
+        }
+        for (let img of curr.images) {
           images.push(img)
         }
       }

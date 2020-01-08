@@ -373,6 +373,12 @@ export default class ImageGrid extends React.Component {
     }
     var sorted = []
     switch (event.target.value) {
+      case 'duration-asc':
+        sorted = this.state.filterTree.sortImages('DISEASE DURATION')
+        break
+      case 'duration-desc':
+        sorted = this.state.filterTree.sortImages('DISEASE DURATION')
+        break
       case 'age-desc':
         sorted = this.state.filterTree.sortImages('AGE', ((a, b) => -1 * compareAges(a.value, b.value)))
         break
@@ -499,8 +505,6 @@ export default class ImageGrid extends React.Component {
                         <option value='sel'>Select</option>
                           <option value='age-asc'>Age Ascending</option>
                           <option value='age-desc'>Age Descending</option>
-                          <option value='duration-asc'>Disease Duration Ascending</option>
-                          <option value='duration-desc'>Disease Duration Descending</option>
                         </Input>
                       </div>
                     </Col>
