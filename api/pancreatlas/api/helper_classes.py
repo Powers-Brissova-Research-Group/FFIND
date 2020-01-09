@@ -136,6 +136,29 @@ class Image:
                     self.channel_info[channel_map[channel_name]] = channel.getColor().getHtml()
                 else:
                     self.channel_info[channel_name] =  channel.getColor().getHtml()
+
+    def add_map_annotation(self, key, value):
+        anns = list(self.img_wrapper.listAnnotations())
+        for ann in anns:
+            if isinstance(ann, MapAnnotationWrapper):
+                annotations = ann.getValue()
+                annotations.append((key, value))
+                ann.setValue(annotations)
+        self.img_wrapper.save()
+
+    def modify_map_annotation(self, key, new_value):
+        anns = list(self.img_wrapper.listAnnotations())
+        for ann in anns:
+            if isinstance(ann, MapAnnotationWrapper):
+                annotations = ann.getValue()
+                for i in range(0, len(annotations)):
+                    if annotations[i][0] == key:
+                        annotations[i] = (key, new_value)
+                        ann.setValue(annotations)
+                        break
+        self.img_wrapper.save()
+
+
     def get_tags(self):
         return self.tags
 
