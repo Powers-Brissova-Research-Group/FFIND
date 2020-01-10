@@ -9,7 +9,9 @@ import FilterItem from './FilterItem'
 import {
   Row,
   Col,
-  Input
+  Input,
+  Form,
+  FormGroup
 } from 'reactstrap'
 
 // import { Range } from 'rc-slider'
@@ -161,20 +163,22 @@ class SliderFilterList extends React.Component {
     } else {
       return (
         <div>
-          <Row>
-            <Col md='12'>
-              <Input type='checkbox' checked={this.state.active} onChange={this.onToggleChange} />
-            </Col>
-          </Row>
           <Row className='age-slider pancreatlas-row'>
-            <Col md='12'>
-              <InputRange
-                formatLabel={value => `${this.props.tags[value].name}`}
-                maxValue={this.props.tags.length - 1}
-                minValue={0}
-                value={this.state.value}
-                onChange={value => this.onSliderChange({ value })} />
-            </Col>
+              <Form style={{minWidth: '14rem'}} inline>
+                <FormGroup style={{width: '100%'}}>
+                  <Col xs={2}>
+                    <Input type='checkbox' checked={this.state.active} onChange={this.onToggleChange} />
+                  </Col>
+                  <Col xs={10}>
+                    <InputRange
+                      formatLabel={value => `${this.props.tags[value].name}`}
+                      maxValue={this.props.tags.length - 1}
+                      minValue={0}
+                      value={this.state.value}
+                      onChange={value => this.onSliderChange({ value })} />
+                  </Col>
+                </FormGroup>
+              </Form>
           </Row>
         </div>
       )
