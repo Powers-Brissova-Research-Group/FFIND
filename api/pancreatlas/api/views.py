@@ -90,7 +90,7 @@ class DatasetViewset(viewsets.ViewSet):
             'DISEASE STATUS': 0,
             'DISEASE DURATION': 1,
             'AGE': 2,
-            'SEX': 3
+            'SEX': 3,
             'PROGRAM ID': 4,
             'MARKER': 5,
             'PANCREAS REGION': 6,
