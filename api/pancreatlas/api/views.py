@@ -86,14 +86,25 @@ class DatasetViewset(viewsets.ViewSet):
     @action(methods=['get'], detail=True, url_path='get-tags', url_name='get_tags')
     def get_tags(self, request, pk=None):
         filters = {}
+        filter_order = {
+            'DISEASE STATUS': 0,
+            'DISEASE DURATION': 1,
+            'AGE': 2,
+            'SEX': 3
+            'PROGRAM ID': 4,
+            'MARKER': 5,
+            'PANCREAS REGION': 6,
+            'MODALITY': 7
+        }
         with open('/app001/www/assets/pancreatlas/datasets/' + str(pk) + '.txt', 'r') as f:
             data = json.loads(f.readline())
             for key, val in data.items():
                 for fil in val:
                     filter_group = fil['tagset'].upper()
+                    root_group = filter_group.split('-')[0]
                     filter_name = fil['tag']
                     if filter_group not in filters:
-                        filters[filter_group] = {'set_name': filter_group, 'tags': {}, 'pos': 0}
+                        filters[filter_group] = {'set_name': filter_group, 'tags': {}, 'pos': filter_order[root_group]}
                     fset = filters[filter_group]
                     fset['tags'][filter_name] = 0
             sorted_filters = sorted(filters.values(), key=lambda fil: fil['pos'])
