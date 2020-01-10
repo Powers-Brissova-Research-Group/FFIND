@@ -26,17 +26,17 @@ export class FilterTree {
    * For example, dividing age between neonatal, infant, etc.
    * @param {string} n List of parent nodes, separated by '-'
    */
-  addSet (n, sortMethod, filterMethod) {
+  addSet (n, sortMethod, filterMethod, defaultHidden) {
     var levels = n.split('-')
     var curr = levels.shift()
     var node = this.search(curr)
     if (node === undefined) {
-      node = new FilterNode('node', curr, sortMethod, filterMethod)
+      node = new FilterNode('node', curr, sortMethod, filterMethod, defaultHidden)
       this.root.addNode(node)
     }
     while (levels.length > 0) {
       curr = levels.shift()
-      var nextNode = new FilterNode('node', curr, sortMethod, filterMethod)
+      var nextNode = new FilterNode('node', curr, sortMethod, filterMethod, defaultHidden)
       node.addNode(nextNode)
       node = nextNode
     }
@@ -51,11 +51,11 @@ export class FilterTree {
    * @param {string} parent Name of the parent node for the new one
    * @param {string} filterMethod How we should display this filter in the UI (as a slider, checkbox, etc)
    */
-  addNode (n, parent, sortMethod, filterMethod = undefined) {
+  addNode (n, parent, sortMethod, filterMethod = undefined, defaultHidden = false) {
     var parentChain = parent.split('-')
     var parentNode = this.search(parentChain[parentChain.length - 1])
     if (parentNode === undefined) {
-      parentNode = this.addSet(parent, sortMethod, filterMethod)
+      parentNode = this.addSet(parent, sortMethod, filterMethod, defaultHidden)
     }
     if (parentNode !== undefined) {
       parentNode.addNode(new FilterNode('leaf', n, sortMethod, filterMethod))
@@ -252,6 +252,7 @@ export class FilterTree {
       tmp['filterMethod'] = node.filterMethod
       tmp['type'] = 'node'
       tmp['sortMethod'] = node.sortMethod
+      tmp['defaultHidden'] = node.defaultHidden
       tmp['children'] = node.children.map(child => this.generateJSON(child))
       return tmp
     }
@@ -268,13 +269,14 @@ class FilterNode {
    * @param {string} value Value of node (name of filter or set, etc)
    * @param {*} filterMethod Type of filter to display in UI
    */
-  constructor (type, value, sortMethod, filterMethod = undefined) {
+  constructor (type, value, sortMethod, filterMethod = undefined, defaultHidden = false) {
     this.type = type
     this.value = value
     this.filterMethod = filterMethod
     this.sortMethod = sortMethod
     this.children = []
     this.images = []
+    this.defaultHidden = defaultHidden
   }
 
   /**

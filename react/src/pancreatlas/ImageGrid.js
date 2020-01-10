@@ -101,18 +101,24 @@ export default class ImageGrid extends React.Component {
       for (let tagset of result) {
         let tagsetName = tagset.set_name
         for (let tag of Object.keys(tagset.tags)) {
-          var ageRe = /AGE*/i
+          var ageRe = /AGE|DISEASE DURATION*/i
+          var defaultHiddenRe = /PROGRAM ID*/i
           var filterMethod = ageRe.test(tagsetName) ? 'slider' : 'checkbox'
+          var hidden = defaultHiddenRe.test(tagsetName) ? true : false
           var sortMethod = ageRe.test(tagsetName) ?  (a, b) => compareAges(a.name, b.name) : (a, b) => (a.name > b.name) ? 1 : -1
-          this.state.filterTree.addNode(tag, tagsetName, sortMethod, filterMethod)
+          this.state.filterTree.addNode(tag, tagsetName, sortMethod, filterMethod, hidden)
         }
       }
       let setNodes = this.state.filterTree.generateAllNodes()
       for (let key of searchParams.keys()) {
         if (setNodes.indexOf(key.toUpperCase()) >= 0) {
-          let tmpObj = JSON.parse(window.atob(searchParams.get(key)))
-          let filters = extractFilters(tmpObj)
-          activeFilters = activeFilters.concat(filters)
+          try {
+            let tmpObj = JSON.parse(window.atob(searchParams.get(key)))
+            let filters = extractFilters(tmpObj)
+            activeFilters = activeFilters.concat(filters)  
+          } catch (e) {
+            console.error(e)
+          }
         }
       }
 

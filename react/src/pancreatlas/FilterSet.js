@@ -36,7 +36,7 @@ export default class FilterSet extends React.Component {
     this.clear = this.clear.bind(this)
     this.gatherFilters = this.gatherFilters.bind(this)
     this.state = {
-      open: true
+      open: !this.props.node.defaultHidden
     }
   }
 
