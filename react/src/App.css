@@ -342,6 +342,8 @@ div.card-footer-buttons {
 .age-slider {
   padding-top: 1rem;
   padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .filter-set {
@@ -1188,4 +1190,9 @@ h4.filter-set-heading-1 {
 
 h4.filter-set-heading-2 {
   font-size: 1.25rem !important;
+}
+
+.grid-options {
+  display: flex;
+  
 }

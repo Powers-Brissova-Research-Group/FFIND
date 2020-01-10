@@ -10,7 +10,10 @@ import {
   Badge,
   Button,
   ButtonGroup,
-  Input
+  Input,
+  Form,
+  FormGroup,
+  Label
 } from 'reactstrap'
 
 import { Link } from 'react-router-dom'
@@ -105,7 +108,7 @@ export default class ImageGrid extends React.Component {
           var defaultHiddenRe = /PROGRAM ID*/i
           var filterMethod = ageRe.test(tagsetName) ? 'slider' : 'checkbox'
           var hidden = defaultHiddenRe.test(tagsetName) ? true : false
-          var sortMethod = ageRe.test(tagsetName) ?  (a, b) => compareAges(a.name, b.name) : (a, b) => (a.name > b.name) ? 1 : -1
+          var sortMethod = ageRe.test(tagsetName) ? (a, b) => compareAges(a.name, b.name) : (a, b) => (a.name > b.name) ? 1 : -1
           this.state.filterTree.addNode(tag, tagsetName, sortMethod, filterMethod, hidden)
         }
       }
@@ -115,7 +118,7 @@ export default class ImageGrid extends React.Component {
           try {
             let tmpObj = JSON.parse(window.atob(searchParams.get(key)))
             let filters = extractFilters(tmpObj)
-            activeFilters = activeFilters.concat(filters)  
+            activeFilters = activeFilters.concat(filters)
           } catch (e) {
             console.error(e)
           }
@@ -493,29 +496,28 @@ export default class ImageGrid extends React.Component {
                 <Col md='6'>
                   <Row>
                     <Col xs='12'>
-                      <div className='density-select float-right'>
-                        <strong>Grid Density: </strong>
-                        <ButtonGroup>
-                          <Button color='info' onClick={() => this.setDensity('sparse')} active={this.state.density === 'sparse'}>Sparse</Button>
-                          <Button color='info' onClick={() => this.setDensity('normal')} active={this.state.density === 'normal'}>Normal</Button>
-                          <Button color='info' onClick={() => this.setDensity('dense')} active={this.state.density === 'dense'}>Dense</Button>
-                        </ButtonGroup>
+                      <div className='grid-options float-right'>
+                        <Form inline>
+                          <FormGroup>
+                            <Label for='sort-select'><strong>Sort by </strong></Label>
+                            <Input size='sm' type='select' name='sort-select' id='sort-select' value={this.state.sortOrder} onChange={this.sortImgs}>
+                              <option value='sel'>Select</option>
+                              <option value='age-asc'>Age Ascending</option>
+                              <option value='age-desc'>Age Descending</option>
+                            </Input>
+                          </FormGroup>
+                          <span className='pl-2'>
+                            <strong>Grid Density: </strong>
+                            <ButtonGroup size='sm' className='pl-1'>
+                              <Button color='info' onClick={() => this.setDensity('sparse')} active={this.state.density === 'sparse'}>Sparse</Button>
+                              <Button color='info' onClick={() => this.setDensity('normal')} active={this.state.density === 'normal'}>Normal</Button>
+                              <Button color='info' onClick={() => this.setDensity('dense')} active={this.state.density === 'dense'}>Dense</Button>
+                            </ButtonGroup>
+                          </span>
+                        </Form>
                       </div>
                     </Col>
                   </Row>
-                  <Row className='mt-2'>
-                    <Col xs='12'>
-                      <div className='float-right'>
-                        <strong>Sort by</strong>
-                        <Input size='sm' type='select' name='sort-select' id='sort-select' value={this.state.sortOrder} onChange={this.sortImgs}>
-                        <option value='sel'>Select</option>
-                          <option value='age-asc'>Age Ascending</option>
-                          <option value='age-desc'>Age Descending</option>
-                        </Input>
-                      </div>
-                    </Col>
-                  </Row>
-
                 </Col>
               </Row>
             </Alert>

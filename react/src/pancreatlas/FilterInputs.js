@@ -160,19 +160,23 @@ class SliderFilterList extends React.Component {
       return null
     } else {
       return (
-        <Row className='age-slider pancreatlas-row'>
-          <Col md='2'>
-            <Input type='checkbox' checked={this.state.active} onChange={this.onToggleChange} />
-          </Col>
-          <Col md='10'>
-            <InputRange
-              formatLabel={value => `${this.props.tags[value].name}`}
-              maxValue={this.props.tags.length - 1}
-              minValue={0}
-              value={this.state.value}
-              onChange={value => this.onSliderChange({ value })} />
-          </Col>
-        </Row>
+        <div>
+          <Row>
+            <Col md='12'>
+              <Input type='checkbox' checked={this.state.active} onChange={this.onToggleChange} />
+            </Col>
+          </Row>
+          <Row className='age-slider pancreatlas-row'>
+            <Col md='12'>
+              <InputRange
+                formatLabel={value => `${this.props.tags[value].name}`}
+                maxValue={this.props.tags.length - 1}
+                minValue={0}
+                value={this.state.value}
+                onChange={value => this.onSliderChange({ value })} />
+            </Col>
+          </Row>
+        </div>
       )
     }
   }
