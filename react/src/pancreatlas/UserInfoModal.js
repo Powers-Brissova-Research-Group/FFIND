@@ -106,6 +106,7 @@ class UserInfoModal extends React.Component {
             </Form>
           </ModalBody>
           <ModalFooter>
+            <Button outline>I prefer not to answer</Button>
             <Button onClick={this.submit}>Submit!</Button>
           </ModalFooter>
         </Modal>
