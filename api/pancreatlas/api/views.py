@@ -44,11 +44,13 @@ class ImageViewSet(viewsets.ViewSet):
             return Response(json.loads(data))
 
     def retrieve(self, request, pk=None):
-        conn = BlitzGateway('api.user', 'ts6t6r1537k=', host='10.152.140.10', port=4064)
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=',
+                            host='10.152.140.10', port=4064)
         try:
             conn.connect()
             img = omero_api.get_image_by_id(conn, pk)
-            ret_img = Image(pk, img.file_name, img.get_tag_names(), img.get_key_values(), img.get_channel_info())
+            ret_img = Image(pk, img.file_name, img.get_tag_names(),
+                            img.get_key_values(), img.get_channel_info())
             serializer = ImageSerializer(ret_img)
             return Response(serializer.data)
         finally:
@@ -58,15 +60,14 @@ class ImageViewSet(viewsets.ViewSet):
                 logger.warning("Failed to close OMERO connection")
 
 
-
-
-
 class DatasetViewset(viewsets.ViewSet):
     def list(self, request):
-        conn = BlitzGateway('api.user', 'ts6t6r1537k=', host='10.152.140.10', port=4064)
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=',
+                            host='10.152.140.10', port=4064)
         try:
             conn.connect()
-            dsets = [Dataset(dset.did, dset.name, dset.desc, dset.kvals) for dset in omero_api.get_private_datasets(conn)]
+            dsets = [Dataset(dset.did, dset.name, dset.desc, dset.kvals)
+                             for dset in omero_api.get_private_datasets(conn)]
             serializer = DatasetSerializer(dsets, many=True)
             return Response(serializer.data)
 
@@ -75,7 +76,6 @@ class DatasetViewset(viewsets.ViewSet):
                 conn.close(hard=False)
             except:
                 logger.warning("Failed to close OMERO connection")
-
 
     @action(methods=['get'], detail=True, url_path='get-images', url_name='get_images')
     def get_images(self, request, pk=None):
@@ -104,26 +104,28 @@ class DatasetViewset(viewsets.ViewSet):
                     root_group = filter_group.split('-')[0]
                     filter_name = fil['tag']
                     if filter_group not in filters:
-                        filters[filter_group] = {'set_name': filter_group, 'tags': {}, 'pos': filter_order[root_group]}
+                        filters[filter_group] = {
+                            'set_name': filter_group, 'tags': {}, 'pos': filter_order[root_group]}
                     fset = filters[filter_group]
                     fset['tags'][filter_name] = 0
-            sorted_filters = sorted(filters.values(), key=lambda fil: fil['pos'])
+            sorted_filters = sorted(
+                filters.values(), key=lambda fil: fil['pos'])
             return Response(sorted_filters)
 
-
     def retrieve(self, request, pk=None):
-        conn = BlitzGateway('api.user', 'ts6t6r1537k=', host='10.152.140.10', port=4064)
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=',
+                            host='10.152.140.10', port=4064)
         try:
             conn.connect()
             ds = omero_api.get_dataset(conn, pk)
-            serializer = DatasetSerializer(Dataset(ds.did, ds.name, ds.desc, ds.kvals))
+            serializer = DatasetSerializer(
+                Dataset(ds.did, ds.name, ds.desc, ds.kvals))
             return Response(serializer.data)
         finally:
             try:
                 conn.close(hard=False)
             except:
                 logger.warning("Failed to close OMERO connection")
-
 
 
 class TagsetViewset(viewsets.ViewSet):
@@ -135,9 +137,10 @@ class TagsetViewset(viewsets.ViewSet):
 class MatrixViewset(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
         tags = pk.split(',')
-        conn = BlitzGateway('api.user', 'ts6t6r1537k=', host='10.152.140.10', port=4064)
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=',
+                            host='10.152.140.10', port=4064)
         try:
-            matrix = omero_api.generate_image_matrix_from_ds(conn, 
+            matrix = omero_api.generate_image_matrix_from_ds(conn,
                 tags[0].upper(), tags[1].upper(), tags[2])
             for (key, value) in matrix.iteritems():
                 for (col, imgs) in value.iteritems():
@@ -155,6 +158,7 @@ class MatrixViewset(viewsets.ViewSet):
 
         return Response(serializer.data)
 
+
 class UserViewset(viewsets.ViewSet):
     def create(self, request):
         data = request.data
@@ -164,10 +168,11 @@ class UserViewset(viewsets.ViewSet):
             'email_address': email,
             'status': 'subscribed'
         }
-        
+
         url = "https://us18.api.mailchimp.com/3.0/lists/eceb982b65/members"
 
-        r = requests.post(url, json=api_data, auth=('user', '4db489c84c572b13b6846613efbf40bc-us18'))
+        r = requests.post(url, json=api_data, auth=(
+            'user', '4db489c84c572b13b6846613efbf40bc-us18'))
         print r.request
         print json.loads(r.content)
         return Response(json.loads(r.content), status=r.status_code, content_type=r.headers['Content-Type'])
@@ -180,14 +185,26 @@ class UserViewset(viewsets.ViewSet):
             'email_address': email,
             'status': 'subscribed'
         }
-        
+
         email_hash = hashlib.md5(email).hexdigest()
 
         url = "https://us18.api.mailchimp.com/3.0/lists/eceb982b65/members/" + email_hash
 
-        r = requests.put(url, json=api_data, auth=('user', '4db489c84c572b13b6846613efbf40bc-us18'))
+        r = requests.put(url, json=api_data, auth=(
+            'user', '4db489c84c572b13b6846613efbf40bc-us18'))
         print r.request
         print json.loads(r.content)
         return Response(json.loads(r.content), status=r.status_code, content_type=r.headers['Content-Type'])
 
 
+class FeedbackViewset(viewsets.ViewSet):
+    @action(methods=['get'], detail=True, url_path='feedback-sent', url_name='feedback_sent')
+    def record_feedback_sent(self, request, pk=None):
+        if 'feedback-sent' in request.COOKIES:
+            value = request.COOKIES['feedback-sent']
+            response = HttpResponse('Feedback already recorded successfully')
+            return response
+        else:
+            response = HttpResponse('Feedback noted successfully')
+            response.set_cookie('feedback-sent', True)
+            return response
