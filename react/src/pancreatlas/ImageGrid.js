@@ -499,15 +499,15 @@ export default class ImageGrid extends React.Component {
                       <div className='grid-options float-right'>
                         <Form inline>
                           <FormGroup>
-                            <Label for='sort-select'><strong>Sort by </strong></Label>
+                            <Label for='sort-select' className='pr-1'>Sort by: </Label>
                             <Input size='sm' type='select' name='sort-select' id='sort-select' value={this.state.sortOrder} onChange={this.sortImgs}>
-                              <option value='sel'>Select</option>
+                              <option value='sel'>Image ID</option>
                               <option value='age-asc'>Age Ascending</option>
                               <option value='age-desc'>Age Descending</option>
                             </Input>
                           </FormGroup>
                           <span className='pl-2'>
-                            <strong>Grid Density: </strong>
+                            <span className='pr-1'>Grid Density: </span>
                             <ButtonGroup size='sm' className='pl-1'>
                               <Button color='info' onClick={() => this.setDensity('sparse')} active={this.state.density === 'sparse'}>Sparse</Button>
                               <Button color='info' onClick={() => this.setDensity('normal')} active={this.state.density === 'normal'}>Normal</Button>
