@@ -137,7 +137,7 @@ class SliderFilterList extends React.Component {
       this.setState({
         value: {
           min: 0,
-          max: this.props.tags.length
+          max: this.props.tags.length - 1
         }
       })
     }
@@ -171,7 +171,7 @@ class SliderFilterList extends React.Component {
                 </Col>
                 <Col xs={10} className={!this.state.active ? 'greyed-out' : ''}>
                     <InputRange
-                      formatLabel={value => `${this.props.tags[value].name}`}
+                      formatLabel={value => `${this.props.tags[value]['name']}`}
                       maxValue={this.props.tags.length - 1}
                       minValue={0}
                       value={this.state.value}
