@@ -198,13 +198,10 @@ class UserViewset(viewsets.ViewSet):
 
 
 class FeedbackViewset(viewsets.ViewSet):
-    @action(methods=['get'], detail=True, url_path='feedback-sent', url_name='feedback_sent')
-    def record_feedback_sent(self, request, pk=None):
+    def list(self, request):
         if 'feedback-sent' in request.COOKIES:
-            value = request.COOKIES['feedback-sent']
-            response = HttpResponse('Feedback already recorded successfully')
-            return response
+            return Response('Feedback already recorded')
         else:
-            response = HttpResponse('Feedback noted successfully')
-            response.set_cookie('feedback-sent', True)
+            response = Response('Feedback noted successfully')
+            response.set_cookie('feedback-sent', 'true', max_age=31536000000, domain='.app.vumc.org')
             return response

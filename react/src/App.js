@@ -39,8 +39,8 @@ import Resources from './Resources'
 library.add(faLink, faEnvelope, faPhone, faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faBookmarkOutline, faRedo, faBook, faAngleRight, faAngleDown)
 
 class App extends Component {
-// blank line for new commit
-  constructor (props) {
+  // blank line for new commit
+  constructor(props) {
     super(props)
 
     Sentry.init({
@@ -53,6 +53,7 @@ class App extends Component {
     this.addFavorite = this.addFavorite.bind(this)
     this.showInfoModal = this.showInfoModal.bind(this)
     this.dismissInfoModal = this.dismissInfoModal.bind(this)
+    this.getCookie = this.getCookie.bind(this)
 
     let urlVars = new URLSearchParams(window.location.search)
 
@@ -66,11 +67,11 @@ class App extends Component {
       favorites: favs,
       encodedFavorites: encFavs,
       error: null,
-      userInfoDisplay: false
+      userInfoDisplay: false,
     }
   }
 
-  checkCompatability () {
+  checkCompatability() {
     const { detect } = require('detect-browser')
     var browser = detect()
     var supported = true
@@ -107,7 +108,7 @@ class App extends Component {
     return { isSupported: supported, browserInfo: browser }
   }
 
-  addFavorite (iid) {
+  addFavorite(iid) {
     if (this.state.favorites.indexOf(iid) !== -1) {
       let tmp = this.state.favorites
       tmp.splice(tmp.indexOf(iid), 1)
@@ -124,7 +125,7 @@ class App extends Component {
     }
   }
 
-  componentDidCatch (error, errorInfo) {
+  componentDidCatch(error, errorInfo) {
     this.setState({ error })
     Sentry.withScope(scope => {
       Object.keys(errorInfo).forEach(key => {
@@ -134,6 +135,12 @@ class App extends Component {
     Sentry.captureException(error)
   }
 
+  getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+
   dismissInfoModal() {
     this.setState({
       userInfoDisplay: false
@@ -141,16 +148,19 @@ class App extends Component {
   }
 
   showInfoModal() {
-    this.setState({
-      userInfoDisplay: true
-    })
+    if (this.getCookie('feedback-sent') === undefined) {
+      this.setState({
+        userInfoDisplay: true
+      })
+    }
   }
 
   componentDidMount() {
-    window.setTimeout(this.showInfoModal, 120000)
+    console.log(`Cookie: ${this.getCookie('feedback-sent')}`)
+    window.setTimeout(this.showInfoModal, 1000)
   }
 
-  render () {
+  render() {
     var supportInfo = this.checkCompatability()
     var supported = supportInfo.isSupported
     var browser = supportInfo.browserInfo

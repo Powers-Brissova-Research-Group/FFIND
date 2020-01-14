@@ -12,6 +12,8 @@ import {
   Label
 } from 'reactstrap'
 
+import axios from 'axios'
+
 import { withFirebase } from '../firebase'
 
 class UserInfoModal extends React.Component {
@@ -21,6 +23,7 @@ class UserInfoModal extends React.Component {
     this.updateInstition = this.updateInstition.bind(this)
     this.updateRole = this.updateRole.bind(this)
     this.submit = this.submit.bind(this)
+    this.optOut = this.optOut.bind(this)
     this.state = {
       visible: this.props.visible,
       formData: {
@@ -46,8 +49,34 @@ class UserInfoModal extends React.Component {
     }))
   }
 
+  optOut() {
+    axios.get(`${process.env.REACT_APP_API_URL}/feedback`, {
+      withCredentials: true,
+      credentials: 'include',
+      headers: {
+        'Authorization': process.env.REACT_APP_API_AUTH
+      }
+    }).then(response => {
+      let result = response.data
+      console.log(result)
+    })
+
+    this.props.toggle()
+  }
+
   submit() {
     this.props.firebase.addNewUserInfo(this.state.formData)
+    axios.get(`${process.env.REACT_APP_API_URL}/feedback`, {
+      withCredentials: true,
+      credentials: 'include',
+      headers: {
+        'Authorization': process.env.REACT_APP_API_AUTH
+      }
+    }).then(response => {
+      let result = response.data
+      console.log(result)
+    })
+
     this.props.toggle()
     // return this.state.formData
   }
@@ -106,7 +135,7 @@ class UserInfoModal extends React.Component {
             </Form>
           </ModalBody>
           <ModalFooter>
-            <Button outline>I prefer not to answer</Button>
+            <Button outline onClick={this.optOut}>I prefer not to answer</Button>
             <Button onClick={this.submit}>Submit!</Button>
           </ModalFooter>
         </Modal>
