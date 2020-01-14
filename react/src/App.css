@@ -1196,3 +1196,20 @@ h4.filter-set-heading-2 {
   display: flex;
   
 }
+
+/* !!! Overrides for react-input-range css !!! */
+.input-range__label {
+  font-family: 'Roboto', sans-serif !important;
+ }
+
+.input-range__label--min {
+  color: black !important;
+ }
+
+.input-range__label--max {
+  color: black !important;
+ }
+
+ .greyed-out {
+   opacity: 0.5;
+ }

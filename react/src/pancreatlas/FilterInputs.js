@@ -164,21 +164,21 @@ class SliderFilterList extends React.Component {
       return (
         <div>
           <Row className='age-slider pancreatlas-row'>
-              <Form style={{minWidth: '14rem'}} inline>
-                <FormGroup style={{width: '100%'}}>
-                  <Col xs={2}>
-                    <Input type='checkbox' checked={this.state.active} onChange={this.onToggleChange} />
-                  </Col>
-                  <Col xs={10}>
+            <Form style={{ minWidth: '14rem' }} inline>
+              <FormGroup style={{ width: '100%' }}>
+                <Col xs={2}>
+                  <Input type='checkbox' checked={this.state.active} onChange={this.onToggleChange} />
+                </Col>
+                <Col xs={10} className={!this.state.active ? 'greyed-out' : ''}>
                     <InputRange
                       formatLabel={value => `${this.props.tags[value].name}`}
                       maxValue={this.props.tags.length - 1}
                       minValue={0}
                       value={this.state.value}
                       onChange={value => this.onSliderChange({ value })} />
-                  </Col>
-                </FormGroup>
-              </Form>
+                </Col>
+              </FormGroup>
+            </Form>
           </Row>
         </div>
       )
