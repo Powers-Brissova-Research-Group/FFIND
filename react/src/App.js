@@ -156,8 +156,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log(`Cookie: ${this.getCookie('feedback-sent')}`)
-    window.setTimeout(this.showInfoModal, 1000)
+    window.setTimeout(this.showInfoModal, 120000)
   }
 
   render() {
