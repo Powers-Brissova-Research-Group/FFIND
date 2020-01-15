@@ -71,7 +71,11 @@ export default class ImageCard extends React.Component {
           [regionKeys[0]]: kvals[regionKeys[0]].val
         }
         for (let key of markerKeys) {
-          kvals[key].val.split(',').filter(val => val !== '').map(val => (markers[val.trim()] = markerRe.exec(key)[3]))
+          let m = kvals[key].val.trim()
+          if (m !== '') {
+            markers[m] = markerRe.exec(key)[3]
+          }
+          // kvals[key].val.split(',').filter(val => val !== '').map(val => (markers[val.trim()] = markerRe.exec(key)[3]))
         }
 
         let hasLink = Object.keys(kvals).includes('Program ID link')
