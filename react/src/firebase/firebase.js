@@ -3,14 +3,14 @@ import 'firebase/firestore'
 import 'firebase/auth'
 
 const config = {
-  apiKey: 'AIzaSyAzeeZ3TjLTpU2HBlj6mVxH96FZL3lIzHQ',
-  authDomain: 'pancreatlas-9e744.firebaseapp.com',
-  databaseURL: 'https://pancreatlas-9e744.firebaseio.com',
-  projectId: 'pancreatlas-9e744',
-  storageBucket: 'pancreatlas-9e744.appspot.com',
-  messagingSenderId: '22764934187',
-  appId: '1:22764934187:web:6b6757920416d8d2af466e',
-  measurementId: 'G-0K12Y4KX1E'
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 }
 
 class Firebase {
