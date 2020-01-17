@@ -25,6 +25,7 @@ import Diabetes from './Diabetes'
 import Collaborators from './Collaborators'
 import Home from './Home'
 import About from './About'
+import Admin from './Admin'
 import UserInfoModal from './pancreatlas/UserInfoModal'
 
 import DatasetListPage from './pancreatlas/DatasetListPage'
@@ -204,6 +205,7 @@ class App extends Component {
                 <Route path={`/favorites`} render={(props) => <Favorites {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
                 <Route path={`/datasets/:did/overview`} component={DatasetOverview} />
                 <Route path='/resources' component={Resources} />
+                <Route path='/admin' component={Admin} />
                 <Route component={PageNotFound} />
 
               </Switch>

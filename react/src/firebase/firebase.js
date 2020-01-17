@@ -39,6 +39,10 @@ class Firebase {
 
     this.firestore.collection('user_data').add(data)
   }
+
+  fetchUserInfoRef () {
+    return this.firestore.collection('user_data')
+  }
 }
 
 export default Firebase
