@@ -32,7 +32,7 @@ class Firebase {
     let data = {
       institution: formInfo.institution,
       role: formInfo.role,
-      date_accessed: Date.now(),
+      date_accessed: app.firestore.Timestamp.fromDate(new Date()),
       browser_name: browser.name,
       browser_version: browser.version
     }
