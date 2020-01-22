@@ -53,7 +53,7 @@ export default class PancreatlasFooter extends React.Component {
               <Row className='v-padded'>
                 <Col md='8'>
                   <p>Developed and managed by Jimmy Messmer (<a href='https://www.powersresearch.org'>Powers Laboratory</a>) and JP Cartailler (<a href='https://labnodes.vanderbilt.edu/cds'>Creative Data Solutions</a>)</p>
-                  <p>&copy; 2016-2019 Vanderbilt University Medical Center <span> | </span> All Rights Reserved</p>
+                  <p>&copy; 2016-2020 Vanderbilt University Medical Center <span> | </span> All Rights Reserved</p>
                 </Col>
 
                 <Col md='4'>
