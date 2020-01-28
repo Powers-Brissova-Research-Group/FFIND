@@ -5,7 +5,8 @@ import {
   Col,
   Card,
   CardBody,
-  Button
+  Button,
+  Table
 } from 'reactstrap'
 
 import {
@@ -18,7 +19,7 @@ import { Parallax } from 'react-parallax'
 import axios from 'axios'
 
 class DatasetOverview extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     let re = /(\/\w+\/?)+([0-9]+)(\/\w+\/?)+/
     this.state = {
@@ -31,7 +32,7 @@ class DatasetOverview extends React.Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.state.did}`, {
       withCredentials: true,
       credentials: 'include',
@@ -49,12 +50,16 @@ class DatasetOverview extends React.Component {
         funders: sponsors,
         imgs: imgs,
         titleImg: titleImgData,
-        sponsors: result.data.kvals.sponsor_text
-
+        sponsors: result.data.kvals.sponsor_text,
+        importDate: result.data.kvals.import_date,
+        publishDate: result.data.kvals.release_date,
+        refs: result.data.kvals.refs,
+        imgTypes: result.data.kvals.img_types,
+        imgCount: result.data.kvals.img_count
       })
     })
   }
-  render () {
+  render() {
     var logo = null
     if (this.state.title.toLowerCase() !== 'default title') {
       logo = require(`../assets/${this.state.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.jpg`)
@@ -89,7 +94,34 @@ class DatasetOverview extends React.Component {
                   <div className='dataset-description' dangerouslySetInnerHTML={{ __html: this.state.long_desc }} />
                 </Col>
                 <Col md='6'>
-                  {this.state.titleImg !== undefined && <a href={this.state.titleImg.url}><img className='img-fluid dataset-picture' src={require(`../assets/pancreatlas/${this.state.did}/${this.state.titleImg.src}`)} alt='' /></a>}
+                  <div>
+                    {this.state.titleImg !== undefined && <a href={this.state.titleImg.url}><img className='img-fluid dataset-picture' src={require(`../assets/pancreatlas/${this.state.did}/${this.state.titleImg.src}`)} alt='' /></a>}
+                  </div>
+                  <div className='mt-4'>
+                    <h4>Dataset Quick Reference</h4>
+                  </div>
+                  <Table>
+                    <thead>
+                      <tr>
+                        <th>No. of Images</th>
+                        <th>Import Date</th>
+                        <th>Publication Date</th>
+                        <th>Image Type(s)</th>
+                        <th>References</th>
+                        <th>Source Import Data</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{this.state.imgCount}</td>
+                        <td>{this.state.importDate}</td>
+                        <td>{this.state.publishDate}</td>
+                        <td>{this.state.imgTypes}</td>
+                        <td>{this.state.refs}</td>
+                        <td> - </td>
+                      </tr>
+                    </tbody>
+                  </Table>
                 </Col>
                 <Col md='12'>
                   {this.state.imgs.map((img) => {
