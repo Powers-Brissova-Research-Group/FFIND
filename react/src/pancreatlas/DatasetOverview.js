@@ -55,7 +55,8 @@ class DatasetOverview extends React.Component {
         publishDate: result.data.kvals.release_date,
         refs: result.data.kvals.refs,
         imgTypes: result.data.kvals.img_types,
-        imgCount: result.data.kvals.img_count
+        imgCount: result.data.kvals.img_count,
+        importFileLink: result.data.kvals.import_file
       })
     })
   }
@@ -118,7 +119,7 @@ class DatasetOverview extends React.Component {
                         <td>{this.state.publishDate}</td>
                         <td>{this.state.imgTypes}</td>
                         <td>{this.state.refs}</td>
-                        <td> - </td>
+                        <td><a href={this.state.importFileLink} target='_blank' rel="noopener noreferrer">Download</a></td>
                       </tr>
                     </tbody>
                   </Table>
