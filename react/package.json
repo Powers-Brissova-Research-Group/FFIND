@@ -42,7 +42,7 @@
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
     "start": "react-scripts start",
-    "build": "REACT_APP_BUILD_SHA=$(git rev-parse HEAD) react-scripts build",
+    "build": "REACT_APP_BUILD_SHA=$(git rev-parse HEAD) & react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

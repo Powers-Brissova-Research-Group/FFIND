@@ -44,7 +44,7 @@ export default class Releases extends React.Component {
         <Container>
           {Object.keys(this.state.versions).map(version => {
             return (
-              <Row>
+              <Row className='py-4 border-bottom'>
                 <Col md='12' dangerouslySetInnerHTML={{ __html: this.state.versions[version] }} />
               </Row>
             )
