@@ -36,6 +36,9 @@
     "Stain info - DAPI": {
       "Description": "DAPI channel (blank if no DAPI)"
     },
+    "Sample info - Processing Type": {
+      "Description": "Fixation or preservation method used"
+    },
     "Sample info - Section Plane": {
       "Description": "Plane along which pancreas was sectioned (sagittal, coronal, transverse)"
     },
@@ -50,12 +53,6 @@
     },
     "Image info - Modality": {
       "Description": "Imaging modality and/or platform utilized to collect data"
-    },
-    "Image info - Capture Region": {
-      "Description": "Imaging area (core, periphery of cross-section; ROI)"
-    },
-    "Sample info - Processing": {
-      "Description": "Fixation or preservation method used"
     }
   },
   "Disease Status": {
