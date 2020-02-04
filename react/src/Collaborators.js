@@ -12,7 +12,7 @@ import {
 import MetaTags from 'react-meta-tags'
 
 import TeamMember from './TeamMember'
-import MapPicture from './assets/map-collaborations6.png'
+import MapPicture from './assets/map-collaborations.png'
 import PageBanner from './pancreatlas/PageBanner'
 
 export default class Collaborators extends React.Component {
