@@ -109,7 +109,7 @@ export default class About extends React.Component {
                 <h5><strong>Do I need an account to view/access images?</strong></h5>
                 <p className='mb-4'>No registration is required to access images. We are committed to making data publicly available.</p>
                 <h5><strong>Can I download images for analysis?</strong></h5>
-                <p className='mb-4'>At this time, we do not have the capability to offer downloads. If you are interested in seeing this feature added in a future version of Pancreatlas, please send your feedback <a href='mailto:diane.saunders@vumc.org'>here</a>.</p>
+                <p className='mb-4'>At this time, we do not have the capability to offer downloads. If you are interested in seeing this feature added in a future version of Pancreatlas, please send your feedback <a href='mailto:pancreatlas@vumc.org'>here</a>.</p>
                 <h5><strong>Can I upload my own images to Pancreatlas?</strong></h5>
                 <p className='mb-4'>Pancreatlas is a curated resource, and since our initial goal is to provide a reference for human pancreatic architecture, we have chosen to limit content at this time. If you have images that you feel would be appropriate, we would love to discuss the possibility of including them. Please <a href='mailto:diane.saunders@vumc.org'>get in touch</a> for more information.</p>
               </Col>
