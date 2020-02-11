@@ -26,6 +26,7 @@ import Collaborators from './Collaborators'
 import Home from './Home'
 import About from './About'
 import Admin from './Admin'
+import Usage from './Usage'
 import UserInfoModal from './pancreatlas/UserInfoModal'
 
 import DatasetListPage from './pancreatlas/DatasetListPage'
@@ -206,6 +207,7 @@ class App extends Component {
                 <Route path={`/datasets/:did/overview`} component={DatasetOverview} />
                 <Route path='/resources' component={Resources} />
                 <Route path='/admin' component={Admin} />
+                <Route path='/data-usage' component={Usage} />
                 <Route component={PageNotFound} />
 
               </Switch>

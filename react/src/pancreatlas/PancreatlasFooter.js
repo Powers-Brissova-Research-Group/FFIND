@@ -39,6 +39,7 @@ export default class PancreatlasFooter extends React.Component {
                   Vanderbilt University Medical Center<br />
                   Phone: (615) 936-7678<br />
                   E-mail: <a href='mailto:powers.research@vanderbilt.edu'>pancreatlas@vumc.org</a></p>
+                  <p>View our <Link to='/data-usage'>Data Usage and Citation Policy</Link></p>
                 </div>
               </Col>
             </Row>
