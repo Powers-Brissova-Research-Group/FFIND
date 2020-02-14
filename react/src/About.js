@@ -113,7 +113,7 @@ export default class About extends React.Component {
                 <h5><strong>Can I upload my own images to Pancreatlas?</strong></h5>
                 <p className='mb-4'>Pancreatlas is a curated resource, and since our initial goal is to provide a reference for human pancreatic architecture, we have chosen to limit content at this time. If you have images that you feel would be appropriate, we would love to discuss the possibility of including them. Please <a href='mailto:diane.saunders@vumc.org'>get in touch</a> for more information.</p>
                 <h5><strong>How do I reference Pancreatlas?</strong></h5>
-                <p className='mb-4'>Please see our <Link to='/data-usage'>Data Usage and Citation Policy</Link></p>
+                <p className='mb-4'>Please see our <Link to='/data-usage'>Data Usage and Citation Policy</Link>.</p>
               </Col>
             </Row>
           </Container>
