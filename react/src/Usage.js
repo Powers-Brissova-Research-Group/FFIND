@@ -22,7 +22,7 @@ export default class About extends React.Component {
         {/* <Header heading="About" /> */}
         <PageBanner image bgImg={require('./assets/pancreatlas/headers/data-usage-header.png')}>
           <h1>Data Usage and Citation Policy</h1>
-          <p className='text-larger'>In order to ensure the fair usage of the data presented in Pancreatlas, we ask for your cooperation with the policies outlined here. If you have any questions, do not hesitate to contact us at <a href="mailto:pancreatlas@vumc.org">pancreatlas@vumc.org</a>.</p>
+          <p className='text-larger'>In order to ensure the fair usage of the data presented in Pancreatlas, we ask for your cooperation with the policies outlined here. If you have any questions, do not hesitate to contact us at <a href="mailto:pancreatlas@vumc.org" className='link-light'>pancreatlas@vumc.org</a>.</p>
         </PageBanner>
         <Container className='v-padded'>
           <Row className='mb-4'>
@@ -46,8 +46,8 @@ export default class About extends React.Component {
                 <div style={{ fontSize: '1.125rem' }}>
                   <p>To ensure continued funding for this resource, we kindly request that you cite Pancreatlas and include its URL (<a href='https://www.pancreatlas.org'>http://www.pancreatlas.org</a>) when you reference or display the resource or its contents in any form (including, but not limited to: print or web publications, presentations, grant applications, websites, social media posts).</p>
                   <p>If referencing <strong>individual images</strong>, include image DOI where applicable (DOI is listed on Image Preview and within Annotations menu in PathViewer).</p>
-                  <div className='my-4'>
-                    <img src={DoiFigure} className='img-fill' alt='DOI Figure' />
+                  <div className='my-4 d-flex justify-content-center'>
+                    <img src={DoiFigure} style={{maxWidth: '75%'}} className='img-fill' alt='DOI Figure' />
                   </div>
                   <p>If referencing <strong>groups of images</strong>, please give Collection name and associated RRID (where applicable).</p>
                 </div>
