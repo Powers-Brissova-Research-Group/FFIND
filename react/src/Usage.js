@@ -27,7 +27,7 @@ export default class About extends React.Component {
         <Container className='v-padded'>
           <Row className='mb-4'>
             <Col md='12'>
-              <div style={{ fontSize: '1.25rem' }}>
+              <div style={{ fontSize: '1.125rem' }}>
                 <p>By using this resource, you agree to the following terms:</p>
                 <ul>
                   <li>Your use must be for research or other noncommercial purposes and must be in compliance with all applicable federal, state and local laws and regulations.</li>
@@ -43,7 +43,7 @@ export default class About extends React.Component {
             <Row>
               <Col md='12' className='my-4'>
                 <h1 className='my-4'>Citation Guidelines</h1>
-                <div style={{ fontSize: '1.25rem' }}>
+                <div style={{ fontSize: '1.125rem' }}>
                   <p>To ensure continued funding for this resource, we kindly request that you cite Pancreatlas and include its URL (<a href='https://www.pancreatlas.org'>http://www.pancreatlas.org</a>) when you reference or display the resource or its contents in any form (including, but not limited to: print or web publications, presentations, grant applications, websites, social media posts).</p>
                   <p>If referencing <strong>individual images</strong>, include image DOI where applicable (DOI is listed on Image Preview and within Annotations menu in PathViewer).</p>
                   <div className='my-4'>
@@ -78,7 +78,7 @@ export default class About extends React.Component {
           <Row>
             <Col md='12' className='my-4'>
               <h1 className='my-4'>Disclaimers</h1>
-              <div style={{ fontSize: '1.25rem' }}>
+              <div style={{ fontSize: '1.125rem' }}>
                 <p>Data are provided with no warranties, express or implied, including warranties of merchantability; warranties of fitness for a particular purpose; warranties of identity, ownership, quality, accuracy, or completeness of data; or warranties that the use of data will not infringe any patent, intellectual property, or proprietary rights of any party.</p>
                 <p>Data providers and Pancreatlas funders do not individually or collectively make any representations that data or analyses available are suitable for human diagnostic purposes, for informing treatment decisions, or for any other purposes and accept no responsibility or liability whatsoever for such use.</p>
                 <p>Pancreatlas contains links to third-party websites. These are provided as a convenience to users and their contents are not the responsibility of data providers or Pancreatlas funders.</p>
