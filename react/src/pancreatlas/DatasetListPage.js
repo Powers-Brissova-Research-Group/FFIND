@@ -18,7 +18,7 @@ export default class DatasetListPage extends React.Component {
         </MetaTags>
         <PageBanner image bgImg={require('../assets/pancreatlas/headers/dataset-list-header.jpg')}>
           <h1>Explore Image Collections</h1>
-          <p className='text-larger'>Collections are organized by specific disease phenotype, biological event, or scienific program. For more information about a collection’s origin, please click on <em>Collection Details</em>. Appropriate citations and authorship are provided where possible.</p>
+          <p className='text-larger'>Collections are organized by specific disease phenotype, biological event, or scientific program. For more information about a collection’s origin, please click on <em>Collection Details</em>. Appropriate citations and authorship are provided where possible.</p>
         </PageBanner>
         {/* <Parallax
           blur={0}
