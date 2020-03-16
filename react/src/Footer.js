@@ -31,7 +31,7 @@ export default class Footer extends React.Component {
                   <Col md='6'>
                     <p><a href='https://www.ahn.org/research/our-research-institutes/cellular-therapeutics/our-team'> Bottino Lab</a></p>
                     <p><a href='https://faculty.mc.vanderbilt.edu/Faculty/Details/34956'>Dai Lab</a></p>
-                    <p><a href='https://www.powersresearch.org/'>Powers Lab</a></p>
+                    <p><a href='https://www.powersbrissovaresearch.org/'>Powers Lab</a></p>
                   </Col>
                 </Row>
               </Col>

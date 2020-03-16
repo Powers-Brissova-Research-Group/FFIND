@@ -120,7 +120,7 @@ export default class Collaborators extends React.Component {
                 name='Alvin Powers, M.D.'
                 institution='Vanderbilt University'
                 imgSrc='https://dev8-labnodes.app.vanderbilt.edu/assets/handelp/media/al-powers.jpg'
-                site='https://www.powersresearch.org/'
+                site='https://www.powersbrissovaresearch.org/'
                 email='mailto:al.powers@vanderbilt.edu'
                 phone='tel:615-936-7678'
               >
