@@ -51,7 +51,7 @@ export default class About extends React.Component {
                   </div>
                   <p>If referencing <strong>groups of images</strong>, please give Collection name and associated RRID (where applicable).</p>
                 </div>
-                <p><em>* Because images in Pancreatlas originate from a variety of sources, please be aware that citation requirements for images or Collections may vary. Information for currently published Collections (v1.1) is provided for convenience below.</em></p>
+                <p><em>* Because some images in Pancreatlas are already published, and the sources of other images may change and evolve, please be aware of varied citation requirements for individual images or collections. Citations for currently published collections (v1.1) are provided for convenience below.</em></p>
                 <p>
                   <div><strong>Cystic Fibrosis-Related Diabetes (CFRD)</strong></div>
                   <div>Hart NJ et al., 2018. Cystic fibrosis-related diabetes is caused by islet loss and inflammation.</div>
