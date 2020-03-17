@@ -805,7 +805,7 @@ div.overlay {
 .nav-item a {
   font-family: 'Roboto', 'Sans-Serif';
   font-size:130%;
-  color: #fff;
+  /* color: #fff; */
   margin-left:0.75rem;
   margin-right: 0.75rem;
 }
