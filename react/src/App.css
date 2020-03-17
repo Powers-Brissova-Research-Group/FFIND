@@ -802,10 +802,14 @@ div.overlay {
   background: rgba(44, 111, 110, 0.7) none repeat scroll 0 0;
 }
 
+a.dataset-nav {
+  color: #495057 !important;
+}
+
 .nav-item a {
   font-family: 'Roboto', 'Sans-Serif';
   font-size:130%;
-  /* color: #fff; */
+  color: #fff;
   margin-left:0.75rem;
   margin-right: 0.75rem;
 }

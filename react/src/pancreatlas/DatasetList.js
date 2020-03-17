@@ -72,12 +72,12 @@ export default class DatasetList extends React.Component {
           {/* <h1 className='mb-4'>Image Collections</h1> */}
           <Nav tabs>
             <NavItem>
-              <NavLink className={`${(this.state.activeTab === '0') ? 'active' : undefined} navlink`} onClick={() => { this.toggle('0') }}>
+              <NavLink className={`dataset-nav ${(this.state.activeTab === '0') ? 'active' : undefined} navlink`} onClick={() => { this.toggle('0') }}>
                 Grid View
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className={`${(this.state.activeTab === '1') ? 'active' : undefined} navlink`} onClick={() => { this.toggle('1') }}>
+              <NavLink className={`dataset-nav ${(this.state.activeTab === '1') ? 'active' : undefined} navlink`} onClick={() => { this.toggle('1') }}>
                 List View
               </NavLink>
             </NavItem>
