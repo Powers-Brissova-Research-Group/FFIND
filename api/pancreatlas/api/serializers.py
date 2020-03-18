@@ -5,6 +5,7 @@ class ImageSerializer(serializers.Serializer):
     iid = serializers.IntegerField()
     iname = serializers.CharField(max_length=50)
     pathpath = serializers.CharField(max_length=128)
+    blurhash = serializers.CharField(max_length=50)
     tags = serializers.ListField()
     kvals = serializers.DictField(child=serializers.DictField())
     channel_info = serializers.DictField(child=serializers.CharField(max_length=64))

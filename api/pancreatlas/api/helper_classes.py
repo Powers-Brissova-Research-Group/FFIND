@@ -4,11 +4,13 @@ import collections
 import logging
 import sys
 import json
+import blurhash
 
 class Image:
     def __init__(self, img_wrapper):
         self.img_wrapper = img_wrapper
         self.id = img_wrapper.getId()
+        self.blurhash = self.get_blurhash()
         self.tags = []
         self.key_values = {}
         self.channel_info = {}
@@ -71,6 +73,14 @@ class Image:
 #     }
 #   }
 
+    def get_blurhash(self):
+        try:
+            with open('/app001/www/assets/pancreatlas/thumbs'+self.id+'.jpg') as f:
+                return blurhash.encode(f, x_components=4, y_components=3)
+        except IOError:
+            return None
+            print "Error accessing thumbnail"
+        
     def get_age_group(self, age):
         age_re = re.compile(r"^(G)?(\d+\.?\d*)(d|w|mo|y)(\+\d+d|w|mo|y)?$")
         tmp = age_re.search(age)
