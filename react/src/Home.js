@@ -90,20 +90,20 @@ export default class Home extends React.Component {
                 <h4>We also thank the following:</h4>
               </Col>
             </Row>
-            <Row className='justify-content-around my-4 pb-4'>
-              <Col md={2} sm={6} className='d-flex justify-content-center'>
+            <Row className='justify-content-around align-items-center my-4 pb-4'>
+              <Col lg={2} md={4} sm={6} className='d-flex justify-content-center'>
                 <SponsorLogo location='https://www.iiam.org/' name='IIAM' imgSrc={IIAM} size='small' />
               </Col>
-              <Col md={2} sm={6} className='d-flex justify-content-center'>
+              <Col lg={2} md={4} sm={6} className='d-flex justify-content-center'>
                 <SponsorLogo location='https://ndriresource.org/' name='NDRI' imgSrc={NDRI} size='small' />
               </Col>
-              <Col md={2} sm={6} className='d-flex justify-content-center'>
+              <Col lg={2} md={4} sm={6} className='d-flex justify-content-center'>
                 <SponsorLogo location='https://iidp.coh.org/' name='IIDP' imgSrc={IIDP} size='small' />
               </Col>
-              <Col md={2} sm={6} className='d-flex justify-content-center'>
+              <Col lg={2} md={4} sm={6} className='d-flex justify-content-center'>
                 <SponsorLogo location='https://hirnetwork.org/' name='HIRN' imgSrc={HIRN} size='small' />
               </Col>
-              <Col md={2} sm={6} className='d-flex justify-content-center'>
+              <Col lg={2} md={4} sm={6} className='d-flex justify-content-center'>
                 <SponsorLogo location='https://vumc.org' name='VUMC' imgSrc={VUMC} size='small' />
               </Col>
             </Row>

@@ -49,7 +49,7 @@ class ImageViewSet(viewsets.ViewSet):
         try:
             conn.connect()
             img = omero_api.get_image_by_id(conn, pk)
-            ret_img = Image(pk, img.file_name, img.blurhash, img.get_tag_names(),
+            ret_img = Image(pk, img.file_name, img.get_tag_names(),
                             img.get_key_values(), img.get_channel_info())
             serializer = ImageSerializer(ret_img)
             return Response(serializer.data)

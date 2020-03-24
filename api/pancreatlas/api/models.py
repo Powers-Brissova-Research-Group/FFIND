@@ -6,11 +6,10 @@ from django.db import models
 # Create your models here.
 
 class Image():
-    def __init__(self, iid, iname, blurhash, tags, kvals, channel_info):
+    def __init__(self, iid, iname, tags, kvals, channel_info):
         self.iid = iid
         self.iname = iname
         self.pathpath = "https://omero.app.vumc.org/pathviewer/viewer/#?slide=" + str(iid) + "&q_image=" + str(iid) + "&tabs=VDp"
-        self.blurhash = blurhash
         self.tags = tags
         self.kvals = kvals
         self.channel_info = channel_info
