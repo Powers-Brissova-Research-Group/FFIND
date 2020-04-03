@@ -13,30 +13,37 @@ import {
   Switch
 } from 'react-router-dom'
 
-import TopNav from './TopNav'
-import PancreatlasFooter from './pancreatlas/PancreatlasFooter'
-import WarningBanner from './WarningBanner'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faLink, faEnvelope, faPhone, faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faRedo, faBook, faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { faBookmark as faBookmarkOutline } from '@fortawesome/free-regular-svg-icons'
-import Releases from './Releases'
-import Diabetes from './Diabetes'
-import Collaborators from './Collaborators'
-import Home from './Home'
-import About from './About'
-import Admin from './Admin'
-import Usage from './Usage'
-import UserInfoModal from './pancreatlas/UserInfoModal'
 
-import DatasetListPage from './pancreatlas/DatasetListPage'
-import AgeBrowser from './pancreatlas/AgeBrowser'
-import MatrixView from './pancreatlas/MatrixView'
-import Nomenclature from './pancreatlas/Nomenclature'
-import Favorites from './pancreatlas/Favorites'
-import DatasetOverview from './pancreatlas/DatasetOverview'
-import PageNotFound from './pancreatlas/PageNotFound'
-import Resources from './Resources'
+import {
+  About,
+  Admin,
+  Collaborators,
+  Diabetes,
+  DatasetListPage,
+  Favorites,
+  Home,
+  Nomenclature,
+  PageNotFound,
+  Releases,
+  Resources,
+  Usage
+} from './components/pages'
+
+
+import {
+  AgeBrowser,
+  DatasetOverview,
+  PancreatlasFooter,
+  TopNav,
+  UserInfoModal,
+  WarningBanner
+}from './components/utils'
+
+import { MatrixView } from './components/matrix-view'
 
 library.add(faLink, faEnvelope, faPhone, faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faBookmarkOutline, faRedo, faBook, faAngleRight, faAngleDown)
 
@@ -192,7 +199,6 @@ class App extends Component {
               <TopNav favorites={this.state.encodedFavorites} />
               <Switch>
                 <Route exact path='/' component={Home} />
-                {/* <Route path={`/pancreatlas`} render={(props) => <PancreatlasApp {...props} favoriteCallback={this.addFavorite} favorites={this.state.encodedFavorites} />} /> */}
                 <Route path='/releases' component={Releases} />
                 <Route path='/diabetes' component={Diabetes} />
                 <Route path='/collaborators' component={Collaborators} />
