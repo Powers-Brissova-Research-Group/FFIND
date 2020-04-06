@@ -35,10 +35,14 @@ export default class PancreatlasFooter extends React.Component {
               <Col className='float-right' md='6'>
                 <div className='float-right'>
                   <h2 className='get-in-touch'>Contact Us</h2>
-                  <p>
-                  Vanderbilt University Medical Center<br />
-                  Phone: (615) 936-7678<br />
-                  E-mail: <a href='mailto:powers.research@vanderbilt.edu'>pancreatlas@vumc.org</a></p>
+                  <p>Vanderbilt University Medical Center</p>
+                  <span>
+                    <a href='mailto:pancreatlas@vumc.org'><FontAwesomeIcon style={{marginRight: '2rem'}} icon='envelope' size='2x' id='email' /></a>
+                    <a href='https://twitter.com/pancreatlas'><FontAwesomeIcon style={{marginRight: '2rem'}} icon={['fab', 'twitter']} size='2x' id='twitter' /></a>
+                    <a href='tel:615-936-7678'><FontAwesomeIcon style={{marginRight: '2rem'}} icon='phone' size='2x' id='phone' /></a>
+                  </span>
+                  {/* Phone: (615) 936-7678<br />
+                  E-mail: <a href='mailto:powers.research@vanderbilt.edu'>pancreatlas@vumc.org</a></p> */}
                   <p>View our <Link to='/data-usage'>Data Usage and Citation Policy</Link></p>
                 </div>
               </Col>
