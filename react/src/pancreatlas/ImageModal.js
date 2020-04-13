@@ -76,14 +76,14 @@ export default class ImageModal extends React.Component {
                     <Row>
                       <Col md='12'>
                         <div className='modal-markers'>
-                          {markers.filter(marker => marker.val !== '').map(marker => (
+                          {Object.keys(this.props.modalData.markerColors).filter(key => key !== '').map(marker => (
                             <span
                               className='tag marker'
                               style={{
-                                color: (tinycolor(marker.color).isLight()) ? '#000000' : '#FFFFFF',
-                                backgroundColor: `#${marker.color}`
+                                color: (tinycolor(this.props.modalData.markerColors[marker]).isLight()) ? '#000000' : '#FFFFFF',
+                                backgroundColor: `#${this.props.modalData.markerColors[marker]}`
                               }}>
-                              {marker.val}
+                              {marker}
                             </span>
                             // <div className={'marker-cell'} style={{ color: (tinycolor(this.props.modalData.markerColors[key.toUpperCase()]).isLight()) ? '#000000' : '#FFFFFF', backgroundColor: `#${this.props.modalData.markerColors[key.toUpperCase()]}` }}>
                             //   <p>{this.markers[key]}</p>
