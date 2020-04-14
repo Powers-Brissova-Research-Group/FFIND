@@ -50,6 +50,12 @@
             "img": "hirn.png"
         },
         {
+            "title": "HIRN Resource Browser",
+            "desc": "<p>Maintained by the Human Islet Research Enhancement Center (HIREC), this searchable database provides detailed protocols, datasets, and reagent documentation for HIRN-funded research projects.</p>",
+            "url": "https://resourcebrowser.hirnetwork.org/",
+            "img": "hirn-rb.png"
+        },
+        {
             "title": "HPA",
             "desc": "<p>Funded by <a href='https://kaw.wallenberg.org/en'>The Knut and Alice Wallenberg Foundation</a>, this Swedish program aims to bring together proteomic information for cells, tissues, and organs using a combination of techniques. This resource encompasses multiple atlases, including a Tissue Atlas that includes the <a href='https://www.proteinatlas.org/humanproteome/tissue/pancreas'>pancreas</a>.</p>",
             "url": "http://www.proteinatlas.org/",
