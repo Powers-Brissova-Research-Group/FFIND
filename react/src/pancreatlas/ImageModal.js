@@ -44,7 +44,7 @@ export default class ImageModal extends React.Component {
     let labelRe = /^(?!Hex code)([a-zA-Z]+\s+info)?(\s+-\s+)?(.+)$/
     var markers = []
     if (this.props.modalData !== undefined) {
-      let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9\s]+$)/i
+      let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9 \t-]+)(?<!-Ab)$/i
       let matchingKeys = Object.keys(this.props.modalData.img_data).filter(key => markerRe.test(key))
       for (let key of matchingKeys) {
         var val = this.props.modalData.img_data[key].val
