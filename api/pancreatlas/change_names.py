@@ -9,65 +9,60 @@ import threading
 import time
 import sys
 
-new_names = {}
-
-class ImageThread (threading.Thread):
-    def __init__(self, thread_id, iid):
-        threading.Thread.__init__(self)
-        self.thread_id = thread_id
-        self.iid = iid
-    
-    def run(self):
-        img = api.get_image_by_id(self.iid)
-        kvals = img.key_values
-        id = ''
-        region = ''
-        if 'Donor info - Program ID' in kvals:
-            id = kvals['Donor info - Program ID']['val']
-        else:
-            id = kvals['Donor info - LIMS ID']['val']        
-
-        if 'Image info - Pancreas Region' in kvals:
-            region = kvals['Image info - Pancreas Region']['val']
-        else:
-            region = kvals['Sample info - Pancreas Region']['val']
-        if (kvals['Donor info - Disease Status']['val'] == 'ND'):
-            name = "%s-%s-%s-%s-%s" % (id, kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Sex']['val'], region)
-        else:
-            name = "%s-%s-%s-%s-%s-%s" % (id, kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Disease Duration']['val'], kvals['Donor info - Sex']['val'], region)
-        img.img_wrapper.setName(name)
-        img.img_wrapper.save()
-        new_names[img.id] = name
-
 def timing(f):
     def wrap(*args):
         t1 = time.time()
         ret = f(*args)
         t2 = time.time()
         print "%s took %0.3f ms" % (f.func_name, (t2 - t1)*1000.0)
-
     return wrap
+
+def connect(fn):
+    def wrap(*args, **kwargs):
+        conn = BlitzGateway('import.user', '+0rLA6KdhQM=', host='10.152.140.10', port=4064)
+        try:
+            conn.connect()
+            fn(*args, conn=conn, **kwargs)
+        finally:
+            try:
+                conn.close()
+            except:
+                print "Failed to close OMERO connection"
+    return wrap
+
 def get_image_list(dsid):
     f = open('/app001/www/assets/pancreatlas/datasets/%s.txt' % (dsid), 'r')
     enc = f.readline()
     imgs = json.loads(enc)
     return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
 
-def gen_image_name(iid):
-    img = api.get_image_by_id(iid)
+@connect
+def gen_image_name(iid, conn=None):
+    img = api.get_image_by_id(conn, iid)
     kvals = img.key_values
-    return "%s%s-%s%s" % (kvals['Donor info - Age']['val'], kvals['Donor info - Sex']['val'], kvals['Donor info - Disease Status']['val'], kvals['Donor info - Disease Duration']['val'])
+    id = ''
+    region = ''
+    if 'Donor info - Program ID' in kvals and kvals['Donor info - Program ID']['val'] != '':
+         id = kvals['Donor info - Program ID']['val']
+    else:
+        id = kvals['Donor info - LIMS ID']['val']
+    if 'Image info - Pancreas Region' in kvals:
+        region = kvals['Image info - Pancreas Region']['val']
+    else:
+        region = kvals['Sample info - Pancreas Region']['val']
+    if (kvals['Donor info - Disease Status']['val'] == 'ND'):
+        name = "%s-%s-%s-%s-%s" % (id, kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Sex']['val'], region)
+    else:
+        name = "%s-%s-%s-%s-%s-%s" % (id, kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Disease Duration']['val'], kvals['Donor info - Sex']['val'], region)
+    print "%s --> %s" % (img.name, name)
+    img.img_wrapper.setName(name)
+    img.img_wrapper.save()
 
-@timing
-def run_threaded(iids):
-    threads = []
-    for iid in iids:
-        i_thread = ImageThread(iid, iid)
-        threads.append(i_thread)
-    for t in threads:
-        t.start()
-    for t in threads:
-        t.join()
+def get_image_list(dsid):
+    f = open('/app001/www/assets/pancreatlas/datasets/%s.txt' % (dsid), 'r')
+    enc = f.readline()
+    imgs = json.loads(enc)
+    return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
 
 @timing
 def run_normal(iids):
@@ -79,7 +74,7 @@ def main():
         sys.exit("Insufficient arguments provided")
     dsid = sys.argv[1]
     imgs = get_image_list(dsid)
-    run_threaded(imgs)
+    run_normal(imgs)
 #    for img in imgs:
 #        i_thread = ImageThread(img, img)
 #        i_thread.start()

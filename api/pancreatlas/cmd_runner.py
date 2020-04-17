@@ -4,21 +4,20 @@ import api.omero_api as api
 from api.omeropy.omero.gateway import BlitzGateway
 
 
-def connect(isProduction):
-    def real_connect(func):
-        def function_wrapper(*args, **kwargs):
-            conn = BlitzGateway('import.user', '+0rLA6KdhQM=', host='10.152.140.10', port=4064)
-            if (isProduction):
-                conn.SERVICE_OPTS.setOmeroGroup(153)
+def connect(fn):
+    def function_wrapper(*args, **kwargs):
+        conn = BlitzGateway('import.user', '+0rLA6KdhQM=', host='10.152.140.10', port=4064)
+        if (isProduction):
+            conn.SERVICE_OPTS.setOmeroGroup(153)
+        try:
+            conn.connect()
+            fn(*args, conn=conn, **kwargs)
+        finally:
             try:
-                conn.connect()
-                func(*args, conn=conn, **kwargs)
-            finally:
-                try:
-                    conn.close()
-                except:
-                    print("Failed to close omero connection")
-        return function_wrapper
+                conn.close()
+            except:
+                print("Failed to close omero connection")
+    return function_wrapper
 class OmeroRunner:
     def __init__(self, file_path):
         self.file_path = file_path
@@ -27,7 +26,8 @@ class OmeroRunner:
     def parse_file(self, is_production):
         with open(self.file_path) as commands:
             csv_reader = csv.reader(commands, delimiter=',')
-            for command in csv_reader:
+            for row in csv_reader:
+                command = [entry.decode('utf-8-sig') for entry in row]
                 self.execute_command(command, is_production=is_production)
 
     @connect
