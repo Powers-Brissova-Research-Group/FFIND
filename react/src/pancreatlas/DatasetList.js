@@ -116,7 +116,7 @@ export default class DatasetList extends React.Component {
                             <td><b>{item.dsname}</b><br />
                               {item.desc || ''}
                             </td>
-                            <td className='text-center'>{item.kvals.image_count}</td>
+                            <td className='text-center'>{item.kvals.img_count}</td>
                             <td className='action-column text-center'>
                               <Row>
                                 <Link to={{ pathname: `/datasets/${item.did}`, search: '?browse=false' }}>
