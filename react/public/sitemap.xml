@@ -1,37 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
     <url>
-        <loc>https://www.pancreatlas.org</loc>
+        <loc>https://www.pancreatlas.org/</loc>
+        <lastmod>2020-02-18</lastmod>
     </url>
     <url>
-        <loc>https://www.pancreatlas.org/datasets</loc>
-    </url>
-    <url>
-        <loc>https://www.pancreatlas.org/nomenclature</loc>
-    </url>
-    <url>
-        <loc>https://www.pancreatlas.org/about</loc>
-    </url>
-    <url>
-        <loc>https://www.pancreatlas.org/collaborators</loc>
-    </url>
-    <url>
-        <loc>https://www.pancreatlas.org/resources</loc>
+        <loc>https://www.pancreatlas.org/</loc>
+        <lastmod>2020-02-18</lastmod>
     </url>
     <url>
         <loc>https://www.pancreatlas.org/releases</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/diabetes</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/collaborators</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/about</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/datasets</loc>
+        <lastmod>2020-02-18</lastmod>    
     </url>
     <url>
         <loc>https://www.pancreatlas.org/datasets/410</loc>
+        <lastmod>2020-02-18</lastmod>
     </url>
     <url>
-        <loc>https://www.pancreatlas.org/datasets/410/overview</loc>
+        <loc>https://www.pancreatlas.org/matrixview/410</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/datasets/508</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/matrixview/508</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/datasets/525</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/matrixview/525</loc> 
+        <lastmod>2020-02-18</lastmod>
     </url>
     <url>
         <loc>https://www.pancreatlas.org/datasets/531</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/matrixview/531</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/nomenclature</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/favorites</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/datasets/410/overview</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/datasets/508/overview</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/datasets/525/overview</loc>
+        <lastmod>2020-02-18</lastmod>
     </url>
     <url>
         <loc>https://www.pancreatlas.org/datasets/531/overview</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/resources</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/admin</loc>
+        <lastmod>2020-02-18</lastmod>
+    </url>
+    <url>
+        <loc>https://www.pancreatlas.org/data-usage</loc>
+        <lastmod>2020-02-18</lastmod>
     </url>
 </urlset>
