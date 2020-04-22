@@ -39,7 +39,7 @@ export default class Collaborators extends React.Component {
                 site='https://diabetes.ufl.edu/atkinson-lab/'
                 email='mailto:atkinson@pathology.ufl.edu'
                 phone='tel:352-273-8277'>
-                    Dr. Atkinson is a longtime champion of type 1 diabetes research, serving the community in numerous leadership roles, including as the Executive Director of <a href='https://www.jdrfnpod.org/'>nPOD</a> (<a href='https://dev7-pancreatlas.app.vumc.org/datasets/525/overview'>nPOD Image Collection</a>). His lab seeks to define methods for disease prevention in non-diabetic subjects identified to be at increased risk for the disease, in association with novel forms of immunotherapy.
+                    Dr. Atkinson is a longtime champion of type 1 diabetes research, serving the community in numerous leadership roles, including as the Executive Director of <a href='https://www.jdrfnpod.org/'>nPOD</a> (<a href='https://dev7-pancreatlas.app.vumc.org/datasets/525/overview'>nPOD image collection</a>). His lab seeks to define methods for disease prevention in non-diabetic subjects identified to be at increased risk for the disease, in association with novel forms of immunotherapy.
               </TeamMember>
             </Col>
             <Col md='4'>
@@ -50,7 +50,7 @@ export default class Collaborators extends React.Component {
                 site='https://www.ahn.org/research/our-research-institutes/cellular-therapeutics/our-team'
                 email='mailto:rita.bottino@ahn.org'
                 phone='tel:412-512-6496'>
-                    Dr. Bottino leads a world-class islet isolation center that provides human islets for both clinical transplants and research. Her highly experienced team has established reference protocols and best practices for human islet isolation, processing thousands of organs with an array of disease phenotypes.
+                    Dr. Bottino leads a world-class islet isolation center that provides human islets for both clinical transplants and research. Her highly experienced team has established reference <a href='htts://www.ncbi.nlm.nih.gov/pubmed?term=bottino%20r%5BAuthor%20-%20First%5D'>protocols and best practices</a> for human islet isolation, processing thousands of organs with an array of disease phenotypes.
               </TeamMember>
             </Col>
             <Col md='4'>
@@ -75,7 +75,7 @@ export default class Collaborators extends React.Component {
                 email='mailto:njhart@email.arizona.edu'
                 phone='tel:520-626-7754'
               >
-                  While at Vanderbilt, Dr. Hart performed in-depth compositional and genetic studies of pancreata from individuals with cystic fibrosis-related diabetes (<Link to='datasets/410/overview'>CFRD Image Collection</Link>) Additionally, his work characterizing islet architectural changes during human pancreas development laid the groundwork for the <Link to='/datasets/459/overview'>HANDEL-P</Link> project In 2018 Dr. Hart joined the Department of Surgery at The University of Arizona College of Medicine.
+                  While at Vanderbilt, Dr. Hart performed in-depth compositional and genetic studies of pancreata from individuals with cystic fibrosis-related diabetes (<Link to='datasets/410/overview'>CFRD image collection</Link>) Additionally, his work characterizing islet architectural changes during human pancreas development laid the groundwork for the <Link to='/datasets/459/overview'>HANDEL-P</Link> project In 2018 Dr. Hart joined the Department of Surgery at The University of Arizona College of Medicine.
               </TeamMember>
             </Col>
             <Col md='4'>
@@ -87,7 +87,7 @@ export default class Collaborators extends React.Component {
                 email='mailto:kaestner@mail.med.upenn.edu'
                 phone='tel:215-898-8759'
               >
-                  Dr. Kaestner, an investigator in the Department of Genetics and Institute for Diabetes, Obesity, and Metabolism at the University of Pennsylvania, leads the HIRN Human Pancreas Analysis Program  for type 1 diabetes (<Link to='/datasets/508/overview'>HPAP Image Collection</Link>) His group uses genetic, genomic, and epigenomic tools to study organogenesis and physiology of the liver, pancreas, and gastrointestinal tract.
+                  Dr. Kaestner, an investigator in the Department of Genetics and Institute for Diabetes, Obesity, and Metabolism at the University of Pennsylvania, leads the HIRN Human Pancreas Analysis Program  for type 1 diabetes (<Link to='/datasets/508/overview'>HPAP image collection</Link>). His group uses genetic, genomic, and epigenomic tools to study organogenesis and physiology of the liver, pancreas, and gastrointestinal tract.
               </TeamMember>
             </Col>
             <Col md='4'>
@@ -136,7 +136,7 @@ export default class Collaborators extends React.Component {
                 email='mailto:diane.saunders@vumc.org'
                 phone='tel:615-936-1672'
               >
-                Dr. Saunders leads efforts in multiplexed imaging and characterization of the young human pancreas (<Link to='/datasets/459/overview'>HANDEL-P</Link> Image Collection) as part of the Powers and Brissova Research Group. In addition, she coordinates the Vanderbilt Pancreatlas team and works with all contributors to ensure images are uploaded and annotated accurately.
+                Dr. Saunders leads efforts in multiplexed imaging and characterization of the young human pancreas (<Link to='/datasets/459/overview'>HANDEL-P image collection</Link>) as part of the Powers and Brissova Research Group. In addition, she coordinates the Vanderbilt Pancreatlas team and works with all contributors to ensure images are uploaded and annotated accurately.
               </TeamMember>
             </Col>
           </Row>
@@ -150,6 +150,17 @@ export default class Collaborators extends React.Component {
                 email='mailto:chris.wright@vanderbilt.Edu'
                 phone='tel:615-343-8256'>
                     Dr. Wright leads a research group focused on early embryonic development and organogenesis, with particular interests in cell ontogeny and plasticity. Employing a combination of molecular and genetic techniques, his team works to detail intracellular signaling pathways critical to pancreas formation and maintenance.
+              </TeamMember>
+            </Col>
+            <Col md='4'>
+              <TeamMember
+                name='Jordan Wright, M.D., Ph.D.'
+                institution='Vanderbilt University Medical Center'
+                imgSrc={require('./assets/pancreatlas/contributors/jordan-wright.jpg')}
+                site='https://medicine.vumc.org/person/jordan-james-wright-md-phd/'
+                email='mailto:jordan.wright@vumc.org'
+                phone='tel:615-936-1653'>
+                  Dr. Wright is a physician-scientist and practicing Endocrinologist. As part of the Powers and Brissova Research Group, his research focuses on the interaction between immune cells and pancreatic cells in the pathogenesis of diabetes mellitus. His work investigating acinar cells (<Link to='/datasets/703/overview'>Exocrine pancreas image collection</Link>) was recently published in Diabetalogia.
               </TeamMember>
             </Col>
           </Row>
