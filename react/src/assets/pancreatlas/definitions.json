@@ -79,6 +79,10 @@
     }
   },
   "Markers": {
+    "ACTA2": {
+      "Antigen description": "Alpha smooth muscle actin (&alpha;SMA)",
+      "Pancreas cll/region specificity": "Alpha smooth muscle actin (&alpha;SMA)"
+    },
     "ACTB": {
       "Antigen description": "Beta-actin; highly conserved protein that provides cellular structure and motility",
       "Pancreas cell/region specificity": "n/a"
@@ -117,7 +121,11 @@
     },
     "CD31 (PECAM1)": {
       "Antigen description": "Platelet and endothelial cell adhesion molecule 1",
-      "Pancreas cell/region specificity": "Vasculature (endothelial cells)"
+      "Pancreas cell/region specificity": "Vasculature endothelial cells"
+    },
+    "CD34": {
+      "Antigen description": "Mucin-like transmembrane glycoprotein involved in cell-cell adhesion",
+      "Pancreas cell/region specificity": "Mucin-like transmembrane glycoprotein involved in cell-cell adhesion, <a href='https://doi.org/10.14670/HH-19.59'>stromal cells</a>"
     },
     "CD44": {
       "Antigen description": "Cell-surface glycoprotein involved in lymphocyte activation and hematopoiesis; interacts with hyaluronic acid, osteopontin, collagens, and matrix metalloproteinases",
@@ -126,6 +134,10 @@
     "CD45 (PTPRC)": {
       "Antigen description": "Protein tyrosine phosphatase, receptor type C",
       "Pancreas cell/region specificity": "Hematopoietic cells"
+    },
+    "CD45 (RO)": {
+      "Antigen description": "Low molecular weight isoform of CD45; functions in T and B cell receptor signaling",
+      "Pancreas cell/region specificity": "Memory T cells, monocytes, granulocytes"
     },
     "CD56 (NCAM)": {
       "Antigen description": "Neural cell adhesion molecule; archetypal phenotypic marker of NK cells",
@@ -143,8 +155,12 @@
       "Antigen description": "Transmembrane protein involved in cell adhesion, apoptosis, vesicular protein transport, and T cell differentiation",
       "Pancreas cell/region specificity": ""
     },
+    "CDH1": {
+      "Antigen description": "Epithelial cadherin (E-cadherin); calcium-dependent adhesion glycoprotein",
+      "Pancreas cell/region specificity": "Epithelial cells"
+    },
     "COL": {
-      "Antigen description": "Triple helix protein providing majority of structural support in extracellular space",
+      "Antigen description": "Collagen, general; triple helix protein providing majority of structural support in extracellular space",
       "Pancreas cell/region specificity": "Extracellular matrix"
     },
     "COL4A1": {
@@ -154,6 +170,10 @@
     "CPA1": {
       "Antigen description": "Carboxypeptidase A1; enzyme that cleaves branched-chain and aromatic amino acids from dietary proteins",
       "Pancreas cell/region specificity": "Acinar cells"
+    },
+    "CPEP": {
+      "Antigen description": "Connecting peptide (C-peptide); 31-aa polypeptide that arises from cleavage of proinsulin",
+      "Pancreas cell/region specificity": "&beta; cells"
     },
     "FOXA2": {
       "Antigen description": "Forkhead box A2; transcription factor that influences α cell development, maturation",
@@ -187,9 +207,25 @@
       "Antigen description": "Serine protease released by cytoplasmic granules to induce programmed cell death",
       "Pancreas cell/region specificity": "Cytotoxic T cells, NK cells"
     },
+    "HLA-ABC": {
+      "Antigen description": "Major histocompatibility complex (MHC) class I antigens",
+      "Pancreas cell/region specificity": "Most nucleated cells"
+    },
+    "HLA-DR": {
+      "Antigen description": "Major histocompatibility complex (MHC) class II antigen",
+      "Pancreas cell/region specificity": "Antigen-presenting cells"
+    },
+    "HPd3": {
+      "Antigen description": "Cell surface marker characterized by <a href='https://doi.org/10.1016/j.scr.2008.04.001'>Drs. Dorrell, Streeter, and Grompe</a>; hybridoma clone DHIC5-4D9",
+      "Pancreas cell/region specificity": "Ductal cells"
+    },
     "HNF1B*": {
       "Antigen description": "Hepatocyte nuclear factor 1-beta; transcription factor critical for pancreatic development",
       "Pancreas cell/region specificity": "Pancreatic progenitor cells (<a href='http://dev.biologists.org/content/142/5/871'>De Vas et al. 2002</a>; adult ductal cells (<a href='https://doi.org/10.1016/j.modgep.2007.09.006'>Nammo et al.</a>)"
+    },
+    "IBA1 (AIF1)": {
+      "Antigen description": "Ionized calcium-binding adaptor molecule 1",
+      "Pancreas cell/region specificity": "Microglia, macrophages"
     },
     "INS*": {
       "Antigen description": "Insulin (hormone)",
@@ -203,6 +239,10 @@
       "Antigen description": "Pan-keratin; family of fibrous structural proteins providing cellular mechanical support",
       "Pancreas cell/region specificity": "Epithelial cells"
     },
+    "LAM": {
+      "Antigen description": "Laminin, general; family of secreted trimeric proteins with cross-like structures that act as the major scaffold for basal lamina",
+      "Pancreas cell/region specificity": "Extracellular matrix"
+    },
     "NES": {
       "Antigen description": "Nestin; intermediate filament protein expressed in dividing cells, most often during early stages of nervous system differentiation",
       "Pancreas cell/region specificity": "Neural stem cells"
@@ -210,6 +250,10 @@
     "NFkB": {
       "Antigen description": "<a href='https://doi.org/10.1016/j.tcb.2012.08.001'>Protein complex</a> with a critical role in regulating inflammation, including DNA transcription, cytokine production, and cell survival",
       "Pancreas cell/region specificity": ""
+    },
+    "NKX2-2": {
+      "Antigen description": "NK2 homeobox 2; key transcription factor in endocrine cell development",
+      "Pancreas cell/region specificity": "&beta; cells (<a href='https://doi.org/10.2337/db12-1479'>Sussel et al. 1998, Jennings et al. 2013</a>)"
     },
     "NKX6-1*": {
       "Antigen description": "NK6 homeobox; transcription factor required for &beta; cell development",
@@ -224,7 +268,7 @@
       "Pancreas cell/region specificity": "Pancreatic progenitor cells, mature &beta; cells"
     },
     "PPY": {
-      "Antigen description": "Pancreatic polypeptide",
+      "Antigen description": "Pancreatic polypeptide (hormone)",
       "Pancreas cell/region specificity": "PP cells"
     },
     "pS6": {
@@ -234,6 +278,10 @@
     "PTF1A": {
       "Antigen description": "Pancreas associated transcription factor 1a",
       "Pancreas cell/region specificity": "Exocrine cells"
+    },
+    "SCG3": {
+      "Antigen description": "Secretogranin III, involved in secretory granule biogenesis",
+      "Pancreas cell/region specificity": "Endocrine cells"
     },
     "SST": {
       "Antigen description": "Somatostatin (hormone)",
@@ -283,6 +331,14 @@
     "Hematoxylin": {
       "Description": "Naturally derived dark blue/violet dye that binds to basophilic substances, such as DNA and RNA",
       "Specificity": "Nuclei"
+    },
+    "Thioflavin S": {
+      "Description": "Dye used to non-quantitatively visualize amyloid fibrils through elevated fluorescence emission",
+      "Specificity": "Amyloid (<a href='https://doi.org/10.1016/j.ajpath.2011.02.036'>Jurgens et al. 2011</a>)"
+    },
+    "Trichrome": {
+      "Description": "Histological stain that uses a combination of acidic dyes and a polyelectrolyte to visually differentiate cells from connective tissue; collagen turns blue",
+      "Specificity": "Connective tissue"
     },
     "TUNEL": {
       "Description": "Terminal deoxynucleotidyl transferase dUTP nick end labeling (TUNEL); uses tagged TdT to visualize blunt ends of double-stranded DNA breaks",

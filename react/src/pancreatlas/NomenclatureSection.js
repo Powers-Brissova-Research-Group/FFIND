@@ -12,7 +12,8 @@ export default class NomenclatureSection extends React.Component {
   constructor (props) {
     super(props)
     let asterisk = (Object.keys(this.props.data).includes('asterisk')) ? this.props.data['asterisk'] : undefined
-    let rows = Object.keys(this.props.data).filter(key => key !== 'asterisk')
+    let blacklist = ['Image info - Pancreas Region', 'Image info - Section Plane']
+    let rows = Object.keys(this.props.data).filter(key => key !== 'asterisk' && blacklist.indexOf(key) < 0)
     let headings = Object.keys(this.props.data[rows[0]]).filter(key => key.toLowerCase() !== 'image')
 
     this.state = {
