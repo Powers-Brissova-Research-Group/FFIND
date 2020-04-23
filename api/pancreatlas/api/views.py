@@ -136,6 +136,7 @@ class TagsetViewset(viewsets.ViewSet):
 
 class MatrixViewset(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
+        tags = pk.split(',')
         matrix = omero_api.generate_image_matrix_from_ds(tags[0].upper(), tags[1].upper(), tags[2])
         m = Matrix(tags[0], tags[1], matrix)
         serializer = MatrixSerializer(m)
