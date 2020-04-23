@@ -191,8 +191,8 @@ def generate_image_matrix_from_ds(tagset_a, tagset_b, dsid):
         imgs = json.loads(json_str)
 
         for (img_id, img_tags) in imgs.iteritems():
-            a_tags = [img['tag'] for img in img_tags if img['tagset'].upper().replace(' ', '-').startswith(tagset_a)]
-            b_tags = [img['tag'] for img in img_tags if img['tagset'].upper().replace(' ', '-').startswith(tagset_b)]
+            a_tags = [img['tag'] for img in img_tags if img['tagset'].upper().startswith(tagset_a)]
+            b_tags = [img['tag'] for img in img_tags if img['tagset'].upper().startswith(tagset_b)]
             if(len(a_tags) > 0 and len(b_tags) > 0):
                 for a_tag in a_tags:
                     if a_tag not in matrix:
