@@ -183,7 +183,7 @@ def generate_image_matrix(conn, tagset_a, tagset_b):
     return matrix
 
 
-def generate_image_matrix_from_ds(conn, tagset_a, tagset_b, dsid):
+def generate_image_matrix_from_ds(tagset_a, tagset_b, dsid):
     matrix = { }
     with open("/app001/www/assets/pancreatlas/datasets/%s.txt" % (str(dsid), ), 'r') as f:
         json_str = f.readline()
