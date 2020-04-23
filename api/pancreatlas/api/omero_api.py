@@ -184,21 +184,15 @@ def generate_image_matrix(conn, tagset_a, tagset_b):
 
 
 def generate_image_matrix_from_ds(conn, tagset_a, tagset_b, dsid):
-    tagsets = get_tag_dictionary()
-    group_a = [tag.tname for tag in tagsets[tagset_a]]
-    group_b = [tag.tname for tag in tagsets[tagset_b]]
     matrix = { }
-
-    dir = os.getcwd()
     with open("/app001/www/assets/pancreatlas/datasets/%s.txt" % (str(dsid), ), 'r') as f:
         json_str = f.readline()
 
         imgs = json.loads(json_str)
 
         for (img_id, img_tags) in imgs.iteritems():
-            tags = [img['tag'] for img in img_tags]
-            a_tags = intersection([set(tags), set(group_a)])
-            b_tags = intersection([set(tags), set(group_b)])
+            a_tags = [img['tag'] for img in img_tags if img['tagset'] == tagset_a]
+            b_tags = [img['tag'] for img in img_tags if img['tagset'] == tagset_b]
             if(len(a_tags) > 0 and len(b_tags) > 0):
                 for a_tag in a_tags:
                     if a_tag not in matrix:
@@ -208,7 +202,7 @@ def generate_image_matrix_from_ds(conn, tagset_a, tagset_b, dsid):
                             matrix[a_tag][b_tag] = []
                         matrix[a_tag][b_tag].append(str(img_id))
 
-        return matrix
+    return matrix
 
     # # print matrix
     # images = get_images_from_dataset_cache(group_a)

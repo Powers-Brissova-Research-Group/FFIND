@@ -136,26 +136,9 @@ class TagsetViewset(viewsets.ViewSet):
 
 class MatrixViewset(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
-        tags = pk.split(',')
-        conn = BlitzGateway('api.user', 'ts6t6r1537k=',
-                            host='10.152.140.10', port=4064)
-        try:
-            matrix = omero_api.generate_image_matrix_from_ds(conn,
-                tags[0].upper(), tags[1].upper(), tags[2])
-            for (key, value) in matrix.iteritems():
-                for (col, imgs) in value.iteritems():
-                    matrix[key][col] = imgs
-
-            m = Matrix(tags[0], tags[1], matrix)
-        finally:
-            try:
-                conn.close(hard=False)
-            except:
-                logger.warning("Failed to close OMERO connection")
-
+        matrix = omero_api.generate_image_matrix_from_ds(tags[0].upper(), tags[1].upper(), tags[2])
+        m = Matrix(tags[0], tags[1], matrix)
         serializer = MatrixSerializer(m)
-        # pprint.pprint(matrix)
-
         return Response(serializer.data)
 
 
