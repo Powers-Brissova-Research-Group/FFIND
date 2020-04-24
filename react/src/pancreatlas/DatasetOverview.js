@@ -141,7 +141,7 @@ class DatasetOverview extends React.Component {
                     <CardBody>
                       <h3>Browse by Age</h3>
                       <p>Choose a specific age range of donors within which to view samples</p>
-                      <Link to={{ pathname: `/datasets/${this.state.did}`, search: '?browse=true' }}>
+                      <Link to={`/datasets/${this.state.did}/browse-by-age`}>
                         <Button>Browse</Button>
                       </Link>
                     </CardBody>
@@ -163,7 +163,7 @@ class DatasetOverview extends React.Component {
                     <CardBody>
                       <h3>View All Images</h3>
                       <p>Don't restrict the data by any filters and view the entire collection</p>
-                      <Link to={{ pathname: `/datasets/${this.state.did}`, search: '?browse=false' }}>
+                      <Link to={`/datasets/${this.state.did}/explore`}>
                         <Button>Browse</Button>
                       </Link>
                     </CardBody>

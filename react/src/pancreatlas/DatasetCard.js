@@ -65,7 +65,7 @@ export default class DatasetCard extends React.Component {
               <img className='card-banner-img' src={banner} alt='banner img' />
             </div> */}
             <CardText>{this.props.description}</CardText>
-            <Link className='mt-auto' to={{ pathname: `/datasets/${this.props.did}`, search: '?browse=false' }}><Button className='w-100 align-bottom' color='info'>Browse All Images</Button></Link>
+            <Link className='mt-auto' to={`/datasets/${this.props.did}/explore`}><Button className='w-100 align-bottom' color='info'>Browse All Images</Button></Link>
             {/* <Button className='mt-auto'>Test</Button> */}
           </CardBody>
           <CardFooter>
@@ -78,10 +78,10 @@ export default class DatasetCard extends React.Component {
                     </DropdownToggle>
                     <DropdownMenu>
                       <DropdownItem>
-                        <Link to={{ pathname: `/datasets/${this.props.did}`, search: '?browse=false' }}>Browse All Images</Link>
+                        <Link to={`/datasets/${this.props.did}/explore`}>Browse All Images</Link>
                       </DropdownItem>
                       <DropdownItem>
-                        <Link to={{ pathname: `/datasets/${this.props.did}`, search: '?browse=true' }}>Browse Images by Age</Link>
+                        <Link to={`/datasets/${this.props.did}/browse-by-age`}>Browse Images by Age</Link>
                       </DropdownItem>
                       <DropdownItem>
                         <Link to={'/matrixview/' + this.props.did}>

@@ -10,8 +10,10 @@ import axios from 'axios'
 
 import MetaTags from 'react-meta-tags'
 
-import ImageGrid from './ImageGrid'
-import ImageGridBoundary from './ImageGridBoundary'
+import {
+  Link
+} from 'react-router-dom'
+
 import PageBanner from './PageBanner'
 
 // import neonatalTimeline from '../assets/pancreatlas/ages/timeline-neonatal.png'
@@ -42,7 +44,7 @@ var ageGroups = {
 }
 
 export default class AgeBrowser extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       open: false,
@@ -54,7 +56,7 @@ export default class AgeBrowser extends React.Component {
     this.show = this.show.bind(this)
   }
 
-  show (ages) {
+  show(ages) {
     // let filters = { AGE: null }
     // let gname = ages
     // switch (ages) {
@@ -85,7 +87,7 @@ export default class AgeBrowser extends React.Component {
     })
   }
 
-  componentDidMount () {
+  componentDidMount() {
     axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.match.params.did}`, {
       withCredentials: true,
       credentials: 'include',
@@ -95,33 +97,29 @@ export default class AgeBrowser extends React.Component {
     }).then(result => {
       this.setState({
         title: result.data.dsname,
-        ages: result.data.kvals.ages.split(',')
+        ages: JSON.parse(result.data.kvals.ages)
       })
     })
   }
 
-  render () {
-    let params = new URLSearchParams(this.props.location.search)
-    let browse = !((params.get('browse') === null || params.get('browse').toLowerCase() !== 'true'))
+  render() {
     var logo = null
     if (this.state.title !== undefined) {
       logo = require(`../assets/${this.state.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.jpg`)
     }
-
-    if (!this.state.open && browse === true) {
-      return (
-        <div className='age-browser'>
-          <MetaTags>
-            <title>Browse Data by Age -- Pancreatlas</title>
-            <meta name='description' content='Browse a given dataset by age in the pancreatlas' />
-          </MetaTags>
-          <PageBanner image={logo !== null} bgImg={logo}>
-            <h1>Browse Images by Donor Age</h1>
-            <p className='text-larger'>View all images from a specific age group</p>
-          </PageBanner>
-          <Container className='age-group-list'>
-            <Row className='pancreatlas-row'>
-              {/* <Col md='3'>
+    return (
+      <div className='age-browser'>
+        <MetaTags>
+          <title>Browse Data by Age -- Pancreatlas</title>
+          <meta name='description' content='Browse a given dataset by age in the pancreatlas' />
+        </MetaTags>
+        <PageBanner image={logo !== null} bgImg={logo}>
+          <h1>Browse Images by Donor Age</h1>
+          <p className='text-larger'>View all images from a specific age group</p>
+        </PageBanner>
+        <Container className='age-group-list'>
+          <Row className='pancreatlas-row'>
+            {/* <Col md='3'>
                 <span className='age-group' onClick={() => this.show(0)}>
                   <span className='age-group-text'>Gestational<br /><small>Weeks 7 &ndash; 18</small></span>
                   <span className='age-group-imgs'>
@@ -130,21 +128,22 @@ export default class AgeBrowser extends React.Component {
                   </span>
                 </span>
               </Col> */}
-              <Col md='12 d-flex flex-row justify-content-between'>
-                {this.state.ages.map((age) => {
-                  return (
-                    <span className='age-group' onClick={() => this.show(age.toUpperCase())}>
-                      <span className='age-group-text'>{`${age.charAt(0).toUpperCase()}${age.slice(1).toLowerCase()}`}<br />{`${ageGroups[age].start} - ${ageGroups[age].end}`}</span>
+            <Col md='12 d-flex flex-row justify-content-between'>
+              {this.state.ages.map((age) => {
+                return (
+                  <Link to={`/datasets/${this.props.match.params.did}/explore?AGE=${age.link}`}>
+                    <span className='age-group'>
+                      <span className='age-group-text'>{`${age.name.charAt(0).toUpperCase()}${age.name.slice(1).toLowerCase()}`}<br />{`${ageGroups[age.name].start} - ${ageGroups[age.name].end}`}</span>
                       <span className='age-group-imgs'>
-                        <img className='age-group-img islet' src={require(`../assets/pancreatlas/ages/${age}-islet.png`)} alt='' />
-                        <img className='age-group-img' src={require(`../assets/pancreatlas/ages/timeline-${age}.png`)} alt='' />
-
+                        <img className='age-group-img islet' src={require(`../assets/pancreatlas/ages/${age.name}-islet.png`)} alt='' />
+                        <img className='age-group-img' src={require(`../assets/pancreatlas/ages/timeline-${age.name}.png`)} alt='' />
                       </span>
                     </span>
-                  )
-                })
-                }
-                {/* <span className='age-group' onClick={() => this.show(1)}>
+                  </Link>
+                )
+              })
+              }
+              {/* <span className='age-group' onClick={() => this.show(1)}>
                   <span className='age-group-text'>Neonatal<br /><small>Birth &ndash; 2 months</small></span>
                   <span className='age-group-imgs'>
                     <img className='age-group-img islet' src={neonatalIslet} alt='neonatal islet' />
@@ -165,25 +164,17 @@ export default class AgeBrowser extends React.Component {
                     <img className='age-group-img' src={childhoodTimeline} alt='childhood' />
                   </span>
                 </span> */}
-                {/* <Button color="primary" size="lg" block onClick={() => this.show(3)}>Childhood</Button> */}
-              </Col>
-            </Row>
-            <Row className='pancreatlas-row view-all-ages last'>
-              <Col md='12'>
-                <Button className='view-all' color='secondary' size='lg' block onClick={() => this.show(4)}>View All Ages</Button>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-      )
-    } else {
-      let did = (this.props.match !== undefined) ? this.props.match.params.did : 0
-      return (
-        <ImageGridBoundary>
-          <ImageGrid favorites={this.props.favorites} favoriteCallback={this.props.favoriteCallback} filters={{}} group={this.state.group} groupName={this.state.groupName} did={did} />
-        </ImageGridBoundary>
-      )
-    }
+              {/* <Button color="primary" size="lg" block onClick={() => this.show(3)}>Childhood</Button> */}
+            </Col>
+          </Row>
+          <Row className='pancreatlas-row view-all-ages last'>
+            <Col md='12'>
+              <Button className='view-all' color='secondary' size='lg' block onClick={() => this.show(4)}>View All Ages</Button>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    )
   }
 }
 

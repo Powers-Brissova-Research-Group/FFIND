@@ -33,6 +33,7 @@ import UserInfoModal from './pancreatlas/UserInfoModal'
 
 import DatasetListPage from './pancreatlas/DatasetListPage'
 import AgeBrowser from './pancreatlas/AgeBrowser'
+import GridView from './pancreatlas/GridView'
 import MatrixView from './pancreatlas/MatrixView'
 import Nomenclature from './pancreatlas/Nomenclature'
 import Favorites from './pancreatlas/Favorites'
@@ -201,12 +202,14 @@ class App extends Component {
                 <Route path='/about' component={About} />
 
                 <Route exact path={`/datasets`} component={DatasetListPage} />
-                <Route exact path={`/datasets/:did`} render={(props) => <AgeBrowser {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
+                <Route exact path={`/datasets/:did/browse-by-age`} component={AgeBrowser} />
+                <Route exact path={`/datasets/:did/explore`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
+                <Route path={`/datasets/:did/overview`} component={DatasetOverview} />
+
                 {/* <Route path='/pancreatlas/image/:iid' component={ImageDetail} /> */}
                 <Route path='/matrixview/:dsid' component={MatrixView} />
                 <Route path='/nomenclature' component={Nomenclature} />
                 <Route path={`/favorites`} render={(props) => <Favorites {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
-                <Route path={`/datasets/:did/overview`} component={DatasetOverview} />
                 <Route path='/resources' component={Resources} />
                 <Route path='/admin' component={Admin} />
                 <Route path='/data-usage' component={Usage} />
