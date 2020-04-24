@@ -129,9 +129,28 @@ class DatasetViewset(viewsets.ViewSet):
 
 
 class TagsetViewset(viewsets.ViewSet):
-    def list(self, request):
-        js = json.loads('[{"set_name":"DISEASE STATUS","tags":{"AAB":0,"CF":0,"CFRD":0,"CP":0,"ND":0,"T1D":0,"T2D":0}},{"set_name":"DISEASE DURATION","tags":{"1y":0,"10y":0,"14y":0,"18y":0,"2y":0,"3y":0,"4y":0,"5y":0,"7y":0,"8y":0}},{"set_name":"AGE","tags":{"0d":0,"29d":0,"4d":0,"8d":0,"G12w":0,"G12.3w":0,"G15w":0,"G17w":0,"G17.3w":0,"1d":0,"5d":0,"G15.5w":0,"G18w":0,"G8w":0,"10mo":0,"13mo":0,"15mo":0,"18mo":0,"19mo":0,"2mo":0,"20mo":0,"21mo":0,"3mo":0,"4mo":0,"10y":0,"13y":0,"14y":0,"17y":0,"18y":0,"19y":0,"2y":0,"20y":0,"22y":0,"23y":0,"24y":0,"25y":0,"26y":0,"28y":0,"29y":0,"3y":0,"30y":0,"31y":0,"34y":0,"35y":0,"39y":0,"4y":0,"42y":0,"43y":0,"46y":0,"47y":0,"5y":0,"55y":0,"6y":0,"65y":0,"7y":0,"8y":0,"9y":0}},{"set_name":"SEX","tags":{"F":0,"M":0,"Unknown":0}},{"set_name":"MARKER","tags":{"ACTB":0,"AMY1A":0,"CA2":0,"CD11b":0,"CD11C":0,"CD14":0,"CD15":0,"CD20":0,"CD3":0,"CD31":0,"CD31 (DAB)":0,"CD34":0,"CD4":0,"CD44":0,"CD45":0,"CD45RO":0,"CD46":0,"CD47":0,"CD48":0,"CD49":0,"CD56":0,"CD57":0,"CD68":0,"CD8":0,"CD90":0,"CD99":0,"CDH1":0,"COL":0,"COL4":0,"COL4A1":0,"Congo Red":0,"CPA1":0,"CPEP":0,"DAPI":0,"DNA":0,"Eosin":0,"FOXA2":0,"FOXP3":0,"GCG":0,"GHRL":0,"GITR":0,"GP2":0,"GZMB":0,"H&E":0,"Hematoxylin":0,"HLA-ABC":0,"HLA-DR":0,"HNF1B":0,"INS":0,"INS (DAB)":0,"Ki67":0,"Ki67 (DAB)":0,"KRT":0,"NES":0,"NEUROG3":0,"NFkB":0,"NKX6-1":0,"ONECUT1":0,"PAX6":0,"PDX1":0,"PECAM1":0,"PPY":0,"pS6":0,"PTF1A":0,"SCG3":0,"SMA":0,"SOX9":0,"SST":0,"Sst":0,"SYN1":0,"SYN2":0,"SYP":0,"TUNEL":0,"VIM":0}},{"set_name":"PANCREAS REGION","tags":{"Body":0,"Core":0,"depth 1":0,"depth 2":0,"depth 3":0,"Head":0,"Periphery":0,"Tail":0,"Unknown":0}},{"set_name":"SECTION PLANE","tags":{"Sagittal":0,"Transverse":0}},{"set_name":"FILE TYPE","tags":{"AFI":0,"LIF":0,"LSM":0,"SVS":0}}]')
-        return Response(js)
+    def retrieve(self, request, pk=None):
+        taglist = {}
+        arr = []
+        with open('/app001/www/assets/pancreatlas/datasets/' + str(pk) + '.txt', 'r') as f:
+            imgs = json.loads(f.readline())
+            for (img_id, img_tags) in imgs.iteritems():
+                for t in img_tags:
+                    tagset = t['tagset']
+
+                    # Putting in a check for age, since we append extra information for those
+                    # tags based on age sub groups
+                    if tagset.upper().startswith('AGE'):
+                        tagset = 'AGE'
+                    tag = t['tag']
+                    if tagset not in taglist:
+                        taglist[tagset] = {}
+                    print "%s -> %s" % (tagset, tag)
+                    taglist[tagset][tag] = 0
+        for key in taglist.keys():
+            obj = {'set_name': key.upper(), 'tags': taglist[key]}
+            arr.append(obj)
+        return Response(arr)
 
 
 class MatrixViewset(viewsets.ViewSet):

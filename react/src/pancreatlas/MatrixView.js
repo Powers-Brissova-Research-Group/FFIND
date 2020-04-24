@@ -45,7 +45,7 @@ export default class MatrixView extends React.Component {
       })
     })
 
-    axios.get(`${process.env.REACT_APP_API_URL}/tagsets`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/tagsets/${this.props.match.params.dsid}`, {
       withCredentials: true,
       credentials: 'include',
       headers: {
