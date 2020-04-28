@@ -78,235 +78,290 @@
       "Description": "Type 2 diabetes"
     }
   },
-  "Markers": {
-    "ACTA2": {
-      "Antigen description": "Alpha smooth muscle actin (&alpha;SMA)",
-      "Pancreas cll/region specificity": "Alpha smooth muscle actin (&alpha;SMA)"
-    },
+  
+
+    "Markers": {
     "ACTB": {
-      "Antigen description": "Beta-actin; highly conserved protein that provides cellular structure and motility",
-      "Pancreas cell/region specificity": "n/a"
+        "Antigen description": "Beta-actin; highly conserved protein that provides cellular structure and motility",
+        "Pancreas cell/region specificity": "n/a",
+        "HPA": "https://www.proteinatlas.org/ENSG00000075624-ACTB/tissue/pancreas"
     },
     "AMY1A": {
-      "Antigen description": "Amylase alpha 1a; secreted protein helping to catalyze digestion of dietary starch and glycogen",
-      "Pancreas cell/region specificity": "Acinar cells"
+        "Antigen description": "Amylase alpha 1a; secreted protein helping to catalyze digestion of dietary starch and glycogen",
+        "Pancreas cell/region specificity": "Acinar cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000237763-AMY1A/tissue/pancreas"
     },
     "CA2": {
-      "Antigen description": "Carbonic anhydrase II; catalyzes reversible hydration of carbon dioxide",
-      "Pancreas cell/region specificity": "Ductal cells (<a href='https://www.proteinatlas.org/ENSG00000104267-CA2/tissue/pancreas'>subset</a>)"
+        "Antigen description": "Carbonic anhydrase II; catalyzes reversible hydration of carbon dioxide",
+        "Pancreas cell/region specificity": "Ductal cells (<a href='https://www.proteinatlas.org/ENSG00000104267-CA2/tissue/pancreas'>subset</a>)",
+        "HPA": "https://www.proteinatlas.org/ENSG00000104267-CA2/tissue/pancreas"
     },
     "CD3": {
-      "Antigen description": "Co-receptor helping to activate cytotoxic T cells and helper T cells",
-      "Pancreas cell/region specificity": "Mature T cells, NK cells"
+        "Antigen description": "Co-receptor helping to activate cytotoxic T cells and helper T cells",
+        "Pancreas cell/region specificity": "Mature T cells, NK cells",
+        "HPA": ""
     },
     "CD4 (LEU3A)": {
-      "Antigen description": "MHC class II co-receptor involved in thymic differentiation and lymphocyte adhesion",
-      "Pancreas cell/region specificity": "Helper T cells, monocytes, macrophages, DCs"
+        "Antigen description": "MHC class II co-receptor involved in thymic differentiation and lymphocyte adhesion",
+        "Pancreas cell/region specificity": "Helper T cells, monocytes, macrophages, DCs",
+        "HPA": "https://www.proteinatlas.org/ENSG00000010610-CD4/tissue/pancreas"
     },
     "CD8 (LEU2)": {
-      "Antigen description": "MHC class I co-receptor with roles in thymic differentiation and T cell activation",
-      "Pancreas cell/region specificity": "Cytotoxic T cells, NK cells"
+        "Antigen description": "MHC class I co-receptor with roles in thymic differentiation and T cell activation",
+        "Pancreas cell/region specificity": "Cytotoxic T cells, NK cells",
+        "HPA": ""
     },
     "CD11b": {
-      "Antigen description": "Integrin subunit; also known as macrophage-1 antigen (Mac-1) or complement receptor 3 (CR3)",
-      "Pancreas cell/region specificity": "Macrophages, microglia"
+        "Antigen description": "Integrin subunit; also known as macrophage-1 antigen (Mac-1) or complement receptor 3 (CR3)",
+        "Pancreas cell/region specificity": "Macrophages, microglia",
+        "HPA": ""
     },
     "CD14": {
-      "Antigen description": "Surface antigen involved with innate immune response to bacterial lipopolysaccharide",
-      "Pancreas cell/region specificity": "Macrophages, DCs"
+        "Antigen description": "Surface antigen involved with innate immune response to bacterial lipopolysaccharide",
+        "Pancreas cell/region specificity": "Macrophages, DCs",
+        "HPA": "https://www.proteinatlas.org/ENSG00000170458-CD14/tissue/pancreas"
     },
     "CD20": {
-      "Antigen description": "B-lymphocyte antigen; plays a role in B cell development and differentiation",
-      "Pancreas cell/region specificity": "B lymphocytes"
+        "Antigen description": "B-lymphocyte antigen; plays a role in B cell development and differentiation",
+        "Pancreas cell/region specificity": "B lymphocytes",
+        "HPA": ""
     },
     "CD31 (PECAM1)": {
-      "Antigen description": "Platelet and endothelial cell adhesion molecule 1",
-      "Pancreas cell/region specificity": "Vasculature endothelial cells"
+        "Antigen description": "Platelet and endothelial cell adhesion molecule 1",
+        "Pancreas cell/region specificity": "Vasculature (endothelial cells)",
+        "HPA": "https://www.proteinatlas.org/ENSG00000261371-PECAM1/tissue/pancreas"
     },
     "CD34": {
-      "Antigen description": "Mucin-like transmembrane glycoprotein involved in cell-cell adhesion",
-      "Pancreas cell/region specificity": "Mucin-like transmembrane glycoprotein involved in cell-cell adhesion, <a href='https://doi.org/10.14670/HH-19.59'>stromal cells</a>"
+        "Antigen description": "Mucin-like transmembrane glycoprotein involved in cell-cell adhesion",
+        "Pancreas cell/region specificity": "Mucin-like transmembrane glycoprotein involved in cell-cell adhesion, <a href='https://doi.org/10.14670/HH-19.59'>stromal cells</a>",
+        "HPA" :"https://www.proteinatlas.org/ENSG00000174059-CD34/tissue/pancreas"
     },
     "CD44": {
-      "Antigen description": "Cell-surface glycoprotein involved in lymphocyte activation and hematopoiesis; interacts with hyaluronic acid, osteopontin, collagens, and matrix metalloproteinases",
-      "Pancreas cell/region specificity": ""
+        "Antigen description": "Cell-surface glycoprotein involved in lymphocyte activation and hematopoiesis; interacts with hyaluronic acid, osteopontin, collagens, and matrix metalloproteinases",
+        "Pancreas cell/region specificity": "",
+        "HPA": "https://www.proteinatlas.org/ENSG00000026508-CD44/tissue/pancreas"
     },
     "CD45 (PTPRC)": {
-      "Antigen description": "Protein tyrosine phosphatase, receptor type C",
-      "Pancreas cell/region specificity": "Hematopoietic cells"
+        "Antigen description": "Protein tyrosine phosphatase, receptor type C",
+        "Pancreas cell/region specificity": "Hematopoietic cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000081237-PTPRC/tissue/pancreas"
     },
     "CD45 (RO)": {
-      "Antigen description": "Low molecular weight isoform of CD45; functions in T and B cell receptor signaling",
-      "Pancreas cell/region specificity": "Memory T cells, monocytes, granulocytes"
+        "Antigen description": "Low molecular weight isoform of CD45; functions in T and B cell receptor signaling",
+        "Pancreas cell/region specificity": "Memory T cells, monocytes, granulocytes",
+        "HPA" :  ""
     },
     "CD56 (NCAM)": {
-      "Antigen description": "Neural cell adhesion molecule; archetypal phenotypic marker of NK cells",
-      "Pancreas cell/region specificity": "NK cells and other immune cells"
+        "Antigen description": "Neural cell adhesion molecule; archetypal phenotypic marker of NK cells",
+        "Pancreas cell/region specificity": "NK cells and other immune cells",
+        "HPA": ""
     },
     "CD57 (HNK1, LEU7)": {
-      "Antigen description": "Carbohydrate epitope created by enzymatic activity of galactosylgalactosylxylosylprotein 3-beta-glucuronosyltransferase 1 (B3GAT1)",
-      "Pancreas cell/region specificity": "NK cells, CD8+ T cells, neural cells"
+        "Antigen description": "Carbohydrate epitope created by enzymatic activity of galactosylgalactosylxylosylprotein 3-beta-glucuronosyltransferase 1 (B3GAT1)",
+        "Pancreas cell/region specificity": "NK cells, CD8+ T cells, neural cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000109956-B3GAT1/tissue/pancreas"
     },
     "CD68": {
-      "Antigen description": "Transmembrane glycoprotein predominantly expressed in late endosomes and lysosomes; high levels are associated with increased macrophage homing",
-      "Pancreas cell/region specificity": "Monocytes, macrophages"
+        "Antigen description": "Transmembrane glycoprotein predominantly expressed in late endosomes and lysosomes; high levels are associated with increased macrophage homing",
+        "Pancreas cell/region specificity": "Monocytes, macrophages",
+        "HPA": "https://www.proteinatlas.org/ENSG00000129226-CD68/tissue/pancreas"
     },
     "CD99 (MIC2)": {
-      "Antigen description": "Transmembrane protein involved in cell adhesion, apoptosis, vesicular protein transport, and T cell differentiation",
-      "Pancreas cell/region specificity": ""
+        "Antigen description": "Transmembrane protein involved in cell adhesion, apoptosis, vesicular protein transport, and T cell differentiation",
+        "Pancreas cell/region specificity": "",
+        "HPA": "https://www.proteinatlas.org/ENSG00000002586-CD99/tissue/pancreas"
     },
     "CDH1": {
-      "Antigen description": "Epithelial cadherin (E-cadherin); calcium-dependent adhesion glycoprotein",
-      "Pancreas cell/region specificity": "Epithelial cells"
+        "Antigen description": "Epithelial cadherin (E-cadherin); calcium-dependent adhesion glycoprotein",
+        "Pancreas cell/region specificity": "Epithelial cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000039068-CDH1/tissue/pancreas"
     },
     "COL": {
-      "Antigen description": "Collagen, general; triple helix protein providing majority of structural support in extracellular space",
-      "Pancreas cell/region specificity": "Extracellular matrix"
+        "Antigen description": "Triple helix protein providing majority of structural support in extracellular space",
+        "Pancreas cell/region specificity": "Extracellular matrix",
+        "HPA": ""
     },
     "COL4A1": {
-      "Antigen description": "Collagen type IV, alpha 1 chain; integral component of basement membranes",
-      "Pancreas cell/region specificity": "Extracellular matrix"
+        "Antigen description": "Collagen type IV, alpha 1 chain; integral component of basement membranes",
+        "Pancreas cell/region specificity": "Extracellular matrix",
+        "HPA": "https://www.proteinatlas.org/ENSG00000187498-COL4A1/tissue/pancreas"
     },
     "CPA1": {
-      "Antigen description": "Carboxypeptidase A1; enzyme that cleaves branched-chain and aromatic amino acids from dietary proteins",
-      "Pancreas cell/region specificity": "Acinar cells"
+        "Antigen description": "Carboxypeptidase A1; enzyme that cleaves branched-chain and aromatic amino acids from dietary proteins",
+        "Pancreas cell/region specificity": "Acinar cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000091704-CPA1/tissue/pancreas"
     },
     "CPEP": {
-      "Antigen description": "Connecting peptide (C-peptide); 31-aa polypeptide that arises from cleavage of proinsulin",
-      "Pancreas cell/region specificity": "&beta; cells"
+        "Antigen description": "Connecting peptide (C-peptide); 31-aa polypeptide that arises from cleavage of proinsulin",
+        "Pancreas cell/region specificity": "&beta; cells",
+        "HPA": ""
     },
     "FOXA2": {
-      "Antigen description": "Forkhead box A2; transcription factor that influences α cell development, maturation",
-      "Pancreas cell/region specificity": "&alpha; cells (<a href='https://doi.org/10.1016/j.ydbio.2004.10.012'>Lee et al. 2005</a>)"
+        "Antigen description": "Forkhead box A2; transcription factor that influences α cell development, maturation",
+        "Pancreas cell/region specificity": "&alpha; cells (<a href='https://doi.org/10.1016/j.ydbio.2004.10.012'>Lee et al. 2005</a>)",
+        "HPA": "https://www.proteinatlas.org/ENSG00000125798-FOXA2/tissue/pancreas"
     },
     "FOXP3": {
-      "Antigen description": "Transcription factor essential for the production and function of regulatory T cells, aiding in protection from autoimmunity",
-      "Pancreas cell/region specificity": "Tregs"
+        "Antigen description": "Transcription factor essential for the production and function of regulatory T cells, aiding in protection from autoimmunity",
+        "Pancreas cell/region specificity": "Tregs",
+        "HPA": "https://www.proteinatlas.org/ENSG00000049768-FOXP3/tissue/pancreas"
     },
     "GCG": {
-      "Antigen description": "Glucagon (hormone)",
-      "Pancreas cell/region specificity": "&alpha; cells"
+        "Antigen description": "Glucagon (hormone)",
+        "Pancreas cell/region specificity": "&alpha; cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000115263-GCG/tissue/pancreas"
     },
     "GFAP": {
-      "Antigen description": "Glial fibrillary acidic protein; intermediate filament in mature astrocytes",
-      "Pancreas cell/region specificity": "Nerve bundles (astrocytes)"
+        "Antigen description": "Glial fibrillary acidic protein; intermediate filament in mature astrocytes",
+        "Pancreas cell/region specificity": "Nerve bundles (astrocytes)",
+        "HPA": "https://www.proteinatlas.org/ENSG00000131095-GFAP/tissue/pancreas"
     },
     "GHRL": {
-      "Antigen description": "Ghrelin (hormone)",
-      "Pancreas cell/region specificity": "&epsilon; cells (<a href='https://doi.org/10.1016/S0167-0115(02)00067-8'>Wierup et al. 2002</a>)"
+        "Antigen description": "Ghrelin (hormone)",
+        "Pancreas cell/region specificity": "&epsilon; cells (<a href='https://doi.org/10.1016/S0167-0115(02)00067-8'>Wierup et al. 2002</a>)",
+        "HPA": "https://www.proteinatlas.org/ENSG00000157017-GHRL/tissue/pancreas"
     },
     "GITR": {
-      "Antigen description": "Glucocorticoid-induced TNF receptor; co-stimulatory immune checkpoint molecule that mediates suppressive activity of Tregs and survival of effector T cells",
-      "Pancreas cell/region specificity": ""
+        "Antigen description": "Glucocorticoid-induced TNF receptor; co-stimulatory immune checkpoint molecule that mediates suppressive activity of Tregs and survival of effector T cells",
+        "Pancreas cell/region specificity": "",
+        "HPA": ""
     },
     "GP2": {
-      "Antigen description": "Glycoprotein 2",
-      "Pancreas cell/region specificity": "Pancreatic progenitor cells (<a href='https://doi.org/10.1038/s41467-017-00561-0'>Cogger et al. 2002</a>)"
+        "Antigen description": "Glycoprotein 2",
+        "Pancreas cell/region specificity": "Pancreatic progenitor cells (<a href='https://doi.org/10.1038/s41467-017-00561-0'>Cogger et al. 2002</a>)",
+        "HPA": "https://www.proteinatlas.org/ENSG00000169347-GP2/tissue/pancreas"
     },
     "GZMB": {
-      "Antigen description": "Serine protease released by cytoplasmic granules to induce programmed cell death",
-      "Pancreas cell/region specificity": "Cytotoxic T cells, NK cells"
+        "Antigen description": "Serine protease released by cytoplasmic granules to induce programmed cell death",
+        "Pancreas cell/region specificity": "Cytotoxic T cells, NK cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000100453-GZMB/tissue/pancreas"
     },
     "HLA-ABC": {
-      "Antigen description": "Major histocompatibility complex (MHC) class I antigens",
-      "Pancreas cell/region specificity": "Most nucleated cells"
+        "Antigen description": "Major histocompatibility complex (MHC) class I antigens",
+        "Pancreas cell/region specificity": "Most nucleated cells",
+        "HPA": ""
     },
     "HLA-DR": {
-      "Antigen description": "Major histocompatibility complex (MHC) class II antigen",
-      "Pancreas cell/region specificity": "Antigen-presenting cells"
+        "Antigen description": "Major histocompatibility complex (MHC) class II antigen",
+        "Pancreas cell/region specificity": "Antigen-presenting cells",
+        "HPA": ""
     },
     "HPd3": {
-      "Antigen description": "Cell surface marker characterized by <a href='https://doi.org/10.1016/j.scr.2008.04.001'>Drs. Dorrell, Streeter, and Grompe</a>; hybridoma clone DHIC5-4D9",
-      "Pancreas cell/region specificity": "Ductal cells"
+        "Antigen description": "Cell surface marker characterized by <a href='https://doi.org/10.1016/j.scr.2008.04.001'>Drs. Dorrell, Streeter, and Grompe</a>; hybridoma clone DHIC5-4D9",
+        "Pancreas cell/region specificity": "Ductal cells",
+        "HPA": ""
     },
     "HNF1B*": {
-      "Antigen description": "Hepatocyte nuclear factor 1-beta; transcription factor critical for pancreatic development",
-      "Pancreas cell/region specificity": "Pancreatic progenitor cells (<a href='http://dev.biologists.org/content/142/5/871'>De Vas et al. 2002</a>; adult ductal cells (<a href='https://doi.org/10.1016/j.modgep.2007.09.006'>Nammo et al.</a>)"
+        "Antigen description": "Hepatocyte nuclear factor 1-beta; transcription factor critical for pancreatic development",
+        "Pancreas cell/region specificity": "Pancreatic progenitor cells (<a href='http://dev.biologists.org/content/142/5/871'>De Vas et al. 2002</a>; adult ductal cells (<a href='https://doi.org/10.1016/j.modgep.2007.09.006'>Nammo et al.</a>)",
+        "HPA": ""
     },
     "IBA1 (AIF1)": {
-      "Antigen description": "Ionized calcium-binding adaptor molecule 1",
-      "Pancreas cell/region specificity": "Microglia, macrophages"
+        "Antigen description": "Ionized calcium-binding adaptor molecule 1",
+        "Pancreas cell/region specificity": "Microglia, macrophages",
+        "HPA": "https://www.proteinatlas.org/ENSG00000204472-AIF1/tissue/pancreas"
     },
     "INS*": {
-      "Antigen description": "Insulin (hormone)",
-      "Pancreas cell/region specificity": "&beta; cells"
+        "Antigen description": "Insulin (hormone)",
+        "Pancreas cell/region specificity": "&beta; cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000275410-HNF1B/tissue/pancreas"
     },
     "Ki67": {
-      "Antigen description": "Nuclear protein associated with cellular proliferation",
-      "Pancreas cell/region specificity": "Nuclei of proliferating cells"
+        "Antigen description": "Nuclear protein associated with cellular proliferation",
+        "Pancreas cell/region specificity": "Nuclei of proliferating cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000148773-MKI67/tissue/pancreas"
     },
     "KRT": {
-      "Antigen description": "Pan-keratin; family of fibrous structural proteins providing cellular mechanical support",
-      "Pancreas cell/region specificity": "Epithelial cells"
+        "Antigen description": "Pan-keratin; family of fibrous structural proteins providing cellular mechanical support",
+        "Pancreas cell/region specificity": "Epithelial cells",
+        "HPA": ""
     },
     "LAM": {
-      "Antigen description": "Laminin, general; family of secreted trimeric proteins with cross-like structures that act as the major scaffold for basal lamina",
-      "Pancreas cell/region specificity": "Extracellular matrix"
+        "Antigen description": "Laminin, general; family of secreted trimeric proteins with cross-like structures that act as the major scaffold for basal lamina",
+        "Pancreas cell/region specificity": "Extracellular matrix",
+        "HPA": ""
     },
     "NES": {
-      "Antigen description": "Nestin; intermediate filament protein expressed in dividing cells, most often during early stages of nervous system differentiation",
-      "Pancreas cell/region specificity": "Neural stem cells"
+        "Antigen description": "Nestin; intermediate filament protein expressed in dividing cells, most often during early stages of nervous system differentiation",
+        "Pancreas cell/region specificity": "Neural stem cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000132688-NES/tissue/pancreas"
     },
     "NFkB": {
-      "Antigen description": "<a href='https://doi.org/10.1016/j.tcb.2012.08.001'>Protein complex</a> with a critical role in regulating inflammation, including DNA transcription, cytokine production, and cell survival",
-      "Pancreas cell/region specificity": ""
+        "Antigen description": "<a href='https://doi.org/10.1016/j.tcb.2012.08.001'>Protein complex</a> with a critical role in regulating inflammation, including DNA transcription, cytokine production, and cell survival",
+        "Pancreas cell/region specificity": "",
+        "HPA": ""
     },
     "NKX2-2": {
-      "Antigen description": "NK2 homeobox 2; key transcription factor in endocrine cell development",
-      "Pancreas cell/region specificity": "&beta; cells (<a href='https://doi.org/10.2337/db12-1479'>Sussel et al. 1998, Jennings et al. 2013</a>)"
+        "Antigen description": "NK2 homeobox 2; key transcription factor in endocrine cell development",
+        "Pancreas cell/region specificity": "&beta; cells (<a href='https://doi.org/10.2337/db12-1479'>Sussel et al. 1998, Jennings et al. 2013</a>)",
+        "HPA": "https://www.proteinatlas.org/ENSG00000125820-NKX2-2"
     },
     "NKX6-1*": {
-      "Antigen description": "NK6 homeobox; transcription factor required for &beta; cell development",
-      "Pancreas cell/region specificity": "&beta; cells (<a href='https://doi.org/10.1007/s00125-008-1006-z'>Lyttle et al. 2007</a>, <a href='https://doi.org/10.2337/db12-1479'>Jennings et al. 2013</a>)"
+        "Antigen description": "NK6 homeobox; transcription factor required for &beta; cell development",
+        "Pancreas cell/region specificity": "&beta; cells (<a href='https://doi.org/10.1007/s00125-008-1006-z'>Lyttle et al. 2007</a>, <a href='https://doi.org/10.2337/db12-1479'>Jennings et al. 2013</a>)",
+        "HPA": "https://www.proteinatlas.org/ENSG00000163623-NKX6-1/tissue/pancreas"
     },
     "PAX6": {
-      "Antigen description": "Paired box 6; key transcription factor in endocrine development",
-      "Pancreas cell/region specificity": "Endocrine cells"
+        "Antigen description": "Paired box 6; key transcription factor in endocrine development",
+        "Pancreas cell/region specificity": "Endocrine cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000007372-PAX6/tissue/pancreas"
     },
     "PDX1*": {
-      "Antigen description": "Pancreatic and duodenal homeobox 1; key transcription factor in pancreatic development",
-      "Pancreas cell/region specificity": "Pancreatic progenitor cells, mature &beta; cells"
+        "Antigen description": "Pancreatic and duodenal homeobox 1; key transcription factor in pancreatic development",
+        "Pancreas cell/region specificity": "Pancreatic progenitor cells, mature &beta; cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000139515-PDX1/tissue/pancreas"
     },
     "PPY": {
-      "Antigen description": "Pancreatic polypeptide (hormone)",
-      "Pancreas cell/region specificity": "PP cells"
+        "Antigen description": "Pancreatic polypeptide",
+        "Pancreas cell/region specificity": "PP cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000108849-PPY/tissue/pancreas"
     },
     "pS6": {
-      "Antigen description": "Phospho-S6 ribosomal protein; marker of cell cycle progression",
-      "Pancreas cell/region specificity": ""
+        "Antigen description": "Phospho-S6 ribosomal protein; marker of cell cycle progression",
+        "Pancreas cell/region specificity": "",
+        "HPA": ""
     },
     "PTF1A": {
-      "Antigen description": "Pancreas associated transcription factor 1a",
-      "Pancreas cell/region specificity": "Exocrine cells"
+        "Antigen description": "Pancreas associated transcription factor 1a",
+        "Pancreas cell/region specificity": "Exocrine cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000168267-PTF1A/tissue/pancreas"
     },
     "SCG3": {
-      "Antigen description": "Secretogranin III, involved in secretory granule biogenesis",
-      "Pancreas cell/region specificity": "Endocrine cells"
+        "Antigen description": "Secretogranin III, involved in secretory granule biogenesis",
+        "Pancreas cell/region specificity": "Endocrine cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000104112-SCG3/tissue/pancreas"
     },
     "SST": {
-      "Antigen description": "Somatostatin (hormone)",
-      "Pancreas cell/region specificity": "&delta; cells"
+        "Antigen description": "Somatostatin (hormone)",
+        "Pancreas cell/region specificity": "&delta; cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000157005-SST/tissue/pancreas"
     },
     "SYN1": {
-      "Antigen description": "Synapsin I, neuronal phosphoprotein associated with synaptic vesicles",
-      "Pancreas cell/region specificity": "Neurons, some endocrine cells"
+        "Antigen description": "Synapsin I, neuronal phosphoprotein associated with synaptic vesicles",
+        "Pancreas cell/region specificity": "Neurons, some endocrine cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000008056-SYN1/tissue/pancreas"
     },
     "SYN2": {
-      "Antigen description": "Synapsin II, neuronal phosphoprotein associated with synaptic vesicles",
-      "Pancreas cell/region specificity": "Neurons, some endocrine cells"
+        "Antigen description": "Synapsin II, neuronal phosphoprotein associated with synaptic vesicles",
+        "Pancreas cell/region specificity": "Neurons, some endocrine cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000157152-SYN2/tissue/pancreas"
     },
     "SYP": {
-      "Antigen description": "Synaptophysin, integral membrane protein of small synaptic vesicles",
-      "Pancreas cell/region specificity": "Endocrine cells"
+        "Antigen description": "Synaptophysin, integral membrane protein of small synaptic vesicles",
+        "Pancreas cell/region specificity": "Endocrine cells",
+        "HPA": "https://www.proteinatlas.org/ENSG00000102003-SYP/tissue/pancreas"
     },
     "TUBB3": {
-      "Antigen description": "Neuron-specific class III beta-tubulin; core component of microtubules",
-      "Pancreas cell/region specificity": "Neurons"
+        "Antigen description": "Neuron-specific class III beta-tubulin; core component of microtubules",
+        "Pancreas cell/region specificity": "Neurons",
+        "HPA": "https://www.proteinatlas.org/ENSG00000258947-TUBB3/tissue/pancreas"
     },
     "asterisk": {
-      "description": "Denotes genes associated with Maturity-Onset Diabetes Of The Young (MODY) or neonatal diabetes"
+        "description": "Denotes genes associated with Maturity-Onset Diabetes Of The Young (MODY) or neonatal diabetes"
     }
-  },
+},
+
+
   "Stain": {
     "Congo red": {
       "Description": "Synthetic azo dye with hydrophobic and electrostatic properties that enable its <a href='http://www.jbc.org/content/276/25/22715'>binding</a> to amyloid fibrils",
