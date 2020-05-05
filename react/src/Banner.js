@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Particles from 'react-particles-js'
 
-import bannerImg from './assets/banner-bg3-fade.png'
+import bannerImg from './assets/banner-bg3-fade.jpg'
 import illustrationAlt from './assets/pancreas-islet-cells.png'
 import illustration from './assets/pancreas-islet-cells.webp'
 
