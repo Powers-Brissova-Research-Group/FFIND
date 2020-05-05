@@ -10,12 +10,23 @@ import DatasetList from './pancreatlas/DatasetList'
 import Feature from './Feature'
 import SponsorLogo from './SponsorLogo'
 
-import Helmsley from './assets/helmsley.jpg'
-import HIRN from './assets/hirn.jpg'
-import IIAM from './assets/IIAM.png'
-import IIDP from './assets/IIDP.png'
-import NDRI from './assets/NDRI.jpg'
-import VUMC from './assets/VUMC.png'
+import Helmsley from './assets/helmsley.webp'
+import HelmsleyAlt from './assets/helmsley.jpg'
+
+import HIRN from './assets/hirn.webp'
+import HIRNAlt from './assets/hirn.jpg'
+
+import IIAM from './assets/iiam.webp'
+import IIAMAlt from './assets/IIAM.png'
+
+import IIDP from './assets/iidp.webp'
+import IIDPAlt from './assets/IIDP.png'
+
+import NDRI from './assets/ndri.webp'
+import NDRIAlt from './assets/NDRI.jpg'
+
+import VUMC from './assets/vumc.webp'
+import VUMCAlt from './assets/VUMC.png'
 
 export default class Home extends React.Component {
   constructor (props) {
@@ -77,7 +88,10 @@ export default class Home extends React.Component {
           <div className='support v-padded'>
             <Row className='center-row my-4'>
               <Col sm='12'>
-                <img style={{ height: '8rem' }} className='img-fluid' src={Helmsley} alt='Helmsley Trust' />
+                <picture>
+                  <source srcset={Helmsley} type="image/webp" alt="Helmsley Trust" />
+                  <img style={{ height: '8rem' }} className='img-fluid' src={HelmsleyAlt} alt='Helmsley Trust' />
+                </picture>
               </Col>
             </Row>
             <Row className='center-row'>
@@ -92,19 +106,19 @@ export default class Home extends React.Component {
             </Row>
             <Row className='justify-content-around align-items-center my-4 pb-4'>
               <Col lg={2} md={4} sm={6} className='d-flex justify-content-center'>
-                <SponsorLogo location='https://www.iiam.org/' name='IIAM' imgSrc={IIAM} size='small' />
+                <SponsorLogo location='https://www.iiam.org/' name='IIAM' webpSrc={IIAM} imgSrc={IIAMAlt} size='small' />
               </Col>
               <Col lg={2} md={4} sm={6} className='d-flex justify-content-center'>
-                <SponsorLogo location='https://ndriresource.org/' name='NDRI' imgSrc={NDRI} size='small' />
+                <SponsorLogo location='https://ndriresource.org/' name='NDRI' webpSrc={NDRI} imgSrc={NDRIAlt} size='small' />
               </Col>
               <Col lg={2} md={4} sm={6} className='d-flex justify-content-center'>
-                <SponsorLogo location='https://iidp.coh.org/' name='IIDP' imgSrc={IIDP} size='small' />
+                <SponsorLogo location='https://iidp.coh.org/' name='IIDP' webpSrc={IIDP} imgSrc={IIDPAlt} size='small' />
               </Col>
               <Col lg={2} md={4} sm={6} className='d-flex justify-content-center'>
-                <SponsorLogo location='https://hirnetwork.org/' name='HIRN' imgSrc={HIRN} size='small' />
+                <SponsorLogo location='https://hirnetwork.org/' name='HIRN' wepSrc={HIRN} imgSrc={HIRNAlt} size='small' />
               </Col>
               <Col lg={2} md={4} sm={6} className='d-flex justify-content-center'>
-                <SponsorLogo location='https://vumc.org' name='VUMC' imgSrc={VUMC} size='small' />
+                <SponsorLogo location='https://vumc.org' name='VUMC' wepSrc={VUMC} imgSrc={VUMCAlt} size='small' />
               </Col>
             </Row>
             <Row className='center-row my-4'>

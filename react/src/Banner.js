@@ -9,12 +9,11 @@ import { Link } from 'react-router-dom'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import HomeModal from './HomeModal'
-
 import Particles from 'react-particles-js'
 
 import bannerImg from './assets/banner-bg3-fade.png'
-import illustration from './assets/pancreas-islet-cells.png'
+import illustrationAlt from './assets/pancreas-islet-cells.png'
+import illustration from './assets/pancreas-islet-cells.webp'
 
 export default class Banner extends React.Component {
   constructor (props) {
@@ -22,13 +21,6 @@ export default class Banner extends React.Component {
     this.state = {
       modalOpen: false
     }
-    this.toggle = this.toggle.bind(this)
-  }
-
-  toggle () {
-    this.setState({
-      modalOpen: !this.state.modalOpen
-    })
   }
 
   render () {
@@ -169,7 +161,12 @@ export default class Banner extends React.Component {
             <Col md='5' className='d-none d-md-block'>
               <Row className='mt-3'>
                 <div>
-                  <Link to={'/datasets'} ><img src={illustration} responsive={'true'} alt='View our datasets' /></Link>
+                  <Link to={'/datasets'} >
+                    <picture>
+                      <source srcset={illustration} type="image/webp" alt='View our datasets' />
+                      <img src={illustrationAlt} responsive={'true'} alt='View our datasets' />
+                    </picture>
+                  </Link>
                 </div>
               </Row>
             </Col>
@@ -189,7 +186,6 @@ export default class Banner extends React.Component {
               <FontAwesomeIcon className='scroll-down-arrow' onClick={this.props.scrollDown} icon='angle-down' size='6x' color='white' />
             </Col>
           </Row> */}
-          <HomeModal isOpen={this.state.modalOpen} toggle={this.toggle} />
         </Container>
       </div>
     )
