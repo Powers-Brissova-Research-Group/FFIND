@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import DetailRow from './DetailRow'
 
 export default class ImageModal extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.defs = require('../assets/pancreatlas/definitions.json')
     this.relevantKeys = {}
@@ -24,7 +24,7 @@ export default class ImageModal extends React.Component {
     this.favorite = this.favorite.bind(this)
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate(prevProps) {
     if (JSON.stringify(prevProps.favorites) !== JSON.stringify(this.props.favorites)) {
       this.setState({
         isFavorite: this.props.modalData !== undefined && this.props.favorites.indexOf(this.props.modalData.img_id) !== -1
@@ -32,27 +32,29 @@ export default class ImageModal extends React.Component {
     }
   }
 
-  favorite () {
+  favorite() {
     this.setState({
       isFavorite: !this.state.isFavorite
     })
     this.props.favoriteCallback(this.props.modalData.img_id)
   }
 
-  render () {
+  render() {
     var tinycolor = require('tinycolor2')
     let labelRe = /^(?!Hex code)([a-zA-Z]+\s+info)?(\s+-\s+)?(.+)$/
     var markers = []
     if (this.props.modalData !== undefined) {
-      let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9 \t-]+)(?<!-Ab)$/i
+      let markerRe = /(^Stain info)(\s+-\s+)([a-zA-Z0-9 \t-]+)$/i
       let matchingKeys = Object.keys(this.props.modalData.img_data).filter(key => markerRe.test(key))
       for (let key of matchingKeys) {
-        var val = this.props.modalData.img_data[key].val
-        var clr = this.props.modalData.markerColors[val] === undefined ? '#FFFFFF' : this.props.modalData.markerColors[val] 
-        markers.push({
-          'val': val,
-          'color': clr
-        })
+        if (!key.endsWith('-Ab')) {
+          var val = this.props.modalData.img_data[key].val
+          var clr = this.props.modalData.markerColors[val] === undefined ? '#FFFFFF' : this.props.modalData.markerColors[val]
+          markers.push({
+            'val': val,
+            'color': clr
+          })
+        }
       }
       this.relevantKeys = Object.keys(this.props.modalData.img_data).sort().filter(
         key => matchingKeys.concat(['Image info - Annotations', 'External id', '(DS notes)', 'Image info - Analysis', 'Image info - File Type', 'Donor info - UNOS ID', 'File path', 'Program ID link']).indexOf(key) === -1
