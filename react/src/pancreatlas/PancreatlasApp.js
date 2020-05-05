@@ -3,7 +3,6 @@ import MetaTags from 'react-meta-tags'
 
 import HomePage from './HomePage'
 import DatasetList from './DatasetList'
-import ImageDetail from './ImageDetail'
 import MatrixView from './MatrixView'
 import AgeBrowser from './AgeBrowser'
 import Nomenclature from './Nomenclature'
@@ -36,7 +35,6 @@ class PancreatlasApp extends Component {
               {/* <Route path='/collections' component={CollectionList} /> */}
               <Route exact path={`/pancreatlas/dataset`} component={DatasetList} />
               <Route exact path={`/pancreatlas/dataset/:did`} render={(props) => <AgeBrowser {...props} favoriteCallback={this.props.favoriteCallback} favorites={JSON.parse(window.atob(this.props.favorites))} />} />
-              <Route path='/pancreatlas/image/:iid' component={ImageDetail} />
               <Route path='/pancreatlas/matrixview/:dsid' component={MatrixView} />
               <Route path='/pancreatlas/nomenclature' component={Nomenclature} />
               <Route path={`/pancreatlas/favorites`} render={(props) => <Favorites {...props} favoriteCallback={this.props.favoriteCallback} favorites={JSON.parse(window.atob(this.props.favorites))} />} />
