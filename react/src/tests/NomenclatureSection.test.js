@@ -12,7 +12,7 @@ library.add(faAngleRight)
 
 describe('Working for all descriptions', () => {
   it('Loads description properly', () => {
-    let defs = require('../assets/pancreatlas/definitions.json')
+    let defs = require('../assets/txt/definitions.json')
     for (let key of Object.keys(defs)) {
       let wrapper = mount(<NomenclatureSection data={defs[key]} sectionName={key} openOverride={false} />)
       expect(wrapper.find('.nomenclature-section')).toHaveLength(1)

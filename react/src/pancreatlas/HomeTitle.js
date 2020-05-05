@@ -3,7 +3,7 @@ import {
   Row,
   Col
 } from 'reactstrap'
-import Logo from '../assets/pancreatlas/logos/handel-p-black-full.png'
+import Logo from '../assets/img/logos/handel-p-black-full.png'
 
 export default class HomeTitle extends React.Component {
   render () {

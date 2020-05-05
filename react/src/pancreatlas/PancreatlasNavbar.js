@@ -9,7 +9,7 @@ import {
 
 import { Link } from 'react-router-dom'
 
-import Logo from '../assets/pancreatlas/logos/handel-p-white-small.png'
+import Logo from '../assets/img/logos/handel-p-white-small.png'
 
 export default class PancreatlasNavbar extends React.Component {
   constructor (props) {

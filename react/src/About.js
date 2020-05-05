@@ -20,7 +20,7 @@ export default class About extends React.Component {
           <meta name='description' content='What is the Pancreatlas project?' />
         </MetaTags>
         {/* <Header heading="About" /> */}
-        <PageBanner image bgImg={require('./assets/pancreatlas/headers/about-header.jpg')}>
+        <PageBanner image bgImg={require('./assets/img/headers/about-header.jpg')}>
           <h1>About Pancreatlas</h1>
           <p className='text-larger'>Our goal is to organize and make accessible full-resolution images from a diverse array of human pancreas samples. By connecting images from several independent programs and efforts, we have created a practical resource to elevate and accelerate scientific study of the human pancreas.</p>
         </PageBanner>
@@ -42,7 +42,7 @@ export default class About extends React.Component {
                 <h1 className='mt-4'>The Pancreatlas Team at Vanderbilt</h1>
                 <Row className='mt-4 mb-4'>
                   <Col md='2' className='text-center'>
-                    <img className='img-fluid rounded-circle team-member-img' src={require('./assets/pancreatlas/credits/diane.jpg')} alt='Diane Saunders' />
+                    <img className='img-fluid rounded-circle team-member-img' src={require('./assets/img/credits/diane.jpg')} alt='Diane Saunders' />
                   </Col>
                   <Col md='8' className='mb-auto mt-auto'>
                     <h4>Diane Saunders, Ph.D. &bull; <em>Co-Scientific Director</em></h4>
@@ -51,7 +51,7 @@ export default class About extends React.Component {
                 </Row>
                 <Row className='mb-4'>
                   <Col md='2' className='text-center'>
-                    <img className='img-fluid rounded-circle team-member-img' src={require('./assets/pancreatlas/credits/marcela.png')} alt='Marcela Brissova' />
+                    <img className='img-fluid rounded-circle team-member-img' src={require('./assets/img/credits/marcela.png')} alt='Marcela Brissova' />
                   </Col>
                   <Col md='8' className='mb-auto mt-auto'>
                     <h4>Marcela Brissova, Ph.D. &bull; <em>Co-Scientific Director</em></h4>
@@ -60,7 +60,7 @@ export default class About extends React.Component {
                 </Row>
                 <Row className='mb-4'>
                   <Col md='2' className='text-center'>
-                    <img className='img-fluid rounded-circle team-member-img' src={require('./assets/pancreatlas/credits/jp.jpg')} alt='JP Cartailler' />
+                    <img className='img-fluid rounded-circle team-member-img' src={require('./assets/img/credits/jp.jpg')} alt='JP Cartailler' />
                   </Col>
                   <Col md='8' className='mb-auto mt-auto'>
                     <h4>JP Cartailler, Ph.D. &bull; <em>Director, Creative Data Solutions</em></h4>
@@ -69,7 +69,7 @@ export default class About extends React.Component {
                 </Row>
                 <Row className='mb-4'>
                   <Col md='2' className='text-center'>
-                    <img className='img-fluid rounded-circle team-member-img' src={require('./assets/pancreatlas/credits/jimmy.jpg')} alt='Jimmy Messmer' />
+                    <img className='img-fluid rounded-circle team-member-img' src={require('./assets/img/credits/jimmy.jpg')} alt='Jimmy Messmer' />
                   </Col>
                   <Col md='8' className='mb-auto mt-auto'>
                     <h4>Jimmy Messmer, B.S. &bull; <em>Senior Developer</em></h4>
@@ -78,7 +78,7 @@ export default class About extends React.Component {
                 </Row>
                 <Row className='mb-4'>
                   <Col md='2' className='text-center'>
-                    <img className='img-fluid rounded-circle team-member-img' src={require('./assets/pancreatlas/credits/al.jpg')} alt='Alvin Powers' />
+                    <img className='img-fluid rounded-circle team-member-img' src={require('./assets/img/credits/al.jpg')} alt='Alvin Powers' />
                   </Col>
                   <Col md='8'>
                     <h4>Alvin Powers, M.D. &bull; <em>Consultant</em></h4>

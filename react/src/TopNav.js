@@ -18,7 +18,7 @@ import {
   NavLink
 } from 'react-router-dom'
 
-import logo from './assets/pancreatlas-logo.png'
+import logo from './assets/img/page_imgs/pancreatlas-logo.png'
 
 export default class TopNav extends React.Component {
   constructor (props) {

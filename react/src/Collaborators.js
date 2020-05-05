@@ -12,7 +12,7 @@ import {
 import MetaTags from 'react-meta-tags'
 
 import TeamMember from './TeamMember'
-import MapPicture from './assets/map-collaborations.png'
+import MapPicture from './assets/img/page_imgs/map-collaborations.png'
 import PageBanner from './pancreatlas/PageBanner'
 
 export default class Collaborators extends React.Component {
@@ -24,7 +24,7 @@ export default class Collaborators extends React.Component {
           <meta name='description' content='Who is working together to create the HANDEL-P project?' />
         </MetaTags>
         {/* <Header heading="Collaborators" subheading="Creating multi-disciplinary expert groups" /> */}
-        <PageBanner image bgImg={require('./assets/pancreatlas/headers/collaborators-header.jpg')}>
+        <PageBanner image bgImg={require('./assets/img/headers/collaborators-header.jpg')}>
           <h1>Contributors</h1>
           <p className='text-larger'>The images displayed in our <Link className='link-light' to='/datasets'>Collections</Link> are the result of team-based efforts around the country. We are grateful to Pancreatlas investigators for their scientific contributions and support of this project.</p>
         </PageBanner>
@@ -70,7 +70,7 @@ export default class Collaborators extends React.Component {
               <TeamMember
                 name='Nathaniel Hart, Ph.D.'
                 institution='Vanderbilt University Medical Center'
-                imgSrc={require('./assets/pancreatlas/contributors/nathaniel-hart.jpg')}
+                imgSrc={require('./assets/img/contributors/nathaniel-hart.jpg')}
                 site=''
                 email='mailto:njhart@email.arizona.edu'
                 phone='tel:520-626-7754'
@@ -82,7 +82,7 @@ export default class Collaborators extends React.Component {
               <TeamMember
                 name='Klaus Kaestner, Ph.D.'
                 institution='University of Pennsylvania'
-                imgSrc={require('./assets/pancreatlas/contributors/klaus-kaestner.jpg')}
+                imgSrc={require('./assets/img/contributors/klaus-kaestner.jpg')}
                 site='https://www.med.upenn.edu/kaestnerlab/'
                 email='mailto:kaestner@mail.med.upenn.edu'
                 phone='tel:215-898-8759'
@@ -107,7 +107,7 @@ export default class Collaborators extends React.Component {
               <TeamMember
                 name='Fong Cheng Pan, Ph.D.'
                 institution='Vanderbilt University Medical Center'
-                imgSrc={require('./assets/pancreatlas/contributors/pan-fong.jpg')}
+                imgSrc={require('./assets/img/contributors/pan-fong.jpg')}
                 site=''
                 email='mailto:fcp2002@med.cornell.edu'
                 phone='tel:212-746-5145'
@@ -131,7 +131,7 @@ export default class Collaborators extends React.Component {
               <TeamMember
                 name='Diane Saunders, Ph.D.'
                 institution='Vanderbilt University Medical Center'
-                imgSrc={require('./assets/pancreatlas/contributors/diane-saunders.jpg')}
+                imgSrc={require('./assets/img/contributors/diane-saunders.jpg')}
                 site=''
                 email='mailto:diane.saunders@vumc.org'
                 phone='tel:615-936-1672'
@@ -156,7 +156,7 @@ export default class Collaborators extends React.Component {
               <TeamMember
                 name='Jordan Wright, M.D., Ph.D.'
                 institution='Vanderbilt University Medical Center'
-                imgSrc={require('./assets/pancreatlas/contributors/jordan-wright.jpg')}
+                imgSrc={require('./assets/img/contributors/jordan-wright.jpg')}
                 site='https://medicine.vumc.org/person/jordan-james-wright-md-phd/'
                 email='mailto:jordan.wright@vumc.org'
                 phone='tel:615-936-1653'>

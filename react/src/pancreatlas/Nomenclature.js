@@ -15,7 +15,7 @@ import PageBanner from './PageBanner'
 export default class Nomenclature extends React.Component {
   constructor (props) {
     super(props)
-    this.defs = require('../assets/pancreatlas/definitions.json')
+    this.defs = require('../assets/txt/definitions.json')
     this.state = {
       open: false
     }
@@ -40,7 +40,7 @@ export default class Nomenclature extends React.Component {
             </Row>
           </div>
         </Container> */}
-        <PageBanner image bgImg={require('../assets/pancreatlas/headers/nomenclature-header.jpg')}>
+        <PageBanner image bgImg={require('../assets/img/headers/nomenclature-header.jpg')}>
           <h1>Nomenclature</h1>
           <p className='text-larger'>Images contain metadata or "tags" that describe both the tissue sample (donor age, sex, disease phenotype, etc.) and the experimental modality (antigens visualized, imaging technology). Please refer to the tables below for descriptions of these attributes.</p>
         </PageBanner>

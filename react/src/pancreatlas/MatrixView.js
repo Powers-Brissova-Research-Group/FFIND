@@ -98,7 +98,7 @@ export default class MatrixView extends React.Component {
   render () {
     var logo = null
     if (this.state.title !== undefined) {
-      logo = require(`../assets/${this.state.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.jpg`)
+      logo = require(`../assets/img/datasets/${this.props.match.params.dsid}/${this.state.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.jpg`)
     }
 
     if (this.state.loaded) {

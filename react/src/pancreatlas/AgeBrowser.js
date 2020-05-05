@@ -105,7 +105,7 @@ export default class AgeBrowser extends React.Component {
   render() {
     var logo = null
     if (this.state.title !== undefined) {
-      logo = require(`../assets/${this.state.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.jpg`)
+      logo = require(`../assets/img/datasets/${this.props.match.params.did}/${this.state.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.jpg`)
     }
     return (
       <div className='age-browser'>
@@ -135,8 +135,8 @@ export default class AgeBrowser extends React.Component {
                     <span className='age-group'>
                       <span className='age-group-text'>{`${age.name.charAt(0).toUpperCase()}${age.name.slice(1).toLowerCase()}`}<br />{`${ageGroups[age.name].start} - ${ageGroups[age.name].end}`}</span>
                       <span className='age-group-imgs'>
-                        <img className='age-group-img islet' src={require(`../assets/pancreatlas/ages/${age.name}-islet.png`)} alt='' />
-                        <img className='age-group-img' src={require(`../assets/pancreatlas/ages/timeline-${age.name}.png`)} alt='' />
+                        <img className='age-group-img islet' src={require(`../assets/img/ages/${age.name}-islet.png`)} alt='' />
+                        <img className='age-group-img' src={require(`../assets/img/ages/timeline-${age.name}.png`)} alt='' />
                       </span>
                     </span>
                   </Link>

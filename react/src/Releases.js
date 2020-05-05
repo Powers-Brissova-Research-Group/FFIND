@@ -20,7 +20,7 @@ export default class Releases extends React.Component {
   }
 
   componentDidMount () {
-    var releaseNotes = require('./assets/pancreatlas/release_notes')
+    var releaseNotes = require('./assets/txt/release_notes')
     var Remarkable = require('remarkable')
     var md = new Remarkable()
     for (let key of Object.keys(releaseNotes)) {
@@ -37,7 +37,7 @@ export default class Releases extends React.Component {
     console.log(this.state.versions)
     return (
       <div className='release-info'>
-        <PageBanner image bgImg={require('./assets/pancreatlas/headers/releases-header.jpg')}>
+        <PageBanner image bgImg={require('./assets/img/headers/releases-header.jpg')}>
           <h1>Release History</h1>
           <p className='text-larger'>Find info about each of our releases here</p>
         </PageBanner>

@@ -9,7 +9,7 @@ import MetaTags from 'react-meta-tags'
 
 import PageBanner from './pancreatlas/PageBanner'
 
-import DoiFigure from './assets/DOI_figure.png'
+import DoiFigure from './assets/img/page_imgs/DOI_figure.png'
 
 export default class About extends React.Component {
   render() {
@@ -20,7 +20,7 @@ export default class About extends React.Component {
           <meta name='description' content='Pancreatlas data usage and citation policy' />
         </MetaTags>
         {/* <Header heading="About" /> */}
-        <PageBanner image bgImg={require('./assets/pancreatlas/headers/data-usage-header.png')}>
+        <PageBanner image bgImg={require('./assets/img/headers/data-usage-header.png')}>
           <h1>Data Usage and Citation Policy</h1>
           <p className='text-larger'>In order to ensure the fair usage of the data presented in Pancreatlas, we ask for your cooperation with the policies outlined here. If you have any questions, do not hesitate to contact us at <a href="mailto:pancreatlas@vumc.org" className='link-light'>pancreatlas@vumc.org</a>.</p>
         </PageBanner>

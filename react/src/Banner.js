@@ -11,9 +11,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Particles from 'react-particles-js'
 
-import bannerImg from './assets/banner-bg3-fade.jpg'
-import illustrationAlt from './assets/pancreas-islet-cells.png'
-import illustration from './assets/pancreas-islet-cells.webp'
+import bannerImg from './assets/img/page_imgs/banner-bg3-fade.jpg'
+import illustrationAlt from './assets/img/page_imgs/pancreas-islet-cells.png'
+import illustration from './assets/img/page_imgs/pancreas-islet-cells.webp'
 
 export default class Banner extends React.Component {
   constructor (props) {

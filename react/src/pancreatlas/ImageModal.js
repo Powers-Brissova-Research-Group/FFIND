@@ -16,7 +16,7 @@ import DetailRow from './DetailRow'
 export default class ImageModal extends React.Component {
   constructor(props) {
     super(props)
-    this.defs = require('../assets/pancreatlas/definitions.json')
+    this.defs = require('../assets/txt/definitions.json')
     this.relevantKeys = {}
     this.state = {
       isFavorite: this.props.modalData !== undefined && this.props.favorites.indexOf(this.props.modalData.img_id) !== -1

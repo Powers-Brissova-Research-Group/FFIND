@@ -15,7 +15,7 @@ it('renders without crashing', () => {
 
 describe('Loads descriptions properly', () => {
   let wrapper = null
-  let defs = require('../assets/pancreatlas/definitions.json')
+  let defs = require('../assets/txt/definitions.json')
 
   beforeEach(() => {
     const div = document.createElement('div')

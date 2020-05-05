@@ -68,7 +68,7 @@ export default class ImageGrid extends React.Component {
     this.tag_idx = {}
     this.raw_tags = {}
     this.initialized = false
-    this.defs = require('../assets/pancreatlas/definitions.json')
+    this.defs = require('../assets/txt/definitions.json')
   }
 
   componentDidMount() {

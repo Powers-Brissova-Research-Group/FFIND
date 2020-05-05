@@ -40,14 +40,12 @@ class DatasetOverview extends React.Component {
         'Authorization': process.env.REACT_APP_API_AUTH
       }
     }).then(result => {
-      let sponsors = result.data.kvals.funding !== undefined ? result.data.kvals.funding.split(',').map(source => require(`../assets/${source}.jpg`)) : []
       let imgs = result.data.kvals.imgs !== undefined ? result.data.kvals.imgs.split(',') : []
       let titleImgData = JSON.parse(result.data.kvals.title_img)
       this.setState({
         title: result.data.dsname,
         short_desc: result.data.kvals.description_short,
         long_desc: result.data.kvals.description_long,
-        funders: sponsors,
         imgs: imgs,
         titleImg: titleImgData,
         sponsors: result.data.kvals.sponsor_text,
@@ -63,7 +61,7 @@ class DatasetOverview extends React.Component {
   render() {
     var logo = null
     if (this.state.title.toLowerCase() !== 'default title') {
-      logo = require(`../assets/${this.state.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.jpg`)
+      logo = require(`../assets/img/datasets/${this.state.did}/${this.state.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.jpg`)
     }
     return (
       <div className='datasetOverviewWrapper'>
@@ -96,7 +94,7 @@ class DatasetOverview extends React.Component {
                 </Col>
                 <Col md='6'>
                   <div>
-                    {this.state.titleImg !== undefined && <a href={this.state.titleImg.url}><img className='img-fluid dataset-picture' src={require(`../assets/pancreatlas/${this.state.did}/${this.state.titleImg.src}`)} alt='' /></a>}
+                    {this.state.titleImg !== undefined && <a href={this.state.titleImg.url}><img className='img-fluid dataset-picture' src={require(`../assets/img/datasets/${this.state.did}/${this.state.titleImg.src}`)} alt='' /></a>}
                   </div>
                   <div className='mt-4'>
                     <h4>Dataset Quick Reference</h4>
@@ -126,7 +124,7 @@ class DatasetOverview extends React.Component {
                 </Col>
                 <Col md='12'>
                   {this.state.imgs.map((img) => {
-                    return <img className='img-fluid' src={require(`../assets/pancreatlas/${this.state.did}/${img}`)} alt='' />
+                    return <img className='img-fluid' src={require(`../assets/img/datasets/${this.state.did}/${img}`)} alt='' />
                   })}
                 </Col>
               </Row>
