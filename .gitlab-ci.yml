@@ -2,7 +2,7 @@ image: node:latest
 
 stages:
   - build
-  - test
+  # - test
   - deploy
 
 build:
