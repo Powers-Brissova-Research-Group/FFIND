@@ -12,7 +12,7 @@ import {
 import MetaTags from 'react-meta-tags'
 
 import { PageBanner, TeamMember } from '../utils'
-import MapPicture from '../../assets/img/page_imsg/map-collaborations.png'
+import MapPicture from '../../assets/img/page_imgs/map-collaborations.png'
 
 export default class Collaborators extends React.Component {
   render () {
@@ -155,7 +155,7 @@ export default class Collaborators extends React.Component {
               <TeamMember
                 name='Jordan Wright, M.D., Ph.D.'
                 institution='Vanderbilt University Medical Center'
-                imgSrc={require('./assets/img/contributors/jordan-wright.jpg')}
+                imgSrc={require('../../assets/img/contributors/jordan-wright.jpg')}
                 site='https://medicine.vumc.org/person/jordan-james-wright-md-phd/'
                 email='mailto:jordan.wright@vumc.org'
                 phone='tel:615-936-1653'>

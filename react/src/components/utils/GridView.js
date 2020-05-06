@@ -4,8 +4,10 @@ import axios from 'axios'
 
 import MetaTags from 'react-meta-tags'
 
-import ImageGrid from './ImageGrid'
-import ImageGridBoundary from './ImageGridBoundary'
+import { 
+  ImageGrid,
+  ImageGridBoundary
+ } from '../grid-view'
 
 export default class GridView extends React.Component {
   constructor(props) {

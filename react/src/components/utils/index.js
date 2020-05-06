@@ -6,8 +6,8 @@ import DatasetOverview from './DatasetOverview'
 import DetailRow from './DetailRow'
 import Error from './Error'
 import Feature from './Feature'
+import GridView from './GridView'
 import Header from './Header'
-import HomeModal from './HomeModal'
 import HomeTitle from './HomeTitle'
 import LoadingBar from './LoadingBar'
 import MarkerTag from './MarkerTag'
@@ -30,8 +30,8 @@ export {
   DetailRow,
   Error,
   Feature,
+  GridView,
   Header,
-  HomeModal,
   HomeTitle,
   LoadingBar,
   MarkerTag,

@@ -14,7 +14,6 @@ import {
   Link
 } from 'react-router-dom'
 
-import { ImageGrid, ImageGridBoundary } from '../grid-view'
 import PageBanner from './PageBanner'
 
 // import neonatalTimeline from '../assets/pancreatlas/ages/timeline-neonatal.png'

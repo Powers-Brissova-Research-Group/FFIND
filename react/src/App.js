@@ -17,6 +17,7 @@ import {
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faLink, faEnvelope, faPhone, faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faRedo, faBook, faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { faBookmark as faBookmarkOutline } from '@fortawesome/free-regular-svg-icons'
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 import {
   About,
@@ -37,11 +38,12 @@ import {
 import {
   AgeBrowser,
   DatasetOverview,
+  GridView,
   PancreatlasFooter,
   TopNav,
   UserInfoModal,
   WarningBanner
-}from './components/utils'
+} from './components/utils'
 
 import { MatrixView } from './components/matrix-view'
 
