@@ -117,10 +117,10 @@ export default class Home extends React.Component {
                 <SponsorLogo location='https://iidp.coh.org/' name='IIDP' webpSrc={IIDP} imgSrc={IIDPAlt} size='small' />
               </Col>
               <Col lg={2} md={4} sm={6} className='d-flex justify-content-center'>
-                <SponsorLogo location='https://hirnetwork.org/' name='HIRN' wepSrc={HIRN} imgSrc={HIRNAlt} size='small' />
+                <SponsorLogo location='https://hirnetwork.org/' name='HIRN' webpSrc={HIRN} imgSrc={HIRNAlt} size='small' />
               </Col>
               <Col lg={2} md={4} sm={6} className='d-flex justify-content-center'>
-                <SponsorLogo location='https://vumc.org' name='VUMC' wepSrc={VUMC} imgSrc={VUMCAlt} size='small' />
+                <SponsorLogo location='https://vumc.org' name='VUMC' webpSrc={VUMC} imgSrc={VUMCAlt} size='small' />
               </Col>
             </Row>
             <Row className='center-row my-4'>
