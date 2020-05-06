@@ -19,7 +19,7 @@ import {
 } from 'react-router-dom'
 
 export default class DatasetCard extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.toggleDropdown = this.toggleDropdown.bind(this)
@@ -29,29 +29,38 @@ export default class DatasetCard extends React.Component {
     }
   }
 
-  toggleDropdown () {
+  toggleDropdown() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
     })
   }
 
-  revealActions () {
+  revealActions() {
     this.setState({
       showActions: !this.state.showActions
     })
   }
 
-  render () {
+  render() {
     // let sponsors = this.props.funding !== undefined ? this.props.funding.split(',').map(source => require(`../assets/${source}.jpg`)) : []
+    /* global Modernizr */
     let logo = null
     let banner = 'http://www.placehold.it/326x50'
     try {
-      logo = require(`../assets/img/logos/${this.props.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.png`)
+      if (Modernizr.webp.alpha) {
+        logo = require(`../assets/img/logos/${this.props.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.webp`)
+      } else {
+        logo = require(`../assets/img/logos/${this.props.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.png`)
+      }
     } catch (e) {
       console.log('Cannot find logo')
     }
     try {
-      banner = require(`../assets/img/logos/${this.props.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}-banner.png`)
+      if (Modernizr.webp.alpha) {
+        banner = require(`../assets/img/logos/${this.props.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}-banner.webp`)
+      } else {
+        banner = require(`../assets/img/logos/${this.props.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}-banner.jpg`)
+      }
     } catch (e) {
       console.log('Cannot find banner')
     }
@@ -74,7 +83,7 @@ export default class DatasetCard extends React.Component {
                 <div className='dataset-card-buttons'>
                   <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
                     <DropdownToggle outline color='secondary' caret>
-                    Viewing Options
+                      Viewing Options
                     </DropdownToggle>
                     <DropdownMenu>
                       <DropdownItem>
@@ -85,7 +94,7 @@ export default class DatasetCard extends React.Component {
                       </DropdownItem>
                       <DropdownItem>
                         <Link to={'/matrixview/' + this.props.did}>
-                    Browse Images via Matrix
+                          Browse Images via Matrix
                         </Link>
                       </DropdownItem>
                     </DropdownMenu>
