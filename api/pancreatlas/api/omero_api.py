@@ -23,15 +23,19 @@ def connect(username, password, host, portnum=4064):
 
 def get_image_by_id(conn, iid):
     img = conn.getObject("Image", oid=iid)
-    return Image(img)
+    if img == None:
+        return None
+    else:
+        return Image(img)
 
 def get_images_from_ids(conn, iids):
     img_set = []
     imgs = conn.getObjects("Image", ids=iids)
     for img in imgs:
-        image = Image(img)
-        if '[label image]' not in image.name and '[macro image]' not in image.name:
-            img_set.append(image)
+        if img != None:
+            image = Image(img)
+            if '[label image]' not in image.name and '[macro image]' not in image.name:
+                img_set.append(image)
     return img_set
 
 def get_all_images(conn):
@@ -130,9 +134,11 @@ def get_private_datasets(conn):
 
 def get_dataset(conn, did):
     ds = conn.getObject("Dataset", oid=did)
-    dataset = Dataset(ds)
-    # dataset.imgs = get_images_from_dataset(conn, dataset)
-    return dataset    
+    if ds == None:
+        return None
+    else:
+        dataset = Dataset(ds)
+        return dataset    
 
 def get_dataset_images(conn, did):
     dset = get_dataset(conn, did)

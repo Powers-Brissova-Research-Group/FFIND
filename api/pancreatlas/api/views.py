@@ -118,9 +118,12 @@ class DatasetViewset(viewsets.ViewSet):
         try:
             conn.connect()
             ds = omero_api.get_dataset(conn, pk)
-            serializer = DatasetSerializer(
-                Dataset(ds.did, ds.name, ds.desc, ds.kvals))
-            return Response(serializer.data)
+            if ds == None:
+                return Response({})
+            else:
+                serializer = DatasetSerializer(
+                    Dataset(ds.did, ds.name, ds.desc, ds.kvals))
+                return Response(serializer.data)
         finally:
             try:
                 conn.close(hard=False)
