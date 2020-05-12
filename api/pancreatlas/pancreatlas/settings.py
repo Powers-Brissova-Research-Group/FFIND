@@ -144,9 +144,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_ROOT = ''
-STATIC_URL = '/assets/'
-STATICFILES_DIRS = ( os.path.join('assets'), )
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 sentry_sdk.init(
     dsn="https://0379f90f085a435993394be4c33c3ac8@sentry.io/1412770",
