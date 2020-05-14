@@ -1,4 +1,4 @@
-from . import omero_api as api
+import omero_api as api
 import math
 import pprint
 import json
@@ -9,18 +9,18 @@ def save_thumbs():
     (conn, success) = api.connect('api.user', 'ts6t6r1537k=', '10.152.140.10')
     if success:
         try:
-            print(os.getcwd())
+            print os.getcwd()
             api.fetch_tags()
 
             dsets = api.get_datasets()
             dids = [int(dset.did) for dset in dsets]
             for did in dids:
                 fname = str(did) + '.txt'
-                print(fname)
+                print fname
                 ids = {}
                 dset = api.get_dataset_images(did)
                 images = dset.imgs
-                print(images)
+                print images
                 f = open(fname, 'w')
                 for image in images:
                     ids[int(image.id)] = [tag.tname for tag in image.get_tags()]
@@ -53,7 +53,7 @@ def save_thumbs():
         finally:
             conn.close()
     else:
-        print("Error connecting")
+        print "Error connecting"
 
 
 def get_longest(img):
@@ -97,6 +97,6 @@ def setColor(chan, color):
     chan.getColor().setRed(255)
     chan.getColor().setGreen(0)
     chan.getColor().setBlue(255)
-    print(chan.getColor().getRGB())
+    print chan.getColor().getRGB()
 
 save_thumbs()

@@ -2,5 +2,6 @@ Scripts/
 tcl/
 Include/
 Lib/
+pyvenv.cfg
 
 *.pyc

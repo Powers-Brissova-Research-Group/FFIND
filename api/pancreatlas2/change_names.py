@@ -1,6 +1,6 @@
 import json
 import requests
-import urllib.request, urllib.parse, urllib.error
+import urllib
 import os
 import pprint
 import api.helper_classes
@@ -14,7 +14,7 @@ def timing(f):
         t1 = time.time()
         ret = f(*args)
         t2 = time.time()
-        print("%s took %0.3f ms" % (f.__name__, (t2 - t1)*1000.0))
+        print "%s took %0.3f ms" % (f.func_name, (t2 - t1)*1000.0)
     return wrap
 
 def connect(fn):
@@ -27,14 +27,14 @@ def connect(fn):
             try:
                 conn.close()
             except:
-                print("Failed to close OMERO connection")
+                print "Failed to close OMERO connection"
     return wrap
 
 def get_image_list(dsid):
     f = open('/app001/www/assets/pancreatlas/datasets/%s.txt' % (dsid), 'r')
     enc = f.readline()
     imgs = json.loads(enc)
-    return [str(i) for i in list(imgs.keys()) if len(imgs[i]) > 0]
+    return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
 
 @connect
 def gen_image_name(iid, conn=None):
@@ -54,7 +54,7 @@ def gen_image_name(iid, conn=None):
         name = "%s-%s-%s-%s-%s" % (id, kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Sex']['val'], region)
     else:
         name = "%s-%s-%s-%s-%s-%s" % (id, kvals['Donor info - Disease Status']['val'], kvals['Donor info - Age']['val'], kvals['Donor info - Disease Duration']['val'], kvals['Donor info - Sex']['val'], region)
-    print("%s --> %s" % (img.name, name))
+    print "%s --> %s" % (img.name, name)
     img.img_wrapper.setName(name)
     img.img_wrapper.save()
 
@@ -62,7 +62,7 @@ def get_image_list(dsid):
     f = open('/app001/www/assets/pancreatlas/datasets/%s.txt' % (dsid), 'r')
     enc = f.readline()
     imgs = json.loads(enc)
-    return [str(i) for i in list(imgs.keys()) if len(imgs[i]) > 0]
+    return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
 
 @timing
 def run_normal(iids):
