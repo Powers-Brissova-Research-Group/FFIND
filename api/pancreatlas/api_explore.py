@@ -8,6 +8,6 @@ if success:
         oapi.fetch_tags(conn)
         dsets = oapi.get_datasets(conn)
         dsnames = [dset.name for dset in dsets]
-        print(dsnames)
+        print dsnames
     finally:
         conn.close()

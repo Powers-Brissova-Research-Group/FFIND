@@ -1,4 +1,4 @@
-from omero.gateway import TagAnnotationWrapper, MapAnnotationWrapper, DatasetWrapper
+from omeropy.omero.gateway import TagAnnotationWrapper, MapAnnotationWrapper, DatasetWrapper
 import re
 import collections
 import logging
