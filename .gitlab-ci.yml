@@ -16,6 +16,7 @@ build:
     paths:
       - react/build/
       - api/
+      - api2/
     expire_in: 1 day
 
 # test:
@@ -45,11 +46,6 @@ deploy:
     - cd /app001/www/pancreatlas/dev7/api
     - python3 -m venv .
     - source bin/activate
-    - pip install -r requirements.txt
-    - echo "api installed"
-    - echo "Restarting Apache"
-    - sudo systemctl restart httpd
-    - echo "Apache restarted"
 
 
 
