@@ -1,6 +1,6 @@
 import json
 import requests
-import urllib.request, urllib.parse, urllib.error
+import urllib
 import os
 import pprint
 import api.helper_classes
@@ -32,14 +32,14 @@ def timing(f):
         t1 = time.time()
         ret = f(*args)
         t2 = time.time()
-        print("%s took %0.3f ms" % (f.__name__, (t2 - t1)*1000.0))
+        print "%s took %0.3f ms" % (f.func_name, (t2 - t1)*1000.0)
 
     return wrap
 def get_image_list():
     f = open('image_index.txt', 'r')
     enc = f.readline()
     imgs = json.loads(enc)
-    return [str(i) for i in list(imgs.keys()) if len(imgs[i]) > 0]
+    return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
 
 def gen_image_name(iid):
     img = api.get_image_by_id(iid)

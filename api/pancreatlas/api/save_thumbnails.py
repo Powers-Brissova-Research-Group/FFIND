@@ -1,6 +1,6 @@
 import json
 import requests
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import os
 import pprint
 # USERNAME = 'api.user'
@@ -10,7 +10,7 @@ def get_image_list():
     f = open('image_index.txt', 'r')
     enc = f.readline()
     imgs = json.loads(enc)
-    return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
+    return [str(i) for i in list(imgs.keys()) if len(imgs[i]) > 0]
 
 def get_token(session):
     url = "https://omero.app.vumc.org/api/v0/token/"
@@ -44,7 +44,7 @@ def get_image_colors(iid, session):
     url = 'https://omero.app.vumc.org/webgateway/imgData/%s/' % (iid, )
     r = session.request('GET', url)
     chdata = [(0, 65535, 'FF0000'), (0, 65535, '00FF00'), (0, 65535, '0000FF')]
-    if r.text != u'""':
+    if r.text != '""':
         data = json.loads(r.text)
         channels = data['channels']
         chdata = [(int(channel['window']['start']), int(channel['window']['end']), channel['color']) for channel in channels]
@@ -58,7 +58,7 @@ def save_thumbnail(iid, roi, session):
     for i in range(0, len(chdata)):
         channel_params += '%s|%s:%s$%s,' % (str(i + 1), chdata[i][0], chdata[i][1], chdata[i][2])
     url = 'https://omero.app.vumc.org/webgateway/render_image_region/%s/0/0/?c=%s&m=c&region=%s,%s,%s,%s' % (iid, channel_params[0:-1], roi[0], roi[1], roi[2], roi[3])
-    print url
+    print(url)
     fpath = '/home/jmessmer/Documents/Projects/pancreatlas/react/src/assets/pancreatlas/thumbs/%s.jpg' % (iid, )
     f = open(fpath, 'w')
     r = session.get(url, stream=True)
@@ -66,7 +66,7 @@ def save_thumbnail(iid, roi, session):
         for chunk in r.iter_content(1024):
             f.write(chunk)
     f.close()
-    print 'Saved %s' %(fpath, )
+    print('Saved %s' %(fpath, ))
     # urllib.retrieve(url, '%s' % (iid, ))
 
 def login(token, session):
@@ -89,11 +89,11 @@ def main():
     sesh = requests.Session()
     token = get_token(sesh)
     success = login(token, sesh)
-    print "Logged in? %s" % (success, )
+    print("Logged in? %s" % (success, ))
     if success == True:
         # iids = get_image_list()
         iids = [17826]
-        print len(iids)
+        print(len(iids))
         for iid in iids:
             # save_thumbnail(iid, None, sesh)
 			# print 'Saved %s' % (iid, )
@@ -102,9 +102,9 @@ def main():
                save_thumbnail(iid, region, sesh)
             else:
                size = get_size(iid, sesh)
-               print 'Other: %s' % (size, )
+               print('Other: %s' % (size, ))
                save_thumbnail(iid, size, sesh)
-            print 'Saved %s' % (iid, )
+            print('Saved %s' % (iid, ))
 
 if __name__=='__main__':
     main()

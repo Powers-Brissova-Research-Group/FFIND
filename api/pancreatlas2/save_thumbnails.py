@@ -1,6 +1,6 @@
 import json
 import requests
-import urllib.request, urllib.parse, urllib.error
+import urllib
 import os
 import pprint
 import sys
@@ -12,7 +12,7 @@ def get_image_list(list_loc):
     f = open(list_loc, 'r')
     enc = f.readline()
     imgs = json.loads(enc)
-    return [str(i) for i in list(imgs.keys()) if len(imgs[i]) > 0]
+    return [str(i) for i in imgs.keys() if len(imgs[i]) > 0]
 
 def get_token(session):
     url = "https://omero.app.vumc.org/api/v0/token/"
@@ -52,7 +52,7 @@ def find_origin(coords, width, height, matrix):
     return transformed
 
 def transform_coords(coords, matrix):
-    print("Transforming coordinates")
+    print "Transforming coordinates"
     x = coords[0]
     y = coords[1]
     x_prime = int(matrix[0][0] * x + matrix[0][1] * y + matrix[0][2])
@@ -81,7 +81,7 @@ def save_thumbnail(iid, roi, session, save_loc):
     if len(chdata) == 3:
         chdata.append((0, 65535, 'FFFFFF'))
     url = 'https://omero.app.vumc.org/webgateway/render_image_region/%s/0/0/?c=1|%s:%s$%s,2|%s:%s$%s,3|%s:%s$%s,4|%s:%s$%s&m=c&region=%s,%s,%s,%s' % (iid, chdata[0][0], chdata[0][1], chdata[0][2], chdata[1][0], chdata[1][1], chdata[1][2], chdata[2][0], chdata[2][1], chdata[2][2], chdata[3][0], chdata[3][1], chdata[3][2], roi[0], roi[1], roi[2], roi[3])
-    print(url)
+    print url
     fpath = '%s/%s.jpg' % (save_loc, iid)
     f = open(fpath, 'w')
     r = session.get(url, stream=True)
@@ -89,11 +89,11 @@ def save_thumbnail(iid, roi, session, save_loc):
         for chunk in r.iter_content(1024):
             f.write(chunk)
     f.close()
-    print('Saved %s' %(fpath, ))
+    print 'Saved %s' %(fpath, )
     # urllib.retrieve(url, '%s' % (iid, ))
 
 def login(token, session):
-    print("Logging in")
+    print "Logging in"
     url = "https://omero.app.vumc.org/api/v0/login/"
 
     payload = "server=1&username=import.user&password=%2B0rLA6KdhQM%3D"
@@ -110,19 +110,19 @@ def login(token, session):
     return response.ok
 
 def main():
-    print("Generating session")
+    print "Generating session"
     sesh = requests.Session()
     token = get_token(sesh)
-    print("Session successfully generated")
+    print "Session successfully generated"
     success = login(token, sesh)
-    print("Logged in? %s" % (success, ))
+    print "Logged in? %s" % (success, )
     if (len(sys.argv) < 3):
         sys.exit("Insufficient arguments provided.")
     list_loc = sys.argv[1]
     save_loc = sys.argv[2]
     if success == True:
         iids = get_image_list(list_loc)
-        print(len(iids))
+        print len(iids)
         for iid in iids:
             # save_thumbnail(iid, None, sesh)
 			# print 'Saved %s' % (iid, )
@@ -131,9 +131,9 @@ def main():
                save_thumbnail(iid, region, sesh, save_loc)
             else:
                size = get_size(iid, sesh)
-               print('Other: %s' % (size, ))
+               print 'Other: %s' % (size, )
                save_thumbnail(iid, size, sesh, save_loc)
-            print('Saved %s' % (iid, ))
+            print 'Saved %s' % (iid, )
 
 if __name__=='__main__':
     main()

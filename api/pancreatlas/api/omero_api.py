@@ -1,7 +1,7 @@
 import signal
 import omeropy.omero
-from omeropy.omero.gateway import BlitzGateway
-from helper_classes import Image, Tag, Dataset
+from omero.gateway import BlitzGateway
+from .helper_classes import Image, Tag, Dataset
 import os
 from os.path import expanduser
 import pprint
@@ -16,7 +16,7 @@ def connect(username, password, host, portnum=4064):
     c = BlitzGateway(username, password, host=host, port=portnum)
     success = c.connect()
     if success == False:
-        print "LAST ERROR: %s" % (c.getLastError())
+        print("LAST ERROR: %s" % (c.getLastError()))
     # c.SERVICE_OPTS.setOmeroGroup(153)
     conn = c
     return (conn, success)
@@ -49,11 +49,11 @@ def get_images_from_dataset(conn, dsid):
     for child in children:
         iids.append(child.getId())
     imgs = get_images_from_ids(conn, iids)
-    print dset.name + " has " + str(len(imgs)) + " images"
+    print(dset.name + " has " + str(len(imgs)) + " images")
     return imgs
 
 def get_images_union_from_tags(conn, tag_names, dsid):
-    tids = map(get_tid, tag_names)
+    tids = list(map(get_tid, tag_names))
     imgs = conn.getObjectsByAnnotations("Image", tids)
     return get_images_from_ids([i.id for i in imgs])
 
@@ -65,7 +65,7 @@ def get_images_intersection_from_tags(conn, tag_names):
     for name in tag_names:
         tid = [tag_set[name].tid]
         tmp = list(conn.getObjectsByAnnotations("Image", tid))
-        imgs = map(Image, tmp)
+        imgs = list(map(Image, tmp))
         for img in imgs:
             img.fetch_annotations()
         lists.append(set(imgs))
@@ -75,7 +75,7 @@ def get_images_intersection_from_tags(conn, tag_names):
     return get_images_from_ids(conn, [i.id for i in tmp])
 
 def save_images(img_set, directory):
-    imgnames = map(gen_file_name, img_set)
+    imgnames = list(map(gen_file_name, img_set))
     locs = [directory + '/' + x for x in imgnames ]
     for i in range(0, len(img_set)):
         img_set[i].save_thumbnail(locs[i], 256)
@@ -196,7 +196,7 @@ def generate_image_matrix_from_ds(tagset_a, tagset_b, dsid):
 
         imgs = json.loads(json_str)
 
-        for (img_id, img_tags) in imgs.iteritems():
+        for (img_id, img_tags) in imgs.items():
             a_tags = [img['tag'] for img in img_tags if img['tagset'].upper().startswith(tagset_a)]
             b_tags = [img['tag'] for img in img_tags if img['tagset'].upper().startswith(tagset_b)]
             if(len(a_tags) > 0 and len(b_tags) > 0):

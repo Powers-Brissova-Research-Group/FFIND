@@ -45,12 +45,12 @@ class OmeroRunner:
             elif cmd == 'modify':
                 img.modify_map_annotation(key, val)
             else:
-                print("Unrecognized command: %s" % (cmd, ))
+                print "Unrecognized command: %s" % (cmd, )
         except Exception as e:
-            print("Error executing command: %s" % (str(command), ))
-            print(type(Exception))
-            print(e.args)
-            print(e)
+            print "Error executing command: %s" % (str(command), )
+            print type(Exception)
+            print e.args
+            print e
 
 
 if __name__ == '__main__':
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     file_path = sys.argv[1]
     is_production = False
     if len(sys.argv) > 2 and sys.argv[2] == 'prod':
-        print("!!!SWITCHED TO PRODUCTION MODE!!!")
+        print "!!!SWITCHED TO PRODUCTION MODE!!!"
         is_production = True
     runner = OmeroRunner(file_path)
     runner.parse_file(is_production)

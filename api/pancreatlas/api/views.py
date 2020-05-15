@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from rest_framework import viewsets
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
-from models import Image, ImageSet, ImageId, Dataset, DatasetImages, TagSet, Matrix
-from serializers import ImageSerializer, ImageSetSerializer, ImageIdSerializer, DatasetImageSerializer, DatasetSerializer, TagSetSerializer, TagsSerializer, MatrixSerializer
+from .models import Image, ImageSet, ImageId, Dataset, DatasetImages, TagSet, Matrix
+from .serializers import ImageSerializer, ImageSetSerializer, ImageIdSerializer, DatasetImageSerializer, DatasetSerializer, TagSetSerializer, TagsSerializer, MatrixSerializer
 
 import requests
 from requests.auth import HTTPBasicAuth
@@ -16,10 +16,10 @@ import json
 
 from django.shortcuts import render
 
-import omero_api
-from omeropy.omero.gateway import BlitzGateway
+from . import omero_api
+from omero.gateway import BlitzGateway
 
-from helper_classes import TagSetI
+from .helper_classes import TagSetI
 
 import pprint
 
@@ -98,7 +98,7 @@ class DatasetViewset(viewsets.ViewSet):
         }
         with open('/app001/www/assets/pancreatlas/datasets/' + str(pk) + '.txt', 'r') as f:
             data = json.loads(f.readline())
-            for key, val in data.items():
+            for key, val in list(data.items()):
                 for fil in val:
                     filter_group = fil['tagset'].upper()
                     root_group = filter_group.split('-')[0]
@@ -109,7 +109,7 @@ class DatasetViewset(viewsets.ViewSet):
                     fset = filters[filter_group]
                     fset['tags'][filter_name] = 0
             sorted_filters = sorted(
-                filters.values(), key=lambda fil: fil['pos'])
+                list(filters.values()), key=lambda fil: fil['pos'])
             return Response(sorted_filters)
 
     def retrieve(self, request, pk=None):
@@ -137,7 +137,7 @@ class TagsetViewset(viewsets.ViewSet):
         arr = []
         with open('/app001/www/assets/pancreatlas/datasets/' + str(pk) + '.txt', 'r') as f:
             imgs = json.loads(f.readline())
-            for (img_id, img_tags) in imgs.iteritems():
+            for (img_id, img_tags) in imgs.items():
                 for t in img_tags:
                     tagset = t['tagset']
 
@@ -148,9 +148,9 @@ class TagsetViewset(viewsets.ViewSet):
                     tag = t['tag']
                     if tagset not in taglist:
                         taglist[tagset] = {}
-                    print "%s -> %s" % (tagset, tag)
+                    print("%s -> %s" % (tagset, tag))
                     taglist[tagset][tag] = 0
-        for key in taglist.keys():
+        for key in list(taglist.keys()):
             obj = {'set_name': key.upper(), 'tags': taglist[key]}
             arr.append(obj)
         return Response(arr)
@@ -179,8 +179,8 @@ class UserViewset(viewsets.ViewSet):
 
         r = requests.post(url, json=api_data, auth=(
             'user', '4db489c84c572b13b6846613efbf40bc-us18'))
-        print r.request
-        print json.loads(r.content)
+        print(r.request)
+        print(json.loads(r.content))
         return Response(json.loads(r.content), status=r.status_code, content_type=r.headers['Content-Type'])
 
     def update(self, request, pk=None):
@@ -198,8 +198,8 @@ class UserViewset(viewsets.ViewSet):
 
         r = requests.put(url, json=api_data, auth=(
             'user', '4db489c84c572b13b6846613efbf40bc-us18'))
-        print r.request
-        print json.loads(r.content)
+        print(r.request)
+        print(json.loads(r.content))
         return Response(json.loads(r.content), status=r.status_code, content_type=r.headers['Content-Type'])
 
 
