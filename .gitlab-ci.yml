@@ -31,7 +31,6 @@ build:
 deploy:
   stage: deploy
   script:
-  
     - echo "Deploying"
     - pwd
     - cd react
@@ -44,10 +43,11 @@ deploy:
     - rm -r /app001/www/pancreatlas/dev7/api/*
     - mv ./api/* /app001/www/pancreatlas/dev7/api
     - mv ./api2/* /app001/www/pancreatlas/dev7/api2
-    - cd /app001/www/pancreatlas/dev7/api
+    - cd /app001/www/pancreatlas/dev7/api2
     - python3 -m venv .
     - source bin/activate
-
+    - python3 -m pip install -r requirements.txt
+    - sudo systemctl restart httpd
 
 
   environment:
