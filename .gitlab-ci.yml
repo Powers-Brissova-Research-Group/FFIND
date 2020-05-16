@@ -41,6 +41,7 @@ deploy:
     - echo "Installing api"
     - cd ..
     - rm -r /app001/www/pancreatlas/dev7/api/*
+    - rm -r /app001/www/pancreatlas/dev7/api2/*
     - mv ./api/* /app001/www/pancreatlas/dev7/api
     - mv ./api2/* /app001/www/pancreatlas/dev7/api2
     - cd /app001/www/pancreatlas/dev7/api2
