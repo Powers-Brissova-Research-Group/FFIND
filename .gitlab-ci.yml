@@ -42,8 +42,8 @@ deploy:
     - cd ..
     # - rm -r /app001/www/pancreatlas/dev7/api/*
     # - rm -r /app001/www/pancreatlas/dev7/api2/*
-    - mv -f ./api/* /app001/www/pancreatlas/dev7/api
-    - mv -f ./api2/* /app001/www/pancreatlas/dev7/api2
+    - cp -rf ./api/* /app001/www/pancreatlas/dev7/api
+    - cp -rf ./api2/* /app001/www/pancreatlas/dev7/api2
     - cd /app001/www/pancreatlas/dev7/api2
     - python3 -m venv .
     - source bin/activate
