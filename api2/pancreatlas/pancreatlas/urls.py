@@ -19,6 +19,6 @@ from django.conf.urls import include, url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api/', include('api.urls')),
+    url(r'^api/', include('pancreatlas.api.urls')),
     url(r'^api-auth/', include('rest_framework.urls')) 
 ]
