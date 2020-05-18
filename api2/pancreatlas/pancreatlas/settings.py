@@ -60,7 +60,7 @@ CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(dev[0-9]+)(-api)?(-pancreatlas\.a
 
 CORS_ALLOW_CREDENTIALS = True
 
-ROOT_URLCONF = 'pancreatlas.pancreatlas.urls'
+ROOT_URLCONF = 'pancreatlas.urls'
 
 TEMPLATES = [
     {
