@@ -273,6 +273,10 @@ export default class ImageGrid extends React.Component {
         newObj[key] = newTags[key]
         mergeWith(old, newObj, (objValue, srcValue) => {
           if (isArray(objValue)) {
+            let missingObjs = objValue.filter(val => srcValue.indexOf(val) < 0)
+            for (let o of missingObjs) {
+              srcValue.push(o)
+            }
             return srcValue
           }
         })
