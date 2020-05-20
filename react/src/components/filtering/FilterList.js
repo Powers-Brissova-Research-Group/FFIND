@@ -22,9 +22,6 @@ import FilterSet from './FilterSet'
 
 import { Error } from '../utils'
 
-import { isArray } from '../../tools/utilities'
-import mergeWith from 'lodash.mergewith'
-
 /**
  * React component for the FilterList.
  * @class FilterList
@@ -90,36 +87,7 @@ class FilterList extends React.Component {
    * @param {array} newTags Array of new tags to add
    */
   setFilters(newTags, diff) {
-    let urlParams = new URLSearchParams(window.location.search)
-    for (let key of Object.keys(newTags)) {
-      // this.generateURLParam(key, newTags[key])
-      var toAdd = newTags[key]
-      if (urlParams.has(key)) {
-        let old = {}
-        old[key] = JSON.parse(window.atob(urlParams.get(key)))
-        let newObj = {}
-        newObj[key] = newTags[key]
-        mergeWith(old, newObj, (objValue, srcValue) => {
-          if (isArray(objValue)) {
-            return srcValue
-          }
-        })
-        toAdd = old[key]
-      }      
-      urlParams.set(key, window.btoa(JSON.stringify(toAdd)))
-    }
-    // let newFilters = extractFilters(newTags)
-
-    // for (let newTag of newTags) {
-    //   /* eslint-disable no-loop-func */
-    //   newParams = newParams.concat(this.generateURLParam(newTag).filter(param => !newParams.includes(param)))
-    //   /* eslint-enable no-loop-func */
-    // }
-    // let encoded = window.btoa(JSON.stringify(newParams))
-    // let params = new URLSearchParams(window.location.search)
-    // params.set('filters', encoded)
-    window.history.pushState({ 'pageTitle': 'Browse & Filter Dataset' }, '', `${window.location.protocol}//${window.location.host}${window.location.pathname}?${urlParams.toString()}`)
-    this.props.callback(diff)
+    this.props.callback(newTags, diff)
   }
 
   /**

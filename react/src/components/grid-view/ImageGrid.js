@@ -27,9 +27,11 @@ import { FilterList } from '../filtering'
 
 import { Error, LoadingBar } from '../utils'
 
-import { FilterTree, compareAges, extractFilters } from '../../tools/utilities'
+import { FilterTree, compareAges, extractFilters, isArray } from '../../tools/utilities'
 
 import axios from 'axios'
+import mergeWith from 'lodash.mergewith'
+
 
 export default class ImageGrid extends React.Component {
   constructor(props) {
@@ -260,9 +262,28 @@ export default class ImageGrid extends React.Component {
     })
   }
 
-  filter(newTags) {
-    for (let newTag of newTags) {
-      this.state.filterTree.activateFilter(newTag)
+  filter(newTags, diff) {
+    let urlParams = new URLSearchParams(window.location.search)
+    for (let key of Object.keys(newTags)) {
+      var toAdd = newTags[key]
+      if (urlParams.has(key)) {
+        let old = {}
+        old[key] = JSON.parse(window.atob(urlParams.get(key)))
+        let newObj = {}
+        newObj[key] = newTags[key]
+        mergeWith(old, newObj, (objValue, srcValue) => {
+          if (isArray(objValue)) {
+            return srcValue
+          }
+        })
+        toAdd = old[key]
+      }      
+      urlParams.set(key, window.btoa(JSON.stringify(toAdd)))
+    }
+    window.history.pushState({ 'pageTitle': 'Browse & Filter Dataset' }, '', `${window.location.protocol}//${window.location.host}${window.location.pathname}?${urlParams.toString()}`)
+
+    for (let d of diff) {
+      this.state.filterTree.activateFilter(d)
     }
     this.setState({
       matches: this.state.filterTree.generateActiveImages()
@@ -271,14 +292,10 @@ export default class ImageGrid extends React.Component {
   }
 
   markerFilter(marker) {
-    let currentFilters = this.state.filters
-    if (Object.keys(currentFilters).indexOf('MARKER') === -1) {
-      currentFilters['MARKER'] = []
+    let search = this.state.filterTree.search(marker)
+    if (search !== undefined && search.active !== true) {
+      this.filter({"MARKER": [marker]}, [marker])
     }
-    if (currentFilters['MARKER'].indexOf(marker) === -1) {
-      currentFilters['MARKER'].push(marker)
-    }
-    this.filter(currentFilters, this.state.prevFilters)
   }
 
   callback(iid, tags) {

@@ -29,7 +29,7 @@ SECRET_KEY = 'b11*s692h_%jy-+z4&7_p!b0dk97%@90r2b66+_y6veswj)#-j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'pancreapi', 'dev7-api-pancreatlas.app.vumc.org', 'dev8-api-pancreatlas.app.vumc.org', 'staging-api.pancreatlas.org']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'pancreapi', 'dev7-api-pancreatlas.app.vumc.org', 'dev8-api-pancreatlas.app.vumc.org', 'staging-api.pancreatlas.org', 'api.pancreatlas.org']
 
 
 # Application definition
@@ -56,7 +56,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(dev[0-9]+)(-api)?(-pancreatlas\.app\.vumc\.org)(:844[0-9]+)?$', r'(https?://)?(staging)(-api)?(\.pancreatlas\.org)(:844[0-9]+)?$', r'(https?://)?(api\.)?(www\.)?(pancreatlas.org)(:8450)?$')
+CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?(dev[0-9]+)(-api)?(-pancreatlas\.app\.vumc\.org)(:844[0-9]+)?$', r'(https?://)?(staging)(-api)?(\.pancreatlas\.org)(:844[0-9]+)?$', r'(https?://)?(api\.)?(www\.)?(pancreatlas.org)(:8450)?$', r'(https?://)?(localhost)(:3000)?$')
+
+CORS_ALLOW_HEADERS = default_headers + (
+    'access-control-allow-origin',
+    'authentication'
+)
 
 CORS_ALLOW_CREDENTIALS = True
 
