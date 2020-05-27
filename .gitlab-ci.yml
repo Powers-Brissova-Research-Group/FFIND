@@ -38,7 +38,7 @@ deploy:
     - echo "Installing react app"
     - rm -r /app001/www/pancreatlas/dev7/www/*
     - mv ./build/* /app001/www/pancreatlas/dev7/www
-    - cp -r ./maintenance/* /app001/www/pancreatlas/dev7/maintenance/
+    - cp -r ../maintenance/* /app001/www/pancreatlas/dev7/maintenance/
     - echo "React app installed"
     - echo "Installing api"
     - cd ..
