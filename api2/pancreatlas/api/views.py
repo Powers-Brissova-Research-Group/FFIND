@@ -83,6 +83,25 @@ class DatasetViewset(viewsets.ViewSet):
             data = f.readline()
             return Response(json.loads(data))
 
+    @action(methods=['get'], detail=True, url_path='list-all', url_name='list_all')
+    def get_all(self, request, pk=None):
+        conn = BlitzGateway('api.user', 'ts6t6r1537k=',
+                            host='10.152.140.10', port=4064)
+        raw_data = ''
+        try:
+            conn.connect()
+            dsets = [dset.did for dset in omero_api.get_private_datasets(conn)]
+            for dset in dsets:
+                with open('/app001/www/assets/pancreatlas/datasets/' + str(dset.did) + '.txt') as f:
+                    data = f.readline()
+                    raw_data += data
+            return Response(json.loads(data))
+        finally:
+            try:
+                conn.close(hard=False)
+            except:
+                logger.warning("Failed to close OMERO connection")
+
     @action(methods=['get'], detail=True, url_path='get-tags', url_name='get_tags')
     def get_tags(self, request, pk=None):
         filters = {}
