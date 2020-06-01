@@ -79,12 +79,38 @@ class DatasetViewset(viewsets.ViewSet):
 
     @action(methods=['get'], detail=True, url_path='get-images', url_name='get_images')
     def get_images(self, request, pk=None):
+        filters = {}
+        filter_order = {
+            'DISEASE STATUS': 0,
+            'DISEASE DURATION': 1,
+            'AGE': 2,
+            'SEX': 3,
+            'PROGRAM ID': 4,
+            'MARKER': 5,
+            'PANCREAS REGION': 6,
+            'MODALITY': 7
+        }
         with open('/app001/www/assets/pancreatlas/datasets/' + str(pk) + '.txt') as f:
             data = f.readline()
-            return Response(json.loads(data))
 
-    @action(methods=['get'], detail=True, url_path='list-all', url_name='list_all')
-    def get_all(self, request, pk=None):
+            json_data = json.loads(f.readline())
+            for key, val in list(data.items()):
+                for fil in val:
+                    filter_group = fil['tagset'].upper()
+                    root_group = filter_group.split('-')[0]
+                    filter_name = fil['tag']
+                    if filter_group not in filters:
+                        filters[filter_group] = {
+                            'set_name': filter_group, 'tags': {}, 'pos': filter_order[root_group]}
+                    fset = filters[filter_group]
+                    fset['tags'][filter_name] = 0
+            sorted_filters = sorted(
+                list(filters.values()), key=lambda fil: fil['pos'])
+            all_data = {'images': data, 'filters': sorted_filters}
+            return Response(json.loads(all_data))
+
+    @action(methods=['get'], detail=False, url_path='list-all', url_name='list_all')
+    def get_all(self, request:
         conn = BlitzGateway('api.user', 'ts6t6r1537k=',
                             host='10.152.140.10', port=4064)
         raw_data = ''
