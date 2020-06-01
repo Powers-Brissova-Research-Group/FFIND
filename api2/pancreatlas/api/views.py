@@ -67,7 +67,7 @@ class DatasetViewset(viewsets.ViewSet):
         try:
             conn.connect()
             dsets = [Dataset(dset.did, dset.name, dset.desc, dset.kvals)
-                             for dset in omero_api.get_private_datasets(conn)]
+                     for dset in omero_api.get_private_datasets(conn)]
             serializer = DatasetSerializer(dsets, many=True)
             return Response(serializer.data)
 
@@ -93,24 +93,25 @@ class DatasetViewset(viewsets.ViewSet):
         with open('/app001/www/assets/pancreatlas/datasets/' + str(pk) + '.txt') as f:
             data = f.readline()
 
-            json_data = json.loads(f.readline())
-            for key, val in list(data.items()):
+            json_data = json.loads(data)
+            for key, val in list(json_data.items()):
                 for fil in val:
                     filter_group = fil['tagset'].upper()
                     root_group = filter_group.split('-')[0]
                     filter_name = fil['tag']
-                    if filter_group not in filters:
-                        filters[filter_group] = {
-                            'set_name': filter_group, 'tags': {}, 'pos': filter_order[root_group]}
-                    fset = filters[filter_group]
-                    fset['tags'][filter_name] = 0
+                    if root_group in filter_order:
+                        if filter_group not in filters:
+                            filters[filter_group] = {
+                                'set_name': filter_group, 'tags': {}, 'pos': filter_order[root_group]}
+                        fset = filters[filter_group]
+                        fset['tags'][filter_name] = 0
             sorted_filters = sorted(
                 list(filters.values()), key=lambda fil: fil['pos'])
-            all_data = {'images': data, 'filters': sorted_filters}
-            return Response(json.loads(all_data))
+            all_data = {'images': json_data, 'filters': sorted_filters}
+            return Response(all_data)
 
     @action(methods=['get'], detail=False, url_path='list-all', url_name='list_all')
-    def get_all(self, request:
+    def get_all(self, request):
         conn = BlitzGateway('api.user', 'ts6t6r1537k=',
                             host='10.152.140.10', port=4064)
         raw_data = ''
@@ -204,7 +205,8 @@ class TagsetViewset(viewsets.ViewSet):
 class MatrixViewset(viewsets.ViewSet):
     def retrieve(self, request, pk=None):
         tags = pk.split(',')
-        matrix = omero_api.generate_image_matrix_from_ds(tags[0].upper(), tags[1].upper(), tags[2])
+        matrix = omero_api.generate_image_matrix_from_ds(
+            tags[0].upper(), tags[1].upper(), tags[2])
         m = Matrix(tags[0], tags[1], matrix)
         serializer = MatrixSerializer(m)
         return Response(serializer.data)
@@ -254,5 +256,6 @@ class FeedbackViewset(viewsets.ViewSet):
             return Response('Feedback already recorded')
         else:
             response = Response('Feedback noted successfully')
-            response.set_cookie('feedback-sent', 'true', max_age=31536000000, domain='.app.vumc.org')
+            response.set_cookie('feedback-sent', 'true',
+                                max_age=31536000000, domain='.app.vumc.org')
             return response

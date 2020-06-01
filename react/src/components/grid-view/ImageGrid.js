@@ -139,8 +139,8 @@ export default class ImageGrid extends React.Component {
         }
       }).then(response => {
         let result = response.data
-        for (let img of Object.keys(result)) {
-          for (let tagset of result[img]) {
+        for (let img of Object.keys(result.images)) {
+          for (let tagset of result.images[img]) {
             this.state.filterTree.addImg(tagset.tag, img)
           }
         }
