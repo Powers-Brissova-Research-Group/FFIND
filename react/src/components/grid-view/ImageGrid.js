@@ -95,7 +95,7 @@ export default class ImageGrid extends React.Component {
       })
     })
 
-    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-tags`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`, {
       withCredentials: true,
       credentials: 'include',
       headers: {
@@ -103,8 +103,10 @@ export default class ImageGrid extends React.Component {
       }
     }).then(response => {
       let result = response.data
-      this.raw_tags = result
-      for (let tagset of result) {
+      let images = result.images
+      let tags = result.filters
+
+      for (let tagset of tags) {
         let tagsetName = tagset.set_name
         for (let tag of Object.keys(tagset.tags)) {
           var ageRe = /AGE|DISEASE DURATION*/i
@@ -127,44 +129,35 @@ export default class ImageGrid extends React.Component {
           }
         }
       }
-
       for (let filter of activeFilters) {
         this.state.filterTree.activateFilter(filter)
       }
-      axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`, {
-        withCredentials: true,
-        credentials: 'include',
-        headers: {
-          'Authorization': process.env.REACT_APP_API_AUTH
+
+      for (let img of Object.keys(images)) {
+        for (let tagset of images[img]) {
+          this.state.filterTree.addImg(tagset.tag, img)
         }
-      }).then(response => {
-        let result = response.data
-        for (let img of Object.keys(result.images)) {
-          for (let tagset of result.images[img]) {
-            this.state.filterTree.addImg(tagset.tag, img)
-          }
-        }
-        let activeImages = this.state.filterTree.generateActiveImages()
-        // var sortedImages = this.state.filterTree.sortImages('AGE', ((a, b) => compareAges(a.value, b.value)))
-        // var activeSortedImages = sortedImages.filter(img => activeImages.includes(img))
-        this.setState({
-          loaded: true,
-          ids: result,
-          maxPages: Math.floor(Object.keys(result).length / (this.state.imgsPerRow * this.state.rowsPerPage)),
-          matches: activeImages,
-          page: 0
-        })
-        // this.updateTags(true)
-        // this.filter(this.props.filters)
+      }
+      let activeImages = this.state.filterTree.generateActiveImages()
+      // var sortedImages = this.state.filterTree.sortImages('AGE', ((a, b) => compareAges(a.value, b.value)))
+      // var activeSortedImages = sortedImages.filter(img => activeImages.includes(img))
+      this.setState({
+        loaded: true,
+        ids: result,
+        maxPages: Math.floor(Object.keys(result).length / (this.state.imgsPerRow * this.state.rowsPerPage)),
+        matches: activeImages,
+        page: 0
       })
-        .catch(err => {
-          console.log(err)
-          this.setState({
-            loaded: false,
-            error: err
-          })
-        })
+      // this.updateTags(true)
+      // this.filter(this.props.filters)
     })
+      .catch(err => {
+        console.log(err)
+        this.setState({
+          loaded: false,
+          error: err
+        })
+      })
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -281,7 +274,7 @@ export default class ImageGrid extends React.Component {
           }
         })
         toAdd = old[key]
-      }      
+      }
       urlParams.set(key, window.btoa(JSON.stringify(toAdd)))
     }
     window.history.pushState({ 'pageTitle': 'Browse & Filter Dataset' }, '', `${window.location.protocol}//${window.location.host}${window.location.pathname}?${urlParams.toString()}`)
@@ -298,7 +291,7 @@ export default class ImageGrid extends React.Component {
   markerFilter(marker) {
     let search = this.state.filterTree.search(marker)
     if (search !== undefined && search.active !== true) {
-      this.filter({"MARKER": [marker]}, [marker])
+      this.filter({ "MARKER": [marker] }, [marker])
     }
   }
 
