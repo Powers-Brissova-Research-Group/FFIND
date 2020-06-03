@@ -82,20 +82,28 @@ export default class ImageGrid extends React.Component {
       activeFilters = activeFilters.concat(JSON.parse(window.atob(searchParams.get('filters'))))
     }
 
-    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`, {
-      withCredentials: true,
-      credentials: 'include',
-      headers: {
-        'Authorization': process.env.REACT_APP_API_AUTH
-      }
-    }).then(response => {
-      let result = response.data
-      this.setState({
-        datasetName: result.dsname
-      })
-    })
+    var imageUrl = (this.props.did) ? `${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images` : `${process.env.REACT_APP_API_URL}/datasets/list-all`
 
-    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images`, {
+    if (this.props.did) {
+      axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`, {
+        withCredentials: true,
+        credentials: 'include',
+        headers: {
+          'Authorization': process.env.REACT_APP_API_AUTH
+        }
+      }).then(response => {
+        let result = response.data
+        this.setState({
+          datasetName: result.dsname
+        })
+      })
+    } else {
+      this.setState({
+        datasetName: 'All Pancreatlas Images'
+      })
+    }
+
+    axios.get(imageUrl, {
       withCredentials: true,
       credentials: 'include',
       headers: {
@@ -500,9 +508,7 @@ export default class ImageGrid extends React.Component {
               </Row>
               <Row>
                 <Col md='6'>
-                  <div className='float-left'>
-                    View more about this dataset <Link to={`/datasets/${this.props.did}/overview`}><strong><u>here</u></strong>.</Link>
-                  </div>
+                  {this.props.did && <div className='float-left'>View more about this dataset <Link to={`/datasets/${this.props.did}/overview`}><strong><u>here</u></strong>.</Link> </div>}
                 </Col>
                 <Col md='6'>
                   <Row>

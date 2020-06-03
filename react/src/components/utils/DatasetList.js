@@ -24,7 +24,7 @@ import DatasetCard from './DatasetCard'
 import axios from 'axios'
 
 export default class DatasetList extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       loaded: false,
@@ -35,7 +35,7 @@ export default class DatasetList extends React.Component {
     this.iids = (params.has('iids') ? params.get('iids') : window.btoa(JSON.stringify([])))
   }
 
-  componentDidMount () {
+  componentDidMount() {
     axios.get(`${process.env.REACT_APP_API_URL}/datasets/`, {
       withCredentials: true,
       crossDomain: true,
@@ -57,7 +57,7 @@ export default class DatasetList extends React.Component {
       })
     })
   }
-  toggle (tab) {
+  toggle(tab) {
     if (this.state.activeTab !== tab) {
       this.setState({
         activeTab: tab
@@ -65,7 +65,7 @@ export default class DatasetList extends React.Component {
     }
   }
 
-  render () {
+  render() {
     if (this.state.loaded) {
       return (
         <div className='dataset-lists'>
@@ -141,6 +141,9 @@ export default class DatasetList extends React.Component {
               </Row>
             </TabPane>
           </TabContent>
+          <Link to='/explore-all-images'>
+            <Button color='primary'>Explore all Images</Button>
+          </Link>
         </div>
       )
     } else if (this.state.error !== undefined) {

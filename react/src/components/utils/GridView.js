@@ -1,7 +1,5 @@
 import React from 'react'
 
-import axios from 'axios'
-
 import MetaTags from 'react-meta-tags'
 
 import { 
@@ -18,20 +16,6 @@ export default class GridView extends React.Component {
       groupName: null,
       group: 4
     }
-  }
-
-  componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.match.params.did}`, {
-      withCredentials: true,
-      credentials: 'include',
-      headers: {
-        'Authorization': process.env.REACT_APP_API_AUTH
-      }
-    }).then(result => {
-      this.setState({
-        title: result.data.dsname
-      })
-    })
   }
 
   render() {
