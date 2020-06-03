@@ -139,8 +139,6 @@ export default class ImageGrid extends React.Component {
         }
       }
       let activeImages = this.state.filterTree.generateActiveImages()
-      // var sortedImages = this.state.filterTree.sortImages('AGE', ((a, b) => compareAges(a.value, b.value)))
-      // var activeSortedImages = sortedImages.filter(img => activeImages.includes(img))
       this.setState({
         loaded: true,
         ids: result,
@@ -178,17 +176,6 @@ export default class ImageGrid extends React.Component {
           }
         }
       }
-      // let tagset = this.state.ids[key].tagset
-      // let tag = this.state.ids[key].tag
-      // // appTags[this.tag_idx[this.tag_idx[tag]].tags[]]
-      // for (let tag of Object.keys(this.tag_dict)) {
-      //   let intersection = this.state.ids[key].filter(val => this.tag_dict[tag].indexOf(val) !== -1)
-      //   if (intersection.length > 0) {
-      //     for (let tval of intersection) {
-      //       appTags[this.tag_idx[tag]].tags[tval]++
-      //     }
-      //   }
-      // }
     }
     if (shouldDelete) {
       for (let idx = 0; idx < appTags.length; idx++) {

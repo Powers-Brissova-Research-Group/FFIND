@@ -211,6 +211,8 @@ class App extends Component {
                 <Route exact path={`/datasets/:did/explore`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
                 <Route path={`/datasets/:did/overview`} component={DatasetOverview} />
 
+                <Rout exact path={`/explore-all-images`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
+
                 {/* <Route path='/pancreatlas/image/:iid' component={ImageDetail} /> */}
                 <Route path='/matrixview/:dsid' component={MatrixView} />
                 <Route path='/nomenclature' component={Nomenclature} />

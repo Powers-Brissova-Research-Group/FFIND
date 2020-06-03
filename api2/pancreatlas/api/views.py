@@ -115,6 +115,18 @@ class DatasetViewset(viewsets.ViewSet):
         conn = BlitzGateway('api.user', 'ts6t6r1537k=',
                             host='10.152.140.10', port=4064)
         raw_data = ''
+        filters = {}
+        filter_order = {
+            'DISEASE STATUS': 0,
+            'DISEASE DURATION': 1,
+            'AGE': 2,
+            'SEX': 3,
+            'PROGRAM ID': 4,
+            'MARKER': 5,
+            'PANCREAS REGION': 6,
+            'MODALITY': 7
+        }
+
         try:
             conn.connect()
             dsets = [dset.did for dset in omero_api.get_private_datasets(conn)]
@@ -122,7 +134,23 @@ class DatasetViewset(viewsets.ViewSet):
                 with open('/app001/www/assets/pancreatlas/datasets/' + str(dset.did) + '.txt') as f:
                     data = f.readline()
                     raw_data += data
-            return Response(json.loads(data))
+            json_data = json.loads(raw_data)
+        
+            for key, val in list(json_data.items()):
+                for fil in val:
+                    filter_group = fil['tagset'].upper()
+                    root_group = filter_group.split('-')[0]
+                    filter_name = fil['tag']
+                    if root_group in filter_order:
+                        if filter_group not in filters:
+                            filters[filter_group] = {
+                                'set_name': filter_group, 'tags': {}, 'pos': filter_order[root_group]}
+                        fset = filters[filter_group]
+                        fset['tags'][filter_name] = 0
+            sorted_filters = sorted(
+                list(filters.values()), key=lambda fil: fil['pos'])
+            all_data = {'images': json_data, 'filters': sorted_filters}
+            return Response(all_data)
         finally:
             try:
                 conn.close(hard=False)
