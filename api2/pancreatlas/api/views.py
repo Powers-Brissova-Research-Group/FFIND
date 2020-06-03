@@ -129,9 +129,9 @@ class DatasetViewset(viewsets.ViewSet):
 
         try:
             conn.connect()
-            dsets = [dset.did for dset in omero_api.get_private_datasets(conn)]
-            for dset in dsets:
-                with open('/app001/www/assets/pancreatlas/datasets/' + str(dset.did) + '.txt') as f:
+            dids = [dset.did for dset in omero_api.get_private_datasets(conn)]
+            for did in dids:
+                with open('/app001/www/assets/pancreatlas/datasets/' + str(did) + '.txt') as f:
                     data = f.readline()
                     raw_data += data
             json_data = json.loads(raw_data)
