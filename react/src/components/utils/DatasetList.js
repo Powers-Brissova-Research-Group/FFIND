@@ -93,7 +93,6 @@ export default class DatasetList extends React.Component {
                     </Col>
                   ))}
                 </Row>
-                <Row>
               </div>
             </TabPane>
             <TabPane tabId='1'>
