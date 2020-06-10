@@ -299,7 +299,9 @@ export default class ImageGrid extends React.Component {
 
   toggle() {
     if (this.state.modalOpen) {
-      window.history.pushState({ 'pageTitle': 'Browse & Filter Dataset' }, '', `${window.location.protocol}//${window.location.host}/datasets/${this.props.did}/explore`)
+      let pathParts = window.location.pathname.split('/')
+      let newPath = pathParts.slice(0, pathParts.length - 1).join('/')
+      window.history.pushState({ 'pageTitle': 'Browse & Filter Dataset' }, '', `${window.location.protocol}//${window.location.host}${newPath}`)
     }
     this.setState({
       modalOpen: !this.state.modalOpen
