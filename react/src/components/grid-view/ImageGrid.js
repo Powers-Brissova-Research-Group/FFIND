@@ -154,6 +154,9 @@ export default class ImageGrid extends React.Component {
         matches: activeImages,
         page: 0
       })
+      if (this.props.iid > 0) {
+        this.setModal(this.props.iid)
+      }
       // this.updateTags(true)
       // this.filter(this.props.filters)
     })
@@ -295,6 +298,9 @@ export default class ImageGrid extends React.Component {
   }
 
   toggle() {
+    if (this.state.modalOpen) {
+      window.history.pushState({ 'pageTitle': 'Browse & Filter Dataset' }, '', `${window.location.protocol}//${window.location.host}/datasets/${this.props.did}/explore`)
+    }
     this.setState({
       modalOpen: !this.state.modalOpen
     })
@@ -310,9 +316,6 @@ export default class ImageGrid extends React.Component {
     }).then(response => {
       let result = response.data
       if (Object.keys(result.kvals).length > 0) {
-        // let path = result.kvals['File path'].val
-        // let re = /([0-9]+-[0-9]+-[0-9]+)?(\/[^/]+\.[a-z]+)$/
-        // let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
 
         let markerColors = result.channel_info
         let markerColorRe = /^(.+)\((.+)\)$/
@@ -323,19 +326,6 @@ export default class ImageGrid extends React.Component {
             delete markerColors[key]
           }
         })
-
-        // let markerColorRe = /^.+\((.+)\)$/
-        // Object.keys(markerColors).forEach(function (key) {
-        //   var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
-        //   if (newKey !== key) {
-        //     markerColors[newKey] = markerColors[key]
-        //     delete markerColors[key]
-        //   }
-        // })
-
-        // let matches = re.exec(path)
-        // result.kvals['File path'].val = matches[0]
-        // result.kvals['Donor info - Age'].val = result.tags.filter(val => ageRe.test(val))[0]
         this.setState({
           modalData: {
             img_id: imgInfo,
@@ -352,6 +342,15 @@ export default class ImageGrid extends React.Component {
             path_path: result.pathpath
           }
         })
+      }
+
+      let path = window.location.pathname
+      if (path.charAt(path.length -1) === '/') {
+        path = path.slice(0, path.length - 1)
+      }
+      let pathParts = path.split('/')
+      if (pathParts[pathParts.length - 1] !== imgInfo) {
+        window.history.pushState({ 'pageTitle': 'Browse & Filter Dataset' }, '', `${window.location.protocol}//${window.location.host}${window.location.pathname}/${imgInfo}`)
       }
       this.toggle()
     }).catch(err => {

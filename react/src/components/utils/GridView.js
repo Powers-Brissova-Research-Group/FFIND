@@ -20,6 +20,7 @@ export default class GridView extends React.Component {
 
   render() {
     let did = (this.props.match !== undefined) ? this.props.match.params.did : 0
+    let iid = (this.props.match !== undefined) ? this.props.match.params.iid : 0
     return (
       <div className='grid-view'>
         <MetaTags>
@@ -27,7 +28,7 @@ export default class GridView extends React.Component {
           <meta name='description' content='Browse all images within this dataset' />
         </MetaTags>
         <ImageGridBoundary>
-          <ImageGrid favorites={this.props.favorites} favoriteCallback={this.props.favoriteCallback} filters={{}} group={this.state.group} groupName={this.state.groupName} did={did} />
+          <ImageGrid favorites={this.props.favorites} favoriteCallback={this.props.favoriteCallback} filters={{}} group={this.state.group} groupName={this.state.groupName} did={did} iid={iid} />
         </ImageGridBoundary>
       </div>
     )

@@ -209,6 +209,7 @@ class App extends Component {
                 <Route exact path={`/datasets`} component={DatasetListPage} />
                 <Route exact path={`/datasets/:did/browse-by-age`} component={AgeBrowser} />
                 <Route exact path={`/datasets/:did/explore`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
+                <Route exact path={`/datasets/:did/explore/:iid`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
                 <Route path={`/datasets/:did/overview`} component={DatasetOverview} />
 
                 <Route exact path={`/explore-all-images`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
