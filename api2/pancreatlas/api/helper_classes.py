@@ -126,8 +126,6 @@ class Image:
                         channel = hex_match.group(3)
                         self.channel_info[channel] = pair[1]
                         found_hex = True
-                    if pair[0] == "Program ID link" and pair[1] == 'https://hpap.pmacs.upenn.edu/explore/donor':
-                        self.key_values[[pair[0]] = ]
                     self.key_values[pair[0]] = {'val': pair[1], 'desc': 'default val'}
 
         if not found_hex:
