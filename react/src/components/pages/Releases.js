@@ -42,7 +42,7 @@ export default class Releases extends React.Component {
           <p className='text-larger'>Find info about each of our releases here</p>
         </PageBanner>
         <Container>
-          {Object.keys(this.state.versions).map(version => {
+          {Object.keys(this.state.versions).sort().reverse().map(version => {
             return (
               <Row className='py-4 border-bottom'>
                 <Col md='12' dangerouslySetInnerHTML={{ __html: this.state.versions[version] }} />
