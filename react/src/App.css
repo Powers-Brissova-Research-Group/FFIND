@@ -10,6 +10,8 @@ html, body {
   height: 100%;
   font-family: 'Roboto', sans-serif;
   font-size:0.95em;
+  background-color: #49525A!important;
+  color: white;
 }
 h1, h2, h3, h4, h5, h6{
   font-family: 'Poppins', serif;
@@ -27,6 +29,18 @@ a:hover{
 /*
 Layout-specific
  */
+
+div.ffind-banner {
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin-top: 3rem;
+  padding: 1.5rem;
+}
+
+div.card {
+  background-color: #49525A!important;
+  border-color: grey;
+}
 img.home-logo {
   width: 45%;
 }
@@ -82,10 +96,6 @@ Navigation
   width: 100%;
   margin-bottom: 3rem;
   background-color: #1b294a;
-}
-
-.bg-dark {
-  background-color: #204356 !important;
 }
 
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand {
@@ -654,7 +664,7 @@ span.undo {
 
 .banner-container{
   height: calc(100vh - 70px);
-  margin-top: calc(calc(-100vh + 70px))
+  min-height: 1010px;
 }
 
 .banner-row{

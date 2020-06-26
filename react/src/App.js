@@ -185,9 +185,6 @@ class App extends Component {
     } else {
       return (
         <div>
-          <WarningBanner>
-            <h5>WARNING: You are currently using a development version of Pancreatlas. Note that features are not guaranteed to work and that you must log into OMERO to use PathViewer.</h5>
-          </WarningBanner>
           {supported === false && <WarningBanner><h5>Sorry, but your browser ({browserName.charAt(0).toUpperCase() + browserName.slice(1) + ' ' + version}) is not supported and some site features may not work properly.</h5><p>Please consider using the most recent versions of <a href='https://www.mozilla.org/en-US/firefox/new/'>Mozilla Firefox</a> or <a href='https://www.google.com/chrome'>Google Chrome</a>.</p></WarningBanner>}
           {/* <Container fluid className='test-feedback'>
             <Row>
@@ -201,13 +198,9 @@ class App extends Component {
               <TopNav favorites={this.state.encodedFavorites} />
               <Switch>
                 <Route exact path='/' component={Home} />
-                <Route path='/releases' component={Releases} />
-                <Route path='/diabetes' component={Diabetes} />
-                <Route path='/collaborators' component={Collaborators} />
                 <Route path='/about' component={About} />
 
                 <Route exact path={`/datasets`} component={DatasetListPage} />
-                <Route exact path={`/datasets/:did/browse-by-age`} component={AgeBrowser} />
                 <Route exact path={`/datasets/:did/explore`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
                 <Route exact path={`/datasets/:did/explore/:iid`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
                 <Route path={`/datasets/:did/overview`} component={DatasetOverview} />
@@ -216,17 +209,9 @@ class App extends Component {
                 <Route exact path={`/explore-all-images/:iid`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
 
                 {/* <Route path='/pancreatlas/image/:iid' component={ImageDetail} /> */}
-                <Route path='/matrixview/:dsid' component={MatrixView} />
-                <Route path='/nomenclature' component={Nomenclature} />
-                <Route path={`/favorites`} render={(props) => <Favorites {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
-                <Route path='/resources' component={Resources} />
-                <Route path='/admin' component={Admin} />
-                <Route path='/data-usage' component={Usage} />
                 <Route component={PageNotFound} />
 
               </Switch>
-              <UserInfoModal visible={this.state.userInfoDisplay} toggle={this.dismissInfoModal} />
-              <PancreatlasFooter />
             </div>
           </Router>
         </div>

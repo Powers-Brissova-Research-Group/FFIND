@@ -18,7 +18,7 @@ import {
   NavLink
 } from 'react-router-dom'
 
-import logo from '../../assets/img/page_imgs/pancreatlas-logo.png'
+import logo from '../../assets/img/page_imgs/ffind-logo.png'
 
 export default class TopNav extends React.Component {
   constructor (props) {
@@ -71,17 +71,8 @@ export default class TopNav extends React.Component {
                   <NavLink to='/datasets'>Image Collections</NavLink>
                 </NavItem>
               }
-              <NavItem active={(window.location.pathname === '/nomenclature')}>
-                <NavLink to='/nomenclature'>Nomenclature</NavLink>
-              </NavItem>
               <NavItem active={(window.location.pathname === '/about')}>
                 <NavLink to='/about'>About</NavLink>
-              </NavItem>
-              <NavItem active={(window.location.pathname === '/collaborators')}>
-                <NavLink to='/collaborators'>Contributors</NavLink>
-              </NavItem>
-              <NavItem active={(window.location.pathname === '/resources')}>
-                <NavLink to='/resources'>Resources</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
