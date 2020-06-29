@@ -39,7 +39,7 @@ export default class Banner extends React.Component {
           </Row>
           <Row className='mt-3'>
             <Col md={4} sm={12}>
-              <Card>
+              <Card style={{minHeight: '300px'}}>
                 <CardBody>
                   <CardTitle>Collection 1</CardTitle>
                   <CardSubtitle>Catchy catchphrase</CardSubtitle>
@@ -48,7 +48,7 @@ export default class Banner extends React.Component {
               </Card>
             </Col>
             <Col md={4} sm={12}>
-              <Card>
+              <Card style={{minHeight: '300px'}}>
                 <CardBody>
                   <CardTitle>Collection 2</CardTitle>
                   <CardSubtitle>Catchy catchphrase</CardSubtitle>
@@ -57,18 +57,13 @@ export default class Banner extends React.Component {
               </Card>
             </Col>
             <Col md={4} sm={12}>
-              <Card>
+              <Card style={{minHeight: '300px'}}>
                 <CardBody>
                   <CardTitle>Collection 3</CardTitle>
                   <CardSubtitle>Catchy catchphrase</CardSubtitle>
                   <CardText>Use this card to showcase the first featured collection in your data.</CardText>
                 </CardBody>
               </Card>
-            </Col>
-          </Row>
-          <Row className='align-items-end' style={{ height: '33%' }}>
-            <Col md='12' className='text-center'>
-              <FontAwesomeIcon className='scroll-down-arrow' onClick={this.props.scrollDown} icon='angle-down' size='6x' color='white' />
             </Col>
           </Row>
         </Container>

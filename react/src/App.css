@@ -662,11 +662,6 @@ span.undo {
   padding-bottom: 10px;
 } */
 
-.banner-container{
-  height: calc(100vh - 70px);
-  min-height: 1010px;
-}
-
 .banner-row{
   height: 100%;
 }
@@ -695,6 +690,10 @@ span.undo {
 
 .banner-button {
   white-space: normal;
+}
+
+a.dataset-nav :not(active) {
+  color: white !important;
 }
 
 .feature-header-row {
@@ -810,10 +809,6 @@ span.control-element.selected {
 
 div.overlay {
   background: rgba(44, 111, 110, 0.7) none repeat scroll 0 0;
-}
-
-a.dataset-nav {
-  color: #495057 !important;
 }
 
 .nav-item a {

@@ -21,6 +21,8 @@ import Error from './Error'
 import LoadingBar from './LoadingBar'
 import DatasetCard from './DatasetCard'
 
+import mock_datasets from '../../assets/txt/ffind-defaults/mock_datasets.json'
+
 import axios from 'axios'
 
 export default class DatasetList extends React.Component {
@@ -36,24 +38,12 @@ export default class DatasetList extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`${process.env.REACT_APP_API_URL}/datasets/`, {
-      withCredentials: true,
-      crossDomain: true,
-      headers: {
-        'Authorization': process.env.REACT_APP_API_AUTH
-      }
-    }).then(result => {
-      this.setState({
-        loaded: true,
-        datasets: result.data.sort(function (a, b) {
-          if (a.did < b.did) return -1
-          if (a.did > b.did) return 1
-          return 0
-        })
-      })
-    }).catch(err => {
-      this.setState({
-        error: err
+    this.setState({
+      loaded: true,
+      datasets: mock_datasets.sort(function (a, b) {
+        if (a.did < b.did) return -1
+        if (a.did > b.did) return 1
+        return 0
       })
     })
   }
@@ -99,7 +89,7 @@ export default class DatasetList extends React.Component {
               <Row>
                 <Col md='12'>
                   <div className='table table-responsive'>
-                    <Table hover>
+                    <Table style={{color: 'white'}}>
                       <thead>
                         <tr>
                           <th>Description</th>
