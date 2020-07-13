@@ -1,0 +1,175 @@
+{
+    "iid": 16780,
+    "iname": "DON22-ND-4d-M-Bod.jpg",
+    "pathpath": "https://omero.app.vumc.org/pathviewer/viewer/#?slide=16780&q_image=16780&tabs=VDp",
+    "tags": [{
+            "tagset": "SET 6",
+            "tag": "VAL 6.1"
+        },
+        {
+            "tagset": "SET 1",
+            "tag": "VAL 1.1"
+        },
+        {
+            "tagset": "SET 2-SUBSET 1",
+            "tag": "VAL 2.1.1"
+        },
+        {
+            "tagset": "SET 3",
+            "tag": "VAL 3.1"
+        },
+        {
+            "tagset": "SET 4",
+            "tag": "VAL 4.1"
+        },
+        {
+            "tagset": "SET 4",
+            "tag": "VAL 4.2"
+        },
+        {
+            "tagset": "SET 4",
+            "tag": "VAL 4.3"
+        },
+        {
+            "tagset": "SET 4",
+            "tag": "VAL 4.4"
+        },
+        {
+            "tagset": "SET 5",
+            "tag": "VAL 5.1"
+        }
+    ],
+    "00002": [{
+            "tagset": "SET 6",
+            "tag": "VAL 6.2"
+        },
+        {
+            "tagset": "SET 1",
+            "tag": "VAL 1.1"
+        },
+        {
+            "tagset": "SET 2-SUBSET 2",
+            "tag": "VAL 2.2.1"
+        },
+        {
+            "tagset": "SET 3",
+            "tag": "VAL 3.1"
+        },
+        {
+            "tagset": "SET 4",
+            "tag": "VAL 4.1"
+        },
+        {
+            "tagset": "SET 4",
+            "tag": "VAL 4.2"
+        },
+        {
+            "tagset": "SET 4",
+            "tag": "VAL 4.3"
+        },
+        {
+            "tagset": "SET 4",
+            "tag": "VAL 4.4"
+        },
+        {
+            "tagset": "SET 5",
+            "tag": "VAL 5.1"
+        }
+    ],
+    "kvals": {
+        "Image info - Modality": {
+            "val": "FL IHC",
+            "desc": "default val"
+        },
+        "Sample info - Processing Type": {
+            "val": "OCT",
+            "desc": "default val"
+        },
+        "Donor info - UNOS ID": {
+            "val": "ABAJ206",
+            "desc": "default val"
+        },
+        "Donor info - LIMS ID": {
+            "val": "DON22",
+            "desc": "default val"
+        },
+        "Donor info - Disease Status": {
+            "val": "ND",
+            "desc": "default val"
+        },
+        "Donor info - Disease Duration": {
+            "val": "",
+            "desc": "default val"
+        },
+        "Donor info - Age": {
+            "val": "4d",
+            "desc": "default val"
+        },
+        "Donor info - Sex": {
+            "val": "M",
+            "desc": "default val"
+        },
+        "Stain info - cy2": {
+            "val": "INS",
+            "desc": "default val"
+        },
+        "Stain info - cy2-Ab": {
+            "val": "",
+            "desc": "default val"
+        },
+        "Stain info - cy3": {
+            "val": "GCG",
+            "desc": "default val"
+        },
+        "Stain info - cy3-Ab": {
+            "val": "",
+            "desc": "default val"
+        },
+        "Stain info - cy5": {
+            "val": "SST",
+            "desc": "default val"
+        },
+        "Stain info - cy5-Ab": {
+            "val": "",
+            "desc": "default val"
+        },
+        "Stain info - DAPI": {
+            "val": "DAPI",
+            "desc": "default val"
+        },
+        "Image info - Section Plane": {
+            "val": "Sagittal",
+            "desc": "default val"
+        },
+        "Image info - Pancreas Region": {
+            "val": "Body",
+            "desc": "default val"
+        },
+        "Image info - File Type": {
+            "val": "Aperio",
+            "desc": "default val"
+        },
+        "Image info - Annotations": {
+            "val": "yes",
+            "desc": "default val"
+        },
+        "Image info - Analysis": {
+            "val": "yes",
+            "desc": "default val"
+        },
+        "(DS notes)": {
+            "val": "",
+            "desc": "default val"
+        },
+        "External id": {
+            "val": "139358",
+            "desc": "default val"
+        }
+    },
+    "channel_info": {
+        "DAPI": "0000FF",
+        "INS (CY2)": "00FF00",
+        "GCG (CY3)": "FF0000",
+        "SST (CY5)": "FFFFFF"
+    }
+}

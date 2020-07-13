@@ -82,91 +82,66 @@ export default class ImageGrid extends React.Component {
       activeFilters = activeFilters.concat(JSON.parse(window.atob(searchParams.get('filters'))))
     }
 
-    var imageUrl = (this.props.did) ? `${process.env.REACT_APP_API_URL}/datasets/${this.props.did}/get-images` : `${process.env.REACT_APP_API_URL}/datasets/list-all`
+    var imageJson = (this.props.did) ? require(`../../assets/txt/ffind-defaults/${this.props.did}.json`) : require(`../../assets/txt/ffind-defaults/all-images.json`)
 
     if (this.props.did) {
-      axios.get(`${process.env.REACT_APP_API_URL}/datasets/${this.props.did}`, {
-        withCredentials: true,
-        credentials: 'include',
-        headers: {
-          'Authorization': process.env.REACT_APP_API_AUTH
-        }
-      }).then(response => {
-        let result = response.data
-        this.setState({
-          datasetName: result.dsname
-        })
+      this.setState({
+        datasetName: 'Test dataset'
       })
     } else {
       this.setState({
-        datasetName: 'All Pancreatlas Images'
+        datasetName: 'All Images'
       })
     }
 
-    axios.get(imageUrl, {
-      withCredentials: true,
-      credentials: 'include',
-      headers: {
-        'Authorization': process.env.REACT_APP_API_AUTH
-      }
-    }).then(response => {
-      let result = response.data
-      let images = result.images
-      let tags = result.filters
+    let images = imageJson.images
+    let tags = imageJson.filters
 
-      for (let tagset of tags) {
-        let tagsetName = tagset.set_name
-        for (let tag of Object.keys(tagset.tags)) {
-          var ageRe = /AGE|DISEASE DURATION*/i
-          var defaultHiddenRe = /PROGRAM ID*/i
-          var filterMethod = ageRe.test(tagsetName) ? 'slider' : 'checkbox'
-          var hidden = defaultHiddenRe.test(tagsetName) ? true : false
-          var sortMethod = ageRe.test(tagsetName) ? (a, b) => compareAges(a.name, b.name) : (a, b) => (a.name > b.name) ? 1 : -1
-          this.state.filterTree.addNode(tag, tagsetName, sortMethod, filterMethod, hidden)
+    for (let tagset of tags) {
+      let tagsetName = tagset.set_name
+      for (let tag of Object.keys(tagset.tags)) {
+        var ageRe = /AGE|DISEASE DURATION*/i
+        var defaultHiddenRe = /PROGRAM ID*/i
+        var filterMethod = ageRe.test(tagsetName) ? 'slider' : 'checkbox'
+        var hidden = defaultHiddenRe.test(tagsetName) ? true : false
+        var sortMethod = ageRe.test(tagsetName) ? (a, b) => compareAges(a.name, b.name) : (a, b) => (a.name > b.name) ? 1 : -1
+        this.state.filterTree.addNode(tag, tagsetName, sortMethod, filterMethod, hidden)
+      }
+    }
+    let setNodes = this.state.filterTree.generateAllNodes()
+    for (let key of searchParams.keys()) {
+      if (setNodes.indexOf(key.toUpperCase()) >= 0) {
+        try {
+          let tmpObj = JSON.parse(window.atob(searchParams.get(key)))
+          let filters = extractFilters(tmpObj)
+          activeFilters = activeFilters.concat(filters)
+        } catch (e) {
+          console.error(e)
         }
       }
-      let setNodes = this.state.filterTree.generateAllNodes()
-      for (let key of searchParams.keys()) {
-        if (setNodes.indexOf(key.toUpperCase()) >= 0) {
-          try {
-            let tmpObj = JSON.parse(window.atob(searchParams.get(key)))
-            let filters = extractFilters(tmpObj)
-            activeFilters = activeFilters.concat(filters)
-          } catch (e) {
-            console.error(e)
-          }
-        }
-      }
-      for (let filter of activeFilters) {
-        this.state.filterTree.activateFilter(filter)
-      }
+    }
+    for (let filter of activeFilters) {
+      this.state.filterTree.activateFilter(filter)
+    }
 
-      for (let img of Object.keys(images)) {
-        for (let tagset of images[img]) {
-          this.state.filterTree.addImg(tagset.tag, img)
-        }
+    for (let img of Object.keys(images)) {
+      for (let tagset of images[img]) {
+        this.state.filterTree.addImg(tagset.tag, img)
       }
-      let activeImages = this.state.filterTree.generateActiveImages()
-      this.setState({
-        loaded: true,
-        ids: result,
-        maxPages: Math.floor(Object.keys(result).length / (this.state.imgsPerRow * this.state.rowsPerPage)),
-        matches: activeImages,
-        page: 0
-      })
-      if (this.props.iid > 0) {
-        this.setModal(this.props.iid)
-      }
-      // this.updateTags(true)
-      // this.filter(this.props.filters)
+    }
+    let activeImages = this.state.filterTree.generateActiveImages()
+    this.setState({
+      loaded: true,
+      ids: imageJson,
+      maxPages: Math.floor(Object.keys(imageJson).length / (this.state.imgsPerRow * this.state.rowsPerPage)),
+      matches: activeImages,
+      page: 0
     })
-      .catch(err => {
-        console.log(err)
-        this.setState({
-          loaded: false,
-          error: err
-        })
-      })
+    if (this.props.iid > 0) {
+      this.setModal(this.props.iid)
+    }
+    // this.updateTags(true)
+    // this.filter(this.props.filters)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -347,7 +322,7 @@ export default class ImageGrid extends React.Component {
       }
 
       let path = window.location.pathname
-      if (path.charAt(path.length -1) === '/') {
+      if (path.charAt(path.length - 1) === '/') {
         path = path.slice(0, path.length - 1)
       }
       let pathParts = path.split('/')
