@@ -1,802 +1,832 @@
 {
-    "00001": {
-        "iid": "00001",
-        "iname": "DON22-ND-4d-M-Bod.jpg",
-        "pathpath": "https://omero.app.vumc.org/pathviewer/viewer/#?slide=16780&q_image=16780&tabs=VDp",
-        "tags": [{
-                "tagset": "SET 6",
-                "tag": "VAL 6.1"
-            },
-            {
-                "tagset": "SET 1",
-                "tag": "VAL 1.1"
-            },
-            {
-                "tagset": "SET 2-SUBSET 1",
-                "tag": "VAL 2.1.1"
-            },
-            {
-                "tagset": "SET 3",
-                "tag": "VAL 3.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.2"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.3"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.4"
-            },
-            {
-                "tagset": "SET 5",
-                "tag": "VAL 5.1"
-            }
+  "00001": {
+    "iid": "00001",
+    "iname": "Test Image 00001",
+    "tags": [
+      {
+        "tagset": "SET 6",
+        "tag": "VAL 6.1"
+      },
+      {
+        "tagset": "SET 1",
+        "tag": "VAL 1.1"
+      },
+      {
+        "tagset": "SET 2-SUBSET 1",
+        "tag": "VAL 2.1.1"
+      },
+      {
+        "tagset": "SET 3",
+        "tag": "VAL 3.1"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.1"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.2"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.3"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.4"
+      },
+      {
+        "tagset": "SET 5",
+        "tag": "VAL 5.1"
+      }
+    ],
+    "kvals": {
+      "SET 6": {
+        "val": [
+          "VAL 6.1"
         ],
-        "kvals": {
-            "SET 1": {
-                "val": "VAL 1.1",
-                "desc": "default val"
-            },
-            "SET 2-SUBSET 1": {
-                "val": "VAL 2.1.1",
-                "desc": "default val"
-            },
-            "SET 3": {
-                "val": "VAL 3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.1",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.2",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.4",
-                "desc": "default val"
-            },
-            "SET 5": {
-                "val": "VAL 5.1",
-                "desc": "default val"
-            },
-            "SET 6": {
-                "val": "VAL 6.1",
-                "desc": "default val"
-            }
-        }
-    },
-    "00002": {
-        "iid": "00002",
-        "iname": "DON22-ND-4d-M-Bod.jpg",
-        "pathpath": "https://omero.app.vumc.org/pathviewer/viewer/#?slide=16780&q_image=16780&tabs=VDp",
-        "tags": [{
-                "tagset": "SET 6",
-                "tag": "VAL 6.1"
-            },
-            {
-                "tagset": "SET 1",
-                "tag": "VAL 1.1"
-            },
-            {
-                "tagset": "SET 2-SUBSET 1",
-                "tag": "VAL 2.1.1"
-            },
-            {
-                "tagset": "SET 3",
-                "tag": "VAL 3.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.2"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.3"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.4"
-            },
-            {
-                "tagset": "SET 5",
-                "tag": "VAL 5.1"
-            }
+        "desc": "default val"
+      },
+      "SET 1": {
+        "val": [
+          "VAL 1.1"
         ],
-        "kvals": {
-            "SET 1": {
-                "val": "VAL 1.1",
-                "desc": "default val"
-            },
-            "SET 2-SUBSET 1": {
-                "val": "VAL 2.1.1",
-                "desc": "default val"
-            },
-            "SET 3": {
-                "val": "VAL 3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.1",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.2",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.4",
-                "desc": "default val"
-            },
-            "SET 5": {
-                "val": "VAL 5.1",
-                "desc": "default val"
-            },
-            "SET 6": {
-                "val": "VAL 6.1",
-                "desc": "default val"
-            }
-        }
-    },
-    "00003": {
-        "iid": "00003",
-        "iname": "DON22-ND-4d-M-Bod.jpg",
-        "pathpath": "https://omero.app.vumc.org/pathviewer/viewer/#?slide=16780&q_image=16780&tabs=VDp",
-        "tags": [{
-                "tagset": "SET 6",
-                "tag": "VAL 6.1"
-            },
-            {
-                "tagset": "SET 1",
-                "tag": "VAL 1.1"
-            },
-            {
-                "tagset": "SET 2-SUBSET 1",
-                "tag": "VAL 2.1.1"
-            },
-            {
-                "tagset": "SET 3",
-                "tag": "VAL 3.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.2"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.3"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.4"
-            },
-            {
-                "tagset": "SET 5",
-                "tag": "VAL 5.1"
-            }
+        "desc": "default val"
+      },
+      "SET 2-SUBSET 1": {
+        "val": [
+          "VAL 2.1.1"
         ],
-        "kvals": {
-            "SET 1": {
-                "val": "VAL 1.1",
-                "desc": "default val"
-            },
-            "SET 2-SUBSET 1": {
-                "val": "VAL 2.1.1",
-                "desc": "default val"
-            },
-            "SET 3": {
-                "val": "VAL 3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.1",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.2",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.4",
-                "desc": "default val"
-            },
-            "SET 5": {
-                "val": "VAL 5.1",
-                "desc": "default val"
-            },
-            "SET 6": {
-                "val": "VAL 6.1",
-                "desc": "default val"
-            }
-        }
-    },
-    "00004": {
-        "iid": "00004",
-        "iname": "DON22-ND-4d-M-Bod.jpg",
-        "pathpath": "https://omero.app.vumc.org/pathviewer/viewer/#?slide=16780&q_image=16780&tabs=VDp",
-        "tags": [{
-                "tagset": "SET 6",
-                "tag": "VAL 6.1"
-            },
-            {
-                "tagset": "SET 1",
-                "tag": "VAL 1.1"
-            },
-            {
-                "tagset": "SET 2-SUBSET 1",
-                "tag": "VAL 2.1.1"
-            },
-            {
-                "tagset": "SET 3",
-                "tag": "VAL 3.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.2"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.3"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.4"
-            },
-            {
-                "tagset": "SET 5",
-                "tag": "VAL 5.1"
-            }
+        "desc": "default val"
+      },
+      "SET 3": {
+        "val": [
+          "VAL 3.1"
         ],
-        "kvals": {
-            "SET 1": {
-                "val": "VAL 1.1",
-                "desc": "default val"
-            },
-            "SET 2-SUBSET 1": {
-                "val": "VAL 2.1.1",
-                "desc": "default val"
-            },
-            "SET 3": {
-                "val": "VAL 3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.1",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.2",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.4",
-                "desc": "default val"
-            },
-            "SET 5": {
-                "val": "VAL 5.1",
-                "desc": "default val"
-            },
-            "SET 6": {
-                "val": "VAL 6.1",
-                "desc": "default val"
-            }
-        }
-    },
-    "00005": {
-        "iid": "00005",
-        "iname": "DON22-ND-4d-M-Bod.jpg",
-        "pathpath": "https://omero.app.vumc.org/pathviewer/viewer/#?slide=16780&q_image=16780&tabs=VDp",
-        "tags": [{
-                "tagset": "SET 6",
-                "tag": "VAL 6.1"
-            },
-            {
-                "tagset": "SET 1",
-                "tag": "VAL 1.1"
-            },
-            {
-                "tagset": "SET 2-SUBSET 1",
-                "tag": "VAL 2.1.1"
-            },
-            {
-                "tagset": "SET 3",
-                "tag": "VAL 3.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.2"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.3"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.4"
-            },
-            {
-                "tagset": "SET 5",
-                "tag": "VAL 5.1"
-            }
+        "desc": "default val"
+      },
+      "SET 4": {
+        "val": [
+          "VAL 4.1",
+          "VAL 4.2",
+          "VAL 4.3",
+          "VAL 4.4"
         ],
-        "kvals": {
-            "SET 1": {
-                "val": "VAL 1.1",
-                "desc": "default val"
-            },
-            "SET 2-SUBSET 1": {
-                "val": "VAL 2.1.1",
-                "desc": "default val"
-            },
-            "SET 3": {
-                "val": "VAL 3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.1",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.2",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.4",
-                "desc": "default val"
-            },
-            "SET 5": {
-                "val": "VAL 5.1",
-                "desc": "default val"
-            },
-            "SET 6": {
-                "val": "VAL 6.1",
-                "desc": "default val"
-            }
-        }
-    },
-    "00006": {
-        "iid": "00006",
-        "iname": "DON22-ND-4d-M-Bod.jpg",
-        "pathpath": "https://omero.app.vumc.org/pathviewer/viewer/#?slide=16780&q_image=16780&tabs=VDp",
-        "tags": [{
-                "tagset": "SET 6",
-                "tag": "VAL 6.1"
-            },
-            {
-                "tagset": "SET 1",
-                "tag": "VAL 1.1"
-            },
-            {
-                "tagset": "SET 2-SUBSET 1",
-                "tag": "VAL 2.1.1"
-            },
-            {
-                "tagset": "SET 3",
-                "tag": "VAL 3.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.2"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.3"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.4"
-            },
-            {
-                "tagset": "SET 5",
-                "tag": "VAL 5.1"
-            }
+        "desc": "default val"
+      },
+      "SET 5": {
+        "val": [
+          "VAL 5.1"
         ],
-        "kvals": {
-            "SET 1": {
-                "val": "VAL 1.1",
-                "desc": "default val"
-            },
-            "SET 2-SUBSET 1": {
-                "val": "VAL 2.1.1",
-                "desc": "default val"
-            },
-            "SET 3": {
-                "val": "VAL 3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.1",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.2",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.4",
-                "desc": "default val"
-            },
-            "SET 5": {
-                "val": "VAL 5.1",
-                "desc": "default val"
-            },
-            "SET 6": {
-                "val": "VAL 6.1",
-                "desc": "default val"
-            }
-        }
-    },
-    "00007": {
-        "iid": "00007",
-        "iname": "DON22-ND-4d-M-Bod.jpg",
-        "pathpath": "https://omero.app.vumc.org/pathviewer/viewer/#?slide=16780&q_image=16780&tabs=VDp",
-        "tags": [{
-                "tagset": "SET 6",
-                "tag": "VAL 6.1"
-            },
-            {
-                "tagset": "SET 1",
-                "tag": "VAL 1.1"
-            },
-            {
-                "tagset": "SET 2-SUBSET 1",
-                "tag": "VAL 2.1.1"
-            },
-            {
-                "tagset": "SET 3",
-                "tag": "VAL 3.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.2"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.3"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.4"
-            },
-            {
-                "tagset": "SET 5",
-                "tag": "VAL 5.1"
-            }
-        ],
-        "kvals": {
-            "SET 1": {
-                "val": "VAL 1.1",
-                "desc": "default val"
-            },
-            "SET 2-SUBSET 1": {
-                "val": "VAL 2.1.1",
-                "desc": "default val"
-            },
-            "SET 3": {
-                "val": "VAL 3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.1",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.2",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.4",
-                "desc": "default val"
-            },
-            "SET 5": {
-                "val": "VAL 5.1",
-                "desc": "default val"
-            },
-            "SET 6": {
-                "val": "VAL 6.1",
-                "desc": "default val"
-            }
-        }
-    },
-    "00008": {
-        "iid": "00008",
-        "iname": "DON22-ND-4d-M-Bod.jpg",
-        "pathpath": "https://omero.app.vumc.org/pathviewer/viewer/#?slide=16780&q_image=16780&tabs=VDp",
-        "tags": [{
-                "tagset": "SET 6",
-                "tag": "VAL 6.1"
-            },
-            {
-                "tagset": "SET 1",
-                "tag": "VAL 1.1"
-            },
-            {
-                "tagset": "SET 2-SUBSET 1",
-                "tag": "VAL 2.1.1"
-            },
-            {
-                "tagset": "SET 3",
-                "tag": "VAL 3.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.2"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.3"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.4"
-            },
-            {
-                "tagset": "SET 5",
-                "tag": "VAL 5.1"
-            }
-        ],
-        "kvals": {
-            "SET 1": {
-                "val": "VAL 1.1",
-                "desc": "default val"
-            },
-            "SET 2-SUBSET 1": {
-                "val": "VAL 2.1.1",
-                "desc": "default val"
-            },
-            "SET 3": {
-                "val": "VAL 3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.1",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.2",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.4",
-                "desc": "default val"
-            },
-            "SET 5": {
-                "val": "VAL 5.1",
-                "desc": "default val"
-            },
-            "SET 6": {
-                "val": "VAL 6.1",
-                "desc": "default val"
-            }
-        }
-    },
-    "00009": {
-        "iid": "00009",
-        "iname": "DON22-ND-4d-M-Bod.jpg",
-        "pathpath": "https://omero.app.vumc.org/pathviewer/viewer/#?slide=16780&q_image=16780&tabs=VDp",
-        "tags": [{
-                "tagset": "SET 6",
-                "tag": "VAL 6.1"
-            },
-            {
-                "tagset": "SET 1",
-                "tag": "VAL 1.1"
-            },
-            {
-                "tagset": "SET 2-SUBSET 1",
-                "tag": "VAL 2.1.1"
-            },
-            {
-                "tagset": "SET 3",
-                "tag": "VAL 3.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.2"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.3"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.4"
-            },
-            {
-                "tagset": "SET 5",
-                "tag": "VAL 5.1"
-            }
-        ],
-        "kvals": {
-            "SET 1": {
-                "val": "VAL 1.1",
-                "desc": "default val"
-            },
-            "SET 2-SUBSET 1": {
-                "val": "VAL 2.1.1",
-                "desc": "default val"
-            },
-            "SET 3": {
-                "val": "VAL 3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.1",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.2",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.4",
-                "desc": "default val"
-            },
-            "SET 5": {
-                "val": "VAL 5.1",
-                "desc": "default val"
-            },
-            "SET 6": {
-                "val": "VAL 6.1",
-                "desc": "default val"
-            }
-        }
-    },
-    "00010": {
-        "iid": "00010",
-        "iname": "DON22-ND-4d-M-Bod.jpg",
-        "pathpath": "https://omero.app.vumc.org/pathviewer/viewer/#?slide=16780&q_image=16780&tabs=VDp",
-        "tags": [{
-                "tagset": "SET 6",
-                "tag": "VAL 6.1"
-            },
-            {
-                "tagset": "SET 1",
-                "tag": "VAL 1.1"
-            },
-            {
-                "tagset": "SET 2-SUBSET 1",
-                "tag": "VAL 2.1.1"
-            },
-            {
-                "tagset": "SET 3",
-                "tag": "VAL 3.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.1"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.2"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.3"
-            },
-            {
-                "tagset": "SET 4",
-                "tag": "VAL 4.4"
-            },
-            {
-                "tagset": "SET 5",
-                "tag": "VAL 5.1"
-            }
-        ],
-        "kvals": {
-            "SET 1": {
-                "val": "VAL 1.1",
-                "desc": "default val"
-            },
-            "SET 2-SUBSET 1": {
-                "val": "VAL 2.1.1",
-                "desc": "default val"
-            },
-            "SET 3": {
-                "val": "VAL 3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.1",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.2",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.3",
-                "desc": "default val"
-            },
-            "SET 4": {
-                "val": "VAL 4.4",
-                "desc": "default val"
-            },
-            "SET 5": {
-                "val": "VAL 5.1",
-                "desc": "default val"
-            },
-            "SET 6": {
-                "val": "VAL 6.1",
-                "desc": "default val"
-            }
-        }
+        "desc": "default val"
+      }
     }
+  },
+  "00002": {
+    "iid": "00002",
+    "iname": "Test Image 00002",
+    "tags": [
+      {
+        "tagset": "SET 6",
+        "tag": "VAL 6.2"
+      },
+      {
+        "tagset": "SET 1",
+        "tag": "VAL 1.1"
+      },
+      {
+        "tagset": "SET 2-SUBSET 2",
+        "tag": "VAL 2.2.1"
+      },
+      {
+        "tagset": "SET 3",
+        "tag": "VAL 3.1"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.1"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.2"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.3"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.4"
+      },
+      {
+        "tagset": "SET 5",
+        "tag": "VAL 5.1"
+      }
+    ],
+    "kvals": {
+      "SET 6": {
+        "val": [
+          "VAL 6.2"
+        ],
+        "desc": "default val"
+      },
+      "SET 1": {
+        "val": [
+          "VAL 1.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 2-SUBSET 2": {
+        "val": [
+          "VAL 2.2.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 3": {
+        "val": [
+          "VAL 3.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 4": {
+        "val": [
+          "VAL 4.1",
+          "VAL 4.2",
+          "VAL 4.3",
+          "VAL 4.4"
+        ],
+        "desc": "default val"
+      },
+      "SET 5": {
+        "val": [
+          "VAL 5.1"
+        ],
+        "desc": "default val"
+      }
+    }
+  },
+  "00003": {
+    "iid": "00003",
+    "iname": "Test Image 00003",
+    "tags": [
+      {
+        "tagset": "SET 6",
+        "tag": "VAL 6.3"
+      },
+      {
+        "tagset": "SET 1",
+        "tag": "VAL 1.2"
+      },
+      {
+        "tagset": "SET 2-SUBSET 3",
+        "tag": "VAL 2.3.1"
+      },
+      {
+        "tagset": "SET 3",
+        "tag": "VAL 3.2"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.4"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.5"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.3"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.6"
+      },
+      {
+        "tagset": "SET 5",
+        "tag": "VAL 5.2"
+      }
+    ],
+    "kvals": {
+      "SET 6": {
+        "val": [
+          "VAL 6.3"
+        ],
+        "desc": "default val"
+      },
+      "SET 1": {
+        "val": [
+          "VAL 1.2"
+        ],
+        "desc": "default val"
+      },
+      "SET 2-SUBSET 3": {
+        "val": [
+          "VAL 2.3.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 3": {
+        "val": [
+          "VAL 3.2"
+        ],
+        "desc": "default val"
+      },
+      "SET 4": {
+        "val": [
+          "VAL 4.4",
+          "VAL 4.5",
+          "VAL 4.3",
+          "VAL 4.6"
+        ],
+        "desc": "default val"
+      },
+      "SET 5": {
+        "val": [
+          "VAL 5.2"
+        ],
+        "desc": "default val"
+      }
+    }
+  },
+  "00004": {
+    "iid": "00004",
+    "iname": "Test Image 00004",
+    "tags": [
+      {
+        "tagset": "SET 6",
+        "tag": "VAL 6.1"
+      },
+      {
+        "tagset": "SET 1",
+        "tag": "VAL 1.1"
+      },
+      {
+        "tagset": "SET 2-SUBSET 1",
+        "tag": "VAL 2.1.2"
+      },
+      {
+        "tagset": "SET 3",
+        "tag": "VAL 3.3"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.6"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.7"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.8"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.4"
+      },
+      {
+        "tagset": "SET 5",
+        "tag": "VAL 5.2"
+      }
+    ],
+    "kvals": {
+      "SET 6": {
+        "val": [
+          "VAL 6.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 1": {
+        "val": [
+          "VAL 1.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 2-SUBSET 1": {
+        "val": [
+          "VAL 2.1.2"
+        ],
+        "desc": "default val"
+      },
+      "SET 3": {
+        "val": [
+          "VAL 3.3"
+        ],
+        "desc": "default val"
+      },
+      "SET 4": {
+        "val": [
+          "VAL 4.6",
+          "VAL 4.7",
+          "VAL 4.8",
+          "VAL 4.4"
+        ],
+        "desc": "default val"
+      },
+      "SET 5": {
+        "val": [
+          "VAL 5.2"
+        ],
+        "desc": "default val"
+      }
+    }
+  },
+  "00005": {
+    "iid": "00005",
+    "iname": "Test Image 00005",
+    "tags": [
+      {
+        "tagset": "SET 6",
+        "tag": "VAL 6.1"
+      },
+      {
+        "tagset": "SET 1",
+        "tag": "VAL 1.1"
+      },
+      {
+        "tagset": "SET 2-SUBSET 1",
+        "tag": "VAL 2.2.3"
+      },
+      {
+        "tagset": "SET 3",
+        "tag": "VAL 3.1"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.1"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.2"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.3"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.4"
+      },
+      {
+        "tagset": "SET 5",
+        "tag": "VAL 5.3"
+      }
+    ],
+    "kvals": {
+      "SET 6": {
+        "val": [
+          "VAL 6.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 1": {
+        "val": [
+          "VAL 1.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 2-SUBSET 1": {
+        "val": [
+          "VAL 2.2.3"
+        ],
+        "desc": "default val"
+      },
+      "SET 3": {
+        "val": [
+          "VAL 3.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 4": {
+        "val": [
+          "VAL 4.1",
+          "VAL 4.2",
+          "VAL 4.3",
+          "VAL 4.4"
+        ],
+        "desc": "default val"
+      },
+      "SET 5": {
+        "val": [
+          "VAL 5.3"
+        ],
+        "desc": "default val"
+      }
+    }
+  },
+  "00006": {
+    "iid": "00006",
+    "iname": "Test Image 00006",
+    "tags": [
+      {
+        "tagset": "SET 6",
+        "tag": "VAL 6.1"
+      },
+      {
+        "tagset": "SET 1",
+        "tag": "VAL 1.2"
+      },
+      {
+        "tagset": "SET 2-SUBSET 2",
+        "tag": "VAL 2.2.2"
+      },
+      {
+        "tagset": "SET 3",
+        "tag": "VAL 3.4"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.3"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.4"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.5"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.6"
+      },
+      {
+        "tagset": "SET 5",
+        "tag": "VAL 5.3"
+      }
+    ],
+    "kvals": {
+      "SET 6": {
+        "val": [
+          "VAL 6.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 1": {
+        "val": [
+          "VAL 1.2"
+        ],
+        "desc": "default val"
+      },
+      "SET 2-SUBSET 2": {
+        "val": [
+          "VAL 2.2.2"
+        ],
+        "desc": "default val"
+      },
+      "SET 3": {
+        "val": [
+          "VAL 3.4"
+        ],
+        "desc": "default val"
+      },
+      "SET 4": {
+        "val": [
+          "VAL 4.3",
+          "VAL 4.4",
+          "VAL 4.5",
+          "VAL 4.6"
+        ],
+        "desc": "default val"
+      },
+      "SET 5": {
+        "val": [
+          "VAL 5.3"
+        ],
+        "desc": "default val"
+      }
+    }
+  },
+  "00007": {
+    "iid": "00007",
+    "iname": "Test Image 00007",
+    "tags": [
+      {
+        "tagset": "SET 6",
+        "tag": "VAL 6.1"
+      },
+      {
+        "tagset": "SET 1",
+        "tag": "VAL 1.4"
+      },
+      {
+        "tagset": "SET 2-SUBSET 3",
+        "tag": "VAL 2.3.1"
+      },
+      {
+        "tagset": "SET 3",
+        "tag": "VAL 3.3"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.2"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.3"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.4"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.5"
+      },
+      {
+        "tagset": "SET 5",
+        "tag": "VAL 5.2"
+      }
+    ],
+    "kvals": {
+      "SET 6": {
+        "val": [
+          "VAL 6.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 1": {
+        "val": [
+          "VAL 1.4"
+        ],
+        "desc": "default val"
+      },
+      "SET 2-SUBSET 3": {
+        "val": [
+          "VAL 2.3.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 3": {
+        "val": [
+          "VAL 3.3"
+        ],
+        "desc": "default val"
+      },
+      "SET 4": {
+        "val": [
+          "VAL 4.2",
+          "VAL 4.3",
+          "VAL 4.4",
+          "VAL 4.5"
+        ],
+        "desc": "default val"
+      },
+      "SET 5": {
+        "val": [
+          "VAL 5.2"
+        ],
+        "desc": "default val"
+      }
+    }
+  },
+  "00008": {
+    "iid": "00008",
+    "iname": "Test Image 00008",
+    "tags": [
+      {
+        "tagset": "SET 6",
+        "tag": "VAL 6.3"
+      },
+      {
+        "tagset": "SET 1",
+        "tag": "VAL 1.3"
+      },
+      {
+        "tagset": "SET 2-SUBSET 2",
+        "tag": "VAL 2.2.1"
+      },
+      {
+        "tagset": "SET 3",
+        "tag": "VAL 3.3"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.1"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.3"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.4"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.5"
+      },
+      {
+        "tagset": "SET 5",
+        "tag": "VAL 5.2"
+      }
+    ],
+    "kvals": {
+      "SET 6": {
+        "val": [
+          "VAL 6.3"
+        ],
+        "desc": "default val"
+      },
+      "SET 1": {
+        "val": [
+          "VAL 1.3"
+        ],
+        "desc": "default val"
+      },
+      "SET 2-SUBSET 2": {
+        "val": [
+          "VAL 2.2.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 3": {
+        "val": [
+          "VAL 3.3"
+        ],
+        "desc": "default val"
+      },
+      "SET 4": {
+        "val": [
+          "VAL 4.1",
+          "VAL 4.3",
+          "VAL 4.4",
+          "VAL 4.5"
+        ],
+        "desc": "default val"
+      },
+      "SET 5": {
+        "val": [
+          "VAL 5.2"
+        ],
+        "desc": "default val"
+      }
+    }
+  },
+  "00009": {
+    "iid": "00009",
+    "iname": "Test Image 00009",
+    "tags": [
+      {
+        "tagset": "SET 6",
+        "tag": "VAL 6.1"
+      },
+      {
+        "tagset": "SET 1",
+        "tag": "VAL 1.3"
+      },
+      {
+        "tagset": "SET 2-SUBSET 1",
+        "tag": "VAL 2.2.4"
+      },
+      {
+        "tagset": "SET 3",
+        "tag": "VAL 3.2"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.1"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.2"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.3"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.4"
+      },
+      {
+        "tagset": "SET 5",
+        "tag": "VAL 5.1"
+      }
+    ],
+    "kvals": {
+      "SET 6": {
+        "val": [
+          "VAL 6.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 1": {
+        "val": [
+          "VAL 1.3"
+        ],
+        "desc": "default val"
+      },
+      "SET 2-SUBSET 1": {
+        "val": [
+          "VAL 2.2.4"
+        ],
+        "desc": "default val"
+      },
+      "SET 3": {
+        "val": [
+          "VAL 3.2"
+        ],
+        "desc": "default val"
+      },
+      "SET 4": {
+        "val": [
+          "VAL 4.1",
+          "VAL 4.2",
+          "VAL 4.3",
+          "VAL 4.4"
+        ],
+        "desc": "default val"
+      },
+      "SET 5": {
+        "val": [
+          "VAL 5.1"
+        ],
+        "desc": "default val"
+      }
+    }
+  },
+  "00010": {
+    "iid": "00010",
+    "iname": "Test Image 00010",
+    "tags": [
+      {
+        "tagset": "SET 6",
+        "tag": "VAL 6.2"
+      },
+      {
+        "tagset": "SET 1",
+        "tag": "VAL 1.1"
+      },
+      {
+        "tagset": "SET 2-SUBSET 1",
+        "tag": "VAL 2.1.1"
+      },
+      {
+        "tagset": "SET 3",
+        "tag": "VAL 3.3"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.3"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.4"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.6"
+      },
+      {
+        "tagset": "SET 4",
+        "tag": "VAL 4.7"
+      },
+      {
+        "tagset": "SET 5",
+        "tag": "VAL 5.2"
+      }
+    ],
+    "kvals": {
+      "SET 6": {
+        "val": [
+          "VAL 6.2"
+        ],
+        "desc": "default val"
+      },
+      "SET 1": {
+        "val": [
+          "VAL 1.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 2-SUBSET 1": {
+        "val": [
+          "VAL 2.1.1"
+        ],
+        "desc": "default val"
+      },
+      "SET 3": {
+        "val": [
+          "VAL 3.3"
+        ],
+        "desc": "default val"
+      },
+      "SET 4": {
+        "val": [
+          "VAL 4.3",
+          "VAL 4.4",
+          "VAL 4.6",
+          "VAL 4.7"
+        ],
+        "desc": "default val"
+      },
+      "SET 5": {
+        "val": [
+          "VAL 5.2"
+        ],
+        "desc": "default val"
+      }
+    }
+  }
 }

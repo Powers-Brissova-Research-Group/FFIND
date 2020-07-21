@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
 
-import * as Sentry from '@sentry/browser'
-
-import {
-  Button
-} from 'reactstrap'
-
 import {
   BrowserRouter as Router,
   Route,
@@ -21,31 +15,20 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 import {
   About,
-  Admin,
-  Collaborators,
-  Diabetes,
   DatasetListPage,
   Favorites,
   Home,
-  Nomenclature,
   PageNotFound,
-  Releases,
-  Resources,
-  Usage
 } from './components/pages'
 
 
 import {
-  AgeBrowser,
   DatasetOverview,
   GridView,
-  PancreatlasFooter,
+  Footer,
   TopNav,
-  UserInfoModal,
   WarningBanner
 } from './components/utils'
-
-import { MatrixView } from './components/matrix-view'
 
 library.add(faLink, faEnvelope, faPhone, faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faBookmarkOutline, faRedo, faBook, faAngleRight, faAngleDown, faTwitter)
 
@@ -54,18 +37,10 @@ class App extends Component {
   constructor(props) {
     super(props)
 
-    Sentry.init({
-      dsn: 'https://727efb032f954ff7baf2421cbcf2ace8@sentry.io/1412698',
-      release: `pancreatlas@${process.env.REACT_APP_VERSION}`
-    })
-
     this.addFavorite = this.addFavorite.bind(this)
     this.checkCompatability = this.checkCompatability.bind(this)
     this.addFavorite = this.addFavorite.bind(this)
-    this.showInfoModal = this.showInfoModal.bind(this)
-    this.dismissInfoModal = this.dismissInfoModal.bind(this)
-    this.getCookie = this.getCookie.bind(this)
-
+    
     let urlVars = new URLSearchParams(window.location.search)
 
     let favs = []
@@ -136,36 +111,6 @@ class App extends Component {
     }
   }
 
-  componentDidCatch(error, errorInfo) {
-    this.setState({ error })
-    Sentry.withScope(scope => {
-      Object.keys(errorInfo).forEach(key => {
-        scope.setExtra(key, errorInfo[key])
-      })
-    })
-    Sentry.captureException(error)
-  }
-
-  getCookie(name) {
-    var value = "; " + document.cookie;
-    var parts = value.split("; " + name + "=");
-    if (parts.length === 2) return parts.pop().split(";").shift();
-  }
-
-  dismissInfoModal() {
-    this.setState({
-      userInfoDisplay: false
-    })
-  }
-
-  showInfoModal() {
-    if (this.getCookie('feedback-sent') === undefined) {
-      this.setState({
-        userInfoDisplay: true
-      })
-    }
-  }
-
   componentDidMount() {
     window.setTimeout(this.showInfoModal, 120000)
   }
@@ -180,43 +125,40 @@ class App extends Component {
     //   supported = false
     // }
 
-    if (this.state.error) {
-      return <Button onClick={() => Sentry.showReportDialog()}>Report feedback</Button>
-    } else {
-      return (
-        <div>
-          {supported === false && <WarningBanner><h5>Sorry, but your browser ({browserName.charAt(0).toUpperCase() + browserName.slice(1) + ' ' + version}) is not supported and some site features may not work properly.</h5><p>Please consider using the most recent versions of <a href='https://www.mozilla.org/en-US/firefox/new/'>Mozilla Firefox</a> or <a href='https://www.google.com/chrome'>Google Chrome</a>.</p></WarningBanner>}
-          {/* <Container fluid className='test-feedback'>
+
+    return (
+      <div>
+        {supported === false && <WarningBanner><h5>Sorry, but your browser ({browserName.charAt(0).toUpperCase() + browserName.slice(1) + ' ' + version}) is not supported and some site features may not work properly.</h5><p>Please consider using the most recent versions of <a href='https://www.mozilla.org/en-US/firefox/new/'>Mozilla Firefox</a> or <a href='https://www.google.com/chrome'>Google Chrome</a>.</p></WarningBanner>}
+        {/* <Container fluid className='test-feedback'>
             <Row>
               <Col sm="12">
                 <p><strong>N.B. This is a test version of the Pancreatlas.</strong></p>
               </Col>
             </Row>
           </Container> */}
-          <Router>
-            <div className='App'>
-              <TopNav favorites={this.state.encodedFavorites} />
-              <Switch>
-                <Route exact path='/' component={Home} />
-                <Route path='/about' component={About} />
+        <Router>
+          <div className='App'>
+            <TopNav favorites={this.state.encodedFavorites} />
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/about' component={About} />
 
-                <Route exact path={`/datasets`} component={DatasetListPage} />
-                <Route exact path={`/datasets/:did/explore`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
-                <Route exact path={`/datasets/:did/explore/:iid`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
-                <Route path={`/datasets/:did/overview`} component={DatasetOverview} />
+              <Route exact path={`/datasets`} component={DatasetListPage} />
+              <Route exact path={`/datasets/:did/explore`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
+              <Route exact path={`/datasets/:did/explore/:iid`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
+              <Route path={`/datasets/:did/overview`} component={DatasetOverview} />
 
-                <Route exact path={`/explore-all-images`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
-                <Route exact path={`/explore-all-images/:iid`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
+              <Route exact path={`/explore-all-images`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
+              <Route exact path={`/explore-all-images/:iid`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
 
-                {/* <Route path='/pancreatlas/image/:iid' component={ImageDetail} /> */}
-                <Route component={PageNotFound} />
+              {/* <Route path='/pancreatlas/image/:iid' component={ImageDetail} /> */}
+              <Route component={PageNotFound} />
 
-              </Switch>
-            </div>
-          </Router>
-        </div>
-      )
-    }
+            </Switch>
+          </div>
+        </Router>
+      </div>
+    )
   }
 }
 
