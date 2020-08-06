@@ -42,7 +42,7 @@ export default class ImageCard extends React.Component {
     let tagVals = result.tags.map(tag => tag.tag)
     this.setState({
       loaded: true,
-      imgUrl: '/' + result.iname, // https://omero.app.vumc.org/webgateway/render_image_region/' + this.props.iid + '/0/0/?c=1|0:65535$0000FF,2|0:65535$00FF00,3|0:65535$FF0000,4|0:65535$FFFF00&m=c&format=jpeg&region=0,0,300,300',
+      imgUrl: '/' + result.iname,
       imgName: result.iname,
       omeroId: result.iid,
       imgTags: tagVals,

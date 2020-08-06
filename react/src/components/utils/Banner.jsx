@@ -25,40 +25,11 @@ export default class Banner extends React.Component {
           <Row>
             <Col xs={12}>
               <div className='ffind-banner'>
-                <h1 className="display-3 ffind-banner">FFIND</h1>
-                <p className='lead'>Flexible Framework for Integrating and Navigating Data</p>
+                <h1 className="display-3 ffind-banner">{this.props.title}</h1>
+                <p className='lead'>{this.props.subtitle}</p>
                 <hr className="my-2" />
-                <p>Replace this dummy text with a description relevant for your own uses.</p>
+                <p>{this.props.description}</p>
               </div>
-            </Col>
-          </Row>
-          <Row className='mt-3'>
-            <Col md={4} sm={12}>
-              <Card style={{minHeight: '300px'}}>
-                <CardBody>
-                  <CardTitle>Collection 1</CardTitle>
-                  <CardSubtitle>Catchy catchphrase</CardSubtitle>
-                  <CardText>Use this card to showcase the first featured collection in your data.</CardText>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col md={4} sm={12}>
-              <Card style={{minHeight: '300px'}}>
-                <CardBody>
-                  <CardTitle>Collection 2</CardTitle>
-                  <CardSubtitle>Catchy catchphrase</CardSubtitle>
-                  <CardText>Use this card to showcase the first featured collection in your data.</CardText>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col md={4} sm={12}>
-              <Card style={{minHeight: '300px'}}>
-                <CardBody>
-                  <CardTitle>Collection 3</CardTitle>
-                  <CardSubtitle>Catchy catchphrase</CardSubtitle>
-                  <CardText>Use this card to showcase the first featured collection in your data.</CardText>
-                </CardBody>
-              </Card>
             </Col>
           </Row>
         </Container>

@@ -129,13 +129,6 @@ class App extends Component {
     return (
       <div>
         {supported === false && <WarningBanner><h5>Sorry, but your browser ({browserName.charAt(0).toUpperCase() + browserName.slice(1) + ' ' + version}) is not supported and some site features may not work properly.</h5><p>Please consider using the most recent versions of <a href='https://www.mozilla.org/en-US/firefox/new/'>Mozilla Firefox</a> or <a href='https://www.google.com/chrome'>Google Chrome</a>.</p></WarningBanner>}
-        {/* <Container fluid className='test-feedback'>
-            <Row>
-              <Col sm="12">
-                <p><strong>N.B. This is a test version of the Pancreatlas.</strong></p>
-              </Col>
-            </Row>
-          </Container> */}
         <Router>
           <div className='App'>
             <TopNav favorites={this.state.encodedFavorites} />

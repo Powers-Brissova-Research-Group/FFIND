@@ -12,10 +12,10 @@ export default class DatasetListPage extends React.Component {
     return (
       <div className='dataset-list'>
         <MetaTags>
-          <title>Available Datasets -- Pancreatlas</title>
-          <meta name='description' content='List of datasets available to view in the pancreatlas' />
+          <title>Available Datasets -- FFIND</title>
+          <meta name='description' content='List of datasets available to view in FFIND' />
         </MetaTags>
-        <PageBanner image bgImg={require('../../assets/img/headers/dataset-list-header.jpg')}>
+        <PageBanner>
           <h1>Explore Image Collections</h1>
           <p className='text-larger'>Collections are organized by specific disease phenotype, biological event, or scientific program. For more information about a collection’s origin, please click on <em>Collection Details</em>. Appropriate citations and authorship are provided where possible.</p>
         </PageBanner>

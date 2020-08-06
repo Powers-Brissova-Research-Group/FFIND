@@ -8,6 +8,8 @@ import {
   DatasetList
 } from '../utils'
 
+import conf from '../../assets/conf/conf.json'
+
 export default class Home extends React.Component {
   constructor (props) {
     super(props)
@@ -28,7 +30,7 @@ export default class Home extends React.Component {
   render () {
     return (
       <div className='home'>
-        <Banner />
+        <Banner title={conf.title} subtitle={conf.subtitle} description={conf.description}/>
         <div className='dataset-list' ref={this.aboutRef}>
           <Container className='mt-4'>
             <h1 className='my-4 py-4'><strong>Image Collections</strong></h1>
