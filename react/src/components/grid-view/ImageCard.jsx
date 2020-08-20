@@ -36,7 +36,7 @@ export default class ImageCard extends React.Component {
 
   componentDidMount() {
     // Load information about the image
-    var mockImages = require('../../assets/txt/ffind-defaults/mock_images.json')
+    var mockImages = require(`../../assets/txt/ffind-defaults/${this.props.did}_images.json`)
     let result = mockImages[this.props.iid]
     let kvals = result.kvals
     let tagVals = result.tags.map(tag => tag.tag)

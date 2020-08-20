@@ -1,0 +1,14 @@
+{
+    "did": 101,
+    "dsname": "Star Wars Starships",
+    "desc": "A directory of all starships appearing in the Star Wars films",
+    "kvals": {
+        "active": "true",
+        "img_count": "12",
+        "description_long": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus quam nulla. Maecenas malesuada quam felis, non porttitor ex facilisis ut. Integer sagittis rutrum quam, sollicitudin convallis tortor pulvinar sit amet. Quisque ullamcorper elit quis mauris semper, vel vestibulum metus laoreet. Etiam at quam ac mauris laoreet luctus eu sed ipsum. Sed feugiat id enim vitae lacinia. Sed vestibulum, massa luctus sodales dignissim, nunc dolor cursus leo, vel tempor elit nibh ut ipsum. Phasellus aliquam lacinia neque vel tincidunt. Ut non pulvinar massa, non vestibulum magna. Duis quis ante condimentum, malesuada nulla eu, interdum neque. Aenean vestibulum metus mi, eget consequat ligula fermentum vel. Proin dictum massa vel vestibulum sodales. Cras ac ante at arcu ullamcorper placerat. Quisque viverra tortor a pulvinar dignissim. Sed rutrum vestibulum euismod. Aenean pulvinar egestas elementum.</p>",
+        "description_short": "Nullam non magna risus. Praesent consectetur nibh quis aliquet rhoncus. In luctus magna ac ante hendrerit, ut scelerisque ex pharetra. Sed vitae felis vitae lacus vehicula ullamcorper pulvinar eget felis.",
+        "import_date": "2020-06-25",
+        "ages": "[]",
+        "status": "3"
+    }
+}

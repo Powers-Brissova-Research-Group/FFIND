@@ -100,11 +100,11 @@ export default class ImageGrid extends React.Component {
     for (let tagset of tags) {
       let tagsetName = tagset.set_name
       for (let tag of Object.keys(tagset.tags)) {
-        var ageRe = /AGE|DISEASE DURATION*/i
-        var defaultHiddenRe = /PROGRAM ID*/i
-        var filterMethod = ageRe.test(tagsetName) ? 'slider' : 'checkbox'
+        var sliderRe = /LENGTH|CREW|HYPERDRIVE/i
+        var defaultHiddenRe = /NAME*/i
+        var filterMethod = sliderRe.test(tagsetName) ? 'slider' : 'checkbox'
         var hidden = defaultHiddenRe.test(tagsetName) ? true : false
-        var sortMethod = ageRe.test(tagsetName) ? (a, b) => compareAges(a.name, b.name) : (a, b) => (a.name > b.name) ? 1 : -1
+        var sortMethod = (sliderRe.test(tagsetName)) ? ((a, b) => (parseFloat(a.name) > parseFloat(b.name)) ? 1 : -1) : ((a, b) => (a.name > b.name) ? 1 : -1)
         this.state.filterTree.addNode(tag, tagsetName, sortMethod, filterMethod, hidden)
       }
     }
@@ -284,7 +284,7 @@ export default class ImageGrid extends React.Component {
   }
 
   setModal(imgInfo) {
-    var mockImages = require('../../assets/txt/ffind-defaults/mock_images.json')
+    var mockImages = require(`../../assets/txt/ffind-defaults/${this.props.did}_images.json`)
 
     let result = mockImages[imgInfo]
     let kvals = result.kvals
@@ -381,7 +381,7 @@ export default class ImageGrid extends React.Component {
               <Alert color='info'>
                 <Row>
                   <Col m='6'>
-                    You are currently viewing <Badge color='info'>{this.state.matches.length}</Badge> out of a possible <Badge color='secondary'>{Object.keys(this.state.ids).length}</Badge> images
+                    You are currently viewing <Badge color='info'>{this.state.matches.length}</Badge> out of a possible <Badge color='secondary'>{Object.keys(this.state.ids.images).length}</Badge> images
                   </Col>
                   <Col m='6'>
                     <span className='float-right'>Dataset: <strong>{this.state.datasetName}</strong></span>
@@ -444,7 +444,7 @@ export default class ImageGrid extends React.Component {
             <Alert color='info'>
               <Row>
                 <Col m='6'>
-                  You are currently viewing <Badge color='info'>{this.state.matches.length}</Badge> out of a possible <Badge color='secondary'>{Object.keys(this.state.ids).length}</Badge> images
+                  You are currently viewing <Badge color='info'>{this.state.matches.length}</Badge> out of a possible <Badge color='secondary'>{Object.keys(this.state.ids.images).length}</Badge> images
                 </Col>
                 <Col m='6'>
                   <span className='float-right'>Dataset: <strong>{this.state.datasetName}</strong></span>
@@ -494,7 +494,7 @@ export default class ImageGrid extends React.Component {
                   <Row key={idx} className='image-row pancreatlas-row'>
                     {item.map((image, idx) =>
                       <Col key={idx} md={this.state.imgsColSplit}>
-                        <ImageCard filterActive isFavorite={this.props.favorites.indexOf(image) === -1} favoriteCallback={this.props.favoriteCallback} key={image} iid={image} callback={this.setModal} filterCallback={this.markerFilter} />
+                        <ImageCard filterActive isFavorite={this.props.favorites.indexOf(image) === -1} favoriteCallback={this.props.favoriteCallback} key={image} iid={image} callback={this.setModal} filterCallback={this.markerFilter} did={this.props.did} />
                       </Col>
                     )}
                   </Row>
