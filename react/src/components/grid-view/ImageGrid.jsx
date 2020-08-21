@@ -284,14 +284,14 @@ export default class ImageGrid extends React.Component {
   }
 
   setModal(imgInfo) {
-    var mockImages = require(`../../assets/txt/ffind-defaults/${this.props.did}_images.json`)
+    var mockImages = require(`../../assets/txt/ffind-defaults/all-images.json`)
 
     let result = mockImages[imgInfo]
     let kvals = result.kvals
     let tagVals = result.tags.map(tag => tag.tag)
     this.setState({
       modalData: {
-        imd_id: imgInfo,
+        img_id: imgInfo,
         img_data: kvals
       }
     })

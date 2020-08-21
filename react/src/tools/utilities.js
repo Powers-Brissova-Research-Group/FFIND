@@ -1,7 +1,7 @@
 /**
-   * @author Jimmy Messmer
-   * @file Contains utility classes that we use for Pancreatlas.
-   */
+ * @author Jimmy Messmer
+ * @file Contains utility classes that we use for Pancreatlas.
+ */
 
 /**
  * Class for our data structure holding filter information.
@@ -201,7 +201,8 @@ export class FilterTree {
       } else {
         /* eslint-disable no-loop-func */
         let newImgs = curr.images.filter(img => !images.includes(img))
-        images = images.concat(newImgs)
+        // Hack to remove any duplicates from newImgs by converting to set then back to arrray
+        images = images.concat([...new Set(newImgs)])
         /* eslint-enable no-loop-func */
       }
     }

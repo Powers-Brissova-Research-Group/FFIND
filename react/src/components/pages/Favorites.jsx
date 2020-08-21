@@ -57,52 +57,26 @@ export default class Favorites extends React.Component {
   }
 
   setModal (imgInfo) {
-    axios.get(`${process.env.REACT_APP_API_URL}/images/${imgInfo}`, {
-      withCredentials: true,
-      credentials: 'include',
-      headers: {
-        'Authorization': process.env.REACT_APP_API_AUTH
-      }
-    }).then(response => {
-      let result = response.data
-      if (Object.keys(result.kvals).length > 0) {
-        let ageRe = /^(G?)(\d+)(.\d)?(d|w|mo|y)(\+\dd)?$/
+    var mockImages = require(`../../assets/txt/ffind-defaults/all-images.json`)
 
-        let markerColors = result.channel_info
-        let markerColorRe = /^.+\((.+)\)$/
-        Object.keys(markerColors).forEach(function (key) {
-          var newKey = markerColorRe.test(key) ? markerColorRe.exec(key)[1] : key
-          if (newKey !== key) {
-            markerColors[newKey] = markerColors[key]
-            delete markerColors[key]
-          }
-        })
-
-        result.kvals['Donor info - Age'].val = result.tags.filter(val => ageRe.test(val))[0]
-        this.setState({
-          modalData: {
-            img_id: imgInfo,
-            img_data: result.kvals,
-            path_path: result.pathpath,
-            markerColors: markerColors
-          }
-        })
-      } else {
-        this.setState({
-          modalData: {
-            img_id: imgInfo,
-            img_data: { 'Warning': 'No information for this image' },
-            path_path: result.pathpath
-          }
-        })
+    let result = mockImages[imgInfo]
+    let kvals = result.kvals
+    let tagVals = result.tags.map(tag => tag.tag)
+    this.setState({
+      modalData: {
+        img_id: imgInfo,
+        img_data: kvals
       }
-      this.toggle('image')
-    }).catch(err => {
-      this.setState({
-        loaded: false,
-        error: err
-      })
     })
+    let path = window.location.pathname
+    if (path.charAt(path.length - 1) === '/') {
+      path = path.slice(0, path.length - 1)
+    }
+    let pathParts = path.split('/')
+    if (pathParts[pathParts.length - 1] !== imgInfo) {
+      window.history.pushState({ 'pageTitle': 'Browse & Filter Dataset' }, '', `${window.location.protocol}//${window.location.host}${window.location.pathname}/${imgInfo}`)
+    }
+    this.toggle('image')
   }
 
   toggle (modalType) {
