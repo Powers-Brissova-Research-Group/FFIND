@@ -42,6 +42,7 @@ export default class ImageGrid extends React.Component {
       ids: [],
       matches: [],
       filters: {},
+      sortableFields: [],
       prevFilters: {},
       modalOpen: false,
       datasetName: '',
@@ -82,7 +83,8 @@ export default class ImageGrid extends React.Component {
       activeFilters = activeFilters.concat(JSON.parse(window.atob(searchParams.get('filters'))))
     }
 
-    var imageJson = (this.props.did) ? require(`../../assets/txt/ffind-defaults/${this.props.did}.json`) : require(`../../assets/txt/ffind-defaults/all-images.json`)
+    var imageJson = (this.props.did) ? require(`../../assets/txt/ffind-defaults/${this.props.did}.json`) : require(`../../assets/txt/ffind-defaults/all-datasets.json`)
+    var conf = require('../../assets/conf/conf.json')
 
     if (this.props.did) {
       this.setState({
@@ -96,9 +98,13 @@ export default class ImageGrid extends React.Component {
 
     let images = imageJson.images
     let tags = imageJson.filters
+    let sortableFields = []
 
     for (let tagset of tags) {
       let tagsetName = tagset.set_name
+      if (conf.sort_fields.includes(tagsetName)) {
+        sortableFields.push(tagsetName)
+      }
       for (let tag of Object.keys(tagset.tags)) {
         var sliderRe = /LENGTH|CREW|HYPERDRIVE/i
         var defaultHiddenRe = /NAME*/i
@@ -135,7 +141,8 @@ export default class ImageGrid extends React.Component {
       ids: imageJson,
       maxPages: Math.floor(Object.keys(imageJson).length / (this.state.imgsPerRow * this.state.rowsPerPage)),
       matches: activeImages,
-      page: 0
+      page: 0,
+      sortableFields: sortableFields
     })
     if (this.props.iid > 0) {
       this.setModal(this.props.iid)
@@ -343,22 +350,22 @@ export default class ImageGrid extends React.Component {
     if (event.target.value === 'sel') {
       return
     }
-    var sorted = []
-    switch (event.target.value) {
-      case 'duration-asc':
-        sorted = this.state.filterTree.sortImages('DISEASE DURATION')
-        break
-      case 'duration-desc':
-        sorted = this.state.filterTree.sortImages('DISEASE DURATION')
-        break
-      case 'age-desc':
-        sorted = this.state.filterTree.sortImages('AGE', ((a, b) => -1 * compareAges(a.value, b.value)))
-        break
-      case 'age-asc':
-      default:
-        sorted = this.state.filterTree.sortImages('AGE', ((a, b) => compareAges(a.value, b.value)))
-        break
-    }
+    var sorted = this.state.filterTree.sortImages(event.target.value)
+    // switch (event.target.value) {
+    //   case 'duration-asc':
+    //     sorted = this.state.filterTree.sortImages('DISEASE DURATION')
+    //     break
+    //   case 'duration-desc':
+    //     sorted = this.state.filterTree.sortImages('DISEASE DURATION')
+    //     break
+    //   case 'age-desc':
+    //     sorted = this.state.filterTree.sortImages('AGE', ((a, b) => -1 * compareAges(a.value, b.value)))
+    //     break
+    //   case 'age-asc':
+    //   default:
+    //     sorted = this.state.filterTree.sortImages('AGE', ((a, b) => compareAges(a.value, b.value)))
+    //     break
+    // }
 
     var activeSorted = sorted.filter(img => this.state.matches.includes(img))
 
@@ -463,8 +470,10 @@ export default class ImageGrid extends React.Component {
                             <Label for='sort-select' className='pr-1'>Sort by: </Label>
                             <Input size='sm' type='select' name='sort-select' id='sort-select' value={this.state.sortOrder} onChange={this.sortImgs}>
                               <option value='sel'>Image ID</option>
+                              {this.state.sortableFields.map(title => (<option value={`${title}`}>{title}</option>))}
+                              {/* <option value='sel'>Image ID</option>
                               <option value='age-asc'>Age Ascending</option>
-                              <option value='age-desc'>Age Descending</option>
+                              <option value='age-desc'>Age Descending</option> */}
                             </Input>
                           </FormGroup>
                           <span className='pl-2'>

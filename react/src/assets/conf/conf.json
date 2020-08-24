@@ -1,5 +1,10 @@
 {
     "title": "FFIND",
     "subtitle": "Flexible Framework for Integrating and Navigating Data",
-    "description": "FFIND provides a lightweight and flexible framework for creating best-in-class user experiences for navigating academic data."
+    "description": "FFIND provides a lightweight and flexible framework for creating best-in-class user experiences for navigating academic data.",
+    "sort_fields": [
+        "Length",
+        "Crew",
+        "Name"
+    ]
 }
