@@ -108,13 +108,13 @@ export default class DatasetList extends React.Component {
                             <td className='action-column text-center'>
                               <Row>
                                 <Link to={{ pathname: `/datasets/${item.did}`, search: '?browse=false' }}>
-                                  <Button className='ds-list-left-button' >Browse All Images</Button>
+                                  <Button className='ds-list-left-button' >Browse all</Button>
                                 </Link>
                                 <Link to={{ pathname: `/datasets/${item.did}`, search: '?browse=true' }}>
-                                  <Button color='primary'>Browse by Age</Button>
+                                  <Button color='primary'>Browse by timeline</Button>
                                 </Link>
                                 <Link to={'/matrixview/' + item.did}>
-                                  <Button className='ds-list-right-button' outline color='success'>Compare Attributes</Button>
+                                  <Button className='ds-list-right-button' outline color='success'>Compare data attributes</Button>
                                 </Link>
                               </Row>
                             </td>

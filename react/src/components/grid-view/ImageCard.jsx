@@ -61,7 +61,7 @@ export default class ImageCard extends React.Component {
       return (
         <Card className='image-card h-100'>
           <div className='card-img-wrapper' onClick={() => this.props.callback(this.props.iid)}>
-            <CardImg className='image-card-thumb' top width='100%' src={`http://www.placehold.it/350x350`} alt={this.state.imgName} />
+            <CardImg className='image-card-thumb' top width='100%' src={`//www.placehold.it/350x350/000000/222222?Text=350x350`} alt={this.state.imgName} />
             <FontAwesomeIcon icon='search-plus' size='3x' className='card-search-plus' />
           </div>
           <CardBody className='d-flex flex-column'>
@@ -95,6 +95,6 @@ export default class ImageCard extends React.Component {
 }
 
 ImageCard.defaultProps = {
-  imgUrl: 'http://www.placehold.it/350x350',
+  imgUrl: '//www.placehold.it/350x350/000000/222222/?Text=350x350',
   imgName: 'Placeholder name'
 }

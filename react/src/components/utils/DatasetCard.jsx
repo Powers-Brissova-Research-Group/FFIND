@@ -45,7 +45,7 @@ export default class DatasetCard extends React.Component {
     // let sponsors = this.props.funding !== undefined ? this.props.funding.split(',').map(source => require(`../assets/${source}.jpg`)) : []
     /* global Modernizr */
     let logo = null
-    let banner = 'http://www.placehold.it/326x50'
+    let banner = '//www.placehold.it/326x150/000000/222222/?text=326x150'
     try {
       if (Modernizr.webp.alpha) {
         logo = require(`../../assets/img/logos/${this.props.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.webp`)
@@ -74,7 +74,7 @@ export default class DatasetCard extends React.Component {
               <img className='card-banner-img' src={banner} alt='banner img' />
             </div> */}
             <CardText>{this.props.description}</CardText>
-            <Link className='mt-auto' to={`/datasets/${this.props.did}/explore`}><Button className='w-100 align-bottom' color='info'>Browse All Images</Button></Link>
+            <Link className='mt-auto' to={`/datasets/${this.props.did}/explore`}><Button className='w-100 align-bottom' color='info'>Browse All</Button></Link>
             {/* <Button className='mt-auto'>Test</Button> */}
           </CardBody>
           <CardFooter>
@@ -87,14 +87,14 @@ export default class DatasetCard extends React.Component {
                     </DropdownToggle>
                     <DropdownMenu>
                       <DropdownItem>
-                        <Link to={`/datasets/${this.props.did}/explore`}>Browse All Images</Link>
+                        <Link to={`/datasets/${this.props.did}/explore`}>Browse all</Link>
                       </DropdownItem>
                       <DropdownItem>
-                        <Link to={`/datasets/${this.props.did}/browse-by-age`}>Browse Images by Age</Link>
+                        <Link to={`/datasets/${this.props.did}/browse-by-age`}>Browse by timeline</Link>
                       </DropdownItem>
                       <DropdownItem>
                         <Link to={'/matrixview/' + this.props.did}>
-                          Browse Images via Matrix
+                          Compare data attributes
                         </Link>
                       </DropdownItem>
                     </DropdownMenu>
