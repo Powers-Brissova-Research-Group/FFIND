@@ -4,6 +4,7 @@ import DatasetList from './DatasetList'
 import DatasetOverview from './DatasetOverview'
 import DetailRow from './DetailRow'
 import Error from './Error'
+import Footer from './Footer'
 import GridView from './GridView'
 import HomeTitle from './HomeTitle'
 import LoadingBar from './LoadingBar'
@@ -18,6 +19,7 @@ export {
   DatasetOverview,
   DetailRow,
   Error,
+  Footer,
   GridView,
   HomeTitle,
   LoadingBar,
