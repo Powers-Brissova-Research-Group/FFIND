@@ -130,7 +130,7 @@ export default class DatasetList extends React.Component {
             </TabPane>
           </TabContent>
           <Link to='/explore-all-images'>
-            <Button color='primary'>Explore all Images</Button>
+            <Button color='primary'>Explore all data</Button>
           </Link>
         </div>
       )
