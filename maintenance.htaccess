@@ -1,0 +1,7 @@
+RewriteCond %{REQUEST_URI} !/maintenance
+RewriteCond %{HTTP:X-FORWARDED-FOR} !^10\.223\.16\.191
+
+RewriteRule $ /maintenance [R=302,L]
+
+RewriteCond %{REQUEST_URI} /maintenance
+RewriteRule ^(.*)$ %{DOCUMENT_ROOT}/maintenance/index.html [L]
