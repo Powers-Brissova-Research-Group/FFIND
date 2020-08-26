@@ -21,6 +21,10 @@ import {
   PageNotFound,
 } from './components/pages'
 
+import {
+  MatrixView
+} from './components/matrix-view'
+
 
 import {
   DatasetOverview,
@@ -143,6 +147,8 @@ class App extends Component {
 
               <Route exact path={`/explore-all-images`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
               <Route exact path={`/explore-all-images/:iid`} render={(props) => <GridView {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
+
+              <Route path='/matrixview/:dsid' component={MatrixView} />
 
               <Route path={`/favorites`} render={(props) => <Favorites {...props} favoriteCallback={this.addFavorite} favorites={JSON.parse(window.atob(this.state.encodedFavorites))} />} />
 
