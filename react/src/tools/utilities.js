@@ -258,6 +258,29 @@ export class FilterTree {
       return tmp
     }
   }
+
+  /**
+   * Generate a matrix for use in the ImageMatrix component given two tagsets
+   * @param {String} setA First filter set
+   * @param {String} setB Second filter set
+   */
+  generateMatrix (setA, setB) {
+    let setANode = this.search(setA)
+    let setBNode = this.search(setB)
+    let matrix = {
+      'tag_a': setA,
+      'tag_b': setB,
+      'matrix': setANode.children.reduce((o, child) => ({ ...o, [child.value]: [...child.images] }), {})
+    }
+
+    let bFormatted = setBNode.children.reduce((o, child) => ({ ...o, [child.value]: [...child.images] }), {})
+
+    for (let t of Object.keys(matrix['matrix'])) {
+      let tmp = Object.fromEntries(Object.entries(bFormatted).map(([k, v], i) => [k, v.filter(val => matrix['matrix'][t].includes(val))]))
+      matrix['matrix'][t] = tmp
+    }
+    return matrix
+  }
 }
 
 /**
@@ -278,6 +301,7 @@ class FilterNode {
     this.children = []
     this.images = []
     this.defaultHidden = defaultHidden
+    this.active = true
   }
 
   /**

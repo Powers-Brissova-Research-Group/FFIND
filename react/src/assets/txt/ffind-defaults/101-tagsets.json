@@ -1,0 +1,27 @@
+[
+    {
+        "set_name": "Name",
+        "tags": {}
+    },
+    {
+        "set_name": "Length",
+        "tags": {}
+
+    },
+    {
+        "set_name": "Crew",
+        "tags": {}
+    },
+    {
+        "set_name": "Manufacturer",
+        "tags": {}
+    },
+    {
+        "set_name": "Hyperdrive",
+        "tags": {}
+    },
+    {
+        "set_name": "Class",
+        "tags": {}
+    }
+]

@@ -54,7 +54,10 @@ export default class ImageModal extends React.Component {
                     </div>
                   </Row>
                   <Row>
-                    <Col md='12'>
+                    <Col md='6'>
+                      <img src='//placehold.it/400x400/000000/222222' alt='modal preview image' />
+                    </Col>
+                    <Col md='6'>
                       <Table>
                         <tbody>
                           {Object.keys(this.props.modalData.img_data).map(key => {
