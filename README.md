@@ -6,5 +6,9 @@ Flexible Framework for Integrating and Navigating Data (FFIND) is a generalized 
 ## Installation
 1. Install Node.js (See https://nodejs.org).
 2. Clone the repository or download a ZIP file of the master branch to your local machine.
+3. Open a terminal, go to the `react/` folder, and type in `npm install`
+
+## Licensing
+This project utilizes GNU General Public License v3.0 (GNU GPLv3), which detailed in the file called COPYING in the root directory of this project.
 
 
