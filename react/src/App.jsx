@@ -133,7 +133,7 @@ class App extends Component {
     return (
       <div>
         {supported === false && <WarningBanner><h5>Sorry, but your browser ({browserName.charAt(0).toUpperCase() + browserName.slice(1) + ' ' + version}) is not supported and some site features may not work properly.</h5><p>Please consider using the most recent versions of <a href='https://www.mozilla.org/en-US/firefox/new/'>Mozilla Firefox</a> or <a href='https://www.google.com/chrome'>Google Chrome</a>.</p></WarningBanner>}
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <div className='App'>
             <TopNav favorites={this.state.encodedFavorites} />
             <Switch>
