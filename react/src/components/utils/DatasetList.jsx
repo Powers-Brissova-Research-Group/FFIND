@@ -119,7 +119,7 @@ export default class DatasetList extends React.Component {
                               </Row>
                             </td>
                             <td className='text-center'>{item.did}</td>
-                            <td className='text-center'>{item.kvals.release_date}</td>
+                            <td className='text-center'>{item.desc}</td>
                           </tr>
                         ))}
                       </tbody>

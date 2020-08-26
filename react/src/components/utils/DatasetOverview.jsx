@@ -34,6 +34,7 @@ class DatasetOverview extends React.Component {
       short_desc: result.kvals.description_short,
       long_desc: result.kvals.description_long,
       importDate: result.kvals.import_date,
+      publishDate: result.kvals.publish_date,
       imgCount: result.kvals.img_count
     })
   }
