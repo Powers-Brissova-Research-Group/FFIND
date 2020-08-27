@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "56dc040ff903a0f4a7d417ed4b7559ab",
+    "revision": "6433499e858356a858e36dc918de5ccf",
     "url": "/FFIND/index.html"
   },
   {
-    "revision": "cfcb7e1d9c5171ac1891",
+    "revision": "a7b90a948d3b02fd7d47",
     "url": "/FFIND/static/css/2.caeea187.chunk.css"
   },
   {
-    "revision": "7b28b10130d77b640e14",
-    "url": "/FFIND/static/css/main.551e4026.chunk.css"
+    "revision": "5f0eb24964274712f496",
+    "url": "/FFIND/static/css/main.f43b2206.chunk.css"
   },
   {
-    "revision": "cfcb7e1d9c5171ac1891",
-    "url": "/FFIND/static/js/2.e7a16f05.chunk.js"
+    "revision": "a7b90a948d3b02fd7d47",
+    "url": "/FFIND/static/js/2.059bff26.chunk.js"
   },
   {
     "revision": "c3cd2a6642c75a89212a70a3fcd44afc",
-    "url": "/FFIND/static/js/2.e7a16f05.chunk.js.LICENSE.txt"
+    "url": "/FFIND/static/js/2.059bff26.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7b28b10130d77b640e14",
-    "url": "/FFIND/static/js/main.85890b2f.chunk.js"
+    "revision": "5f0eb24964274712f496",
+    "url": "/FFIND/static/js/main.92e47cf7.chunk.js"
   },
   {
     "revision": "e8060942331258f425cc",
@@ -66,6 +66,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "061305d7b4e27c944bdf2189bd2874f2",
     "url": "/FFIND/static/media/cystic-fibrosis-related-diabetes-cfrd.061305d7.jpg"
+  },
+  {
+    "revision": "b90ee2ab407f904f68cd2e70c3781e8e",
+    "url": "/FFIND/static/media/dataset-description-image.b90ee2ab.jpg"
+  },
+  {
+    "revision": "144d8de79421697e91e9b97fab15227e",
+    "url": "/FFIND/static/media/dataset-title-image.144d8de7.jpg"
   },
   {
     "revision": "a5ca11eac3f80d3329a53a7210291a22",
