@@ -162,6 +162,7 @@ Footer
 /*
 Table
  */
+.table { color: #fff; }
 
 .table td {
     text-align: left;
@@ -1203,7 +1204,9 @@ div.dataset-description {
 }
 
 img.dataset-picture {
-    filter: drop-shadow(2px 4px 4px #000000)
+    -webkit-box-shadow: 3px 3px 6px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 6px -4px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 6px -4px rgba(0,0,0,0.75);
 }
 
 img.resource-img {
@@ -1230,11 +1233,11 @@ h4.filter-set-heading-2 {
 }
 
 .input-range__label--min {
-    color: black !important;
+    color: #777777 !important;
 }
 
 .input-range__label--max {
-    color: black !important;
+    color: #777777 !important;
 }
 
 .greyed-out {

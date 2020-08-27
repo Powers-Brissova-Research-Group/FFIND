@@ -33,6 +33,7 @@ class DatasetOverview extends React.Component {
       title: result.dsname,
       short_desc: result.kvals.description_short,
       long_desc: result.kvals.description_long,
+      titleImg: result.kvals.title_image,
       importDate: result.kvals.import_date,
       publishDate: result.kvals.publish_date,
       imgCount: result.kvals.img_count
@@ -56,20 +57,23 @@ class DatasetOverview extends React.Component {
               <Row className='my-4'>
                 <Col md='6'>
                   <div className='dataset-description' dangerouslySetInnerHTML={{ __html: this.state.long_desc }} />
+                  <Link to={{ pathname: `/datasets/${this.state.did}/explore` }}>
+                    <Button className='ds-list-left-button btn-block' >Browse Dataset</Button>
+                  </Link>
                 </Col>
                 <Col md='6'>
                   <div>
-                    {this.state.titleImg !== undefined && <a href={this.state.titleImg.url}><img className='img-fluid dataset-picture' src={require(`../../assets/img/datasets/${this.state.did}/${this.state.titleImg.src}`)} alt='' /></a>}
+                    {this.state.titleImg !== undefined && <a href={this.state.titleImg.url}><img className='img-fluid dataset-picture' src={require(`../../assets/img/datasets/${this.state.did}/${this.state.titleImg.src}`)} alt={this.state.title} /></a>}
                   </div>
                   <div className='mt-4'>
-                    <h4>Dataset Quick Reference</h4>
+                    <h4>Dataset Overview</h4>
                   </div>
                   <Table>
                     <thead>
                       <tr>
-                        <th>No. of Images</th>
-                        <th>Import Date</th>
-                        <th>Publication Date</th>
+                        <th>No. of records</th>
+                        <th>Import date</th>
+                        <th>Publication date</th>
                       </tr>
                     </thead>
                     <tbody>
