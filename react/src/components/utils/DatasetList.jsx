@@ -57,7 +57,7 @@ export default class DatasetList extends React.Component {
     if (this.state.loaded) {
       return (
         <div className='dataset-lists'>
-          {/* <h1 className='mb-4'>Image Collections</h1> */}
+          {/* <h1 className='mb-4'>Data Collections</h1> */}
           <Nav tabs>
             <NavItem>
               <NavLink className={`dataset-nav ${(this.state.activeTab === '0') ? 'active' : undefined} navlink`} onClick={() => { this.toggle('0') }}>
@@ -129,9 +129,6 @@ export default class DatasetList extends React.Component {
               </Row>
             </TabPane>
           </TabContent>
-          <Link to='/explore-all-images'>
-            <Button color='primary'>Explore all data</Button>
-          </Link>
         </div>
       )
     } else if (this.state.error !== undefined) {

@@ -33,7 +33,7 @@ export default class Home extends React.Component {
         <Banner title={conf.title} subtitle={conf.subtitle} description={conf.description}/>
         <div className='dataset-list' ref={this.aboutRef}>
           <Container className='mt-4'>
-            <h1 className='my-4 py-4'><strong>Image Collections</strong></h1>
+            <h1 className='my-4 py-4'><strong>Data Collections</strong></h1>
             <DatasetList />
           </Container>
         </div>

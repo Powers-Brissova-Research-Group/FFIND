@@ -16,8 +16,8 @@ export default class DatasetListPage extends React.Component {
           <meta name='description' content='List of datasets available to view in FFIND' />
         </MetaTags>
         <PageBanner>
-          <h1>Explore Image Collections</h1>
-          <p className='text-larger'>Collections are organized by specific disease phenotype, biological event, or scientific program. For more information about a collection’s origin, please click on <em>Collection Details</em>. Appropriate citations and authorship are provided where possible.</p>
+          <h1>Explore Data Collections</h1>
+          <p className='text-larger'>Collections are standalone sets of data, such as images or other outputs, which can each have specific attributes. For more information about a collection’s origin, please click on <em>Collection Details</em>. Appropriate citations and authorship are provided where possible.</p>
         </PageBanner>
         {/* <Parallax
           blur={0}
@@ -31,7 +31,7 @@ export default class DatasetListPage extends React.Component {
               <Row className='h-100'>
                 <Col md='12' className='d-flex align-items-center'>
                   <div className='dataset-title align-middle'>
-                    <h1>Explore Image Collections</h1>
+                    <h1>Explore Data Collections</h1>
                     <p className='text-larger'>For more information on our data, please visit our <Link to='/nomenclature' className='link-light'>nomenclature page</Link>.</p>
                   </div>
                 </Col>

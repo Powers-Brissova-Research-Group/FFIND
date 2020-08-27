@@ -61,14 +61,14 @@ export default class TopNav extends React.Component {
                   <UncontrolledDropdown>
                     <DropdownToggle nav caret>Image Atlas <Badge color='primary'>{JSON.parse(window.atob(this.props.favorites)).length}</Badge></DropdownToggle>
                     <DropdownMenu right>
-                      <Link className='dropdown-item' to='/datasets'>Image Collections</Link>
+                      <Link className='dropdown-item' to='/datasets'>Data Collections</Link>
                       <Link className='dropdown-item' to={`/favorites?iids=${this.props.favorites}`}>Favorites <Badge color='primary'>{JSON.parse(window.atob(this.props.favorites)).length}</Badge></Link>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 </NavItem>}
               {JSON.parse(window.atob(this.props.favorites)).length <= 0 &&
                 <NavItem active={(window.location.pathname === '/datasets')}>
-                  <NavLink to='/datasets'>Image Collections</NavLink>
+                  <NavLink to='/datasets'>Data Collections</NavLink>
                 </NavItem>
               }
               <NavItem active={(window.location.pathname === '/about')}>

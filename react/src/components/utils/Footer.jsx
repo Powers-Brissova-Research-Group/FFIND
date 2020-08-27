@@ -26,8 +26,8 @@ export default class Footer extends React.Component {
         <Container fluid>
           <Container>
             <Row className='v-padded'>
-              <Col md='6'>
-                <p>&copy; 2020 - Copyright Notice<br />
+              <Col md='4'>
+                <p>&copy; 2020 - Copyright Notice<br/>
                   <a href="https://github.com/Powers-Brissova-Research-Group/FFIND/">Developed with FFIND</a>
                 </p>
                 <p>
@@ -35,9 +35,23 @@ export default class Footer extends React.Component {
                 </p>
               </Col>
 
-              <Col md='6'>
-                {/* <span className='scroll-button'><FontAwesomeIcon icon='hand-pointer' size='2x' id='x' onClick={this.scrollToTop} /></span> */}
+              <Col md='4'>
                 <p>Dummy text here</p>
+                <ul>
+                  <li>List item 1</li>
+                  <li>List item 2</li>
+                  <li>List item 3</li>
+                </ul>
+              </Col>
+
+              <Col md='4'>
+                <span className='float-right scroll-button'><FontAwesomeIcon icon='hand-pointer' size='2x' id='x' onClick={this.scrollToTop} /></span>
+                <p>Dummy text here</p>
+                <ul>
+                  <li>List item 1</li>
+                  <li>List item 2</li>
+                  <li>List item 3</li>
+                </ul>
               </Col>
 
             </Row>

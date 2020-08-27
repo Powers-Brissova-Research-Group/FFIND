@@ -45,7 +45,7 @@ export default class DatasetCard extends React.Component {
     // let sponsors = this.props.funding !== undefined ? this.props.funding.split(',').map(source => require(`../assets/${source}.jpg`)) : []
     /* global Modernizr */
     let logo = null
-    let banner = '//www.placehold.it/326x150/000000/222222/?text=326x150'
+    let banner = '//www.placehold.it/326x150/000000/111111/?text=326x150'
     try {
       if (Modernizr.webp.alpha) {
         logo = require(`../../assets/img/logos/${this.props.title.toLowerCase().replace(/ /g, '-').replace(/[^0-9a-zA-Z-_]/ig, '')}.webp`)

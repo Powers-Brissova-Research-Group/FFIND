@@ -381,8 +381,8 @@ export default class ImageGrid extends React.Component {
         return (
           <div className='no-results'>
             <MetaTags>
-              <title>Browse &amp; Filter Dataset -- Pancreatlas / HANDEL-P</title>
-              <meta name='description' content='View an entire dataset in the pancreatlas' />
+              <title>Browse &amp; Filter Dataset</title>
+              <meta name='description' content='View an entire dataset' />
             </MetaTags>
             <Container>
               <Alert color='info'>
@@ -439,13 +439,11 @@ export default class ImageGrid extends React.Component {
         imgGrid.push(slice.splice(0, this.state.imgsPerRow))
       }
 
-      // C:\Users\messmej\Documents\Projects\pancreatlas\react\src\assets\pancreatlas\thumbs\55.jpg
-
       return (
         <div className='image-grid'>
           <MetaTags>
-            <title>Browse &amp; Filter Dataset -- Pancreatlas / HANDEL-P</title>
-            <meta name='description' content='View an entire dataset in the pancreatlas' />
+            <title>Browse &amp; Filter Dataset</title>
+            <meta name='description' content='View an entire dataset' />
           </MetaTags>
           <Container>
             <Alert color='info'>
