@@ -114,7 +114,11 @@ class SliderFilterList extends React.Component {
     // We should be able to just get all the current filters outside of the current age group + the selected ages
     if (this.state.active) {
       let oldMatches = this.props.tags.slice(this.state.value.min, this.state.value.max + 1).map(match => match.name)
-      let matches = this.props.tags.slice(newValue.value.min, newValue.value.max + 1).map(match => match.name)
+
+      // Make sure we don't have any out of bounds exceptions
+      let min = Math.max(0, newValue.value.min)
+      let max = Math.min(this.props.tags.length - 1, newValue.value.max)
+      let matches = this.props.tags.slice(min, max.max + 1).map(match => match.name)
       let diff = []
       if (oldMatches.length > matches.length) {
         diff = oldMatches.filter(val => matches.indexOf(val) < 0)
@@ -122,7 +126,7 @@ class SliderFilterList extends React.Component {
         diff = matches.filter(val => oldMatches.indexOf(val) < 0)
       }
       this.setState({
-        value: newValue.value
+        value: { min: min, max: max }
       })
       this.props.callback(matches, diff)
     }
