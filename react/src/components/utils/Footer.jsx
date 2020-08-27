@@ -27,12 +27,10 @@ export default class Footer extends React.Component {
           <Container>
             <Row className='v-padded'>
               <Col md='4'>
-                <p>&copy; 2020 - Copyright Notice<br/>
-                  <a href="https://github.com/Powers-Brissova-Research-Group/FFIND/">Developed with FFIND</a>
-                </p>
                 <p>
-                  <a href='https://github.com/Powers-Brissova-Research-Group/FFIND' rel='noreferrer nofollow' target='_blank'><span className='scroll-button'><FontAwesomeIcon icon={['fab', 'github']} size='2x' /></span></a>
+                  <a href='https://github.com/Powers-Brissova-Research-Group/FFIND'><FontAwesomeIcon icon={['fab', 'github']} /> FFIND is open source and hosted at GitHub</a>
                 </p>
+                <p>&copy; 2020 - Developed by the <a href='https://www.powersbrissovaresearch.org'>Powers Brissova Research Group</a></p>
               </Col>
 
               <Col md='4'>
