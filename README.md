@@ -4,6 +4,10 @@ FFIND is a generalized framework for connecting to managed data and metadata fro
 
 FFIND was used to develop [Pancreatlas](https://www.pancreatlas.org), whose goal is to provide the scientific community with easily accessible,  detailed, comprehensive images of the human pancreas with the hope that  this will advance our understanding of diseases such as diabetes,  pancreatic cancer, and pancreatitis.  
 
+Get the FFIND web application up and running in less than 5'! Observe...
+
+![](documentation/ffind_resized.gif)
+
 ## System overview
 
 FFIND is comprised of a backend API and a front-end web application. The reason for the backend API is that not all sources that are interesting necessarily come with an API. In other words, FFIND provides a layer that allows us to 1) leverage APIs when they do exist and 2) to create the required business logic for the data in question. In both cases, the consumed data (API-based or direct) is then assembled into a single API end-point that the front-end application talks to (JSON). This allows FFIND to cleanly separate data extraction/transformation from presentation, as shown in the diagram below.
