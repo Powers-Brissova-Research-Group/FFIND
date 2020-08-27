@@ -301,7 +301,6 @@ class FilterNode {
     this.children = []
     this.images = []
     this.defaultHidden = defaultHidden
-    this.active = true
   }
 
   /**

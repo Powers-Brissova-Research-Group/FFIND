@@ -29,7 +29,6 @@ import { Error, LoadingBar } from '../utils'
 
 import { FilterTree, compareAges, extractFilters, isArray } from '../../tools/utilities'
 
-import axios from 'axios'
 import mergeWith from 'lodash.mergewith'
 
 
