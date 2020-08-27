@@ -8,17 +8,17 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class Footer extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.scrollToTop = this.scrollToTop.bind(this)
   }
 
-  scrollToTop () {
+  scrollToTop() {
     window.scrollTo(0, 0)
   }
 
-  render () {
+  render() {
     return (
       <footer className='footer'>
         {/* Lower area */}
@@ -27,13 +27,16 @@ export default class Footer extends React.Component {
           <Container>
             <Row className='v-padded'>
               <Col md='6'>
-                <p>&copy; 2020 - Copyright Notice<br/>
+                <p>&copy; 2020 - Copyright Notice<br />
                   <a href="https://github.com/Powers-Brissova-Research-Group/FFIND/">Developed with FFIND</a>
+                </p>
+                <p>
+                  <a href='https://github.com/Powers-Brissova-Research-Group/FFIND' rel='noreferrer nofollow' target='_blank'><span className='scroll-button'><FontAwesomeIcon icon={['fab', 'github']} size='2x' /></span></a>
                 </p>
               </Col>
 
               <Col md='6'>
-                <span className='float-right scroll-button'><FontAwesomeIcon icon='hand-pointer' size='2x' id='x' onClick={this.scrollToTop} /></span>
+                {/* <span className='scroll-button'><FontAwesomeIcon icon='hand-pointer' size='2x' id='x' onClick={this.scrollToTop} /></span> */}
                 <p>Dummy text here</p>
               </Col>
 

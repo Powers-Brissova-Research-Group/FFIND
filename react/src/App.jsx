@@ -11,7 +11,7 @@ import {
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faLink, faEnvelope, faPhone, faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faRedo, faBook, faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { faBookmark as faBookmarkOutline } from '@fortawesome/free-regular-svg-icons'
-import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 import {
   About,
@@ -34,7 +34,7 @@ import {
   WarningBanner
 } from './components/utils'
 
-library.add(faLink, faEnvelope, faPhone, faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faBookmarkOutline, faRedo, faBook, faAngleRight, faAngleDown, faTwitter)
+library.add(faLink, faEnvelope, faPhone, faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faBookmarkOutline, faRedo, faBook, faAngleRight, faAngleDown, faTwitter, faGithub)
 
 class App extends Component {
   // blank line for new commit
