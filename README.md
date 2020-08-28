@@ -6,7 +6,7 @@ FFIND was used to develop [Pancreatlas](https://www.pancreatlas.org), whose goal
 
 Get the FFIND web application up and running in less than 5'! Observe...
 
-![](documentation/ffind_resized.gif)
+![](documentation/ffind_resized_800w_256c.gif)
 
 ## System overview
 
