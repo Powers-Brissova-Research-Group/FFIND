@@ -23,8 +23,23 @@ The two mock datasets are:
 
 ## Installation of API (Django)
 
-The Django/Python API files are all within the `/api/` project folder. 
+The Django/Python API files are all within the `/api/` project folder. These files are a barebones implementation of Django with the Django REST Framework. Here are some of the relevant details:
 
+ + `/api/ffind-api/api/models.py` holds information about the structure of the data. This can be used to define the metadata associated with specific images or datasets.
+ + `/api/ffind-api/api/serializers.py` gives Django information about the fields defined in the models
+ + `/api/ffind-api/api/views.py` holds the logic for building responses to API calls
+
+The included JSON files within the React application correspond to the following methods in `views.py`:
+| JSON file  | Method  |
+|---|---|
+| <dataset_id>.json  | `DatasetViewset.get_images`  |
+| <dataset_id>-metadata.json  | `DatasetViewset.retrieve`  |
+| <dataset_id>-tagsets.json  |  `DatasetViewset.get_tags` |
+| mock_datasets.json  | `DatasetViewset.list`  |
+| all-datasets.json  |  `ImageViewSet.list`  |
+| all-datasets.json  | `ImageViewSet.retrieve`*  |
+
+\* The React application uses this file to lookup information about a specific image
 ## Installation of web application (React)
 
 ### Local
