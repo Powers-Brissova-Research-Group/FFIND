@@ -1,6 +1,6 @@
-# Flexible Framework for Integrating and Navigating Data - FFIND
+# Flexible Framework for Integrating and Navigating Data (FFIND)
 
-FFIND is a generalized framework for connecting to managed data and metadata from diverse sources and making it accessible via an integrated web application that promotes the exploration and discovery of the data. It was developed by the [Powers-Brissova Research Group](https://www.powersbrissovaresearch.org), at Vanderbilt University Medical Center, which is comprised of a multi-disciplinary team of scientists and software engineers.
+FFIND is a generalized framework for connecting to managed data and metadata from diverse sources and making it accessible via an integrated web application that promotes the exploration and discovery of the data. It was developed by the [Powers & Brissova Research Group](https://www.powersbrissovaresearch.org), at Vanderbilt University Medical Center, which is comprised of a multi-disciplinary team of scientists and software engineers.
 
 FFIND was used to develop [Pancreatlas](https://www.pancreatlas.org), whose goal is to provide the scientific community with easily accessible,  detailed, comprehensive images of the human pancreas with the hope that  this will advance our understanding of diseases such as diabetes,  pancreatic cancer, and pancreatitis.  
 
@@ -39,7 +39,8 @@ The included JSON files within the React application correspond to the following
 | all-datasets.json  |  `ImageViewSet.list`  |
 | all-datasets.json  | `ImageViewSet.retrieve`*  |
 
-\* The React application uses this file to lookup information about a specific image
+\* The React application uses this file to lookup information about a specific data object. 
+
 ## Installation of web application (React)
 
 ### Local
@@ -58,7 +59,7 @@ The included JSON files within the React application correspond to the following
 
 3. Set up directory on server and copy all files from `build` directory to your server directory
 
-4. Set up a web server, such as Apache and configure the `httpd.conf` as necessary. Th e following is an example:
+4. Set up a web server, such as Apache and configure the `httpd.conf` as necessary. The following is an example:
 
    ```
    Directory "/path/to/build">
@@ -86,7 +87,7 @@ By default, FFIND will work but will need to be configured and in some cases cus
 
 ## Adding a new dataset
 
-
+TBD
 
 ## Licensing
 
