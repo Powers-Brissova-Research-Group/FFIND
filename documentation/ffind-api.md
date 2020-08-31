@@ -1,5 +1,4 @@
 # How to set up an API that works with FFIND
----
 FFIND was designed to work with any type of API backend. In order to work, the FFIND backend must provide the following functionality:
 
 1. Return metadata about a specific image
