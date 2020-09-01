@@ -29,7 +29,7 @@ The JSON returned from the backend API must contain all of the relevant metadata
                 "tagset": "Tagset 3",
                 "tag": "Tag value"
             },
-            // ...
+            ...
             {
                 "tagset": "Tagset N",
                 "tag": "Tag value"
