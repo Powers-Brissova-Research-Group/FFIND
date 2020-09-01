@@ -37,9 +37,29 @@ The JSON returned from the backend API must contain all of the relevant metadata
      ]
  }
 ```
-
 ### Required API endpoints
+There should be API endpoints to list all images and to get information for a single image.
+Below are sample Python implementations we used in Pancreatlas to get this set up:
+#### All images
+```
+with open('cached image index', 'r') as f:
+    data = f.readline()
+    return Response(json.loads(data))
+```
 
+#### Single image
+```
+    # Connect to image storage API
+    img = omero_api.get_image_by_id(conn, pk)
+
+    # Instantiate Image (from models.py) with relevant data
+    ret_img = Image(pk, img.file_name, img.get_tag_names(),
+                    img.get_key_values(), img.get_channel_info())
+
+    # Return serialized image.
+    serializer = ImageSerializer(ret_img)
+    return Response(serializer.data)
+```
 ## Datasets
 This section deals with how to return information about datasets, including the desired structure and information for the FFIND frontend to work
 ### JSON structure
