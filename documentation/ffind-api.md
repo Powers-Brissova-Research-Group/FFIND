@@ -142,3 +142,40 @@ And for images in a dataset, use this structure:
 ```
 
 ### Required API endpoints
+There should be API endpoints to list all datasets, to get information for a single dataset, and to get images and filters for a dataset.
+Below are sample Python implementations we used in Pancreatlas to get this set up:
+
+#### All dataset metadata
+```python
+# Create array of all datasets from image storage API
+dsets = [Dataset(dset.did, dset.name, dset.desc, dset.kvals)
+                    for dset in omero_api.get_private_datasets(conn)]
+
+# Return serialized response
+serializer = DatasetSerializer(dsets, many=True)
+return Response(serializer.data)
+
+```
+
+#### Single dataset metadata
+```python
+# Connect to image storage API
+ds = omero_api.get_dataset(conn, pk)
+
+# Make sure the dataset exists
+if ds == None:
+    return Response({})
+else:
+# Return serialized response 
+    serializer = DatasetSerializer(
+        Dataset(ds.did, ds.name, ds.desc, ds.kvals))
+    return Response(serializer.data)
+```
+
+#### Dataset images and filters:
+```python
+with open('dataset cache file') as f:
+    data = f.readline()
+    return Response(json.loads(data))
+
+```
