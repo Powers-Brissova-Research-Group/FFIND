@@ -29,7 +29,7 @@ The JSON returned from the backend API must contain all of the relevant metadata
                 "tagset": "Tagset 3",
                 "tag": "Tag value"
             },
-            ...
+            /* ... */
             {
                 "tagset": "Tagset N",
                 "tag": "Tag value"
@@ -63,5 +63,82 @@ with open('cached image index', 'r') as f:
 ## Datasets
 This section deals with how to return information about datasets, including the desired structure and information for the FFIND frontend to work
 ### JSON structure
+For the datasets, we need both the structure for returning metadata about a specific dataset and all of the images in a dataset to build our filtering menu.
+
+For dataset metadata, use the following structure:
+```json
+{
+    "did": 101,
+    "dsname": "Name of the dataset",
+    "desc": "A short description of what the dataset is about",
+    "kvals": {
+        "active": "true|false",
+        "img_count": "number of images in dataset",
+        "description_long": "Long description with detailed information about the dataset",
+        "description_short": "Short description",
+        "title_image": {
+            "url": "https://example.com",
+            "src": "title-image.jpg"
+        },
+        "import_date": "Date of data import",
+        "publish_date": "Date of data publish"
+    }
+}
+```
+
+And for images in a dataset, use this structure:
+```json
+{
+    "images": 
+    {
+        "image id": 
+        [
+            {
+                "tagset": "Tagset 1",
+                "tag": "Tag value"
+            },
+            {
+                "tagset": "Tagset 2",
+                "tag": "Tag value"
+            },
+            {
+                "tagset": "Tagset 3",
+                "tag": "Tag value"
+            },
+            /* ... */
+            {
+                "tagset": "Tagset N",
+                "tag": "Tag value"
+            }
+     ]
+    },
+    "filters": 
+    [
+        {
+            "set_name": "Name",
+            "tags":
+            {
+                "value 1": 0,
+                "value 2": 0,
+                /* ... */
+                "value n": 0
+            },
+            "pos": 0 /* Position in list of filters */
+        },
+        /* ... */
+                {
+            "set_name": "Name",
+            "tags":
+            {
+                "value 1": 0,
+                "value 2": 0,
+                /* ... */
+                "value n": 0
+            },
+            "pos": 0 /* Position in list of filters */
+        }
+    ]
+}
+```
 
 ### Required API endpoints
