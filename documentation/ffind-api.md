@@ -14,7 +14,7 @@ This section deals with how to return information about images, including the de
 ### JSON structure
 The JSON returned from the backend API must contain all of the relevant metadata for an image that is to be shown in the image display cards as well as the modal image previews--essentially, any key-value pairs associated with an image. The general structure should look something like this:
 
-```
+```json
  {
      "00001": [
             {
@@ -29,7 +29,7 @@ The JSON returned from the backend API must contain all of the relevant metadata
                 "tagset": "Tagset 3",
                 "tag": "Tag value"
             },
-            ...
+            // ...
             {
                 "tagset": "Tagset N",
                 "tag": "Tag value"
@@ -48,7 +48,7 @@ with open('cached image index', 'r') as f:
 ```
 
 #### Single image
-```
+```python
     # Connect to image storage API
     img = omero_api.get_image_by_id(conn, pk)
 
