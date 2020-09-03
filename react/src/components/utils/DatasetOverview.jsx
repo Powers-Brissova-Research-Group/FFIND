@@ -3,8 +3,6 @@ import {
   Container,
   Row,
   Col,
-  Card,
-  CardBody,
   Button,
   Table
 } from 'reactstrap'
@@ -13,10 +11,6 @@ import {
   Link,
   withRouter
 } from 'react-router-dom'
-
-import { Parallax } from 'react-parallax'
-
-import axios from 'axios'
 
 class DatasetOverview extends React.Component {
   constructor(props) {

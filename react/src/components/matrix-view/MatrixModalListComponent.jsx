@@ -3,8 +3,6 @@ import {
   Button
 } from 'reactstrap'
 
-import axios from 'axios'
-
 export default class MatrixModalListComponent extends React.Component {
   constructor(props) {
     super(props)

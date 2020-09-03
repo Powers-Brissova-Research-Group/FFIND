@@ -3,11 +3,7 @@ import {
   Container,
   Row,
   Col,
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText, Button
+  Button
 } from 'reactstrap'
 import {Link} from "react-router-dom";
 

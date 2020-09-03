@@ -27,7 +27,7 @@ import { FilterList } from '../filtering'
 
 import { Error, LoadingBar } from '../utils'
 
-import { FilterTree, compareAges, extractFilters, isArray } from '../../tools/utilities'
+import { FilterTree, extractFilters, isArray } from '../../tools/utilities'
 
 import mergeWith from 'lodash.mergewith'
 
@@ -294,7 +294,7 @@ export default class ImageGrid extends React.Component {
 
     let result = mockImages[imgInfo]
     let kvals = result.kvals
-    let tagVals = result.tags.map(tag => tag.tag)
+    // let tagVals = result.tags.map(tag => tag.tag)
     this.setState({
       modalData: {
         img_id: imgInfo,

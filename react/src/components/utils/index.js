@@ -6,7 +6,6 @@ import DetailRow from './DetailRow'
 import Error from './Error'
 import Footer from './Footer'
 import GridView from './GridView'
-import HomeTitle from './HomeTitle'
 import LoadingBar from './LoadingBar'
 import PageBanner from './PageBanner'
 import TopNav from './TopNav'
@@ -21,7 +20,6 @@ export {
   Error,
   Footer,
   GridView,
-  HomeTitle,
   LoadingBar,
   PageBanner,
   TopNav,

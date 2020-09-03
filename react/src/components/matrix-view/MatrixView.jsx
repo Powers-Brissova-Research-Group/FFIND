@@ -10,8 +10,6 @@ import MetaTags from 'react-meta-tags'
 import ImageMatrix from './ImageMatrix'
 import { Error, LoadingBar, PageBanner } from '../utils'
 
-import axios from 'axios'
-
 export default class MatrixView extends React.Component {
   constructor(props) {
     super(props)

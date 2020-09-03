@@ -18,8 +18,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { ImageCard, ImageModal } from '../grid-view'
 
-import axios from 'axios'
-
 export default class Favorites extends React.Component {
   constructor (props) {
     super(props)
@@ -61,7 +59,7 @@ export default class Favorites extends React.Component {
 
     let result = mockImages[imgInfo]
     let kvals = result.kvals
-    let tagVals = result.tags.map(tag => tag.tag)
+    // let tagVals = result.tags.map(tag => tag.tag)
     this.setState({
       modalData: {
         img_id: imgInfo,

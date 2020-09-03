@@ -16,12 +16,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ImageModal } from '../grid-view'
 import { Error, LoadingBar } from '../utils'
 
-import { FilterTree, compareAges, extractFilters, isArray } from '../../tools/utilities'
+import { FilterTree } from '../../tools/utilities'
 
 
 import MatrixModalListComponent from './MatrixModalListComponent'
 
-import axios from 'axios'
 
 export default class ImageMatrix extends React.Component {
   constructor(props) {
@@ -45,11 +44,10 @@ export default class ImageMatrix extends React.Component {
   componentDidMount() {
     var imageJson = require(`../../assets/txt/ffind-defaults/${this.props.did}.json`)
 
-    let tree = new FilterTree
+    let tree = new FilterTree()
 
     let images = imageJson.images
     let tags = imageJson.filters
-    let sortableFields = []
 
     for (let tagset of tags) {
       let tagsetName = tagset.set_name
@@ -62,7 +60,7 @@ export default class ImageMatrix extends React.Component {
         tree.addNode(tag, tagsetName, sortMethod, filterMethod, hidden)
       }
     }
-    let setNodes = tree.generateAllNodes()
+    // let setNodes = tree.generateAllNodes()
     for (let img of Object.keys(images)) {
       for (let tagset of images[img]) {
         tree.addImg(tagset.tag, img)
@@ -133,7 +131,7 @@ export default class ImageMatrix extends React.Component {
 
     let result = mockImages[imgInfo]
     let kvals = result.kvals
-    let tagVals = result.tags.map(tag => tag.tag)
+    // let tagVals = result.tags.map(tag => tag.tag)
     this.setState({
       modalData: {
         img_id: imgInfo,

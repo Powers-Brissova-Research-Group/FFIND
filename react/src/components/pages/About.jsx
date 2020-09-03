@@ -7,8 +7,6 @@ import {
 
 import MetaTags from 'react-meta-tags'
 
-import { Link } from 'react-router-dom'
-
 import { PageBanner } from '../utils'
 
 export default class About extends React.Component {

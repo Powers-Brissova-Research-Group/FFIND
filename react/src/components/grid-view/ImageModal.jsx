@@ -55,7 +55,7 @@ export default class ImageModal extends React.Component {
                   </Row>
                   <Row>
                     <Col md='6'>
-                      <img src='//placehold.it/400x400/000000/222222' alt='modal preview image' />
+                      <img src='//placehold.it/400x400/000000/222222' alt='modal preview' />
                     </Col>
                     <Col md='6'>
                       <Table>
