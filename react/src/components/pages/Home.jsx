@@ -10,7 +10,11 @@ import {
 
 import conf from '../../assets/conf/conf.json'
 
-export default class Home extends React.Component {
+/**
+ * Home page of application
+ * @component
+ */
+class Home extends React.Component {
   constructor (props) {
     super(props)
     this.aboutRef = React.createRef()
@@ -41,3 +45,5 @@ export default class Home extends React.Component {
     )
   }
 }
+
+export default Home

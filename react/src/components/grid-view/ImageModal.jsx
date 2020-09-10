@@ -13,7 +13,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { DetailRow } from '../utils'
 
-export default class ImageModal extends React.Component {
+/**
+ * Modal preview to show basic image metadata and link to viewer
+ * @component
+ * @author Jimmy Messmer
+ */
+class ImageModal extends React.Component {
   constructor(props) {
     super(props)
     this.relevantKeys = {}
@@ -78,3 +83,5 @@ export default class ImageModal extends React.Component {
     )
   }
 }
+
+export default ImageModal

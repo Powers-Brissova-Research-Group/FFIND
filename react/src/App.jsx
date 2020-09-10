@@ -36,6 +36,12 @@ import {
 
 library.add(faLink, faEnvelope, faPhone, faGem, faMedkit, faUsers, faFlask, faVial, faHandPointer, faSearchPlus, faCopy, faPaperPlane, faExternalLinkAlt, faBookmark, faBookmarkOutline, faRedo, faBook, faAngleRight, faAngleDown, faTwitter, faGithub)
 
+/**
+ * Root application component for the entire application
+ * @author Jimmy Messmer
+ * @component
+ */
+
 class App extends Component {
   // blank line for new commit
   constructor(props) {

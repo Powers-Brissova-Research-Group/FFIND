@@ -3,7 +3,12 @@ import {
   Tooltip
 } from 'reactstrap'
 
-export default class DetailRow extends React.Component {
+/**
+ * A row in the image modal preview
+ * @component
+ * @author Jimmy Messmer
+ */
+class DetailRow extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -43,3 +48,5 @@ export default class DetailRow extends React.Component {
 DetailRow.defaultProps = {
   desc: 'DEFAULT DESCRIPTION'
 }
+
+export default DetailRow

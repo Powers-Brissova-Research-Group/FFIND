@@ -1,6 +1,5 @@
 /**
- * @file Contains classes for different types of filters
- * @author Jimmy Messmer
+   * @author Jimmy Messmer
  */
 
 import React from 'react'
@@ -21,7 +20,9 @@ import 'react-input-range/lib/css/index.css'
 
 /**
  * React component for a checkbox. This one is pretty simple--just returns a checkbox for each tag prop
- * @class CheckboxFilterList
+ * @category Filtering
+ * @author Jimmy Messmer
+ * @extends React.Component
  */
 class CheckboxFilterList extends React.Component {
   constructor(props) {
@@ -32,6 +33,10 @@ class CheckboxFilterList extends React.Component {
     }
   }
 
+  /**
+   * Toggle a new filter--if it is currently activated, deactivate or vice versa.
+   * @param {*} newFilter 
+   */
   addFilter(newFilter) {
     let oldFilters = JSON.parse(JSON.stringify(this.state.activeFilters))
     let newFilters = []
@@ -61,6 +66,8 @@ class CheckboxFilterList extends React.Component {
 /**
  * React component for a slider.
  * @class SliderFilterList
+ * @category Filtering
+ * @author Jimmy Messmer
  */
 class SliderFilterList extends React.Component {
   constructor(props) {

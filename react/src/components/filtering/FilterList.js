@@ -1,5 +1,4 @@
 /**
- * @file Parent class for our list of filters--defines the sidebar and leaves implementation of individual sets to child classes
  * @author Jimmy Messmer
  */
 import React from 'react'
@@ -25,6 +24,8 @@ import { Error } from '../utils'
 /**
  * React component for the FilterList.
  * @class FilterList
+ * @category Filtering
+ * @author Jimmy Messmer
  */
 class FilterList extends React.Component {
   /**
@@ -166,4 +167,4 @@ FilterList.defaultProps = {
   tags: {}
 }
 
-export default FilterList
+export { FilterList }

@@ -1,4 +1,7 @@
 import React from 'react'
+
+import PropTypes from 'prop-types'
+
 import {
   Card,
   CardImg,
@@ -18,8 +21,13 @@ import {
 
 import { Error } from '../utils'
 
-export default class ImageCard extends React.Component {
-  constructor(props) {
+/**
+ * A single card containing a thumbnail image and some basic metadata
+ * @author Jimmy Messmer
+ * @component
+ */
+class ImageCard extends React.Component {
+  constructor (props) {
     super(props)
 
     this.toggleTooltip = this.toggleTooltip.bind(this)
@@ -50,6 +58,9 @@ export default class ImageCard extends React.Component {
     })
   }
 
+  /**
+   * Basic method to toggle whether or not tooltips are showing.
+   */
   toggleTooltip() {
     this.setState({
       ttOpen: !this.state.ttOpen
@@ -98,3 +109,5 @@ ImageCard.defaultProps = {
   imgUrl: '//www.placehold.it/350x350/000000/222222/?Text=350x350',
   imgName: 'Placeholder name'
 }
+
+export default ImageCard

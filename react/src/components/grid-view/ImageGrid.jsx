@@ -32,7 +32,12 @@ import { FilterTree, extractFilters, isArray } from '../../tools/utilities'
 import mergeWith from 'lodash.mergewith'
 
 
-export default class ImageGrid extends React.Component {
+/**
+ * Component for displaying our grid of images. Handles logic for building a filter tree and applying filters
+ * @component
+ * @author Jimmy Messmer
+ */
+class ImageGrid extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -533,3 +538,5 @@ export default class ImageGrid extends React.Component {
     }
   }
 }
+
+export default ImageGrid

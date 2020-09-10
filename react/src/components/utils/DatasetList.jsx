@@ -23,7 +23,12 @@ import DatasetCard from './DatasetCard'
 
 import mock_datasets from '../../assets/txt/ffind-defaults/mock_datasets.json'
 
-export default class DatasetList extends React.Component {
+/**
+ * Component to show a list of all datasets
+ * @component
+ * @author Jimmy Messmer
+ */
+class DatasetList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -138,3 +143,5 @@ export default class DatasetList extends React.Component {
     }
   }
 }
+
+export default DatasetList

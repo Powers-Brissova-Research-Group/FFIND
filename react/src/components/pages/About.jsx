@@ -9,7 +9,12 @@ import MetaTags from 'react-meta-tags'
 
 import { PageBanner } from '../utils'
 
-export default class About extends React.Component {
+/**
+ * About page providing a description of the website
+ * @component
+ * @author Jimmy Messmer
+ */
+class About extends React.Component {
   render() {
     return (
       <div className='about'>
@@ -36,3 +41,5 @@ export default class About extends React.Component {
     )
   }
 }
+
+export default About

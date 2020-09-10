@@ -1,0 +1,16 @@
+{
+    "tags": {
+      "allowUnknownTags": ["component", "category"]
+    },
+    "source": {
+      "include": ["src"],
+      "includePattern": ".+\\.js(doc|x)?$",
+      "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": ["plugins/markdown", "node_modules/better-docs/component", "node_modules/better-docs/category"],
+    "opts": {
+      "destination": "docs",
+      "recurse": true,
+      "template": "node_modules/better-docs/"
+    }
+  }

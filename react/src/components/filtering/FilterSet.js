@@ -21,8 +21,16 @@ import {
 
 
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
-
-export default class FilterSet extends React.Component {
+/**
+ * Component to show a filter set
+ * @class FilterSet
+ * @author Jimmy Messmer
+ */
+class FilterSet extends React.Component {
+  /**
+   * Create a new FilterList
+   * @param {*} props React props
+   */
   constructor(props) {
     super(props)
     // this.tags = []
@@ -109,3 +117,5 @@ export default class FilterSet extends React.Component {
 FilterSet.defaultProps = {
   tags: {}
 }
+
+export default FilterSet

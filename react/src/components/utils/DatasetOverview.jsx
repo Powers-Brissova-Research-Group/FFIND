@@ -12,6 +12,11 @@ import {
   withRouter
 } from 'react-router-dom'
 
+/**
+ * Page element to display a high-level description of a dataset
+ * @component
+ * @author Jimmy Messmer
+ */
 class DatasetOverview extends React.Component {
   constructor(props) {
     super(props)

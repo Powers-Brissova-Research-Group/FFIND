@@ -1,8 +1,5 @@
-/**
- * @file Contains definition of FilterItem class
- * @author Jimmy Messmer
- */
 import React from 'react'
+import PropTypes from 'prop-types'
 import {
   Row,
   Col,
@@ -12,15 +9,12 @@ import {
 } from 'reactstrap'
 
 /**
- * Defines a single checkbox corresponding to a single filter. When checked, the event bubbles up to the ImageGrid to update the UI and FilterTree
- * @class FilterItem
- * @hideconstructor
+ * Single checkbox input for filter list
+ * @component
+ * @author Jimmy Messmer
  */
 class FilterItem extends React.Component {
-  /**
-   * Renders the component
-   */
-  render () {
+  render() {
     return (
       <div className='filter-item'>
         <Row className='pancreatlas-row'>
@@ -35,6 +29,12 @@ class FilterItem extends React.Component {
       </div>
     )
   }
+}
+
+FilterItem.propTypes = {
+  defaultChecked: PropTypes.bool,
+  filterName: PropTypes.string,
+  callback: PropTypes.func
 }
 
 export default FilterItem

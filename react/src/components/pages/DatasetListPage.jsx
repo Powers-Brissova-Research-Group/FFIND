@@ -7,7 +7,12 @@ import MetaTags from 'react-meta-tags'
 
 import { DatasetList, PageBanner } from '../utils'
 
-export default class DatasetListPage extends React.Component {
+/**
+ * Page to list all datasets
+ * @component
+ * @author Jimmy Messmer
+ */
+class DatasetListPage extends React.Component {
   render () {
     return (
       <div className='dataset-list'>
@@ -46,3 +51,5 @@ export default class DatasetListPage extends React.Component {
     )
   }
 }
+
+export default DatasetListPage

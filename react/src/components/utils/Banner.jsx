@@ -7,7 +7,12 @@ import {
 } from 'reactstrap'
 import {Link} from "react-router-dom";
 
-export default class Banner extends React.Component {
+/**
+ * Full width banner used as a page header
+ * @component
+ * @author Jimmy Messmer
+ */
+class Banner extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -43,3 +48,5 @@ export default class Banner extends React.Component {
     )
   }
 }
+
+export default Banner
