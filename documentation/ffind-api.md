@@ -1,7 +1,7 @@
 # How to set up an API that works with FFIND
 FFIND was designed to work with any type of API backend. In order to work, the FFIND backend must provide the following functionality:
 
-1. Return metadata about a specific image
+1. [Return metadata about a specific image](#single-image)
 2. Return metadata about all images
 3. Return metadata about a dataset
 4. Return metadata for all datasets
@@ -47,7 +47,7 @@ with open('cached image index', 'r') as f:
     return Response(json.loads(data))
 ```
 
-#### Single image
+#### Single Image
 ```python
     # Connect to image storage API
     img = omero_api.get_image_by_id(conn, pk)
