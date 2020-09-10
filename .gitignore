@@ -24,6 +24,7 @@ react/.env.development
 react/.env.production
 react/src/gen_tests.py
 react/node_modules
+react/docs
 
 # testing
 /coverage
