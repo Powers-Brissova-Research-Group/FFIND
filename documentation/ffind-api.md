@@ -1,11 +1,11 @@
 # How to set up an API that works with FFIND
 FFIND was designed to work with any type of API backend. In order to work, the FFIND backend must provide the following functionality:
 
-1. [Return metadata about a specific image](#single-image)
-2. [Return metadata about all images](#all-images)
-3. [Return metadata about a dataset](#all-dataset-metadata)
-4. [Return metadata for all datasets](#single-dataset-metadata)
-5. [Provide a list of images in a dataset](#dataset-images-and-filters)
+1. [Return Metadata About a Single Image](#return-metadata-about-a-single-image)
+2. [Return Metadata About All Images](#return-metadata-about-all-images)
+3. [Return Metadata About a Single Dataset](#return-metadata-about-a-single-dataset)
+4. [Return Metadata About All Datasets](#return-metadata-about-all-datasets)
+5. [Provide a List of Images and Metadata in a Dataset](#provide-a-list-of-images-and-metadata-in-a-dataset)
 
 This document provides an overview of how we tackled these problems when building Pancreatlas along with relevant code samples so that you can get a FFIND installation up and running quickly.
 
@@ -41,7 +41,7 @@ The JSON returned from the backend API must contain all of the relevant metadata
 There should be API endpoints to list all images and to get information for a single image.
 Below are sample Python implementations we used in Pancreatlas to get this set up:
 
-#### Single Image
+#### Return Metadata About a Single Image
 ```python
     # Connect to image storage API
     img = omero_api.get_image_by_id(conn, pk)
@@ -55,7 +55,7 @@ Below are sample Python implementations we used in Pancreatlas to get this set u
     return Response(serializer.data)
 ```
 
-#### All Images
+#### Return Metadata About All Images
 ```
 with open('cached image index', 'r') as f:
     data = f.readline()
@@ -146,19 +146,7 @@ And for images in a dataset, use this structure:
 There should be API endpoints to list all datasets, to get information for a single dataset, and to get images and filters for a dataset.
 Below are sample Python implementations we used in Pancreatlas to get this set up:
 
-#### All Dataset Metadata
-```python
-# Create array of all datasets from image storage API
-dsets = [Dataset(dset.did, dset.name, dset.desc, dset.kvals)
-                    for dset in omero_api.get_private_datasets(conn)]
-
-# Return serialized response
-serializer = DatasetSerializer(dsets, many=True)
-return Response(serializer.data)
-
-```
-
-#### Single Dataset Metadata
+#### Return Metadata About a Single Dataset
 ```python
 # Connect to image storage API
 ds = omero_api.get_dataset(conn, pk)
@@ -173,7 +161,20 @@ else:
     return Response(serializer.data)
 ```
 
-#### Dataset Images and Filters:
+#### Return Metadata About All Datasets
+```python
+# Create array of all datasets from image storage API
+dsets = [Dataset(dset.did, dset.name, dset.desc, dset.kvals)
+                    for dset in omero_api.get_private_datasets(conn)]
+
+# Return serialized response
+serializer = DatasetSerializer(dsets, many=True)
+return Response(serializer.data)
+
+```
+
+
+#### Provide a List of Images and Metadata in a Dataset:
 ```python
 with open('dataset cache file') as f:
     data = f.readline()
