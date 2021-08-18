@@ -94,7 +94,8 @@ class SliderFilterList extends React.Component {
         min: leftMark,
         max: rightMark
       },
-      active: this.props.tags.filter(tag => tag.active).length > 0
+      active: this.props.tags.filter(tag => tag.active).length > 0,
+      cleared: false
     }
   }
   /**
@@ -111,6 +112,15 @@ class SliderFilterList extends React.Component {
         active: false
       })
     }
+    else if (this.props.onClear===false && this.state.active===true) {
+      this.setState({
+        value: {
+          min: 0,
+          max: this.props.tags.length - 1
+        },
+        active: false
+      })
+    }
   }
 
   /**
@@ -118,6 +128,8 @@ class SliderFilterList extends React.Component {
    * @param {array} args Array of arguments--first element is the minimum value, second the maximum
    */
   onSliderChange(newValue) {
+    // Always set the active flag to true
+    this.setState({active: true})
     // We should be able to just get all the current filters outside of the current age group + the selected ages
     if (this.state.active) {
       let oldMatches = this.props.tags.slice(this.state.value.min, this.state.value.max + 1).map(match => match.name)
@@ -180,7 +192,7 @@ class SliderFilterList extends React.Component {
                 <Col xs={2}>
                   <Input type='checkbox' checked={this.state.active} onChange={this.onToggleChange} />
                 </Col>
-                <Col xs={10} className={!this.state.active ? 'greyed-out' : ''}>
+                <Col xs={10}>
                     <InputRange
                       formatLabel={value => `${this.props.tags[value]['name']}`}
                       maxValue={this.props.tags.length - 1}

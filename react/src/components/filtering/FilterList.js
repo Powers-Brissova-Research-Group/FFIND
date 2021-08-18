@@ -44,21 +44,24 @@ class FilterList extends React.Component {
       filters: this.props.filters,
       prevFilters: this.props.filters,
       clear: true,
-      ttOpen: false
+      ttOpen: false,
+      active: true
     }
   }
 
   componentDidMount() {
     this.setState({
       loaded: true,
-      tags: this.props.filters
+      tags: this.props.filters,
+      active: true
     })
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (JSON.stringify(prevState.filters) !== JSON.stringify(this.props.filters)) {
       this.setState({
-        filters: this.props.filters
+        filters: this.props.filters,
+        active: true
       })
     }
   }
@@ -96,6 +99,9 @@ class FilterList extends React.Component {
    */
   clear() {
     this.props.clear({})
+    this.setState({
+      active: false
+    })
   }
 
   toggle() {
@@ -132,7 +138,7 @@ class FilterList extends React.Component {
           {this.props.filters.children.map(filterSet => {
             return (
               <div className='filter-set'>
-                <FilterSet setName={filterSet.name} node={filterSet} callback={this.setFilters} depth={1} />
+                <FilterSet onClear={this.state.active}  setName={filterSet.name} node={filterSet} callback={this.setFilters} depth={1} />
               </div>
             )
             // switch (filterSet.filterMethod) {

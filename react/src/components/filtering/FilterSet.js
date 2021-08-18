@@ -70,7 +70,7 @@ class FilterSet extends React.Component {
 
     var leafJSX = undefined
     if (sortedLeaves.length > 0 && node.filterMethod === 'slider') {
-      leafJSX = <SliderFilterList clear={this.state.clear} className='slider-filter-set' setName={node.name} tags={sortedLeaves} callback={this.gatherFilters} key={node.name} filters={[]} />
+      leafJSX = <SliderFilterList clear={this.state.clear} onClear={this.props.onClear} className='slider-filter-set' setName={node.name} tags={sortedLeaves} callback={this.gatherFilters} key={node.name} filters={[]} />
     } else if (sortedLeaves.length > 0){
       leafJSX = <CheckboxFilterList clear={this.state.clear} classname='filter-set' setName={node.name} tags={sortedLeaves} callback={this.gatherFilters} key={node.name} filters={[]} />
     }
@@ -89,7 +89,7 @@ class FilterSet extends React.Component {
           {leafJSX}
           {sortedNodes.map(child => {
             return (
-              <FilterSet node={child} setName={child.name} callback={this.gatherFilters} depth={this.props.depth + 1} />
+              <FilterSet onClear={this.props.onClear} key={child.name} node={child} setName={child.name} callback={this.gatherFilters} depth={this.props.depth + 1} />
             )
           })}
         </Collapse>
